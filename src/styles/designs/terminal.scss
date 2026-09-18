@@ -1,0 +1,42 @@
+[data-design='terminal'] {
+  --font-display: var(--font-jetbrains), 'SF Mono', Menlo, Consolas, monospace;
+  --font-text: var(--font-plex), 'Helvetica Neue', Arial, sans-serif;
+
+  --bg: #f5f7f9;
+  --ink: #0e141b;
+  --ink-inverse: #f5f7f9;
+  --muted: #5b6673;
+  --line: #d3dae2;
+  --accent: #c27400;
+  --accent-ink: #9c5c00;
+  --accent-contrast: #0e141b;
+  --surface: #ffffff;
+  --surface-soft: #eaeef2;
+  --ok: #1f8a4c;
+
+  --radius-control: 4px;
+  --radius-surface: 8px;
+  --border-width: 1px;
+  --border-width-strong: 1px;
+  --shadow-floating: 0 8px 24px rgb(14 20 27 / 14%);
+  --shadow-status: 0 0 8px var(--ok);
+
+  color-scheme: light;
+}
+
+[data-design='terminal'][data-theme='dark'] {
+  --bg: #0f151c;
+  --ink: #e4ebf2;
+  --ink-inverse: #0f151c;
+  --muted: #8593a1;
+  --line: #223040;
+  --accent: #ffb454;
+  --accent-ink: #ffb454;
+  --accent-contrast: #0e141b;
+  --surface: #131b24;
+  --surface-soft: #182230;
+  --ok: #5cd67a;
+  --shadow-floating: 0 8px 24px rgb(0 0 0 / 45%);
+
+  color-scheme: dark;
+}

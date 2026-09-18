@@ -1,0 +1,170 @@
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 22px clamp(20px, 4vw, 56px);
+  border-bottom: var(--border-width) solid var(--line);
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  min-width: 0;
+}
+
+.wordmark {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 20px;
+  letter-spacing: 0.02em;
+  text-transform: lowercase;
+}
+
+.path {
+  color: var(--accent-ink);
+}
+
+.tagline {
+  font-family: var(--font-display);
+  font-size: 12px;
+  letter-spacing: 0.04em;
+  color: var(--muted);
+  white-space: nowrap;
+}
+
+.nav {
+  display: flex;
+  gap: 28px;
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.nav a:hover {
+  color: var(--accent-ink);
+}
+
+.controls {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.locales {
+  display: flex;
+  gap: 10px;
+  font-family: var(--font-display);
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.locale,
+.localeActive {
+  display: inline-flex;
+  align-items: center;
+}
+
+.locale {
+  color: var(--muted);
+}
+
+.locale:hover {
+  color: var(--ink);
+}
+
+.theme {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+}
+
+.theme:hover {
+  color: var(--accent-ink);
+}
+
+.status {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-display);
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: var(--radius-control);
+  background: var(--ok);
+  box-shadow: var(--shadow-status);
+}
+
+.cta {
+  display: inline-flex;
+  align-items: center;
+  height: 42px;
+  padding: 0 18px;
+  border: var(--border-width) solid var(--ink);
+  border-radius: var(--radius-control);
+  font-family: var(--font-display);
+  font-size: 13px;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.cta:hover {
+  background: var(--ink);
+  color: var(--ink-inverse);
+}
+
+@media (max-width: 1100px) {
+  .status {
+    display: none;
+  }
+}
+
+@media (max-width: 900px) {
+  .nav {
+    display: none;
+  }
+
+  .locale,
+  .localeActive {
+    min-width: 44px;
+    min-height: 48px;
+    justify-content: center;
+  }
+
+  .locales {
+    gap: 0;
+  }
+
+  .theme {
+    width: 48px;
+    height: 48px;
+  }
+}
+
+@media (max-width: 560px) {
+  .header {
+    gap: 12px;
+    padding: 12px 20px;
+  }
+
+  .tagline,
+  .cta {
+    display: none;
+  }
+
+  .controls {
+    gap: 8px;
+  }
+}

@@ -65,8 +65,8 @@
   gap: 10px;
   height: 56px;
   padding: 0 26px;
-  border: 1.5px solid var(--ink);
-  border-radius: 999px;
+  border: var(--border-width) solid var(--ink);
+  border-radius: var(--radius-control);
   font-weight: 600;
   font-size: 16px;
   color: var(--ink);

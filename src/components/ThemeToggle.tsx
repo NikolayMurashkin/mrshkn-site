@@ -2,31 +2,26 @@
 
 import { useTranslations } from 'next-intl';
 import { useTheme } from 'next-themes';
-import styles from './SiteControls.module.scss';
+import type { ReactNode } from 'react';
 
-export const ThemeToggle = () => {
+type ThemeToggleProps = {
+  className?: string;
+  children: ReactNode;
+};
+
+export const ThemeToggle = ({ className, children }: ThemeToggleProps) => {
   const { resolvedTheme, setTheme } = useTheme();
   const t = useTranslations('controls');
 
   return (
     <button
       type="button"
-      className={styles.toggle}
+      className={className}
       data-testid="theme-toggle"
+      aria-label={t('theme')}
       onClick={() => setTheme(resolvedTheme === 'dark' ? 'light' : 'dark')}
     >
-      <svg
-        width="20"
-        height="20"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="1.8"
-        strokeLinecap="round"
-      >
-        <path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z" />
-      </svg>
-      {t('theme')}
+      {children}
     </button>
   );
 };

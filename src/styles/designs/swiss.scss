@@ -1,0 +1,38 @@
+[data-design='swiss'] {
+  --font-display: var(--font-geologica), 'Helvetica Neue', Arial, sans-serif;
+  --font-text: var(--font-geologica), 'Helvetica Neue', Arial, sans-serif;
+
+  --bg: #ffffff;
+  --ink: #0a0a0b;
+  --ink-inverse: #ffffff;
+  --muted: #5f5f66;
+  --line: #e2e2e6;
+  --accent: #1a3ee8;
+  --accent-ink: #1a3ee8;
+  --accent-contrast: #ffffff;
+  --surface: #ffffff;
+  --surface-soft: #f3f3f5;
+
+  --radius-control: 0;
+  --radius-surface: 0;
+  --border-width: 1px;
+  --border-width-strong: 1px;
+  --shadow-floating: none;
+
+  color-scheme: light;
+}
+
+[data-design='swiss'][data-theme='dark'] {
+  --bg: #0b0b0d;
+  --ink: #f4f4f6;
+  --ink-inverse: #0b0b0d;
+  --muted: #9c9ca6;
+  --line: #26262b;
+  --accent: #6a86ff;
+  --accent-ink: #6a86ff;
+  --accent-contrast: #0b0b0d;
+  --surface: #141418;
+  --surface-soft: #141418;
+
+  color-scheme: dark;
+}

@@ -2,15 +2,15 @@ import { hasLocale, NextIntlClientProvider } from 'next-intl';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
-import type { ReactNode } from 'react';
-import { SiteControls } from '@/components/SiteControls';
+import { createElement, type ReactNode } from 'react';
 import { ThemeProvider } from '@/components/ThemeProvider';
-import { DEFAULT_DESIGN } from '@/designs/consts';
+import { DESIGN_FONT_CLASSES } from '@/designs/fonts';
+import { getSection } from '@/designs/registry';
+import { getDesign } from '@/designs/server';
 import { LOCALES } from '@/i18n/consts';
 import { routing } from '@/i18n/routing';
 import { SITE_URL } from '@/lib/consts';
 import { getSiteEnv, robotsMetadata } from '@/lib/site-env';
-import { golosText, unbounded } from '../fonts';
 import '@/styles/globals.scss';
 
 type LocaleLayoutProps = {
@@ -45,19 +45,22 @@ const LocaleLayout = async ({ children, params }: LocaleLayoutProps) => {
 
   setRequestLocale(locale);
 
+  const design = await getDesign();
+
   return (
     <html
       lang={locale}
-      data-design={DEFAULT_DESIGN}
+      data-design={design}
       data-theme="dark"
-      className={`${unbounded.variable} ${golosText.variable}`}
+      className={DESIGN_FONT_CLASSES[design]}
       suppressHydrationWarning
     >
       <body>
         <NextIntlClientProvider>
           <ThemeProvider>
-            <SiteControls />
+            {createElement(getSection(design, 'header'))}
             {children}
+            {createElement(getSection(design, 'footer'))}
           </ThemeProvider>
         </NextIntlClientProvider>
       </body>

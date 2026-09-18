@@ -8,7 +8,21 @@
     "tagline": "Murashkin Studio"
   },
   "controls": {
-    "theme": "Тема"
+    "theme": "Сменить тему"
+  },
+  "nav": {
+    "services": "Услуги",
+    "cases": "Кейсы",
+    "prices": "Цены",
+    "process": "Процесс",
+    "contacts": "Контакты"
+  },
+  "header": {
+    "cta": "Обсудить проект",
+    "status": "online",
+    "kicker": "Студия веб-разработки",
+    "location": "Калининград → весь мир",
+    "founded": "Основана в 2026"
   },
   "hero": {
     "title": "Сайт на коде<br></br>за <accent>14 дней</accent>",
@@ -17,5 +31,14 @@
     "primaryCta": "Рассчитать стоимость",
     "secondaryCta": "Смотреть кейсы",
     "badge": "LIGHTHOUSE 90+ · СРОК В ДОГОВОРЕ · 30 ДНЕЙ ГАРАНТИИ · "
+  },
+  "footer": {
+    "heading": "Обсудить проект",
+    "headingQuestion": "Обсудить проект?",
+    "invitation": "Расскажите о задаче — ответим в течение часа.",
+    "telegram": "Написать в Telegram",
+    "replyTime": "Отвечаем в течение часа в рабочее время",
+    "command": "open t.me/mrshkn",
+    "sectionMark": "04 — Контакт"
   }
 }

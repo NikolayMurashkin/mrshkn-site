@@ -1,0 +1,143 @@
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 28px clamp(20px, 4vw, 56px);
+}
+
+.brand {
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+  min-width: 0;
+}
+
+.wordmark {
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: 26px;
+  letter-spacing: 0.04em;
+}
+
+.tagline {
+  font-size: 13px;
+  color: var(--muted);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.nav {
+  display: flex;
+  gap: 32px;
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.nav a:hover {
+  color: var(--accent-ink);
+}
+
+.controls {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.locales {
+  display: flex;
+  gap: 10px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.locale,
+.localeActive {
+  display: inline-flex;
+  align-items: center;
+}
+
+.locale {
+  color: var(--muted);
+}
+
+.locale:hover {
+  color: var(--ink);
+}
+
+.theme {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+}
+
+.theme:hover {
+  color: var(--accent-ink);
+}
+
+.cta {
+  display: inline-flex;
+  align-items: center;
+  height: 46px;
+  padding: 0 20px;
+  border: var(--border-width) solid var(--ink);
+  border-radius: var(--radius-control);
+  font-size: 15px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.cta:hover {
+  background: var(--ink);
+  color: var(--ink-inverse);
+}
+
+@media (max-width: 900px) {
+  .nav {
+    display: none;
+  }
+
+  .locale,
+  .localeActive {
+    min-width: 44px;
+    min-height: 48px;
+    justify-content: center;
+  }
+
+  .locales {
+    gap: 0;
+  }
+
+  .theme {
+    width: 48px;
+    height: 48px;
+  }
+}
+
+@media (max-width: 560px) {
+  .header {
+    gap: 12px;
+    padding: 16px 20px;
+  }
+
+  .tagline,
+  .cta {
+    display: none;
+  }
+
+  .wordmark {
+    font-size: 22px;
+  }
+
+  .controls {
+    gap: 8px;
+  }
+}

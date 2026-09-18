@@ -1,0 +1,38 @@
+[data-design='editorial'] {
+  --font-display: var(--font-prata), 'Times New Roman', Georgia, serif;
+  --font-text: var(--font-onest), 'Helvetica Neue', Arial, sans-serif;
+
+  --bg: #f4f4f1;
+  --ink: #1a1c19;
+  --ink-inverse: #f4f4f1;
+  --muted: #62665f;
+  --line: #d5d8d0;
+  --accent: #1f5c46;
+  --accent-ink: #1f5c46;
+  --accent-contrast: #ffffff;
+  --surface: #fbfbf9;
+  --surface-soft: #eceee8;
+
+  --radius-control: 2px;
+  --radius-surface: 2px;
+  --border-width: 1px;
+  --border-width-strong: 3px;
+  --shadow-floating: none;
+
+  color-scheme: light;
+}
+
+[data-design='editorial'][data-theme='dark'] {
+  --bg: #141614;
+  --ink: #ecebe5;
+  --ink-inverse: #141614;
+  --muted: #9ba099;
+  --line: #2c302b;
+  --accent: #7fc6a4;
+  --accent-ink: #7fc6a4;
+  --accent-contrast: #141614;
+  --surface: #1b1e1b;
+  --surface-soft: #22261f;
+
+  color-scheme: dark;
+}
