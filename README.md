@@ -3,6 +3,8 @@
 Next.js 16 + TypeScript + SCSS-модули, next-intl (ru/en), next-themes.
 Решения по студии — в `../PLAN.md`, порядок работ — в `../ROADMAP.md`.
 
+Превью: <https://mrshkn-site.vercel.app> — закрыто от индексации, боевой адрес будет mrshkn.com.
+
 ## Запуск
 
 ```bash
