@@ -11,16 +11,16 @@ SCSS-модули, next-intl 4 (ru/en), next-themes. Пакетный менед
 ## Структура
 
 ```
-src/app/[locale]/    layout (html, метаданные, провайдеры) и страницы
-src/app/fonts.ts     next/font: Unbounded (display) + Golos Text (текст)
-src/designs/         реестр направлений: consts, types, registry + папка на направление
-src/components/      общие компоненты вне направлений
+src/app/[locale]/    layout (html, метаданные, провайдеры, Header и Footer направления) и страницы
+src/designs/         реестр направлений: consts, types, registry, fonts (next/font), server (cookie)
+src/designs/<name>/  Header, Footer, Hero направления + их SCSS-модули
+src/components/      общие компоненты вне направлений: ThemeToggle, LocaleSwitcher, icons
 src/i18n/            routing, request, navigation, consts
 src/lib/             окружение сборки и общие константы
-src/styles/          globals.scss: токены направления и база
+src/styles/          globals.scss (база) и designs/<name>.scss (токены направления)
 messages/            ru.json, en.json, TRANSLATION-TODO.md
 tests/unit/          Vitest
-tests/e2e/           Playwright
+tests/e2e/           Playwright + эталоны скриншотов (*-snapshots/)
 ```
 
 ## Две оси: тема и направление
@@ -28,14 +28,25 @@ tests/e2e/           Playwright
 У сайта цветовая тема (`data-theme`, next-themes) и направление дизайна (`data-design`).
 Направлений пять: kinetic (дефолт), terminal, pop, swiss, editorial.
 
-Секции берутся из реестра: `getSection(design, 'hero')`. Если у направления секция еще не
-написана, реестр отдает реализацию дефолтного направления — так сайт живет, пока направления
-реализуются по очереди. Вызов `getSection` делается на уровне модуля, а не внутри рендера:
-иначе `react-hooks/static-components` справедливо ругается на компонент, созданный в рендере.
+Секции берутся из реестра: `getSection(design, 'header' | 'hero' | 'footer')`. Если у направления
+секция еще не написана, реестр отдает реализацию дефолтного направления — так сайт живет, пока
+направления реализуются по очереди. Направление на сервере читает `getDesign()` из
+`src/designs/server.ts` (cookie `design`, неизвестное значение → дефолт). Динамическую секцию
+layout рендерит через `createElement(getSection(...))`: JSX-тег из переменной, вычисленной
+в рендере, ловит `react-hooks/static-components`; на уровне модуля (как Hero в `page.tsx`)
+`getSection` можно вызывать напрямую.
 
-Токены направления объявлены в `globals.scss` селекторами `[data-design='...']` и
-`[data-design='...'][data-theme='dark']`. Отдельные файлы токенов на каждое направление
-появятся вместе с их Header/Footer.
+Токены направления лежат в `src/styles/designs/<name>.scss`: блок `[data-design='<name>']`
+(светлая тема, шрифты, радиусы, толщины рамок, тени) и `[data-design='<name>'][data-theme='dark']`
+(цвета темной темы). Общий контракт токенов — список `REQUIRED_TOKENS` в
+`tests/unit/design-tokens.test.ts`; направление может добавлять свои (`--ok`, `--accent-alt`).
+Вне файлов токенов SCSS не содержит литералов цветов, `font-family`, `border-radius`,
+`box-shadow` и толщин `border` — только `var(--…)`; это проверяет тот же тест.
+
+Шрифты — `src/designs/fonts.ts`, все через `next/font/google` с `display: swap`; на `<html>`
+вешаются только переменные активного направления (`DESIGN_FONT_CLASSES`). Preload включен
+только у шрифтов дефолтного направления (Kinetic): preload остальных четырех пар — лишние
+загрузки на каждой странице, поэтому у них `preload: false`, и они подхватываются из CSS.
 
 ## Соглашения
 
@@ -55,6 +66,11 @@ Vitest — чистые функции (реестр, режим индекса�
 `SITE_ENV` проверяется на настоящем HTML, а не на моках. Lighthouse CI гоняется по
 production-сборке с `NEXT_PUBLIC_SITE_URL`, совпадающим с адресом сервера, иначе canonical
 указывает на чужой origin и SEO-аудит падает.
+
+Эталоны `toHaveScreenshot` (`tests/e2e/*-snapshots/*-darwin.png`) сняты на macOS и сравниваются
+только на macOS — на Linux-раннере CI визуальный describe пропускается, структурные проверки
+шапки и подвала идут везде. Обновить эталоны после осознанного изменения верстки:
+`yarn test:e2e design-shell --update-snapshots`, диф эталонов смотреть глазами.
 
 Новый критерий из ROADMAP сначала становится тестом, потом кодом.
 
