@@ -1,0 +1,62 @@
+:root {
+  --font-display: var(--font-unbounded), 'Arial Black', Impact, sans-serif;
+  --font-text: var(--font-golos), 'Helvetica Neue', Arial, sans-serif;
+}
+
+[data-design='kinetic'] {
+  --bg: #f2f1f3;
+  --ink: #151317;
+  --ink-inverse: #f2f1f3;
+  --muted: #66636b;
+  --line: #d9d7dc;
+  --accent: #ff6a2b;
+  --accent-ink: #d94f14;
+  --accent-contrast: #151317;
+  --card: #ffffff;
+
+  color-scheme: light;
+}
+
+[data-design='kinetic'][data-theme='dark'] {
+  --bg: #121114;
+  --ink: #f1efe9;
+  --ink-inverse: #121114;
+  --muted: #9d9a93;
+  --line: #2b292e;
+  --accent: #ff6a2b;
+  --accent-ink: #ff6a2b;
+  --accent-contrast: #151317;
+  --card: #1a181d;
+
+  color-scheme: dark;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-text);
+  font-size: 16px;
+  line-height: 1.5;
+  hyphens: none;
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent-ink);
+  outline-offset: 3px;
+}
