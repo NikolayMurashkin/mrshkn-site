@@ -1,0 +1,7 @@
+.next
+.next-*
+.lighthouseci
+node_modules
+playwright-report
+test-results
+.yarn

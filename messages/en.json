@@ -1,0 +1,21 @@
+{
+  "meta": {
+    "title": "MRSHKN — custom-coded websites in 14 days",
+    "description": "Custom-coded websites in 14 days. Fixed price, no templates, support included."
+  },
+  "brand": {
+    "name": "MRSHKN",
+    "tagline": "Murashkin Studio"
+  },
+  "controls": {
+    "theme": "Тема"
+  },
+  "hero": {
+    "title": "Custom-coded websites<br></br><accent>in 14 days</accent>",
+    "subtitle": "Fixed price, no templates, support included.",
+    "subtitleSecondary": "Сайты и Telegram-приложения для бизнеса — от брифа до запуска за две недели.",
+    "primaryCta": "Рассчитать стоимость",
+    "secondaryCta": "Смотреть кейсы",
+    "badge": "LIGHTHOUSE 90+ · СРОК В ДОГОВОРЕ · 30 ДНЕЙ ГАРАНТИИ · "
+  }
+}
