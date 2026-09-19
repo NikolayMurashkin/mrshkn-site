@@ -1,5 +1,5 @@
 @font-face {
-  font-family: 'Geologica Fallback';
+  font-family: 'Geologica Metric Fallback';
   src: local('Arial'), local('Liberation Sans'), local('Roboto'), local('Helvetica Neue');
   ascent-override: 90.18%;
   descent-override: 25.43%;
@@ -8,8 +8,8 @@
 }
 
 [data-design='swiss'] {
-  --font-display: 'Geologica', 'Geologica Fallback', 'Helvetica Neue', Arial, sans-serif;
-  --font-text: 'Geologica', 'Geologica Fallback', 'Helvetica Neue', Arial, sans-serif;
+  --font-display: 'Geologica', 'Geologica Metric Fallback', 'Helvetica Neue', Arial, sans-serif;
+  --font-text: 'Geologica', 'Geologica Metric Fallback', 'Helvetica Neue', Arial, sans-serif;
 
   --bg: #ffffff;
   --ink: #0a0a0b;

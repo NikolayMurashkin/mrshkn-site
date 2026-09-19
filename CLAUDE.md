@@ -63,17 +63,22 @@ next-themes в DOM, дефолтом нового направления, а п�
 `border-radius`, `box-shadow` и толщин `border` — только `var(--…)`; это проверяет тот же тест.
 
 Шрифты — `src/designs/<name>/fonts.ts`, через `next/font/google` с `display: swap` и
-`preload: false`; токены ссылаются на семейства по имени (`'Unbounded', 'Unbounded Fallback', …`),
-поэтому `@font-face` едут в CSS-чанк направления, а не в общий CSS. Preload включать нельзя:
-манифест шрифтов у Next на entry, и подсказки preload уходят всем направлениям сразу (по замеру
-это роняло Lighthouse чужих направлений до 78–89); без preload все пять держат 93–98.
-Метрические fallback-начертания (`'<Family> Fallback'`) объявлены руками в файле токенов, а у
-`next/font` стоит `adjustFontFallback: false`: его собственный fallback ссылается только на
-`local(Arial)`, которого нет на Linux и Android — там текст до загрузки шрифта был на четверть
-уже и прыгал (CLS 0,12–0,47, Lighthouse на CI 88). Наши начертания перечисляют
-`local('Arial'), local('Liberation Sans'), local('Roboto')`, а `ascent/descent/size-adjust`
-взяты из сборки next/font (пересчитать, если сменится шрифт: временно вернуть
-`adjustFontFallback` и скопировать числа из CSS-чанка).
+`preload: false`; модуль подключается из `index.tsx` как `import './fonts'` ради `@font-face`, а токены
+ссылаются на семейства по имени (`'Unbounded', 'Unbounded Metric Fallback', …`), поэтому `@font-face`
+едут в CSS-чанк направления, а не в общий CSS. Константы в `fonts.ts` никто не импортирует: next/font
+требует `const` на уровне модуля, а неиспользуемую константу без `export` ESLint отметит предупреждением —
+`export` здесь только ради этого. Preload включать нельзя: манифест шрифтов у Next на entry, и подсказки
+preload уходят всем направлениям сразу (по замеру это роняло Lighthouse чужих направлений до 78–89);
+без preload все пять держат 93–98.
+Метрические fallback-начертания `'<Family> Metric Fallback'` объявлены руками в файле токенов:
+собственный fallback next/font (`'<Family> Fallback'`) ссылается только на `local(Arial)`, которого нет
+на Linux и Android — там текст до загрузки шрифта был на четверть уже и прыгал (CLS 0,12–0,47,
+Lighthouse на CI 88). Наши начертания перечисляют `local('Arial'), local('Liberation Sans'),
+local('Roboto')`, а `ascent/descent/size-adjust` скопированы из начертания next/font в CSS-чанке
+(оттуда же брать при смене шрифта). Имя нарочно не совпадает с next/font'овским: `adjustFontFallback:
+false` в Turbopack (Next 16.3.5) не действует, `@font-face '<Family> Fallback'` с `local(Arial)` все
+равно лежит в чанке, и при одинаковом имени выбор начертания зависел бы от порядка `<link>` и того,
+пропустит ли браузер начертание с неразрешимым `local()`.
 
 ## Соглашения
 

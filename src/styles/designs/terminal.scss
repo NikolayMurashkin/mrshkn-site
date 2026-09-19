@@ -1,5 +1,5 @@
 @font-face {
-  font-family: 'JetBrains Mono Fallback';
+  font-family: 'JetBrains Mono Metric Fallback';
   src: local('Arial'), local('Liberation Sans'), local('Roboto'), local('Helvetica Neue');
   ascent-override: 75.79%;
   descent-override: 22.29%;
@@ -8,7 +8,7 @@
 }
 
 @font-face {
-  font-family: 'IBM Plex Sans Fallback';
+  font-family: 'IBM Plex Sans Metric Fallback';
   src: local('Arial'), local('Liberation Sans'), local('Roboto'), local('Helvetica Neue');
   ascent-override: 101.32%;
   descent-override: 27.18%;
@@ -17,8 +17,8 @@
 }
 
 [data-design='terminal'] {
-  --font-display: 'JetBrains Mono', 'JetBrains Mono Fallback', 'SF Mono', Menlo, Consolas, monospace;
-  --font-text: 'IBM Plex Sans', 'IBM Plex Sans Fallback', 'Helvetica Neue', Arial, sans-serif;
+  --font-display: 'JetBrains Mono', 'JetBrains Mono Metric Fallback', 'SF Mono', Menlo, Consolas, monospace;
+  --font-text: 'IBM Plex Sans', 'IBM Plex Sans Metric Fallback', 'Helvetica Neue', Arial, sans-serif;
 
   --bg: #f5f7f9;
   --ink: #0e141b;

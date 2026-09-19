@@ -1,5 +1,5 @@
 @font-face {
-  font-family: 'Prata Fallback';
+  font-family: 'Prata Metric Fallback';
   src: local('Times New Roman'), local('Liberation Serif'), local('Noto Serif'), local('Georgia');
   ascent-override: 83.87%;
   descent-override: 30.57%;
@@ -8,7 +8,7 @@
 }
 
 @font-face {
-  font-family: 'Onest Fallback';
+  font-family: 'Onest Metric Fallback';
   src: local('Arial'), local('Liberation Sans'), local('Roboto'), local('Helvetica Neue');
   ascent-override: 92.2%;
   descent-override: 28.99%;
@@ -17,8 +17,8 @@
 }
 
 [data-design='editorial'] {
-  --font-display: 'Prata', 'Prata Fallback', 'Times New Roman', Georgia, serif;
-  --font-text: 'Onest', 'Onest Fallback', 'Helvetica Neue', Arial, sans-serif;
+  --font-display: 'Prata', 'Prata Metric Fallback', 'Times New Roman', Georgia, serif;
+  --font-text: 'Onest', 'Onest Metric Fallback', 'Helvetica Neue', Arial, sans-serif;
 
   --bg: #f4f4f1;
   --ink: #1a1c19;
