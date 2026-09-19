@@ -11,6 +11,8 @@ const themeStorage = (): Storage | null => {
 
 const secure = () => (window.location.protocol === 'https:' ? '; secure' : '');
 
+export const isTheme = (value: unknown): value is Theme => value === 'light' || value === 'dark';
+
 export const hasStoredTheme = () => themeStorage()?.getItem(THEME_STORAGE_KEY) !== null;
 
 export const rememberTheme = (theme: Theme) => {

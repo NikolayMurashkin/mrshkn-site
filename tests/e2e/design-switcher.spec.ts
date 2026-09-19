@@ -1,5 +1,5 @@
 import { expect, test, type Page, type Request } from '@playwright/test';
-import { DESIGN_COOKIE, DESIGNS, PREVIEW_BASE_URL, SHORT_VIEWPORT, THEME_STORAGE_KEY } from './consts';
+import { DESIGN_COOKIE, DESIGNS, PREVIEW_BASE_URL, SHORT_VIEWPORT, THEME_COOKIE, THEME_STORAGE_KEY } from './consts';
 import type { DesignName } from './types';
 
 const DEFAULT_DESIGN: DesignName = 'kinetic';
@@ -157,6 +157,32 @@ test.describe('переключатель направления', () => {
     const html = await ssrHtml(page);
     expect(htmlDesignOf(html)).toBe('swiss');
     expect(html).toMatch(/<html[^>]*data-theme="dark"/);
+  });
+
+  test('тема из localStorage без cookie попадает в cookie и держится при смене направления и языка', async ({
+    page,
+  }) => {
+    await page.addInitScript(([key, value]) => window.localStorage.setItem(key, value), [
+      THEME_STORAGE_KEY,
+      'dark',
+    ] as const);
+    await page.context().addCookies([{ name: DESIGN_COOKIE, value: 'pop', url: PREVIEW_BASE_URL }]);
+    await page.goto('/ru');
+
+    await expect(page.locator('html')).toHaveAttribute('data-theme', 'dark');
+    await expect
+      .poll(async () => (await page.context().cookies()).find((item) => item.name === THEME_COOKIE)?.value)
+      .toBe('dark');
+
+    const menu = await openSwitcher(page);
+    await menu.getByRole('button', { name: 'Swiss' }).click();
+    await expect(page.locator('html')).toHaveAttribute('data-design', 'swiss');
+    await expect(page.locator('html')).toHaveAttribute('data-theme', 'dark');
+
+    await page.getByTestId('locale-en').click();
+    await expect(page).toHaveURL(/\/en$/);
+    await expect(page.locator('html')).toHaveAttribute('data-theme', 'dark');
+    expect(await (await page.request.get('/en')).text()).toMatch(/<html[^>]*data-theme="dark"/);
   });
 
   test('при загрузке /ru не грузятся чанки и шрифты других направлений', async ({ browser, page: scout }) => {

@@ -3,7 +3,6 @@
 import { useTranslations } from 'next-intl';
 import { useTheme } from 'next-themes';
 import type { ReactNode } from 'react';
-import { rememberTheme } from './theme-storage';
 
 type ThemeToggleProps = {
   className?: string;
@@ -14,12 +13,7 @@ export const ThemeToggle = ({ className, children }: ThemeToggleProps) => {
   const { resolvedTheme, setTheme } = useTheme();
   const t = useTranslations('controls');
 
-  const toggle = () => {
-    const next = resolvedTheme === 'dark' ? 'light' : 'dark';
-
-    setTheme(next);
-    rememberTheme(next);
-  };
+  const toggle = () => setTheme(resolvedTheme === 'dark' ? 'light' : 'dark');
 
   return (
     <button
