@@ -37,6 +37,10 @@ tests/e2e/           Playwright + эталоны скриншотов (*-snapsho
 Layout и страница рендерят `<DesignSection design section="header" | "hero" | "footer" />`;
 внутри — `createElement(...)`, потому что JSX-тег из переменной ловит `react-hooks/static-components`.
 Все пять направлений реализуют все секции: fallback на дефолтное направление убран.
+`dynamic()` вызывается без `loading`: так у него нет своей Suspense-границы, подвисший чанк всплывает
+до уже видимой границы layout, и React при `router.refresh()` не коммитит новое направление, пока чанк
+не доехал — секции появляются вместе с `data-design`, без пустого кадра (проверяет e2e «секции нового
+направления появляются вместе с его атрибутом»). Добавить `loading` — значит вернуть этот пустой кадр.
 Направление на сервере читает `getDesign()` из `src/designs/server.ts` (cookie `design`,
 неизвестное значение → дефолт через `resolveDesign` из `resolve.ts`, он без `'use client'`).
 

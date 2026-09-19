@@ -9,6 +9,11 @@ const OTHER_DESIGNS = DESIGNS.filter((design) => design !== DEFAULT_DESIGN);
 /** Шапки направлений разной высоты: браузер сдвигает скролл на эту разницу (scroll anchoring), это не прыжок. */
 const SCROLL_ANCHOR_TOLERANCE = 40;
 
+/** Задержка чанков после загрузки страницы: RSC-ответ refresh должен успеть прийти раньше чанка направления. */
+const CHUNK_DELAY_MS = 1500;
+
+const SECTION_SELECTORS = ['header', 'main section', 'footer'];
+
 /** Семейства шрифтов направления — по ним из общего CSS достаются адреса файлов шрифтов. */
 const DESIGN_FONTS: Record<DesignName, string[]> = {
   kinetic: ['Unbounded', 'Golos Text'],
@@ -137,6 +142,33 @@ test.describe('переключатель направления', () => {
     expect(scrollY).toBeLessThanOrEqual(300 + SCROLL_ANCHOR_TOLERANCE);
     expect(await page.evaluate(() => (window as unknown as { viewTransitions: number }).viewTransitions)).toBe(1);
     expect(errors).toEqual([]);
+  });
+
+  test('секции нового направления появляются вместе с его атрибутом, а не после дозагрузки чанка', async ({ page }) => {
+    await page.goto('/ru');
+    await page.evaluate(() => document.fonts.ready);
+    await page.route('**/_next/static/chunks/**', async (route) => {
+      await new Promise((resolve) => setTimeout(resolve, CHUNK_DELAY_MS));
+      await route.continue();
+    });
+    const missingAtSwitch = page.evaluate(
+      (selectors) =>
+        new Promise<string[]>((resolve) => {
+          new MutationObserver((_, observer) => {
+            if (document.documentElement.dataset.design === 'terminal') {
+              observer.disconnect();
+              resolve(selectors.filter((selector) => document.querySelector(selector) === null));
+            }
+          }).observe(document.documentElement, { attributes: true, attributeFilter: ['data-design'] });
+        }),
+      SECTION_SELECTORS,
+    );
+
+    const menu = await openSwitcher(page);
+    await menu.getByRole('button', { name: 'Terminal' }).click();
+
+    expect(await missingAtSwitch).toEqual([]);
+    await expect(page.getByRole('heading', { level: 1 })).toContainText('14 дней');
   });
 
   test('выбранная вручную тема переживает смену направления и перезагрузку', async ({ page }) => {
