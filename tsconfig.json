@@ -32,8 +32,6 @@
     ".next-preview/dev/types/**/*.ts",
     ".next-production/types/**/*.ts",
     ".next-production/dev/types/**/*.ts",
-    ".next-mutant/types/**/*.ts",
-    ".next-mutant/dev/types/**/*.ts",
     ".next/dev/types/**/*.ts"
   ],
   "exclude": ["node_modules"]
