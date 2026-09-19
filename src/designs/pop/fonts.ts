@@ -5,4 +5,5 @@ export const rubik = Rubik({
   weight: ['500', '700', '800', '900'],
   display: 'swap',
   preload: false,
+  adjustFontFallback: false,
 });

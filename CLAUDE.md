@@ -67,6 +67,13 @@ next-themes в DOM, дефолтом нового направления, а п�
 поэтому `@font-face` едут в CSS-чанк направления, а не в общий CSS. Preload включать нельзя:
 манифест шрифтов у Next на entry, и подсказки preload уходят всем направлениям сразу (по замеру
 это роняло Lighthouse чужих направлений до 78–89); без preload все пять держат 93–98.
+Метрические fallback-начертания (`'<Family> Fallback'`) объявлены руками в файле токенов, а у
+`next/font` стоит `adjustFontFallback: false`: его собственный fallback ссылается только на
+`local(Arial)`, которого нет на Linux и Android — там текст до загрузки шрифта был на четверть
+уже и прыгал (CLS 0,12–0,47, Lighthouse на CI 88). Наши начертания перечисляют
+`local('Arial'), local('Liberation Sans'), local('Roboto')`, а `ascent/descent/size-adjust`
+взяты из сборки next/font (пересчитать, если сменится шрифт: временно вернуть
+`adjustFontFallback` и скопировать числа из CSS-чанка).
 
 ## Соглашения
 

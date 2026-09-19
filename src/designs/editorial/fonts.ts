@@ -5,6 +5,7 @@ export const prata = Prata({
   weight: '400',
   display: 'swap',
   preload: false,
+  adjustFontFallback: false,
 });
 
 export const onest = Onest({
@@ -12,4 +13,5 @@ export const onest = Onest({
   weight: ['400', '500', '600'],
   display: 'swap',
   preload: false,
+  adjustFontFallback: false,
 });

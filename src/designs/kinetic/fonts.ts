@@ -5,6 +5,7 @@ export const unbounded = Unbounded({
   weight: ['700', '900'],
   display: 'swap',
   preload: false,
+  adjustFontFallback: false,
 });
 
 export const golos = Golos_Text({
@@ -12,4 +13,5 @@ export const golos = Golos_Text({
   weight: ['400', '500', '600'],
   display: 'swap',
   preload: false,
+  adjustFontFallback: false,
 });
