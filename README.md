@@ -15,17 +15,17 @@ yarn dev            # http://localhost:3000 → редирект на /ru или
 
 ## Команды
 
-| Команда                                          | Что делает                                                              |
-| ------------------------------------------------ | ----------------------------------------------------------------------- |
-| `yarn dev`                                       | дев-сервер                                                              |
-| `yarn build`                                     | production-сборка                                                       |
-| `yarn typecheck`                                 | `tsc --noEmit`                                                          |
-| `yarn lint`                                      | ESLint (flat config, `eslint-config-next`)                              |
-| `yarn format` / `yarn format:check`              | Prettier                                                                |
-| `yarn test:unit`                                 | Vitest — реестр направлений, режим индексации                           |
-| `yarn test:e2e`                                  | Playwright — поднимает две сборки (preview и production) и гоняет smoke |
-| `yarn build:lighthouse` + `yarn test:lighthouse` | Lighthouse CI на `/ru`, порог 90 по performance, accessibility и SEO    |
-| `yarn test`                                      | типы + линт + юниты + e2e                                               |
+| Команда                                          | Что делает                                                                                         |
+| ------------------------------------------------ | -------------------------------------------------------------------------------------------------- |
+| `yarn dev`                                       | дев-сервер                                                                                         |
+| `yarn build`                                     | production-сборка                                                                                  |
+| `yarn typecheck`                                 | `tsc --noEmit`                                                                                     |
+| `yarn lint`                                      | ESLint (flat config, `eslint-config-next`)                                                         |
+| `yarn format` / `yarn format:check`              | Prettier                                                                                           |
+| `yarn test:unit`                                 | Vitest — реестр направлений, режим индексации                                                      |
+| `yarn test:e2e`                                  | Playwright — поднимает две сборки (preview и production): smoke, каркас направлений, переключатель |
+| `yarn build:lighthouse` + `yarn test:lighthouse` | Lighthouse CI на `/ru` в каждом из 5 направлений, порог 90 по performance, accessibility и SEO     |
+| `yarn test`                                      | типы + линт + юниты + e2e                                                                          |
 
 ## Окружения
 

@@ -1,6 +1,6 @@
 [data-design='terminal'] {
-  --font-display: var(--font-jetbrains), 'SF Mono', Menlo, Consolas, monospace;
-  --font-text: var(--font-plex), 'Helvetica Neue', Arial, sans-serif;
+  --font-display: 'JetBrains Mono', 'JetBrains Mono Fallback', 'SF Mono', Menlo, Consolas, monospace;
+  --font-text: 'IBM Plex Sans', 'IBM Plex Sans Fallback', 'Helvetica Neue', Arial, sans-serif;
 
   --bg: #f5f7f9;
   --ink: #0e141b;
@@ -16,6 +16,7 @@
 
   --radius-control: 4px;
   --radius-surface: 8px;
+  --radius-round: 50%;
   --border-width: 1px;
   --border-width-strong: 1px;
   --shadow-floating: 0 8px 24px rgb(14 20 27 / 14%);

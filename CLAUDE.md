@@ -11,10 +11,10 @@ SCSS-модули, next-intl 4 (ru/en), next-themes. Пакетный менед
 ## Структура
 
 ```
-src/app/[locale]/    layout (html, метаданные, провайдеры, Header и Footer направления) и страницы
-src/designs/         реестр направлений: consts, types, registry, fonts (next/font), server (cookie)
-src/designs/<name>/  Header, Footer, Hero направления + их SCSS-модули
-src/components/      общие компоненты вне направлений: ThemeToggle, LocaleSwitcher, icons
+src/app/[locale]/    layout (html, метаданные, провайдеры, Header и Footer направления, пилюля) и страницы
+src/designs/         реестр направлений: consts, types, registry (next/dynamic), resolve, server (cookie)
+src/designs/<name>/  index (клиентский модуль-чанк), fonts (next/font), Header, Hero, Footer + SCSS-модули
+src/components/      общие компоненты вне направлений: DesignSwitcher, ThemeToggle, LocaleSwitcher, icons
 src/i18n/            routing, request, navigation, consts
 src/lib/             окружение сборки и общие константы
 src/styles/          globals.scss (база) и designs/<name>.scss (токены направления)
@@ -28,25 +28,43 @@ tests/e2e/           Playwright + эталоны скриншотов (*-snapsho
 У сайта цветовая тема (`data-theme`, next-themes) и направление дизайна (`data-design`).
 Направлений пять: kinetic (дефолт), terminal, pop, swiss, editorial.
 
-Секции берутся из реестра: `getSection(design, 'header' | 'hero' | 'footer')`. Если у направления
-секция еще не написана, реестр отдает реализацию дефолтного направления — так сайт живет, пока
-направления реализуются по очереди. Направление на сервере читает `getDesign()` из
-`src/designs/server.ts` (cookie `design`, неизвестное значение → дефолт). Динамическую секцию
-layout рендерит через `createElement(getSection(...))`: JSX-тег из переменной, вычисленной
-в рендере, ловит `react-hooks/static-components`; на уровне модуля (как Hero в `page.tsx`)
-`getSection` можно вызывать напрямую.
+Секции направления — клиентские компоненты. У каждого направления один модуль-чанк
+`src/designs/<name>/index.tsx` (`'use client'`), который отдает `<Name>Section({ section })`
+и подключает шрифты направления (`import './fonts'`). Реестр `src/designs/registry.tsx` заводит
+на каждый модуль `next/dynamic(() => import('./<name>'))` — литеральный `import()` внутри
+`dynamic()` обязателен: по нему Next кладет в SSR-HTML `<link rel="stylesheet" data-precedence="dynamic">`
+ровно с CSS этого направления (серверный `import()` так не умеет — Turbopack линкует все чанки разом).
+Layout и страница рендерят `<DesignSection design section="header" | "hero" | "footer" />`;
+внутри — `createElement(...)`, потому что JSX-тег из переменной ловит `react-hooks/static-components`.
+Все пять направлений реализуют все секции: fallback на дефолтное направление убран.
+Направление на сервере читает `getDesign()` из `src/designs/server.ts` (cookie `design`,
+неизвестное значение → дефолт через `resolveDesign` из `resolve.ts`, он без `'use client'`).
+
+Переключатель — `src/components/DesignSwitcher.tsx` (пилюля «Стиль: …» внизу справа): пишет
+cookie на клиенте, делает `router.refresh()` (soft, скролл и состояние на месте), оборачивает
+коммит в `document.startViewTransition` и ждет его через `useLayoutEffect` по пропу `design`;
+чанк выбранного направления подгружается `preloadDesign` параллельно с refresh. Тема по умолчанию
+у направления своя (`DESIGN_DEFAULT_THEME`: Kinetic и Terminal темные, остальные светлые, как на
+артбордах); если пользователь тему не выбирал (`localStorage.theme` пуст), при смене направления
+она переключается на дефолт нового направления и снова не считается выбранной. Выбранная тема
+живет и в localStorage (next-themes), и в cookie `theme` (`rememberTheme` в `ThemeToggle`):
+cookie нужна серверу — `getTheme()` из `src/components/theme-server.ts` рендерит `data-theme`
+на `<html>`, иначе `router.refresh()` при смене направления перетирал бы тему, выставленную
+next-themes в DOM, дефолтом нового направления. Побочный плюс — у вернувшегося пользователя
+тема совпадает с SSR, мигания нет.
 
 Токены направления лежат в `src/styles/designs/<name>.scss`: блок `[data-design='<name>']`
 (светлая тема, шрифты, радиусы, толщины рамок, тени) и `[data-design='<name>'][data-theme='dark']`
 (цвета темной темы). Общий контракт токенов — список `REQUIRED_TOKENS` в
-`tests/unit/design-tokens.test.ts`; направление может добавлять свои (`--ok`, `--accent-alt`).
-Вне файлов токенов SCSS не содержит литералов цветов, `font-family`, `border-radius`,
-`box-shadow` и толщин `border` — только `var(--…)`; это проверяет тот же тест.
+`tests/unit/design-tokens.test.ts`; направление может добавлять свои (`--ok`, `--accent-alt`,
+`--radius-round`). Вне файлов токенов SCSS не содержит литералов цветов, `font-family`,
+`border-radius`, `box-shadow` и толщин `border` — только `var(--…)`; это проверяет тот же тест.
 
-Шрифты — `src/designs/fonts.ts`, все через `next/font/google` с `display: swap`; на `<html>`
-вешаются только переменные активного направления (`DESIGN_FONT_CLASSES`). Preload включен
-только у шрифтов дефолтного направления (Kinetic): preload остальных четырех пар — лишние
-загрузки на каждой странице, поэтому у них `preload: false`, и они подхватываются из CSS.
+Шрифты — `src/designs/<name>/fonts.ts`, через `next/font/google` с `display: swap` и
+`preload: false`; токены ссылаются на семейства по имени (`'Unbounded', 'Unbounded Fallback', …`),
+поэтому `@font-face` едут в CSS-чанк направления, а не в общий CSS. Preload включать нельзя:
+манифест шрифтов у Next на entry, и подсказки preload уходят всем направлениям сразу (по замеру
+это роняло Lighthouse чужих направлений до 78–89); без preload все пять держат 93–98.
 
 ## Соглашения
 
@@ -63,14 +81,18 @@ layout рендерит через `createElement(getSection(...))`: JSX-тег 
 
 Vitest — чистые функции (реестр, режим индексации). Playwright — реальные сборки: конфиг
 поднимает два сервера, `preview` на 3100 и `production` на 3101, поэтому разница по
-`SITE_ENV` проверяется на настоящем HTML, а не на моках. Lighthouse CI гоняется по
-production-сборке с `NEXT_PUBLIC_SITE_URL`, совпадающим с адресом сервера, иначе canonical
-указывает на чужой origin и SEO-аудит падает.
+`SITE_ENV` проверяется на настоящем HTML, а не на моках. Lighthouse CI (`scripts/lighthouse.mjs`)
+гоняет `lhci autorun` пять раз — по одному на направление, cookie `design` задается через
+`LIGHTHOUSE_DESIGN` в `lighthouserc.cjs`, отчеты в `.lighthouseci/<design>/`; сборка production
+с `NEXT_PUBLIC_SITE_URL`, совпадающим с адресом сервера, иначе canonical указывает на чужой origin
+и SEO-аудит падает.
 
 Эталоны `toHaveScreenshot` (`tests/e2e/*-snapshots/*-darwin.png`) сняты на macOS и сравниваются
 только на macOS — на Linux-раннере CI визуальный describe пропускается, структурные проверки
-шапки и подвала идут везде. Обновить эталоны после осознанного изменения верстки:
-`yarn test:e2e design-shell --update-snapshots`, диф эталонов смотреть глазами.
+шапки, hero и подвала идут везде. На время снимка пилюля переключателя скрыта
+(`tests/e2e/screenshot.css`). Обновить эталоны после осознанного изменения верстки:
+`yarn test:e2e design-shell --update-snapshots`, диф эталонов смотреть глазами; изменение высоты
+секции выше сдвигает подвал на доли пикселя, и его эталон тоже приходится переснимать.
 
 Новый критерий из ROADMAP сначала становится тестом, потом кодом.
 
