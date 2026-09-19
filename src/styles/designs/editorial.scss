@@ -1,6 +1,6 @@
 [data-design='editorial'] {
-  --font-display: var(--font-prata), 'Times New Roman', Georgia, serif;
-  --font-text: var(--font-onest), 'Helvetica Neue', Arial, sans-serif;
+  --font-display: 'Prata', 'Prata Fallback', 'Times New Roman', Georgia, serif;
+  --font-text: 'Onest', 'Onest Fallback', 'Helvetica Neue', Arial, sans-serif;
 
   --bg: #f4f4f1;
   --ink: #1a1c19;

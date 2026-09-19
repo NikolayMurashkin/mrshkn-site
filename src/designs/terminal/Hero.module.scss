@@ -1,0 +1,248 @@
+.hero {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 520px;
+  gap: 48px;
+  align-items: center;
+  padding: 64px clamp(20px, 4vw, 56px) 56px;
+}
+
+.gridBackground {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.35;
+  background-image:
+    linear-gradient(var(--line) 1px, transparent 1px), linear-gradient(90deg, var(--line) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+.content {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  min-width: 0;
+}
+
+.prompt {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 14px;
+  color: var(--muted);
+  overflow-wrap: anywhere;
+}
+
+.promptSign {
+  color: var(--accent-ink);
+}
+
+.title {
+  margin: 0;
+  font-weight: 700;
+  font-size: clamp(38px, 6.7vw, 96px);
+  line-height: 1;
+  letter-spacing: -0.035em;
+  overflow-wrap: anywhere;
+  min-width: 0;
+}
+
+.accent {
+  color: var(--accent-ink);
+}
+
+.lead {
+  margin: 0;
+  max-width: 560px;
+  font-size: clamp(16px, 1.4vw, 19px);
+  line-height: 1.5;
+  color: var(--muted);
+  overflow-wrap: anywhere;
+  min-width: 0;
+}
+
+.actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  height: 52px;
+  padding: 0 24px;
+  border: var(--border-width) solid var(--ink);
+  border-radius: var(--radius-control);
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 14px;
+  color: var(--ink);
+}
+
+.button:hover {
+  color: var(--accent-ink);
+}
+
+.buttonPrimary {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--accent-contrast);
+}
+
+.buttonPrimary:hover {
+  color: var(--accent-contrast);
+  filter: brightness(1.06);
+}
+
+.panel {
+  position: relative;
+  min-width: 0;
+  border: var(--border-width) solid var(--line);
+  border-radius: var(--radius-surface);
+  background: var(--surface);
+  overflow: hidden;
+}
+
+.panelBar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 14px;
+  border-bottom: var(--border-width) solid var(--line);
+  background: var(--surface-soft);
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: var(--radius-round);
+  background: var(--line);
+}
+
+.panelTitle {
+  margin-left: 8px;
+  font-family: var(--font-display);
+  font-size: 12px;
+  letter-spacing: 0.04em;
+  color: var(--muted);
+  overflow-wrap: anywhere;
+  min-width: 0;
+}
+
+.log {
+  display: flex;
+  flex-direction: column;
+  padding: 18px 20px;
+  font-family: var(--font-display);
+  font-size: 13.5px;
+  line-height: 1.9;
+}
+
+.line {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  min-width: 0;
+  animation: typed 0.01s both;
+}
+
+@for $index from 1 through 7 {
+  .line:nth-child(#{$index}) {
+    animation-delay: #{0.2 + ($index - 1) * 0.5}s;
+  }
+}
+
+.time {
+  flex-shrink: 0;
+  color: var(--muted);
+}
+
+.text {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.key {
+  font-weight: 700;
+  color: var(--ink);
+}
+
+.leader {
+  flex: 1;
+  min-width: 16px;
+  border-bottom: var(--border-width) dotted var(--muted);
+  transform: translateY(-5px);
+}
+
+.ok {
+  flex-shrink: 0;
+  color: var(--ok);
+}
+
+.active {
+  flex-shrink: 0;
+  color: var(--accent-ink);
+}
+
+.cursor {
+  display: inline-block;
+  width: 8px;
+  height: 15px;
+  background: var(--accent);
+  vertical-align: -2px;
+  animation: blink 1s steps(1) infinite;
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+@keyframes typed {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .line,
+  .cursor {
+    animation: none;
+  }
+}
+
+@media (max-width: 1100px) {
+  .hero {
+    grid-template-columns: minmax(0, 1fr) 420px;
+    gap: 32px;
+  }
+}
+
+@media (max-width: 900px) {
+  .hero {
+    grid-template-columns: minmax(0, 1fr);
+    padding: 40px clamp(20px, 4vw, 56px) 48px;
+  }
+}
+
+@media (max-width: 560px) {
+  .actions {
+    flex-direction: column;
+  }
+
+  .button {
+    justify-content: center;
+  }
+
+  .log {
+    padding: 14px 16px;
+    font-size: 12.5px;
+  }
+}

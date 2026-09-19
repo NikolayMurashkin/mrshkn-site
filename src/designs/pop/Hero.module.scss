@@ -1,0 +1,210 @@
+.hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 420px;
+  gap: 40px;
+  align-items: center;
+  padding: 56px clamp(20px, 4vw, 56px) 40px;
+  overflow: hidden;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 36px;
+  min-width: 0;
+  animation: bounce 1s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+
+.title {
+  margin: 0;
+  font-weight: 900;
+  font-size: clamp(40px, 8vw, 116px);
+  line-height: 1;
+  letter-spacing: -0.03em;
+  overflow-wrap: anywhere;
+  min-width: 0;
+}
+
+.mark {
+  display: inline-block;
+  padding: 0 0.24em 0.05em;
+  border-radius: var(--radius-control);
+  background: var(--accent);
+  color: var(--accent-contrast);
+  transform: rotate(-3deg);
+}
+
+.lead {
+  margin: 0;
+  max-width: 620px;
+  font-size: clamp(17px, 1.5vw, 21px);
+  font-weight: 500;
+  line-height: 1.45;
+  color: var(--muted);
+  overflow-wrap: anywhere;
+  min-width: 0;
+}
+
+.actions {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  height: 60px;
+  padding: 0 30px;
+  border: var(--border-width) solid var(--ink);
+  border-radius: var(--radius-control);
+  background: var(--surface);
+  color: var(--ink);
+  font-weight: 700;
+  font-size: 18px;
+  transition: transform 0.2s;
+}
+
+.button:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: var(--shadow-floating);
+}
+
+.buttonPrimary {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--accent-contrast);
+}
+
+.stickers {
+  position: relative;
+  height: 400px;
+}
+
+.sticker {
+  position: absolute;
+  padding: 18px 22px;
+  border: var(--border-width-strong) solid var(--ink);
+  border-radius: var(--radius-surface);
+  box-shadow: var(--shadow-surface);
+  font-weight: 800;
+  font-size: 20px;
+  line-height: 1.15;
+  overflow-wrap: anywhere;
+}
+
+.stickerLighthouse {
+  top: 20px;
+  left: 20px;
+  width: 220px;
+  background: var(--accent-alt);
+  color: var(--ink-on-alt);
+  transform: rotate(-7deg);
+  animation: wiggle 5s ease-in-out infinite alternate;
+}
+
+.stickerDeadline {
+  top: 120px;
+  right: 10px;
+  width: 210px;
+  background: var(--accent-warm);
+  color: var(--ink-on-alt);
+  transform: rotate(5deg);
+}
+
+.stickerWarranty {
+  bottom: 30px;
+  left: 60px;
+  width: 240px;
+  background: var(--accent);
+  color: var(--accent-contrast);
+  transform: rotate(-3deg);
+}
+
+.star {
+  position: absolute;
+  right: 30px;
+  bottom: 10px;
+  transform: rotate(12deg);
+}
+
+@keyframes bounce {
+  from {
+    transform: translateY(20px) scale(0.98);
+    opacity: 0.001;
+  }
+
+  to {
+    transform: none;
+    opacity: 1;
+  }
+}
+
+@keyframes wiggle {
+  from {
+    transform: rotate(-7deg);
+  }
+
+  to {
+    transform: rotate(-4deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .content {
+    animation: none;
+  }
+
+  .stickerLighthouse {
+    animation: none;
+  }
+}
+
+@media (max-width: 1100px) {
+  .hero {
+    grid-template-columns: minmax(0, 1fr) 340px;
+  }
+
+  .stickers {
+    height: 360px;
+  }
+
+  .stickerLighthouse,
+  .stickerDeadline,
+  .stickerWarranty {
+    width: 200px;
+    font-size: 18px;
+  }
+
+  .stickerWarranty {
+    left: 20px;
+  }
+}
+
+@media (max-width: 900px) {
+  .hero {
+    grid-template-columns: minmax(0, 1fr);
+    padding: 40px clamp(20px, 4vw, 56px) 40px;
+  }
+
+  .stickers {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    height: auto;
+    padding: 12px 8px 12px 0;
+  }
+
+  .stickerLighthouse,
+  .stickerDeadline,
+  .stickerWarranty {
+    position: static;
+    width: auto;
+    max-width: 240px;
+  }
+
+  .star {
+    display: none;
+  }
+}

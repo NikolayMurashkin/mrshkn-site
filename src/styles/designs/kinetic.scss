@@ -1,6 +1,6 @@
 [data-design='kinetic'] {
-  --font-display: var(--font-unbounded), 'Arial Black', Impact, sans-serif;
-  --font-text: var(--font-golos), 'Helvetica Neue', Arial, sans-serif;
+  --font-display: 'Unbounded', 'Unbounded Fallback', 'Arial Black', Impact, sans-serif;
+  --font-text: 'Golos Text', 'Golos Text Fallback', 'Helvetica Neue', Arial, sans-serif;
 
   --bg: #f2f1f3;
   --ink: #151317;

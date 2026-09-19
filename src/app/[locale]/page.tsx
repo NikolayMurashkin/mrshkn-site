@@ -1,20 +1,23 @@
 import { setRequestLocale } from 'next-intl/server';
-import { DEFAULT_DESIGN } from '@/designs/consts';
-import { getSection } from '@/designs/registry';
+import { DesignSection } from '@/designs/registry';
+import { getDesign } from '@/designs/server';
 
 type HomePageProps = {
   params: Promise<{ locale: string }>;
 };
 
-const Hero = getSection(DEFAULT_DESIGN, 'hero');
-
 const HomePage = async ({ params }: HomePageProps) => {
   const { locale } = await params;
   setRequestLocale(locale);
 
+  const design = await getDesign();
+
   return (
     <main>
-      <Hero />
+      <DesignSection
+        design={design}
+        section="hero"
+      />
     </main>
   );
 };
