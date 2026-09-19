@@ -2,9 +2,9 @@
 
 import dynamic from 'next/dynamic';
 import { createElement, type ComponentType } from 'react';
-import type { DesignName, DesignSectionProps } from './types';
+import type { DesignName, DesignSectionProps, SectionProps } from './types';
 
-const SECTIONS: Record<DesignName, ComponentType<DesignSectionProps>> = {
+const SECTIONS: Record<DesignName, ComponentType<SectionProps>> = {
   kinetic: dynamic(() => import('./kinetic').then((module) => module.KineticSection)),
   terminal: dynamic(() => import('./terminal').then((module) => module.TerminalSection)),
   pop: dynamic(() => import('./pop').then((module) => module.PopSection)),
@@ -20,11 +20,6 @@ const LOADERS: Record<DesignName, () => Promise<unknown>> = {
   editorial: () => import('./editorial'),
 };
 
-type DesignSectionSlotProps = DesignSectionProps & {
-  design: DesignName;
-};
-
-export const DesignSection = ({ design, section }: DesignSectionSlotProps) =>
-  createElement(SECTIONS[design], { section });
+export const DesignSection = ({ design, section }: DesignSectionProps) => createElement(SECTIONS[design], { section });
 
 export const preloadDesign = (design: DesignName) => LOADERS[design]();

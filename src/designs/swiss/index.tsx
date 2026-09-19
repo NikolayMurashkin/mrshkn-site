@@ -1,7 +1,7 @@
 'use client';
 
 import { createElement, type ComponentType } from 'react';
-import type { DesignSectionProps, SectionName } from '../types';
+import type { SectionName, SectionProps } from '../types';
 import './fonts';
 import { SwissFooter } from './Footer';
 import { SwissHeader } from './Header';
@@ -13,4 +13,4 @@ const SECTIONS: Record<SectionName, ComponentType> = {
   footer: SwissFooter,
 };
 
-export const SwissSection = ({ section }: DesignSectionProps) => createElement(SECTIONS[section]);
+export const SwissSection = ({ section }: SectionProps) => createElement(SECTIONS[section]);

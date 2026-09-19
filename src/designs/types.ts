@@ -9,7 +9,12 @@ export type SectionName = (typeof SECTION_NAMES)[number];
 /** Цветовая тема — вторая ось сайта, живет в next-themes. */
 export type Theme = 'light' | 'dark';
 
-/** Пропсы компонента-секции направления: какую секцию отрисовать. */
-export type DesignSectionProps = {
+/** Пропсы `<Name>Section` — компонента-чанка направления: какую секцию отрисовать. */
+export type SectionProps = {
   section: SectionName;
+};
+
+/** Пропсы `DesignSection` из реестра: секция какого направления нужна в этом слоте. */
+export type DesignSectionProps = SectionProps & {
+  design: DesignName;
 };

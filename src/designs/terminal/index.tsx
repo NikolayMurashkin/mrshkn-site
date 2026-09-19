@@ -1,7 +1,7 @@
 'use client';
 
 import { createElement, type ComponentType } from 'react';
-import type { DesignSectionProps, SectionName } from '../types';
+import type { SectionName, SectionProps } from '../types';
 import './fonts';
 import { TerminalFooter } from './Footer';
 import { TerminalHeader } from './Header';
@@ -13,4 +13,4 @@ const SECTIONS: Record<SectionName, ComponentType> = {
   footer: TerminalFooter,
 };
 
-export const TerminalSection = ({ section }: DesignSectionProps) => createElement(SECTIONS[section]);
+export const TerminalSection = ({ section }: SectionProps) => createElement(SECTIONS[section]);

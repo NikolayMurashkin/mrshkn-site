@@ -17,14 +17,10 @@ import type { DesignName } from '@/designs/types';
 import styles from './DesignSwitcher.module.scss';
 import { ChevronDownIcon, GlobeIcon } from './icons';
 import { forgetStoredTheme, hasStoredTheme } from './theme-storage';
+import type { PendingSwitch } from './types';
 
 type DesignSwitcherProps = {
   design: DesignName;
-};
-
-type PendingSwitch = {
-  design: DesignName;
-  resolve: () => void;
 };
 
 const designCookie = (design: DesignName) =>
