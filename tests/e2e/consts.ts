@@ -16,6 +16,8 @@ export const DESIGN_COOKIE = 'design';
 
 export const THEME_STORAGE_KEY = 'theme';
 
+export const THEME_COOKIE = 'theme';
+
 export const VIEWPORT = { width: 1440, height: 900 };
 
 export const SHORT_VIEWPORT = { width: 1440, height: 600 };
