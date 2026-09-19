@@ -1,3 +1,21 @@
+@font-face {
+  font-family: 'Unbounded Fallback';
+  src: local('Arial'), local('Liberation Sans'), local('Roboto'), local('Helvetica Neue');
+  ascent-override: 73.93%;
+  descent-override: 18.2%;
+  line-gap-override: 0%;
+  size-adjust: 134.59%;
+}
+
+@font-face {
+  font-family: 'Golos Text Fallback';
+  src: local('Arial'), local('Liberation Sans'), local('Roboto'), local('Helvetica Neue');
+  ascent-override: 90.27%;
+  descent-override: 20.26%;
+  line-gap-override: 0%;
+  size-adjust: 108.57%;
+}
+
 [data-design='kinetic'] {
   --font-display: 'Unbounded', 'Unbounded Fallback', 'Arial Black', Impact, sans-serif;
   --font-text: 'Golos Text', 'Golos Text Fallback', 'Helvetica Neue', Arial, sans-serif;

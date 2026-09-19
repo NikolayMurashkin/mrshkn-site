@@ -5,4 +5,5 @@ export const geologica = Geologica({
   weight: ['300', '400', '500', '700', '800'],
   display: 'swap',
   preload: false,
+  adjustFontFallback: false,
 });

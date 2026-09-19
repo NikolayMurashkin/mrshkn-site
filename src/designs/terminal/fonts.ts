@@ -5,6 +5,7 @@ export const jetbrains = JetBrains_Mono({
   weight: ['400', '500', '700'],
   display: 'swap',
   preload: false,
+  adjustFontFallback: false,
 });
 
 export const plex = IBM_Plex_Sans({
@@ -12,4 +13,5 @@ export const plex = IBM_Plex_Sans({
   weight: ['400', '500', '600', '700'],
   display: 'swap',
   preload: false,
+  adjustFontFallback: false,
 });

@@ -1,3 +1,12 @@
+@font-face {
+  font-family: 'Rubik Fallback';
+  src: local('Arial'), local('Liberation Sans'), local('Roboto'), local('Helvetica Neue');
+  ascent-override: 89.06%;
+  descent-override: 23.81%;
+  line-gap-override: 0%;
+  size-adjust: 104.98%;
+}
+
 [data-design='pop'] {
   --font-display: 'Rubik', 'Rubik Fallback', 'Helvetica Neue', Arial, sans-serif;
   --font-text: 'Rubik', 'Rubik Fallback', 'Helvetica Neue', Arial, sans-serif;
