@@ -39,7 +39,7 @@ describe('прайс — один источник цен', () => {
     const options = pricingSection(locale, 'options');
 
     expect(PRICING_OPTIONS.map((option) => options[option.id])).toEqual(
-      PRICING_OPTIONS.map(() => ({ name: expect.any(String), note: expect.any(String) })),
+      PRICING_OPTIONS.map(() => ({ name: expect.stringMatching(/\S/), note: expect.stringMatching(/\S/) })),
     );
   });
 

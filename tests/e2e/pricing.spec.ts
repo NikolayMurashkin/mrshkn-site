@@ -29,8 +29,18 @@ const documentOverflow = (page: Page) =>
 /** Своего переполнения у секции тоже быть не должно: Pop прячет вынос под `overflow: hidden`. */
 const sectionOverflow = (page: Page) => pricingOf(page).evaluate((node) => node.scrollWidth - node.clientWidth);
 
-/** Сколько строк занимает элемент: у инлайнового узла на каждую строку приходится свой прямоугольник. */
-const lineBoxes = (nodes: Element[]) => nodes.map((node) => node.getClientRects().length);
+/**
+ * Сколько строк занимает текст элемента. Считается по `Range`, а не по `getClientRects()` самого узла:
+ * цена — прямой ребенок grid-контейнера, то есть блокифицирована и отдает один прямоугольник на любом
+ * числе строк. Range же режет содержимое по строчным боксам и ловит перенос.
+ */
+const lineBoxes = (nodes: Element[]) =>
+  nodes.map((node) => {
+    const range = document.createRange();
+    range.selectNodeContents(node);
+
+    return range.getClientRects().length;
+  });
 
 /** Сколько колонок образуют элементы: одинаковый правый край — одна колонка прайса. */
 const columnsOf = (nodes: Element[]) =>
@@ -88,6 +98,8 @@ test.describe('секция «Услуги и цены»', () => {
       const boxes = await rows.evaluateAll((nodes) => nodes.map((node) => node.getBoundingClientRect().left));
 
       expect(new Set(boxes).size).toBe(1);
+      await expect(pricing.getByTestId('basics-group').first()).toBeVisible();
+      await expect(pricing.getByTestId('option-price').first()).toBeVisible();
       expect(await pricing.getByTestId('basics-group').evaluateAll(rowsOf)).toBe(1);
       expect(await pricing.getByTestId('option-price').evaluateAll(columnsOf)).toBe(1);
       expect(await documentOverflow(page)).toBe(0);
@@ -106,5 +118,13 @@ test.describe('секция «Услуги и цены»', () => {
       await expect(row).toContainText(plan.priceEn);
       await expect(row.getByRole('link')).toHaveAttribute('href', `/en/${plan.slug}?plan=${plan.id}`);
     }
+  });
+
+  test('en: цена опции тоже стоит одной строкой', async ({ page }) => {
+    await openDesign(page, 'kinetic', { locale: 'en' });
+
+    const prices = pricingOf(page).getByTestId('option-price');
+
+    expect(await prices.evaluateAll(lineBoxes)).toEqual(Array.from({ length: 13 }, () => 1));
   });
 });

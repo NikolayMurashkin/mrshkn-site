@@ -40,7 +40,7 @@ export type OptionPriceText = {
 };
 
 /** Тема базы тарифа: заголовок лежит в messages по `id`, пункты — ключи из `PRICING_BASICS`. */
-export type PricingBasicGroup<TItem extends string = string> = {
+export type PricingBasicGroup<TItem extends string> = {
   id: string;
   items: readonly TItem[];
 };

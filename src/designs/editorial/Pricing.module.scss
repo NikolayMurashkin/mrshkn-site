@@ -187,7 +187,8 @@
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 56px;
   margin: 0;
-  padding: 0;
+  padding: 0 0 26px;
+  border-bottom: var(--border-width-strong) double var(--ink);
   list-style: none;
 }
 
@@ -285,11 +286,6 @@
   font-variant-numeric: tabular-nums;
 }
 
-.extras {
-  padding-bottom: 26px;
-  border-bottom: var(--border-width-strong) double var(--ink);
-}
-
 .extra {
   display: flex;
   flex-direction: column;
@@ -371,6 +367,7 @@
   }
 
   .optionNote {
+    order: 1;
     flex: 0 0 auto;
   }
 
