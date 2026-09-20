@@ -110,7 +110,7 @@
       "from": "from {amount}",
       "month": "{amount} / mo",
       "hour": "{amount} / hour",
-      "plusMonth": "{amount} + {monthly} / mo"
+      "monthlyAddon": "+ {amount} / mo"
     },
     "plans": {
       "landing": {
@@ -149,6 +149,13 @@
       "text": "One codebase — the app runs in Telegram and in MAX. The second mini-app store costs nothing extra."
     },
     "basicsHeading": "Included in every plan",
+    "basicsNote": "13 items, no extra charges",
+    "basicsGroups": {
+      "build": "Code and speed",
+      "leads": "Leads and analytics",
+      "ownership": "Everything stays yours",
+      "afterLaunch": "After launch"
+    },
     "basics": {
       "code": "Custom code on Next.js, no website builders",
       "lighthouse": "Lighthouse 90+ as an acceptance criterion, report attached to the handover",
@@ -165,22 +172,63 @@
       "deadline": "The deadline is written into the contract"
     },
     "optionsHeading": "Options for any plan",
+    "optionsNote": "can be added after launch too",
     "options": {
-      "booking": "Online booking: our module or your booking system",
-      "payments": "Online payments: Stripe on your account",
-      "quiz": "5-step quiz lead form with segmentation",
-      "calculator": "Price calculator",
-      "reviews": "Reviews from Google, Yandex Maps and 2GIS pulled in automatically",
-      "messengers": "Messenger widget and a bot that answers first",
-      "assistant": "AI assistant that knows your prices and answers client questions",
-      "language": "One more language",
-      "blog": "Blog and news in the admin panel",
-      "crm": "CRM integration: deals and lead sources",
-      "branches": "Locations map and city pages",
-      "catalog": "QR menu or a catalog with filters",
-      "geo": "Extended “ready for AI search” pack: FAQ markup and mention monitoring"
+      "booking": {
+        "name": "Online booking",
+        "note": "our module or your booking system"
+      },
+      "payments": {
+        "name": "Online payments",
+        "note": "Stripe on your account"
+      },
+      "quiz": {
+        "name": "Quiz lead form",
+        "note": "five steps with segmentation"
+      },
+      "calculator": {
+        "name": "Price calculator",
+        "note": "quotes the price from your parameters"
+      },
+      "reviews": {
+        "name": "Reviews from maps",
+        "note": "Google, Yandex Maps and 2GIS pulled in automatically"
+      },
+      "messengers": {
+        "name": "Messenger widget",
+        "note": "and a bot that answers first"
+      },
+      "assistant": {
+        "name": "AI assistant",
+        "note": "knows your prices and answers client questions"
+      },
+      "language": {
+        "name": "One more language",
+        "note": "page translation and a language switch"
+      },
+      "blog": {
+        "name": "Blog and news",
+        "note": "edited in the admin panel"
+      },
+      "crm": {
+        "name": "CRM integration",
+        "note": "deals and lead sources"
+      },
+      "branches": {
+        "name": "Locations map",
+        "note": "and city pages"
+      },
+      "catalog": {
+        "name": "QR menu or catalog",
+        "note": "with filters"
+      },
+      "geo": {
+        "name": "“Ready for AI search” pack",
+        "note": "FAQ markup and mention monitoring"
+      }
     },
     "extrasHeading": "Beyond the plan",
+    "extrasNote": "when the work goes beyond the plan",
     "extras": {
       "subscription": {
         "name": "Dev subscription",

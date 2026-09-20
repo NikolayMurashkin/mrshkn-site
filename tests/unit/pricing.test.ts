@@ -1,7 +1,13 @@
 import { readFileSync } from 'node:fs';
 import { describe, expect, it } from 'vitest';
 import { formatMoney, formatRange, planHref } from '@/content/format';
-import { PRICING_BASICS, PRICING_EXTRAS, PRICING_OPTIONS, PRICING_PLANS } from '@/content/pricing';
+import {
+  PRICING_BASIC_GROUPS,
+  PRICING_BASICS,
+  PRICING_EXTRAS,
+  PRICING_OPTIONS,
+  PRICING_PLANS,
+} from '@/content/pricing';
 import { LOCALES } from '@/i18n/consts';
 
 const NBSP = String.fromCodePoint(0x00a0);
@@ -27,6 +33,25 @@ describe('прайс — один источник цен', () => {
     expect(Object.keys(pricingSection(locale, 'options'))).toEqual(PRICING_OPTIONS.map((option) => option.id));
     expect(Object.keys(pricingSection(locale, 'extras'))).toEqual(PRICING_EXTRAS.map((extra) => extra.id));
     expect(Object.keys(pricingSection(locale, 'basics'))).toEqual([...PRICING_BASICS]);
+  });
+
+  it.each([...LOCALES])('%s: у каждой опции есть имя и пояснение', (locale) => {
+    const options = pricingSection(locale, 'options');
+
+    expect(PRICING_OPTIONS.map((option) => options[option.id])).toEqual(
+      PRICING_OPTIONS.map(() => ({ name: expect.any(String), note: expect.any(String) })),
+    );
+  });
+
+  it('группы базы разбирают все 13 пунктов без потерь и дублей', () => {
+    const grouped = PRICING_BASIC_GROUPS.flatMap((group) => group.items);
+
+    expect([...grouped].sort()).toEqual([...PRICING_BASICS].sort());
+    expect(new Set(grouped).size).toBe(PRICING_BASICS.length);
+  });
+
+  it.each([...LOCALES])('%s: у каждой группы базы есть заголовок', (locale) => {
+    expect(Object.keys(pricingSection(locale, 'basicsGroups'))).toEqual(PRICING_BASIC_GROUPS.map((group) => group.id));
   });
 
   it('у тарифов уникальные ключи и адреса страниц услуг', () => {

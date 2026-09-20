@@ -32,6 +32,19 @@ export type PricingOption = {
   monthly?: PriceRange;
 };
 
+/** Цена опции двумя частями: разовая сумма и абонплата печатаются разными строками. */
+export type OptionPriceText = {
+  amount: string;
+  /** Готовая подпись абонплаты вида «+ 3 000 ₽ / мес»; у опций без обслуживания ее нет. */
+  monthly?: string;
+};
+
+/** Тема базы тарифа: заголовок лежит в messages по `id`, пункты — ключи из `PRICING_BASICS`. */
+export type PricingBasicGroup<TItem extends string = string> = {
+  id: string;
+  items: readonly TItem[];
+};
+
 /** Позиция прайса вне таблицы тарифов: подписка на разработку и почасовая ставка. */
 export type PricingExtra = {
   id: string;

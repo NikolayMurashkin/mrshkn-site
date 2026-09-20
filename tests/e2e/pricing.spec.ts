@@ -29,6 +29,16 @@ const documentOverflow = (page: Page) =>
 /** Своего переполнения у секции тоже быть не должно: Pop прячет вынос под `overflow: hidden`. */
 const sectionOverflow = (page: Page) => pricingOf(page).evaluate((node) => node.scrollWidth - node.clientWidth);
 
+/** Сколько строк занимает элемент: у инлайнового узла на каждую строку приходится свой прямоугольник. */
+const lineBoxes = (nodes: Element[]) => nodes.map((node) => node.getClientRects().length);
+
+/** Сколько колонок образуют элементы: одинаковый правый край — одна колонка прайса. */
+const columnsOf = (nodes: Element[]) =>
+  new Set(nodes.map((node) => Math.round(node.getBoundingClientRect().right))).size;
+
+/** То же по левому краю: на узком экране группы базы обязаны встать друг под другом. */
+const rowsOf = (nodes: Element[]) => new Set(nodes.map((node) => Math.round(node.getBoundingClientRect().left))).size;
+
 test.describe('секция «Услуги и цены»', () => {
   for (const design of DESIGNS) {
     test(`${design}: тарифы с ценами и ссылками на страницы услуг`, async ({ page }) => {
@@ -53,6 +63,7 @@ test.describe('секция «Услуги и цены»', () => {
       const pricing = pricingOf(page);
 
       await expect(pricing.getByTestId('basics').getByRole('listitem')).toHaveCount(13);
+      await expect(pricing.getByTestId('basics-group')).toHaveCount(4);
       await expect(pricing.getByTestId('options').getByRole('listitem')).toHaveCount(13);
       await expect(pricing.getByTestId('options')).toContainText('40 000 ₽');
       await expect(pricing.getByTestId('mini-app-note')).toContainText('MAX');
@@ -60,13 +71,25 @@ test.describe('секция «Услуги и цены»', () => {
       await expect(pricing.getByTestId('extras')).toContainText('5 000 ₽ / час');
     });
 
+    test(`${design}: цена опции стоит одной строкой и выровнена по колонке`, async ({ page }) => {
+      await openDesign(page, design);
+
+      const prices = pricingOf(page).getByTestId('option-price');
+
+      expect(await prices.evaluateAll(lineBoxes)).toEqual(Array.from({ length: 13 }, () => 1));
+      expect(await prices.evaluateAll(columnsOf)).toBe(2);
+    });
+
     test(`${design}: на 320px тарифы идут столбиком, без горизонтального скролла`, async ({ page }) => {
       await openDesign(page, design, { viewport: MOBILE_VIEWPORT });
 
-      const rows = pricingOf(page).getByTestId(/^plan-/);
+      const pricing = pricingOf(page);
+      const rows = pricing.getByTestId(/^plan-/);
       const boxes = await rows.evaluateAll((nodes) => nodes.map((node) => node.getBoundingClientRect().left));
 
       expect(new Set(boxes).size).toBe(1);
+      expect(await pricing.getByTestId('basics-group').evaluateAll(rowsOf)).toBe(1);
+      expect(await pricing.getByTestId('option-price').evaluateAll(columnsOf)).toBe(1);
       expect(await documentOverflow(page)).toBe(0);
       expect(await sectionOverflow(page)).toBe(0);
     });

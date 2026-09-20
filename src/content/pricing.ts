@@ -1,4 +1,4 @@
-import type { PricingExtra, PricingOption, PricingPlan } from './types';
+import type { PricingBasicGroup, PricingExtra, PricingOption, PricingPlan } from './types';
 
 /**
  * Единственный источник цен на сайте. Рубли — решение D5 в `../PLAN.md`, доллары — таблица
@@ -44,7 +44,7 @@ export const PRICING_EXTRAS: PricingExtra[] = [
   { id: 'hour', price: { rub: 5_000, usd: 90 }, period: 'hour' },
 ];
 
-/** Что входит в любой тариф (research §6). Тексты — в messages, здесь только порядок. */
+/** Что входит в любую цену (research §6). Тексты — в messages, здесь только порядок. */
 export const PRICING_BASICS = [
   'code',
   'lighthouse',
@@ -60,3 +60,11 @@ export const PRICING_BASICS = [
   'training',
   'deadline',
 ] as const;
+
+/** Четыре темы базы: 13 пунктов читаются группами, а не сплошной колонкой. */
+export const PRICING_BASIC_GROUPS: PricingBasicGroup<(typeof PRICING_BASICS)[number]>[] = [
+  { id: 'build', items: ['code', 'lighthouse', 'responsive'] },
+  { id: 'leads', items: ['forms', 'analytics', 'seo'] },
+  { id: 'ownership', items: ['sources', 'hosting', 'privacy'] },
+  { id: 'afterLaunch', items: ['revisions', 'warranty', 'training', 'deadline'] },
+];
