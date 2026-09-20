@@ -66,7 +66,7 @@ next-themes в DOM, дефолтом нового направления, а п�
 `--radius-round`). Вне файлов токенов SCSS не содержит литералов цветов, `font-family`,
 `border-radius`, `box-shadow` и толщин `border` — только `var(--…)`; это проверяет тот же тест.
 
-Шрифты — `src/designs/<name>/fonts.ts`, через `next/font/google` с `display: swap` и
+Шрифты — `src/designs/<name>/fonts.ts`, через `next/font` с `display: swap` и
 `preload: false`; модуль подключается из `index.tsx` как `import './fonts'` ради `@font-face`, а токены
 ссылаются на семейства по имени (`'Unbounded', 'Unbounded Metric Fallback', …`), поэтому `@font-face`
 едут в CSS-чанк направления, а не в общий CSS. Константы в `fonts.ts` никто не импортирует: next/font
@@ -74,6 +74,16 @@ next-themes в DOM, дефолтом нового направления, а п�
 `export` здесь только ради этого. Preload включать нельзя: манифест шрифтов у Next на entry, и подсказки
 preload уходят всем направлениям сразу (по замеру это роняло Lighthouse чужих направлений до 78–89);
 без preload все пять держат 93–98.
+Kinetic грузит шрифты не с Google, а свои сабсеты через `next/font/local`: `src/designs/kinetic/fonts/*.woff2`
+(Unbounded 700–900 и Golos Text 400–600 одним вариативным файлом на семейство, только базовая латиница,
+кириллица U+0400–045F и пунктуация; рядом лежат `*-OFL.txt`). Файлы Google (4 файла, 140 КБ на `/ru`)
+давали Kinetic FCP 2,0 с и LCP 3,0 с против 1,2–1,7 с у остальных — в симуляции Lighthouse все байты,
+доехавшие до наблюдаемого LCP, входят в его оценку; сабсеты (57 КБ) дают 99 локально и запас на раннере.
+Пересобрать: `node scripts/subset-fonts.mjs` — качает исходники из `google/fonts` по закрепленному
+коммиту и режет их `subset-font` (harfbuzz в wasm); символ вне сабсета отрисуется fallback-начертанием,
+так что новый знак в текстах Kinetic — повод расширить `GLYPHS` в скрипте. Имя семейства в `@font-face`
+задается через `declarations: [{ prop: 'font-family', … }]` — Turbopack это уважает, иначе семейство
+называлось бы по имени константы.
 Метрические fallback-начертания `'<Family> Metric Fallback'` объявлены руками в файле токенов:
 собственный fallback next/font (`'<Family> Fallback'`) ссылается только на `local(Arial)`, которого нет
 на Linux и Android — там текст до загрузки шрифта был на четверть уже и прыгал (CLS 0,12–0,47,
