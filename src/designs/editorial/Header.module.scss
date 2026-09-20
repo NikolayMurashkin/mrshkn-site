@@ -47,7 +47,8 @@
 }
 
 .localeActive {
-  color: var(--ink);
+  text-decoration: underline;
+  text-underline-offset: 0.3em;
 }
 
 .locale:hover {
