@@ -22,3 +22,10 @@ export type DesignShape = {
 
 /** Имя направления, как оно лежит в cookie `design` и атрибуте `data-design`. */
 export type DesignName = (typeof DESIGNS)[number];
+
+/** Что переопределяет тест при открытии направления: тема, язык и размер окна. */
+export type OpenDesignOptions = {
+  theme?: string;
+  locale?: string;
+  viewport?: { width: number; height: number };
+};

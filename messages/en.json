@@ -93,6 +93,108 @@
       "refWarranty": "— Тридцать дней гарантии"
     }
   },
+  "pricing": {
+    "heading": "Services and pricing",
+    "note": "The price in the contract does not change",
+    "sectionMark": "02 — Services",
+    "planLink": "{name} — details",
+    "columns": {
+      "number": "No.",
+      "product": "Product",
+      "inside": "What is inside",
+      "term": "Time",
+      "price": "Price"
+    },
+    "price": {
+      "exact": "{amount}",
+      "from": "from {amount}",
+      "month": "{amount} / mo",
+      "hour": "{amount} / hour",
+      "plusMonth": "{amount} + {monthly} / mo"
+    },
+    "plans": {
+      "landing": {
+        "name": "Landing page",
+        "summary": "One page, custom design, lead form, analytics and SEO basics",
+        "term": "14 days"
+      },
+      "business": {
+        "name": "Business website",
+        "summary": "Up to 7 pages, admin panel, blog, EN + RU, CRM integration",
+        "term": "3 weeks"
+      },
+      "miniApp": {
+        "name": "Telegram Mini App",
+        "summary": "Booking, menu, loyalty and payments inside the messenger, bot and admin panel",
+        "term": "3–4 weeks"
+      },
+      "store": {
+        "name": "Online store",
+        "summary": "Catalog of up to 100 items, cart, payments, delivery, order management",
+        "term": "5–7 weeks"
+      },
+      "mvp": {
+        "name": "Startup MVP",
+        "summary": "Web app: sign-in, user accounts, payments, integrations, analytics",
+        "term": "6–10 weeks"
+      },
+      "support": {
+        "name": "Support",
+        "summary": "Hosting, monitoring, backups, updates and revision hours by plan",
+        "term": "monthly"
+      }
+    },
+    "miniAppNote": {
+      "title": "Telegram and MAX for one price",
+      "text": "One codebase — the app runs in Telegram and in MAX. The second mini-app store costs nothing extra."
+    },
+    "basicsHeading": "Included in every plan",
+    "basics": {
+      "code": "Custom code on Next.js, no website builders",
+      "lighthouse": "Lighthouse 90+ as an acceptance criterion, report attached to the handover",
+      "responsive": "Responsive from 320 to 1920 pixels",
+      "seo": "SEO basics: schema.org, llms.txt and OG — the site is ready for AI search",
+      "forms": "Every lead goes to Telegram, email and your CRM",
+      "analytics": "Google Analytics 4 with conversion goals set up",
+      "privacy": "Cookie banner and a privacy policy page",
+      "hosting": "Domain, SSL and hosting set up and handed over to you",
+      "sources": "The source code stays yours",
+      "revisions": "Two rounds of revisions included",
+      "warranty": "30 days of warranty after launch",
+      "training": "One hour of training: how to edit texts and read leads",
+      "deadline": "The deadline is written into the contract"
+    },
+    "optionsHeading": "Options for any plan",
+    "options": {
+      "booking": "Online booking: our module or your booking system",
+      "payments": "Online payments: Stripe on your account",
+      "quiz": "5-step quiz lead form with segmentation",
+      "calculator": "Price calculator",
+      "reviews": "Reviews from Google, Yandex Maps and 2GIS pulled in automatically",
+      "messengers": "Messenger widget and a bot that answers first",
+      "assistant": "AI assistant that knows your prices and answers client questions",
+      "language": "One more language",
+      "blog": "Blog and news in the admin panel",
+      "crm": "CRM integration: deals and lead sources",
+      "branches": "Locations map and city pages",
+      "catalog": "QR menu or a catalog with filters",
+      "geo": "Extended “ready for AI search” pack: FAQ markup and mention monitoring"
+    },
+    "extrasHeading": "Beyond the plan",
+    "extras": {
+      "subscription": {
+        "name": "Dev subscription",
+        "summary": "One task at a time, no limit on the number of tasks, cancel any month"
+      },
+      "hour": {
+        "name": "Hourly rate",
+        "summary": "Revisions and extra work beyond the included hours"
+      }
+    },
+    "editorial": {
+      "heading": "Table of services"
+    }
+  },
   "footer": {
     "heading": "Обсудить проект",
     "headingQuestion": "Обсудить проект?",

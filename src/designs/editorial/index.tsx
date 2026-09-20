@@ -6,10 +6,12 @@ import './fonts';
 import { EditorialFooter } from './Footer';
 import { EditorialHeader } from './Header';
 import { EditorialHero } from './Hero';
+import { EditorialPricing } from './Pricing';
 
 const SECTIONS: Record<SectionName, ComponentType> = {
   header: EditorialHeader,
   hero: EditorialHero,
+  pricing: EditorialPricing,
   footer: EditorialFooter,
 };
 

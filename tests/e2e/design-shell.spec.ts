@@ -1,6 +1,7 @@
 import { join } from 'node:path';
 import { expect, test, type Locator, type Page } from '@playwright/test';
-import { DESIGN_COOKIE, DESIGNS, PREVIEW_BASE_URL, THEME_STORAGE_KEY, THEMES, VIEWPORT } from './consts';
+import { DESIGN_COOKIE, DESIGNS, PREVIEW_BASE_URL, THEMES } from './consts';
+import { openDesign } from './open-design';
 import type { DesignShape } from './types';
 
 const SHAPES: Record<(typeof DESIGNS)[number], DesignShape> = {
@@ -56,17 +57,6 @@ const SHAPES: Record<(typeof DESIGNS)[number], DesignShape> = {
   },
 };
 
-const openDesign = async (page: Page, design: string, theme: string) => {
-  await page.setViewportSize(VIEWPORT);
-  await page.context().addCookies([{ name: DESIGN_COOKIE, value: design, url: PREVIEW_BASE_URL }]);
-  await page.addInitScript(([key, value]) => window.localStorage.setItem(key, value), [
-    THEME_STORAGE_KEY,
-    theme,
-  ] as const);
-  await page.goto('/ru');
-  await page.evaluate(() => document.fonts.ready);
-};
-
 const SCREENSHOT = { stylePath: join(__dirname, 'screenshot.css') };
 
 const fontOf = (page: Page, selector: string) =>
@@ -93,7 +83,7 @@ test.describe('каркас направлений', () => {
     test(`${design}: cookie выбирает направление, шапка и подвал на месте`, async ({ page }) => {
       const shape = SHAPES[design];
 
-      await openDesign(page, design, 'dark');
+      await openDesign(page, design, { theme: 'dark' });
 
       await expect(page.locator('html')).toHaveAttribute('data-design', design);
 
@@ -113,7 +103,7 @@ test.describe('каркас направлений', () => {
     test(`${design}: шрифты направления применены`, async ({ page }) => {
       const shape = SHAPES[design];
 
-      await openDesign(page, design, 'dark');
+      await openDesign(page, design, { theme: 'dark' });
 
       expect(await fontOf(page, 'body')).toMatch(shape.textFont);
       expect(await fontOf(page, '[data-testid="brand"]')).toMatch(shape.displayFont);
@@ -123,7 +113,7 @@ test.describe('каркас направлений', () => {
     test(`${design}: hero по артборду — заголовок, две кнопки, свой элемент`, async ({ page }) => {
       const shape = SHAPES[design];
 
-      await openDesign(page, design, 'dark');
+      await openDesign(page, design, { theme: 'dark' });
 
       const hero = page.getByRole('main').locator('section').first();
 
@@ -156,7 +146,7 @@ test.describe('тема по умолчанию', () => {
 
 test.describe('контраст в светлой теме — цвет токеном, без opacity', () => {
   test('pop: подпись подвала', async ({ page }) => {
-    await openDesign(page, 'pop', 'light');
+    await openDesign(page, 'pop', { theme: 'light' });
 
     const note = page.getByRole('contentinfo').getByText('Отвечаем в течение часа');
 
@@ -164,7 +154,7 @@ test.describe('контраст в светлой теме — цвет токе
   });
 
   test('editorial: неактивная локаль в шапке', async ({ page }) => {
-    await openDesign(page, 'editorial', 'light');
+    await openDesign(page, 'editorial', { theme: 'light' });
 
     const header = page.getByRole('banner');
 
@@ -187,7 +177,7 @@ test.describe('эталоны шапки и подвала', () => {
   for (const design of DESIGNS) {
     for (const theme of THEMES) {
       test(`${design} / ${theme}`, async ({ page }) => {
-        await openDesign(page, design, theme);
+        await openDesign(page, design, { theme });
 
         await expect(page.locator('html')).toHaveAttribute('data-theme', theme);
         await expect(page.getByRole('banner')).toHaveScreenshot(`header-${design}-${theme}.png`, SCREENSHOT);

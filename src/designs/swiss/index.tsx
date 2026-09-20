@@ -6,10 +6,12 @@ import './fonts';
 import { SwissFooter } from './Footer';
 import { SwissHeader } from './Header';
 import { SwissHero } from './Hero';
+import { SwissPricing } from './Pricing';
 
 const SECTIONS: Record<SectionName, ComponentType> = {
   header: SwissHeader,
   hero: SwissHero,
+  pricing: SwissPricing,
   footer: SwissFooter,
 };
 

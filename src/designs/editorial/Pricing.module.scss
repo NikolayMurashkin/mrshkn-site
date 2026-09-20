@@ -1,0 +1,273 @@
+.pricing {
+  display: flex;
+  flex-direction: column;
+  gap: 36px;
+  margin: 0 clamp(20px, 6.6vw, 96px);
+  padding-bottom: 64px;
+}
+
+.rule {
+  display: flex;
+  align-items: baseline;
+  gap: 20px;
+}
+
+.rule::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--ink);
+}
+
+.heading {
+  margin: 0;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.note {
+  font-size: 12px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.plans {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.plan {
+  border-bottom: var(--border-width) solid var(--line);
+}
+
+.planLink {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 200px;
+  gap: 8px 24px;
+  align-items: baseline;
+  padding: 20px 0;
+  color: var(--ink);
+}
+
+.planLink:hover {
+  color: var(--accent-ink);
+}
+
+.line {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  min-width: 0;
+}
+
+.name {
+  font-family: var(--font-display);
+  font-size: clamp(20px, 2.2vw, 30px);
+  overflow-wrap: anywhere;
+  min-width: 0;
+}
+
+.leader {
+  flex: 1;
+  min-width: 24px;
+  margin: 0 14px;
+  border-bottom: var(--border-width) dotted var(--muted);
+  transform: translateY(-8px);
+}
+
+.term {
+  font-size: 15px;
+  color: var(--muted);
+  white-space: nowrap;
+}
+
+.summary {
+  grid-column: 1;
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--muted);
+  overflow-wrap: anywhere;
+  min-width: 0;
+}
+
+.price {
+  grid-column: 2;
+  grid-row: 1;
+  font-size: 18px;
+  font-weight: 500;
+  text-align: right;
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+}
+
+.miniApp {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 24px 28px;
+  border-top: var(--border-width-strong) double var(--ink);
+  border-bottom: var(--border-width-strong) double var(--ink);
+}
+
+.miniAppTitle {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(19px, 2vw, 24px);
+  color: var(--accent-ink);
+}
+
+.miniAppText {
+  margin: 0;
+  max-width: 68ch;
+  line-height: 1.6;
+  overflow-wrap: anywhere;
+  min-width: 0;
+}
+
+.details {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 48px;
+}
+
+.detail {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  min-width: 0;
+}
+
+.detailHeading {
+  margin: 0;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.basics,
+.options,
+.extras {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.basic {
+  position: relative;
+  padding-left: 22px;
+  font-size: 15px;
+  line-height: 1.6;
+  overflow-wrap: anywhere;
+  min-width: 0;
+}
+
+.basic::before {
+  content: '·';
+  position: absolute;
+  left: 4px;
+  color: var(--accent-ink);
+}
+
+.option {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  font-size: 15px;
+}
+
+.optionName {
+  line-height: 1.6;
+  overflow-wrap: anywhere;
+  min-width: 0;
+}
+
+.optionPrice {
+  overflow-wrap: anywhere;
+  min-width: 0;
+  font-variant-numeric: tabular-nums;
+}
+
+.extra {
+  display: grid;
+  grid-template-columns: 200px minmax(0, 1fr) 160px;
+  gap: 24px;
+  align-items: baseline;
+  padding-bottom: 10px;
+  border-bottom: var(--border-width) solid var(--line);
+  font-size: 15px;
+}
+
+.extraName {
+  font-family: var(--font-display);
+}
+
+.extraSummary {
+  line-height: 1.6;
+  color: var(--muted);
+  overflow-wrap: anywhere;
+  min-width: 0;
+}
+
+.extraPrice {
+  text-align: right;
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+}
+
+@media (max-width: 900px) {
+  .details {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .planLink {
+    grid-template-columns: minmax(0, 1fr) auto;
+  }
+
+  .leader {
+    display: none;
+  }
+
+  .extra {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 4px;
+  }
+
+  .extraPrice {
+    text-align: left;
+  }
+}
+
+@media (max-width: 600px) {
+  .planLink {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 6px;
+  }
+
+  .line {
+    flex-wrap: wrap;
+  }
+
+  .name {
+    flex: 1 1 100%;
+  }
+
+  .price {
+    grid-column: 1;
+    grid-row: 2;
+    text-align: left;
+  }
+
+  .summary {
+    grid-row: 3;
+  }
+}

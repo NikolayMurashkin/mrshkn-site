@@ -21,3 +21,5 @@ export const THEME_COOKIE = 'theme';
 export const VIEWPORT = { width: 1440, height: 900 };
 
 export const SHORT_VIEWPORT = { width: 1440, height: 600 };
+
+export const MOBILE_VIEWPORT = { width: 320, height: 720 };

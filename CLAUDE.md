@@ -13,8 +13,9 @@ SCSS-модули, next-intl 4 (ru/en), next-themes. Пакетный менед
 ```
 src/app/[locale]/    layout (html, метаданные, провайдеры, Header и Footer направления, пилюля) и страницы
 src/designs/         реестр направлений: consts, types, registry (next/dynamic), resolve, server (cookie)
-src/designs/<name>/  index (клиентский модуль-чанк), fonts (next/font), Header, Hero, Footer + SCSS-модули
+src/designs/<name>/  index (клиентский модуль-чанк), fonts (next/font), Header, Hero, Pricing, Footer + SCSS-модули
 src/components/      общие компоненты вне направлений: DesignSwitcher, ThemeToggle, LocaleSwitcher, icons
+src/content/         контент, общий для всех направлений: pricing (цены), format, use-price, types
 src/i18n/            routing, request, navigation, consts
 src/lib/             окружение сборки и общие константы
 src/styles/          globals.scss (база) и designs/<name>.scss (токены направления)
@@ -107,8 +108,25 @@ false` в Turbopack (Next 16.3.5) не действует, `@font-face '<Family>
 - Текст из CMS и от бэкенда не вылезает из контейнера: `overflow-wrap: anywhere`, `min-width: 0`.
 - Prettier: 120 символов, одинарные кавычки, точка с запятой, один атрибут на строку.
 - Буква «е» вместо «ё»; после «в», «к», «с», «на», «и» — неразрывный пробел.
-- Английские тексты Claude не сочиняет. Нет перевода — в `en.json` кладется русская строка,
-  ключ добавляется в `messages/TRANSLATION-TODO.md`, перевод пишет Николай.
+- Английские тексты Claude пишет сам (решение Николая 20.09.2026, только для студии и ее проектов):
+  новый ключ сразу появляется и в `ru.json`, и в `en.json` с живым английским, а строка добавляется
+  в `messages/TRANSLATION-TODO.md` в таблицу «ждет вычитки» — читает и правит Николай перед публикацией.
+  Английский пишется как текст для рынка, а не подстрочником: российские реалии заменяются
+  международными (152-ФЗ → privacy policy, Метрика → GA4, ЮKassa → Stripe).
+
+## Цены и контент секций
+
+Цены живут в одном файле — `src/content/pricing.ts` (тарифы, опции, Dev-подписка и час, список
+«что входит в тариф»). Рубли — решение D5 в `../PLAN.md`, доллары — таблица «Линейка» бизнес-плана
+(`../docs/studio-plan.html`), кроме лендинга: у него D5 новее. Суммы форматирует `src/content/format.ts`
+(`formatMoney`, `formatRange`, `planHref`) — без `Intl`, чтобы строка на сервере и в браузере совпадала
+побайтно; обвязку «от», «/ мес», «+ обслуживание» дает перевод через `usePriceText`
+(`src/content/use-price.ts`). Новый тариф добавляется в `pricing.ts` и в оба файла переводов —
+`tests/unit/pricing.test.ts` падает, если наборы ключей разошлись.
+
+Секция «Услуги и цены» у каждого направления своя (`src/designs/<name>/Pricing.tsx`), контент один
+и тот же; ссылка тарифа ведет на страницу услуги (`/<locale>/<slug>?plan=<id>`) — сами страницы
+появятся в блоке B13, до этого адреса отдают 404.
 
 ## Тесты
 
