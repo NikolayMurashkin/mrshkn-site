@@ -22,6 +22,10 @@ const HomePage = async ({ params }: HomePageProps) => {
         design={design}
         section="pricing"
       />
+      <DesignSection
+        design={design}
+        section="process"
+      />
     </main>
   );
 };

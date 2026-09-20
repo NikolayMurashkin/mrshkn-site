@@ -23,7 +23,8 @@
 .note {
   margin: 0;
   font-family: var(--font-display);
-  font-size: 13px;
+  font-size: 12px;
+  letter-spacing: 0.04em;
   text-transform: lowercase;
   color: var(--muted);
 }

@@ -7,11 +7,13 @@ import { SwissFooter } from './Footer';
 import { SwissHeader } from './Header';
 import { SwissHero } from './Hero';
 import { SwissPricing } from './Pricing';
+import { SwissProcess } from './Process';
 
 const SECTIONS: Record<SectionName, ComponentType> = {
   header: SwissHeader,
   hero: SwissHero,
   pricing: SwissPricing,
+  process: SwissProcess,
   footer: SwissFooter,
 };
 

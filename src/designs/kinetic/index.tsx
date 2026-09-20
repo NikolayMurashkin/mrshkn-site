@@ -7,11 +7,13 @@ import { KineticFooter } from './Footer';
 import { KineticHeader } from './Header';
 import { KineticHero } from './Hero';
 import { KineticPricing } from './Pricing';
+import { KineticProcess } from './Process';
 
 const SECTIONS: Record<SectionName, ComponentType> = {
   header: KineticHeader,
   hero: KineticHero,
   pricing: KineticPricing,
+  process: KineticProcess,
   footer: KineticFooter,
 };
 

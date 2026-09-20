@@ -195,6 +195,58 @@
       "heading": "Table of services"
     }
   },
+  "process": {
+    "heading": "How the two weeks go",
+    "sectionMark": "03 — Process",
+    "promisesHeading": "What the contract says",
+    "contractNote": "All four are written into the contract",
+    "dayLabel": "Day {day}",
+    "stepLabel": "step {index}/04 · day {day}",
+    "steps": {
+      "brief": {
+        "ordinal": "Day one",
+        "title": "Brief and offer",
+        "text": "A twenty-minute call, a proposal on one page, 50% upfront."
+      },
+      "concept": {
+        "ordinal": "Day three",
+        "title": "Concept of the main screen",
+        "text": "On day three you see a live page, not a picture. One round of edits here saves a week later."
+      },
+      "staging": {
+        "ordinal": "Day ten",
+        "title": "The site on a test domain",
+        "text": "All pages, forms and analytics. Two rounds of revisions are included in the price."
+      },
+      "launch": {
+        "ordinal": "Day fourteen",
+        "title": "Launch and 30 days of warranty",
+        "text": "Move to your domain, handover of access and source code, a month of free support."
+      }
+    },
+    "promises": {
+      "deadline": {
+        "kicker": "Speed",
+        "value": "14 days",
+        "detail": "The deadline is in the contract"
+      },
+      "quality": {
+        "kicker": "Quality",
+        "value": "Lighthouse 90+",
+        "detail": "An acceptance criterion"
+      },
+      "price": {
+        "kicker": "Price",
+        "value": "Fixed",
+        "detail": "Two rounds of revisions included"
+      },
+      "warranty": {
+        "kicker": "After launch",
+        "value": "30 days of warranty",
+        "detail": "Then a support plan"
+      }
+    }
+  },
   "footer": {
     "heading": "Обсудить проект",
     "headingQuestion": "Обсудить проект?",

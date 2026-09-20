@@ -15,6 +15,7 @@
 | `pricing.plans.*`   | названия продуктов: Landing page, Business website, Telegram Mini App, Startup MVP           |
 | `pricing.basics.*`  | база тарифа; RU-специфика заменена на международную (152-ФЗ → privacy policy, Метрика → GA4) |
 | `pricing.options.*` | опции; онлайн-оплата в EN — Stripe на аккаунте клиента, не ЮKassa                            |
+| `process.*`         | таймлайн «как проходят две недели» и четыре обещания D4                                      |
 
 ## Еще русские заглушки (ждут перевода)
 
