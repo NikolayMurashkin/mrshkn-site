@@ -113,7 +113,12 @@ Vitest — чистые функции (реестр, режим индекса�
 гоняет `lhci autorun` пять раз — по одному на направление, cookie `design` задается через
 `LIGHTHOUSE_DESIGN` в `lighthouserc.cjs`, отчеты в `.lighthouseci/<design>/`; сборка production
 с `NEXT_PUBLIC_SITE_URL`, совпадающим с адресом сервера, иначе canonical указывает на чужой origin
-и SEO-аудит падает.
+и SEO-аудит падает. Порог — `aggregationMethod: 'pessimistic'`: performance ≥ 90 и accessibility 100
+у **каждого** из трех прогонов, не у лучшего (так LHCI считает по умолчанию); это же обещание идет
+клиенту в договор, ослаблять нельзя. Перед пятью замерами скрипт делает один прогревочный
+`lhci collect` и выбрасывает результат: первый Lighthouse на свежем раннере GitHub стабильно давал
+TBT 430–540 мс против 95–160 у всех следующих (холодный Chrome и Node, benchmarkIndex ниже) — это
+свойство раннера, не сайта. `tests/unit/lighthouse-config.test.ts` держит конфиг от случайного отката.
 
 Эталоны `toHaveScreenshot` (`tests/e2e/*-snapshots/*-darwin.png`) сняты на macOS и сравниваются
 только на macOS — на Linux-раннере CI визуальный describe пропускается, структурные проверки

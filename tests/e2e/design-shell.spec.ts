@@ -1,5 +1,5 @@
 import { join } from 'node:path';
-import { expect, test, type Page } from '@playwright/test';
+import { expect, test, type Locator, type Page } from '@playwright/test';
 import { DESIGN_COOKIE, DESIGNS, PREVIEW_BASE_URL, THEME_STORAGE_KEY, THEMES, VIEWPORT } from './consts';
 import type { DesignShape } from './types';
 
@@ -72,6 +72,22 @@ const SCREENSHOT = { stylePath: join(__dirname, 'screenshot.css') };
 const fontOf = (page: Page, selector: string) =>
   page.locator(selector).evaluate((node) => window.getComputedStyle(node).fontFamily);
 
+const tokenColor = (page: Page, token: string) =>
+  page.evaluate((name) => {
+    const probe = document.createElement('span');
+    probe.style.color = `var(${name})`;
+    document.body.append(probe);
+    const color = window.getComputedStyle(probe).color;
+    probe.remove();
+    return color;
+  }, token);
+
+const paintOf = (locator: Locator) =>
+  locator.evaluate((node) => {
+    const style = window.getComputedStyle(node);
+    return { color: style.color, opacity: style.opacity };
+  });
+
 test.describe('каркас направлений', () => {
   for (const design of DESIGNS) {
     test(`${design}: cookie выбирает направление, шапка и подвал на месте`, async ({ page }) => {
@@ -136,6 +152,31 @@ test.describe('тема по умолчанию', () => {
       await expect(page.locator('html')).toHaveAttribute('data-theme', theme);
     });
   }
+});
+
+test.describe('контраст в светлой теме — цвет токеном, без opacity', () => {
+  test('pop: подпись подвала', async ({ page }) => {
+    await openDesign(page, 'pop', 'light');
+
+    const note = page.getByRole('contentinfo').getByText('Отвечаем в течение часа');
+
+    expect(await paintOf(note)).toEqual({ color: await tokenColor(page, '--accent-contrast-soft'), opacity: '1' });
+  });
+
+  test('editorial: неактивная локаль в шапке', async ({ page }) => {
+    await openDesign(page, 'editorial', 'light');
+
+    const header = page.getByRole('banner');
+
+    expect(await paintOf(header.getByTestId('locale-en'))).toEqual({
+      color: await tokenColor(page, '--muted'),
+      opacity: '1',
+    });
+    expect(await paintOf(header.getByTestId('locale-ru'))).toEqual({
+      color: await tokenColor(page, '--ink'),
+      opacity: '1',
+    });
+  });
 });
 
 test.describe('эталоны шапки и подвала', () => {
