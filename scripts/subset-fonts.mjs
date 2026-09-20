@@ -2,21 +2,12 @@ import { mkdir, writeFile } from 'node:fs/promises';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import subsetFont from 'subset-font';
+import { GLYPHS } from './subset-glyphs.ts';
 
 const GOOGLE_FONTS_COMMIT = 'e44c4b011a820c2cbe2fd2cfa8052037d7edb571';
 const GOOGLE_FONTS_RAW = `https://raw.githubusercontent.com/google/fonts/${GOOGLE_FONTS_COMMIT}/ofl`;
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
-
-const codePoints = (from, to) =>
-  Array.from({ length: to - from + 1 }, (_, i) => String.fromCodePoint(from + i)).join('');
-
-const BASIC_LATIN = codePoints(0x20, 0x7e);
-const LATIN_1_MARKS = ' ©«­®°·»×';
-const CYRILLIC = codePoints(0x400, 0x45f);
-const PUNCTUATION_AND_SYMBOLS = '–—‘’“”„•…№€₽←→−≤≥✓';
-
-const GLYPHS = BASIC_LATIN + LATIN_1_MARKS + CYRILLIC + PUNCTUATION_AND_SYMBOLS;
 
 const FONTS = [
   {
