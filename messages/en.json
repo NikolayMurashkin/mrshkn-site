@@ -8,89 +8,89 @@
     "tagline": "Murashkin Studio"
   },
   "controls": {
-    "theme": "Сменить тему"
+    "theme": "Switch theme"
   },
   "nav": {
-    "services": "Услуги",
-    "cases": "Кейсы",
-    "prices": "Цены",
-    "process": "Процесс",
-    "contacts": "Контакты"
+    "services": "Services",
+    "cases": "Work",
+    "prices": "Pricing",
+    "process": "Process",
+    "contacts": "Contact"
   },
   "header": {
-    "cta": "Обсудить проект",
+    "cta": "Start a project",
     "status": "online",
-    "kicker": "Студия веб-разработки",
-    "location": "Калининград → весь мир",
-    "founded": "Основана в 2026"
+    "kicker": "Web development studio",
+    "location": "Kaliningrad → worldwide",
+    "founded": "Founded in 2026"
   },
   "hero": {
     "subtitle": "Fixed price, no templates, support included.",
     "kinetic": {
       "title": "Custom-coded websites<br></br><accent>in 14 days</accent>",
-      "lead": "Сайты и Telegram-приложения для бизнеса — от брифа до запуска за две недели.",
-      "primaryCta": "Рассчитать стоимость",
-      "secondaryCta": "Смотреть кейсы",
-      "badge": "LIGHTHOUSE 90+ · СРОК В ДОГОВОРЕ · 30 ДНЕЙ ГАРАНТИИ · ",
+      "lead": "Websites and Telegram apps for business — from brief to launch in two weeks.",
+      "primaryCta": "Get a quote",
+      "secondaryCta": "See our work",
+      "badge": "LIGHTHOUSE 90+ · 14 DAYS · 30-DAY WARRANTY · ",
       "ticker": {
-        "landing": "Лендинги",
+        "landing": "Landing pages",
         "miniApps": "Telegram Mini Apps",
-        "company": "Сайты компаний",
-        "shops": "Магазины",
-        "mvp": "MVP для стартапов",
-        "support": "Поддержка"
+        "company": "Company websites",
+        "shops": "Online stores",
+        "mvp": "Startup MVPs",
+        "support": "Support"
       }
     },
     "terminal": {
       "prompt": "mrshkn build --site --days 14 --fixed-price",
       "title": "Custom-coded websites<br></br>in 14 days<accent>.</accent>",
-      "lead": "Сайты и Telegram-приложения для бизнеса — исходники ваши, метрики в акте приемки.",
-      "primaryCta": "./рассчитать-стоимость",
-      "secondaryCta": "./кейсы",
-      "logTitle": "build.log — типовой проект, 14 дней",
-      "day": "[день {day}]",
+      "lead": "Websites and Telegram apps for business — the source code is yours, the metrics are in the handover report.",
+      "primaryCta": "./get-a-quote",
+      "secondaryCta": "./our-work",
+      "logTitle": "build.log — a typical project, 14 days",
+      "day": "[day {day}]",
       "log": {
-        "brief": "бриф + оферта",
-        "prepayment": "предоплата 50%",
-        "concept": "концепт главного экрана",
-        "staging": "стейджинг, формы, аналитика",
-        "lighthouse": "lighthouse ≥ 90 по четырем метрикам",
-        "handover": "домен, доступы, исходники",
-        "warranty": "<k>гарантия</k> 30 дней"
+        "brief": "brief + proposal",
+        "prepayment": "50% upfront",
+        "concept": "home screen concept",
+        "staging": "staging, forms, analytics",
+        "lighthouse": "lighthouse ≥ 90 on all four metrics",
+        "handover": "domain, access, source code",
+        "warranty": "<k>warranty</k> 30 days"
       },
       "status": {
         "ok": "ok",
-        "active": "активна"
+        "active": "active"
       }
     },
     "pop": {
       "title": "Custom-coded websites<br></br><mark>in 14 days</mark>",
-      "lead": "Сайты и Telegram-приложения для экспертов, онлайн-школ и малого бизнеса — от брифа до запуска за две недели.",
-      "primaryCta": "Рассчитать стоимость",
-      "secondaryCta": "Смотреть кейсы",
+      "lead": "Websites and Telegram apps for experts, online schools and small business — from brief to launch in two weeks.",
+      "primaryCta": "Get a quote",
+      "secondaryCta": "See our work",
       "stickers": {
-        "lighthouse": "Lighthouse<br></br>90+ в акте приемки",
-        "deadline": "Срок 14 дней —<br></br>в договоре",
-        "warranty": "30 дней гарантии после запуска"
+        "lighthouse": "Lighthouse<br></br>90+ in the handover report",
+        "deadline": "14 days —<br></br>written in the contract",
+        "warranty": "30-day warranty after launch"
       }
     },
     "swiss": {
-      "sectionMark": "01 — Студия",
+      "sectionMark": "01 — Studio",
       "title": "Custom-coded websites in 14 days.",
-      "lead": "Сайты и Telegram-приложения для бизнеса, которые проходят Lighthouse на 90+ и не разваливаются через год.",
-      "primaryCta": "Рассчитать стоимость",
-      "secondaryCta": "Смотреть кейсы"
+      "lead": "Websites and Telegram apps for business that score 90+ in Lighthouse and still hold up a year later.",
+      "primaryCta": "Get a quote",
+      "secondaryCta": "See our work"
     },
     "editorial": {
       "title": "Custom-coded websites in 14 days.",
-      "lead": "Мы делаем сайты и Telegram-приложения для бизнеса так, как их делают в продуктовых командах: на коде, с аналитикой и с обязательствами по срокам в договоре — но за две недели, а не за квартал.",
-      "primaryCta": "Рассчитать стоимость",
-      "secondaryCta": "Читать кейсы",
-      "quoteKicker": "Из договора",
-      "quote": "«Срок — четырнадцать дней. Критерий приемки — Lighthouse не ниже 90 по каждой из четырех метрик.»",
-      "refDeadline": "— Сроки",
-      "refQuality": "— Качество",
-      "refWarranty": "— Тридцать дней гарантии"
+      "lead": "We build websites and Telegram apps the way product teams do: custom code, analytics and deadlines written into the contract — but in two weeks, not a quarter.",
+      "primaryCta": "Get a quote",
+      "secondaryCta": "Read the case studies",
+      "quoteKicker": "From the contract",
+      "quote": "“The deadline is fourteen days. The acceptance criterion is Lighthouse no lower than 90 on each of the four metrics.”",
+      "refDeadline": "— Deadline",
+      "refQuality": "— Quality",
+      "refWarranty": "— Thirty days of warranty"
     }
   },
   "pricing": {
@@ -296,15 +296,15 @@
     }
   },
   "footer": {
-    "heading": "Обсудить проект",
-    "headingQuestion": "Обсудить проект?",
-    "invitation": "Расскажите о задаче — ответим в течение часа.",
-    "telegram": "Написать в Telegram",
-    "replyTime": "Отвечаем в течение часа в рабочее время",
+    "heading": "Start a project",
+    "headingQuestion": "Start a project?",
+    "invitation": "Tell us about your project — we reply within an hour.",
+    "telegram": "Message us on Telegram",
+    "replyTime": "We reply within an hour during working hours",
     "command": "open t.me/mrshkn",
-    "sectionMark": "04 — Контакт"
+    "sectionMark": "04 — Contact"
   },
   "switcher": {
-    "label": "Стиль"
+    "label": "Style"
   }
 }

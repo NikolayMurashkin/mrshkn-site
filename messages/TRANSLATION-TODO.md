@@ -20,15 +20,26 @@
 | `pricing.basicsNote`, `pricing.optionsNote`, `pricing.extrasNote` | подписи справа от заголовков трех блоков прайса                                                  |
 | `process.*`                                                       | таймлайн «как проходят две недели» и четыре обещания D4                                          |
 
-## Еще русские заглушки (ждут перевода)
+## Русских заглушек не осталось
 
-Ключи из B7, к которым Claude не возвращался: `controls.theme`, `nav.*`, `header.cta`,
-`header.kicker`, `header.location`, `header.founded`, `hero.*.lead`, `hero.*.primaryCta`,
-`hero.*.secondaryCta`, `hero.kinetic.badge`, `hero.kinetic.ticker.*`, `hero.terminal.logTitle`,
-`hero.terminal.day`, `hero.terminal.log.*`, `hero.terminal.status.active`, `hero.pop.stickers.*`,
-`hero.swiss.sectionMark`, `hero.editorial.quote*`, `switcher.label`, `footer.heading`,
-`footer.headingQuestion`, `footer.invitation`, `footer.telegram`, `footer.replyTime`,
-`footer.sectionMark`.
+20.09.2026 переведены последние 57 строк из B7 — шапка, пять hero, подвал, переключатели.
+Они тоже ждут вычитки:
+
+| Раздел                                                  | Что внутри и на что смотреть                                                                            |
+| ------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- |
+| `nav.*`, `header.*`, `controls.theme`, `switcher.label` | «Кейсы» → Work, «Обсудить проект» → Start a project, «Калининград → весь мир» → Kaliningrad → worldwide |
+| `hero.kinetic.*`                                        | лид, кнопки Get a quote / See our work, бегущая строка, текст кольцевого бейджа                         |
+| `hero.terminal.*`                                       | команды `./get-a-quote` и `./our-work`, строки `build.log`, `[day {day}]`, статус `active`              |
+| `hero.pop.*`                                            | лид и три стикера (перенос строки `<br></br>` сохранен)                                                 |
+| `hero.swiss.*`, `hero.editorial.*`                      | лиды, `01 — Studio`, цитата «из договора» и три подписи под ней                                         |
+| `footer.*`                                              | заголовок, приглашение, кнопка Telegram, время ответа, `04 — Contact`                                   |
+
+**Текст кольцевого бейджа Kinetic сокращен в обоих языках** (`hero.kinetic.badge`): было
+«LIGHTHOUSE 90+ · СРОК В ДОГОВОРЕ · 30 ДНЕЙ ГАРАНТИИ», стало «LIGHTHOUSE 90+ · 14 ДНЕЙ ·
+ГАРАНТИЯ 30 ДНЕЙ» / «LIGHTHOUSE 90+ · 14 DAYS · 30-DAY WARRANTY». Причина не в переводе: на кольцо
+помещается 528 пикселей текста, а прежняя русская строка занимала 713 — хвост «НЕЙ ГАРАНТИИ»
+обрезался, и этого никто не замечал. Кегль кольца заодно уменьшен с 15 до 14 пикселей, трекинг —
+с 0,18 до 0,14em.
 
 По-английски в `en.json` с самого начала: `meta.*`, `hero.subtitle` и `hero.*.title` — они собраны
 из утвержденной в бизнес-плане фразы «Custom-coded websites in 14 days. Fixed price, no templates,
