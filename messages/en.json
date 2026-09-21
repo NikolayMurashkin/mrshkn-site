@@ -12,7 +12,6 @@
   },
   "nav": {
     "services": "Services",
-    "cases": "Work",
     "prices": "Pricing",
     "process": "Process",
     "contacts": "Contact"
@@ -30,7 +29,7 @@
       "title": "Custom-coded websites<br></br><accent>in 14 days</accent>",
       "lead": "Websites and Telegram apps for business — from brief to launch in two weeks.",
       "primaryCta": "Get a quote",
-      "secondaryCta": "See our work",
+      "secondaryCta": "How we work",
       "badge": "LIGHTHOUSE 90+ · 14 DAYS · 30-DAY WARRANTY · ",
       "ticker": {
         "landing": "Landing pages",
@@ -46,7 +45,7 @@
       "title": "Custom-coded websites<br></br>in 14 days<accent>.</accent>",
       "lead": "Websites and Telegram apps for business — the source code is yours, the metrics are in the handover report.",
       "primaryCta": "./get-a-quote",
-      "secondaryCta": "./our-work",
+      "secondaryCta": "./how-we-work",
       "logTitle": "build.log — a typical project, 14 days",
       "day": "[day {day}]",
       "log": {
@@ -67,7 +66,7 @@
       "title": "Custom-coded websites<br></br><mark>in 14 days</mark>",
       "lead": "Websites and Telegram apps for experts, online schools and small business — from brief to launch in two weeks.",
       "primaryCta": "Get a quote",
-      "secondaryCta": "See our work",
+      "secondaryCta": "How we work",
       "stickers": {
         "lighthouse": "Lighthouse<br></br>90+ in the handover report",
         "deadline": "14 days —<br></br>written in the contract",
@@ -79,13 +78,13 @@
       "title": "Custom-coded websites in 14 days.",
       "lead": "Websites and Telegram apps for business that score 90+ in Lighthouse and still hold up a year later.",
       "primaryCta": "Get a quote",
-      "secondaryCta": "See our work"
+      "secondaryCta": "How we work"
     },
     "editorial": {
       "title": "Custom-coded websites in 14 days.",
       "lead": "We build websites and Telegram apps the way product teams do: custom code, analytics and deadlines written into the contract — but in two weeks, not a quarter.",
       "primaryCta": "Get a quote",
-      "secondaryCta": "Read the case studies",
+      "secondaryCta": "How we work",
       "quoteKicker": "From the contract",
       "quote": "“The deadline is fourteen days. The acceptance criterion is Lighthouse no lower than 90 on each of the four metrics.”",
       "refDeadline": "— Deadline",
@@ -299,12 +298,91 @@
     "heading": "Start a project",
     "headingQuestion": "Start a project?",
     "invitation": "Tell us about your project — we reply within an hour.",
-    "telegram": "Message us on Telegram",
+    "cta": "Send a request",
     "replyTime": "We reply within an hour during working hours",
-    "command": "open t.me/mrshkn",
+    "command": "open mrshkn.com/brief",
     "sectionMark": "04 — Contact"
   },
   "switcher": {
     "label": "Style"
+  },
+  "brief": {
+    "meta": {
+      "title": "Get a quote — MRSHKN",
+      "description": "Five short steps: what you need, your field, the style, timing and budget. We reply within an hour during working hours."
+    },
+    "title": "Get a quote",
+    "lead": "Five short steps, about two minutes. We reply within an hour during working hours.",
+    "step": "Step {current} of {total}",
+    "back": "Back",
+    "next": "Next",
+    "submit": "Send the request",
+    "sending": "Sending",
+    "error": "The request did not go through. Try again, or write to hello@mrshkn.com.",
+    "consent": "I agree to the processing of my personal data",
+    "honeypot": "Leave this field empty",
+    "steps": {
+      "product": {
+        "title": "What do you need built?",
+        "note": "Pick the closest one — we will pin down the details on the call."
+      },
+      "niche": {
+        "title": "What field are you in?",
+        "note": "The field shapes the structure, the examples and the blocks we suggest."
+      },
+      "design": {
+        "title": "Which style feels right?",
+        "note": "Not a final choice: on the call we will show options built around your project."
+      },
+      "scope": {
+        "title": "Timing and budget",
+        "note": "Honest limits save time on both sides.",
+        "timing": "When do you need it live",
+        "budget": "What budget do you have in mind"
+      },
+      "contacts": {
+        "title": "Where should we send the quote?",
+        "note": "We reply within an hour during working hours.",
+        "name": "What should we call you",
+        "contact": "Phone, Telegram or email",
+        "comment": "Anything we should know (optional)"
+      }
+    },
+    "products": {
+      "other": "Not sure yet"
+    },
+    "niches": {
+      "clinic": "Clinic, dental or aesthetics",
+      "expert": "Expert: therapist, coach, lawyer, tutor",
+      "horeca": "Cafe, bar or beauty salon",
+      "startup": "Startup or software product",
+      "other": "Something else"
+    },
+    "designs": {
+      "any": "I trust the studio"
+    },
+    "timings": {
+      "asap": "As soon as possible",
+      "twoWeeks": "Two weeks works",
+      "month": "Within a month",
+      "noRush": "No rush"
+    },
+    "budgets": {
+      "upTo100": "Up to $2,500",
+      "to250": "$2,500 – $5,000",
+      "to500": "$5,000 – $10,000",
+      "over500": "Over $10,000",
+      "unknown": "Not decided yet"
+    }
+  },
+  "briefThanks": {
+    "meta": {
+      "title": "Request sent — MRSHKN",
+      "description": "Your request is with MRSHKN. We reply within an hour during working hours."
+    },
+    "title": "We have your request",
+    "text": "We reply within an hour during working hours, on the channel you left us.",
+    "note": "If you do not hear back, write to hello@mrshkn.com.",
+    "back": "Back to the homepage"
   }
 }

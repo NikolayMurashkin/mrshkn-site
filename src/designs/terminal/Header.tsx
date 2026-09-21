@@ -1,12 +1,15 @@
-import { useTranslations } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
 import { MoonIcon } from '@/components/icons';
 import { LocaleSwitcher } from '@/components/LocaleSwitcher';
 import { ThemeToggle } from '@/components/ThemeToggle';
 import { NAV_ITEMS } from '../consts';
+import { Link } from '@/i18n/navigation';
+import { BRIEF_HREF } from '@/lib/brief/consts';
 import styles from './Header.module.scss';
 
 export const TerminalHeader = () => {
   const t = useTranslations();
+  const locale = useLocale();
 
   return (
     <header className={styles.header}>
@@ -24,7 +27,7 @@ export const TerminalHeader = () => {
         {NAV_ITEMS.map((item) => (
           <a
             key={item}
-            href="#"
+            href={`/${locale}#${item}`}
           >
             {t(`nav.${item}`)}
           </a>
@@ -43,12 +46,12 @@ export const TerminalHeader = () => {
           <span className={styles.dot} />
           {t('header.status')}
         </span>
-        <a
+        <Link
           className={styles.cta}
-          href="#"
+          href={BRIEF_HREF}
         >
           {t('header.cta')}
-        </a>
+        </Link>
       </div>
     </header>
   );

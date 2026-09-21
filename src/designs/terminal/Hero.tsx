@@ -1,5 +1,7 @@
 import { useTranslations } from 'next-intl';
 import { TERMINAL_LOG_LINES } from './consts';
+import { Link } from '@/i18n/navigation';
+import { BRIEF_HREF } from '@/lib/brief/consts';
 import styles from './Hero.module.scss';
 
 export const TerminalHero = () => {
@@ -25,15 +27,15 @@ export const TerminalHero = () => {
           {t('subtitle')} {t('terminal.lead')}
         </p>
         <div className={styles.actions}>
-          <a
+          <Link
             className={`${styles.button} ${styles.buttonPrimary}`}
-            href="#"
+            href={BRIEF_HREF}
           >
             {t('terminal.primaryCta')}
-          </a>
+          </Link>
           <a
             className={styles.button}
-            href="#"
+            href="#process"
           >
             {t('terminal.secondaryCta')}
           </a>

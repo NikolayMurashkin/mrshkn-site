@@ -12,6 +12,7 @@ export const SwissPricing = () => {
   return (
     <section
       className={styles.pricing}
+      id="services"
       data-testid="pricing"
       aria-labelledby="pricing-heading"
     >
@@ -35,7 +36,10 @@ export const SwissPricing = () => {
           <span className={styles.columnPrice}>{t('columns.price')}</span>
         </div>
 
-        <ul className={styles.plans}>
+        <ul
+          className={styles.plans}
+          id="prices"
+        >
           {PRICING_PLANS.map((plan, index) => (
             <li
               className={styles.plan}

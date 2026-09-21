@@ -1,5 +1,7 @@
 import { useTranslations } from 'next-intl';
 import { KINETIC_TICKER_ITEMS } from './consts';
+import { Link } from '@/i18n/navigation';
+import { BRIEF_HREF } from '@/lib/brief/consts';
 import styles from './Hero.module.scss';
 
 const TICKER_LOOP = [...KINETIC_TICKER_ITEMS, ...KINETIC_TICKER_ITEMS];
@@ -23,9 +25,9 @@ export const KineticHero = () => {
               <p className={styles.subtitle}>{t('kinetic.lead')}</p>
             </div>
             <div className={styles.actions}>
-              <a
+              <Link
                 className={`${styles.button} ${styles.buttonPrimary}`}
-                href="#"
+                href={BRIEF_HREF}
               >
                 {t('kinetic.primaryCta')}
                 <svg
@@ -41,10 +43,10 @@ export const KineticHero = () => {
                 >
                   <path d="M5 12h14M13 6l6 6-6 6" />
                 </svg>
-              </a>
+              </Link>
               <a
                 className={styles.button}
-                href="#"
+                href="#process"
               >
                 {t('kinetic.secondaryCta')}
               </a>

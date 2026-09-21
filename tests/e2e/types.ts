@@ -23,9 +23,17 @@ export type DesignShape = {
 /** Имя направления, как оно лежит в cookie `design` и атрибуте `data-design`. */
 export type DesignName = (typeof DESIGNS)[number];
 
+/** Запись приемника заявок: в какой канал ушла заявка и что в этом канале оказалось. */
+export type SinkCall = {
+  channel: 'telegram' | 'bitrix' | 'mail';
+  body: string;
+};
+
 /** Что переопределяет тест при открытии направления: тема, язык и размер окна. */
 export type OpenDesignOptions = {
   theme?: string;
   locale?: string;
   viewport?: { width: number; height: number };
+  /** Адрес внутри локали: пусто — главная, `/brief` — квиз. Шапка и подвал живут на каждой странице. */
+  path?: string;
 };

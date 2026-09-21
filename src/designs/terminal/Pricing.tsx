@@ -12,6 +12,7 @@ export const TerminalPricing = () => {
   return (
     <section
       className={styles.pricing}
+      id="services"
       data-testid="pricing"
       aria-labelledby="pricing-heading"
     >
@@ -27,7 +28,10 @@ export const TerminalPricing = () => {
         </p>
       </div>
 
-      <table className={styles.table}>
+      <table
+        className={styles.table}
+        id="prices"
+      >
         <thead>
           <tr>
             <th

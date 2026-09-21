@@ -1,5 +1,7 @@
 import { useTranslations } from 'next-intl';
 import { POP_STICKERS } from './consts';
+import { Link } from '@/i18n/navigation';
+import { BRIEF_HREF } from '@/lib/brief/consts';
 import styles from './Hero.module.scss';
 
 const STICKER_CLASSES: Record<(typeof POP_STICKERS)[number], string> = {
@@ -24,9 +26,9 @@ export const PopHero = () => {
           {t('subtitle')} {t('pop.lead')}
         </p>
         <div className={styles.actions}>
-          <a
+          <Link
             className={`${styles.button} ${styles.buttonPrimary}`}
-            href="#"
+            href={BRIEF_HREF}
           >
             {t('pop.primaryCta')}
             <svg
@@ -42,10 +44,10 @@ export const PopHero = () => {
             >
               <path d="M5 12h14M13 6l6 6-6 6" />
             </svg>
-          </a>
+          </Link>
           <a
             className={styles.button}
-            href="#"
+            href="#process"
           >
             {t('pop.secondaryCta')}
           </a>

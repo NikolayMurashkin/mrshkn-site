@@ -28,4 +28,4 @@ export const DESIGN_DEFAULT_THEME: Record<DesignName, Theme> = {
   editorial: 'light',
 };
 
-export const NAV_ITEMS = ['services', 'cases', 'prices', 'contacts'] as const;
+export const NAV_ITEMS = ['services', 'prices', 'contacts'] as const;

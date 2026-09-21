@@ -2,9 +2,9 @@ import type { Page } from '@playwright/test';
 import { DESIGN_COOKIE, PREVIEW_BASE_URL, THEME_STORAGE_KEY, VIEWPORT } from './consts';
 import type { OpenDesignOptions } from './types';
 
-/** Открывает главную в заданном направлении: cookie ставится до перехода, тема — до скриптов страницы. */
+/** Открывает страницу в заданном направлении: cookie ставится до перехода, тема — до скриптов страницы. */
 export const openDesign = async (page: Page, design: string, options: OpenDesignOptions = {}) => {
-  const { theme = 'dark', locale = 'ru', viewport = VIEWPORT } = options;
+  const { theme = 'dark', locale = 'ru', viewport = VIEWPORT, path = '' } = options;
 
   await page.setViewportSize(viewport);
   await page.context().addCookies([{ name: DESIGN_COOKIE, value: design, url: PREVIEW_BASE_URL }]);
@@ -12,6 +12,6 @@ export const openDesign = async (page: Page, design: string, options: OpenDesign
     THEME_STORAGE_KEY,
     theme,
   ] as const);
-  await page.goto(`/${locale}`);
+  await page.goto(`/${locale}${path}`);
   await page.evaluate(() => document.fonts.ready);
 };

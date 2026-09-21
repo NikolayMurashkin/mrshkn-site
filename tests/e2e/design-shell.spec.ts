@@ -8,51 +8,51 @@ const SHAPES: Record<(typeof DESIGNS)[number], DesignShape> = {
   kinetic: {
     displayFont: /Unbounded/,
     textFont: /Golos/,
-    navLinks: 4,
+    navLinks: 3,
     headerCta: 'Обсудить проект',
     heroTitle: /Сайт\sна\sкоде\s*за\s14\sдней/,
     heroTitleFont: /Unbounded/,
-    heroCtas: ['Рассчитать стоимость', 'Смотреть кейсы'],
+    heroCtas: ['Рассчитать стоимость', 'Как мы работаем'],
     heroMark: 'LIGHTHOUSE 90+',
   },
   terminal: {
     displayFont: /JetBrains Mono/,
     textFont: /IBM Plex Sans/,
-    navLinks: 4,
+    navLinks: 3,
     headerCta: 'Обсудить проект',
     heroTitle: /Сайт\sна\sкоде\s*за\s14\sдней\./,
     heroTitleFont: /IBM Plex Sans/,
-    heroCtas: ['./рассчитать-стоимость', './кейсы'],
+    heroCtas: ['./рассчитать-стоимость', './как-мы-работаем'],
     heroMark: 'build.log',
   },
   pop: {
     displayFont: /Rubik/,
     textFont: /Rubik/,
-    navLinks: 4,
+    navLinks: 3,
     headerCta: 'Обсудить проект',
     heroTitle: /Сайт\sна\sкоде\s*за\s14\sдней/,
     heroTitleFont: /Rubik/,
-    heroCtas: ['Рассчитать стоимость', 'Смотреть кейсы'],
+    heroCtas: ['Рассчитать стоимость', 'Как мы работаем'],
     heroMark: 'в акте приемки',
   },
   swiss: {
     displayFont: /Geologica/,
     textFont: /Geologica/,
-    navLinks: 4,
+    navLinks: 3,
     headerCta: null,
     heroTitle: /Сайт\sна\sкоде\sза\s14\sдней\./,
     heroTitleFont: /Geologica/,
-    heroCtas: ['Рассчитать стоимость', 'Смотреть кейсы'],
+    heroCtas: ['Рассчитать стоимость', 'Как мы работаем'],
     heroMark: '01 — Студия',
   },
   editorial: {
     displayFont: /Prata/,
     textFont: /Onest/,
-    navLinks: 5,
+    navLinks: 4,
     headerCta: null,
     heroTitle: /Сайт\sна\sкоде\sза\sдве\sнедели\./,
     heroTitleFont: /Prata/,
-    heroCtas: ['Рассчитать стоимость', 'Читать кейсы'],
+    heroCtas: ['Рассчитать стоимость', 'Как мы работаем'],
     heroMark: 'Из договора',
   },
 };
@@ -97,7 +97,7 @@ test.describe('каркас направлений', () => {
       await expect(header.getByTestId('theme-toggle')).toBeVisible();
       await expect(header.getByRole('link', { name: 'Обсудить проект' })).toHaveCount(shape.headerCta ? 1 : 0);
 
-      await expect(footer.getByRole('link', { name: /Telegram/ })).toBeVisible();
+      await expect(footer.getByRole('link', { name: 'Оставить заявку' })).toBeVisible();
     });
 
     test(`${design}: шрифты направления применены`, async ({ page }) => {

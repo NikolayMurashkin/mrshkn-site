@@ -1,4 +1,4 @@
-import { useTranslations } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
 import { SunIcon } from '@/components/icons';
 import { LocaleSwitcher } from '@/components/LocaleSwitcher';
 import { ThemeToggle } from '@/components/ThemeToggle';
@@ -7,6 +7,7 @@ import styles from './Header.module.scss';
 
 export const SwissHeader = () => {
   const t = useTranslations();
+  const locale = useLocale();
 
   return (
     <header className={styles.header}>
@@ -21,7 +22,7 @@ export const SwissHeader = () => {
         {NAV_ITEMS.map((item) => (
           <a
             key={item}
-            href="#"
+            href={`/${locale}#${item}`}
           >
             {t(`nav.${item}`)}
           </a>

@@ -12,6 +12,7 @@ export const EditorialPricing = () => {
   return (
     <section
       className={styles.pricing}
+      id="services"
       data-testid="pricing"
       aria-labelledby="pricing-heading"
     >
@@ -25,7 +26,10 @@ export const EditorialPricing = () => {
         <span className={styles.note}>{t('note')}</span>
       </div>
 
-      <ul className={styles.plans}>
+      <ul
+        className={styles.plans}
+        id="prices"
+      >
         {PRICING_PLANS.map((plan) => (
           <li
             className={styles.plan}

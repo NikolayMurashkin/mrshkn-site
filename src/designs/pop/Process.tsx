@@ -9,6 +9,7 @@ export const PopProcess = () => {
     <section
       className={styles.process}
       data-testid="process"
+      id="process"
       aria-labelledby="process-heading"
     >
       <div className={styles.head}>

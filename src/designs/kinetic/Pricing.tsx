@@ -12,6 +12,7 @@ export const KineticPricing = () => {
   return (
     <section
       className={styles.pricing}
+      id="services"
       data-testid="pricing"
       aria-labelledby="pricing-heading"
     >
@@ -25,7 +26,10 @@ export const KineticPricing = () => {
         <p className={styles.note}>{t('note')}</p>
       </div>
 
-      <ul className={styles.plans}>
+      <ul
+        className={styles.plans}
+        id="prices"
+      >
         {PRICING_PLANS.map((plan, index) => (
           <li
             className={styles.plan}

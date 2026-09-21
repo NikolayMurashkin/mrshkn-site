@@ -1,1 +1,1 @@
-export const EDITORIAL_NAV_ITEMS = ['services', 'cases', 'prices', 'process', 'contacts'] as const;
+export const EDITORIAL_NAV_ITEMS = ['services', 'prices', 'process', 'contacts'] as const;

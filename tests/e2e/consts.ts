@@ -4,6 +4,11 @@ export const PRODUCTION_PORT = 3101;
 export const PREVIEW_BASE_URL = `http://127.0.0.1:${PREVIEW_PORT}`;
 export const PRODUCTION_BASE_URL = `http://127.0.0.1:${PRODUCTION_PORT}`;
 
+export const SINK_HTTP_PORT = 3103;
+export const SINK_SMTP_PORT = 3104;
+
+export const SINK_BASE_URL = `http://127.0.0.1:${SINK_HTTP_PORT}`;
+
 export const LOCALES = ['ru', 'en'] as const;
 
 export const NOINDEX_CONTENT = 'noindex, nofollow';

@@ -1,12 +1,15 @@
-import { useTranslations } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
 import { MoonIcon } from '@/components/icons';
 import { LocaleSwitcher } from '@/components/LocaleSwitcher';
 import { ThemeToggle } from '@/components/ThemeToggle';
 import { NAV_ITEMS } from '../consts';
+import { Link } from '@/i18n/navigation';
+import { BRIEF_HREF } from '@/lib/brief/consts';
 import styles from './Header.module.scss';
 
 export const KineticHeader = () => {
   const t = useTranslations();
+  const locale = useLocale();
 
   return (
     <header className={styles.header}>
@@ -23,7 +26,7 @@ export const KineticHeader = () => {
         {NAV_ITEMS.map((item) => (
           <a
             key={item}
-            href="#"
+            href={`/${locale}#${item}`}
           >
             {t(`nav.${item}`)}
           </a>
@@ -38,12 +41,12 @@ export const KineticHeader = () => {
         <ThemeToggle className={styles.theme}>
           <MoonIcon size={22} />
         </ThemeToggle>
-        <a
+        <Link
           className={styles.cta}
-          href="#"
+          href={BRIEF_HREF}
         >
           {t('header.cta')}
-        </a>
+        </Link>
       </div>
     </header>
   );
