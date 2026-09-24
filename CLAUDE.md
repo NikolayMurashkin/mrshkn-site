@@ -221,8 +221,16 @@ TBT 430–540 мс против 95–160 у всех следующих (хол�
 
 ## Деплой
 
-`main` → превью Vercel (`SITE_ENV=preview`, noindex). Боевой mrshkn.com живет на VPS с Coolify,
-туда сайт переезжает отдельным блоком роадмапа. Секреты — только в секретах хостинга.
+`main` уезжает в два места: на превью Vercel (`mrshkn-site.vercel.app`) и на закрытый стенд Coolify
+(`stage.mrshkn.com`, basic-auth). У обоих `SITE_ENV=preview`, то есть noindex. Боевой mrshkn.com
+включается отдельным блоком роадмапа. Секреты — только в секретах хостинга.
+
+Coolify собирает сайт по `Dockerfile` в корне: `output: 'standalone'` в `next.config.ts`, образ
+запускает `node server.js` на порту 3000 без полного `node_modules`. `SITE_ENV` и `NEXT_PUBLIC_SITE_URL`
+нужны и при сборке (адрес вшивается в клиентский код), и при работе; остальные переменные — только
+при работе. Проверить образ локально: `docker build --build-arg NEXT_PUBLIC_SITE_URL=http://localhost:3210
+-t mrshkn-site:local .`, затем `docker run --rm -p 3210:3000 mrshkn-site:local`. `next start`, на котором
+работают тесты, от `standalone` не меняется.
 
 <!-- BEGIN:nextjs-agent-rules -->
 
