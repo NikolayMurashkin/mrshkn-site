@@ -232,6 +232,14 @@ Coolify собирает сайт по `Dockerfile` в корне: `output: 'sta
 -t mrshkn-site:local .`, затем `docker run --rm -p 3210:3000 mrshkn-site:local`. `next start`, на котором
 работают тесты, от `standalone` не меняется.
 
+В Coolify (`https://coolify.mrshkn.com`) сайт живет в проекте `mrshkn-site`, окружение `stage`: пуш в `main`
+приходит вебхуком GitHub App `mrshkn-coolify` и сам запускает сборку на сервере, контейнер меняется только
+после того, как новый поднялся. Переменные заданы в Coolify: `SITE_ENV=preview` и `NEXT_PUBLIC_SITE_URL`
+отмечены и для сборки, и для работы, `DATABASE_URI` (Postgres `site-postgres` в том же окружении, внутренний
+адрес) — только для работы. Адрес закрыт basic-auth Coolify, сертификат — общий wildcard `*.mrshkn.com`;
+свой сертификат приложению заводить нельзя: имя попало бы в журнал Certificate Transparency.
+Порядок работы с сервером — `../docs/ops/vps-setup.md` и `../docs/ops/coolify.md`.
+
 <!-- BEGIN:nextjs-agent-rules -->
 
 # This is NOT the Next.js you know
