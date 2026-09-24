@@ -31,7 +31,8 @@ yarn dev            # http://localhost:3000 → редирект на /ru или
 
 `SITE_ENV` управляет индексацией и задается на хостинге:
 
-- `preview` (значение по умолчанию) — превью Vercel и PR-сборки, каждая страница отдает
+- `preview` (значение по умолчанию) — превью Vercel, PR-сборки и закрытый стенд `stage.mrshkn.com`
+  на Coolify, каждая страница отдает
   `<meta name="robots" content="noindex, nofollow">`;
 - `production` — боевой mrshkn.com, запрета индексации нет.
 

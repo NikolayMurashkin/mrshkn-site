@@ -229,12 +229,16 @@ Coolify собирает сайт по `Dockerfile` в корне: `output: 'sta
 запускает `node server.js` на порту 3000 без полного `node_modules`. `SITE_ENV` и `NEXT_PUBLIC_SITE_URL`
 нужны и при сборке (адрес вшивается в клиентский код), и при работе; остальные переменные — только
 при работе. Проверить образ локально: `docker build --build-arg NEXT_PUBLIC_SITE_URL=http://localhost:3210
--t mrshkn-site:local .`, затем `docker run --rm -p 3210:3000 mrshkn-site:local`. `next start`, на котором
-работают тесты, от `standalone` не меняется.
+-t mrshkn-site:local .`, затем `docker run --rm -p 3210:3000 mrshkn-site:local`. Тесты и Lighthouse CI
+поднимают сайт через `next start`, и Next пишет в их лог `"next start" does not work with "output: standalone"`:
+предупреждение безвредно, сервер работает, но это значит, что сьют проверяет `next start`, а не `node server.js`
+из образа. Разницу между ними тесты не видят — правку `Dockerfile` или `next.config.ts` проверять сборкой
+и запуском образа руками.
 
 В Coolify (`https://coolify.mrshkn.com`) сайт живет в проекте `mrshkn-site`, окружение `stage`: пуш в `main`
-приходит вебхуком GitHub App `mrshkn-coolify` и сам запускает сборку на сервере, контейнер меняется только
-после того, как новый поднялся. Переменные заданы в Coolify: `SITE_ENV=preview` и `NEXT_PUBLIC_SITE_URL`
+приходит вебхуком GitHub App `mrshkn-coolify` и сам запускает сборку на сервере (около минуты), затем Coolify
+запускает новый контейнер и сразу снимает старый. Проверка здоровья у приложения выключена, поэтому
+готовности нового контейнера Coolify не ждет, и на несколько секунд адрес может отдать 502. Переменные заданы в Coolify: `SITE_ENV=preview` и `NEXT_PUBLIC_SITE_URL`
 отмечены и для сборки, и для работы, `DATABASE_URI` (Postgres `site-postgres` в том же окружении, внутренний
 адрес) — только для работы. Адрес закрыт basic-auth Coolify, сертификат — общий wildcard `*.mrshkn.com`;
 свой сертификат приложению заводить нельзя: имя попало бы в журнал Certificate Transparency.
