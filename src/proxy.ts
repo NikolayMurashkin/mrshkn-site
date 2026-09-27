@@ -36,5 +36,5 @@ export default proxy;
 
 /** Админка и REST Payload живут без префикса языка: `/admin` не должен уезжать на `/ru/admin`. */
 export const config = {
-  matcher: '/((?!api|admin|_next|_vercel|.*\\..*).*)',
+  matcher: '/((?!api|admin|_next|.*\\..*).*)',
 };

@@ -3,7 +3,7 @@
 Next.js 16 + TypeScript + SCSS-модули, next-intl (ru/en), next-themes, Payload CMS 3 на Postgres (админка `/admin`).
 Решения по студии — в `../PLAN.md`, порядок работ — в `../ROADMAP.md`.
 
-Превью: <https://mrshkn-site.vercel.app> — закрыто от индексации, боевой адрес будет mrshkn.com.
+Превью — закрытый стенд <https://stage.mrshkn.com> на Coolify (basic-auth, noindex), боевой адрес будет mrshkn.com.
 
 ## Запуск
 
@@ -36,10 +36,10 @@ yarn dev              # http://localhost:3000 → редирект на /ru ил
 
 `SITE_ENV` управляет индексацией и задается на хостинге:
 
-- `preview` (значение по умолчанию) — превью Vercel, PR-сборки и закрытый стенд `stage.mrshkn.com`
-  на Coolify, каждая страница отдает
+- `preview` (значение по умолчанию) — закрытый стенд `stage.mrshkn.com` на Coolify и локальные сборки,
+  каждая страница отдает
   `<meta name="robots" content="noindex, nofollow">`;
 - `production` — боевой mrshkn.com, запрета индексации нет.
 
 Остальные переменные — в `.env.example`. Секретов в репозитории нет и не будет:
-они живут в секретах Vercel и Coolify.
+они живут в секретах Coolify.

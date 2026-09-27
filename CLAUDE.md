@@ -196,7 +196,7 @@ Payload 3 живет в том же приложении: админка `/admin
 Postgres 18 из `docker-compose.yml` на `127.0.0.1:5434` (как `site-postgres` на сервере; порт не 5432 и
 не 5433 — там базы других проектов), две базы: `site` для разработки и `site_test` для интеграционных тестов.
 Переменные — `DATABASE_URI` и `PAYLOAD_SECRET` в `.env`, образец — `.env.example`. Сборке база не нужна:
-админка и REST рендерятся на запрос, поэтому CI и Vercel собирают без нее.
+админка и REST рендерятся на запрос, поэтому CI собирает без нее.
 
 Коллекции (`src/cms/collections/`): `cases` (название, адрес, демо или клиент, ниша из справочника
 квиза, направление, ссылка на демо), `posts` (черновики и публикация, текст в lexical), `team`
@@ -298,9 +298,9 @@ TBT 430–540 мс против 95–160 у всех следующих (хол�
 
 ## Деплой
 
-`main` уезжает в два места: на превью Vercel (`mrshkn-site.vercel.app`) и на закрытый стенд Coolify
-(`stage.mrshkn.com`, basic-auth). У обоих `SITE_ENV=preview`, то есть noindex. Боевой mrshkn.com
-включается отдельным блоком роадмапа. Секреты — только в секретах хостинга.
+`main` уезжает на закрытый стенд Coolify (`stage.mrshkn.com`, basic-auth) с `SITE_ENV=preview`, то есть
+noindex. Других превью нет, у pull request'ов своих адресов тоже нет. Боевой mrshkn.com включается отдельным
+блоком роадмапа — своим приложением в Coolify со своей базой. Секреты — только в секретах хостинга.
 
 Coolify собирает сайт по `Dockerfile` в корне: `output: 'standalone'` в `next.config.ts`, образ
 запускает `node server.js` на порту 3000 без полного `node_modules`. `SITE_ENV` и `NEXT_PUBLIC_SITE_URL`
@@ -319,8 +319,7 @@ Coolify собирает сайт по `Dockerfile` в корне: `output: 'sta
 отмечены и для сборки, и для работы, `DATABASE_URI` (Postgres `site-postgres` в том же окружении, внутренний
 адрес) и `PAYLOAD_SECRET` — только для работы. Медиатека Payload живет в томе на `/app/media`: без тома
 картинки пропадут при следующем деплое. Образ накатывает миграции при старте (`MIGRATE_ON_START=true`
-в `Dockerfile`). На превью Vercel базы нет, поэтому `/admin` там отвечает ошибкой; страницы, которые
-начнут читать CMS, на Vercel без базы не заработают. Адрес закрыт basic-auth Coolify, сертификат — общий wildcard `*.mrshkn.com`;
+в `Dockerfile`). Адрес закрыт basic-auth Coolify, сертификат — общий wildcard `*.mrshkn.com`;
 свой сертификат приложению заводить нельзя: имя попало бы в журнал Certificate Transparency.
 Порядок работы с сервером — `../docs/ops/vps-setup.md` и `../docs/ops/coolify.md`.
 

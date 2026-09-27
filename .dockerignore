@@ -1,6 +1,5 @@
 .git
 .github
-.vercel
 .next
 .next-*
 .lighthouseci
