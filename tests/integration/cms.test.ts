@@ -163,6 +163,31 @@ describe('посты', () => {
   });
 });
 
+describe('адрес записи', () => {
+  it('пустой адрес заполняется из заголовка, а набранный руками приводится к латинице', async () => {
+    const fromTitle = await payload.create({
+      collection: 'posts',
+      data: { title: 'Как мы делаем сайты за 14 дней' } as RequiredDataFromCollectionSlug<'posts'>,
+    });
+    const typed = await payload.create({
+      collection: 'posts',
+      data: { title: 'Второй пост', slug: 'Мой Пост!' },
+    });
+
+    expect(fromTitle.slug).toBe('kak-my-delaem-sayty-za-14-dney');
+    expect(typed.slug).toBe('moy-post');
+  });
+
+  it('адрес, из которого не выходит ни одной буквы, не сохраняется', async () => {
+    await expect(
+      payload.create({
+        collection: 'cases',
+        data: { title: '---', slug: '---', kind: 'demo', niche: 'clinic', design: 'swiss' },
+      }),
+    ).rejects.toMatchObject({ data: { errors: [expect.objectContaining({ path: 'slug' })] } });
+  });
+});
+
 describe('медиатека', () => {
   it('картинка режется на размеры в webp и не растягивается', async () => {
     const data = await sharp({ create: { width: 2400, height: 1500, channels: 3, background: '#d94f14' } })

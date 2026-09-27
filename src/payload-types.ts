@@ -206,6 +206,9 @@ export interface Media {
 export interface Case {
   id: number;
   title: string;
+  /**
+   * Заполнится из заголовка, если оставить пустым. Кириллица станет латиницей.
+   */
   slug: string;
   kind: 'demo' | 'client';
   niche: 'clinic' | 'expert' | 'horeca' | 'startup' | 'other';
@@ -221,6 +224,9 @@ export interface Case {
 export interface Post {
   id: number;
   title: string;
+  /**
+   * Заполнится из заголовка, если оставить пустым. Кириллица станет латиницей.
+   */
   slug: string;
   excerpt?: string | null;
   body?: {

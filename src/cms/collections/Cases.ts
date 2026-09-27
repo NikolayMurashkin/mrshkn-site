@@ -2,7 +2,7 @@ import type { CollectionConfig } from 'payload';
 import { CONTENT_ACCESS } from '../access';
 import { DESIGN_LABELS, DESIGN_NAMES } from '../../designs/consts';
 import { CASE_KIND_LABELS, CASE_KINDS, CASE_NICHES } from '../consts';
-import { validateSlug } from '../validate';
+import { fillSlug, SLUG_ADMIN, validateSlug } from '../slug';
 
 export const Cases: CollectionConfig = {
   slug: 'cases',
@@ -11,7 +11,17 @@ export const Cases: CollectionConfig = {
   access: CONTENT_ACCESS,
   fields: [
     { name: 'title', type: 'text', label: 'Название', required: true, localized: true },
-    { name: 'slug', type: 'text', label: 'Адрес', required: true, unique: true, index: true, validate: validateSlug },
+    {
+      name: 'slug',
+      type: 'text',
+      label: 'Адрес',
+      required: true,
+      unique: true,
+      index: true,
+      admin: SLUG_ADMIN,
+      hooks: { beforeValidate: [fillSlug] },
+      validate: validateSlug,
+    },
     {
       name: 'kind',
       type: 'select',

@@ -34,6 +34,43 @@ export const MEDIA_FORMAT = { format: 'webp', options: { quality: 80 } } as cons
 
 export const SLUG_PATTERN = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
 
+/** Транслит для адресов: заголовок «Как мы работаем» дает `kak-my-rabotaem`. */
+export const SLUG_TRANSLIT: Record<string, string> = {
+  а: 'a',
+  б: 'b',
+  в: 'v',
+  г: 'g',
+  д: 'd',
+  е: 'e',
+  ё: 'e',
+  ж: 'zh',
+  з: 'z',
+  и: 'i',
+  й: 'y',
+  к: 'k',
+  л: 'l',
+  м: 'm',
+  н: 'n',
+  о: 'o',
+  п: 'p',
+  р: 'r',
+  с: 's',
+  т: 't',
+  у: 'u',
+  ф: 'f',
+  х: 'kh',
+  ц: 'ts',
+  ч: 'ch',
+  ш: 'sh',
+  щ: 'shch',
+  ъ: '',
+  ы: 'y',
+  ь: '',
+  э: 'e',
+  ю: 'yu',
+  я: 'ya',
+};
+
 export const CASE_KINDS = ['demo', 'client'] as const;
 
 export const CASE_KIND_LABELS: Record<(typeof CASE_KINDS)[number], string> = {
