@@ -12,6 +12,13 @@ describe('прокси языков', () => {
     },
   );
 
+  it.each(['/_next/image', '/_next/static/chunks/main.js', '/robots.txt', '/sitemap.xml', '/favicon.ico'])(
+    '%s не уходит под префикс языка — это служебный путь Next или файл',
+    (pathname) => {
+      expect(matches(pathname)).toBe(false);
+    },
+  );
+
   it.each(['/', '/ru', '/en/brief', '/ru/brief/thanks'])('%s проходит через прокси', (pathname) => {
     expect(matches(pathname)).toBe(true);
   });
