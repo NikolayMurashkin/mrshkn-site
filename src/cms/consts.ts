@@ -15,7 +15,7 @@ export const ROLE_LABELS: Record<Role, string> = {
  * от рабочего каталога процесса — корня репозитория локально и `/app` в образе. Это данные CMS, а не исходники,
  * поэтому каталог в git не попадает.
  */
-export const DEFAULT_MEDIA_DIR = 'media';
+const DEFAULT_MEDIA_DIR = 'media';
 
 /** Интеграционные тесты работают со своей медиатекой во временном каталоге. */
 export const MEDIA_DIR = process.env.MEDIA_DIR ?? DEFAULT_MEDIA_DIR;
@@ -33,6 +33,10 @@ export const MEDIA_SIZES = [
 export const MEDIA_FORMAT = { format: 'webp', options: { quality: 80 } } as const;
 
 export const SLUG_PATTERN = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
+
+export const SLUG_ADMIN = {
+  description: 'Заполнится из заголовка, если оставить пустым. Кириллица станет латиницей.',
+};
 
 /** Транслит для адресов: заголовок «Как мы работаем» дает `kak-my-rabotaem`. */
 export const SLUG_TRANSLIT: Record<string, string> = {

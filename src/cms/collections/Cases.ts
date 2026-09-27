@@ -1,8 +1,8 @@
 import type { CollectionConfig } from 'payload';
 import { CONTENT_ACCESS } from '../access';
 import { DESIGN_LABELS, DESIGN_NAMES } from '../../designs/consts';
-import { CASE_KIND_LABELS, CASE_KINDS, CASE_NICHES } from '../consts';
-import { fillSlug, SLUG_ADMIN, validateSlug } from '../slug';
+import { CASE_KIND_LABELS, CASE_KINDS, CASE_NICHES, SLUG_ADMIN } from '../consts';
+import { fillSlug, validateSlug } from '../slug';
 
 export const Cases: CollectionConfig = {
   slug: 'cases',

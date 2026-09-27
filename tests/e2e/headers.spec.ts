@@ -2,7 +2,7 @@ import { expect, test } from '@playwright/test';
 import { LOCALES, PRODUCTION_BASE_URL } from './consts';
 
 /**
- * `withPayload` вешает на все адреса `Critical-CH: Sec-CH-Prefers-Color-Scheme` — подсказку нужна только админке.
+ * `withPayload` вешает на все адреса `Critical-CH: Sec-CH-Prefers-Color-Scheme` — подсказка нужна только админке.
  * На странице сайта Chrome при первом визите из-за нее повторяет запрос документа: лишний круг до сервера до LCP.
  */
 const CLIENT_HINT_HEADERS = ['critical-ch', 'accept-ch'];

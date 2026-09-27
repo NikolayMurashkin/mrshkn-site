@@ -1,6 +1,7 @@
 import type { CollectionConfig } from 'payload';
 import { isSignedIn, publishedOrSignedIn } from '../access';
-import { fillSlug, SLUG_ADMIN, validateSlug } from '../slug';
+import { SLUG_ADMIN } from '../consts';
+import { fillSlug, validateSlug } from '../slug';
 
 export const Posts: CollectionConfig = {
   slug: 'posts',

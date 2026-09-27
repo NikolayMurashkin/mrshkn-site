@@ -1,5 +1,6 @@
 import type { FieldHook, TextFieldSingleValidation, TypeWithID } from 'payload';
 import { SLUG_PATTERN, SLUG_TRANSLIT } from './consts';
+import type { SlugSource } from './types';
 
 export const toSlug = (value: string) =>
   [...value.toLowerCase()]
@@ -7,8 +8,6 @@ export const toSlug = (value: string) =>
     .join('')
     .replace(/[^a-z0-9]+/g, '-')
     .replace(/^-+|-+$/g, '');
-
-type SlugSource = { slug?: string | null; title?: string | null };
 
 const slugOf = (value: unknown, siblingData: SlugSource | undefined) =>
   toSlug(typeof value === 'string' && value.trim() ? value : (siblingData?.title ?? ''));
@@ -24,7 +23,3 @@ export const validateSlug: TextFieldSingleValidation = (value, { siblingData }) 
   SLUG_PATTERN.test(slugOf(value, siblingData as SlugSource))
     ? true
     : 'В адресе нужна хотя бы одна буква или цифра — например klinika-na-kode';
-
-export const SLUG_ADMIN = {
-  description: 'Заполнится из заголовка, если оставить пустым. Кириллица станет латиницей.',
-};
