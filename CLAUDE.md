@@ -6,12 +6,17 @@
 ## Стек
 
 Next.js 16 (App Router, Turbopack, `proxy.ts` вместо `middleware.ts`), React 19, TypeScript,
-SCSS-модули, next-intl 4 (ru/en), next-themes. Пакетный менеджер — Yarn 4 через corepack.
+SCSS-модули, next-intl 4 (ru/en), next-themes, Payload 3 на Postgres. Пакетный менеджер — Yarn 4 через corepack.
+Пакет — ESM (`"type": "module"`, как в шаблоне Payload: иначе CLI Payload грузит конфиг как CommonJS
+и падает на `@payloadcms/richtext-lexical`), поэтому в тестах `import.meta.dirname` вместо `__dirname`.
 
 ## Структура
 
 ```
 src/app/[locale]/    layout (html, метаданные, провайдеры, Header и Footer направления, пилюля) и страницы
+src/app/(payload)/   админка `/admin` и REST `/api/*` Payload — файлы генерирует Payload, руками не правятся
+src/cms/             коллекции, глобал настроек, права, чтение данных для страниц (getCases)
+src/migrations/      миграции схемы Payload — генерирует `yarn payload migrate:create`
 src/designs/         реестр направлений: consts, types, registry (next/dynamic), resolve, server (cookie)
 src/designs/<name>/  index (клиентский модуль-чанк), fonts (next/font), Header, Hero, Pricing, Footer + SCSS-модули
 src/components/      общие компоненты вне направлений: DesignSwitcher, ThemeToggle, LocaleSwitcher, icons
@@ -21,6 +26,7 @@ src/lib/             окружение сборки и общие конста�
 src/styles/          globals.scss (база) и designs/<name>.scss (токены направления)
 messages/            ru.json, en.json, TRANSLATION-TODO.md
 tests/unit/          Vitest
+tests/integration/   Vitest на Postgres: Payload целиком, с правами и миграциями
 tests/e2e/           Playwright + эталоны скриншотов (*-snapshots/)
 ```
 
@@ -182,9 +188,54 @@ hero и подвала (их закрывает квиз в B12). Новая с�
 страницы, куда ведет ссылка; подстрокой в HTML искать нельзя, `data-testid="process"` содержит
 `id="process"`.
 
+## CMS
+
+Payload 3 живет в том же приложении: админка `/admin`, REST `/api/*`, GraphQL выключен, интерфейс
+админки по-русски, редактор текста — lexical. `src/proxy.ts` пропускает `/admin` и `/api` мимо
+префикса языка, иначе `/admin` уезжал бы на `/ru/admin` (`tests/unit/proxy.test.ts`). Локально база —
+Postgres 18 из `docker-compose.yml` на `127.0.0.1:5434` (как `site-postgres` на сервере; порт не 5432 и
+не 5433 — там базы других проектов), две базы: `site` для разработки и `site_test` для интеграционных тестов.
+Переменные — `DATABASE_URI` и `PAYLOAD_SECRET` в `.env`, образец — `.env.example`. Сборке база не нужна:
+админка и REST рендерятся на запрос, поэтому CI и Vercel собирают без нее.
+
+Коллекции (`src/cms/collections/`): `cases` (название, адрес, демо или клиент, ниша из справочника
+квиза, направление, ссылка на демо), `posts` (черновики и публикация, текст в lexical), `team`
+(имя, роль в проекте, ядро или сеть, «в профессии с года» — из него B11 считает сумму лет), `media`
+(картинки режутся на `thumbnail`/`card`/`wide` в webp, `MEDIA_SIZES`; меньше размера не растягиваются),
+`users`; глобал `settings` (почта для связи). Текстовые поля локализованы ru/en, язык по умолчанию —
+русский, пустой английский отдается русским (`fallback: true`).
+
+Роли — `admin` и `editor` (`Role`, `src/cms/access.ts`). Редактор ведет кейсы, посты, команду и
+медиатеку, видит только свою учетную запись; настройки, пользователей и роли меняет только
+администратор. Первый пользователь, заведенный формой админки, становится администратором (хук
+`firstUserIsAdmin`): поле роли правит только администратор, а его еще нет. Черновик поста без входа
+не отдается ни REST, ни Local API с `overrideAccess: false`.
+
+Страницы читают CMS функциями из `src/cms/` (`getCases`) с `overrideAccess: false` — фронт видит
+ровно то, что видел бы анонимный REST. Кеша нет: страницы и так рендерятся на каждый запрос (layout
+читает cookie направления и темы), правка в админке видна со следующей загрузки. Добавишь кеш —
+добавь и сброс по `afterChange`.
+
+**Миграции.** В разработке схему Payload накатывает сам (push). На сервере — миграции
+`src/migrations/`, их запускает при старте `prodMigrations`, но только с `MIGRATE_ON_START=true` —
+флаг задан в образе. На базе разработки, созданной push, Payload спросил бы в терминале, можно ли терять
+данные, поэтому `yarn start` и Lighthouse идут без флага. Поменял коллекцию, поле или глобал —
+`yarn payload migrate:create <имя>` и коммит вместе с кодом: `tests/integration/migrations.test.ts`
+сравнивает схему конфига со снимком последней миграции и падает при расхождении. Типы
+`src/payload-types.ts` — `yarn generate:types`, карта клиентских компонентов админки —
+`yarn generate:importmap` (после смены редактора или его возможностей).
+
+`withPayload` вешает на все адреса подсказку клиента о теме (`Accept-CH`, `Critical-CH:
+Sec-CH-Prefers-Color-Scheme`), а на странице сайта Chrome из-за `Critical-CH` при первом визите повторяет
+запрос документа. `next.config.ts` сужает это правило до `/admin/:path*`, `tests/e2e/headers.spec.ts` держит
+страницы сайта без этих заголовков. После обновления Payload проверить, что правило не поменяло форму.
+
 ## Тесты
 
-Vitest — чистые функции (реестр, режим индексации). Playwright — реальные сборки: конфиг
+Vitest — чистые функции (реестр, режим индексации). Интеграционные тесты
+(`yarn test:integration`, `vitest.integration.config.ts`) поднимают Payload целиком на базе `site_test`:
+перед прогоном схема стирается (защита — имя базы кончается на `_test`), медиатека тестов — во временном
+каталоге. Перед запуском — `docker compose up -d`; на CI базу дает сервис Postgres джоба. Playwright — реальные сборки: конфиг
 поднимает два сервера, `preview` на 3100 и `production` на 3101, поэтому разница по
 `SITE_ENV` проверяется на настоящем HTML, а не на моках. Lighthouse CI (`scripts/lighthouse.mjs`)
 гоняет `lhci autorun` пять раз — по одному на направление, cookie `design` задается через
@@ -240,7 +291,10 @@ Coolify собирает сайт по `Dockerfile` в корне: `output: 'sta
 запускает новый контейнер и сразу снимает старый. Проверка здоровья у приложения выключена, поэтому
 готовности нового контейнера Coolify не ждет, и на несколько секунд адрес может отдать 502. Переменные заданы в Coolify: `SITE_ENV=preview` и `NEXT_PUBLIC_SITE_URL`
 отмечены и для сборки, и для работы, `DATABASE_URI` (Postgres `site-postgres` в том же окружении, внутренний
-адрес) — только для работы. Адрес закрыт basic-auth Coolify, сертификат — общий wildcard `*.mrshkn.com`;
+адрес) и `PAYLOAD_SECRET` — только для работы. Медиатека Payload живет в томе на `/app/media`: без тома
+картинки пропадут при следующем деплое. Образ накатывает миграции при старте (`MIGRATE_ON_START=true`
+в `Dockerfile`). На превью Vercel базы нет, поэтому `/admin` там отвечает ошибкой; страницы, которые
+начнут читать CMS, на Vercel без базы не заработают. Адрес закрыт basic-auth Coolify, сертификат — общий wildcard `*.mrshkn.com`;
 свой сертификат приложению заводить нельзя: имя попало бы в журнал Certificate Transparency.
 Порядок работы с сервером — `../docs/ops/vps-setup.md` и `../docs/ops/coolify.md`.
 

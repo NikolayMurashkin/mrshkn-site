@@ -57,7 +57,7 @@ const SHAPES: Record<(typeof DESIGNS)[number], DesignShape> = {
   },
 };
 
-const SCREENSHOT = { stylePath: join(__dirname, 'screenshot.css') };
+const SCREENSHOT = { stylePath: join(import.meta.dirname, 'screenshot.css') };
 
 const fontOf = (page: Page, selector: string) =>
   page.locator(selector).evaluate((node) => window.getComputedStyle(node).fontFamily);

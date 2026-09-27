@@ -17,9 +17,10 @@ RUN yarn build
 
 FROM node:24-alpine AS runner
 WORKDIR /app
-ENV NODE_ENV=production NEXT_TELEMETRY_DISABLED=1 PORT=3000 HOSTNAME=0.0.0.0
+ENV NODE_ENV=production NEXT_TELEMETRY_DISABLED=1 PORT=3000 HOSTNAME=0.0.0.0 MIGRATE_ON_START=true
 COPY --from=build --chown=node:node /app/.next/standalone ./
 COPY --from=build --chown=node:node /app/.next/static ./.next/static
+RUN mkdir media && chown node:node media
 USER node
 EXPOSE 3000
 CMD ["node", "server.js"]

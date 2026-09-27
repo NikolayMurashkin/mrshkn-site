@@ -1,0 +1,1 @@
+CREATE DATABASE site_test;

@@ -1,0 +1,15 @@
+services:
+  postgres:
+    image: postgres:18
+    environment:
+      POSTGRES_USER: site
+      POSTGRES_PASSWORD: site
+      POSTGRES_DB: site
+    ports:
+      - '127.0.0.1:5434:5432'
+    volumes:
+      - postgres:/var/lib/postgresql
+      - ./docker/postgres-init.sql:/docker-entrypoint-initdb.d/init.sql:ro
+
+volumes:
+  postgres:
