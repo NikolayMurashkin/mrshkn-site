@@ -18,7 +18,7 @@ src/app/(payload)/   админка `/admin` и REST `/api/*` Payload — фай
 src/cms/             коллекции, глобал настроек, права, чтение данных для страниц (getCases)
 src/migrations/      миграции схемы Payload — генерирует `yarn payload migrate:create`
 src/designs/         реестр направлений: consts, types, registry (next/dynamic), resolve, server (cookie)
-src/designs/<name>/  index (клиентский модуль-чанк), fonts (next/font), Header, Hero, Pricing, Footer + SCSS-модули
+src/designs/<name>/  index (клиентский модуль-чанк), fonts (next/font), Header, Hero, Pricing, Process, Footer + SCSS-модули
 src/components/      общие компоненты вне направлений: DesignSwitcher, ThemeToggle, LocaleSwitcher, icons
 src/content/         контент, общий для всех направлений: pricing (цены), format, use-price, types
 src/i18n/            routing, request, navigation, consts
@@ -41,9 +41,10 @@ tests/e2e/           Playwright + эталоны скриншотов (*-snapsho
 на каждый модуль `next/dynamic(() => import('./<name>'))` — литеральный `import()` внутри
 `dynamic()` обязателен: по нему Next кладет в SSR-HTML `<link rel="stylesheet" data-precedence="dynamic">`
 ровно с CSS этого направления (серверный `import()` так не умеет — Turbopack линкует все чанки разом).
-Layout и страница рендерят `<DesignSection design section="header" | "hero" | "footer" />`;
+Layout и страница рендерят `<DesignSection design section={…} />` — имена секций в `SECTION_NAMES`
+(`src/designs/consts.ts`): `header` и `footer` в layout, `hero`, `pricing`, `process` на главной;
 внутри — `createElement(...)`, потому что JSX-тег из переменной ловит `react-hooks/static-components`.
-Все пять направлений реализуют все секции: fallback на дефолтное направление убран.
+Все пять направлений реализуют все секции, fallback на дефолтное направление нет.
 `dynamic()` вызывается без `loading`: так у него нет своей Suspense-границы, подвисший чанк всплывает
 до уже видимой границы layout, и React при `router.refresh()` не коммитит новое направление, пока чанк
 не доехал — секции появляются вместе с `data-design`, без пустого кадра (проверяет e2e «секции нового
@@ -148,8 +149,7 @@ CSS-счетчиком, `##` у Terminal рисуется через `::before`.
 Секция «Услуги и цены» у каждого направления своя (`src/designs/<name>/Pricing.tsx`), контент один
 и тот же; ссылка тарифа ведет на страницу услуги (`/<locale>/<slug>?plan=<id>`) — сами страницы
 появятся в блоке B13, до этого адреса отдают 404. Это видно только на превью: по решению D21 сайт
-выходит в сеть блоком B49 — после того, как все ссылки заработают, включая `href="#"` у CTA шапки,
-hero и подвала (их закрывает квиз в B12). Новая ссылка в разметке ведет на существующий адрес или
+выходит в сеть блоком B49 — после того, как все ссылки заработают. Новая ссылка в разметке ведет на существующий адрес или
 не добавляется вовсе.
 
 ## Квиз и заявка
