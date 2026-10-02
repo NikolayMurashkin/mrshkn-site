@@ -8423,6 +8423,7 @@ __metadata:
     subset-font: "npm:^2.7.0"
     typescript: "npm:^5.9.0"
     vitest: "npm:^3.2.0"
+    yaml: "npm:^1.10.3"
   languageName: unknown
   linkType: soft
 
@@ -11956,7 +11957,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"yaml@npm:^1.10.0":
+"yaml@npm:^1.10.0, yaml@npm:^1.10.3":
   version: 1.10.3
   resolution: "yaml@npm:1.10.3"
   checksum: 10c0/c309ff85a0a569a981d71ab9cf0fef68672a16b9cdf40639d1c3b30034f6cd16ee428602bd6d64ecf006f8c8bee499023cac236538f79898aa99fb5db529a2ed

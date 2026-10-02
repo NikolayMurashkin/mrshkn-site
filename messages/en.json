@@ -12,6 +12,7 @@
   },
   "nav": {
     "services": "Services",
+    "work": "Work",
     "prices": "Pricing",
     "process": "Process",
     "contacts": "Contact"
@@ -241,6 +242,24 @@
     "editorial": {
       "heading": "Table of services"
     }
+  },
+  "work": {
+    "heading": "Work",
+    "mark": "Selected work",
+    "note": "Measurable technical results only",
+    "kind": {
+      "demo": "Studio demo project",
+      "client": "Client"
+    },
+    "demoLink": "Open demo",
+    "design": "Style: {design}",
+    "back": "All work",
+    "task": "The task",
+    "solution": "The solution",
+    "results": "Technical results",
+    "lighthouse": "Lighthouse report",
+    "metaTitle": "{title} — MRSHKN",
+    "metaDescription": "MRSHKN case study: {title}."
   },
   "process": {
     "heading": "How the two weeks go",

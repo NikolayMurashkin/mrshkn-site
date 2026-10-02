@@ -20,6 +20,6 @@ const LOADERS: Record<DesignName, () => Promise<unknown>> = {
   editorial: () => import('./editorial'),
 };
 
-export const DesignSection = ({ design, section }: DesignSectionProps) => createElement(SECTIONS[design], { section });
+export const DesignSection = ({ design, ...props }: DesignSectionProps) => createElement(SECTIONS[design], props);
 
 export const preloadDesign = (design: DesignName) => LOADERS[design]();

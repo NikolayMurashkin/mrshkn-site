@@ -214,8 +214,29 @@ export interface Case {
   niche: 'clinic' | 'expert' | 'horeca' | 'startup' | 'other';
   design: 'kinetic' | 'terminal' | 'pop' | 'swiss' | 'editorial';
   demoUrl?: string | null;
+  cover: number | Media;
+  /**
+   * Абзацы разделяет пустая строка.
+   */
+  task?: string | null;
+  /**
+   * Абзацы разделяет пустая строка.
+   */
+  solution?: string | null;
+  /**
+   * На карточке видны первые три.
+   */
+  metrics?:
+    | {
+        value: string;
+        label: string;
+        id?: string | null;
+      }[]
+    | null;
+  lighthouse?: (number | null) | Media;
   updatedAt: string;
   createdAt: string;
+  _status?: ('draft' | 'published') | null;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -436,8 +457,20 @@ export interface CasesSelect<T extends boolean = true> {
   niche?: T;
   design?: T;
   demoUrl?: T;
+  cover?: T;
+  task?: T;
+  solution?: T;
+  metrics?:
+    | T
+    | {
+        value?: T;
+        label?: T;
+        id?: T;
+      };
+  lighthouse?: T;
   updatedAt?: T;
   createdAt?: T;
+  _status?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema

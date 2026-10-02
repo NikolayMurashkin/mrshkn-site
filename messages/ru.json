@@ -12,6 +12,7 @@
   },
   "nav": {
     "services": "Услуги",
+    "work": "Кейсы",
     "prices": "Цены",
     "process": "Процесс",
     "contacts": "Контакты"
@@ -241,6 +242,24 @@
     "editorial": {
       "heading": "Оглавление услуг"
     }
+  },
+  "work": {
+    "heading": "Кейсы",
+    "mark": "Избранные работы",
+    "note": "Только измеримые технические результаты",
+    "kind": {
+      "demo": "Демо-проект студии",
+      "client": "Клиент"
+    },
+    "demoLink": "Открыть демо",
+    "design": "Стиль: {design}",
+    "back": "Все кейсы",
+    "task": "Задача",
+    "solution": "Решение",
+    "results": "Технические результаты",
+    "lighthouse": "Скрин Lighthouse",
+    "metaTitle": "{title} — MRSHKN",
+    "metaDescription": "Кейс студии MRSHKN: {title}."
   },
   "process": {
     "heading": "Как проходят две недели",

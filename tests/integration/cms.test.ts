@@ -2,7 +2,7 @@ import config from '@payload-config';
 import { getPayload, type Payload, type RequiredDataFromCollectionSlug } from 'payload';
 import sharp from 'sharp';
 import { afterAll, beforeAll, describe, expect, it } from 'vitest';
-import { getCases } from '@/cms/cases';
+import { getCaseBySlug, getCases } from '@/cms/cases';
 import { Role } from '@/cms/consts';
 
 const PASSWORD = 'integration-password';
@@ -20,6 +20,38 @@ afterAll(async () => {
   await payload.destroy();
 });
 
+/** Обложка и скрин Lighthouse кейса лежат в медиатеке: картинку для теста рисует sharp. */
+const createImage = async (name: string) => {
+  const data = await sharp({ create: { width: 1200, height: 800, channels: 3, background: '#2f5bea' } })
+    .png()
+    .toBuffer();
+
+  return payload.create({
+    collection: 'media',
+    locale: 'ru',
+    data: { alt: `Картинка ${name}` },
+    file: { data, mimetype: 'image/png', name: `${name}.png`, size: data.length },
+  });
+};
+
+type CaseData = RequiredDataFromCollectionSlug<'cases'>;
+
+/** Кейс с обязательной обложкой; статус по умолчанию — опубликован, черновик передается явно. */
+const caseData = async (data: Record<string, unknown>) => {
+  const cover = await createImage(`cover-${String(data.slug)}`);
+
+  return { cover: cover.id, _status: 'published', ...data } as unknown as CaseData;
+};
+
+type CaseDetailResult = {
+  title: string;
+  task: string;
+  solution: string;
+  metrics: { value: string; label: string }[];
+  cover: { url: string };
+  lighthouse: { url: string } | null;
+} | null;
+
 const createUser = (email: string, role: Role) =>
   payload.create({ collection: 'users', data: { email, password: PASSWORD, role } });
 
@@ -35,14 +67,14 @@ describe('кейсы', () => {
     const created = await payload.create({
       collection: 'cases',
       locale: 'ru',
-      data: {
+      data: await caseData({
         title: 'Проверочный кейс',
         slug: 'proverochnyj-kejs',
         kind: 'demo',
         niche: 'clinic',
         design: 'swiss',
         demoUrl: 'https://dental.mrshkn.com',
-      },
+      }),
     });
 
     await payload.update({ collection: 'cases', id: created.id, locale: 'en', data: { title: 'Test case' } });
@@ -60,6 +92,88 @@ describe('кейсы', () => {
     expect(await getCases('en')).toContainEqual(
       expect.objectContaining({ slug: 'proverochnyj-kejs', title: 'Test case' }),
     );
+  });
+
+  it('закрытый от анонима кейс не приходит через getCases, опубликованный приходит', async () => {
+    await payload.create({
+      collection: 'cases',
+      locale: 'ru',
+      data: await caseData({
+        title: 'Опубликованный кейс',
+        slug: 'opublikovannyj-kejs',
+        kind: 'demo',
+        niche: 'horeca',
+        design: 'pop',
+      }),
+    });
+    await payload.create({
+      collection: 'cases',
+      locale: 'ru',
+      data: await caseData({
+        title: 'Черновик кейса',
+        slug: 'chernovik-kejsa',
+        kind: 'demo',
+        niche: 'horeca',
+        design: 'pop',
+        _status: 'draft',
+      }),
+    });
+
+    const slugs = (await getCases('ru')).map((item) => item.slug);
+
+    expect(slugs).toContain('opublikovannyj-kejs');
+    expect(slugs).not.toContain('chernovik-kejsa');
+  });
+
+  it('getCaseBySlug отдает опубликованный кейс целиком, а черновик и несуществующий адрес — null', async () => {
+    const lighthouse = await createImage('lighthouse-detail');
+
+    await payload.create({
+      collection: 'cases',
+      locale: 'ru',
+      data: await caseData({
+        title: 'Кейс со страницей',
+        slug: 'kejs-so-straniczej',
+        kind: 'demo',
+        niche: 'startup',
+        design: 'terminal',
+        task: 'Запустить лендинг за две недели',
+        solution: 'Собрали сайт на Next.js и Payload',
+        metrics: [
+          { value: '98', label: 'Performance' },
+          { value: '100', label: 'Accessibility' },
+        ],
+        lighthouse: lighthouse.id,
+      }),
+    });
+    await payload.create({
+      collection: 'cases',
+      locale: 'ru',
+      data: await caseData({
+        title: 'Скрытая страница кейса',
+        slug: 'skrytyj-kejs',
+        kind: 'client',
+        niche: 'expert',
+        design: 'swiss',
+        _status: 'draft',
+      }),
+    });
+
+    const published = (await getCaseBySlug('ru', 'kejs-so-straniczej')) as CaseDetailResult;
+
+    expect(published).toMatchObject({
+      title: 'Кейс со страницей',
+      task: 'Запустить лендинг за две недели',
+      solution: 'Собрали сайт на Next.js и Payload',
+      metrics: [
+        { value: '98', label: 'Performance' },
+        { value: '100', label: 'Accessibility' },
+      ],
+    });
+    expect(published?.cover.url).toEqual(expect.stringMatching(/\S/));
+    expect(published?.lighthouse?.url).toEqual(expect.stringMatching(/\S/));
+    expect(await getCaseBySlug('ru', 'skrytyj-kejs')).toBeNull();
+    expect(await getCaseBySlug('ru', 'net-takogo')).toBeNull();
   });
 });
 
@@ -133,7 +247,13 @@ describe('роли', () => {
     await expect(
       payload.create({
         collection: 'cases',
-        data: { title: 'Кейс редактора', slug: 'kejs-redaktora', kind: 'client', niche: 'expert', design: 'editorial' },
+        data: await caseData({
+          title: 'Кейс редактора',
+          slug: 'kejs-redaktora',
+          kind: 'client',
+          niche: 'expert',
+          design: 'editorial',
+        }),
         ...asEditor,
       }),
     ).resolves.toMatchObject({ slug: 'kejs-redaktora' });
@@ -182,7 +302,7 @@ describe('адрес записи', () => {
     await expect(
       payload.create({
         collection: 'cases',
-        data: { title: '---', slug: '---', kind: 'demo', niche: 'clinic', design: 'swiss' },
+        data: await caseData({ title: '---', slug: '---', kind: 'demo', niche: 'clinic', design: 'swiss' }),
       }),
     ).rejects.toMatchObject({ data: { errors: [expect.objectContaining({ path: 'slug' })] } });
   });

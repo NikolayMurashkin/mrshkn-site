@@ -24,7 +24,11 @@ paths:
   `import()` внутри `dynamic()` обязателен: по нему Next кладет в SSR-HTML `<link rel="stylesheet" data-precedence="dynamic">`
   ровно с CSS этого направления; серверный `import()` так не умеет — Turbopack линкует все чанки разом.
 - Layout и страница рендерят `<DesignSection design section={…} />`. Имена секций — `SECTION_NAMES` (`src/designs/consts.ts`):
-  `header` и `footer` в layout; `hero`, `pricing`, `process` на главной. Внутри — `createElement(...)`: JSX-тег
+  `header` и `footer` в layout; `hero`, `pricing`, `works`, `process` на главной (`works` — только если кейсы есть);
+  `case` — страница `/[locale]/work/[slug]`. Секции с данными принимают их пропсами (`SectionProps` — объединение по
+  `section`: `hasCases` у шапки, `cases` у `works`, `caseItem` у `case`): CMS читают серверные страницы и layout,
+  клиентский чанк только рисует. Выбор компонента по имени секции — `renderSection` (`render.ts`), в `index.tsx`
+  направления остается таблица `DesignComponents`. Внутри — `createElement(...)`: JSX-тег
   из переменной ловит `react-hooks/static-components`.
 - `dynamic()` вызывается без `loading`: так у него нет своей Suspense-границы, подвисший чанк всплывает до уже видимой
   границы layout, и React при `router.refresh()` не коммитит новое направление, пока чанк не доехал → секции появляются
@@ -59,6 +63,8 @@ paths:
 
 - Абсолютные `/<locale>#<секция>`, а не `#<секция>`: шапка рендерится на каждой странице, а секции с этими `id` — только
   на главной; относительный якорь мертв везде, кроме нее.
-- `id` секций: `services` и `prices` в `Pricing.tsx`, `process` в `Process.tsx`, `contacts` в `Footer.tsx`.
+- `id` секций: `services` и `prices` в `Pricing.tsx`, `work` в `Works.tsx`, `process` в `Process.tsx`, `contacts`
+  в `Footer.tsx`. Пункт «Кейсы» (`/<locale>#work`, между «Услугами» и «Ценами») шапка показывает только при `hasCases`
+  (`visibleNavItems`): секции без кейсов нет, и ссылка вела бы в никуда (D21).
 - Проверку держит `tests/e2e/links.spec.ts`: ищет якорь локатором в DOM той страницы, куда ведет ссылка. Подстрокой
   в HTML искать нельзя — `data-testid="process"` содержит `id="process"`.

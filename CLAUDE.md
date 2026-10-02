@@ -13,12 +13,12 @@ next-intl 4 (ru/en), next-themes, Payload 3 на Postgres. Пакетный ме
 ## Структура
 
 ```
-src/app/[locale]/    layout (html, метаданные, провайдеры, Header и Footer направления, пилюля) и страницы
+src/app/[locale]/    layout (html, метаданные, провайдеры, Header и Footer направления, пилюля) и страницы (главная, work/[slug], brief)
 src/app/(payload)/   админка `/admin` и REST `/api/*` Payload — файлы генерирует Payload, руками не правятся
-src/cms/             коллекции, глобал настроек, права, чтение данных для страниц (getCases)
+src/cms/             коллекции, глобал настроек, права, чтение данных для страниц (getCases, hasCases, getCaseBySlug)
 src/migrations/      миграции схемы Payload — генерирует `yarn payload migrate:create`
 src/designs/         реестр направлений: consts, types, registry (next/dynamic), resolve, server (cookie)
-src/designs/<name>/  index (клиентский модуль-чанк), fonts (next/font), Header, Hero, Pricing, Process, Footer + SCSS-модули
+src/designs/<name>/  index (клиентский модуль-чанк), fonts (next/font), Header, Hero, Pricing, Works, Process, Case, Footer + SCSS-модули
 src/components/      общие компоненты вне направлений: DesignSwitcher, ThemeToggle, LocaleSwitcher, icons
 src/content/         контент, общий для всех направлений: pricing (цены), format, use-price, types
 src/i18n/            routing, request, navigation, consts
@@ -100,11 +100,14 @@ terminal, pop, swiss, editorial. Все пять реализуют все се�
   Перед прогоном схема стирается (защита — имя базы кончается на `_test`), медиатека тестов — во временном каталоге.
   Перед запуском — `docker compose up -d`; на CI базу дает сервис Postgres джоба.
 - Playwright — реальные сборки: конфиг поднимает `preview` на 3100 и `production` на 3101 → разница по `SITE_ENV`
-  проверяется на настоящем HTML, а не на моках. Третий `webServer` — приемник заявок (`.claude/rules/brief.md`).
+  проверяется на настоящем HTML, а не на моках. Главная читает CMS, поэтому перед сборкой `scripts/prepare-database.ts`
+  стирает схему `site_test` и накатывает миграции; кейсов в базе нет → секции «Работы» и пункта меню в эталонах нет.
+  Третий `webServer` — приемник заявок (`.claude/rules/brief.md`).
 - Перед полным прогоном гасить серверы на 3100, 3101 и 3103. Адреса каналов заявки приезжают только из `LEAD_ENV` →
   сервер, поднятый руками (`yarn start -p 3100`), для тестов заявки не годится: `reuseExistingServer` его подхватит,
   и заявка получит 502.
-- Lighthouse CI — `scripts/lighthouse.mjs`, по прогону на направление (`.claude/rules/lighthouse.md`).
+- Lighthouse CI — `scripts/lighthouse.mjs`, по прогону на направление, главная и страница засеянного кейса
+  (`.claude/rules/lighthouse.md`).
 - Эталоны `toHaveScreenshot` (`tests/e2e/*-snapshots/*-darwin.png`) сняты на macOS и сравниваются только на macOS:
   на Linux-раннере CI визуальный describe пропускается, структурные проверки шапки, hero и подвала идут везде.
   На время снимка пилюля переключателя скрыта (`tests/e2e/screenshot.css`).

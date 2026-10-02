@@ -8,6 +8,16 @@ import {
   SINK_SMTP_PORT,
 } from './tests/e2e/consts';
 
+/**
+ * Главная читает CMS, поэтому серверам нужна база с накатанными миграциями (на stage их накатывает образ). База — та же
+ * `site_test`, что у интеграционных тестов: те оставляют в ней схему от push, и `prepare-database` стирает ее и
+ * накатывает миграции заново.
+ */
+const DATABASE_ENV = {
+  DATABASE_URI: process.env.TEST_DATABASE_URI ?? 'postgres://site:site@127.0.0.1:5434/site_test',
+  PAYLOAD_SECRET: 'e2e-tests',
+};
+
 /** Заявка уходит в три настоящих канала, поэтому на время тестов все три смотрят в приемник. */
 const LEAD_ENV = {
   TELEGRAM_API_URL: `${SINK_BASE_URL}/telegram`,
@@ -45,9 +55,9 @@ export default defineConfig({
       stdout: 'pipe',
     },
     {
-      command: `yarn build && yarn start -p ${PREVIEW_PORT}`,
+      command: `node scripts/prepare-database.ts && yarn build && yarn start -p ${PREVIEW_PORT}`,
       url: PREVIEW_BASE_URL,
-      env: { SITE_ENV: 'preview', NEXT_DIST_DIR: '.next-preview', ...LEAD_ENV },
+      env: { SITE_ENV: 'preview', NEXT_DIST_DIR: '.next-preview', ...DATABASE_ENV, ...LEAD_ENV },
       reuseExistingServer: !process.env.CI,
       timeout: 300_000,
       stdout: 'pipe',
@@ -55,7 +65,7 @@ export default defineConfig({
     {
       command: `yarn build && yarn start -p ${PRODUCTION_PORT}`,
       url: PRODUCTION_BASE_URL,
-      env: { SITE_ENV: 'production', NEXT_DIST_DIR: '.next-production' },
+      env: { SITE_ENV: 'production', NEXT_DIST_DIR: '.next-production', ...DATABASE_ENV },
       reuseExistingServer: !process.env.CI,
       timeout: 300_000,
       stdout: 'pipe',

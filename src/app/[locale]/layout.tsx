@@ -3,6 +3,7 @@ import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
 import type { ReactNode } from 'react';
+import { hasCases } from '@/cms/cases';
 import { DesignSwitcher } from '@/components/DesignSwitcher';
 import { getTheme } from '@/components/theme-server';
 import { ThemeProvider } from '@/components/ThemeProvider';
@@ -48,6 +49,7 @@ const LocaleLayout = async ({ children, params }: LocaleLayoutProps) => {
 
   const design = await getDesign();
   const theme = await getTheme(design);
+  const withCases = await hasCases(locale);
 
   return (
     <html
@@ -62,6 +64,7 @@ const LocaleLayout = async ({ children, params }: LocaleLayoutProps) => {
             <DesignSection
               design={design}
               section="header"
+              hasCases={withCases}
             />
             {children}
             <DesignSection

@@ -6,7 +6,7 @@ module.exports = {
       startServerCommand: 'SITE_ENV=production NEXT_DIST_DIR=.next-production yarn start -p 3102',
       startServerReadyPattern: 'Ready in',
       startServerReadyTimeout: 120000,
-      url: ['http://localhost:3102/ru'],
+      url: ['http://localhost:3102/ru', 'http://localhost:3102/ru/work/lighthouse-demo'],
       numberOfRuns: 3,
       settings: {
         extraHeaders: { Cookie: `design=${design}` },

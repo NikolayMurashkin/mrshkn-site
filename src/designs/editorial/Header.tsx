@@ -2,10 +2,12 @@ import { useLocale, useTranslations } from 'next-intl';
 import { MoonIcon } from '@/components/icons';
 import { LocaleSwitcher } from '@/components/LocaleSwitcher';
 import { ThemeToggle } from '@/components/ThemeToggle';
+import { visibleNavItems } from '../nav';
+import type { HeaderProps } from '../types';
 import { EDITORIAL_NAV_ITEMS } from './consts';
 import styles from './Header.module.scss';
 
-export const EditorialHeader = () => {
+export const EditorialHeader = ({ hasCases }: HeaderProps) => {
   const t = useTranslations();
   const locale = useLocale();
 
@@ -37,7 +39,7 @@ export const EditorialHeader = () => {
         </span>
       </div>
       <nav className={styles.nav}>
-        {EDITORIAL_NAV_ITEMS.map((item) => (
+        {visibleNavItems(EDITORIAL_NAV_ITEMS, hasCases).map((item) => (
           <a
             key={item}
             href={`/${locale}#${item}`}

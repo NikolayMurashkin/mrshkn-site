@@ -3,11 +3,13 @@ import { MoonIcon } from '@/components/icons';
 import { LocaleSwitcher } from '@/components/LocaleSwitcher';
 import { ThemeToggle } from '@/components/ThemeToggle';
 import { NAV_ITEMS } from '../consts';
+import { visibleNavItems } from '../nav';
+import type { HeaderProps } from '../types';
 import { Link } from '@/i18n/navigation';
 import { BRIEF_HREF } from '@/lib/brief/consts';
 import styles from './Header.module.scss';
 
-export const KineticHeader = () => {
+export const KineticHeader = ({ hasCases }: HeaderProps) => {
   const t = useTranslations();
   const locale = useLocale();
 
@@ -23,7 +25,7 @@ export const KineticHeader = () => {
         <span className={styles.tagline}>{t('brand.tagline')}</span>
       </div>
       <nav className={styles.nav}>
-        {NAV_ITEMS.map((item) => (
+        {visibleNavItems(NAV_ITEMS, hasCases).map((item) => (
           <a
             key={item}
             href={`/${locale}#${item}`}

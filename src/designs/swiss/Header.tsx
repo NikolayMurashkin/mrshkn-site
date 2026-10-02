@@ -3,9 +3,11 @@ import { SunIcon } from '@/components/icons';
 import { LocaleSwitcher } from '@/components/LocaleSwitcher';
 import { ThemeToggle } from '@/components/ThemeToggle';
 import { NAV_ITEMS } from '../consts';
+import { visibleNavItems } from '../nav';
+import type { HeaderProps } from '../types';
 import styles from './Header.module.scss';
 
-export const SwissHeader = () => {
+export const SwissHeader = ({ hasCases }: HeaderProps) => {
   const t = useTranslations();
   const locale = useLocale();
 
@@ -19,7 +21,7 @@ export const SwissHeader = () => {
       </span>
       <span className={styles.tagline}>{t('brand.tagline')}</span>
       <nav className={styles.nav}>
-        {NAV_ITEMS.map((item) => (
+        {visibleNavItems(NAV_ITEMS, hasCases).map((item) => (
           <a
             key={item}
             href={`/${locale}#${item}`}
