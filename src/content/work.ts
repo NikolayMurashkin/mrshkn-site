@@ -2,7 +2,7 @@
 export const CARD_METRICS_LIMIT = 3;
 
 /** Длина описания страницы кейса для поисковиков и шеринга. */
-export const DESCRIPTION_MAX_LENGTH = 160;
+const DESCRIPTION_MAX_LENGTH = 160;
 
 /** Адрес страницы кейса без локали: `Link` из next-intl сам добавит префикс языка. */
 export const caseHref = (slug: string) => `/work/${slug}`;
