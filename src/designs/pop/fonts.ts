@@ -1,9 +1,10 @@
-import { Rubik } from 'next/font/google';
+import localFont from 'next/font/local';
 
-export const rubik = Rubik({
-  subsets: ['cyrillic', 'latin'],
-  weight: ['500', '700', '800', '900'],
+export const rubik = localFont({
+  src: './fonts/rubik.woff2',
+  weight: '500 900',
   display: 'swap',
   preload: false,
   adjustFontFallback: false,
+  declarations: [{ prop: 'font-family', value: 'Rubik' }],
 });

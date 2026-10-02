@@ -1,17 +1,19 @@
-import { IBM_Plex_Sans, JetBrains_Mono } from 'next/font/google';
+import localFont from 'next/font/local';
 
-export const jetbrains = JetBrains_Mono({
-  subsets: ['cyrillic', 'latin'],
-  weight: ['400', '500', '700'],
+export const jetbrains = localFont({
+  src: './fonts/jetbrains-mono.woff2',
+  weight: '400 700',
   display: 'swap',
   preload: false,
   adjustFontFallback: false,
+  declarations: [{ prop: 'font-family', value: 'JetBrains Mono' }],
 });
 
-export const plex = IBM_Plex_Sans({
-  subsets: ['cyrillic', 'latin'],
-  weight: ['400', '500', '600', '700'],
+export const plex = localFont({
+  src: './fonts/ibm-plex-sans.woff2',
+  weight: '400 700',
   display: 'swap',
   preload: false,
   adjustFontFallback: false,
+  declarations: [{ prop: 'font-family', value: 'IBM Plex Sans' }],
 });

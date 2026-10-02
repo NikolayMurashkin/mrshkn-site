@@ -8,6 +8,6 @@ const INVISIBLE_MARKS = String.fromCodePoint(0x00a0, 0x00ad);
 const BASIC_LATIN = codePoints(0x20, 0x7e);
 const LATIN_1_MARKS = '©«®°·»×';
 const CYRILLIC = codePoints(0x400, 0x45f);
-const PUNCTUATION_AND_SYMBOLS = '–—‘’“”„•…№€₽←→−≤≥✓';
+const PUNCTUATION_AND_SYMBOLS = '–—‘’“”„•…№€₽←→−≤≥✓✦';
 
 export const GLYPHS = BASIC_LATIN + INVISIBLE_MARKS + LATIN_1_MARKS + CYRILLIC + PUNCTUATION_AND_SYMBOLS;

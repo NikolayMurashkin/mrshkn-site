@@ -15,14 +15,55 @@ const FONTS = [
     directory: 'unbounded',
     source: 'Unbounded[wght].ttf',
     output: 'unbounded.woff2',
-    weight: { min: 700, max: 900 },
+    variationAxes: { wght: { min: 700, max: 900 } },
   },
   {
     design: 'kinetic',
     directory: 'golostext',
     source: 'GolosText[wght].ttf',
     output: 'golos-text.woff2',
-    weight: { min: 400, max: 600 },
+    variationAxes: { wght: { min: 400, max: 600 } },
+  },
+  {
+    design: 'terminal',
+    directory: 'jetbrainsmono',
+    source: 'JetBrainsMono[wght].ttf',
+    output: 'jetbrains-mono.woff2',
+    variationAxes: { wght: { min: 400, max: 700 } },
+  },
+  {
+    design: 'terminal',
+    directory: 'ibmplexsans',
+    source: 'IBMPlexSans[wdth,wght].ttf',
+    output: 'ibm-plex-sans.woff2',
+    variationAxes: { wght: { min: 400, max: 700 }, wdth: 100 },
+  },
+  {
+    design: 'pop',
+    directory: 'rubik',
+    source: 'Rubik[wght].ttf',
+    output: 'rubik.woff2',
+    variationAxes: { wght: { min: 500, max: 900 } },
+  },
+  {
+    design: 'swiss',
+    directory: 'geologica',
+    source: 'Geologica[CRSV,SHRP,slnt,wght].ttf',
+    output: 'geologica.woff2',
+    variationAxes: { wght: { min: 300, max: 800 }, CRSV: 0, SHRP: 0, slnt: 0 },
+  },
+  {
+    design: 'editorial',
+    directory: 'prata',
+    source: 'Prata-Regular.ttf',
+    output: 'prata.woff2',
+  },
+  {
+    design: 'editorial',
+    directory: 'onest',
+    source: 'Onest[wght].ttf',
+    output: 'onest.woff2',
+    variationAxes: { wght: { min: 400, max: 600 } },
   },
 ];
 
@@ -41,7 +82,7 @@ for (const font of FONTS) {
   const source = await download(`${font.directory}/${encodeURIComponent(font.source)}`);
   const subset = await subsetFont(source, GLYPHS, {
     targetFormat: 'woff2',
-    variationAxes: { wght: font.weight },
+    variationAxes: font.variationAxes,
     noLayoutClosure: true,
   });
 
