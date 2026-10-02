@@ -1,11 +1,11 @@
 ---
 paths:
-  - "src/designs/*/fonts.ts"
-  - "src/designs/*/fonts/**"
-  - "src/designs/*/index.tsx"
-  - "src/styles/designs/**"
-  - "scripts/subset-*"
-  - "tests/unit/font-subset.test.ts"
+  - 'src/designs/*/fonts.ts'
+  - 'src/designs/*/fonts/**'
+  - 'src/designs/*/index.tsx'
+  - 'src/styles/designs/**'
+  - 'scripts/subset-*'
+  - 'tests/unit/font-subset.test.ts'
 ---
 
 # Шрифты направлений

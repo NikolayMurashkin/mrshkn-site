@@ -1,14 +1,14 @@
 ---
 paths:
-  - "src/components/Brief/**"
-  - "src/lib/brief/**"
-  - "src/app/api/brief/**"
-  - "src/app/*/brief/**"
-  - "src/proxy.ts"
-  - "tests/unit/brief.test.ts"
-  - "tests/e2e/brief.spec.ts"
-  - "tests/e2e/lead-sink.ts"
-  - "playwright.config.ts"
+  - 'src/components/Brief/**'
+  - 'src/lib/brief/**'
+  - 'src/app/api/brief/**'
+  - 'src/app/*/brief/**'
+  - 'src/proxy.ts'
+  - 'tests/unit/brief.test.ts'
+  - 'tests/e2e/brief.spec.ts'
+  - 'tests/e2e/lead-sink.ts'
+  - 'playwright.config.ts'
 ---
 
 # Квиз и заявка

@@ -1,17 +1,17 @@
 ---
 paths:
-  - "src/designs/**"
-  - "src/styles/**"
-  - "src/components/DesignSwitcher*"
-  - "src/components/Theme*"
-  - "src/components/theme-*"
-  - "src/app/*/layout.tsx"
-  - "src/app/*/page.tsx"
-  - "tests/unit/design-tokens.test.ts"
-  - "tests/unit/registry.test.ts"
-  - "tests/unit/theme-storage.test.ts"
-  - "tests/e2e/design-*"
-  - "tests/e2e/links.spec.ts"
+  - 'src/designs/**'
+  - 'src/styles/**'
+  - 'src/components/DesignSwitcher*'
+  - 'src/components/Theme*'
+  - 'src/components/theme-*'
+  - 'src/app/*/layout.tsx'
+  - 'src/app/*/page.tsx'
+  - 'tests/unit/design-tokens.test.ts'
+  - 'tests/unit/registry.test.ts'
+  - 'tests/unit/theme-storage.test.ts'
+  - 'tests/e2e/design-*'
+  - 'tests/e2e/links.spec.ts'
 ---
 
 # Направления и тема

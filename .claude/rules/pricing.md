@@ -1,9 +1,9 @@
 ---
 paths:
-  - "src/content/**"
-  - "src/designs/*/Pricing*"
-  - "tests/unit/pricing.test.ts"
-  - "tests/e2e/pricing.spec.ts"
+  - 'src/content/**'
+  - 'src/designs/*/Pricing*'
+  - 'tests/unit/pricing.test.ts'
+  - 'tests/e2e/pricing.spec.ts'
 ---
 
 # Цены и контент секций

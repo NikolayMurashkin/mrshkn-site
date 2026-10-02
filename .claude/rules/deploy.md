@@ -1,9 +1,9 @@
 ---
 paths:
-  - "Dockerfile"
-  - ".dockerignore"
-  - "next.config.ts"
-  - "src/lib/site-env.ts"
+  - 'Dockerfile'
+  - '.dockerignore'
+  - 'next.config.ts'
+  - 'src/lib/site-env.ts'
 ---
 
 # Образ и Coolify

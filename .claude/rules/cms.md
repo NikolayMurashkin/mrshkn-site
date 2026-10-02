@@ -1,16 +1,16 @@
 ---
 paths:
-  - "src/cms/**"
-  - "src/migrations/**"
-  - "src/payload.config.ts"
-  - "src/payload-types.ts"
-  - "src/app/*/admin/**"
-  - "src/app/*/api/**"
-  - "src/proxy.ts"
-  - "tests/unit/proxy.test.ts"
-  - "tests/integration/**"
-  - "tests/e2e/headers.spec.ts"
-  - "next.config.ts"
+  - 'src/cms/**'
+  - 'src/migrations/**'
+  - 'src/payload.config.ts'
+  - 'src/payload-types.ts'
+  - 'src/app/*/admin/**'
+  - 'src/app/*/api/**'
+  - 'src/proxy.ts'
+  - 'tests/unit/proxy.test.ts'
+  - 'tests/integration/**'
+  - 'tests/e2e/headers.spec.ts'
+  - 'next.config.ts'
 ---
 
 # CMS (Payload 3)

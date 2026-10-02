@@ -1,9 +1,9 @@
 ---
 paths:
-  - "lighthouserc.cjs"
-  - "scripts/lighthouse.mjs"
-  - "tests/unit/lighthouse-config.test.ts"
-  - ".github/workflows/**"
+  - 'lighthouserc.cjs'
+  - 'scripts/lighthouse.mjs'
+  - 'tests/unit/lighthouse-config.test.ts'
+  - '.github/workflows/**'
 ---
 
 # Lighthouse CI
