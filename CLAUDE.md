@@ -156,10 +156,15 @@ terminal, pop, swiss, editorial. Все пять реализуют все се�
 - `main` уезжает на закрытый стенд Coolify (`stage.mrshkn.com`, basic-auth) с `SITE_ENV=preview`, то есть noindex.
   Других превью нет, у pull request'ов своих адресов тоже нет. Боевой mrshkn.com включается отдельным блоком
   роадмапа — своим приложением в Coolify со своей базой.
-- Coolify — `https://coolify.mrshkn.com`, проект `mrshkn-site`, окружение `stage`. Пуш в `main` → вебхук GitHub App
-  `mrshkn-coolify` → сборка на сервере (около минуты) → Coolify запускает новый контейнер и сразу снимает старый.
-  Проверка здоровья у приложения выключена → готовности нового контейнера Coolify не ждет, несколько секунд адрес
-  может отдать 502.
+- Сервер образы не собирает (D41). Пуш в `main` → джоб `image` в `ci.yml` после зеленого `checks` (Lighthouse не ждет)
+  собирает `Dockerfile` с `SITE_ENV=preview` и `NEXT_PUBLIC_SITE_URL=https://stage.mrshkn.com`, кладет
+  `ghcr.io/nikolaymurashkin/mrshkn-site:<sha коммита>` (пакет приватный) → через API Coolify ставит этот тег
+  приложению и выкатывает, ждет `finished`. Красный `checks` до стенда не доходит; упал выкат — красный джоб.
+- Coolify — `https://coolify.mrshkn.com`, проект `mrshkn-site`, окружение `stage`, приложение типа Docker Image (UUID —
+  переменная репозитория `COOLIFY_APP_UUID`, токен API — секрет `COOLIFY_TOKEN`). Сервер тянет образ из `ghcr.io`
+  под своим `docker login`. Coolify запускает новый контейнер и сразу снимает старый; проверка здоровья выключена →
+  несколько секунд адрес может отдать 502. Откат — Coolify → приложение → Rollback (хранит 2 образа) или новый тег
+  в General → Docker Image Tag и Deploy.
 - Порядок работы с сервером — `../docs/ops/vps-setup.md` и `../docs/ops/coolify.md`.
 
 ## Карта тем
