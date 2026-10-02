@@ -244,6 +244,12 @@
   gap: 0 10px;
   padding: 11px 0 12px;
   border-bottom: var(--border-width) solid var(--line);
+
+  &::after {
+    content: '';
+    flex-basis: 100%;
+    order: 1;
+  }
 }
 
 .optionLeader {
@@ -263,6 +269,7 @@
 
 .optionNote {
   flex: 1 0 60%;
+  order: 2;
   font-size: 13px;
   line-height: 1.4;
   color: var(--muted);
@@ -278,6 +285,7 @@
 }
 
 .optionMonthly {
+  order: 2;
   margin-left: auto;
   font-size: 13px;
   text-align: right;
@@ -364,6 +372,10 @@
     flex-direction: column;
     align-items: stretch;
     gap: 2px;
+
+    &::after {
+      display: none;
+    }
   }
 
   .optionNote {
@@ -376,6 +388,7 @@
   }
 
   .optionMonthly {
+    order: 0;
     margin-left: 0;
     text-align: left;
   }
