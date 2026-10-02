@@ -2,7 +2,7 @@ import config from '@payload-config';
 import { getPayload, type Payload, type RequiredDataFromCollectionSlug } from 'payload';
 import sharp from 'sharp';
 import { afterAll, beforeAll, describe, expect, it } from 'vitest';
-import { getCaseBySlug, getCases } from '@/cms/cases';
+import { getCaseBySlug, getCases, hasCases } from '@/cms/cases';
 import { Role } from '@/cms/consts';
 
 const PASSWORD = 'integration-password';
@@ -174,6 +174,53 @@ describe('кейсы', () => {
     expect(published?.lighthouse?.url).toEqual(expect.stringMatching(/\S/));
     expect(await getCaseBySlug('ru', 'skrytyj-kejs')).toBeNull();
     expect(await getCaseBySlug('ru', 'net-takogo')).toBeNull();
+  });
+
+  it('hasCases не видит черновик и кейс без обложки, видит опубликованный с обложкой', async () => {
+    await payload.delete({ collection: 'cases', where: { id: { exists: true } } });
+
+    await payload.create({
+      collection: 'cases',
+      locale: 'ru',
+      data: await caseData({
+        title: 'Черновик меню',
+        slug: 'chernovik-menyu',
+        kind: 'demo',
+        niche: 'other',
+        design: 'kinetic',
+        _status: 'draft',
+      }),
+    });
+    const withoutCover = await payload.create({
+      collection: 'cases',
+      locale: 'ru',
+      depth: 0,
+      data: await caseData({
+        title: 'Без обложки',
+        slug: 'bez-oblozhki',
+        kind: 'demo',
+        niche: 'other',
+        design: 'kinetic',
+      }),
+    });
+
+    await payload.delete({ collection: 'media', id: withoutCover.cover as number });
+
+    expect(await hasCases('ru')).toBe(false);
+
+    await payload.create({
+      collection: 'cases',
+      locale: 'ru',
+      data: await caseData({
+        title: 'С обложкой',
+        slug: 's-oblozhkoj',
+        kind: 'demo',
+        niche: 'other',
+        design: 'kinetic',
+      }),
+    });
+
+    expect(await hasCases('ru')).toBe(true);
   });
 });
 
