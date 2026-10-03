@@ -101,7 +101,7 @@ describe('сабсет шрифтов направлений', () => {
   });
 
   it('включает неразрывный пробел: он стоит после предлогов во всех заголовках', () => {
-    expect(GLYPHS).toContain(' ');
+    expect(GLYPHS).toContain(String.fromCodePoint(0x00a0));
   });
 
   describe.each(FONT_FILES)('$path', ({ path, missingInSource, note }) => {
