@@ -35,8 +35,9 @@ const FONTS = [
     design: 'terminal',
     directory: 'ibmplexsans',
     source: 'IBMPlexSans[wdth,wght].ttf',
-    output: 'ibm-plex-sans.woff2',
+    output: 'terminal-sans.woff2',
     variationAxes: { wght: { min: 400, max: 700 }, wdth: 100 },
+    rename: { 'IBM Plex Sans': 'Terminal Sans', IBMPlexSans: 'TerminalSans' },
   },
   {
     design: 'pop',
@@ -75,11 +76,74 @@ const download = async (path) => {
   return Buffer.from(await response.arrayBuffer());
 };
 
+// Сабсет по OFL — Modified Version: зарезервированное имя (у IBM Plex — «Plex») ему носить нельзя.
+// Новая таблица name дописывается в конец исходника, harfbuzz при сабсете соберет файл заново без старой.
+const NOTICE_NAME_IDS = new Set([0, 7, 13, 14]);
+
+const renameFont = (font, rename) => {
+  const tables = Array.from({ length: font.readUInt16BE(4) }, (_, index) => 12 + index * 16);
+  const record = tables.find((offset) => font.toString('latin1', offset, offset + 4) === 'name');
+  const table = font.readUInt32BE(record + 8);
+
+  if (font.readUInt16BE(table) !== 0) {
+    throw new Error(`таблица name формата ${font.readUInt16BE(table)}, переименование умеет только формат 0`);
+  }
+
+  const count = font.readUInt16BE(table + 2);
+  const strings = table + font.readUInt16BE(table + 4);
+  const records = Array.from({ length: count }, (_, index) => {
+    const offset = table + 6 + index * 12;
+    const [platform, encoding, language, nameId, length, start] = [0, 2, 4, 6, 8, 10].map((field) =>
+      font.readUInt16BE(offset + field),
+    );
+    const raw = font.subarray(strings + start, strings + start + length);
+
+    if (NOTICE_NAME_IDS.has(nameId)) return { platform, encoding, language, nameId, bytes: raw };
+
+    const utf16 = platform !== 1;
+    const text = Object.entries(rename).reduce(
+      (value, [from, to]) => value.replaceAll(from, to),
+      utf16 ? Buffer.from(raw).swap16().toString('utf16le') : raw.toString('latin1'),
+    );
+    const bytes = utf16 ? Buffer.from(text, 'utf16le').swap16() : Buffer.from(text, 'latin1');
+
+    return { platform, encoding, language, nameId, bytes };
+  });
+
+  const header = Buffer.alloc(6 + count * 12);
+  header.writeUInt16BE(0, 0);
+  header.writeUInt16BE(count, 2);
+  header.writeUInt16BE(header.length, 4);
+
+  let stringOffset = 0;
+  records.forEach(({ platform, encoding, language, nameId, bytes }, index) => {
+    [platform, encoding, language, nameId, bytes.length, stringOffset].forEach((value, field) =>
+      header.writeUInt16BE(value, 6 + index * 12 + field * 2),
+    );
+    stringOffset += bytes.length;
+  });
+
+  const name = Buffer.concat([header, ...records.map(({ bytes }) => bytes)]);
+  const padded = Buffer.concat([name, Buffer.alloc((4 - (name.length % 4)) % 4)]);
+  let checksum = 0;
+  for (let offset = 0; offset < padded.length; offset += 4) {
+    checksum = (checksum + padded.readUInt32BE(offset)) >>> 0;
+  }
+
+  const renamed = Buffer.concat([font, Buffer.alloc((4 - (font.length % 4)) % 4), padded]);
+  renamed.writeUInt32BE(checksum, record + 4);
+  renamed.writeUInt32BE(renamed.length - padded.length, record + 8);
+  renamed.writeUInt32BE(name.length, record + 12);
+
+  return renamed;
+};
+
 for (const font of FONTS) {
   const outputDir = join(ROOT, 'src/designs', font.design, 'fonts');
   await mkdir(outputDir, { recursive: true });
 
-  const source = await download(`${font.directory}/${encodeURIComponent(font.source)}`);
+  const original = await download(`${font.directory}/${encodeURIComponent(font.source)}`);
+  const source = font.rename ? renameFont(original, font.rename) : original;
   const subset = await subsetFont(source, GLYPHS, {
     targetFormat: 'woff2',
     variationAxes: font.variationAxes,
@@ -92,5 +156,5 @@ for (const font of FONTS) {
     await download(`${font.directory}/OFL.txt`),
   );
 
-  console.log(`${font.design}/${font.output}: ${source.length} → ${subset.length} bytes`);
+  console.log(`${font.design}/${font.output}: ${original.length} → ${subset.length} bytes`);
 }

@@ -9,11 +9,11 @@ export const jetbrains = localFont({
   declarations: [{ prop: 'font-family', value: 'JetBrains Mono' }],
 });
 
-export const plex = localFont({
-  src: './fonts/ibm-plex-sans.woff2',
+export const terminalSans = localFont({
+  src: './fonts/terminal-sans.woff2',
   weight: '400 700',
   display: 'swap',
   preload: false,
   adjustFontFallback: false,
-  declarations: [{ prop: 'font-family', value: 'IBM Plex Sans' }],
+  declarations: [{ prop: 'font-family', value: 'Terminal Sans' }],
 });

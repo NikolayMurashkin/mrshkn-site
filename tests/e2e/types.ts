@@ -12,7 +12,7 @@ export type DesignShape = {
   headerCta: string | null;
   /** Заголовок hero. */
   heroTitle: RegExp;
-  /** Шрифт заголовка hero: у Terminal это текстовый IBM Plex Sans, не моно. */
+  /** Шрифт заголовка hero: у Terminal это текстовый Terminal Sans (сабсет IBM Plex Sans), не моно. */
   heroTitleFont: RegExp;
   /** Главная и вторая кнопки hero. */
   heroCtas: [string, string];

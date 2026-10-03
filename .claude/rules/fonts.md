@@ -24,10 +24,14 @@ paths:
 
 - Не Google, а свои сабсеты через `next/font/local`: `src/designs/<name>/fonts/*.woff2`, рядом `*-OFL.txt`. Один вариативный
   файл на семейство, `wght` сужен до начертаний сайта: Unbounded 700–900, Golos Text 400–600, JetBrains Mono 400–700,
-  IBM Plex Sans 400–700, Rubik 500–900, Geologica 300–800, Onest 400–600; Prata — статичный. Прочие оси исходника
-  зафиксированы по умолчанию из `fvar` (IBM Plex Sans `wdth` 100; Geologica `CRSV` 0, `SHRP` 0, `slnt` 0), курсивов нет.
+  Terminal Sans (IBM Plex Sans) 400–700, Rubik 500–900, Geologica 300–800, Onest 400–600; Prata — статичный.
+  Прочие оси исходника зафиксированы по умолчанию из `fvar` (Terminal Sans `wdth` 100; Geologica `CRSV` 0, `SHRP` 0, `slnt` 0), курсивов нет.
   Только базовая латиница, кириллица U+0400–045F и пунктуация. Знаки, которых нет в исходнике (✓, ✦, стрелки у Rubik
   и Prata и др.), не добавляем: их рисует fallback, как и с Google (список — `tests/unit/font-subset.test.ts`).
+- Зарезервированное имя (Reserved Font Name в первой строке OFL) сабсет носить не может: по OFL он Modified Version.
+  У IBM Plex Sans зарезервировано «Plex» → файл и семейство — Terminal Sans (`terminal-sans.woff2`), имя в таблице `name`
+  переписывает `rename` в `scripts/subset-fonts.mjs`, копирайт и лицензию оставляет. Новый шрифт с RFN — так же;
+  проверяет `tests/unit/font-subset.test.ts`.
 - Почему не Google: `next build` качал шрифты из сети и падал на CI (D38). У Kinetic еще и скорость: файлы Google
   (4 файла, 140 КБ на `/ru`) давали FCP 2,0 с и LCP 3,0 с против 1,2–1,7 с у остальных — в симуляции Lighthouse все байты,
   доехавшие до наблюдаемого LCP, входят в его оценку. Сабсеты (57 КБ) дают 99 локально и запас на раннере.

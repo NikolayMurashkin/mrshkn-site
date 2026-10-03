@@ -37,7 +37,7 @@ const FONT_FILES: FontFile[] = [
   { path: 'kinetic/fonts/unbounded.woff2', missingInSource: MARKS, note: NOT_IN_SOURCE },
   { path: 'kinetic/fonts/golos-text.woff2', missingInSource: [...CYRILLIC_GRAVES, ...MARKS], note: NOT_IN_SOURCE },
   { path: 'terminal/fonts/jetbrains-mono.woff2', missingInSource: [...CYRILLIC_GRAVES, ...MARKS], note: NOT_IN_SOURCE },
-  { path: 'terminal/fonts/ibm-plex-sans.woff2', missingInSource: ['✦'], note: NOT_IN_SOURCE },
+  { path: 'terminal/fonts/terminal-sans.woff2', missingInSource: ['✦'], note: NOT_IN_SOURCE },
   { path: 'pop/fonts/rubik.woff2', missingInSource: ['←', '→', ...MARKS], note: NOT_IN_SOURCE },
   { path: 'swiss/fonts/geologica.woff2', missingInSource: MARKS, note: NOT_IN_SOURCE },
   {
@@ -90,6 +90,35 @@ const fontCharacters = (path: string): Promise<Set<string>> => {
   return loaded;
 };
 
+const NOTICE_NAME_IDS = new Set([0, 7, 13, 14]);
+
+const nameRecords = async (path: string) => {
+  const fontverter = nodeRequire('fontverter') as Fontverter;
+  const sfnt = await fontverter.convert(readFileSync(fileOf(path)), 'sfnt');
+  const tables = Array.from({ length: sfnt.readUInt16BE(4) }, (_, index) => 12 + index * 16);
+  const record = tables.find((offset) => sfnt.toString('latin1', offset, offset + 4) === 'name');
+
+  if (record === undefined) return [];
+
+  const table = sfnt.readUInt32BE(record + 8);
+  const strings = table + sfnt.readUInt16BE(table + 4);
+
+  return Array.from({ length: sfnt.readUInt16BE(table + 2) }, (_, index) => {
+    const offset = table + 6 + index * 12;
+    const platform = sfnt.readUInt16BE(offset);
+    const start = strings + sfnt.readUInt16BE(offset + 10);
+    const raw = Buffer.from(sfnt.subarray(start, start + sfnt.readUInt16BE(offset + 8)));
+    const text = platform === 1 ? raw.toString('latin1') : raw.swap16().toString('utf16le');
+
+    return { nameId: sfnt.readUInt16BE(offset + 6), text };
+  });
+};
+
+const reservedNamesOf = (license: string) =>
+  [...readFileSync(license, 'utf8').matchAll(/Reserved Font Names?\s+((?:"[^"]+"(?:\s*(?:,|and)\s*)?)+)/g)].flatMap(
+    ([, names]) => [...names.matchAll(/"([^"]+)"/g)].map(([, name]) => name),
+  );
+
 const describeCharacter = (character: string) =>
   `U+${character.codePointAt(0)!.toString(16).toUpperCase().padStart(4, '0')}`;
 
@@ -129,6 +158,33 @@ describe('сабсет шрифтов направлений', () => {
       expect(existsSync(license), `файл ${license} существует`).toBe(true);
       expect(readFileSync(license, 'utf8').toLowerCase()).toContain('sil open font license');
     });
+
+    it('не носит в таблице name зарезервированных имен из своей OFL: сабсет — Modified Version', async () => {
+      const reserved = reservedNamesOf(fileOf(path.replace(/\.woff2$/, '-OFL.txt')));
+      const records = await nameRecords(path);
+      const violations = records
+        .filter(({ nameId, text }) => !NOTICE_NAME_IDS.has(nameId) && reserved.some((name) => text.includes(name)))
+        .map(({ nameId, text }) => `${nameId}: ${text}`);
+
+      expect(records.length, 'таблица name прочитана').toBeGreaterThan(0);
+      expect(violations).toEqual([]);
+    });
+  });
+
+  it('имена семейств в @font-face направлений не содержат зарезервированных имен из OFL сабсетов', () => {
+    const reserved = FONT_FILES.flatMap(({ path }) => reservedNamesOf(fileOf(path.replace(/\.woff2$/, '-OFL.txt'))));
+    const families = designDirectories()
+      .map((name) => join(DESIGNS, name, 'fonts.ts'))
+      .filter((file) => existsSync(file))
+      .flatMap((file) =>
+        [...readFileSync(file, 'utf8').matchAll(/prop:\s*'font-family',\s*value:\s*'([^']+)'/g)].map(
+          ([, family]) => family,
+        ),
+      );
+
+    expect(reserved.length, 'зарезервированные имена прочитаны из лицензий').toBeGreaterThan(0);
+    expect(families.length, 'семейства прочитаны из fonts.ts').toBeGreaterThan(0);
+    expect(families.filter((family) => reserved.some((name) => family.includes(name)))).toEqual([]);
   });
 
   it('набор woff2 в src/designs/*/fonts/ равен таблице: лишний или неучтенный файл роняет тест', () => {

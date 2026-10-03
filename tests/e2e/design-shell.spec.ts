@@ -17,11 +17,11 @@ const SHAPES: Record<(typeof DESIGNS)[number], DesignShape> = {
   },
   terminal: {
     displayFont: /JetBrains Mono/,
-    textFont: /IBM Plex Sans/,
+    textFont: /Terminal Sans/,
     navLinks: 3,
     headerCta: 'Обсудить проект',
     heroTitle: /Сайт\sна\sкоде\s*за\s14\sдней\./,
-    heroTitleFont: /IBM Plex Sans/,
+    heroTitleFont: /Terminal Sans/,
     heroCtas: ['./рассчитать-стоимость', './как-мы-работаем'],
     heroMark: 'build.log',
   },

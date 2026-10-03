@@ -17,7 +17,7 @@ const SECTION_SELECTORS = ['header', 'main section', 'footer'];
 /** Семейства шрифтов направления — по ним из общего CSS достаются адреса файлов шрифтов. */
 const DESIGN_FONTS: Record<DesignName, string[]> = {
   kinetic: ['Unbounded', 'Golos Text'],
-  terminal: ['JetBrains Mono', 'IBM Plex Sans'],
+  terminal: ['JetBrains Mono', 'Terminal Sans'],
   pop: ['Rubik'],
   swiss: ['Geologica'],
   editorial: ['Prata', 'Onest'],
