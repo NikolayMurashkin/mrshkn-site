@@ -158,11 +158,13 @@ terminal, pop, swiss, editorial. Все пять реализуют все се�
   роадмапа — своим приложением в Coolify со своей базой.
 - Сервер образы не собирает (D41). Пуш в `main` → джоб `image` в `ci.yml` после зеленого `checks` (Lighthouse не ждет)
   собирает `Dockerfile` с `SITE_ENV=preview` и `NEXT_PUBLIC_SITE_URL=https://stage.mrshkn.com`, кладет
-  `ghcr.io/nikolaymurashkin/mrshkn-site:<sha коммита>` (пакет приватный) → через API Coolify ставит этот тег
+  `ghcr.io/nikolaymurashkin/mrshkn-site:<sha коммита>` (пакет публичный, как репозиторий) → через API Coolify ставит тег
   приложению и выкатывает, ждет `finished`. Красный `checks` до стенда не доходит; упал выкат — красный джоб.
+  Прогоны `main` встают в очередь и друг друга не отменяют (`cancel-in-progress` только у PR) → перезапуск старого
+  прогона выкатит старый коммит поверх нового.
 - Coolify — `https://coolify.mrshkn.com`, проект `mrshkn-site`, окружение `stage`, приложение типа Docker Image (UUID —
   переменная репозитория `COOLIFY_APP_UUID`, токен API — секрет `COOLIFY_TOKEN`). Сервер тянет образ из `ghcr.io`
-  под своим `docker login`. Coolify запускает новый контейнер и сразу снимает старый; проверка здоровья выключена →
+  без входа. Coolify запускает новый контейнер и сразу снимает старый; проверка здоровья выключена →
   несколько секунд адрес может отдать 502. Откат — Coolify → приложение → Rollback (хранит 2 образа) или новый тег
   в General → Docker Image Tag и Deploy.
 - Порядок работы с сервером — `../docs/ops/vps-setup.md` и `../docs/ops/coolify.md`.
