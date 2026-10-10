@@ -16,6 +16,7 @@ const FONTS = [
     source: 'Unbounded[wght].ttf',
     output: 'unbounded.woff2',
     variationAxes: { wght: { min: 700, max: 900 } },
+    instances: [{ output: 'unbounded-900.ttf', variationAxes: { wght: 900 } }],
   },
   {
     design: 'kinetic',
@@ -23,6 +24,10 @@ const FONTS = [
     source: 'GolosText[wght].ttf',
     output: 'golos-text.woff2',
     variationAxes: { wght: { min: 400, max: 600 } },
+    instances: [
+      { output: 'golos-text-400.ttf', variationAxes: { wght: 400 } },
+      { output: 'golos-text-600.ttf', variationAxes: { wght: 600 } },
+    ],
   },
   {
     design: 'terminal',
@@ -157,4 +162,19 @@ for (const font of FONTS) {
   );
 
   console.log(`${font.design}/${font.output}: ${original.length} → ${subset.length} bytes`);
+
+  // OG-картинки рисует ImageResponse (Satori): woff2 и вариативные шрифты он не читает → статичный TTF
+  // одного начертания, лицензия — та же `<имя>-OFL.txt` рядом. Кернинг вырезан: Satori ставит отрезки строки
+  // по ширинам знаков без кернинга, а рисует слова с ним → разница копится в пробеле после отрезка.
+  for (const instance of font.instances ?? []) {
+    const instanceFont = await subsetFont(source, GLYPHS, {
+      targetFormat: 'sfnt',
+      variationAxes: instance.variationAxes,
+      noLayoutClosure: true,
+      dropTables: ['GPOS', 'kern'],
+    });
+
+    await writeFile(join(outputDir, instance.output), instanceFont);
+    console.log(`${font.design}/${instance.output}: ${original.length} → ${instanceFont.length} bytes`);
+  }
 }

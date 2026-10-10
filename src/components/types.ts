@@ -16,3 +16,8 @@ export type CaseImageProps = {
   /** Картинка на первом экране: грузится сразу и с высоким приоритетом, остальные — лениво. */
   priority?: boolean;
 };
+
+export type JsonLdProps = {
+  /** Узел schema.org; несколько узлов на странице — несколько компонентов. */
+  data: object;
+};

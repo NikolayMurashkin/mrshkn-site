@@ -5,13 +5,15 @@ import type { Metadata } from 'next';
 import type { ReactNode } from 'react';
 import { hasCases } from '@/cms/cases';
 import { DesignSwitcher } from '@/components/DesignSwitcher';
+import { JsonLd } from '@/components/JsonLd';
 import { getTheme } from '@/components/theme-server';
 import { ThemeProvider } from '@/components/ThemeProvider';
 import { DesignSection } from '@/designs/registry';
 import { getDesign } from '@/designs/server';
-import { LOCALES } from '@/i18n/consts';
 import { routing } from '@/i18n/routing';
 import { SITE_URL } from '@/lib/consts';
+import { organizationJsonLd } from '@/lib/seo/json-ld';
+import { pageMetadata } from '@/lib/seo/metadata';
 import { getSiteEnv, robotsMetadata } from '@/lib/site-env';
 import '@/styles/globals.scss';
 
@@ -24,17 +26,17 @@ export const generateStaticParams = () => routing.locales.map((locale) => ({ loc
 
 export const generateMetadata = async ({ params }: Omit<LocaleLayoutProps, 'children'>): Promise<Metadata> => {
   const { locale } = await params;
+
+  if (!hasLocale(routing.locales, locale)) {
+    notFound();
+  }
+
   const t = await getTranslations({ locale, namespace: 'meta' });
 
   return {
     metadataBase: new URL(SITE_URL),
-    title: t('title'),
-    description: t('description'),
     robots: robotsMetadata(getSiteEnv()),
-    alternates: {
-      canonical: `/${locale}`,
-      languages: Object.fromEntries(LOCALES.map((item) => [item, `/${item}`])),
-    },
+    ...pageMetadata({ locale, path: '', title: t('title'), description: t('description') }),
   };
 };
 
@@ -59,6 +61,7 @@ const LocaleLayout = async ({ children, params }: LocaleLayoutProps) => {
       suppressHydrationWarning
     >
       <body>
+        <JsonLd data={organizationJsonLd()} />
         <NextIntlClientProvider>
           <ThemeProvider defaultTheme={theme}>
             <DesignSection

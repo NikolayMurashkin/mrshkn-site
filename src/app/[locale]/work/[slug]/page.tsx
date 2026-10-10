@@ -4,11 +4,11 @@ import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
 import { cache } from 'react';
 import { getCaseBySlug } from '@/cms/cases';
-import { excerpt } from '@/content/work';
+import { caseHref, excerpt } from '@/content/work';
 import { DesignSection } from '@/designs/registry';
 import { getDesign } from '@/designs/server';
-import { LOCALES } from '@/i18n/consts';
 import { routing } from '@/i18n/routing';
+import { pageMetadata } from '@/lib/seo/metadata';
 
 const loadCase = cache(getCaseBySlug);
 
@@ -31,14 +31,12 @@ export const generateMetadata = async ({ params }: CasePageProps): Promise<Metad
 
   const t = await getTranslations({ locale, namespace: 'work' });
 
-  return {
+  return pageMetadata({
+    locale,
+    path: caseHref(slug),
     title: t('metaTitle', { title: caseItem.title }),
     description: excerpt(caseItem.task) || t('metaDescription', { title: caseItem.title }),
-    alternates: {
-      canonical: `/${locale}/work/${slug}`,
-      languages: Object.fromEntries(LOCALES.map((item) => [item, `/${item}/work/${slug}`])),
-    },
-  };
+  });
 };
 
 const CasePage = async ({ params }: CasePageProps) => {

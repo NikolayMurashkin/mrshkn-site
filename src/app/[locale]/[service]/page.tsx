@@ -2,12 +2,14 @@ import { hasLocale } from 'next-intl';
 import { getMessages, getTranslations, setRequestLocale } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
+import { JsonLd } from '@/components/JsonLd';
 import { getServiceBySlug, SERVICES, serviceFaqJsonLd } from '@/content/services';
-import type { ServiceMessages } from '@/content/types';
 import { DesignSection } from '@/designs/registry';
 import { getDesign } from '@/designs/server';
-import { LOCALES } from '@/i18n/consts';
 import { routing } from '@/i18n/routing';
+import { serviceJsonLd } from '@/lib/seo/json-ld';
+import { pageMetadata } from '@/lib/seo/metadata';
+import type { SeoMessages } from '@/lib/seo/types';
 
 export const dynamicParams = false;
 
@@ -28,14 +30,12 @@ export const generateMetadata = async ({ params }: ServicePageRouteProps): Promi
 
   const t = await getTranslations({ locale, namespace: 'pricing.plans' });
 
-  return {
+  return pageMetadata({
+    locale,
+    path: `/${service.slug}`,
     title: t(`${service.id}.name`),
     description: t(`${service.id}.summary`),
-    alternates: {
-      canonical: `/${locale}/${slug}`,
-      languages: Object.fromEntries(LOCALES.map((item) => [item, `/${item}/${slug}`])),
-    },
-  };
+  });
 };
 
 const ServiceRoute = async ({ params }: ServicePageRouteProps) => {
@@ -49,17 +49,14 @@ const ServiceRoute = async ({ params }: ServicePageRouteProps) => {
   setRequestLocale(locale);
 
   const design = await getDesign();
-  const messages = (await getMessages({ locale })) as ServiceMessages;
+  const messages = (await getMessages({ locale })) as unknown as SeoMessages;
+  const offer = serviceJsonLd(messages, service.id, locale);
   const faq = serviceFaqJsonLd(messages, service.id);
 
   return (
     <main>
-      {faq ? (
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(faq).replace(/</g, '\\u003c') }}
-        />
-      ) : null}
+      {offer ? <JsonLd data={offer} /> : null}
+      {faq ? <JsonLd data={faq} /> : null}
       <DesignSection
         design={design}
         section="servicePage"
