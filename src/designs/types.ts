@@ -51,6 +51,8 @@ export type DesignComponents = {
   brief: ComponentType<BriefProps>;
   briefThanks: ComponentType;
   servicePage: ComponentType<ServicePageProps>;
+  privacyPage: ComponentType;
+  cookieBanner: ComponentType;
 };
 
 /** Срок шага услуги: ярлык мелко, число или диапазон крупно, как «День 1»; без числа ярлык идет целиком. */

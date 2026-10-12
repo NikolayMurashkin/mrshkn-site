@@ -336,6 +336,17 @@
   span {
     @include s.wrap;
   }
+
+  a {
+    text-decoration: underline;
+    text-decoration-thickness: var(--border-width);
+    text-underline-offset: 3px;
+    transition: color var(--duration-fast) var(--ease-out);
+
+    &:hover {
+      color: var(--accent-ink);
+    }
+  }
 }
 
 .actions {

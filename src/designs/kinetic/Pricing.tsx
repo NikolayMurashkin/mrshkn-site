@@ -1,8 +1,10 @@
 import { useTranslations } from 'next-intl';
+import { useGoal } from '@/components/Analytics/use-consent';
 import { planPath } from '@/content/format';
 import { PRICING_BASIC_GROUPS, PRICING_EXTRAS, PRICING_OPTIONS, PRICING_PLANS } from '@/content/pricing';
 import { usePriceText } from '@/content/use-price';
 import { Link } from '@/i18n/navigation';
+import { GOALS } from '@/lib/analytics/consts';
 import { ArrowUpRightIcon } from './icons';
 import { SectionHead } from './SectionHead';
 import styles from './Pricing.module.scss';
@@ -10,6 +12,7 @@ import styles from './Pricing.module.scss';
 export const KineticPricing = () => {
   const t = useTranslations('pricing');
   const price = usePriceText();
+  const reachGoal = useGoal();
 
   return (
     <section
@@ -38,6 +41,7 @@ export const KineticPricing = () => {
             <Link
               className={styles.planLink}
               href={planPath(plan)}
+              onClick={() => reachGoal(GOALS.planClick)}
               aria-label={t('planLink', { name: t(`plans.${plan.id}.name`) })}
             >
               <span className={styles.index}>{String(index + 1).padStart(2, '0')}</span>

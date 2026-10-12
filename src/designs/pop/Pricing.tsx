@@ -1,8 +1,10 @@
 import { useTranslations } from 'next-intl';
+import { useGoal } from '@/components/Analytics/use-consent';
 import { planPath } from '@/content/format';
 import { PRICING_EXTRAS, PRICING_OPTIONS, PRICING_PLANS } from '@/content/pricing';
 import { usePriceText } from '@/content/use-price';
 import { Link } from '@/i18n/navigation';
+import { GOALS } from '@/lib/analytics/consts';
 import { PopBasics } from './Basics';
 import { ArrowUpRightIcon, StarIcon } from './icons';
 import { PopOptions } from './Options';
@@ -11,6 +13,7 @@ import styles from './Pricing.module.scss';
 export const PopPricing = () => {
   const t = useTranslations('pricing');
   const price = usePriceText();
+  const reachGoal = useGoal();
   const options = PRICING_OPTIONS.map((option) => ({
     id: option.id,
     name: t(`options.${option.id}.name`),
@@ -48,6 +51,7 @@ export const PopPricing = () => {
             <Link
               className={styles.card}
               href={planPath(plan)}
+              onClick={() => reachGoal(GOALS.planClick)}
               aria-label={t('planLink', { name: t(`plans.${plan.id}.name`) })}
             >
               <span className={styles.tag}>{t(`plans.${plan.id}.term`)}</span>

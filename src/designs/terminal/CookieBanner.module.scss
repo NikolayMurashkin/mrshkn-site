@@ -1,0 +1,80 @@
+@use './shared' as s;
+
+.banner {
+  @include s.window;
+
+  position: fixed;
+  bottom: 24px;
+  left: 24px;
+  z-index: 40;
+  width: min(440px, calc(100% - 48px));
+  box-shadow: var(--shadow-floating);
+}
+
+.bar {
+  @include s.window-bar;
+}
+
+.dot {
+  @include s.window-dot;
+}
+
+.file {
+  @include s.window-title;
+}
+
+.body {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 20px 24px 24px;
+}
+
+.text {
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.55;
+  overflow-wrap: anywhere;
+  min-width: 0;
+}
+
+.link {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transition: color var(--duration-fast) var(--ease-out);
+
+  &:hover {
+    color: var(--accent-ink);
+  }
+}
+
+.actions {
+  display: flex;
+  gap: 12px;
+}
+
+.action {
+  @include s.button;
+
+  flex: 1 1 0;
+  min-width: 0;
+  height: 42px;
+  padding: 0 18px;
+  font-size: 13px;
+}
+
+@media (max-width: 720px) {
+  .banner {
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: auto;
+    border: none;
+    border-top: var(--border-width) solid var(--line);
+    border-radius: 0;
+  }
+
+  .body {
+    padding: 16px var(--t-gutter) calc(16px + env(safe-area-inset-bottom));
+  }
+}

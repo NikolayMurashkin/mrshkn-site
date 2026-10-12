@@ -18,3 +18,6 @@ export const WORK_PATH_PREFIX = '/work/';
 export const PROCESS_SCALE_DAYS = Array.from({ length: 14 }, (_, index) => index + 1);
 
 export const PROCESS_KEY_DAYS: ReadonlySet<number> = new Set(PROCESS_STEPS.map((step) => step.day));
+
+/** Имя «файла» в строке окна cookie-баннера: декор окна, как в DS, скринридер его не читает. */
+export const TERMINAL_COOKIE_FILE = 'cookies.conf';

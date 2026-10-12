@@ -102,7 +102,23 @@
 .tagline {
   @include s.kicker;
 
-  grid-column: span 6;
+  grid-column: span 3;
+}
+
+.privacy {
+  grid-column: span 3;
+  font-size: 15px;
+  text-decoration: underline;
+  text-decoration-thickness: var(--border-width);
+  text-underline-offset: 4px;
+  transition: color var(--duration-fast) var(--ease-in-out);
+
+  @include s.wrap;
+
+  &:hover {
+    color: var(--accent-ink);
+    text-decoration-thickness: var(--border-width-strong);
+  }
 }
 
 .email {

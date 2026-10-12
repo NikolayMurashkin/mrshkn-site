@@ -70,6 +70,23 @@
   min-width: 0;
 }
 
+.privacy {
+  font-family: var(--font-display);
+  font-size: 12px;
+  letter-spacing: 0.04em;
+  text-transform: lowercase;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  color: var(--muted);
+  overflow-wrap: anywhere;
+  min-width: 0;
+  transition: color var(--duration-fast) var(--ease-out);
+
+  &:hover {
+    color: var(--accent-ink);
+  }
+}
+
 @media (max-width: 720px) {
   .footer {
     flex-direction: column;

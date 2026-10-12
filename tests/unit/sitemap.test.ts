@@ -28,7 +28,7 @@ const makeCase = (slug: string): CaseCard => ({
   coverCaption: null,
 });
 
-const EXPECTED_PAGES = ['', ...PRICING_PLANS.map((plan) => `/${plan.slug}`), BRIEF_HREF];
+const EXPECTED_PAGES = ['', ...PRICING_PLANS.map((plan) => `/${plan.slug}`), BRIEF_HREF, '/docs/privacy'];
 
 const pageUrl = (locale: string, path: string) => `${SITE_URL}/${locale}${path}`;
 
@@ -54,7 +54,7 @@ afterEach(() => {
 });
 
 describe('список страниц сайта', () => {
-  it('S0: главная, страница каждой услуги и квиз, без «спасибо» и без дублей', () => {
+  it('S0: главная, страница каждой услуги, квиз и политика ПД, без «спасибо» и без дублей', () => {
     expect(new Set(SITE_PAGES)).toEqual(new Set(EXPECTED_PAGES));
     expect(SITE_PAGES).toHaveLength(EXPECTED_PAGES.length);
   });

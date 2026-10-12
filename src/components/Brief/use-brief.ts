@@ -1,7 +1,9 @@
 'use client';
 
-import { useState, type ChangeEvent } from 'react';
+import { useRef, useState, type ChangeEvent } from 'react';
+import { useGoal } from '@/components/Analytics/use-consent';
 import { useRouter } from '@/i18n/navigation';
+import { GOALS } from '@/lib/analytics/consts';
 import { BRIEF_STEPS, HONEYPOT_FIELD, THANKS_HREF } from '@/lib/brief/consts';
 import type { BriefChoice } from '@/lib/brief/types';
 import { BRIEF_EMPTY_ANSWERS, BRIEF_STEP_REQUIRED } from './consts';
@@ -9,6 +11,8 @@ import type { BriefAnswers, BriefProps, BriefStatus, UseBrief } from './types';
 
 export const useBrief = ({ design, plan }: BriefProps): UseBrief => {
   const router = useRouter();
+  const reachGoal = useGoal();
+  const started = useRef(false);
 
   const [step, setStep] = useState(0);
   const [answers, setAnswers] = useState<BriefAnswers>({ ...BRIEF_EMPTY_ANSWERS, design, product: plan ?? '' });
@@ -20,7 +24,14 @@ export const useBrief = ({ design, plan }: BriefProps): UseBrief => {
   const isLast = step === BRIEF_STEPS.length - 1;
   const filled = BRIEF_STEP_REQUIRED[current].every((field) => answers[field as keyof BriefAnswers].trim());
 
-  const pick = (field: BriefChoice, value: string) => setAnswers((state) => ({ ...state, [field]: value }));
+  const pick = (field: BriefChoice, value: string) => {
+    if (!started.current) {
+      started.current = true;
+      reachGoal(GOALS.quizStart);
+    }
+
+    setAnswers((state) => ({ ...state, [field]: value }));
+  };
 
   const write =
     (field: 'name' | 'contact' | 'comment') => (event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) =>
@@ -46,6 +57,7 @@ export const useBrief = ({ design, plan }: BriefProps): UseBrief => {
         return;
       }
 
+      reachGoal(GOALS.quizComplete);
       router.push(THANKS_HREF);
     } catch {
       setStatus('error');

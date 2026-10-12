@@ -14,6 +14,7 @@ const PAGES = LOCALES.flatMap((locale) => [
   `/${locale}/brief`,
   `/${locale}/brief/thanks`,
   ...SERVICE_PATHS.map((slug) => `/${locale}/${slug}`),
+  `/${locale}/docs/privacy`,
 ]);
 
 test.describe('страницы сайта не просят подсказок клиента', () => {

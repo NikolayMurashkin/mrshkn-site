@@ -1,6 +1,7 @@
 import { useTranslations } from 'next-intl';
 import { Link } from '@/i18n/navigation';
 import { BRIEF_HREF } from '@/lib/brief/consts';
+import { PRIVACY_HREF } from '@/lib/consts';
 import styles from './Footer.module.scss';
 
 export const TerminalFooter = () => {
@@ -31,6 +32,12 @@ export const TerminalFooter = () => {
           <span aria-hidden="true">{'// '}</span>
           {t('replyTime')}
         </span>
+        <Link
+          className={styles.privacy}
+          href={PRIVACY_HREF}
+        >
+          {t('privacy')}
+        </Link>
       </div>
     </footer>
   );

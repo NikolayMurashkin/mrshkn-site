@@ -1,8 +1,10 @@
 import { useTranslations } from 'next-intl';
+import { useGoal } from '@/components/Analytics/use-consent';
 import { planPath } from '@/content/format';
 import { PRICING_EXTRAS, PRICING_OPTIONS, PRICING_PLANS } from '@/content/pricing';
 import { usePriceText } from '@/content/use-price';
 import { Link } from '@/i18n/navigation';
+import { GOALS } from '@/lib/analytics/consts';
 import { TerminalBasics } from './Basics';
 import { TerminalOptions } from './Options';
 import styles from './Pricing.module.scss';
@@ -10,6 +12,7 @@ import styles from './Pricing.module.scss';
 export const TerminalPricing = () => {
   const t = useTranslations('pricing');
   const price = usePriceText();
+  const reachGoal = useGoal();
   const options = PRICING_OPTIONS.map((option) => ({
     id: option.id,
     name: t(`options.${option.id}.name`),
@@ -80,6 +83,7 @@ export const TerminalPricing = () => {
                 <Link
                   className={styles.planLink}
                   href={planPath(plan)}
+                  onClick={() => reachGoal(GOALS.planClick)}
                   aria-label={t('planLink', { name: t(`plans.${plan.id}.name`) })}
                 >
                   {t(`plans.${plan.id}.name`)}

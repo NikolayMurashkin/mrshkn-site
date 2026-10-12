@@ -4,12 +4,14 @@ import { renderSection } from '../render';
 import type { DesignComponents, SectionProps } from '../types';
 import './fonts';
 import { PopCase } from './Case';
+import { PopCookieBanner } from './CookieBanner';
 import { PopFooter } from './Footer';
 import { PopHeader } from './Header';
 import { PopHero } from './Hero';
 import { PopBrief } from './PopBrief';
 import { PopBriefThanks } from './PopBriefThanks';
 import { PopPricing } from './Pricing';
+import { PopPrivacyPage } from './PrivacyPage';
 import { PopProcess } from './Process';
 import { PopServicePage } from './ServicePage';
 import { PopWorks } from './Works';
@@ -25,6 +27,8 @@ const COMPONENTS: DesignComponents = {
   brief: PopBrief,
   briefThanks: PopBriefThanks,
   servicePage: PopServicePage,
+  privacyPage: PopPrivacyPage,
+  cookieBanner: PopCookieBanner,
 };
 
 export const PopSection = (props: SectionProps) => renderSection(COMPONENTS, props);

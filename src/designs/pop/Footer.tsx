@@ -1,6 +1,7 @@
 import { useTranslations } from 'next-intl';
 import { Link } from '@/i18n/navigation';
 import { BRIEF_HREF } from '@/lib/brief/consts';
+import { PRIVACY_HREF } from '@/lib/consts';
 import { POP_STUDIO_EMAIL } from './consts';
 import { ArrowRightIcon } from './icons';
 import styles from './Footer.module.scss';
@@ -37,6 +38,12 @@ export const PopFooter = () => {
         <div className={styles.links}>
           <span translate="no">{brand('tagline')}</span>
           <span translate="no">{POP_STUDIO_EMAIL}</span>
+          <Link
+            className={styles.link}
+            href={PRIVACY_HREF}
+          >
+            {t('privacy')}
+          </Link>
         </div>
       </div>
     </footer>

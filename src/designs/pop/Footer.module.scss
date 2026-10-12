@@ -86,6 +86,19 @@
   }
 }
 
+.link {
+  text-decoration: underline;
+  text-decoration-thickness: var(--border-width);
+  text-underline-offset: 4px;
+  transition: color var(--duration-fast) var(--ease-out);
+
+  @include s.wrap;
+
+  &:hover {
+    color: var(--ink);
+  }
+}
+
 @media (max-width: 720px) {
   .band {
     flex-direction: column;

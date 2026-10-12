@@ -1,15 +1,20 @@
 import { PRICING_PLANS } from '@/content/pricing';
 import type { SiteLocale } from '@/i18n/types';
 import { BRIEF_HREF } from '@/lib/brief/consts';
-import { SITE_URL } from '@/lib/consts';
+import { PRIVACY_HREF, SITE_URL } from '@/lib/consts';
 import defaultMessages from '../../../messages/ru.json';
 import type { PriceCurrency } from './types';
 
 /**
- * Статические индексируемые страницы без префикса языка: главная, страница каждой услуги, квиз.
+ * Статические индексируемые страницы без префикса языка: главная, страница каждой услуги, квиз, политика ПД.
  * «Спасибо» квиза закрыта от индекса, кейсы приходят из CMS — их в списке нет.
  */
-export const SITE_PAGES: readonly string[] = ['', ...PRICING_PLANS.map((plan) => `/${plan.slug}`), BRIEF_HREF];
+export const SITE_PAGES: readonly string[] = [
+  '',
+  ...PRICING_PLANS.map((plan) => `/${plan.slug}`),
+  BRIEF_HREF,
+  PRIVACY_HREF,
+];
 
 /** Ключ hreflang для версии по умолчанию: ведет на язык `DEFAULT_LOCALE`. */
 export const X_DEFAULT = 'x-default';

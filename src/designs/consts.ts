@@ -13,6 +13,8 @@ export const SECTION_NAMES = [
   'brief',
   'briefThanks',
   'servicePage',
+  'privacyPage',
+  'cookieBanner',
 ] as const;
 
 export const DEFAULT_DESIGN = 'kinetic' satisfies (typeof DESIGN_NAMES)[number];

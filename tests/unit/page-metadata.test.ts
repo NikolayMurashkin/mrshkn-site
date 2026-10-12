@@ -62,6 +62,8 @@ type PageTarget = { load: () => Promise<{ generateMetadata: GenerateMetadata }>;
 
 const CASE_PATH = '/work/alpha';
 
+const PRIVACY_PATH = '/docs/privacy';
+
 const PAGES = [...SITE_PAGES, CASE_PATH];
 
 const ROWS = PAGES.flatMap((path) => LOCALES.map((locale) => [locale, path] as const));
@@ -73,6 +75,10 @@ const targetOf = (path: string): PageTarget | null => {
 
   if (path === BRIEF_HREF) {
     return { load: () => import('@/app/[locale]/brief/page'), params: {} };
+  }
+
+  if (path === PRIVACY_PATH) {
+    return { load: () => import('@/app/[locale]/docs/privacy/page'), params: {} };
   }
 
   const plan = PRICING_PLANS.find((item) => path === `/${item.slug}`);
@@ -105,6 +111,10 @@ const metadataOf = async (locale: string, path: string): Promise<Metadata> => {
 const absolute = (value: string | URL) => new URL(value, SITE_URL).href;
 
 describe('метаданные страниц сайта', () => {
+  it('M0: среди проверяемых страниц есть политика ПД', () => {
+    expect(PAGES).toContain(PRIVACY_PATH);
+  });
+
   it.each(ROWS)('M1 %s, «%s»: ровно один canonical — адрес этой страницы на своем языке', async (locale, path) => {
     const { alternates } = await metadataOf(locale, path);
     const canonical = alternates?.canonical;

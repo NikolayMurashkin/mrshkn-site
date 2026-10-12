@@ -1,6 +1,7 @@
 import { useTranslations } from 'next-intl';
 import { Link, usePathname } from '@/i18n/navigation';
 import { BRIEF_HREF } from '@/lib/brief/consts';
+import { PRIVACY_HREF } from '@/lib/consts';
 import { SWISS_STUDIO_EMAIL } from './consts';
 import { ArrowRightIcon } from './icons';
 import styles from './Footer.module.scss';
@@ -53,6 +54,12 @@ export const SwissFooter = () => {
         >
           {brand('tagline')}
         </span>
+        <Link
+          className={styles.privacy}
+          href={PRIVACY_HREF}
+        >
+          {t('privacy')}
+        </Link>
         <span
           className={styles.email}
           translate="no"

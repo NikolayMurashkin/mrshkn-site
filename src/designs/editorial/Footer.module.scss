@@ -74,8 +74,18 @@
   color: var(--ink);
 }
 
-.email {
+.privacy {
+  @include s.text-link;
+  @include s.wrap;
+
   margin-left: auto;
+  font-size: 14px;
+  letter-spacing: 0.02em;
+  text-transform: none;
+  color: var(--ink);
+}
+
+.email {
   font-size: 14px;
   letter-spacing: 0.02em;
   text-transform: none;
@@ -106,7 +116,7 @@
     gap: var(--space-8);
   }
 
-  .email {
+  .privacy {
     margin-left: 0;
   }
 }

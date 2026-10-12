@@ -301,15 +301,19 @@
 }
 
 @media (max-width: 720px) {
+  .root {
+    bottom: calc(24px + var(--cookie-banner-space, 0px));
+  }
+
   [data-design='editorial'] .root {
     right: 16px;
-    bottom: 16px;
+    bottom: calc(16px + var(--cookie-banner-space, 0px));
   }
 }
 
 @media (max-width: 560px) {
   .root {
     right: 16px;
-    bottom: 16px;
+    bottom: calc(16px + var(--cookie-banner-space, 0px));
   }
 }

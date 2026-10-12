@@ -70,6 +70,18 @@
   min-width: 0;
 }
 
+.link {
+  text-underline-offset: 4px;
+
+  &:hover {
+    text-decoration: underline;
+  }
+
+  &:focus-visible {
+    outline-color: var(--ink-inverse);
+  }
+}
+
 @media (max-width: bp.$mobile-wide) {
   .footer {
     padding: 64px var(--gutter) 112px;

@@ -4,6 +4,7 @@ import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
 import type { ReactNode } from 'react';
 import { hasCases } from '@/cms/cases';
+import { ConsentProvider } from '@/components/Analytics/ConsentProvider';
 import { DesignSwitcher } from '@/components/DesignSwitcher';
 import { JsonLd } from '@/components/JsonLd';
 import { getTheme } from '@/components/theme-server';
@@ -11,6 +12,7 @@ import { ThemeProvider } from '@/components/ThemeProvider';
 import { DesignSection } from '@/designs/registry';
 import { getDesign } from '@/designs/server';
 import { routing } from '@/i18n/routing';
+import { getAnalyticsIds, getConsent } from '@/lib/analytics/server';
 import { SITE_URL } from '@/lib/consts';
 import { organizationJsonLd } from '@/lib/seo/json-ld';
 import { pageMetadata } from '@/lib/seo/metadata';
@@ -52,6 +54,8 @@ const LocaleLayout = async ({ children, params }: LocaleLayoutProps) => {
   const design = await getDesign();
   const theme = await getTheme(design);
   const withCases = await hasCases(locale);
+  const consent = await getConsent();
+  const { metrikaId, gaId } = getAnalyticsIds();
 
   return (
     <html
@@ -64,17 +68,27 @@ const LocaleLayout = async ({ children, params }: LocaleLayoutProps) => {
         <JsonLd data={organizationJsonLd()} />
         <NextIntlClientProvider>
           <ThemeProvider defaultTheme={theme}>
-            <DesignSection
-              design={design}
-              section="header"
-              hasCases={withCases}
-            />
-            {children}
-            <DesignSection
-              design={design}
-              section="footer"
-            />
-            <DesignSwitcher design={design} />
+            <ConsentProvider
+              initialChoice={consent}
+              metrikaId={metrikaId}
+              gaId={gaId}
+            >
+              <DesignSection
+                design={design}
+                section="header"
+                hasCases={withCases}
+              />
+              {children}
+              <DesignSection
+                design={design}
+                section="footer"
+              />
+              <DesignSection
+                design={design}
+                section="cookieBanner"
+              />
+              <DesignSwitcher design={design} />
+            </ConsentProvider>
           </ThemeProvider>
         </NextIntlClientProvider>
       </body>

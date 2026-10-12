@@ -324,7 +324,8 @@
     "cta": "Send a request",
     "replyTime": "We reply within an hour during working hours",
     "command": "open mrshkn.com/brief",
-    "sectionMark": "Contact"
+    "sectionMark": "Contact",
+    "privacy": "Privacy policy"
   },
   "switcher": {
     "label": "Style"
@@ -343,7 +344,7 @@
     "sending": "Sending",
     "fieldError": "Fill in this field to continue",
     "error": "The request did not go through. Try again, or write to hello@mrshkn.com.",
-    "consent": "I agree to the processing of my personal data",
+    "consent": "I agree to the processing of my personal data under the <policy>privacy policy</policy>",
     "honeypot": "Leave this field empty",
     "steps": {
       "product": {
@@ -690,5 +691,90 @@
         ]
       }
     }
+  },
+  "privacy": {
+    "meta": {
+      "title": "Privacy policy",
+      "description": "What data the MRSHKN studio website collects, why, where it goes and how to withdraw your consent."
+    },
+    "kicker": "Documents",
+    "title": "Privacy policy",
+    "updated": "Last updated October 12, 2026",
+    "tocLabel": "Contents",
+    "changeChoice": "Change cookie choice",
+    "sections": {
+      "operator": {
+        "title": "Who processes your data",
+        "paragraphs": [
+          "The data controller is Nikolay Murashkin, a self-employed professional in Russia trading as MRSHKN studio.",
+          "For any question about your data, email hello@mrshkn.com."
+        ]
+      },
+      "data": {
+        "title": "What data we collect",
+        "paragraphs": ["From the request you send through the brief on this website:"],
+        "items": [
+          "your name;",
+          "how to reach you: phone, email or messenger handle;",
+          "your brief answers: what you need built, industry, style, timing, budget and comments;",
+          "campaign tags, if you came from an ad."
+        ]
+      },
+      "purposes": {
+        "title": "Why we process it",
+        "paragraphs": [
+          "We use request data to reply to you, discuss your project and prepare a proposal.",
+          "We use analytics data to see website traffic and understand which pages and ads work."
+        ]
+      },
+      "basis": {
+        "title": "Legal basis",
+        "paragraphs": [
+          "We process your data based on your consent. You consent to the processing of your request by ticking the box in the brief before sending it, and to analytics cookies by clicking “Accept” in the cookie banner."
+        ]
+      },
+      "transfer": {
+        "title": "Where your data goes",
+        "paragraphs": [
+          "The name and contact details from your request, together with your brief answers, are sent to Telegram: the studio's bot posts a notification about each new request to the studio's group chat. The site's server reaches Telegram through Cloudflare, so these details pass through Cloudflare on their way to Telegram. Telegram and Cloudflare are services based outside Russia.",
+          "A copy of your request is emailed to hello@mrshkn.com, the studio mailbox hosted by Yandex.",
+          "Analytics data goes to Yandex (Yandex Metrica) and Google (Google Analytics 4), and only after you consent. Google is a service based outside Russia."
+        ]
+      },
+      "storage": {
+        "title": "Where and how long data is stored",
+        "paragraphs": [
+          "The website and its database run on a Timeweb Cloud server in Novosibirsk, Russia.",
+          "We keep request data for as long as we need it to reply and work on your project. Email hello@mrshkn.com and we will delete it sooner."
+        ]
+      },
+      "cookies": {
+        "title": "Cookies and analytics",
+        "paragraphs": [
+          "Yandex Metrica and Google Analytics 4 only start after you click “Accept” in the cookie banner. Until then your browser does not contact them, and after “Decline” they never load.",
+          "Without analytics, the website sets only its own cookies: your banner choice, the style and theme you picked and, if you came from an ad, campaign tags so they reach your request.",
+          "You can change your mind at any time: use the button below and the banner will appear again."
+        ]
+      },
+      "rights": {
+        "title": "Your rights",
+        "paragraphs": ["Email hello@mrshkn.com if you want to:"],
+        "items": [
+          "find out what data we hold about you;",
+          "correct or delete it;",
+          "withdraw your consent to the processing of your request."
+        ]
+      },
+      "changes": {
+        "title": "Changes to this policy",
+        "paragraphs": ["This policy may change. The current version is always on this page, with the date at the top."]
+      }
+    }
+  },
+  "cookieBanner": {
+    "label": "Cookie consent",
+    "text": "Yandex Metrica and Google Analytics 4 set cookies only with your consent. Read more in our <policy>privacy policy</policy>.",
+    "accept": "Accept",
+    "decline": "Decline"
   }
 }

@@ -4,10 +4,12 @@ import { renderSection } from '../render';
 import type { DesignComponents, SectionProps } from '../types';
 import './fonts';
 import { SwissCase } from './Case';
+import { SwissCookieBanner } from './CookieBanner';
 import { SwissFooter } from './Footer';
 import { SwissHeader } from './Header';
 import { SwissHero } from './Hero';
 import { SwissPricing } from './Pricing';
+import { SwissPrivacyPage } from './PrivacyPage';
 import { SwissProcess } from './Process';
 import { SwissServicePage } from './ServicePage';
 import { SwissBrief } from './SwissBrief';
@@ -25,6 +27,8 @@ const COMPONENTS: DesignComponents = {
   brief: SwissBrief,
   briefThanks: SwissBriefThanks,
   servicePage: SwissServicePage,
+  privacyPage: SwissPrivacyPage,
+  cookieBanner: SwissCookieBanner,
 };
 
 export const SwissSection = (props: SectionProps) => renderSection(COMPONENTS, props);

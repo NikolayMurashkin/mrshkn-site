@@ -1,3 +1,11 @@
 [data-testid='design-switcher'] {
   visibility: hidden;
 }
+
+[data-testid='cookie-banner'] {
+  visibility: hidden;
+}
+
+:root {
+  --cookie-banner-space: 0px !important;
+}

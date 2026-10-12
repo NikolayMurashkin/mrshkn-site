@@ -12,6 +12,7 @@ const INNER_PAGES = [
   '/store',
   '/mvp',
   '/support',
+  '/docs/privacy',
 ] as const;
 
 const zonesOf = (page: Page, path: string): Locator[] =>

@@ -1,6 +1,7 @@
 import { useTranslations } from 'next-intl';
 import { Link } from '@/i18n/navigation';
 import { BRIEF_HREF } from '@/lib/brief/consts';
+import { PRIVACY_HREF } from '@/lib/consts';
 import { buttonClass } from './button';
 import { KINETIC_FOUNDED_YEAR, KINETIC_STUDIO_EMAIL } from './consts';
 import styles from './Footer.module.scss';
@@ -35,6 +36,12 @@ export const KineticFooter = () => {
         </span>
         <div className={styles.links}>
           <span>{KINETIC_STUDIO_EMAIL}</span>
+          <Link
+            className={styles.link}
+            href={PRIVACY_HREF}
+          >
+            {t('privacy')}
+          </Link>
           <span>© {KINETIC_FOUNDED_YEAR}</span>
         </div>
       </div>

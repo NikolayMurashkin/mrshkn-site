@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { BRIEF_STEP_REQUIRED } from '@/components/Brief/consts';
 import type { BriefProps } from '@/components/Brief/types';
 import { useBrief } from '@/components/Brief/use-brief';
+import { Link } from '@/i18n/navigation';
 import {
   BRIEF_STEPS,
   BRIEF_STEP_VALUES,
@@ -11,6 +12,7 @@ import {
   HONEYPOT_FIELD,
   NAME_MAX_LENGTH,
 } from '@/lib/brief/consts';
+import { PRIVACY_HREF } from '@/lib/consts';
 import { buttonClass } from './button';
 import { ArrowRightIcon } from './icons';
 import { KineticChoices } from './KineticChoices';
@@ -212,7 +214,19 @@ export const KineticBrief = ({ design, plan }: BriefProps) => {
                 checked={consent}
                 onChange={(event) => setConsent(event.target.checked)}
               />
-              <span>{t('consent')}</span>
+              <span>
+                {t.rich('consent', {
+                  policy: (chunks) => (
+                    <Link
+                      href={PRIVACY_HREF}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      {chunks}
+                    </Link>
+                  ),
+                })}
+              </span>
             </label>
           </div>
         ) : null}

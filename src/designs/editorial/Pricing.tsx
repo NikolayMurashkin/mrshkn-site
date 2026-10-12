@@ -1,8 +1,10 @@
 import { useTranslations } from 'next-intl';
+import { useGoal } from '@/components/Analytics/use-consent';
 import { planPath } from '@/content/format';
 import { PRICING_EXTRAS, PRICING_OPTIONS, PRICING_PLANS } from '@/content/pricing';
 import { usePriceText } from '@/content/use-price';
 import { Link } from '@/i18n/navigation';
+import { GOALS } from '@/lib/analytics/consts';
 import { EditorialBasics } from './Basics';
 import { EditorialOptions } from './Options';
 import { EditorialRubric } from './Rubric';
@@ -11,6 +13,7 @@ import styles from './Pricing.module.scss';
 export const EditorialPricing = () => {
   const t = useTranslations('pricing');
   const price = usePriceText();
+  const reachGoal = useGoal();
 
   return (
     <section
@@ -46,6 +49,7 @@ export const EditorialPricing = () => {
               <Link
                 className={styles.planLink}
                 href={planPath(plan)}
+                onClick={() => reachGoal(GOALS.planClick)}
                 aria-label={t('planLink', { name: t(`plans.${plan.id}.name`) })}
               >
                 <span className={styles.line}>
