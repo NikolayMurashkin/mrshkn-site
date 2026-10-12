@@ -29,6 +29,8 @@
 | `pricing.plans.support.summary`                                                                                  | 06.10.2026: «Hosting» → «Hosting management» — хостинг на аккаунте клиента, студия его администрирует                                                                                                                 |
 | `servicePage.*`, `services.*`                                                                                    | 07.10.2026: подписи страницы услуги, FAQ, шаги процесса и список «Что входит» поддержки; тексты только из тарифов, базы и решений, цифр сверх прайса нет; в EN «Dev subscription», «staging domain» — сверить термины |
 | `hero.swiss.sectionMark`, `pricing.sectionMark`, `process.sectionMark`, `footer.sectionMark`, `hero.swiss.title` | 09.10.2026: номер раздела Swiss рисует CSS-счетчик → в метке только слово: Studio, Services, Process, Contact; точка заголовка hero — в теге `<dot>`                                                                  |
+| `team.*`                                                                                                         | 12.10.2026: секция «Команда»: Team, Who does the work, сумма лет «N years of combined experience», In the field since, Contractor network / Brought in per task, роли (Project lead, QA engineer — сверить термины)   |
+| `team.onCall`                                                                                                    | 12.10.2026: тег на карточках ядра «на связи весь проект» → on call for the whole project                                                                                                                              |
 
 ## Русских заглушек не осталось
 

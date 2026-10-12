@@ -12,6 +12,7 @@ import { KineticBriefThanks } from './KineticBriefThanks';
 import { KineticPricing } from './Pricing';
 import { KineticProcess } from './Process';
 import { KineticServicePage } from './ServicePage';
+import { KineticTeam } from './Team';
 import { KineticWorks } from './Works';
 
 const COMPONENTS: DesignComponents = {
@@ -20,6 +21,7 @@ const COMPONENTS: DesignComponents = {
   pricing: KineticPricing,
   works: KineticWorks,
   process: KineticProcess,
+  team: KineticTeam,
   case: KineticCase,
   footer: KineticFooter,
   brief: KineticBrief,

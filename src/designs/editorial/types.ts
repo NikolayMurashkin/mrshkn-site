@@ -1,5 +1,6 @@
 import type { ServiceOptionView } from '@/components/ServicePage/types';
 import type { BriefChoice } from '@/lib/brief/types';
+import type { TeamCardData } from '../types';
 import type { EDITORIAL_WORKS_LAYOUTS, EDITORIAL_WORKS_SPREAD } from './consts';
 
 /** Инлайновая иконка Editorial: стрелки — тонкий SVG 24×24 со скругленными концами, под антикву. */
@@ -50,4 +51,9 @@ export type EditorialOptionsProps = {
   testId: string;
   /** Колонка рядом с карточкой тарифа: опции в одну колонку. */
   narrow?: boolean;
+};
+
+/** Карточка человека в секции «Команда»: данные — из общей `teamSection`. */
+export type EditorialTeamCardProps = {
+  card: TeamCardData;
 };

@@ -12,6 +12,7 @@ import { PopBriefThanks } from './PopBriefThanks';
 import { PopPricing } from './Pricing';
 import { PopProcess } from './Process';
 import { PopServicePage } from './ServicePage';
+import { PopTeam } from './Team';
 import { PopWorks } from './Works';
 
 const COMPONENTS: DesignComponents = {
@@ -20,6 +21,7 @@ const COMPONENTS: DesignComponents = {
   pricing: PopPricing,
   works: PopWorks,
   process: PopProcess,
+  team: PopTeam,
   case: PopCase,
   footer: PopFooter,
   brief: PopBrief,

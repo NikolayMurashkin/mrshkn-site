@@ -20,5 +20,6 @@ export const Team: CollectionConfig = {
     { name: 'yearsSince', type: 'number', label: 'В профессии с года', required: true },
     { name: 'photo', type: 'upload', relationTo: 'media', label: 'Фото' },
     { name: 'about', type: 'textarea', label: 'Коротко о себе', localized: true },
+    { name: 'skills', type: 'text', hasMany: true, label: 'Навыки (2–5 тегов)', localized: true },
   ],
 };

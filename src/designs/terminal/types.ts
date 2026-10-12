@@ -1,5 +1,6 @@
 import type { ServiceOptionView } from '@/components/ServicePage/types';
 import type { BriefChoice } from '@/lib/brief/types';
+import type { TeamCardData } from '../types';
 
 /** Строка панели build.log в hero Terminal. */
 export type TerminalLogLine = {
@@ -60,4 +61,9 @@ export type TerminalStepsProps = {
   titleTag: 'h3' | 'span';
   /** Колонка страницы услуги: шаги по два в ряд, с 720px — по одному. */
   narrow?: boolean;
+};
+
+/** Карточка человека в секции «Команда»: данные — из общей `teamSection`. */
+export type TerminalTeamCardProps = {
+  card: TeamCardData;
 };

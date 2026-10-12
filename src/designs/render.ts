@@ -7,6 +7,8 @@ export const renderSection = (components: DesignComponents, props: SectionProps)
       return createElement(components.header, { hasCases: props.hasCases });
     case 'works':
       return createElement(components.works, { cases: props.cases });
+    case 'team':
+      return createElement(components.team, { core: props.core, network: props.network });
     case 'case':
       return createElement(components.case, { caseItem: props.caseItem });
     case 'brief':

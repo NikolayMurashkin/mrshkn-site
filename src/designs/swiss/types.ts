@@ -1,6 +1,6 @@
 import type { ServiceOptionView } from '@/components/ServicePage/types';
 import type { BriefChoice } from '@/lib/brief/types';
-import type { StepWhen } from '../types';
+import type { StepWhen, TeamCardData } from '../types';
 
 /** Инлайновая иконка Swiss: стрелки и солнце — SVG 24×24 с квадратными концами, а не глиф (↗ нет в сабсете Geologica). */
 export type SwissIconProps = {
@@ -59,4 +59,9 @@ export type SwissStepsProps = {
   titleTag: 'h3' | 'span';
   /** Колонка страницы услуги: шаги по два в ряд, с 720px — по одному. */
   narrow?: boolean;
+};
+
+/** Карточка человека в секции «Команда»: данные — из общей `teamSection`. */
+export type SwissTeamCardProps = {
+  card: TeamCardData;
 };

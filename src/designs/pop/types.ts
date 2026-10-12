@@ -1,6 +1,6 @@
 import type { ServiceOptionView } from '@/components/ServicePage/types';
 import type { BriefChoice } from '@/lib/brief/types';
-import type { StepWhen } from '../types';
+import type { StepWhen, TeamCardData } from '../types';
 
 /** Размер инлайновой иконки Pop: стрелки и звезда рисуются SVG, а не глифом — у Rubik нет стрелок. */
 export type PopIconProps = {
@@ -61,4 +61,9 @@ export type PopStepsProps = {
   titleTag: 'h3' | 'span';
   /** Колонка страницы услуги: шаги-стикеры по два в ряд, с 720px — по одному. */
   narrow?: boolean;
+};
+
+/** Карточка человека в секции «Команда»: данные — из общей `teamSection`. */
+export type PopTeamCardProps = {
+  card: TeamCardData;
 };

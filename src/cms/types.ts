@@ -1,4 +1,5 @@
 import type { Case } from '../payload-types';
+import type { TEAM_ROLES } from './consts';
 
 /** Картинка медиатеки для `<img>`: адреса нарезанных размеров уже собраны в `srcSet`. */
 export type CaseImage = {
@@ -28,3 +29,16 @@ export type CaseDetail = CaseCard & {
 
 /** Соседние поля документа, из которых хуки собирают адрес. */
 export type SlugSource = { slug?: string | null; title?: string | null };
+
+/** Роль человека в проекте — одна из ролей коллекции `team`. */
+export type TeamRole = (typeof TEAM_ROLES)[number];
+
+/** Участник команды, как его видит фронт: роль, год начала в профессии, «о себе», навыки и фото. */
+export type TeamMember = {
+  name: string;
+  role: TeamRole;
+  yearsSince: number;
+  about: string | null;
+  skills: string[];
+  photo: CaseImage | null;
+};

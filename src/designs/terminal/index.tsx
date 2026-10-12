@@ -10,6 +10,7 @@ import { TerminalHero } from './Hero';
 import { TerminalPricing } from './Pricing';
 import { TerminalProcess } from './Process';
 import { TerminalServicePage } from './ServicePage';
+import { TerminalTeam } from './Team';
 import { TerminalBrief } from './TerminalBrief';
 import { TerminalBriefThanks } from './TerminalBriefThanks';
 import { TerminalWorks } from './Works';
@@ -20,6 +21,7 @@ const COMPONENTS: DesignComponents = {
   pricing: TerminalPricing,
   works: TerminalWorks,
   process: TerminalProcess,
+  team: TerminalTeam,
   case: TerminalCase,
   footer: TerminalFooter,
   brief: TerminalBrief,

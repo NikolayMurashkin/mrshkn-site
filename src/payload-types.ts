@@ -282,6 +282,7 @@ export interface Team {
   yearsSince: number;
   photo?: (number | null) | Media;
   about?: string | null;
+  skills?: string[] | null;
   updatedAt: string;
   createdAt: string;
 }
@@ -498,6 +499,7 @@ export interface TeamSelect<T extends boolean = true> {
   yearsSince?: T;
   photo?: T;
   about?: T;
+  skills?: T;
   updatedAt?: T;
   createdAt?: T;
 }

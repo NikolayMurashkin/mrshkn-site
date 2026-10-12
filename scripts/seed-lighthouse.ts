@@ -45,6 +45,25 @@ const TEXTS = {
   },
 };
 
+/**
+ * Заведомо тестовый участник ядра: без людей в CMS главная секцию «Команда» не рисует, и Lighthouse ее бы не мерил.
+ * Только база замера — на публичном сайте его нет; фото нет, чтобы не выдумывать лицо.
+ */
+const TEAM_MEMBER = {
+  role: 'developer',
+  yearsSince: 2015,
+  ru: {
+    name: 'Тестовый участник',
+    about: 'Служебный текст для замера Lighthouse. Он не описывает реального человека.',
+    skills: ['Служебный навык 1', 'Служебный навык 2', 'Служебный навык 3'],
+  },
+  en: {
+    name: 'Test member',
+    about: 'Service text for the Lighthouse run. It does not describe a real person.',
+    skills: ['Service skill 1', 'Service skill 2', 'Service skill 3'],
+  },
+} as const;
+
 type SeedImage = typeof COVER;
 
 const createImage = async (payload: Payload, { name, width, height, background }: SeedImage, alt: typeof TEXTS) => {
@@ -64,12 +83,16 @@ const createImage = async (payload: Payload, { name, width, height, background }
   return media.id;
 };
 
-/** Засев пересоздает кейс и его картинки с нуля: повторный запуск оставляет в базе один такой же кейс. */
+/**
+ * Засев пересоздает кейс, его картинки и тестового участника с нуля: повторный запуск оставляет в базе один такой же
+ * кейс и одного участника.
+ */
 const seed = async () => {
   const payload = await getPayload({ config });
 
   await payload.delete({ collection: 'cases', where: { slug: { equals: SLUG } } });
   await payload.delete({ collection: 'media', where: { filename: { like: MEDIA_NAME_PREFIX } } });
+  await payload.delete({ collection: 'team', locale: 'ru', where: { name: { equals: TEAM_MEMBER.ru.name } } });
 
   const cover = await createImage(payload, COVER, TEXTS);
   const lighthouse = await createImage(payload, SHOT, TEXTS);
@@ -105,6 +128,26 @@ const seed = async () => {
       solution: TEXTS.en.solution,
       metrics: (created.metrics ?? []).map(({ id }, index) => ({ id, ...TEXTS.en.metrics[index] })),
     },
+  });
+
+  const member = await payload.create({
+    collection: 'team',
+    locale: 'ru',
+    data: {
+      name: TEAM_MEMBER.ru.name,
+      role: TEAM_MEMBER.role,
+      core: true,
+      yearsSince: TEAM_MEMBER.yearsSince,
+      about: TEAM_MEMBER.ru.about,
+      skills: [...TEAM_MEMBER.ru.skills],
+    },
+  });
+
+  await payload.update({
+    collection: 'team',
+    id: member.id,
+    locale: 'en',
+    data: { name: TEAM_MEMBER.en.name, about: TEAM_MEMBER.en.about, skills: [...TEAM_MEMBER.en.skills] },
   });
 
   await payload.destroy();

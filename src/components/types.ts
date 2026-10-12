@@ -1,4 +1,4 @@
-import type { CaseImage as CaseImageData } from '@/cms/types';
+import type { CaseImage as CaseImageData, TeamMember } from '@/cms/types';
 import type { DesignName } from '@/designs/types';
 
 /** Смена направления, которую переключатель ждет от `router.refresh()`. */
@@ -20,4 +20,11 @@ export type CaseImageProps = {
 export type JsonLdProps = {
   /** Узел schema.org; несколько узлов на странице — несколько компонентов. */
   data: object;
+};
+
+export type TeamPortraitProps = {
+  member: TeamMember;
+  photoClassName: string;
+  /** Нет — без фото портрета нет: у направлений без диска в DS пустой квадрат не рисуется. */
+  monogramClassName?: string;
 };

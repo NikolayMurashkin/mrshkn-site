@@ -1,5 +1,6 @@
 import type { ReactNode } from 'react';
 import type { BriefChoice } from '@/lib/brief/types';
+import type { TeamCardData } from '../types';
 
 export type ButtonClassOptions = {
   primary?: boolean;
@@ -31,4 +32,9 @@ export type KineticDesignChoiceProps = {
   selected: string;
   onPick: (field: BriefChoice, value: string) => void;
   labelOf: (value: string) => string;
+};
+
+/** Карточка человека в секции «Команда»: данные — из общей `teamSection`. */
+export type KineticTeamCardProps = {
+  card: TeamCardData;
 };

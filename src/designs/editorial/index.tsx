@@ -12,6 +12,7 @@ import { EditorialHero } from './Hero';
 import { EditorialPricing } from './Pricing';
 import { EditorialProcess } from './Process';
 import { EditorialServicePage } from './ServicePage';
+import { EditorialTeam } from './Team';
 import { EditorialWorks } from './Works';
 
 const COMPONENTS: DesignComponents = {
@@ -20,6 +21,7 @@ const COMPONENTS: DesignComponents = {
   pricing: EditorialPricing,
   works: EditorialWorks,
   process: EditorialProcess,
+  team: EditorialTeam,
   case: EditorialCase,
   footer: EditorialFooter,
   brief: EditorialBrief,

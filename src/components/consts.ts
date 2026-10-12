@@ -10,3 +10,6 @@ export const CASE_CARD_SIZES = '(max-width: 640px) 100vw, (max-width: 1000px) 50
 export const CASE_COVER_SIZES = '(max-width: 1200px) 100vw, 1200px';
 
 export const CASE_SHOT_SIZES = '(max-width: 1000px) 100vw, 960px';
+
+/** Фото участника команды — квадрат 120px во всех направлениях. */
+export const TEAM_PHOTO_SIZES = '120px';

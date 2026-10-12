@@ -10,6 +10,7 @@ import { SwissHero } from './Hero';
 import { SwissPricing } from './Pricing';
 import { SwissProcess } from './Process';
 import { SwissServicePage } from './ServicePage';
+import { SwissTeam } from './Team';
 import { SwissBrief } from './SwissBrief';
 import { SwissBriefThanks } from './SwissBriefThanks';
 import { SwissWorks } from './Works';
@@ -20,6 +21,7 @@ const COMPONENTS: DesignComponents = {
   pricing: SwissPricing,
   works: SwissWorks,
   process: SwissProcess,
+  team: SwissTeam,
   case: SwissCase,
   footer: SwissFooter,
   brief: SwissBrief,
