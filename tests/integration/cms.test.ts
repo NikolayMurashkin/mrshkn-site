@@ -280,7 +280,7 @@ describe('роли', () => {
     ).rejects.toMatchObject(FORBIDDEN);
   });
 
-  it('editor ведет посты, кейсы и команду', async () => {
+  it('editor ведет посты и кейсы', async () => {
     const editor = await createUser('content-editor@example.com', Role.Editor);
     const asEditor = { user: editor, overrideAccess: false } as const;
 
@@ -304,13 +304,6 @@ describe('роли', () => {
         ...asEditor,
       }),
     ).resolves.toMatchObject({ slug: 'kejs-redaktora' });
-    await expect(
-      payload.create({
-        collection: 'team',
-        data: { name: 'Участник команды', role: 'developer', core: false, yearsSince: 2014 },
-        ...asEditor,
-      }),
-    ).resolves.toMatchObject({ yearsSince: 2014 });
   });
 });
 

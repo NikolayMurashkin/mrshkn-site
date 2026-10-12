@@ -22,6 +22,3 @@ export const SERVICE_PRICES_ANCHOR = 'prices';
 
 /** Якорь секции услуг на главной: страница услуги ведет «назад» к ней. */
 export const SERVICE_BACK_ANCHOR = 'services';
-
-/** Роли, которые студия подключает из сети подрядчиков: теги карточки сети, пока в CMS нет ее людей. */
-export const TEAM_NETWORK_ROLES = ['designer', 'copywriter', 'qa'] as const;

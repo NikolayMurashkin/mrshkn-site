@@ -317,24 +317,6 @@
       }
     }
   },
-  "team": {
-    "kicker": "Team",
-    "heading": "Who does the work",
-    "experience": "{years, plural, one {# year} other {# years}} of combined experience",
-    "since": "In the field since {year}",
-    "skills": "Skills",
-    "onCall": "on call for the whole project",
-    "networkKicker": "Contractor network",
-    "networkTitle": "Brought in per task",
-    "networkText": "Design, copy and testing — only when the project needs them. The price stays the same.",
-    "roles": {
-      "lead": "Project lead",
-      "designer": "Designer",
-      "copywriter": "Copywriter",
-      "developer": "Developer",
-      "qa": "QA engineer"
-    }
-  },
   "footer": {
     "heading": "Start a project",
     "headingQuestion": "Start a project?",

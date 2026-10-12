@@ -84,14 +84,3 @@ export const CASE_KIND_LABELS: Record<(typeof CASE_KINDS)[number], string> = {
 
 /** Ниши те же, что на втором шаге квиза. */
 export const CASE_NICHES = BRIEF_STEP_VALUES.niche;
-
-/** Роли людей в проекте — секция «Команда и процесс». */
-export const TEAM_ROLES = ['lead', 'designer', 'copywriter', 'developer', 'qa'] as const;
-
-export const TEAM_ROLE_LABELS: Record<(typeof TEAM_ROLES)[number], string> = {
-  lead: 'Лид проекта',
-  designer: 'Дизайнер',
-  copywriter: 'Копирайтер',
-  developer: 'Разработчик',
-  qa: 'Тестировщик',
-};

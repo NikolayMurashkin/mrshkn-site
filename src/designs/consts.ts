@@ -8,7 +8,6 @@ export const SECTION_NAMES = [
   'pricing',
   'works',
   'process',
-  'team',
   'case',
   'footer',
   'brief',
