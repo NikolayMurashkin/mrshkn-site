@@ -1,0 +1,102 @@
+@use './shared' as s;
+
+.options {
+  margin: 0;
+  padding: 0;
+  column-count: 2;
+  column-gap: var(--space-56);
+  list-style: none;
+}
+
+.narrow {
+  column-count: 1;
+}
+
+.option {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  grid-template-areas:
+    'line price'
+    'note monthly';
+  gap: var(--space-4) var(--space-12);
+  align-items: baseline;
+  padding: var(--space-12) 0 13px;
+  border-bottom: var(--border-width) solid var(--line);
+  break-inside: avoid;
+}
+
+.line {
+  grid-area: line;
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  min-width: 0;
+}
+
+.name {
+  @include s.wrap;
+
+  font-size: 16px;
+  line-height: 1.35;
+}
+
+.leader {
+  flex: 1;
+  min-width: 20px;
+  border-bottom: var(--border-width) dotted var(--muted);
+  transform: translateY(-4px);
+}
+
+.price {
+  grid-area: price;
+  font-size: 16px;
+  text-align: right;
+  font-weight: 500;
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+}
+
+.note {
+  @include s.wrap;
+
+  grid-area: note;
+  font-size: 13px;
+  line-height: 1.45;
+  color: var(--muted);
+}
+
+.monthly {
+  grid-area: monthly;
+  font-size: 13px;
+  text-align: right;
+  white-space: nowrap;
+  color: var(--muted);
+  font-variant-numeric: tabular-nums;
+}
+
+@media (max-width: 720px) {
+  .options {
+    column-count: 1;
+  }
+}
+
+@media (max-width: 480px) {
+  .option {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-areas:
+      'line'
+      'price'
+      'note'
+      'monthly';
+    gap: 2px;
+  }
+
+  .leader {
+    display: none;
+  }
+
+  .price,
+  .monthly {
+    text-align: left;
+  }
+}

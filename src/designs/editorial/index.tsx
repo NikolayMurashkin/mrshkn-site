@@ -1,6 +1,5 @@
 'use client';
 
-import { ServicePage } from '@/components/ServicePage/ServicePage';
 import { renderSection } from '../render';
 import type { DesignComponents, SectionProps } from '../types';
 import './fonts';
@@ -12,6 +11,7 @@ import { EditorialHeader } from './Header';
 import { EditorialHero } from './Hero';
 import { EditorialPricing } from './Pricing';
 import { EditorialProcess } from './Process';
+import { EditorialServicePage } from './ServicePage';
 import { EditorialWorks } from './Works';
 
 const COMPONENTS: DesignComponents = {
@@ -24,7 +24,7 @@ const COMPONENTS: DesignComponents = {
   footer: EditorialFooter,
   brief: EditorialBrief,
   briefThanks: EditorialBriefThanks,
-  servicePage: ServicePage,
+  servicePage: EditorialServicePage,
 };
 
 export const EditorialSection = (props: SectionProps) => renderSection(COMPONENTS, props);

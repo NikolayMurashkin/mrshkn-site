@@ -4,6 +4,7 @@ import { parse } from 'yaml';
 import { describe, expect, it } from 'vitest';
 import { SLUG_PATTERN } from '@/cms/consts';
 import { PRICING_PLANS } from '@/content/pricing';
+import { DESIGN_NAMES } from '@/designs/consts';
 
 const require = createRequire(import.meta.url);
 
@@ -45,7 +46,7 @@ const loadConfig = (design?: string): LighthouseConfig => {
 
 const config = loadConfig('kinetic');
 
-describe.each(['kinetic', 'terminal', 'pop', 'swiss'])('lighthouserc.cjs, %s', (design) => {
+describe.each([...DESIGN_NAMES])('lighthouserc.cjs, %s', (design) => {
   const designConfig = loadConfig(design);
 
   it('порог считается по худшему из прогонов, не по лучшему', () => {
@@ -62,7 +63,7 @@ describe.each(['kinetic', 'terminal', 'pop', 'swiss'])('lighthouserc.cjs, %s', (
 });
 
 describe('адреса Lighthouse по направлениям', () => {
-  it.each(['kinetic', 'terminal', 'pop', 'swiss'])('%s меряет главную, один кейс и шесть страниц услуг', (design) => {
+  it.each([...DESIGN_NAMES])('%s меряет главную, один кейс и шесть страниц услуг', (design) => {
     const urls = loadConfig(design).ci.collect.url;
     const caseUrls = urls.filter((url) => url.startsWith('http://localhost:3102/ru/work/'));
 
@@ -73,14 +74,6 @@ describe('адреса Lighthouse по направлениям', () => {
     expect(urls.filter((url) => !caseUrls.includes(url) && url !== urls[0]).sort()).toEqual(
       PRICING_PLANS.map((plan) => `http://localhost:3102/ru/${plan.slug}`).sort(),
     );
-  });
-
-  it.each(['editorial'])('%s меряет только главную и кейс', (design) => {
-    const urls = loadConfig(design).ci.collect.url;
-
-    expect(urls).toHaveLength(2);
-    expect(urls[0]).toBe('http://localhost:3102/ru');
-    expect(urls[1].startsWith('http://localhost:3102/ru/work/')).toBe(true);
   });
 });
 

@@ -1,3 +1,4 @@
+import type { ServiceOptionView } from '@/components/ServicePage/types';
 import type { BriefChoice } from '@/lib/brief/types';
 import type { EDITORIAL_WORKS_LAYOUTS, EDITORIAL_WORKS_SPREAD } from './consts';
 
@@ -35,4 +36,18 @@ export type EditorialDashesProps = {
 export type EditorialRubricProps = {
   label: string;
   note?: string;
+};
+
+export type EditorialBasicsProps = {
+  /** Тег названия группы: на главной `h4` под `h3` блока, на странице услуги `h3` под `h2`. */
+  titleTag: 'h3' | 'h4';
+  /** Колонка рядом с карточкой тарифа: группы по две в ряд, с 720px — по одной. */
+  narrow?: boolean;
+};
+
+export type EditorialOptionsProps = {
+  items: readonly ServiceOptionView[];
+  testId: string;
+  /** Колонка рядом с карточкой тарифа: опции в одну колонку. */
+  narrow?: boolean;
 };

@@ -2,15 +2,13 @@ const design = process.env.LIGHTHOUSE_DESIGN ?? 'kinetic';
 
 const SERVICE_SLUGS = ['landing', 'business', 'mini-app', 'store', 'mvp', 'support'];
 
-const DESIGNS_WITH_SERVICE_PAGES = ['kinetic', 'terminal', 'pop', 'swiss'];
-
 const BASE_URL = 'http://localhost:3102';
 
-const urls = [`${BASE_URL}/ru`, `${BASE_URL}/ru/work/lighthouse-demo`];
-
-if (DESIGNS_WITH_SERVICE_PAGES.includes(design)) {
-  urls.push(...SERVICE_SLUGS.map((slug) => `${BASE_URL}/ru/${slug}`));
-}
+const urls = [
+  `${BASE_URL}/ru`,
+  `${BASE_URL}/ru/work/lighthouse-demo`,
+  ...SERVICE_SLUGS.map((slug) => `${BASE_URL}/ru/${slug}`),
+];
 
 module.exports = {
   ci: {
