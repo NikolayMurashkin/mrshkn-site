@@ -50,8 +50,8 @@
   letter-spacing: -0.025em;
   text-wrap: balance;
   hyphens: none;
-  overflow-wrap: anywhere;
   word-wrap: break-word;
+  overflow-wrap: anywhere;
   min-width: 0;
 }
 
@@ -61,8 +61,8 @@
   font-family: var(--font-display);
   font-size: 13px;
   color: var(--muted);
-  overflow-wrap: anywhere;
   word-wrap: break-word;
+  overflow-wrap: anywhere;
   min-width: 0;
 }
 
@@ -130,7 +130,7 @@
   display: flex;
   flex-direction: column;
   gap: 16px;
-  max-width: 68ch;
+  max-width: 68 * s.$text-ch;
   min-width: 0;
 }
 
@@ -138,8 +138,8 @@
   margin: 0;
   font-size: 17px;
   line-height: 1.6;
-  overflow-wrap: anywhere;
   word-wrap: break-word;
+  overflow-wrap: anywhere;
   min-width: 0;
 }
 

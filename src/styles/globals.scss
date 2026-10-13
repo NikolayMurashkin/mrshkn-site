@@ -41,6 +41,18 @@ a {
   text-decoration: none;
 }
 
+a,
+button,
+input,
+select,
+textarea,
+label,
+summary,
+[role='button'] {
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: var(--tap-highlight);
+}
+
 :focus-visible {
   outline: var(--border-width-strong) solid var(--accent-ink);
   outline-offset: 3px;

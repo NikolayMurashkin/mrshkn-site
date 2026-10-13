@@ -20,7 +20,7 @@ $masthead-height: calc(
 
 @mixin display-wrap {
   word-wrap: break-word;
-  overflow-wrap: break-word;
+  overflow-wrap: anywhere;
   min-width: 0;
 }
 

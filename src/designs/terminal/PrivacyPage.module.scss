@@ -63,7 +63,7 @@
   display: flex;
   flex-direction: column;
   gap: 32px;
-  max-width: 68ch;
+  max-width: 68 * s.$text-ch;
   min-width: 0;
   font-size: 17px;
   line-height: 1.6;
@@ -79,8 +79,6 @@
 }
 
 .heading {
-  @include s.anchor;
-
   margin: 0;
   font-size: 26px;
   font-weight: 700;
@@ -142,7 +140,7 @@
   li {
     display: flex;
     align-items: baseline;
-    gap: 1ch;
+    gap: s.$text-ch;
     counter-increment: toc;
     min-width: 0;
 

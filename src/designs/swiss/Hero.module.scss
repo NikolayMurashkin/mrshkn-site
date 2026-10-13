@@ -79,7 +79,7 @@
   letter-spacing: -0.045em;
   text-wrap: balance;
   word-wrap: break-word;
-  overflow-wrap: break-word;
+  overflow-wrap: anywhere;
   min-width: 0;
   animation: rise var(--duration-reveal) var(--ease-out) both;
   animation-delay: calc(var(--duration-stagger) * 4);

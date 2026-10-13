@@ -1,5 +1,9 @@
 @use './shared' as s;
 
+:global(html):has(.header) {
+  scroll-padding-top: s.$header-offset;
+}
+
 .header {
   position: sticky;
   top: 0;
@@ -172,6 +176,10 @@
 }
 
 @media (max-width: 480px) {
+  :global(html):has(.header) {
+    scroll-padding-top: s.$header-offset-compact;
+  }
+
   .header {
     gap: 12px;
     padding: 12px var(--t-gutter);

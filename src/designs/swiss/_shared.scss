@@ -1,5 +1,7 @@
 $header-height: 85px;
 $header-height-compact: 73px;
+$text-ch: 0.6795em;
+$light-ch: 0.6775em;
 $counter: swiss-section;
 
 @mixin wrap {
@@ -118,7 +120,7 @@ $counter: swiss-section;
   letter-spacing: -0.04em;
   text-wrap: balance;
   word-wrap: break-word;
-  overflow-wrap: break-word;
+  overflow-wrap: anywhere;
   min-width: 0;
 }
 
@@ -135,7 +137,7 @@ $counter: swiss-section;
 
 @mixin lead {
   margin: 0;
-  max-width: 52ch;
+  max-width: 52 * $light-ch;
   font-size: clamp(17px, 1.5vw, 21px);
   font-weight: 300;
   line-height: 1.45;
@@ -145,7 +147,7 @@ $counter: swiss-section;
 
 @mixin note {
   margin: 0;
-  max-width: 56ch;
+  max-width: 56 * $text-ch;
   font-size: 15px;
   line-height: 1.5;
   color: var(--muted);

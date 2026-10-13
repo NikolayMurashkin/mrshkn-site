@@ -1,12 +1,11 @@
 @use './shared' as s;
 
 .footer {
-  scroll-margin-top: 88px;
   display: flex;
   align-items: flex-end;
   justify-content: space-between;
   gap: 48px;
-  padding: 64px var(--t-gutter) 72px;
+  padding: 64px var(--t-gutter) 120px;
   border-top: var(--border-width) solid var(--line);
   background: var(--surface);
 }

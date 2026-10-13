@@ -24,6 +24,3 @@ export const SWISS_CARD_METRICS_LIMIT = 2;
 export const SWISS_COUNT_DIGITS = 2;
 
 export const SWISS_STEP_TEXT_TAGS = { h3: 'p', span: 'span' } as const;
-
-/** Токен «число-дефис-буквы» в пункте списка («152-ФЗ»): рисуется без переноса по дефису, как `.s-nowrap` в DS. */
-export const SWISS_NOWRAP_PATTERN = /(\d+-\p{L}+)/u;

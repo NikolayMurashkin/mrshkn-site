@@ -2,6 +2,7 @@ import { useTranslations } from 'next-intl';
 import { PRICING_BASIC_GROUPS } from '@/content/pricing';
 import type { ServicePageProps } from '@/components/ServicePage/types';
 import { useServicePage } from '@/components/ServicePage/use-service-page';
+import { renderNowrap } from '@/designs/nowrap';
 import { ArrowRightIcon } from './icons';
 import { buttonClass } from './button';
 import styles from './ServicePage.module.scss';
@@ -79,7 +80,7 @@ export const KineticServicePage = ({ service }: ServicePageProps) => {
             {ownBasics ? (
               <ul className={`${styles.checks} ${styles.ownBasics}`}>
                 {ownBasics.items.map((item, index) => (
-                  <li key={index}>{item}</li>
+                  <li key={index}>{renderNowrap(item, styles.nowrap)}</li>
                 ))}
               </ul>
             ) : (
@@ -92,7 +93,7 @@ export const KineticServicePage = ({ service }: ServicePageProps) => {
                     <h3 className={styles.groupTitle}>{pricing(`basicsGroups.${group.id}`)}</h3>
                     <ul className={styles.checks}>
                       {group.items.map((item) => (
-                        <li key={item}>{pricing(`basics.${item}`)}</li>
+                        <li key={item}>{renderNowrap(pricing(`basics.${item}`), styles.nowrap)}</li>
                       ))}
                     </ul>
                   </div>

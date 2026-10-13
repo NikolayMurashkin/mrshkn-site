@@ -203,7 +203,7 @@
 .answer {
   margin: 0;
   padding: 0 48px 20px 0;
-  max-width: 68ch;
+  max-width: 68 * s.$text-ch;
   font-size: 15px;
   line-height: 1.6;
   color: var(--muted);
@@ -238,7 +238,7 @@
   letter-spacing: -0.03em;
   font-variant-numeric: tabular-nums;
   word-wrap: break-word;
-  overflow-wrap: break-word;
+  overflow-wrap: anywhere;
   min-width: 0;
 }
 

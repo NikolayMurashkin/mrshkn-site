@@ -1,3 +1,4 @@
+import { renderNowrap } from '@/designs/nowrap';
 import type { TerminalChecksProps } from './types';
 import styles from './Checks.module.scss';
 
@@ -8,7 +9,7 @@ export const TerminalChecks = ({ items }: TerminalChecksProps) => (
         className={styles.check}
         key={item}
       >
-        {item}
+        {renderNowrap(item, styles.nowrap)}
       </li>
     ))}
   </ul>

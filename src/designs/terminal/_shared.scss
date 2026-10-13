@@ -1,15 +1,15 @@
 @use 'sass:string';
 
+$display-ch: 0.6em;
+$text-ch: 0.6em;
+$header-offset: 88px;
+$header-offset-compact: 76px;
+
 @function decor($text) {
   @return string.unquote("'#{$text}' / ''");
 }
 
-@mixin anchor {
-  scroll-margin-top: 88px;
-}
-
 @mixin section {
-  @include anchor;
   display: flex;
   flex-direction: column;
   gap: 48px;
@@ -34,8 +34,8 @@
   letter-spacing: -0.025em;
   text-wrap: balance;
   hyphens: none;
-  overflow-wrap: anywhere;
   word-wrap: break-word;
+  overflow-wrap: anywhere;
   min-width: 0;
 
   &::before {
@@ -57,8 +57,8 @@
   letter-spacing: 0.04em;
   text-transform: lowercase;
   color: var(--muted);
-  overflow-wrap: anywhere;
   word-wrap: break-word;
+  overflow-wrap: anywhere;
   min-width: 0;
 }
 

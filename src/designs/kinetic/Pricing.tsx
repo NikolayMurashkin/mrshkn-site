@@ -3,6 +3,7 @@ import { useGoal } from '@/components/Analytics/use-consent';
 import { planPath } from '@/content/format';
 import { PRICING_BASIC_GROUPS, PRICING_EXTRAS, PRICING_OPTIONS, PRICING_PLANS } from '@/content/pricing';
 import { usePriceText } from '@/content/use-price';
+import { renderNowrap } from '@/designs/nowrap';
 import { Link } from '@/i18n/navigation';
 import { GOALS } from '@/lib/analytics/consts';
 import { ArrowUpRightIcon } from './icons';
@@ -88,7 +89,7 @@ export const KineticPricing = () => {
               <h4 className={styles.groupTitle}>{t(`basicsGroups.${group.id}`)}</h4>
               <ul className={styles.checks}>
                 {group.items.map((item) => (
-                  <li key={item}>{t(`basics.${item}`)}</li>
+                  <li key={item}>{renderNowrap(t(`basics.${item}`), styles.nowrap)}</li>
                 ))}
               </ul>
             </div>

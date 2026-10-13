@@ -36,6 +36,7 @@ export const DesignSwitcher = ({ design }: DesignSwitcherProps) => {
   const { setTheme } = useTheme();
   const [open, setOpen] = useState(false);
   const rootRef = useRef<HTMLDivElement>(null);
+  const toggleRef = useRef<HTMLButtonElement>(null);
   const pendingRef = useRef<PendingSwitch | null>(null);
 
   useLayoutEffect(() => {
@@ -60,6 +61,7 @@ export const DesignSwitcher = ({ design }: DesignSwitcherProps) => {
     const closeOnEscape = (event: KeyboardEvent) => {
       if (event.key === 'Escape') {
         setOpen(false);
+        toggleRef.current?.focus();
       }
     };
 
@@ -107,6 +109,20 @@ export const DesignSwitcher = ({ design }: DesignSwitcherProps) => {
       ref={rootRef}
       className={styles.root}
     >
+      <button
+        ref={toggleRef}
+        type="button"
+        className={styles.pill}
+        data-testid="design-switcher"
+        aria-expanded={open}
+        onClick={() => setOpen((value) => !value)}
+      >
+        <GlobeIcon size={16} />
+        <span className={styles.label}>
+          {t('label')}: <span className={styles.name}>{DESIGN_LABELS[design]}</span>
+        </span>
+        <ChevronDownIcon size={14} />
+      </button>
       {open && (
         <ul
           className={styles.menu}
@@ -126,19 +142,6 @@ export const DesignSwitcher = ({ design }: DesignSwitcherProps) => {
           ))}
         </ul>
       )}
-      <button
-        type="button"
-        className={styles.pill}
-        data-testid="design-switcher"
-        aria-expanded={open}
-        onClick={() => setOpen((value) => !value)}
-      >
-        <GlobeIcon size={16} />
-        <span className={styles.label}>
-          {t('label')}: <span className={styles.name}>{DESIGN_LABELS[design]}</span>
-        </span>
-        <ChevronDownIcon size={14} />
-      </button>
     </div>
   );
 };

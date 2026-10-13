@@ -21,7 +21,6 @@
 }
 
 .table {
-  @include s.anchor;
   width: 100%;
   border-collapse: collapse;
   font-family: var(--font-display);
@@ -89,7 +88,7 @@
 
 .table tbody tr:hover .index::before,
 .table tbody tr:focus-within .index::before {
-  width: 2ch;
+  width: 2 * s.$display-ch;
 }
 
 .planLink {

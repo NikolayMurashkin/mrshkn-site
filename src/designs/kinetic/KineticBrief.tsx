@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { BRIEF_STEP_REQUIRED } from '@/components/Brief/consts';
 import type { BriefProps } from '@/components/Brief/types';
 import { useBrief } from '@/components/Brief/use-brief';
+import { useStepFocus } from '@/components/Brief/use-step-focus';
 import { Link } from '@/i18n/navigation';
 import {
   BRIEF_STEPS,
@@ -40,6 +41,7 @@ export const KineticBrief = ({ design, plan }: BriefProps) => {
     setTrap,
   } = useBrief({ design, plan });
   const [touched, setTouched] = useState<readonly string[]>([]);
+  const stepTitle = useStepFocus(step);
 
   const touch = (field: string) => () => setTouched((fields) => (fields.includes(field) ? fields : [...fields, field]));
 
@@ -77,7 +79,13 @@ export const KineticBrief = ({ design, plan }: BriefProps) => {
         data-testid="brief-step"
         data-step={current}
       >
-        <h2 className={styles.stepTitle}>{t(`steps.${current}.title`)}</h2>
+        <h2
+          ref={stepTitle}
+          className={styles.stepTitle}
+          tabIndex={-1}
+        >
+          {t(`steps.${current}.title`)}
+        </h2>
         <p className={styles.note}>{t(`steps.${current}.note`)}</p>
 
         {current === 'product' ? (

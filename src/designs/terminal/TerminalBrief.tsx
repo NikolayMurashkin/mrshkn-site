@@ -1,8 +1,9 @@
 import { useTranslations } from 'next-intl';
-import { useEffect, useRef, useState } from 'react';
+import { useState } from 'react';
 import { BRIEF_STEP_REQUIRED } from '@/components/Brief/consts';
 import type { BriefProps } from '@/components/Brief/types';
 import { useBrief } from '@/components/Brief/use-brief';
+import { useStepFocus } from '@/components/Brief/use-step-focus';
 import { Link } from '@/i18n/navigation';
 import {
   BRIEF_STEPS,
@@ -38,21 +39,7 @@ export const TerminalBrief = ({ design, plan }: BriefProps) => {
     setTrap,
   } = useBrief({ design, plan });
   const [touched, setTouched] = useState<readonly string[]>([]);
-  const stepTitle = useRef<HTMLHeadingElement>(null);
-  const shownStep = useRef(step);
-
-  useEffect(() => {
-    if (shownStep.current === step) {
-      return;
-    }
-
-    shownStep.current = step;
-
-    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-    stepTitle.current?.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'start' });
-    stepTitle.current?.focus({ preventScroll: true });
-  }, [step]);
+  const stepTitle = useStepFocus(step);
 
   const touch = (field: string) => () => setTouched((fields) => (fields.includes(field) ? fields : [...fields, field]));
 

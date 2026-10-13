@@ -26,14 +26,14 @@
 
 .title {
   margin: 0;
-  max-width: 9ch;
+  max-width: 9 * s.$display-ch;
   font-family: var(--font-display);
   font-size: clamp(44px, 7vw, 104px);
   font-weight: 900;
   line-height: 0.95;
   letter-spacing: -0.03em;
-  overflow-wrap: break-word;
   word-wrap: break-word;
+  overflow-wrap: anywhere;
   min-width: 0;
 }
 

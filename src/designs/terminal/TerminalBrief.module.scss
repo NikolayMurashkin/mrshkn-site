@@ -37,8 +37,8 @@
   letter-spacing: -0.025em;
   text-wrap: balance;
   hyphens: none;
-  overflow-wrap: anywhere;
   word-wrap: break-word;
+  overflow-wrap: anywhere;
   min-width: 0;
 }
 
@@ -48,8 +48,8 @@
   font-size: clamp(16px, 1.4vw, 19px);
   line-height: 1.5;
   color: var(--muted);
-  overflow-wrap: anywhere;
   word-wrap: break-word;
+  overflow-wrap: anywhere;
   min-width: 0;
 }
 
@@ -99,7 +99,6 @@
 
 .stepTitle {
   margin: 0;
-  scroll-margin-top: 88px;
   font-family: var(--font-text);
   font-weight: 700;
   font-size: clamp(22px, 2.4vw, 28px);

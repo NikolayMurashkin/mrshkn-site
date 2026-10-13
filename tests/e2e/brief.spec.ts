@@ -1,6 +1,6 @@
 import { expect, test, type APIRequestContext, type Page } from '@playwright/test';
 import { HONEYPOT_FIELD } from '@/lib/brief/consts';
-import { SINK_BASE_URL } from './consts';
+import { DESIGNS, SINK_BASE_URL } from './consts';
 import { openDesign } from './open-design';
 import type { SinkCall } from './types';
 
@@ -68,6 +68,9 @@ const leadPayload = (marker: string, overrides: Record<string, unknown> = {}) =>
 });
 
 test.describe('квиз и заявка', () => {
+  /** Приемник общий на файл, тесты очищают его → строки файла идут по очереди в одном воркере, а не параллельно. */
+  test.describe.configure({ mode: 'default' });
+
   test('заявка уходит в бот, на почту и в Bitrix24 с источником, нишей, стилем и метками', async ({
     page,
     request,
@@ -102,6 +105,26 @@ test.describe('квиз и заявка', () => {
       }
     }
   });
+
+  /**
+   * Своя разметка квиза у каждого направления: общего каркаса шагов нет, поэтому до «спасибо» проходит каждое.
+   */
+  for (const design of DESIGNS) {
+    test(`квиз ${design} доходит до «спасибо», заявка уходит во все каналы`, async ({ page, request }) => {
+      const marker = `Проба ${design} ${Date.now()}`;
+
+      await openDesign(page, design, { path: '/brief' });
+      await walkBrief(page, marker);
+      await page.getByTestId('brief-consent').check();
+      await page.getByTestId('brief-submit').click();
+
+      await expect(page).toHaveURL(/\/ru\/brief\/thanks$/);
+      await expect(page.getByTestId('brief-thanks')).toBeVisible();
+      await expect
+        .poll(async () => (await callsOf(request, marker)).map((call) => call.channel).sort())
+        .toEqual(['bitrix', 'mail', 'telegram', 'telegram']);
+    });
+  }
 
   test('без чекбокса согласия кнопка не нажимается, а прямой запрос отвергается', async ({ page, request }) => {
     const marker = `Проба согласия ${Date.now()}`;

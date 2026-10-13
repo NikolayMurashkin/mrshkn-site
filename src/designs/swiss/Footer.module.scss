@@ -49,13 +49,13 @@
   line-height: 0.92;
   letter-spacing: -0.045em;
   word-wrap: break-word;
-  overflow-wrap: break-word;
+  overflow-wrap: anywhere;
   min-width: 0;
 }
 
 .lead {
   margin: 0;
-  max-width: 40ch;
+  max-width: 40 * s.$light-ch;
   font-size: clamp(17px, 1.5vw, 21px);
   font-weight: 300;
   line-height: 1.45;

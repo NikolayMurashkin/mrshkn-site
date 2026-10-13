@@ -26,6 +26,3 @@ export const EDITORIAL_ROW_COVER_SIZES = '(max-width: 720px) 100vw, 50vw';
 
 /** Сколько первых материалов стоят в развороте (главный и два боковых); дальше — ряды по два. */
 export const EDITORIAL_SPREAD_SIZE = 3;
-
-/** Токен «число-дефис-буквы» в пункте списка («152-ФЗ»): не переносится по дефису, как `.e-nowrap` в DS. */
-export const EDITORIAL_NOWRAP_PATTERN = /(\d+-\p{L}+)/u;

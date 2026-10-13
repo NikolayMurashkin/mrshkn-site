@@ -75,8 +75,8 @@
   font-weight: 900;
   line-height: 1;
   letter-spacing: -0.02em;
-  overflow-wrap: break-word;
   word-wrap: break-word;
+  overflow-wrap: anywhere;
   min-width: 0;
 }
 
@@ -94,7 +94,8 @@
   line-height: 1;
   letter-spacing: -0.03em;
   text-wrap: balance;
-  overflow-wrap: break-word;
+  word-wrap: break-word;
+  overflow-wrap: anywhere;
   min-width: 0;
 }
 

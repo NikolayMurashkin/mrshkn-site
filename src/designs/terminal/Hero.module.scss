@@ -44,7 +44,7 @@
 
 .command {
   display: inline-block;
-  max-width: calc(var(--chars) * 1ch);
+  max-width: calc(var(--chars) * #{s.$display-ch});
   overflow: hidden;
   white-space: nowrap;
   vertical-align: bottom;
@@ -134,7 +134,7 @@
 
 .num {
   flex-shrink: 0;
-  width: 2ch;
+  width: 2 * s.$display-ch;
   padding-right: 4px;
   margin-right: 4px;
   border-right: var(--border-width) solid var(--line);
