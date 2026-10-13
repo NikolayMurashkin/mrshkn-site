@@ -4,6 +4,10 @@
   @include s.dashes;
 }
 
+.skipped {
+  color: var(--muted);
+}
+
 .nowrap {
   white-space: nowrap;
 }

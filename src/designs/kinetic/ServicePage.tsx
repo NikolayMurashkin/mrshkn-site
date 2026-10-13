@@ -3,7 +3,7 @@ import { PRICING_BASIC_GROUPS } from '@/content/pricing';
 import type { ServicePageProps } from '@/components/ServicePage/types';
 import { useServicePage } from '@/components/ServicePage/use-service-page';
 import { renderNowrap } from '@/designs/nowrap';
-import { ArrowRightIcon } from './icons';
+import { ArrowRightIcon, ArrowUpRightIcon } from './icons';
 import { buttonClass } from './button';
 import styles from './ServicePage.module.scss';
 
@@ -26,6 +26,7 @@ export const KineticServicePage = ({ service }: ServicePageProps) => {
     hasRevisions,
     cardPoints,
     ownBasics,
+    industry,
     options,
     steps,
     faq,
@@ -64,6 +65,28 @@ export const KineticServicePage = ({ service }: ServicePageProps) => {
 
       <div className={styles.cols}>
         <div className={styles.main}>
+          {industry ? (
+            <section
+              className={styles.block}
+              aria-labelledby="service-included"
+            >
+              <div className={styles.blockHead}>
+                <h2
+                  className={styles.blockTitle}
+                  id="service-included"
+                >
+                  {t('includedHeading')}
+                </h2>
+                <p className={styles.blockNote}>{industry.included.note}</p>
+              </div>
+              <ul className={`${styles.checks} ${styles.ownBasics}`}>
+                {industry.included.items.map((item, index) => (
+                  <li key={index}>{item}</li>
+                ))}
+              </ul>
+            </section>
+          ) : null}
+
           <section
             className={styles.block}
             aria-labelledby="service-basics"
@@ -101,6 +124,62 @@ export const KineticServicePage = ({ service }: ServicePageProps) => {
               </div>
             )}
           </section>
+
+          {industry ? (
+            <>
+              <section
+                className={styles.block}
+                aria-labelledby="service-excluded"
+              >
+                <div className={styles.blockHead}>
+                  <h2
+                    className={styles.blockTitle}
+                    id="service-excluded"
+                  >
+                    {t('excludedHeading')}
+                  </h2>
+                  <p className={styles.blockNote}>{industry.excluded.note}</p>
+                </div>
+                <ul className={`${styles.checks} ${styles.excluded}`}>
+                  {industry.excluded.items.map((item, index) => (
+                    <li key={index}>{item}</li>
+                  ))}
+                </ul>
+              </section>
+
+              <section
+                className={styles.block}
+                aria-labelledby="service-niches"
+              >
+                <div className={styles.blockHead}>
+                  <h2
+                    className={styles.blockTitle}
+                    id="service-niches"
+                  >
+                    {t('nichesHeading')}
+                  </h2>
+                  <p className={styles.blockNote}>{t('nichesNote')}</p>
+                </div>
+                <ul className={styles.niches}>
+                  {industry.niches.map((niche) => (
+                    <li
+                      className={styles.niche}
+                      key={niche.id}
+                    >
+                      <h3 className={styles.nicheTitle}>
+                        <a href={niche.href}>{niche.title}</a>
+                      </h3>
+                      <p className={styles.nicheText}>{niche.text}</p>
+                      <span className={styles.nicheFoot}>
+                        {t('nicheCta')}
+                        <ArrowUpRightIcon />
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+              </section>
+            </>
+          ) : null}
 
           <section
             className={styles.block}

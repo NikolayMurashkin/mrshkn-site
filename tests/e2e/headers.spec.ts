@@ -7,7 +7,7 @@ import { LOCALES, PRODUCTION_BASE_URL } from './consts';
  */
 const CLIENT_HINT_HEADERS = ['critical-ch', 'accept-ch'];
 
-const SERVICE_PATHS = ['landing', 'business', 'mini-app', 'store', 'mvp', 'support'];
+const SERVICE_PATHS = ['landing', 'business', 'mini-app', 'store', 'mvp', 'support', 'industry'];
 
 const PAGES = LOCALES.flatMap((locale) => [
   `/${locale}`,

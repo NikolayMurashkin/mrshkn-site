@@ -20,7 +20,7 @@ import { KineticChoices } from './KineticChoices';
 import { KineticDesignChoice } from './KineticDesignChoice';
 import styles from './KineticBrief.module.scss';
 
-export const KineticBrief = ({ design, plan }: BriefProps) => {
+export const KineticBrief = ({ design, plan, niche }: BriefProps) => {
   const t = useTranslations('brief');
   const plans = useTranslations('pricing.plans');
   const {
@@ -39,7 +39,7 @@ export const KineticBrief = ({ design, plan }: BriefProps) => {
     send,
     setConsent,
     setTrap,
-  } = useBrief({ design, plan });
+  } = useBrief({ design, plan, niche });
   const [touched, setTouched] = useState<readonly string[]>([]);
   const stepTitle = useStepFocus(step);
 

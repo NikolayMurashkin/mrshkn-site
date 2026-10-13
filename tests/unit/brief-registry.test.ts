@@ -46,7 +46,7 @@ const SPECIFIER_PATTERNS = [
 ];
 
 const briefType = (Section: (typeof DESIGN_SECTIONS)[number][1], design: (typeof DESIGN_SECTIONS)[number][0]) =>
-  (Section({ section: 'brief', design, plan: null }) as ReactElement).type;
+  (Section({ section: 'brief', design, plan: null, niche: null }) as ReactElement).type;
 
 const thanksType = (Section: (typeof DESIGN_SECTIONS)[number][1]) =>
   (Section({ section: 'briefThanks' }) as ReactElement).type;
@@ -89,7 +89,7 @@ describe('секции квиза в реестре направлений', () 
   });
 
   it.each(DESIGN_SECTIONS)('%s отдает для brief свой компонент', (design, Section) => {
-    const element = Section({ section: 'brief', design, plan: null }) as ReactElement;
+    const element = Section({ section: 'brief', design, plan: null, niche: null }) as ReactElement;
     const others = DESIGN_SECTIONS.filter(([name]) => name !== design);
 
     expect(typeof element.type).toBe('function');

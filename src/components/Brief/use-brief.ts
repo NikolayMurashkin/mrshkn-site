@@ -6,16 +6,17 @@ import { useRouter } from '@/i18n/navigation';
 import { GOALS } from '@/lib/analytics/consts';
 import { BRIEF_STEPS, HONEYPOT_FIELD, THANKS_HREF } from '@/lib/brief/consts';
 import type { BriefChoice } from '@/lib/brief/types';
-import { BRIEF_EMPTY_ANSWERS, BRIEF_STEP_REQUIRED } from './consts';
+import { BRIEF_STEP_REQUIRED } from './consts';
+import { initialBriefAnswers } from './initial-answers';
 import type { BriefAnswers, BriefProps, BriefStatus, UseBrief } from './types';
 
-export const useBrief = ({ design, plan }: BriefProps): UseBrief => {
+export const useBrief = ({ design, plan, niche }: BriefProps): UseBrief => {
   const router = useRouter();
   const reachGoal = useGoal();
   const started = useRef(false);
 
   const [step, setStep] = useState(0);
-  const [answers, setAnswers] = useState<BriefAnswers>({ ...BRIEF_EMPTY_ANSWERS, design, product: plan ?? '' });
+  const [answers, setAnswers] = useState<BriefAnswers>(() => initialBriefAnswers({ design, plan, niche }));
   const [consent, setConsent] = useState(false);
   const [trap, setTrap] = useState('');
   const [status, setStatus] = useState<BriefStatus>('idle');

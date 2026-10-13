@@ -9,6 +9,7 @@ export const EXTRA_PRICE_PATTERN: Record<PricePeriod, string> = {
 
 /** Опции, которые показываются на странице услуги: то, что уже входит в тариф, опцией не предлагается. */
 export const SERVICE_OPTIONS: Record<string, readonly string[]> = {
+  industry: ['payments', 'reviews', 'messengers', 'language', 'crm'],
   landing: ['booking', 'payments', 'quiz', 'calculator', 'blog', 'crm'],
   business: ['booking', 'payments', 'quiz', 'calculator', 'reviews', 'assistant', 'branches', 'geo'],
   miniApp: ['catalog', 'crm', 'reviews', 'assistant', 'language'],

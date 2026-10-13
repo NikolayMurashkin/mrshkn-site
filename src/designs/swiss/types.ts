@@ -27,6 +27,8 @@ export type SwissProgressState = 'done' | 'current' | 'todo';
 
 export type SwissChecksProps = {
   items: readonly string[];
+  /** Штрих приглушенным цветом: список того, что в тариф не входит. */
+  skipped?: boolean;
 };
 
 export type SwissBasicsProps = {

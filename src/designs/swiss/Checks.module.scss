@@ -28,6 +28,14 @@
   }
 }
 
+.skipped .check {
+  color: var(--muted);
+
+  &::before {
+    background: var(--muted);
+  }
+}
+
 .nowrap {
   white-space: nowrap;
 }

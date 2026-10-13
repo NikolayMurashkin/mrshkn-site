@@ -4,9 +4,11 @@ import type { PricingBasicGroup, PricingExtra, PricingOption, PricingPlan } from
  * Единственный источник цен на сайте. Рубли — решение D5 в `../PLAN.md`, доллары — таблица
  * «Линейка» из бизнес-плана (`docs/studio-plan.html`), кроме лендинга: у него D5 новее ($2 400).
  * Цены опций в долларах пересчитаны из рублевых по курсу 50 ₽ — тому же, по которому в бизнес-плане
- * посчитаны «Бизнес», магазин и MVP.
+ * посчитаны «Бизнес», магазин и MVP. Отраслевой сайт — первой строкой, как самый быстрый и доступный
+ * вход; его цены в обеих валютах назначил Николай.
  */
 export const PRICING_PLANS: PricingPlan[] = [
+  { id: 'industry', slug: 'industry', price: { rub: 70_000, usd: 1_200 }, isFrom: false },
   { id: 'landing', slug: 'landing', price: { rub: 100_000, usd: 2_400 }, isFrom: false },
   { id: 'business', slug: 'business', price: { rub: 220_000, usd: 4_500 }, isFrom: false },
   { id: 'miniApp', slug: 'mini-app', price: { rub: 180_000, usd: 3_500 }, isFrom: true },

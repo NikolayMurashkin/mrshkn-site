@@ -20,7 +20,7 @@ import { SwissDesignChoice } from './SwissDesignChoice';
 import { padCount, progressState } from './utils';
 import styles from './SwissBrief.module.scss';
 
-export const SwissBrief = ({ design, plan }: BriefProps) => {
+export const SwissBrief = ({ design, plan, niche }: BriefProps) => {
   const t = useTranslations('brief');
   const plans = useTranslations('pricing.plans');
   const {
@@ -39,7 +39,7 @@ export const SwissBrief = ({ design, plan }: BriefProps) => {
     send,
     setConsent,
     setTrap,
-  } = useBrief({ design, plan });
+  } = useBrief({ design, plan, niche });
   const [touched, setTouched] = useState<readonly string[]>([]);
   const stepTitle = useStepFocus(step);
 

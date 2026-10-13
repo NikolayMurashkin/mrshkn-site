@@ -31,6 +31,8 @@ export type EditorialWorksLayout =
 
 export type EditorialDashesProps = {
   items: readonly string[];
+  /** Приглушенный текст: список того, что в тариф не входит. */
+  skipped?: boolean;
 };
 
 export type EditorialRubricProps = {

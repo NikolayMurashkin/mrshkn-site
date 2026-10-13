@@ -116,6 +116,11 @@
       "monthlyAddon": "+ {amount} / mo"
     },
     "plans": {
+      "industry": {
+        "name": "Industry site",
+        "summary": "Our industry demo tailored to your business: copy, photos, colors, domain, booking",
+        "term": "7 days"
+      },
       "landing": {
         "name": "Landing page",
         "summary": "One page, custom design, lead form, analytics and SEO basics",
@@ -433,9 +438,87 @@
     "cardPoints": {
       "deadline": "Deadline written into the contract",
       "warranty": "30-day warranty after launch"
-    }
+    },
+    "includedHeading": "What we tailor to you",
+    "excludedHeading": "What is not included",
+    "nichesHeading": "Pick your industry",
+    "nichesNote": "Demos for these industries are ready",
+    "nicheCta": "Get a quote"
   },
   "services": {
+    "industry": {
+      "included": {
+        "note": "The demo is ready — we make it yours",
+        "items": [
+          "Your own text: services, prices, contact details",
+          "Your photos and logo",
+          "Your brand colors",
+          "Your domain connected",
+          "Online booking or a contact form, sent to your Telegram and email"
+        ]
+      },
+      "excluded": {
+        "note": "The materials are yours",
+        "items": [
+          "You write the copy — we lay it out across the demo pages; copywriting is not included",
+          "No photo shoot — we use your photos"
+        ]
+      },
+      "niches": {
+        "clinic": {
+          "title": "Clinic",
+          "text": "Doctors, services with prices, licenses, online booking"
+        },
+        "expert": {
+          "title": "Expert",
+          "text": "About you, ways to work together, paid booking, articles"
+        },
+        "horeca": {
+          "title": "Coffee shop",
+          "text": "Menu with filters, QR menu, map and opening hours"
+        }
+      },
+      "faq": [
+        {
+          "question": "How is the industry site different from the landing page?",
+          "answer": "The landing page is a custom design built in 14 days. The industry site is our ready-made demo tailored to your business, so it is faster and costs less."
+        },
+        {
+          "question": "My industry is not on the list. What now?",
+          "answer": "Then the landing page or the business website is a better fit. Take the quote quiz and we will suggest the right plan from your answers."
+        },
+        {
+          "question": "How many days does the industry site take?",
+          "answer": "7 days, and the deadline is written into the contract."
+        },
+        {
+          "question": "Can I add features later?",
+          "answer": "Yes, as options from the price list: online payments, reviews, messengers, a second language, CRM. Option prices are on this page."
+        }
+      ],
+      "process": [
+        {
+          "when": "Day 1",
+          "title": "Brief and industry pick",
+          "text": "A call, we pick the demo for your business, a 50% prepayment."
+        },
+        {
+          "when": "Day 2",
+          "title": "Your materials",
+          "text": "You send copy, photos, logo and colors — we lay them into the demo."
+        },
+        {
+          "when": "Day 5",
+          "title": "Site on a staging domain",
+          "text": "Every page with your materials, plus booking. Two rounds of revisions are included in the price."
+        },
+        {
+          "when": "Day 7",
+          "title": "Launch and 30-day warranty",
+          "text": "Move to your domain, handover of access and source code."
+        }
+      ]
+    },
     "landing": {
       "faq": [
         {

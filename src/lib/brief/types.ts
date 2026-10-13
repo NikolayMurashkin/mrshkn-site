@@ -42,3 +42,15 @@ export type RateLimiterOptions = {
   limit: number;
   windowMs: number;
 };
+
+/** Параметры адреса квиза: повтор параметра в адресе приходит массивом. */
+export type BriefPresetParams = {
+  plan?: string | string[];
+  niche?: string | string[];
+};
+
+/** Что предвыбрать в квизе: тариф с кнопки прайса и ниша с карточки отрасли; null — без предвыбора. */
+export type BriefPreset = {
+  plan: string | null;
+  niche: string | null;
+};

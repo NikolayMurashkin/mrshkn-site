@@ -67,6 +67,7 @@ const renderBrief = (Brief: ComponentType<BriefProps>, design: DesignName) =>
     >
       <Brief
         design={design}
+        niche={null}
         plan={null}
       />
     </NextIntlClientProvider>,

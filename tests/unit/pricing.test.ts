@@ -93,6 +93,7 @@ describe('formatRange', () => {
 describe('planHref', () => {
   it('ведет на страницу услуги в текущем языке и передает выбранный тариф', () => {
     expect(PRICING_PLANS.map((plan) => planHref('ru', plan))).toEqual([
+      '/ru/industry?plan=industry',
       '/ru/landing?plan=landing',
       '/ru/business?plan=business',
       '/ru/mini-app?plan=miniApp',
@@ -100,6 +101,6 @@ describe('planHref', () => {
       '/ru/mvp?plan=mvp',
       '/ru/support?plan=support',
     ]);
-    expect(planHref('en', PRICING_PLANS[0])).toBe('/en/landing?plan=landing');
+    expect(planHref('en', PRICING_PLANS[0])).toBe('/en/industry?plan=industry');
   });
 });

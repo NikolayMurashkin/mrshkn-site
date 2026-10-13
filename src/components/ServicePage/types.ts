@@ -16,6 +16,21 @@ export type ServiceBasics = {
   items: string[];
 };
 
+/** Карточка отрасли: готовое демо, ссылка ведет в квиз с предвыбранной нишей. */
+export type ServiceNicheCard = {
+  id: string;
+  title: string;
+  text: string;
+  href: string;
+};
+
+/** Блоки, которые есть только у отраслевого тарифа: что меняем под клиента, что не входит, отрасли. */
+export type ServiceIndustry = {
+  included: ServiceBasics;
+  excluded: ServiceBasics;
+  niches: ServiceNicheCard[];
+};
+
 export type ServiceOptionView = {
   id: string;
   name: string;
@@ -35,6 +50,7 @@ export type ServicePageData = {
   hasRevisions: boolean;
   cardPoints: string[];
   ownBasics: ServiceBasics | null;
+  industry: ServiceIndustry | null;
   steps: ServiceStep[];
   faq: FaqItem[];
   options: ServiceOptionView[];

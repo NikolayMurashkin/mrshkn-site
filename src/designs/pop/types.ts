@@ -29,6 +29,8 @@ export type PopChecksProps = {
   items: readonly string[];
   /** Галочки цветом текста: на желтой карточке тарифа `accent-ink` в темной теме не читается. */
   inheritColor?: boolean;
+  /** Пустой штамп с прочерком вместо галочки: список того, что в тариф не входит. */
+  skipped?: boolean;
 };
 
 export type PopBasicsProps = {

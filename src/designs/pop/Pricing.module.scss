@@ -82,6 +82,41 @@
   --tilt: 2deg;
 }
 
+.plan:last-child {
+  grid-column: 1 / -1;
+
+  .card {
+    --tilt: -0.5deg;
+
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: center;
+    column-gap: var(--space-32);
+    min-height: 0;
+  }
+
+  .tag,
+  .name {
+    grid-column: 1;
+  }
+
+  .tag {
+    justify-self: start;
+  }
+
+  .summary {
+    grid-column: 1;
+    max-width: 720px;
+  }
+
+  .foot {
+    grid-column: 2;
+    grid-row: 1 / span 3;
+    align-items: center;
+    margin-top: 0;
+  }
+}
+
 .tag {
   @include s.tag;
 }
@@ -249,6 +284,19 @@
   .plans,
   .extras {
     grid-template-columns: minmax(0, 1fr);
+  }
+
+  .plan:last-child .card {
+    --tilt: -1deg;
+
+    display: flex;
+    align-items: normal;
+    min-height: 270px;
+  }
+
+  .plan:last-child .foot {
+    align-items: flex-end;
+    margin-top: auto;
   }
 
   .callout {

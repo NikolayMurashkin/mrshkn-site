@@ -14,7 +14,12 @@ export type BriefProps = {
   design: DesignName;
   /** Тариф из `?plan=` на кнопке прайса: предвыбирает первый шаг. */
   plan: string | null;
+  /** Ниша из `?niche=` на карточке отрасли: предвыбирает шаг «ниша». */
+  niche: string | null;
 };
+
+/** Из чего собираются начальные ответы квиза: направление и предвыбор из адреса. */
+export type InitialBriefAnswersParams = Pick<BriefProps, 'plan' | 'niche'> & { design: string };
 
 export type BriefStatus = 'idle' | 'sending' | 'error';
 

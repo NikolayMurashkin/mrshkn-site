@@ -27,7 +27,7 @@ const progressState = (index: number, step: number) => {
   return index === step ? 'current' : 'todo';
 };
 
-export const PopBrief = ({ design, plan }: BriefProps) => {
+export const PopBrief = ({ design, plan, niche }: BriefProps) => {
   const t = useTranslations('brief');
   const plans = useTranslations('pricing.plans');
   const {
@@ -46,7 +46,7 @@ export const PopBrief = ({ design, plan }: BriefProps) => {
     send,
     setConsent,
     setTrap,
-  } = useBrief({ design, plan });
+  } = useBrief({ design, plan, niche });
   const [touched, setTouched] = useState<readonly string[]>([]);
   const stepTitle = useStepFocus(step);
 

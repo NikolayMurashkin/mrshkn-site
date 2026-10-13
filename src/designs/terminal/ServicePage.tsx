@@ -25,6 +25,7 @@ export const TerminalServicePage = ({ service }: ServicePageProps) => {
     hasRevisions,
     cardPoints,
     ownBasics,
+    industry,
     options,
     steps,
     faq,
@@ -74,6 +75,24 @@ export const TerminalServicePage = ({ service }: ServicePageProps) => {
         </aside>
 
         <div className={styles.main}>
+          {industry ? (
+            <section
+              className={styles.block}
+              aria-labelledby="service-included"
+            >
+              <div className={styles.blockHead}>
+                <h2
+                  className={styles.blockTitle}
+                  id="service-included"
+                >
+                  {t('includedHeading')}
+                </h2>
+                <p className={styles.blockNote}>{industry.included.note}</p>
+              </div>
+              <TerminalChecks items={industry.included.items} />
+            </section>
+          ) : null}
+
           <section
             className={styles.block}
             aria-labelledby="service-basics"
@@ -96,6 +115,60 @@ export const TerminalServicePage = ({ service }: ServicePageProps) => {
               />
             )}
           </section>
+
+          {industry ? (
+            <>
+              <section
+                className={styles.block}
+                aria-labelledby="service-excluded"
+              >
+                <div className={styles.blockHead}>
+                  <h2
+                    className={styles.blockTitle}
+                    id="service-excluded"
+                  >
+                    {t('excludedHeading')}
+                  </h2>
+                  <p className={styles.blockNote}>{industry.excluded.note}</p>
+                </div>
+                <TerminalChecks
+                  items={industry.excluded.items}
+                  skipped
+                />
+              </section>
+
+              <section
+                className={styles.block}
+                aria-labelledby="service-niches"
+              >
+                <div className={styles.blockHead}>
+                  <h2
+                    className={styles.blockTitle}
+                    id="service-niches"
+                  >
+                    {t('nichesHeading')}
+                  </h2>
+                  <p className={styles.blockNote}>{t('nichesNote')}</p>
+                </div>
+                <ul className={styles.niches}>
+                  {industry.niches.map((niche) => (
+                    <li
+                      className={styles.niche}
+                      key={niche.id}
+                    >
+                      <div className={styles.nicheHead}>
+                        <h3 className={styles.nicheTitle}>
+                          <a href={niche.href}>{niche.title}</a>
+                        </h3>
+                        <span className={styles.nicheCta}>{t('nicheCta')}</span>
+                      </div>
+                      <p className={styles.nicheText}>{niche.text}</p>
+                    </li>
+                  ))}
+                </ul>
+              </section>
+            </>
+          ) : null}
 
           <section
             className={styles.block}

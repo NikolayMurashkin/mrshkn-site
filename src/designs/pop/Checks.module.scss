@@ -28,3 +28,19 @@
 .nowrap {
   white-space: nowrap;
 }
+
+.skipped .check {
+  &::before {
+    border-color: var(--muted);
+  }
+
+  &::after {
+    top: 10px;
+    left: 5px;
+    width: 10px;
+    height: 0;
+    border-color: var(--muted);
+    border-right-width: 0;
+    transform: none;
+  }
+}

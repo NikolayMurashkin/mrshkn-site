@@ -115,6 +115,79 @@
   @include s.card-title;
 }
 
+.niches {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--space-48) var(--space-32);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.niche {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding-top: 16px;
+  border-top: var(--border-width) solid var(--ink);
+  min-width: 0;
+
+  &:hover,
+  &:focus-within {
+    .nicheTitle,
+    .nicheArrow {
+      color: var(--accent-ink);
+    }
+
+    .nicheArrow {
+      transform: translateX(3px);
+    }
+  }
+}
+
+.nicheTitle {
+  @include s.card-title;
+
+  transition: color var(--duration-fast) var(--ease-out);
+
+  a::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+  }
+}
+
+.nicheText {
+  @include s.wrap;
+
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.55;
+  color: var(--muted);
+}
+
+.nicheFoot {
+  @include s.wrap;
+
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: auto;
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-weight: 400;
+}
+
+.nicheArrow {
+  flex: none;
+  color: var(--ink);
+  transition:
+    transform var(--duration-base) var(--ease-out),
+    color var(--duration-fast) var(--ease-out);
+}
+
 .more {
   @include s.arrow-link;
 
@@ -284,9 +357,17 @@
   .steps {
     grid-template-columns: minmax(0, 1fr);
   }
+
+  .niches {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
 }
 
 @media (max-width: 720px) {
+  .niches {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
   .summary {
     font-size: 18px;
   }

@@ -27,6 +27,8 @@ export type TerminalDesignChoiceProps = {
 
 export type TerminalChecksProps = {
   items: readonly string[];
+  /** Пустой `[ ]` вместо `[x]`: список того, что в тариф не входит. */
+  skipped?: boolean;
 };
 
 export type TerminalBasicsProps = {

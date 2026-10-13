@@ -63,11 +63,11 @@ describe.each([...DESIGN_NAMES])('lighthouserc.cjs, %s', (design) => {
 });
 
 describe('адреса Lighthouse по направлениям', () => {
-  it.each([...DESIGN_NAMES])('%s меряет главную, один кейс и шесть страниц услуг', (design) => {
+  it.each([...DESIGN_NAMES])('%s меряет главную, один кейс и страницы всех услуг', (design) => {
     const urls = loadConfig(design).ci.collect.url;
     const caseUrls = urls.filter((url) => url.startsWith('http://localhost:3102/ru/work/'));
 
-    expect(urls).toHaveLength(8);
+    expect(urls).toHaveLength(2 + PRICING_PLANS.length);
     expect(urls[0]).toBe('http://localhost:3102/ru');
     expect(caseUrls).toHaveLength(1);
     expect(caseUrls[0].slice('http://localhost:3102/ru/work/'.length)).toMatch(SLUG_PATTERN);

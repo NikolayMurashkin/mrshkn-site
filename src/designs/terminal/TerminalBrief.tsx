@@ -18,7 +18,7 @@ import { TerminalChoices } from './TerminalChoices';
 import { TerminalDesignChoice } from './TerminalDesignChoice';
 import styles from './TerminalBrief.module.scss';
 
-export const TerminalBrief = ({ design, plan }: BriefProps) => {
+export const TerminalBrief = ({ design, plan, niche }: BriefProps) => {
   const t = useTranslations('brief');
   const plans = useTranslations('pricing.plans');
   const {
@@ -37,7 +37,7 @@ export const TerminalBrief = ({ design, plan }: BriefProps) => {
     send,
     setConsent,
     setTrap,
-  } = useBrief({ design, plan });
+  } = useBrief({ design, plan, niche });
   const [touched, setTouched] = useState<readonly string[]>([]);
   const stepTitle = useStepFocus(step);
 

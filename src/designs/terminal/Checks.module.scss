@@ -30,3 +30,8 @@
 .nowrap {
   white-space: nowrap;
 }
+
+.skipped::before {
+  content: s.decor('[ ]');
+  color: var(--muted);
+}

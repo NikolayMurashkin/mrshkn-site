@@ -19,7 +19,7 @@ import { EditorialDesignChoice } from './EditorialDesignChoice';
 import { progressState } from './utils';
 import styles from './EditorialBrief.module.scss';
 
-export const EditorialBrief = ({ design, plan }: BriefProps) => {
+export const EditorialBrief = ({ design, plan, niche }: BriefProps) => {
   const t = useTranslations('brief');
   const plans = useTranslations('pricing.plans');
   const {
@@ -38,7 +38,7 @@ export const EditorialBrief = ({ design, plan }: BriefProps) => {
     send,
     setConsent,
     setTrap,
-  } = useBrief({ design, plan });
+  } = useBrief({ design, plan, niche });
   const [touched, setTouched] = useState<readonly string[]>([]);
   const stepTitle = useStepFocus(step);
 

@@ -10,7 +10,7 @@ export const renderSection = (components: DesignComponents, props: SectionProps)
     case 'case':
       return createElement(components.case, { caseItem: props.caseItem });
     case 'brief':
-      return createElement(components.brief, { design: props.design, plan: props.plan });
+      return createElement(components.brief, { design: props.design, plan: props.plan, niche: props.niche });
     case 'servicePage':
       return createElement(components.servicePage, { service: props.service });
     case 'review':

@@ -4,7 +4,7 @@ import { useServicePage } from '@/components/ServicePage/use-service-page';
 import { splitStepWhen } from '../step-when';
 import { PopBasics } from './Basics';
 import { PopChecks } from './Checks';
-import { ArrowLeftIcon, ArrowRightIcon } from './icons';
+import { ArrowLeftIcon, ArrowRightIcon, ArrowUpRightIcon } from './icons';
 import { PopOptions } from './Options';
 import { PopSteps } from './Steps';
 import styles from './ServicePage.module.scss';
@@ -27,6 +27,7 @@ export const PopServicePage = ({ service }: ServicePageProps) => {
     hasRevisions,
     cardPoints,
     ownBasics,
+    industry,
     options,
     steps,
     faq,
@@ -71,6 +72,26 @@ export const PopServicePage = ({ service }: ServicePageProps) => {
 
       <div className={styles.cols}>
         <div className={styles.stack}>
+          {industry ? (
+            <section
+              className={styles.block}
+              aria-labelledby="service-included"
+            >
+              <div className={styles.blockHead}>
+                <h2
+                  className={styles.blockTitle}
+                  id="service-included"
+                >
+                  {t('includedHeading')}
+                </h2>
+                <p className={styles.blockNote}>{industry.included.note}</p>
+              </div>
+              <div className={styles.ownBasics}>
+                <PopChecks items={industry.included.items} />
+              </div>
+            </section>
+          ) : null}
+
           <section
             className={styles.block}
             aria-labelledby="service-basics"
@@ -95,6 +116,65 @@ export const PopServicePage = ({ service }: ServicePageProps) => {
               />
             )}
           </section>
+
+          {industry ? (
+            <>
+              <section
+                className={styles.block}
+                aria-labelledby="service-excluded"
+              >
+                <div className={styles.blockHead}>
+                  <h2
+                    className={styles.blockTitle}
+                    id="service-excluded"
+                  >
+                    {t('excludedHeading')}
+                  </h2>
+                  <p className={styles.blockNote}>{industry.excluded.note}</p>
+                </div>
+                <div className={styles.ownBasics}>
+                  <PopChecks
+                    items={industry.excluded.items}
+                    skipped
+                  />
+                </div>
+              </section>
+
+              <section
+                className={styles.block}
+                aria-labelledby="service-niches"
+              >
+                <div className={styles.blockHead}>
+                  <h2
+                    className={styles.blockTitle}
+                    id="service-niches"
+                  >
+                    {t('nichesHeading')}
+                  </h2>
+                  <p className={styles.blockNote}>{t('nichesNote')}</p>
+                </div>
+                <ul className={styles.niches}>
+                  {industry.niches.map((niche) => (
+                    <li
+                      className={styles.niche}
+                      key={niche.id}
+                    >
+                      <h3 className={styles.nicheTitle}>
+                        <a href={niche.href}>{niche.title}</a>
+                      </h3>
+                      <p className={styles.nicheText}>{niche.text}</p>
+                      <span className={styles.nicheFoot}>
+                        {t('nicheCta')}
+                        <span className={styles.round}>
+                          <ArrowUpRightIcon />
+                        </span>
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+              </section>
+            </>
+          ) : null}
 
           {options.length > 0 ? (
             <section
