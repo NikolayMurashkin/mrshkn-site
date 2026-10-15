@@ -7,8 +7,8 @@ export const CONSENT_MAX_AGE = 60 * 60 * 24 * 365;
 export const CONSENT_VALUES = ['granted', 'denied'] as const;
 
 /**
- * Цели Метрики и события GA4 с одинаковыми именами. Переход в Telegram пока никто не вызывает: ссылки
- * в Telegram на сайте нет, вызов появится вместе с ней.
+ * Цели Метрики и события GA4 с одинаковыми именами. Переход в Telegram — клик по кнопке «Написать в Telegram»
+ * в подвале любого направления (`TelegramLink`).
  */
 export const GOALS = {
   quizStart: 'quiz_start',

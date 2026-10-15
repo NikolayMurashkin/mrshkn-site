@@ -1,4 +1,5 @@
 import { useTranslations } from 'next-intl';
+import { TelegramLink } from '@/components/TelegramLink';
 import { Link, usePathname } from '@/i18n/navigation';
 import { BRIEF_HREF } from '@/lib/brief/consts';
 import { PRIVACY_HREF } from '@/lib/consts';
@@ -30,13 +31,16 @@ export const SwissFooter = () => {
           <p className={styles.title}>{t('headingQuestion')}</p>
           <p className={styles.lead}>{t('invitation')}</p>
           <div className={styles.actions}>
-            <Link
-              className={styles.cta}
-              href={BRIEF_HREF}
-            >
-              {t('cta')}
-              <ArrowRightIcon />
-            </Link>
+            <div className={styles.buttons}>
+              <Link
+                className={styles.cta}
+                href={BRIEF_HREF}
+              >
+                {t('cta')}
+                <ArrowRightIcon />
+              </Link>
+              <TelegramLink className={styles.telegram}>{t('telegram')}</TelegramLink>
+            </div>
             <span className={styles.note}>{t('replyTime')}</span>
           </div>
         </div>

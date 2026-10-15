@@ -72,10 +72,30 @@
   margin-top: var(--space-16);
 }
 
+.buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-12);
+}
+
 .cta {
   @include s.button;
   @include s.button-large;
   @include s.button-on-accent;
+}
+
+.telegram {
+  @include s.button;
+  @include s.button-large;
+
+  border-color: var(--accent-contrast);
+  color: var(--accent-contrast);
+
+  &:hover {
+    border-color: var(--accent-contrast);
+    background: var(--accent-contrast);
+    color: var(--accent-ink);
+  }
 }
 
 .note {
@@ -135,6 +155,10 @@
     align-items: flex-start;
   }
 
+  .buttons {
+    flex-direction: column;
+  }
+
   .bar {
     display: flex;
     flex-direction: column;
@@ -156,10 +180,20 @@
     align-items: stretch;
   }
 
-  .cta {
+  .cta,
+  .telegram {
     @include s.button-fluid(64px);
 
+    word-wrap: break-word;
+    overflow-wrap: anywhere;
+    min-width: 0;
+  }
+
+  .cta {
     justify-content: space-between;
-    width: 100%;
+  }
+
+  .telegram {
+    justify-content: flex-start;
   }
 }

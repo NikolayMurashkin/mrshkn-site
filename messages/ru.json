@@ -322,8 +322,9 @@
     "headingQuestion": "Обсудить проект?",
     "invitation": "Расскажите о задаче — ответим в течение часа.",
     "cta": "Оставить заявку",
+    "telegram": "Написать в Telegram",
     "replyTime": "Отвечаем в течение часа в рабочее время",
-    "command": "open mrshkn.com/brief",
+    "command": "open t.me/mrshkn_studio",
     "sectionMark": "Контакт",
     "privacy": "Политика обработки ПД"
   },

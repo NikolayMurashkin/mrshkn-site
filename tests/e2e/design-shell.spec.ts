@@ -1,5 +1,6 @@
 import { join } from 'node:path';
 import { expect, test, type Locator, type Page } from '@playwright/test';
+import { TELEGRAM_URL } from '@/lib/consts';
 import { DESIGN_COOKIE, DESIGNS, PREVIEW_BASE_URL, THEMES } from './consts';
 import { openDesign } from './open-design';
 import type { DesignShape } from './types';
@@ -98,6 +99,11 @@ test.describe('каркас направлений', () => {
       await expect(header.getByRole('link', { name: 'Обсудить проект' })).toHaveCount(shape.headerCta ? 1 : 0);
 
       await expect(footer.getByRole('link', { name: 'Оставить заявку' })).toBeVisible();
+
+      const telegram = footer.getByRole('link', { name: /^Написать в\sTelegram$/ });
+
+      await expect(telegram).toBeVisible();
+      await expect(telegram).toHaveAttribute('href', TELEGRAM_URL);
     });
 
     test(`${design}: шрифты направления применены`, async ({ page }) => {

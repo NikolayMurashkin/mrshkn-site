@@ -1,4 +1,5 @@
 import { useTranslations } from 'next-intl';
+import { TelegramLink } from '@/components/TelegramLink';
 import { Link } from '@/i18n/navigation';
 import { BRIEF_HREF } from '@/lib/brief/consts';
 import { PRIVACY_HREF } from '@/lib/consts';
@@ -22,12 +23,17 @@ export const TerminalFooter = () => {
         <p className={styles.heading}>{t('heading')}</p>
       </div>
       <div className={styles.aside}>
-        <Link
-          className={styles.cta}
-          href={BRIEF_HREF}
-        >
-          {t('cta')} <span aria-hidden="true">→</span>
-        </Link>
+        <div className={styles.actions}>
+          <Link
+            className={styles.cta}
+            href={BRIEF_HREF}
+          >
+            {t('cta')} <span aria-hidden="true">→</span>
+          </Link>
+          <TelegramLink className={styles.telegram}>
+            {t('telegram')} <span aria-hidden="true">→</span>
+          </TelegramLink>
+        </div>
         <span className={styles.note}>
           <span aria-hidden="true">{'// '}</span>
           {t('replyTime')}

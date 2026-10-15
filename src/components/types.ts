@@ -1,3 +1,4 @@
+import type { ReactNode } from 'react';
 import type { CaseImage as CaseImageData } from '@/cms/types';
 import type { DesignName } from '@/designs/types';
 
@@ -20,4 +21,10 @@ export type CaseImageProps = {
 export type JsonLdProps = {
   /** Узел schema.org; несколько узлов на странице — несколько компонентов. */
   data: object;
+};
+
+export type TelegramLinkProps = {
+  /** Класс кнопки из DS направления: ссылка своей верстки не несет. */
+  className: string;
+  children: ReactNode;
 };

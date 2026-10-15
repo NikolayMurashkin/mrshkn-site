@@ -35,9 +35,20 @@
   min-width: 0;
 }
 
+.buttons {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-12);
+}
+
 .cta {
   @include s.button;
   @include s.button-primary;
+  @include s.button-large;
+}
+
+.telegram {
+  @include s.button;
   @include s.button-large;
 }
 
@@ -104,6 +115,11 @@
     align-items: center;
     gap: var(--space-12) 20px;
   }
+
+  .buttons {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
 }
 
 @media (max-width: 720px) {
@@ -122,9 +138,17 @@
 }
 
 @media (max-width: 480px) {
-  .cta {
+  .buttons {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .cta,
+  .telegram {
     @include s.button-fluid;
 
-    width: 100%;
+    word-wrap: break-word;
+    overflow-wrap: anywhere;
+    min-width: 0;
   }
 }

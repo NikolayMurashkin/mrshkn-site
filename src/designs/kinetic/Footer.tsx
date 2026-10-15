@@ -1,4 +1,5 @@
 import { useTranslations } from 'next-intl';
+import { TelegramLink } from '@/components/TelegramLink';
 import { Link } from '@/i18n/navigation';
 import { BRIEF_HREF } from '@/lib/brief/consts';
 import { PRIVACY_HREF } from '@/lib/consts';
@@ -18,12 +19,15 @@ export const KineticFooter = () => {
       <div className={styles.main}>
         <p className={styles.title}>{t('heading')}</p>
         <div className={styles.aside}>
-          <Link
-            className={buttonClass({ primary: true, size: 'large', onInk: true })}
-            href={BRIEF_HREF}
-          >
-            {t('cta')}
-          </Link>
+          <div className={styles.actions}>
+            <Link
+              className={buttonClass({ primary: true, size: 'large', onInk: true })}
+              href={BRIEF_HREF}
+            >
+              {t('cta')}
+            </Link>
+            <TelegramLink className={buttonClass({ size: 'large', onInk: true })}>{t('telegram')}</TelegramLink>
+          </div>
           <span className={styles.note}>{t('replyTime')}</span>
         </div>
       </div>

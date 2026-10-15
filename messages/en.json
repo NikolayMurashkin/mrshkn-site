@@ -322,8 +322,9 @@
     "headingQuestion": "Start a project?",
     "invitation": "Tell us about your project — we reply within an hour.",
     "cta": "Send a request",
+    "telegram": "Message us on Telegram",
     "replyTime": "We reply within an hour during working hours",
-    "command": "open mrshkn.com/brief",
+    "command": "open t.me/mrshkn_studio",
     "sectionMark": "Contact",
     "privacy": "Privacy policy"
   },

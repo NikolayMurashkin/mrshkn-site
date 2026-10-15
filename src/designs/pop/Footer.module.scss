@@ -45,9 +45,21 @@
   text-align: right;
 }
 
+.actions {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: var(--space-12);
+}
+
 .cta {
   @include s.button;
   @include s.button-alt;
+  @include s.button-large;
+}
+
+.telegram {
+  @include s.button;
   @include s.button-large;
 }
 
@@ -117,9 +129,16 @@
     width: 100%;
   }
 
-  .cta {
+  .actions {
+    align-self: stretch;
+  }
+
+  .cta,
+  .telegram {
     @include s.button-fluid(60px);
 
-    width: 100%;
+    word-wrap: break-word;
+    overflow-wrap: anywhere;
+    min-width: 0;
   }
 }

@@ -1,4 +1,5 @@
 import { useTranslations } from 'next-intl';
+import { TelegramLink } from '@/components/TelegramLink';
 import { Link } from '@/i18n/navigation';
 import { BRIEF_HREF } from '@/lib/brief/consts';
 import { PRIVACY_HREF } from '@/lib/consts';
@@ -16,12 +17,15 @@ export const EditorialFooter = () => {
       <div className={styles.main}>
         <p className={styles.title}>{t('footer.invitation')}</p>
         <div className={styles.actions}>
-          <Link
-            className={styles.cta}
-            href={BRIEF_HREF}
-          >
-            {t('footer.cta')}
-          </Link>
+          <div className={styles.buttons}>
+            <Link
+              className={styles.cta}
+              href={BRIEF_HREF}
+            >
+              {t('footer.cta')}
+            </Link>
+            <TelegramLink className={styles.telegram}>{t('footer.telegram')}</TelegramLink>
+          </div>
           <span className={styles.note}>{t('footer.replyTime')}</span>
         </div>
       </div>
