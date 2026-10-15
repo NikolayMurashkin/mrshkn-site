@@ -864,14 +864,16 @@
     },
     "home": "Go to the home page",
     "mail": {
-      "subject": "Your review of {project}",
+      "subject": "{project}: three questions from Nikolay at MRSHKN",
       "paragraphs": [
         "Hello,",
-        "Thank you for working with MRSHKN studio on {project}. We would love to hear how it went: what brought you to us, how the work went and what changed.",
-        "Your personal link to the review form:",
+        "This is Nikolay from MRSHKN. We built {project} together, and I would like to know how the work looks from your side. I will show your review on the studio's website — it will tell new clients more than anything I could say.",
+        "The form has three questions: what brought you to us, how the work went and what changed after launch. Answer as you like, short or long — I publish criticism too and only fix typos. It takes about ten minutes, no sign-up or passwords:",
         "{link}",
-        "The link is valid for 60 days. We publish your review only with your consent, and you can withdraw it at any time by emailing hello@mrshkn.com.",
-        "MRSHKN studio"
+        "The form asks for your full name only for the consent — it will not appear on the site. The review is signed the way you choose, for example “Anna, coffee shop on Main Street”.",
+        "You can send the review only with consent to publish it — there are two checkboxes at the end of the form. If you change your mind, reply to this email and I will take it down.",
+        "The link works for 60 days. Thank you for the project.",
+        "Nikolay, MRSHKN studio"
       ]
     }
   }
