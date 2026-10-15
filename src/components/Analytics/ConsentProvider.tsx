@@ -1,7 +1,9 @@
 'use client';
 
+import { usePathname } from 'next/navigation';
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { clearedConsentCookie, consentCookie } from '@/lib/analytics/consent';
+import { UNTRACKED_PATH } from '@/lib/analytics/consts';
 import { reachGoal } from '@/lib/analytics/goals';
 import type { ConsentChoice, Goal } from '@/lib/analytics/types';
 import { AnalyticsScripts } from './AnalyticsScripts';
@@ -10,12 +12,15 @@ import type { ConsentProviderProps } from './types';
 
 /**
  * Согласие на счетчики: «Принять» дорисовывает их без перезагрузки. Код загруженного счетчика из страницы не выгрузить →
- * отказ или сброс после загрузки перезагружает страницу, и она приходит уже без счетчиков.
+ * отказ или сброс после загрузки перезагружает страницу, и она приходит уже без счетчиков. На страницах
+ * `UNTRACKED_PATH` счетчиков нет и при согласии.
  */
 export const ConsentProvider = ({ initialChoice, metrikaId, gaId, children }: ConsentProviderProps) => {
   const [choice, setChoice] = useState(initialChoice);
   const loaded = useRef(false);
-  const counting = choice === 'granted' && Boolean(metrikaId || gaId);
+  const pathname = usePathname();
+  const granted = choice === 'granted' && !UNTRACKED_PATH.test(pathname);
+  const counting = granted && Boolean(metrikaId || gaId);
 
   useEffect(() => {
     if (counting) {
@@ -55,7 +60,7 @@ export const ConsentProvider = ({ initialChoice, metrikaId, gaId, children }: Co
     <ConsentContext value={value}>
       {children}
       <AnalyticsScripts
-        consent={choice === 'granted'}
+        consent={granted}
         metrikaId={metrikaId}
         gaId={gaId}
       />

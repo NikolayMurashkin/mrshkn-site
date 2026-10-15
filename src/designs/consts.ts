@@ -15,6 +15,7 @@ export const SECTION_NAMES = [
   'servicePage',
   'privacyPage',
   'cookieBanner',
+  'review',
 ] as const;
 
 export const DEFAULT_DESIGN = 'kinetic' satisfies (typeof DESIGN_NAMES)[number];

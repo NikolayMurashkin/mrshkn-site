@@ -1,6 +1,7 @@
 import type { ComponentType } from 'react';
 import type { CaseCard, CaseDetail } from '@/cms/types';
 import type { BriefProps } from '@/components/Brief/types';
+import type { ReviewProps } from '@/components/Review/types';
 import type { ServicePageProps } from '@/components/ServicePage/types';
 import type { DESIGN_NAMES, SECTION_NAMES } from './consts';
 
@@ -11,7 +12,7 @@ export type DesignName = (typeof DESIGN_NAMES)[number];
 export type SectionName = (typeof SECTION_NAMES)[number];
 
 /** Секции, которым нужны данные: их читают серверные страницы, а клиентский чанк направления рисует. */
-type DataSectionName = 'header' | 'works' | 'case' | 'brief' | 'servicePage';
+type DataSectionName = 'header' | 'works' | 'case' | 'brief' | 'servicePage' | 'review';
 
 /** Пропсы шапки: пункт «Кейсы» показывается, только если кейсы есть. */
 export type HeaderProps = { hasCases: boolean };
@@ -32,6 +33,7 @@ export type SectionProps =
   | ({ section: 'case' } & CaseProps)
   | ({ section: 'brief' } & BriefProps)
   | ({ section: 'servicePage' } & ServicePageProps)
+  | ({ section: 'review' } & ReviewProps)
   | { section: Exclude<SectionName, DataSectionName> };
 
 /** Пропсы `DesignSection` из реестра: секция какого направления нужна в этом слоте. */
@@ -53,6 +55,7 @@ export type DesignComponents = {
   servicePage: ComponentType<ServicePageProps>;
   privacyPage: ComponentType;
   cookieBanner: ComponentType;
+  review: ComponentType<ReviewProps>;
 };
 
 /** Срок шага услуги: ярлык мелко, число или диапазон крупно, как «День 1»; без числа ярлык идет целиком. */

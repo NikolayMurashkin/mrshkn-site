@@ -8697,6 +8697,7 @@ __metadata:
     "@payloadcms/next": "npm:3.90.2"
     "@payloadcms/richtext-lexical": "npm:3.90.2"
     "@payloadcms/translations": "npm:3.90.2"
+    "@payloadcms/ui": "npm:3.90.2"
     "@playwright/test": "npm:^1.56.0"
     "@testing-library/dom": "npm:^10.4.2"
     "@testing-library/react": "npm:^16.3.3"

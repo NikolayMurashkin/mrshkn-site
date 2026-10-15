@@ -10,6 +10,7 @@ import { KineticHeader } from './Header';
 import { KineticHero } from './Hero';
 import { KineticBrief } from './KineticBrief';
 import { KineticBriefThanks } from './KineticBriefThanks';
+import { KineticReview } from './KineticReview';
 import { KineticPricing } from './Pricing';
 import { KineticPrivacyPage } from './PrivacyPage';
 import { KineticProcess } from './Process';
@@ -29,6 +30,7 @@ const COMPONENTS: DesignComponents = {
   servicePage: KineticServicePage,
   privacyPage: KineticPrivacyPage,
   cookieBanner: KineticCookieBanner,
+  review: KineticReview,
 };
 
 export const KineticSection = (props: SectionProps) => renderSection(COMPONENTS, props);

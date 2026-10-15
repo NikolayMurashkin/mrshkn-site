@@ -71,6 +71,7 @@ export interface Config {
     media: Media;
     cases: Case;
     posts: Post;
+    reviews: Review;
     'payload-kv': PayloadKv;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
@@ -82,6 +83,7 @@ export interface Config {
     media: MediaSelect<false> | MediaSelect<true>;
     cases: CasesSelect<false> | CasesSelect<true>;
     posts: PostsSelect<false> | PostsSelect<true>;
+    reviews: ReviewsSelect<false> | ReviewsSelect<true>;
     'payload-kv': PayloadKvSelect<false> | PayloadKvSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
@@ -270,6 +272,48 @@ export interface Post {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "reviews".
+ */
+export interface Review {
+  id: number;
+  project: string;
+  case?: (number | null) | Case;
+  email: string;
+  inviteLocale: 'ru' | 'en';
+  status: 'invited' | 'received' | 'published' | 'rejected' | 'withdrawn';
+  code?: string | null;
+  sentAt?: string | null;
+  expiresAt?: string | null;
+  locale?: ('ru' | 'en') | null;
+  fullName?: string | null;
+  signature?: string | null;
+  occupation?: string | null;
+  link?: string | null;
+  answers?: {
+    before?: string | null;
+    process?: string | null;
+    after?: string | null;
+  };
+  consentText?: string | null;
+  licenseText?: string | null;
+  consentVersion?: string | null;
+  consentAt?: string | null;
+  restrictions?: {
+    noTransfer?: boolean | null;
+    noLink?: boolean | null;
+    other?: string | null;
+  };
+  withdrawnAt?: string | null;
+  translation?: {
+    text?: string | null;
+    approved?: boolean | null;
+    approvedAt?: string | null;
+  };
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-kv".
  */
 export interface PayloadKv {
@@ -307,6 +351,10 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'posts';
         value: number | Post;
+      } | null)
+    | ({
+        relationTo: 'reviews';
+        value: number | Review;
       } | null);
   globalSlug?: string | null;
   user: {
@@ -465,6 +513,53 @@ export interface PostsSelect<T extends boolean = true> {
   updatedAt?: T;
   createdAt?: T;
   _status?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "reviews_select".
+ */
+export interface ReviewsSelect<T extends boolean = true> {
+  project?: T;
+  case?: T;
+  email?: T;
+  inviteLocale?: T;
+  status?: T;
+  code?: T;
+  sentAt?: T;
+  expiresAt?: T;
+  locale?: T;
+  fullName?: T;
+  signature?: T;
+  occupation?: T;
+  link?: T;
+  answers?:
+    | T
+    | {
+        before?: T;
+        process?: T;
+        after?: T;
+      };
+  consentText?: T;
+  licenseText?: T;
+  consentVersion?: T;
+  consentAt?: T;
+  restrictions?:
+    | T
+    | {
+        noTransfer?: T;
+        noLink?: T;
+        other?: T;
+      };
+  withdrawnAt?: T;
+  translation?:
+    | T
+    | {
+        text?: T;
+        approved?: T;
+        approvedAt?: T;
+      };
+  updatedAt?: T;
+  createdAt?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema

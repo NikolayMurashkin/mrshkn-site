@@ -13,6 +13,8 @@ export const renderSection = (components: DesignComponents, props: SectionProps)
       return createElement(components.brief, { design: props.design, plan: props.plan });
     case 'servicePage':
       return createElement(components.servicePage, { service: props.service });
+    case 'review':
+      return createElement(components.review, { view: props.view, code: props.code, project: props.project });
     default:
       return createElement(components[props.section]);
   }

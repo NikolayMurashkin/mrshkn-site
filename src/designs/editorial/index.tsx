@@ -2,6 +2,7 @@
 
 import { renderSection } from '../render';
 import type { DesignComponents, SectionProps } from '../types';
+import { KineticReview } from '../kinetic/KineticReview';
 import './fonts';
 import { EditorialCase } from './Case';
 import { EditorialCookieBanner } from './CookieBanner';
@@ -29,6 +30,7 @@ const COMPONENTS: DesignComponents = {
   servicePage: EditorialServicePage,
   privacyPage: EditorialPrivacyPage,
   cookieBanner: EditorialCookieBanner,
+  review: KineticReview,
 };
 
 export const EditorialSection = (props: SectionProps) => renderSection(COMPONENTS, props);

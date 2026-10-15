@@ -2,6 +2,7 @@
 
 import { renderSection } from '../render';
 import type { DesignComponents, SectionProps } from '../types';
+import { KineticReview } from '../kinetic/KineticReview';
 import './fonts';
 import { PopCase } from './Case';
 import { PopCookieBanner } from './CookieBanner';
@@ -29,6 +30,7 @@ const COMPONENTS: DesignComponents = {
   servicePage: PopServicePage,
   privacyPage: PopPrivacyPage,
   cookieBanner: PopCookieBanner,
+  review: KineticReview,
 };
 
 export const PopSection = (props: SectionProps) => renderSection(COMPONENTS, props);

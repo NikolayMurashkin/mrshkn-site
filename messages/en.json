@@ -778,5 +778,101 @@
     "text": "Yandex Metrica and Google Analytics 4 set cookies only with your consent. Read more in our <policy>privacy policy</policy>.",
     "accept": "Accept",
     "decline": "Decline"
+  },
+  "review": {
+    "meta": {
+      "title": "Review of the studio — MRSHKN"
+    },
+    "kicker": "Project review",
+    "title": "Tell us how the project went",
+    "lead": "Project: {project}. Answer three questions in your own words — we publish criticism too.",
+    "groups": {
+      "author": {
+        "title": "About you",
+        "note": "Your full name is needed only for the consent and never appears on the site. Your signature, business and link are shown next to the review."
+      },
+      "answers": {
+        "title": "Your review",
+        "note": "Short or detailed, praise or criticism — we publish it as written and fix only typos."
+      },
+      "documents": {
+        "title": "Consent and permission",
+        "note": "The review is sent only with both boxes checked: the first lets us show your data, the second the text itself."
+      }
+    },
+    "fields": {
+      "fullName": "Full name",
+      "signature": "How to sign the review",
+      "signatureHint": "For example, your first name and business — this is what the site will show",
+      "occupation": "Business or job title",
+      "link": "Link to a website or page (optional)",
+      "before": "What brought you to us?",
+      "process": "How did the work go?",
+      "after": "What changed after launch?"
+    },
+    "fieldError": "Fill in this field to send the review",
+    "linkError": "The link must start with https:// or http://",
+    "documents": {
+      "edition": "Version {version}",
+      "more": "Full text",
+      "consent": {
+        "title": "Consent to the processing of personal data authorized for dissemination",
+        "summary": "Your signature, business, link and review text will appear on the studio’s website. Your full name and email are not published, and you can withdraw consent by email.",
+        "items": [
+          "Who gives consent: the author of the review — the full name entered in this form; contact email — the address the invitation was sent to.",
+          "To whom: [Full name], self-employed (professional income tax payer), Tax ID [Tax ID], address: [Address], email hello@mrshkn.com (the “Operator”).",
+          "Purpose: publishing my review of the work of MRSHKN studio so that visitors to the website can read it.",
+          "Where it is published: the website https://mrshkn.com — the home page (https://mrshkn.com/ru, https://mrshkn.com/en) and the case page of my project (https://mrshkn.com/ru/work/[case address], https://mrshkn.com/en/work/[case address]). The review is published in the language it was written in. A translation is published only after I have approved its text in writing, labelled “translation approved by the author”.",
+          "What is published: my name as I entered it in the “How to sign the review” field; my business or job title; a link to a website or page, if I provided one; the text of the review — answers to three questions. The full name from item 1 and the contact email are not published. Photos are neither collected nor published.",
+          "Conditions and prohibitions (optional, Part 9 of Article 10.1 of Federal Law No. 152-FZ “On Personal Data”) are set with the checkboxes in the form: a ban on transferring the data to third parties other than for publication on the website from item 4; a ban on publishing the link from item 5; other conditions. If nothing is checked, no conditions or prohibitions are set. An unchecked consent box does not count as consent (Part 8 of Article 10.1 of the Law).",
+          "Term: this consent is valid until withdrawn.",
+          "How to withdraw: email hello@mrshkn.com from the address in item 1, stating your full name, email and which data to remove (all or some). The Operator removes the review from the website within 3 (three) business days of receiving the request (Part 14 of Article 10.1 of the Law)."
+        ],
+        "check": "I consent to the publication of my data listed in item 5 on the terms of this consent"
+      },
+      "license": {
+        "title": "Permission to publish the review text",
+        "summary": "The text is published free of charge, without cuts or edits other than typo fixes. A translation appears only once you approve it.",
+        "items": [
+          "I, the author of the review, allow [Full name], Tax ID [Tax ID], to use the text of my review free of charge under a simple (non-exclusive) license: to reproduce it and make it available to the public on the website https://mrshkn.com on the pages listed in item 4 of the consent.",
+          "The Operator does not shorten or change the text, except to correct typos. A translation into another language is published only after I have approved its text in writing.",
+          "This permission is valid as long as the consent to publish personal data is valid; if that consent is withdrawn, the text is removed from the website within the same period.",
+          "I confirm that I wrote the text myself and that it contains no personal data of other people without their consent."
+        ],
+        "check": "I allow the review text to be published on these terms"
+      }
+    },
+    "restrictions": {
+      "title": "Conditions and prohibitions",
+      "note": "Optional: check these to limit how your data is used.",
+      "noTransfer": "Do not transfer my data to third parties other than for publication on the website from item 4 of the consent",
+      "noLink": "Do not publish the link from item 5 of the consent",
+      "other": "Other (optional)"
+    },
+    "submit": "Send review",
+    "sending": "Sending…",
+    "checksNote": "The button turns on once both boxes are checked: the consent and the permission.",
+    "error": "The review was not sent. Try again or email hello@mrshkn.com.",
+    "fieldsError": "Check the fields marked above.",
+    "received": {
+      "title": "Review received",
+      "text": "Thank you for taking the time. We publish reviews after a check: yours will appear on the studio’s website."
+    },
+    "invalid": {
+      "title": "This link is no longer valid",
+      "text": "The link has expired or no longer works. If you wanted to leave a review, email hello@mrshkn.com and we will send a new one."
+    },
+    "home": "Go to the home page",
+    "mail": {
+      "subject": "Your review of {project}",
+      "paragraphs": [
+        "Hello,",
+        "Thank you for working with MRSHKN studio on {project}. We would love to hear how it went: what brought you to us, how the work went and what changed.",
+        "Your personal link to the review form:",
+        "{link}",
+        "The link is valid for 60 days. We publish your review only with your consent, and you can withdraw it at any time by emailing hello@mrshkn.com.",
+        "MRSHKN studio"
+      ]
+    }
   }
 }

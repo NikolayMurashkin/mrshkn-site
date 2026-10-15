@@ -2,6 +2,7 @@
 
 import { renderSection } from '../render';
 import type { DesignComponents, SectionProps } from '../types';
+import { KineticReview } from '../kinetic/KineticReview';
 import './fonts';
 import { SwissCase } from './Case';
 import { SwissCookieBanner } from './CookieBanner';
@@ -29,6 +30,7 @@ const COMPONENTS: DesignComponents = {
   servicePage: SwissServicePage,
   privacyPage: SwissPrivacyPage,
   cookieBanner: SwissCookieBanner,
+  review: KineticReview,
 };
 
 export const SwissSection = (props: SectionProps) => renderSection(COMPONENTS, props);

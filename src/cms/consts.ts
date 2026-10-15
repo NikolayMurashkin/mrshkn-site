@@ -1,4 +1,6 @@
 import { BRIEF_STEP_VALUES } from '../lib/brief/consts';
+import type { SiteLocale } from '../i18n/types';
+import type { ReviewStatus } from '../lib/review/types';
 
 export enum Role {
   Admin = 'admin',
@@ -84,3 +86,30 @@ export const CASE_KIND_LABELS: Record<(typeof CASE_KINDS)[number], string> = {
 
 /** Ниши те же, что на втором шаге квиза. */
 export const CASE_NICHES = BRIEF_STEP_VALUES.niche;
+
+export const REVIEW_STATUS_LABELS: Record<ReviewStatus, string> = {
+  invited: 'Приглашение',
+  received: 'Получен',
+  published: 'Опубликован',
+  rejected: 'Отклонен',
+  withdrawn: 'Согласие отозвано',
+};
+
+export const REVIEW_LOCALE_LABELS: Record<SiteLocale, string> = {
+  ru: 'Русский',
+  en: 'Английский',
+};
+
+/** Кнопка отправки приглашения в карточке отзыва: путь от `src`, как его пишет карта импорта админки. */
+export const REVIEW_INVITE_BUTTON = '/cms/components/ReviewInviteButton#ReviewInviteButton';
+
+/** Что стирает отзыв согласия: все, что написал автор, перевод и «другое» из запретов; отметки запретов остаются. */
+export const REVIEW_ERASED_FIELDS = {
+  fullName: null,
+  signature: null,
+  occupation: null,
+  link: null,
+  answers: { before: null, process: null, after: null },
+  translation: { text: null, approved: false, approvedAt: null },
+  restrictions: { other: null },
+};

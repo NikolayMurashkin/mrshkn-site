@@ -2,6 +2,7 @@
 
 import { renderSection } from '../render';
 import type { DesignComponents, SectionProps } from '../types';
+import { KineticReview } from '../kinetic/KineticReview';
 import './fonts';
 import { TerminalCase } from './Case';
 import { TerminalCookieBanner } from './CookieBanner';
@@ -29,6 +30,7 @@ const COMPONENTS: DesignComponents = {
   servicePage: TerminalServicePage,
   privacyPage: TerminalPrivacyPage,
   cookieBanner: TerminalCookieBanner,
+  review: KineticReview,
 };
 
 export const TerminalSection = (props: SectionProps) => renderSection(COMPONENTS, props);
