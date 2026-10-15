@@ -406,6 +406,7 @@
       "title": "Request sent — MRSHKN",
       "description": "Your request is with MRSHKN. We reply within an hour during working hours."
     },
+    "command": "open mrshkn.com/brief",
     "title": "We have your request",
     "text": "We reply within an hour during working hours, on the channel you left us.",
     "note": "If you do not hear back, write to hello@mrshkn.com.",

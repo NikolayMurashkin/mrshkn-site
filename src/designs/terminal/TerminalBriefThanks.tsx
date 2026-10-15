@@ -4,7 +4,6 @@ import styles from './TerminalBriefThanks.module.scss';
 
 export const TerminalBriefThanks = () => {
   const t = useTranslations('briefThanks');
-  const footer = useTranslations('footer');
 
   return (
     <main
@@ -25,7 +24,7 @@ export const TerminalBriefThanks = () => {
             className={styles.prompt}
             translate="no"
           >
-            <span className={styles.sign}>$</span> {footer('command')}
+            <span className={styles.sign}>$</span> {t('command')}
           </p>
           <p
             className={styles.status}
