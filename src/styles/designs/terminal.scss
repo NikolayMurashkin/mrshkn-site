@@ -12,15 +12,76 @@
 @font-face {
   font-family: 'Terminal Sans Metric Fallback';
   src: local('Arial'), local('Liberation Sans'), local('Roboto'), local('Helvetica Neue');
-  ascent-override: 101.32%;
-  descent-override: 27.18%;
+  font-weight: 100 649;
+  ascent-override: 100.49%;
+  descent-override: 26.96%;
   line-gap-override: 0%;
-  size-adjust: 101.17%;
+  size-adjust: 102%;
+}
+
+@font-face {
+  font-family: 'Terminal Sans Metric Fallback';
+  src: local('Arial'), local('Liberation Sans'), local('Roboto'), local('Helvetica Neue');
+  font-weight: 100 649;
+  ascent-override: 103.27%;
+  descent-override: 27.71%;
+  line-gap-override: 0%;
+  size-adjust: 99.25%;
+  unicode-range: U+0400-052F;
+}
+
+@font-face {
+  font-family: 'Terminal Sans Metric Fallback';
+  src:
+    local('Arial Bold'), local('Arial-BoldMT'), local('Liberation Sans Bold'), local('LiberationSans-Bold'),
+    local('Roboto Bold'), local('Helvetica Neue Bold');
+  font-weight: 650 1000;
+  ascent-override: 103.54%;
+  descent-override: 27.78%;
+  line-gap-override: 0%;
+  size-adjust: 99%;
+}
+
+@font-face {
+  font-family: 'Terminal Sans Metric Fallback';
+  src:
+    local('Arial Bold'), local('Arial-BoldMT'), local('Liberation Sans Bold'), local('LiberationSans-Bold'),
+    local('Roboto Bold'), local('Helvetica Neue Bold');
+  font-weight: 650 1000;
+  ascent-override: 103.54%;
+  descent-override: 27.78%;
+  line-gap-override: 0%;
+  size-adjust: 99%;
+  unicode-range: U+0400-052F;
+}
+
+@font-face {
+  font-family: 'Terminal Sans Metric Fallback En';
+  src: local('Arial'), local('Liberation Sans'), local('Roboto'), local('Helvetica Neue');
+  font-weight: 100 649;
+  ascent-override: 100.74%;
+  descent-override: 27.03%;
+  line-gap-override: 0%;
+  size-adjust: 101.75%;
+}
+
+@font-face {
+  font-family: 'Terminal Sans Metric Fallback En';
+  src:
+    local('Arial Bold'), local('Arial-BoldMT'), local('Liberation Sans Bold'), local('LiberationSans-Bold'),
+    local('Roboto Bold'), local('Helvetica Neue Bold');
+  font-weight: 650 1000;
+  ascent-override: 103.02%;
+  descent-override: 27.64%;
+  line-gap-override: 0%;
+  size-adjust: 99.5%;
 }
 
 [data-design='terminal'] {
   --font-display: 'JetBrains Mono', 'JetBrains Mono Metric Fallback', 'SF Mono', Menlo, Consolas, monospace;
   --font-text: 'Terminal Sans', 'Terminal Sans Metric Fallback', 'Helvetica Neue', Arial, sans-serif;
+  --dock-font-display: 'JetBrains Mono Dock', 'JetBrains Mono Metric Fallback', 'SF Mono', Menlo, Consolas, monospace;
+  --dock-font-text: 'Terminal Sans Dock', 'Terminal Sans Metric Fallback', 'Helvetica Neue', Arial, sans-serif;
 
   --bg: #f5f7f9;
   --ink: #0e141b;
@@ -56,6 +117,11 @@
   --t-section-y: 96px;
 
   color-scheme: light;
+}
+
+[data-design='terminal']:lang(en) {
+  --font-text: 'Terminal Sans', 'Terminal Sans Metric Fallback En', 'Helvetica Neue', Arial, sans-serif;
+  --dock-font-text: 'Terminal Sans Dock', 'Terminal Sans Metric Fallback En', 'Helvetica Neue', Arial, sans-serif;
 }
 
 [data-design='terminal'][data-theme='dark'] {

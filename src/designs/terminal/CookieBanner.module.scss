@@ -3,10 +3,7 @@
 .banner {
   @include s.window;
 
-  position: fixed;
-  bottom: 24px;
-  left: 24px;
-  z-index: 40;
+  margin: 0 0 24px 24px;
   width: min(440px, calc(100% - 48px));
   box-shadow: var(--shadow-floating);
 }
@@ -65,10 +62,8 @@
 
 @media (max-width: 720px) {
   .banner {
-    right: 0;
-    bottom: 0;
-    left: 0;
     width: auto;
+    margin: 0;
     border: none;
     border-top: var(--border-width) solid var(--line);
     border-radius: 0;

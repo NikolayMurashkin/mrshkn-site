@@ -20,15 +20,118 @@
 @font-face {
   font-family: 'Onest Metric Fallback';
   src: local('Arial'), local('Liberation Sans'), local('Roboto'), local('Helvetica Neue');
-  ascent-override: 92.2%;
-  descent-override: 28.99%;
+  font-weight: 100 449;
+  ascent-override: 105.43%;
+  descent-override: 33.15%;
   line-gap-override: 0%;
-  size-adjust: 105.2%;
+  size-adjust: 92%;
+}
+
+@font-face {
+  font-family: 'Onest Metric Fallback';
+  src: local('Arial'), local('Liberation Sans'), local('Roboto'), local('Helvetica Neue');
+  font-weight: 100 449;
+  ascent-override: 91.29%;
+  descent-override: 28.71%;
+  line-gap-override: 0%;
+  size-adjust: 106.25%;
+  unicode-range: U+0400-052F;
+}
+
+@font-face {
+  font-family: 'Onest Metric Fallback';
+  src: local('Arial'), local('Liberation Sans'), local('Roboto'), local('Helvetica Neue');
+  font-weight: 450 549;
+  ascent-override: 93.72%;
+  descent-override: 29.47%;
+  line-gap-override: 0%;
+  size-adjust: 103.5%;
+}
+
+@font-face {
+  font-family: 'Onest Metric Fallback';
+  src: local('Arial'), local('Liberation Sans'), local('Roboto'), local('Helvetica Neue');
+  font-weight: 450 549;
+  ascent-override: 99.23%;
+  descent-override: 31.2%;
+  line-gap-override: 0%;
+  size-adjust: 97.75%;
+  unicode-range: U+0400-052F;
+}
+
+@font-face {
+  font-family: 'Onest Metric Fallback';
+  src: local('Arial'), local('Liberation Sans'), local('Roboto'), local('Helvetica Neue');
+  font-weight: 450 549;
+  ascent-override: 78.23%;
+  descent-override: 24.6%;
+  line-gap-override: 0%;
+  size-adjust: 124%;
+  unicode-range: U+0030-0039;
+}
+
+@font-face {
+  font-family: 'Onest Metric Fallback';
+  src:
+    local('Arial Bold'), local('Arial-BoldMT'), local('Liberation Sans Bold'), local('LiberationSans-Bold'),
+    local('Roboto Bold'), local('Helvetica Neue Bold');
+  font-weight: 550 1000;
+  ascent-override: 97.24%;
+  descent-override: 30.58%;
+  line-gap-override: 0%;
+  size-adjust: 99.75%;
+}
+
+@font-face {
+  font-family: 'Onest Metric Fallback';
+  src:
+    local('Arial Bold'), local('Arial-BoldMT'), local('Liberation Sans Bold'), local('LiberationSans-Bold'),
+    local('Roboto Bold'), local('Helvetica Neue Bold');
+  font-weight: 550 1000;
+  ascent-override: 98.38%;
+  descent-override: 30.93%;
+  line-gap-override: 0%;
+  size-adjust: 98.6%;
+  unicode-range: U+0400-052F;
+}
+
+@font-face {
+  font-family: 'Onest Metric Fallback En';
+  src: local('Arial'), local('Liberation Sans'), local('Roboto'), local('Helvetica Neue');
+  font-weight: 100 449;
+  ascent-override: 93.49%;
+  descent-override: 29.4%;
+  line-gap-override: 0%;
+  size-adjust: 103.75%;
+}
+
+@font-face {
+  font-family: 'Onest Metric Fallback En';
+  src: local('Arial'), local('Liberation Sans'), local('Roboto'), local('Helvetica Neue');
+  font-weight: 450 549;
+  ascent-override: 94.4%;
+  descent-override: 29.68%;
+  line-gap-override: 0%;
+  size-adjust: 102.75%;
+}
+
+@font-face {
+  font-family: 'Onest Metric Fallback En';
+  src:
+    local('Arial Bold'), local('Arial-BoldMT'), local('Liberation Sans Bold'), local('LiberationSans-Bold'),
+    local('Roboto Bold'), local('Helvetica Neue Bold');
+  font-weight: 550 1000;
+  ascent-override: 97.19%;
+  descent-override: 30.56%;
+  line-gap-override: 0%;
+  size-adjust: 99.8%;
 }
 
 [data-design='editorial'] {
   --font-display: 'Prata', 'Prata Metric Fallback', 'Times New Roman', Georgia, serif;
   --font-text: 'Onest', 'Onest Metric Fallback', 'Helvetica Neue', Arial, sans-serif;
+  --dock-font-display: 'Prata Dock', 'Prata Metric Fallback', 'Times New Roman', Georgia, serif;
+  --dock-font-text: 'Onest Dock', 'Onest Metric Fallback', 'Helvetica Neue', Arial, sans-serif;
 
   --bg: #f4f4f1;
   --ink: #1a1c19;
@@ -77,6 +180,11 @@
   --e-head-gap: var(--space-48);
 
   color-scheme: light;
+}
+
+[data-design='editorial']:lang(en) {
+  --font-text: 'Onest', 'Onest Metric Fallback En', 'Helvetica Neue', Arial, sans-serif;
+  --dock-font-text: 'Onest Dock', 'Onest Metric Fallback En', 'Helvetica Neue', Arial, sans-serif;
 }
 
 [data-design='editorial'][data-theme='dark'] {

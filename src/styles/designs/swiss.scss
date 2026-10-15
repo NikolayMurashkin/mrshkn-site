@@ -44,9 +44,43 @@
   unicode-range: U+0400-052F;
 }
 
+@font-face {
+  font-family: 'Geologica Metric Fallback En';
+  src: local('Arial'), local('Liberation Sans'), local('Roboto'), local('Helvetica Neue');
+  font-weight: 100 449;
+  ascent-override: 90.91%;
+  descent-override: 25.64%;
+  line-gap-override: 0%;
+  size-adjust: 107.25%;
+}
+
+@font-face {
+  font-family: 'Geologica Metric Fallback En';
+  src: local('Arial'), local('Liberation Sans'), local('Roboto'), local('Helvetica Neue');
+  font-weight: 450 649;
+  ascent-override: 92.86%;
+  descent-override: 26.19%;
+  line-gap-override: 0%;
+  size-adjust: 105%;
+}
+
+@font-face {
+  font-family: 'Geologica Metric Fallback En';
+  src:
+    local('Arial Bold'), local('Arial-BoldMT'), local('Liberation Sans Bold'), local('LiberationSans-Bold'),
+    local('Roboto Bold'), local('Helvetica Neue Bold');
+  font-weight: 650 1000;
+  ascent-override: 93.53%;
+  descent-override: 26.38%;
+  line-gap-override: 0%;
+  size-adjust: 104.25%;
+}
+
 [data-design='swiss'] {
   --font-display: 'Geologica', 'Geologica Metric Fallback', 'Helvetica Neue', Arial, sans-serif;
   --font-text: 'Geologica', 'Geologica Metric Fallback', 'Helvetica Neue', Arial, sans-serif;
+  --dock-font-display: 'Geologica Dock', 'Geologica Metric Fallback', 'Helvetica Neue', Arial, sans-serif;
+  --dock-font-text: 'Geologica Dock', 'Geologica Metric Fallback', 'Helvetica Neue', Arial, sans-serif;
 
   --bg: #ffffff;
   --ink: #0a0a0b;
@@ -94,6 +128,13 @@
   --s-head-gap: var(--space-56);
 
   color-scheme: light;
+}
+
+[data-design='swiss']:lang(en) {
+  --font-display: 'Geologica', 'Geologica Metric Fallback En', 'Helvetica Neue', Arial, sans-serif;
+  --font-text: 'Geologica', 'Geologica Metric Fallback En', 'Helvetica Neue', Arial, sans-serif;
+  --dock-font-display: 'Geologica Dock', 'Geologica Metric Fallback En', 'Helvetica Neue', Arial, sans-serif;
+  --dock-font-text: 'Geologica Dock', 'Geologica Metric Fallback En', 'Helvetica Neue', Arial, sans-serif;
 }
 
 [data-design='swiss'][data-theme='dark'] {

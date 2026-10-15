@@ -1,10 +1,8 @@
 @use 'sass:string';
 
 .root {
-  position: fixed;
-  right: 24px;
-  bottom: 24px;
-  z-index: 50;
+  position: relative;
+  margin: 0 24px 24px auto;
 }
 
 .pill,
@@ -301,19 +299,13 @@
 }
 
 @media (max-width: 720px) {
-  .root {
-    bottom: calc(24px + var(--cookie-banner-space, 0px));
-  }
-
   [data-design='editorial'] .root {
-    right: 16px;
-    bottom: calc(16px + var(--cookie-banner-space, 0px));
+    margin: 0 16px 16px auto;
   }
 }
 
 @media (max-width: 560px) {
   .root {
-    right: 16px;
-    bottom: calc(16px + var(--cookie-banner-space, 0px));
+    margin: 0 16px 16px auto;
   }
 }

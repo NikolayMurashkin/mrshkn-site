@@ -5,6 +5,7 @@ import type { Metadata } from 'next';
 import type { ReactNode } from 'react';
 import { hasCases } from '@/cms/cases';
 import { ConsentProvider } from '@/components/Analytics/ConsentProvider';
+import { BottomDock } from '@/components/BottomDock';
 import { DesignSwitcher } from '@/components/DesignSwitcher';
 import { JsonLd } from '@/components/JsonLd';
 import { getTheme } from '@/components/theme-server';
@@ -83,11 +84,13 @@ const LocaleLayout = async ({ children, params }: LocaleLayoutProps) => {
                 design={design}
                 section="footer"
               />
-              <DesignSection
-                design={design}
-                section="cookieBanner"
-              />
-              <DesignSwitcher design={design} />
+              <BottomDock>
+                <DesignSection
+                  design={design}
+                  section="cookieBanner"
+                />
+                <DesignSwitcher design={design} />
+              </BottomDock>
             </ConsentProvider>
           </ThemeProvider>
         </NextIntlClientProvider>

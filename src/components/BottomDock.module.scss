@@ -1,0 +1,26 @@
+.dock {
+  --font-display: var(--dock-font-display);
+  --font-text: var(--dock-font-text);
+
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 50;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  font-family: var(--font-text);
+  pointer-events: none;
+
+  > * {
+    pointer-events: auto;
+  }
+}
+
+@media (max-width: 720px) {
+  .dock {
+    flex-direction: column-reverse;
+    align-items: stretch;
+  }
+}

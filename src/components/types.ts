@@ -28,3 +28,8 @@ export type TelegramLinkProps = {
   className: string;
   children: ReactNode;
 };
+
+export type BottomDockProps = {
+  /** Cookie-баннер направления и пилюля «Стиль». */
+  children: ReactNode;
+};
