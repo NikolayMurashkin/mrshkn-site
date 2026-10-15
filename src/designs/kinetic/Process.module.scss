@@ -24,6 +24,7 @@
   gap: 10px;
   padding: var(--space-28);
   min-width: 0;
+  container-type: inline-size;
 
   & + & {
     border-left: var(--border-width) solid var(--ink);
@@ -54,7 +55,7 @@
 .value {
   font-family: var(--font-display);
   font-weight: 900;
-  font-size: clamp(20px, 2.1vw, 30px);
+  font-size: min(clamp(20px, 2.1vw, 30px), 11.5cqi);
   line-height: 1.05;
   text-transform: uppercase;
   overflow-wrap: anywhere;

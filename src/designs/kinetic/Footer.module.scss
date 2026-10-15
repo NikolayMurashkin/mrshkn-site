@@ -7,6 +7,7 @@
   padding: 96px var(--gutter) var(--space-120);
   background: var(--ink);
   color: var(--ink-inverse);
+  container-type: inline-size;
 }
 
 .main {
@@ -89,11 +90,7 @@
   }
 }
 
-@media (max-width: bp.$mobile-wide) {
-  .footer {
-    padding: 64px var(--gutter) 112px;
-  }
-
+@container (max-width: 940px) {
   .main {
     grid-template-columns: minmax(0, 1fr);
   }
@@ -101,6 +98,12 @@
   .aside {
     align-items: flex-start;
     text-align: left;
+  }
+}
+
+@media (max-width: bp.$mobile-wide) {
+  .footer {
+    padding: 64px var(--gutter) 112px;
   }
 }
 
