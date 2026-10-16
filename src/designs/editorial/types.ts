@@ -1,4 +1,4 @@
-import type { ServiceOptionView } from '@/components/ServicePage/types';
+import type { ServiceOptionView, ServiceThreeD } from '@/components/ServicePage/types';
 import type { BriefChoice } from '@/lib/brief/types';
 import type { EDITORIAL_WORKS_LAYOUTS, EDITORIAL_WORKS_SPREAD } from './consts';
 
@@ -52,4 +52,9 @@ export type EditorialOptionsProps = {
   testId: string;
   /** Колонка рядом с карточкой тарифа: опции в одну колонку. */
   narrow?: boolean;
+};
+
+/** Блоки страницы «3D-интерактив»: постер и ролик, варианты, условия, что нужно от клиента. */
+export type EditorialServiceThreeDProps = {
+  data: ServiceThreeD;
 };

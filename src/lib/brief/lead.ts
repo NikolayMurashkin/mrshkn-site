@@ -1,4 +1,5 @@
 import {
+  BRIEF_PLAN_VALUES,
   BRIEF_STEP_VALUES,
   COMMENT_MAX_LENGTH,
   CONTACT_MAX_LENGTH,
@@ -18,6 +19,13 @@ const choiceOf = (field: BriefChoice, value: unknown) => {
   const candidate = textOf(value);
 
   return BRIEF_STEP_VALUES[field].includes(candidate) ? candidate : null;
+};
+
+/** Тариф из `?plan=`: продукт или вариант тарифа; чужое значение не ломает заявку, а просто не попадает в нее. */
+const planOf = (value: unknown) => {
+  const candidate = textOf(value);
+
+  return BRIEF_PLAN_VALUES.includes(candidate) ? candidate : null;
 };
 
 export const parseLead = (input: unknown, context: LeadContext): LeadParseResult => {
@@ -49,7 +57,7 @@ export const parseLead = (input: unknown, context: LeadContext): LeadParseResult
       name,
       contact,
       comment: textOf(data.comment).slice(0, COMMENT_MAX_LENGTH),
-      plan: choiceOf('product', data.plan),
+      plan: planOf(data.plan),
       marks: context.marks,
       page: context.page,
     },

@@ -1,4 +1,4 @@
-import type { PricingBasicGroup, PricingExtra, PricingOption, PricingPlan } from './types';
+import type { PricingBasicGroup, PricingExtra, PricingOption, PricingPlan, PricingTier } from './types';
 
 /**
  * Единственный источник цен на сайте. Рубли — решение D5 в `../PLAN.md`, доллары — таблица
@@ -14,7 +14,17 @@ export const PRICING_PLANS: PricingPlan[] = [
   { id: 'miniApp', slug: 'mini-app', price: { rub: 180_000, usd: 3_500 }, isFrom: true },
   { id: 'store', slug: 'store', price: { rub: 400_000, usd: 8_000 }, isFrom: true },
   { id: 'mvp', slug: 'mvp', price: { rub: 600_000, usd: 12_000 }, isFrom: true },
+  { id: 'threeD', slug: '3d', price: { rub: 250_000, usd: 4_900 }, isFrom: true },
   { id: 'support', slug: 'support', price: { rub: 15_000, usd: 250 }, isFrom: true },
+];
+
+/**
+ * Варианты тарифа со своей ценой: в таблице и квизе тариф один, на его странице — карточка на вариант,
+ * а выбранный вариант уходит в заявку. Цены 3D в обеих валютах назначил Николай.
+ */
+export const PRICING_TIERS: PricingTier[] = [
+  { id: 'block3d', planId: 'threeD', price: { rub: 250_000, usd: 4_900 }, isFrom: true },
+  { id: 'landing3d', planId: 'threeD', price: { rub: 350_000, usd: 7_300 }, isFrom: true },
 ];
 
 export const PRICING_OPTIONS: PricingOption[] = [

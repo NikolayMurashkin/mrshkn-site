@@ -99,6 +99,7 @@ describe('planHref', () => {
       '/ru/mini-app?plan=miniApp',
       '/ru/store?plan=store',
       '/ru/mvp?plan=mvp',
+      '/ru/3d?plan=threeD',
       '/ru/support?plan=support',
     ]);
     expect(planHref('en', PRICING_PLANS[0])).toBe('/en/industry?plan=industry');

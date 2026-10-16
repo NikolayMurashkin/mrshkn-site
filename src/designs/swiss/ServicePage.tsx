@@ -7,6 +7,7 @@ import { SwissChecks } from './Checks';
 import { ArrowLeftIcon, ArrowRightIcon } from './icons';
 import { SwissOptions } from './Options';
 import { SwissSteps } from './Steps';
+import { SwissServiceThreeD } from './ServiceThreeD';
 import styles from './ServicePage.module.scss';
 
 export const SwissServicePage = ({ service }: ServicePageProps) => {
@@ -28,6 +29,7 @@ export const SwissServicePage = ({ service }: ServicePageProps) => {
     cardPoints,
     ownBasics,
     industry,
+    threeD,
     options,
     steps,
     faq,
@@ -93,6 +95,8 @@ export const SwissServicePage = ({ service }: ServicePageProps) => {
               <SwissChecks items={industry.included.items} />
             </section>
           ) : null}
+
+          {threeD ? <SwissServiceThreeD data={threeD} /> : null}
 
           <section
             className={styles.block}

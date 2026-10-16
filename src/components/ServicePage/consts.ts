@@ -1,13 +1,28 @@
+import { THREE_D_PLAN_ID } from '@/content/three-d';
+
 /** У поддержки нет раундов правок: вместо них часы по тарифу. */
 export const SERVICES_WITHOUT_REVISIONS: readonly string[] = ['support'];
 
-/** Услуги с абонплатой: цена за месяц, у «Что входит» свой список вместо базы из 13 пунктов. */
+/** Услуги с абонплатой: цена за месяц. */
 export const MONTHLY_SERVICES: readonly string[] = ['support'];
 
-/** Что повторяется в карточке тарифа из базы: у поддержки срока, Lighthouse и гарантии на запуск нет. */
+/** Тариф поддержки: его цену называют условия 3D — чем продолжается работа после гарантии. */
+export const SUPPORT_PLAN_ID = 'support';
+
+/**
+ * У «Что входит» свой список (`services.<id>.basics`) вместо базы сайта из 13 пунктов: у поддержки — работы
+ * за месяц, у 3D — сцена и встраивание, без домена, хостинга, аналитики и адаптива сайта.
+ */
+export const OWN_BASICS_SERVICES: readonly string[] = [SUPPORT_PLAN_ID, THREE_D_PLAN_ID];
+
+/**
+ * Что повторяется в карточке тарифа из базы: у поддержки срока, Lighthouse и гарантии на запуск нет;
+ * у 3D замер Lighthouse свой — он в условиях 3D, а не пункт базы сайта.
+ */
 export const SERVICE_CARD_POINTS: Record<string, readonly string[]> = {
   default: ['deadline', 'lighthouse', 'warranty'],
-  support: [],
+  [SUPPORT_PLAN_ID]: [],
+  [THREE_D_PLAN_ID]: ['deadline', 'warranty'],
 };
 
 export const CARD_POINT_KEYS: Record<string, string> = {

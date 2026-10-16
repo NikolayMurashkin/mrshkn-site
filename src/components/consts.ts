@@ -10,3 +10,9 @@ export const CASE_CARD_SIZES = '(max-width: 640px) 100vw, (max-width: 1000px) 50
 export const CASE_COVER_SIZES = '(max-width: 1200px) 100vw, 1200px';
 
 export const CASE_SHOT_SIZES = '(max-width: 1000px) 100vw, 960px';
+
+/**
+ * Отказы `play()`, которые не ошибка: браузер не дал запустить ролик сам (остаются кнопки плеера)
+ * или запуск прервала пауза либо смена `src`.
+ */
+export const EXPECTED_PLAY_ERRORS: readonly string[] = ['NotAllowedError', 'AbortError'];

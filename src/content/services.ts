@@ -1,6 +1,6 @@
 import { PRICING_PLANS } from './pricing';
 import { SERVICE_OPTIONS } from './consts';
-import type { FaqItem, FaqJsonLd, Service, ServiceMessages } from './types';
+import type { FaqItem, FaqJsonLd, PricingTier, Service, ServiceMessages } from './types';
 
 export const SERVICES: Service[] = PRICING_PLANS.map((plan) => ({
   id: plan.id,
@@ -12,6 +12,9 @@ export const getServiceBySlug = (slug: string): Service | undefined =>
   SERVICES.find((service) => service.slug === slug);
 
 export const serviceBriefHref = (locale: string, service: Service): string => `/${locale}/brief?plan=${service.id}`;
+
+/** Кнопка варианта ведет в квиз с самим вариантом: квиз выберет его тариф, а вариант уйдет в заявку. */
+export const tierBriefHref = (locale: string, tier: PricingTier): string => `/${locale}/brief?plan=${tier.id}`;
 
 const hasText = (value: unknown): value is string => typeof value === 'string' && value.trim() !== '';
 

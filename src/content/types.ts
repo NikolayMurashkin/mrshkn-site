@@ -24,6 +24,19 @@ export type PricingPlan = {
   isFrom: boolean;
 };
 
+/** Цена тарифа или его варианта: подпись собирается одним кодом, «от» — по `isFrom`. */
+export type PricedItem = Pick<PricingPlan, 'price' | 'isFrom'>;
+
+/** Вариант тарифа со своей ценой: у одной страницы услуги несколько карточек с разными суммами. */
+export type PricingTier = {
+  /** Ключ варианта: по нему тексты в messages и параметр `?plan=` кнопки варианта. */
+  id: string;
+  /** Ключ тарифа из `PRICING_PLANS`, к которому относится вариант. */
+  planId: string;
+  price: Money;
+  isFrom: boolean;
+};
+
 /** Опция-апселл к любому тарифу: цена фиксированная, часть опций еще и с абонплатой. */
 export type PricingOption = {
   id: string;
@@ -61,6 +74,20 @@ export type Service = {
   /** Опции этой услуги — ключи из `PRICING_OPTIONS`. */
   options: readonly string[];
 };
+
+/** Кадр-постер в двух форматах: AVIF для тех, кто умеет, WebP — всем остальным. */
+export type ThreeDPoster = {
+  avif: string;
+  webp: string;
+  width: number;
+  height: number;
+};
+
+/** Постеры по ориентации: горизонтальный для широких экранов, вертикальный для телефонов. */
+export type ThreeDPosters = Record<'wide' | 'tall', ThreeDPoster>;
+
+/** Ролик демо по ориентации, как у постеров. */
+export type ThreeDVideo = Record<'wide' | 'tall', string>;
 
 /** Вопрос и ответ FAQ услуги из файла переводов. */
 export type FaqItem = {

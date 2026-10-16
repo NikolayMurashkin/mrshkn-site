@@ -5,6 +5,7 @@ import { useServicePage } from '@/components/ServicePage/use-service-page';
 import { renderNowrap } from '@/designs/nowrap';
 import { ArrowRightIcon, ArrowUpRightIcon } from './icons';
 import { buttonClass } from './button';
+import { KineticServiceThreeD } from './ServiceThreeD';
 import styles from './ServicePage.module.scss';
 
 export const KineticServicePage = ({ service }: ServicePageProps) => {
@@ -27,6 +28,7 @@ export const KineticServicePage = ({ service }: ServicePageProps) => {
     cardPoints,
     ownBasics,
     industry,
+    threeD,
     options,
     steps,
     faq,
@@ -86,6 +88,8 @@ export const KineticServicePage = ({ service }: ServicePageProps) => {
               </ul>
             </section>
           ) : null}
+
+          {threeD ? <KineticServiceThreeD data={threeD} /> : null}
 
           <section
             className={styles.block}

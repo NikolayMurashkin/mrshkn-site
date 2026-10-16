@@ -15,6 +15,7 @@ export const SERVICE_OPTIONS: Record<string, readonly string[]> = {
   miniApp: ['catalog', 'crm', 'reviews', 'assistant', 'language'],
   store: ['crm', 'reviews', 'assistant', 'language', 'blog', 'messengers', 'geo'],
   mvp: ['crm', 'assistant', 'language', 'messengers'],
+  threeD: ['quiz', 'calculator', 'crm', 'language', 'messengers'],
   support: ['geo', 'reviews', 'assistant'],
 };
 

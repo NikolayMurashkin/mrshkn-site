@@ -146,10 +146,27 @@
         "summary": "Web app: sign-in, user accounts, payments, integrations, analytics",
         "term": "6–10 weeks"
       },
+      "threeD": {
+        "name": "3D interactive",
+        "summary": "A 3D model of your product on your site: it rotates, explains each part and leads to an inquiry",
+        "term": "4–6 weeks"
+      },
       "support": {
         "name": "Support",
         "summary": "Hosting management, monitoring, backups, updates and revision hours by plan",
         "term": "monthly"
+      }
+    },
+    "tiers": {
+      "block3d": {
+        "name": "3D block",
+        "summary": "One interactive scene for your site: rotation, labelled parts, camera fly-to, inquiry form",
+        "term": "4 weeks"
+      },
+      "landing3d": {
+        "name": "3D landing page",
+        "summary": "A single page built around the scene: inquiry form and the whole site base",
+        "term": "6 weeks"
       }
     },
     "miniAppNote": {
@@ -443,7 +460,20 @@
     "excludedHeading": "What is not included",
     "nichesHeading": "Pick your industry",
     "nichesNote": "Demos for these industries are ready",
-    "nicheCta": "Get a quote"
+    "nicheCta": "Get a quote",
+    "threeD": {
+      "mediaHeading": "What it looks like",
+      "mediaNote": "Studio demo project: a fictional car repair shop",
+      "play": "Watch the video",
+      "demo": "Open the demo",
+      "posterAlt": "Demo frame: a cutaway of the car suspension next to a body-roll chart",
+      "videoLabel": "Demo video: a visitor picks a part of the car, sees the cause and the price, and books a visit",
+      "tiersHeading": "Two formats",
+      "tiersNote": "The quote opens with the chosen format",
+      "tierCta": "Quote the {name}",
+      "termsHeading": "3D terms",
+      "needsHeading": "What we need from you"
+    }
   },
   "services": {
     "industry": {
@@ -728,6 +758,109 @@
           "text": "End-to-end checks, launch, handover of access and source code, a 30-day warranty."
         }
       ]
+    },
+    "threeD": {
+      "process": [
+        {
+          "when": "Day 1",
+          "title": "Brief and materials",
+          "text": "Before day one: a short written brief with the CAD file if you have one, or photos and drawings if there is no model; if you need it, we sign an NDA before you send the file. In reply you get the estimate, the deadline, the start date and a draft contract, all before any payment. Then a 50% prepayment, a detailed brief with photos and videos of the parts, and your materials; our questions about the parts come as one list. Day one is the start date if the detailed brief and materials are in by then, otherwise the day they arrive."
+        },
+        {
+          "when": "Week 1",
+          "title": "Geometry and angles",
+          "text": "We sign off the model, the camera angles and the parts the scene explains with you. The scene is built after the sign-off."
+        },
+        {
+          "when": "Weeks 2–3",
+          "title": "Scene and parts",
+          "text": "We build the scene, a camera move to every part, labels and the inquiry form inside the scene. For a 3D block this step is week 2."
+        },
+        {
+          "when": "Week 4",
+          "title": "Poster, phones, audit",
+          "text": "A poster frame for the first screen, a poster and a video for phones without WebGL 2.0, a preliminary Lighthouse audit. A 3D landing page also gets its page around the scene; for a 3D block this step is week 3."
+        },
+        {
+          "when": "Weeks 5–6",
+          "title": "Revisions and launch",
+          "text": "Two rounds of revisions, a final Lighthouse audit for the acceptance certificate, launch, source code handover and a 30-day warranty. For a 3D block this step is week 4."
+        }
+      ],
+      "faq": [
+        {
+          "question": "We don't have a 3D model — what now?",
+          "answer": "We build one from scratch using photos and drawings. It is a separate line in both the estimate and the schedule, priced before any prepayment so the cost does not change mid-project."
+        },
+        {
+          "question": "How does 3D work on older phones?",
+          "answer": "A poster frame shows first and the scene loads after it. Phones without WebGL 2.0 show a poster and a video instead of the scene, and the inquiry form works either way. On a slow phone the scene may rotate less smoothly, but the poster, labels and inquiry form are there right away."
+        },
+        {
+          "question": "How much do extra revisions cost?",
+          "answer": "Two rounds of revisions are included: texts, colors, highlights. After that we bill at the hourly rate from the price list. A new part or camera angle after the geometry sign-off is estimated separately before any work starts."
+        },
+        {
+          "question": "Can you put 3D on Tilda, WordPress or 1C-Bitrix?",
+          "answer": "No. Not Tilda, not WordPress, not 1C-Bitrix: we only work with code. A 3D block goes into a site built in code — yours if developers wrote it without a website builder, or one we built. We can build a whole 3D landing page on a subdomain, linked from your site."
+        },
+        {
+          "question": "What is the difference between a 3D block and a 3D landing page?",
+          "answer": "A 3D block is one interactive scene embedded into a site built in code, yours or one we built. A 3D landing page is a single page around the scene: we write the copy from your brief, and the page carries the inquiry form and the whole site base, analytics included."
+        },
+        {
+          "question": "Can someone download our model from the site?",
+          "answer": "Yes, like any image on a website. That is why the site gets a lightweight display copy: the outside look and the parts you approved for display, without the other internal details, tolerances or drawings. We never share the drawings or the source model with third parties."
+        }
+      ],
+      "basics": {
+        "note": "Included in both formats; a 3D landing page also gets the whole site base",
+        "items": [
+          "An interactive scene with your product and an inquiry form right inside it",
+          "Converting your CAD model into a lightweight browser model is included; if the assembly is heavier than usual, simplifying it is a separate line in the estimate based on your file, before any prepayment",
+          "The base covers up to 8 parts with labels and a camera move to each. More parts or animated mechanisms cost more; how much more is in the estimate after the brief, before any prepayment, and the price does not change once it is in the contract",
+          "A poster frame on the first screen; phones without WebGL 2.0 get a poster and a video instead of the scene",
+          "A 3D block's scene files live on your site's hosting; for a 3D landing page you pay the hosting provider directly",
+          "The model and the scene code are yours, including a model we built"
+        ]
+      },
+      "terms": {
+        "note": "Fixed in the contract",
+        "items": [
+          "Deadline in the contract: 4 weeks for a 3D block, 6 weeks for a 3D landing page. The clock starts on the start date, or on the day we receive the detailed brief and materials if they arrive later; that is day one. Any delay in sign-off on your side moves the deadline by the same amount. A model from scratch adds its own line to the schedule",
+          "We sign off the geometry and camera angles with you in week 1, before the scene is built; a new part or angle after that is estimated separately before any work starts",
+          "Two rounds of revisions: texts, colors, highlights; geometry is not part of revisions",
+          "We start one 3D project a month and name the start date after the brief, before any prepayment",
+          "Lighthouse 90+ as an acceptance criterion: performance of at least 90 in each of three runs in a row, mobile profile. For a 3D landing page we measure the page itself. For a 3D block we measure a page with the scene on our test domain and answer for the block's own weight and speed: the poster first, the scene after; the score of the rest of the page depends on your site's code. The report goes with the acceptance certificate",
+          "We never share your drawings or the source model with third parties",
+          "30 days of warranty after launch"
+        ]
+      },
+      "afterWarranty": "After the warranty, the support plan if you want it: {price}",
+      "webgl": "WebGL 2.0 runs in browsers used by 97% of people, <link>according to Can I use</link> (October 2026)",
+      "needs": {
+        "note": "We build the scene from your materials",
+        "items": [
+          "A CAD model in a common format (STEP, IGES and others) or a ready model in GLB",
+          "Photos of the product from every side",
+          "A list of the parts or spots to explain"
+        ]
+      },
+      "model": "A model from scratch is a separate line in the estimate: we price it from photos and drawings before any prepayment",
+      "tierPoints": {
+        "block3d": [
+          "The scene embeds into a coded site: yours or one we built",
+          "A camera move to every part, with labels we write from your list of parts",
+          "A poster frame; without WebGL 2.0, a poster and a video instead of the scene",
+          "Inquiries from the scene go where your site's inquiries go: its form or email"
+        ],
+        "landing3d": [
+          "We write the copy from your brief; inquiries go to Telegram and email",
+          "The whole site base: responsive layout, SEO, analytics, cookie banner, domain and SSL",
+          "Lighthouse 90+ in each of three runs",
+          "The source code stays with you"
+        ]
+      }
     },
     "support": {
       "faq": [

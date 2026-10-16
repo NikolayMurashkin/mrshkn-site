@@ -1,4 +1,4 @@
-import type { ServiceOptionView } from '@/components/ServicePage/types';
+import type { ServiceOptionView, ServiceThreeD } from '@/components/ServicePage/types';
 import type { BriefChoice } from '@/lib/brief/types';
 import type { StepWhen } from '../types';
 
@@ -61,4 +61,9 @@ export type SwissStepsProps = {
   titleTag: 'h3' | 'span';
   /** Колонка страницы услуги: шаги по два в ряд, с 720px — по одному. */
   narrow?: boolean;
+};
+
+/** Блоки страницы «3D-интерактив»: постер и ролик, варианты, условия, что нужно от клиента. */
+export type SwissServiceThreeDProps = {
+  data: ServiceThreeD;
 };

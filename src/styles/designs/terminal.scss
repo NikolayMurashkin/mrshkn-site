@@ -92,6 +92,11 @@
   --switcher-border: var(--line-strong);
   --accent: #c27400;
   --accent-ink: #9c5c00;
+  --accent-ink-on-dark: #ffb454;
+  --bg-on-dark: #0f151c;
+  --shadow-focus-on-dark:
+    0 0 0 3px var(--bg-on-dark), 0 0 0 calc(3px + var(--border-width-strong)) var(--accent-ink-on-dark),
+    0 0 0 calc(5px + var(--border-width-strong)) var(--bg-on-dark);
   --tap-highlight: rgb(194 116 0 / 18%);
   --accent-contrast: #0e141b;
   --surface: #ffffff;
@@ -133,6 +138,8 @@
   --line-strong: #617284;
   --accent: #ffb454;
   --accent-ink: #ffb454;
+  --accent-ink-on-dark: var(--accent-ink);
+  --bg-on-dark: var(--bg);
   --tap-highlight: rgb(255 180 84 / 18%);
   --accent-contrast: #0e141b;
   --surface: #131b24;

@@ -1,4 +1,4 @@
-import { PRICING_PLANS } from '@/content/pricing';
+import { PRICING_PLANS, PRICING_TIERS } from '@/content/pricing';
 import type { BriefChoice } from './types';
 
 /** Пять шагов квиза в порядке прохождения; на четвертом два вопроса, на пятом контакты. */
@@ -15,6 +15,12 @@ export const BRIEF_STEP_VALUES: Record<BriefChoice, readonly string[]> = {
   timing: ['asap', 'twoWeeks', 'month', 'noRush'],
   budget: ['upTo100', 'to250', 'to500', 'over500', 'unknown'],
 };
+
+/** Что принимает `?plan=` и поле `plan` заявки: продукт первого шага или вариант тарифа со своей ценой. */
+export const BRIEF_PLAN_VALUES: readonly string[] = [
+  ...BRIEF_STEP_VALUES.product,
+  ...PRICING_TIERS.map((tier) => tier.id),
+];
 
 export const UTM_PARAMS = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term'] as const;
 

@@ -1,0 +1,180 @@
+@use './shared' as s;
+
+.frame {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  border: var(--border-width-strong) solid var(--ink);
+  border-radius: var(--radius-surface);
+  background: var(--ink);
+  box-shadow: var(--shadow-surface);
+}
+
+.poster,
+.video {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.frame:has(.video:focus-visible) {
+  outline: var(--border-width-strong) solid var(--accent-ink);
+  outline-offset: 3px;
+}
+
+.video:focus-visible {
+  outline: none;
+}
+
+.frame .play:focus-visible {
+  outline: var(--border-width-strong) solid transparent;
+  outline-offset: 3px;
+  box-shadow: var(--shadow-focus-on-dark);
+}
+
+.frame .play:focus-visible:hover {
+  box-shadow: var(--shadow-focus-on-dark), var(--shadow-floating);
+}
+
+.play {
+  @include s.button;
+  @include s.button-primary;
+
+  position: absolute;
+  left: var(--space-24);
+  bottom: var(--space-24);
+}
+
+.tiers {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-32);
+  margin: 0;
+  padding: 10px 6px;
+  list-style: none;
+}
+
+.tier {
+  display: flex;
+  min-width: 0;
+}
+
+.tierCard {
+  --tilt: -2deg;
+
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  width: 100%;
+  min-height: 270px;
+  padding: var(--space-32) 30px;
+  border: var(--border-width-strong) solid var(--ink);
+  border-radius: var(--radius-surface);
+  background: var(--accent);
+  color: var(--accent-contrast);
+  box-shadow: var(--shadow-surface);
+  transform: rotate(var(--tilt));
+  transition: transform var(--duration-base) var(--ease-spring);
+
+  &:hover,
+  &:focus-visible {
+    transform: rotate(0deg) translateY(-6px);
+
+    .round {
+      transform: rotate(-45deg);
+    }
+  }
+}
+
+.tier:nth-child(2) .tierCard {
+  --tilt: 1.5deg;
+
+  background: var(--accent-alt);
+  color: var(--ink-on-alt);
+}
+
+.tierTerm {
+  @include s.tag;
+}
+
+.tierName {
+  font-size: clamp(24px, 2.4vw, 32px);
+  font-weight: 900;
+  line-height: 1.05;
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+
+  @include s.wrap;
+}
+
+.tierText {
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 1.45;
+
+  @include s.wrap;
+}
+
+.tierFoot {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--space-16);
+  margin-top: auto;
+}
+
+.tierAmount {
+  font-size: clamp(24px, 2.4vw, 30px);
+  font-weight: 900;
+  line-height: 1.1;
+  font-variant-numeric: tabular-nums;
+
+  @include s.wrap;
+}
+
+.round {
+  @include s.round;
+}
+
+.link {
+  text-decoration: underline;
+  text-decoration-thickness: var(--border-width);
+  text-underline-offset: 4px;
+  transition: color var(--duration-fast) var(--ease-out);
+
+  &:hover {
+    color: var(--accent-ink);
+  }
+}
+
+.note {
+  @include s.block-note;
+
+  max-width: 640px;
+  line-height: 1.5;
+}
+
+@media (max-width: 720px) and (orientation: portrait) {
+  .frame {
+    aspect-ratio: 4 / 5;
+  }
+}
+
+@media (max-width: 720px) {
+  .play {
+    left: var(--space-16);
+    bottom: var(--space-16);
+  }
+
+  .tiers {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .play {
+    @include s.button-fluid;
+  }
+}

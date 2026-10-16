@@ -82,7 +82,7 @@
   --tilt: 2deg;
 }
 
-.plan:last-child {
+.plan:nth-last-child(-n + 2) {
   grid-column: 1 / -1;
 
   .card {
@@ -115,6 +115,10 @@
     align-items: center;
     margin-top: 0;
   }
+}
+
+.plan:nth-last-child(2) .card {
+  --tilt: 0.5deg;
 }
 
 .tag {
@@ -287,7 +291,7 @@
     grid-template-columns: minmax(0, 1fr);
   }
 
-  .plan:last-child .card {
+  .plan:nth-last-child(-n + 2) .card {
     --tilt: -1deg;
 
     display: flex;
@@ -295,7 +299,7 @@
     min-height: 270px;
   }
 
-  .plan:last-child .foot {
+  .plan:nth-last-child(-n + 2) .foot {
     align-items: flex-end;
     margin-top: auto;
   }

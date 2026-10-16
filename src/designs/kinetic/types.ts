@@ -2,6 +2,7 @@ import type { ReactNode } from 'react';
 import type { ReviewFieldName, UseReview } from '@/components/Review/types';
 import type { BriefChoice } from '@/lib/brief/types';
 import type { ReviewDocumentText } from '@/lib/review/types';
+import type { ServiceThreeD } from '@/components/ServicePage/types';
 
 export type ButtonClassOptions = {
   primary?: boolean;
@@ -57,4 +58,9 @@ export type KineticReviewDocumentProps = {
 
 export type KineticReviewNoticeProps = {
   view: 'received' | 'invalid';
+};
+
+/** Блоки страницы «3D-интерактив»: постер и ролик, варианты, условия, что нужно от клиента. */
+export type KineticServiceThreeDProps = {
+  data: ServiceThreeD;
 };
