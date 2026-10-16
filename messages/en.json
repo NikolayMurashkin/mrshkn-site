@@ -72,7 +72,7 @@
       "secondaryCta": "How we work",
       "stickers": {
         "lighthouse": "Lighthouse<br></br>90+ in the handover report",
-        "deadline": "14 days —<br></br>written in the contract",
+        "deadline": "14 days —<br></br>in the contract",
         "warranty": "30-day warranty after launch"
       }
     },
@@ -85,7 +85,7 @@
     },
     "editorial": {
       "title": "Custom-coded websites in 14 days.",
-      "lead": "We build websites and Telegram apps the way product teams do: custom code, analytics and deadlines written into the contract — but in two weeks, not a quarter.",
+      "lead": "We build websites and Telegram apps the way product teams do: custom code, analytics and deadlines fixed in the contract — but in two weeks, not a quarter.",
       "primaryCta": "Get a quote",
       "secondaryCta": "How we work",
       "quoteKicker": "From the contract",
@@ -128,7 +128,7 @@
       },
       "business": {
         "name": "Business website",
-        "summary": "Up to 7 pages, admin panel, blog, EN + RU, CRM integration",
+        "summary": "Up to 7 pages, admin panel, blog, EN + RU",
         "term": "3 weeks"
       },
       "miniApp": {
@@ -157,7 +157,7 @@
       "text": "One codebase — the app runs in Telegram and in MAX. The second mini-app store costs nothing extra."
     },
     "basicsHeading": "Included in every plan",
-    "basicsNote": "13 items, no extra charges",
+    "basicsNote": "13 items in the price; hosting and domain go to the provider",
     "basicsGroups": {
       "build": "Code and speed",
       "leads": "Leads and analytics",
@@ -169,15 +169,15 @@
       "lighthouse": "Lighthouse 90+ as an acceptance criterion, report attached to the handover",
       "responsive": "Responsive from 320 to 1920 pixels",
       "seo": "SEO basics: schema.org, llms.txt and OG — the site is ready for AI search",
-      "forms": "Every lead goes to Telegram, email and your CRM",
+      "forms": "Every lead goes to Telegram and email",
       "analytics": "Google Analytics 4 with conversion goals set up",
       "privacy": "Cookie banner and a privacy policy page",
-      "hosting": "Domain, SSL and hosting set up and handed over to you",
+      "hosting": "Domain, SSL and hosting set up and handed over to you. You pay the hosting provider directly",
       "sources": "The source code stays yours",
       "revisions": "Two rounds of revisions included",
       "warranty": "30 days of warranty after launch",
-      "training": "One hour of training: how to edit texts and read leads",
-      "deadline": "The deadline is written into the contract"
+      "training": "A guide and a screencast: how to read leads and analytics",
+      "deadline": "We fix the deadline in the contract"
     },
     "optionsHeading": "Options for any plan",
     "optionsNote": "can be added after launch too",
@@ -274,14 +274,14 @@
     "heading": "How the two weeks go",
     "sectionMark": "Process",
     "promisesHeading": "What the contract says",
-    "contractNote": "All four are written into the contract",
+    "contractNote": "We fix all four in the contract",
     "dayLabel": "Day {day}",
     "stepLabel": "step {index}/04 · day {day}",
     "steps": {
       "brief": {
         "ordinal": "Day one",
         "title": "Brief and offer",
-        "text": "A twenty-minute call, a proposal on one page, 50% upfront."
+        "text": "A brief over messages, a proposal and a draft contract, 50% upfront."
       },
       "concept": {
         "ordinal": "Day three",
@@ -355,7 +355,7 @@
     "steps": {
       "product": {
         "title": "What do you need built?",
-        "note": "Pick the closest one — we will pin down the details on the call."
+        "note": "Pick the closest one — we will pin down the details in our messages."
       },
       "niche": {
         "title": "What field are you in?",
@@ -363,7 +363,7 @@
       },
       "design": {
         "title": "Which style feels right?",
-        "note": "Not a final choice: on the call we will show options built around your project."
+        "note": "Not a final choice: we will suggest options for your project in our messages."
       },
       "scope": {
         "title": "Timing and budget",
@@ -421,7 +421,7 @@
     "kicker": "Service",
     "back": "Services and pricing",
     "basicsHeading": "What is included",
-    "basicsNote": "13 items, no extra fees",
+    "basicsNote": "13 items in the price; hosting and domain go to the provider",
     "optionsHeading": "Options",
     "optionsNote": "Only what fits this service",
     "allOptions": "All options and prices",
@@ -436,7 +436,7 @@
     "perMonth": "{price} / mo",
     "revisions": "2 rounds of revisions",
     "cardPoints": {
-      "deadline": "Deadline written into the contract",
+      "deadline": "Deadline fixed in the contract",
       "warranty": "30-day warranty after launch"
     },
     "includedHeading": "What we tailor to you",
@@ -489,7 +489,7 @@
         },
         {
           "question": "How many days does the industry site take?",
-          "answer": "7 days, and the deadline is written into the contract."
+          "answer": "7 days, and we fix the deadline in the contract."
         },
         {
           "question": "Can I add features later?",
@@ -500,7 +500,7 @@
         {
           "when": "Day 1",
           "title": "Brief and industry pick",
-          "text": "A call, we pick the demo for your business, a 50% prepayment."
+          "text": "A brief over messages, we pick the demo for your business, a draft contract, a 50% prepayment."
         },
         {
           "when": "Day 2",
@@ -527,7 +527,7 @@
         },
         {
           "question": "How many days does a landing page take?",
-          "answer": "14 days, and the deadline is written into the contract."
+          "answer": "14 days, and we fix the deadline in the contract."
         },
         {
           "question": "How many revisions are included?",
@@ -535,14 +535,14 @@
         },
         {
           "question": "Will AI search find the site?",
-          "answer": "Every plan includes schema.org, llms.txt, FAQ markup, OG and hreflang, so the site is ready for AI search. We do not promise a place in the results."
+          "answer": "Every plan includes schema.org, llms.txt, OG and hreflang, so the site is ready for AI search. For more, there is the Extended “Ready for AI search” pack — its contents and price are in the full price list. We do not promise a place in the results."
         }
       ],
       "process": [
         {
           "when": "Day 1",
           "title": "Brief and offer",
-          "text": "A twenty-minute call, a one-page proposal, a 50% prepayment."
+          "text": "A brief over messages, a proposal and a draft contract, a 50% prepayment."
         },
         {
           "when": "Day 3",
@@ -565,11 +565,11 @@
       "faq": [
         {
           "question": "How is the Business site different from a landing page?",
-          "answer": "Up to seven pages instead of one, an admin panel for your own edits, a blog, Russian and English versions, and a CRM integration."
+          "answer": "Up to seven pages instead of one, an admin panel for your own edits, a blog, and Russian and English versions."
         },
         {
           "question": "Can I edit the texts myself?",
-          "answer": "Yes, in the admin panel. In a one-hour training we show how to edit texts and check leads."
+          "answer": "Yes, in the admin panel. We send a guide and a screencast on how to edit texts and check leads."
         },
         {
           "question": "What if I need more than seven pages?",
@@ -577,14 +577,14 @@
         },
         {
           "question": "How long does the Business site take?",
-          "answer": "Three weeks, and the deadline is written into the contract. Two rounds of revisions are included."
+          "answer": "Three weeks, and we fix the deadline in the contract. Two rounds of revisions are included."
         }
       ],
       "process": [
         {
           "when": "Day 1",
           "title": "Brief and structure",
-          "text": "A call, a page list (up to seven), a proposal and a contract with the deadline."
+          "text": "A brief over messages, a page list (up to seven), a proposal and a contract with the deadline."
         },
         {
           "when": "Week 1",
@@ -594,12 +594,12 @@
         {
           "when": "Week 2",
           "title": "Development and admin panel",
-          "text": "Pages in two languages, the admin panel, forms, analytics and the CRM integration."
+          "text": "Pages in two languages, the admin panel, forms and analytics."
         },
         {
           "when": "Week 3",
           "title": "Testing and launch",
-          "text": "A staging domain, the second round of revisions, the move to your domain, training and a 30-day warranty."
+          "text": "A staging domain, the second round of revisions, the move to your domain, a guide with a screencast and a 30-day warranty."
         }
       ]
     },
@@ -619,14 +619,14 @@
         },
         {
           "question": "What does the plan include besides the app itself?",
-          "answer": "A bot and an admin panel. The 3–4 week deadline is written into the contract."
+          "answer": "A bot and an admin panel. We name the exact deadline within 3–4 weeks after the brief and fix it in the contract."
         }
       ],
       "process": [
         {
           "when": "Day 1",
           "title": "Brief and modules",
-          "text": "A call, choosing modules, a proposal and a contract with the deadline."
+          "text": "A brief over messages, choosing modules, a proposal and a contract with the deadline."
         },
         {
           "when": "Week 1",
@@ -661,14 +661,14 @@
         },
         {
           "question": "Who manages the orders?",
-          "answer": "You do, in the order admin panel. In training we show how to use it."
+          "answer": "You do, in the order admin panel. We send a guide and a screencast on how to use it."
         }
       ],
       "process": [
         {
           "when": "Week 1",
           "title": "Brief and catalog structure",
-          "text": "A call, a review of products and delivery methods, a proposal and a contract with the deadline."
+          "text": "A brief over messages, a review of products and delivery methods, a proposal and a contract with the deadline."
         },
         {
           "when": "Weeks 2–3",
@@ -683,7 +683,7 @@
         {
           "when": "Weeks 6–7",
           "title": "Testing and launch",
-          "text": "Test orders, the second round of revisions, the move to your domain, training and a 30-day warranty."
+          "text": "Test orders, the second round of revisions, the move to your domain, a guide with a screencast and a 30-day warranty."
         }
       ]
     },
@@ -710,7 +710,7 @@
         {
           "when": "Weeks 1–2",
           "title": "Brief and MVP scope",
-          "text": "A call, a list of scenarios, what goes into the first version, a contract with the deadline."
+          "text": "A brief over messages, a list of scenarios, what goes into the first version, a contract with the deadline."
         },
         {
           "when": "Weeks 2–4",
@@ -737,7 +737,7 @@
         },
         {
           "question": "Where does the hosting stay?",
-          "answer": "On your account. The studio administers it, and the access stays with you."
+          "answer": "On your account with the provider, and you pay the provider directly. We administer it, and the access stays with you."
         },
         {
           "question": "What if the hours of edits run out?",

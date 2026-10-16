@@ -201,11 +201,12 @@ describe('страница отраслевого тарифа во всех н�
     }
   });
 
-  it.each([...DESIGN_NAMES])('%s, ru: срок 7 дней прописан в договоре', (design) => {
+  it.each([...DESIGN_NAMES])('%s, ru: срок 7 дней фиксируем в договоре', (design) => {
     const text = textOf(renderService(design, 'ru', 'industry'));
 
     expect(text).toContain('7 дней');
-    expect(text).toContain('Срок прописан в договоре');
+    expect(text.toLowerCase()).toContain('фиксируем в договоре');
+    expect(text.toLowerCase()).not.toContain('прописан');
   });
 
   it.each(ROWS)('%s, %s: на странице лендинга нет карточек отраслей и пунктов «что не входит»', (design, locale) => {
