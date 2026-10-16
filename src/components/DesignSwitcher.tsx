@@ -15,7 +15,6 @@ import {
 import { preloadDesign } from '@/designs/registry';
 import type { DesignName } from '@/designs/types';
 import styles from './DesignSwitcher.module.scss';
-import { ChevronDownIcon, GlobeIcon } from './icons';
 import { forgetStoredTheme, hasStoredTheme } from './theme-storage';
 import type { PendingSwitch } from './types';
 
@@ -117,11 +116,9 @@ export const DesignSwitcher = ({ design }: DesignSwitcherProps) => {
         aria-expanded={open}
         onClick={() => setOpen((value) => !value)}
       >
-        <GlobeIcon size={16} />
         <span className={styles.label}>
           {t('label')}: <span className={styles.name}>{DESIGN_LABELS[design]}</span>
         </span>
-        <ChevronDownIcon size={14} />
       </button>
       {open && (
         <ul
