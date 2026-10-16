@@ -112,17 +112,32 @@ jobs:
           include-hidden-files: true
           retention-days: 7
 
-  # образ собирается здесь, сервер его только запускает (D41): тег коммита ставится приложению Coolify, затем выкат
+  # образ собирается здесь, сервер его только запускает (D41): тег коммита ставится приложению Coolify, затем выкат.
+  # Адрес и окружение вшиваются при сборке → у stage и mrshkn.com свои образы, оба выкатываются с каждого пуша в main
   image:
-    name: Image and deploy to stage
+    name: Image and deploy — ${{ matrix.target }}
     needs: checks
     if: github.event_name == 'push' && github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     permissions:
       contents: read
       packages: write
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - target: stage
+            site_env: preview
+            site_url: https://stage.mrshkn.com
+            tag: ${{ github.sha }}
+            app_uuid_var: COOLIFY_APP_UUID
+          - target: production
+            site_env: production
+            site_url: https://mrshkn.com
+            tag: prod-${{ github.sha }}
+            app_uuid_var: COOLIFY_PROD_APP_UUID
     env:
-      IMAGE: ghcr.io/nikolaymurashkin/mrshkn-site:${{ github.sha }}
+      IMAGE: ghcr.io/nikolaymurashkin/mrshkn-site:${{ matrix.tag }}
     steps:
       - uses: actions/checkout@v4
 
@@ -141,19 +156,20 @@ jobs:
           tags: ${{ env.IMAGE }}
           labels: org.opencontainers.image.source=https://github.com/${{ github.repository }}
           build-args: |
-            SITE_ENV=preview
-            NEXT_PUBLIC_SITE_URL=https://stage.mrshkn.com
-          cache-from: type=gha
-          cache-to: type=gha,mode=max
+            SITE_ENV=${{ matrix.site_env }}
+            NEXT_PUBLIC_SITE_URL=${{ matrix.site_url }}
+          cache-from: type=gha,scope=site-${{ matrix.target }}
+          cache-to: type=gha,mode=max,scope=site-${{ matrix.target }}
 
       - name: Deploy to Coolify
         env:
           COOLIFY_URL: https://coolify.mrshkn.com/api/v1
           COOLIFY_TOKEN: ${{ secrets.COOLIFY_TOKEN }}
-          APP_UUID: ${{ vars.COOLIFY_APP_UUID }}
+          APP_UUID: ${{ vars[matrix.app_uuid_var] }}
+          TAG: ${{ matrix.tag }}
         run: |
           api() { curl -sS --fail-with-body -H "Authorization: Bearer $COOLIFY_TOKEN" -H 'Content-Type: application/json' "$@"; }
-          api -X PATCH "$COOLIFY_URL/applications/$APP_UUID" -d "{\"docker_registry_image_tag\":\"$GITHUB_SHA\"}" > /dev/null
+          api -X PATCH "$COOLIFY_URL/applications/$APP_UUID" -d "{\"docker_registry_image_tag\":\"$TAG\"}" > /dev/null
           deployment=$(api -X POST "$COOLIFY_URL/deploy?uuid=$APP_UUID" | jq -r '.deployments[0].deployment_uuid')
           echo "deployment $deployment"
           for _ in $(seq 60); do
