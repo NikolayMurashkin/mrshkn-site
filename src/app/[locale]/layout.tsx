@@ -15,6 +15,7 @@ import { getDesign } from '@/designs/server';
 import { routing } from '@/i18n/routing';
 import { getAnalyticsIds, getConsent } from '@/lib/analytics/server';
 import { SITE_URL } from '@/lib/consts';
+import { YANDEX_VERIFICATION } from '@/lib/seo/consts';
 import { organizationJsonLd } from '@/lib/seo/json-ld';
 import { pageMetadata } from '@/lib/seo/metadata';
 import { getSiteEnv, robotsMetadata } from '@/lib/site-env';
@@ -39,6 +40,7 @@ export const generateMetadata = async ({ params }: Omit<LocaleLayoutProps, 'chil
   return {
     metadataBase: new URL(SITE_URL),
     robots: robotsMetadata(getSiteEnv()),
+    verification: { yandex: YANDEX_VERIFICATION },
     ...pageMetadata({ locale, path: '', title: t('title'), description: t('description') }),
   };
 };
