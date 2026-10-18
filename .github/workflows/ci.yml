@@ -2,7 +2,7 @@ name: CI
 
 on:
   push:
-    branches: [main]
+    branches: [main, stage]
   pull_request:
 
 concurrency:
@@ -113,31 +113,23 @@ jobs:
           retention-days: 7
 
   # образ собирается здесь, сервер его только запускает (D41): тег коммита ставится приложению Coolify, затем выкат.
-  # Адрес и окружение вшиваются при сборке → у stage и mrshkn.com свои образы, оба выкатываются с каждого пуша в main
+  # Адрес и окружение вшиваются при сборке → у stage и mrshkn.com свои образы: ветка stage → stage.mrshkn.com,
+  # ветка main → mrshkn.com
   image:
-    name: Image and deploy — ${{ matrix.target }}
+    name: Image and deploy — ${{ github.ref_name == 'main' && 'production' || 'stage' }}
     needs: checks
-    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    if: github.event_name == 'push' && (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/stage')
     runs-on: ubuntu-latest
     permissions:
       contents: read
       packages: write
-    strategy:
-      fail-fast: false
-      matrix:
-        include:
-          - target: stage
-            site_env: preview
-            site_url: https://stage.mrshkn.com
-            tag: ${{ github.sha }}
-            app_uuid_var: COOLIFY_APP_UUID
-          - target: production
-            site_env: production
-            site_url: https://mrshkn.com
-            tag: prod-${{ github.sha }}
-            app_uuid_var: COOLIFY_PROD_APP_UUID
     env:
-      IMAGE: ghcr.io/nikolaymurashkin/mrshkn-site:${{ matrix.tag }}
+      TARGET: ${{ github.ref_name == 'main' && 'production' || 'stage' }}
+      SITE_ENV: ${{ github.ref_name == 'main' && 'production' || 'preview' }}
+      SITE_URL: ${{ github.ref_name == 'main' && 'https://mrshkn.com' || 'https://stage.mrshkn.com' }}
+      TAG: ${{ github.ref_name == 'main' && format('prod-{0}', github.sha) || github.sha }}
+      APP_UUID: ${{ github.ref_name == 'main' && vars.COOLIFY_PROD_APP_UUID || vars.COOLIFY_APP_UUID }}
+      IMAGE: ghcr.io/nikolaymurashkin/mrshkn-site:${{ github.ref_name == 'main' && format('prod-{0}', github.sha) || github.sha }}
     steps:
       - uses: actions/checkout@v4
 
@@ -156,17 +148,15 @@ jobs:
           tags: ${{ env.IMAGE }}
           labels: org.opencontainers.image.source=https://github.com/${{ github.repository }}
           build-args: |
-            SITE_ENV=${{ matrix.site_env }}
-            NEXT_PUBLIC_SITE_URL=${{ matrix.site_url }}
-          cache-from: type=gha,scope=site-${{ matrix.target }}
-          cache-to: type=gha,mode=max,scope=site-${{ matrix.target }}
+            SITE_ENV=${{ env.SITE_ENV }}
+            NEXT_PUBLIC_SITE_URL=${{ env.SITE_URL }}
+          cache-from: type=gha,scope=site-${{ env.TARGET }}
+          cache-to: type=gha,mode=max,scope=site-${{ env.TARGET }}
 
       - name: Deploy to Coolify
         env:
           COOLIFY_URL: https://coolify.mrshkn.com/api/v1
           COOLIFY_TOKEN: ${{ secrets.COOLIFY_TOKEN }}
-          APP_UUID: ${{ vars[matrix.app_uuid_var] }}
-          TAG: ${{ matrix.tag }}
         run: |
           api() { curl -sS --fail-with-body -H "Authorization: Bearer $COOLIFY_TOKEN" -H 'Content-Type: application/json' "$@"; }
           api -X PATCH "$COOLIFY_URL/applications/$APP_UUID" -d "{\"docker_registry_image_tag\":\"$TAG\"}" > /dev/null
