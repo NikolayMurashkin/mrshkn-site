@@ -24,7 +24,7 @@ export const BRAND_NAME = defaultMessages.brand.name;
 export const STUDIO_EMAIL = 'hello@mrshkn.com';
 
 /** Код подтверждения прав в Яндекс Вебмастере для mrshkn.com: метатег `yandex-verification`. */
-export const YANDEX_VERIFICATION = 'fc07f751cc61dacc';
+export const YANDEX_VERIFICATION = '84f12e223dadf5bb';
 
 export const ORGANIZATION_ID = `${SITE_URL}/#organization`;
 
