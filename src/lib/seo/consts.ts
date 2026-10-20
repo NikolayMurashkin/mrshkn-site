@@ -16,6 +16,22 @@ export const SITE_PAGES: readonly string[] = [
   PRIVACY_HREF,
 ];
 
+/**
+ * Подписи кнопок героя Terminal написаны как пути (`./как-мы-работаем`), ссылок на такие адреса нет, но поисковики
+ * берут подписи за адреса и ходят по ним — без редиректа это 404. Ключ — декодированный путь запроса; адреса без языка
+ * ведут на язык подписи, а не браузера. Новая подпись вида `./…` в `messages/*.json` — новая строка здесь.
+ */
+export const LABEL_REDIRECTS: Readonly<Record<string, string>> = {
+  '/ru/рассчитать-стоимость': '/ru/brief',
+  '/en/get-a-quote': '/en/brief',
+  '/ru/как-мы-работаем': '/ru#process',
+  '/en/how-we-work': '/en#process',
+  '/рассчитать-стоимость': '/ru/brief',
+  '/как-мы-работаем': '/ru#process',
+  '/get-a-quote': '/en/brief',
+  '/how-we-work': '/en#process',
+};
+
 /** Ключ hreflang для версии по умолчанию: ведет на язык `DEFAULT_LOCALE`. */
 export const X_DEFAULT = 'x-default';
 
