@@ -141,5 +141,8 @@ export const LEAD_REMINDERS_CRON = '*/5 * * * *';
 
 export const CRM_QUEUE_CRON = '* * * * *';
 
+/** Прогон очереди раз в минуту не пишет INFO в лог контейнера (сотни строк в сутки), ошибки заданий пишутся. */
+export const CRM_QUEUE_SILENT = { info: true };
+
 /** Метка в `context` сохранения: отметку «напоминание отправлено» ставит задача, а не правка карточки. */
 export const LEAD_REMINDER_SENT = 'leadReminderSent';

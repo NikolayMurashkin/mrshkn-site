@@ -550,5 +550,7 @@ describe('поля и расписание напоминаний', () => {
     // Без cron Payload крутит autoRun раз в минуту.
     expectStepWithinLimit(entry?.cron ?? '* * * * *', 'autoRun');
     expect(entry?.disableScheduling, 'disableScheduling у записи autoRun').not.toBe(true);
+    // Без этого каждый запуск пишет «Running N jobs» в лог контейнера; ошибки заданий остаются в логе.
+    expect(entry?.silent, 'silent у записи autoRun').toEqual({ info: true });
   });
 });

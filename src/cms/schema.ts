@@ -5,7 +5,7 @@ import { Media } from './collections/Media';
 import { Posts } from './collections/Posts';
 import { Reviews } from './collections/Reviews';
 import { Users } from './collections/Users';
-import { CRM_QUEUE, CRM_QUEUE_CRON } from './consts';
+import { CRM_QUEUE, CRM_QUEUE_CRON, CRM_QUEUE_SILENT } from './consts';
 import { Settings } from './globals/Settings';
 import { LeadReminders } from './reminders';
 
@@ -20,6 +20,6 @@ export const GLOBALS = [Settings];
  */
 export const JOBS: JobsConfig = {
   tasks: [LeadReminders],
-  autoRun: [{ queue: CRM_QUEUE, cron: CRM_QUEUE_CRON }],
+  autoRun: [{ queue: CRM_QUEUE, cron: CRM_QUEUE_CRON, silent: CRM_QUEUE_SILENT }],
   deleteJobOnComplete: true,
 };
