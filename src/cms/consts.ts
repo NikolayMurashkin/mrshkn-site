@@ -124,3 +124,22 @@ export const LEAD_STAGE_LABELS: Record<LeadStage, string> = {
   delivered: 'Сдан',
   rejected: 'Отказ',
 };
+
+/** Предел текста напоминания в карточке заявки: короткая строка для сообщения бота, не вторые заметки. */
+export const LEAD_REMIND_TEXT_MAX = 500;
+
+/** Задача проверки сроков напоминаний и ее очередь в Payload. */
+export const LEAD_REMINDERS_TASK = 'leadReminders';
+
+export const CRM_QUEUE = 'crm';
+
+/**
+ * Расписание ставит проверку сроков в очередь каждые 5 минут, очередь прогоняется каждую минуту: напоминание уходит
+ * не позже чем через 6 минут после срока при обещанных 15.
+ */
+export const LEAD_REMINDERS_CRON = '*/5 * * * *';
+
+export const CRM_QUEUE_CRON = '* * * * *';
+
+/** Метка в `context` сохранения: отметку «напоминание отправлено» ставит задача, а не правка карточки. */
+export const LEAD_REMINDER_SENT = 'leadReminderSent';

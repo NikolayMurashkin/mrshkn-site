@@ -62,6 +62,9 @@ export const LEAD_STAGES = ['new', 'qualified', 'proposal', 'contract', 'work', 
 /** Этапы, с которых заявка считается квалифицированной: первый переход на любой из них ставит дату квалификации. */
 export const LEAD_QUALIFIED_STAGES: readonly string[] = ['qualified', 'proposal', 'contract', 'work', 'delivered'];
 
+/** Закрытые этапы — «сдан» и «отказ»: напоминания «связаться» по ним не уходят. */
+export const LEAD_CLOSED_STAGES: readonly string[] = ['delivered', 'rejected'];
+
 /**
  * Сколько обработчик ждет запись заявки в базу. Зависшая база — сбой одного канала: бот, почта и ответ формы
  * не должны ждать ее дольше.

@@ -6,7 +6,7 @@ import { fileURLToPath } from 'node:url';
 import { buildConfig } from 'payload';
 import sharp from 'sharp';
 import { Users } from './cms/collections/Users';
-import { COLLECTIONS, GLOBALS } from './cms/schema';
+import { COLLECTIONS, GLOBALS, JOBS } from './cms/schema';
 import { DEFAULT_LOCALE, LOCALES } from './i18n/consts';
 import { migrations } from './migrations';
 
@@ -20,6 +20,7 @@ export default buildConfig({
   },
   collections: COLLECTIONS,
   globals: GLOBALS,
+  jobs: JOBS,
   editor: lexicalEditor(),
   localization: {
     locales: [...LOCALES],

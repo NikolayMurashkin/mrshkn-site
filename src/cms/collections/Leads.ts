@@ -2,7 +2,7 @@ import type { CollectionBeforeChangeHook, CollectionConfig } from 'payload';
 import { LOCALES } from '../../i18n/consts';
 import { LEAD_QUALIFIED_STAGES, LEAD_STAGES } from '../../lib/brief/consts';
 import { isSignedIn } from '../access';
-import { LEAD_STAGE_LABELS, REVIEW_LOCALE_LABELS } from '../consts';
+import { LEAD_REMIND_TEXT_MAX, LEAD_REMINDER_SENT, LEAD_STAGE_LABELS, REVIEW_LOCALE_LABELS } from '../consts';
 
 const DATE_AND_TIME = { date: { pickerAppearance: 'dayAndTime' as const } };
 
@@ -21,6 +21,24 @@ const stampQualification: CollectionBeforeChangeHook = ({ data, originalDoc }) =
   return { ...data, qualifiedAt: LEAD_QUALIFIED_STAGES.includes(stage) ? new Date().toISOString() : null };
 };
 
+const timeOf = (value: unknown) => (value ? new Date(value as string).getTime() : null);
+
+/**
+ * Отметку «напоминание отправлено» ставит только задача проверки сроков (метка в `context`). Новая дата напоминания
+ * снимает отметку — это новое напоминание; любая другая правка оставляет ее как была, в том числе значение из формы,
+ * открытой до отправки: иначе сохранение такой карточки отправило бы напоминание второй раз.
+ */
+const keepReminderMark: CollectionBeforeChangeHook = ({ context, data, originalDoc }) => {
+  if (context[LEAD_REMINDER_SENT]) {
+    return data;
+  }
+
+  const remindAt = data.remindAt === undefined ? originalDoc?.remindAt : data.remindAt;
+  const sameDate = Boolean(originalDoc) && timeOf(remindAt) === timeOf(originalDoc?.remindAt);
+
+  return { ...data, remindSentAt: sameDate ? (originalDoc?.remindSentAt ?? null) : null };
+};
+
 /**
  * Заявки — CRM студии. Их пишет обработчик квиза мимо прав, а читают, правят, удаляют и заводят по звонку только
  * вошедшие в админку: без входа REST не отдает и не принимает ничего. Ответы квиза — ключи справочника как есть,
@@ -31,10 +49,10 @@ export const Leads: CollectionConfig = {
   labels: { singular: 'Заявка', plural: 'Заявки' },
   admin: {
     useAsTitle: 'name',
-    defaultColumns: ['name', 'stage', 'utm_source', 'createdAt'],
+    defaultColumns: ['name', 'stage', 'remindAt', 'utm_source', 'createdAt'],
   },
   access: { read: isSignedIn, create: isSignedIn, update: isSignedIn, delete: isSignedIn },
-  hooks: { beforeChange: [stampQualification] },
+  hooks: { beforeChange: [stampQualification, keepReminderMark] },
   fields: [
     { name: 'name', type: 'text', label: 'Имя', required: true },
     { name: 'contact', type: 'text', label: 'Связь', required: true },
@@ -55,6 +73,29 @@ export const Leads: CollectionConfig = {
       admin: { ...DATE_AND_TIME, position: 'sidebar', readOnly: true },
     },
     { name: 'amount', type: 'number', label: 'Сумма сделки, ₽', min: 0, admin: { position: 'sidebar' } },
+    {
+      name: 'remindAt',
+      type: 'date',
+      label: 'Связаться',
+      admin: {
+        ...DATE_AND_TIME,
+        position: 'sidebar',
+        description: 'В этот срок бот напишет в чат заявок. Новая дата — новое напоминание.',
+      },
+    },
+    {
+      name: 'remindText',
+      type: 'text',
+      label: 'Текст напоминания',
+      maxLength: LEAD_REMIND_TEXT_MAX,
+      admin: { position: 'sidebar' },
+    },
+    {
+      name: 'remindSentAt',
+      type: 'date',
+      label: 'Напоминание отправлено',
+      admin: { ...DATE_AND_TIME, position: 'sidebar', readOnly: true },
+    },
     {
       name: 'locale',
       type: 'select',

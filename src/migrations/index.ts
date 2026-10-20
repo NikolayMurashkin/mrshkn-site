@@ -5,6 +5,7 @@ import * as migration_20261012_084456_team_skills from './20261012_084456_team_s
 import * as migration_20261012_133715_remove_team from './20261012_133715_remove_team';
 import * as migration_20261013_164210_reviews from './20261013_164210_reviews';
 import * as migration_20261020_100951_leads from './20261020_100951_leads';
+import * as migration_20261020_145625_crm_reminders from './20261020_145625_crm_reminders';
 
 export const migrations = [
   {
@@ -40,6 +41,11 @@ export const migrations = [
   {
     up: migration_20261020_100951_leads.up,
     down: migration_20261020_100951_leads.down,
-    name: '20261020_100951_leads'
+    name: '20261020_100951_leads',
+  },
+  {
+    up: migration_20261020_145625_crm_reminders.up,
+    down: migration_20261020_145625_crm_reminders.down,
+    name: '20261020_145625_crm_reminders'
   },
 ];
