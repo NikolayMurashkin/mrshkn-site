@@ -1,4 +1,6 @@
-import type { Case } from '../payload-types';
+import type { Payload } from 'payload';
+import type { ReportPeriod } from '../lib/crm/types';
+import type { Case, User } from '../payload-types';
 
 /** Картинка медиатеки для `<img>`: адреса нарезанных размеров уже собраны в `srcSet`. */
 export type CaseImage = {
@@ -28,3 +30,6 @@ export type CaseDetail = CaseCard & {
 
 /** Соседние поля документа, из которых хуки собирают адрес. */
 export type SlugSource = { slug?: string | null; title?: string | null };
+
+/** Загрузка отчета по каналам: права — от пользователя, период — дни по Москве включительно. */
+export type GetChannelReportOptions = { payload: Payload; user?: User | null; period: ReportPeriod };

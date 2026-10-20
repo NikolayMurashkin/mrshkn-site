@@ -6,6 +6,7 @@ import { fileURLToPath } from 'node:url';
 import { buildConfig } from 'payload';
 import sharp from 'sharp';
 import { Users } from './cms/collections/Users';
+import { CHANNEL_REPORT_PATH, CHANNEL_REPORT_TEXT } from './cms/components/consts';
 import { COLLECTIONS, GLOBALS, JOBS } from './cms/schema';
 import { DEFAULT_LOCALE, LOCALES } from './i18n/consts';
 import { migrations } from './migrations';
@@ -17,6 +18,16 @@ export default buildConfig({
     user: Users.slug,
     importMap: { baseDir: dirname },
     meta: { titleSuffix: ' · MRSHKN, CMS' },
+    components: {
+      afterNavLinks: ['/cms/components/ChannelReportNavLink#ChannelReportNavLink'],
+      views: {
+        channelReport: {
+          Component: '/cms/components/ChannelReportView#ChannelReportView',
+          path: CHANNEL_REPORT_PATH,
+          meta: { title: CHANNEL_REPORT_TEXT.title },
+        },
+      },
+    },
   },
   collections: COLLECTIONS,
   globals: GLOBALS,

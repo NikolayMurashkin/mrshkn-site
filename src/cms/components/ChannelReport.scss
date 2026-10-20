@@ -1,0 +1,124 @@
+.channel-report {
+  padding-block: calc(var(--base) * 2);
+  hyphens: none;
+}
+
+.channel-report__title {
+  margin: 0 0 var(--base);
+}
+
+.channel-report__period {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: calc(var(--base) * 0.6);
+  margin-bottom: calc(var(--base) * 0.5);
+}
+
+.channel-report__field {
+  display: flex;
+  flex-direction: column;
+  gap: calc(var(--base) * 0.25);
+  color: var(--theme-elevation-500);
+}
+
+.channel-report__input {
+  min-height: calc(var(--base) * 2);
+  padding: 0 calc(var(--base) * 0.5);
+  border: 0;
+  border-radius: var(--style-radius-s);
+  background-color: var(--theme-elevation-50);
+  color: var(--theme-elevation-800);
+  font: inherit;
+
+  &:hover {
+    background-color: var(--theme-elevation-100);
+  }
+
+  &:focus-visible {
+    outline: var(--accessibility-outline);
+    outline-offset: var(--accessibility-outline-offset);
+  }
+}
+
+html[data-theme='dark'] .channel-report__input {
+  color-scheme: dark;
+}
+
+.channel-report__submit {
+  margin: 0;
+}
+
+.channel-report__hint,
+.channel-report__note {
+  margin: 0 0 var(--base);
+  color: var(--theme-elevation-500);
+}
+
+.channel-report__empty {
+  margin: var(--base) 0;
+}
+
+.channel-report__scroll {
+  max-width: 100%;
+  margin-bottom: calc(var(--base) * 0.5);
+  overflow-x: auto;
+
+  &:focus-visible {
+    outline: var(--accessibility-outline);
+    outline-offset: var(--accessibility-outline-offset);
+  }
+}
+
+.channel-report__table {
+  width: 100%;
+  border-collapse: collapse;
+
+  th,
+  td {
+    padding: calc(var(--base) * 0.5) calc(var(--base) * 0.6);
+    text-align: left;
+    vertical-align: top;
+  }
+
+  thead th {
+    color: var(--theme-elevation-500);
+    font-weight: 400;
+    vertical-align: bottom;
+  }
+
+  tbody tr:nth-child(odd) {
+    background-color: var(--theme-elevation-50);
+  }
+
+  tfoot tr {
+    background-color: var(--theme-elevation-100);
+    font-weight: 600;
+  }
+}
+
+.channel-report__source {
+  min-width: calc(var(--base) * 6);
+  font-weight: 400;
+  word-wrap: break-word;
+  overflow-wrap: anywhere;
+}
+
+tfoot .channel-report__source {
+  font-weight: 600;
+}
+
+.channel-report__table .channel-report__number {
+  font-variant-numeric: tabular-nums;
+  text-align: right;
+  white-space: nowrap;
+}
+
+.channel-report__table thead .channel-report__number {
+  white-space: normal;
+}
+
+.channel-report__table [data-over-kpi] {
+  color: var(--theme-error-500);
+  font-weight: 600;
+}

@@ -22,6 +22,8 @@ import { UnderlineFeatureClient as UnderlineFeatureClient_e70f5e05f09f93e00b997e
 import { BoldFeatureClient as BoldFeatureClient_e70f5e05f09f93e00b997edb1ef0c864 } from '@payloadcms/richtext-lexical/client'
 import { ItalicFeatureClient as ItalicFeatureClient_e70f5e05f09f93e00b997edb1ef0c864 } from '@payloadcms/richtext-lexical/client'
 import { ReviewInviteButton as ReviewInviteButton_01e22b07b0bd91044431e70bae84f6c8 } from '../../../cms/components/ReviewInviteButton'
+import { ChannelReportNavLink as ChannelReportNavLink_3eef229c082f7cfd19cc75081caaefa1 } from '../../../cms/components/ChannelReportNavLink'
+import { ChannelReportView as ChannelReportView_0f978bc74662d7af1b5988cfef4dea41 } from '../../../cms/components/ChannelReportView'
 import { CollectionCards as CollectionCards_f9c02e79a4aed9a3924487c0cd4cafb1 } from '@payloadcms/next/rsc'
 
 /** @type import('payload').ImportMap */
@@ -50,5 +52,7 @@ export const importMap = {
   "@payloadcms/richtext-lexical/client#BoldFeatureClient": BoldFeatureClient_e70f5e05f09f93e00b997edb1ef0c864,
   "@payloadcms/richtext-lexical/client#ItalicFeatureClient": ItalicFeatureClient_e70f5e05f09f93e00b997edb1ef0c864,
   "/cms/components/ReviewInviteButton#ReviewInviteButton": ReviewInviteButton_01e22b07b0bd91044431e70bae84f6c8,
+  "/cms/components/ChannelReportNavLink#ChannelReportNavLink": ChannelReportNavLink_3eef229c082f7cfd19cc75081caaefa1,
+  "/cms/components/ChannelReportView#ChannelReportView": ChannelReportView_0f978bc74662d7af1b5988cfef4dea41,
   "@payloadcms/next/rsc#CollectionCards": CollectionCards_f9c02e79a4aed9a3924487c0cd4cafb1
 }

@@ -1,5 +1,6 @@
 import type { JobsConfig } from 'payload';
 import { Cases } from './collections/Cases';
+import { Expenses } from './collections/Expenses';
 import { Leads } from './collections/Leads';
 import { Media } from './collections/Media';
 import { Posts } from './collections/Posts';
@@ -9,7 +10,7 @@ import { CRM_QUEUE, CRM_QUEUE_CRON, CRM_QUEUE_SILENT } from './consts';
 import { Settings } from './globals/Settings';
 import { LeadReminders } from './reminders';
 
-export const COLLECTIONS = [Users, Media, Cases, Posts, Reviews, Leads];
+export const COLLECTIONS = [Users, Media, Cases, Posts, Reviews, Leads, Expenses];
 
 export const GLOBALS = [Settings];
 

@@ -6,6 +6,7 @@ import * as migration_20261012_133715_remove_team from './20261012_133715_remove
 import * as migration_20261013_164210_reviews from './20261013_164210_reviews';
 import * as migration_20261020_100951_leads from './20261020_100951_leads';
 import * as migration_20261020_145625_crm_reminders from './20261020_145625_crm_reminders';
+import * as migration_20261020_173744_expenses from './20261020_173744_expenses';
 
 export const migrations = [
   {
@@ -46,6 +47,11 @@ export const migrations = [
   {
     up: migration_20261020_145625_crm_reminders.up,
     down: migration_20261020_145625_crm_reminders.down,
-    name: '20261020_145625_crm_reminders'
+    name: '20261020_145625_crm_reminders',
+  },
+  {
+    up: migration_20261020_173744_expenses.up,
+    down: migration_20261020_173744_expenses.down,
+    name: '20261020_173744_expenses'
   },
 ];
