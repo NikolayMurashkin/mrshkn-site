@@ -17,11 +17,32 @@ const decodePath = (pathname: string) => {
 };
 
 /**
+ * Поисковик разрешает подпись `./…` от пути страницы (`/ru/docs/privacy` → `/ru/docs/как-мы-работаем`) → на глубине
+ * от двух сегментов ключ — первый сегмент и последний: подпись чужого языка с ним не совпадет и останется 404.
+ */
+const findLabelDestination = (path: string): string | undefined => {
+  const exact: string | undefined = LABEL_REDIRECTS[path];
+
+  if (exact) {
+    return exact;
+  }
+
+  const segments = path.split('/').slice(1);
+
+  if (segments.length < 3) {
+    return undefined;
+  }
+
+  return LABEL_REDIRECTS[`/${segments[0]}/${segments[segments.length - 1]}`];
+};
+
+/**
  * Адрес подписи кнопки — до префикса языка от next-intl: иначе адрес без языка ушел бы сначала на `/<язык>/…`
- * по языку браузера, а не подписи. Метки запроса едут в адрес назначения.
+ * по языку браузера, а не подписи. Подпись ловится и последним сегментом адреса любой глубины. Метки запроса едут
+ * в адрес назначения.
  */
 const redirectLabel = (request: NextRequest) => {
-  const destination: string | undefined = LABEL_REDIRECTS[decodePath(request.nextUrl.pathname)];
+  const destination = findLabelDestination(decodePath(request.nextUrl.pathname));
 
   if (!destination) {
     return null;
