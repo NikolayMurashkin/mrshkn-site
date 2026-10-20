@@ -1,4 +1,4 @@
-import type { BRIEF_STEPS, LEAD_SOURCE, UTM_PARAMS } from './consts';
+import type { BRIEF_STEPS, LEAD_SOURCE, LEAD_STAGES, UTM_PARAMS } from './consts';
 
 /** Шаг квиза. */
 export type BriefStep = (typeof BRIEF_STEPS)[number];
@@ -54,3 +54,9 @@ export type BriefPreset = {
   plan: string | null;
   niche: string | null;
 };
+
+/** Этап заявки в CRM студии. */
+export type LeadStage = (typeof LEAD_STAGES)[number];
+
+/** Канал, в который уходит заявка: запись в базу сайта, бот и почта. */
+export type LeadChannel = 'crm' | 'telegram' | 'mail';

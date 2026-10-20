@@ -75,3 +75,31 @@ describe('политика ПД называет Telegram каналом зая�
     expect(new Set(enKeys)).toEqual(new Set(ruKeys));
   });
 });
+
+/** Строки раздела «Куда уходят данные»: заголовок и абзацы. */
+const transferStrings = (messages: Messages) => {
+  const sections = (privacyOf(messages) as { sections?: { transfer?: unknown } } | undefined)?.sections;
+  const strings = stringsOf(sections?.transfer);
+
+  expect(strings.length, 'нет строк в privacy.sections.transfer').toBeGreaterThan(0);
+
+  return strings;
+};
+
+describe('политика ПД говорит, что заявка сохраняется в базе сайта', () => {
+  it('P4 ru: в разделе «Куда уходят данные» есть строка про заявку и базу сайта', () => {
+    const matches = transferStrings(ru as Messages).filter(
+      (text) => /заявк/i.test(text) && /баз[аеуы]\s+(данных\s+)?сайта/i.test(text),
+    );
+
+    expect(matches.length, 'строка о том, что заявка сохраняется в базе сайта').toBeGreaterThan(0);
+  });
+
+  it('P5 en: в разделе «Where your data goes» есть строка про request и базу сайта', () => {
+    const matches = transferStrings(en as Messages).filter(
+      (text) => /request/i.test(text) && /(website|site)('s)?\s+database|database\s+of\s+the\s+(web)?site/i.test(text),
+    );
+
+    expect(matches.length, 'строка о том, что request сохраняется в базе сайта').toBeGreaterThan(0);
+  });
+});

@@ -72,6 +72,7 @@ export interface Config {
     cases: Case;
     posts: Post;
     reviews: Review;
+    leads: Lead;
     'payload-kv': PayloadKv;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
@@ -84,6 +85,7 @@ export interface Config {
     cases: CasesSelect<false> | CasesSelect<true>;
     posts: PostsSelect<false> | PostsSelect<true>;
     reviews: ReviewsSelect<false> | ReviewsSelect<true>;
+    leads: LeadsSelect<false> | LeadsSelect<true>;
     'payload-kv': PayloadKvSelect<false> | PayloadKvSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
@@ -314,6 +316,42 @@ export interface Review {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "leads".
+ */
+export interface Lead {
+  id: number;
+  name: string;
+  contact: string;
+  comment?: string | null;
+  stage: 'new' | 'qualified' | 'proposal' | 'contract' | 'work' | 'delivered' | 'rejected';
+  qualifiedAt?: string | null;
+  amount?: number | null;
+  locale?: ('ru' | 'en') | null;
+  source?: string | null;
+  product?: string | null;
+  niche?: string | null;
+  design?: string | null;
+  timing?: string | null;
+  budget?: string | null;
+  plan?: string | null;
+  page?: string | null;
+  utm_source?: string | null;
+  utm_medium?: string | null;
+  utm_campaign?: string | null;
+  utm_content?: string | null;
+  utm_term?: string | null;
+  notes?:
+    | {
+        date?: string | null;
+        text: string;
+        id?: string | null;
+      }[]
+    | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-kv".
  */
 export interface PayloadKv {
@@ -355,6 +393,10 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'reviews';
         value: number | Review;
+      } | null)
+    | ({
+        relationTo: 'leads';
+        value: number | Lead;
       } | null);
   globalSlug?: string | null;
   user: {
@@ -557,6 +599,41 @@ export interface ReviewsSelect<T extends boolean = true> {
         text?: T;
         approved?: T;
         approvedAt?: T;
+      };
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "leads_select".
+ */
+export interface LeadsSelect<T extends boolean = true> {
+  name?: T;
+  contact?: T;
+  comment?: T;
+  stage?: T;
+  qualifiedAt?: T;
+  amount?: T;
+  locale?: T;
+  source?: T;
+  product?: T;
+  niche?: T;
+  design?: T;
+  timing?: T;
+  budget?: T;
+  plan?: T;
+  page?: T;
+  utm_source?: T;
+  utm_medium?: T;
+  utm_campaign?: T;
+  utm_content?: T;
+  utm_term?: T;
+  notes?:
+    | T
+    | {
+        date?: T;
+        text?: T;
+        id?: T;
       };
   updatedAt?: T;
   createdAt?: T;

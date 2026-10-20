@@ -25,7 +25,7 @@ export type DesignName = (typeof DESIGNS)[number];
 
 /** Запись приемника заявок: в какой канал ушла заявка и что в этом канале оказалось. */
 export type SinkCall = {
-  channel: 'telegram' | 'bitrix' | 'mail';
+  channel: 'telegram' | 'mail';
   body: string;
 };
 

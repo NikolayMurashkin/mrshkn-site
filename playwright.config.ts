@@ -18,12 +18,11 @@ const DATABASE_ENV = {
   PAYLOAD_SECRET: 'e2e-tests',
 };
 
-/** Заявка уходит в три настоящих канала, поэтому на время тестов все три смотрят в приемник. */
+/** Бот и почта — настоящие каналы заявки, поэтому на время тестов оба смотрят в приемник; запись идет в базу сборки. */
 const LEAD_ENV = {
   TELEGRAM_API_URL: `${SINK_BASE_URL}/telegram`,
   TELEGRAM_BOT_TOKEN: 'sink-token',
   TELEGRAM_CHAT_IDS: '100100,200200',
-  BITRIX_WEBHOOK_URL: `${SINK_BASE_URL}/bitrix`,
   SMTP_URL: `smtp://127.0.0.1:${SINK_SMTP_PORT}`,
   LEAD_MAIL_TO: 'hello@mrshkn.com',
   LEAD_MAIL_FROM: 'site@mrshkn.com',

@@ -917,7 +917,7 @@
     },
     "kicker": "Documents",
     "title": "Privacy policy",
-    "updated": "Last updated October 12, 2026",
+    "updated": "Last updated October 20, 2026",
     "tocLabel": "Contents",
     "changeChoice": "Change cookie choice",
     "sections": {
@@ -954,6 +954,7 @@
       "transfer": {
         "title": "Where your data goes",
         "paragraphs": [
+          "Your whole request — name, contact details, brief answers and campaign tags — is saved in the website's database. It can only be opened from the site's admin panel, after signing in with a login and password.",
           "The name and contact details from your request, together with your brief answers, are sent to Telegram: the studio's bot posts a notification about each new request to the studio's group chat. The site's server reaches Telegram through Cloudflare, so these details pass through Cloudflare on their way to Telegram. Telegram and Cloudflare are services based outside Russia.",
           "A copy of your request is emailed to hello@mrshkn.com, the studio mailbox hosted by Yandex.",
           "Analytics data goes to Yandex (Yandex Metrica) and Google (Google Analytics 4), and only after you consent. Google is a service based outside Russia."

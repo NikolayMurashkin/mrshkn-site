@@ -1,5 +1,6 @@
 import { BRIEF_STEP_VALUES } from '../lib/brief/consts';
 import type { SiteLocale } from '../i18n/types';
+import type { LeadStage } from '../lib/brief/types';
 import type { ReviewStatus } from '../lib/review/types';
 
 export enum Role {
@@ -112,4 +113,14 @@ export const REVIEW_ERASED_FIELDS = {
   answers: { before: null, process: null, after: null },
   translation: { text: null, approved: false, approvedAt: null },
   restrictions: { other: null },
+};
+
+export const LEAD_STAGE_LABELS: Record<LeadStage, string> = {
+  new: 'Новая',
+  qualified: 'Квалифицирована',
+  proposal: 'КП',
+  contract: 'Договор',
+  work: 'В работе',
+  delivered: 'Сдан',
+  rejected: 'Отказ',
 };

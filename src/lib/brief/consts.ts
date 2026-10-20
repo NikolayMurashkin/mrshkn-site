@@ -55,3 +55,18 @@ export const MARK_MAX_LENGTH = 128;
 export const BRIEF_HREF = '/brief';
 
 export const THANKS_HREF = '/brief/thanks';
+
+/** Этапы заявки в CRM студии: от новой до сданного проекта, отказ — отдельно. */
+export const LEAD_STAGES = ['new', 'qualified', 'proposal', 'contract', 'work', 'delivered', 'rejected'] as const;
+
+/** Этапы, с которых заявка считается квалифицированной: первый переход на любой из них ставит дату квалификации. */
+export const LEAD_QUALIFIED_STAGES: readonly string[] = ['qualified', 'proposal', 'contract', 'work', 'delivered'];
+
+/**
+ * Сколько обработчик ждет запись заявки в базу. Зависшая база — сбой одного канала: бот, почта и ответ формы
+ * не должны ждать ее дольше.
+ */
+export const LEAD_SAVE_TIMEOUT_MS = 5_000;
+
+/** Адрес карточки заявки в админке: его несут сообщение бота и письмо. */
+export const LEAD_ADMIN_PATH = '/admin/collections/leads';

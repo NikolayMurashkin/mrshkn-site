@@ -71,14 +71,6 @@ const http = createServer(async (request, response) => {
     return;
   }
 
-  if (request.method === 'POST' && url.pathname.startsWith('/bitrix/')) {
-    calls.push({ channel: 'bitrix', body: await readBody(request) });
-    response.writeHead(200, { 'content-type': 'application/json' });
-    response.end(JSON.stringify({ result: calls.length }));
-
-    return;
-  }
-
   response.writeHead(404);
   response.end();
 });

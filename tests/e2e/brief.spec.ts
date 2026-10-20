@@ -71,7 +71,7 @@ test.describe('квиз и заявка', () => {
   /** Приемник общий на файл, тесты очищают его → строки файла идут по очереди в одном воркере, а не параллельно. */
   test.describe.configure({ mode: 'default' });
 
-  test('заявка уходит в бот, на почту и в Bitrix24 с источником, нишей, стилем и метками', async ({
+  test('заявка уходит в бот и на почту с источником, нишей, стилем и метками, бот — со ссылкой на карточку', async ({
     page,
     request,
   }) => {
@@ -93,7 +93,7 @@ test.describe('квиз и заявка', () => {
     /** Телеграм-вызова два: бот пишет обоим получателям из `TELEGRAM_CHAT_IDS` — Николаю и жене. */
     await expect
       .poll(async () => (await callsOf(request, marker)).map((call) => call.channel).sort())
-      .toEqual(['bitrix', 'mail', 'telegram', 'telegram']);
+      .toEqual(['mail', 'telegram', 'telegram']);
 
     for (const call of await callsOf(request, marker)) {
       expect(call.body, `${call.channel}: источник`).toContain('source=site');
@@ -102,6 +102,11 @@ test.describe('квиз и заявка', () => {
 
       for (const [mark, value] of Object.entries(MARKS)) {
         expect(call.body, `${call.channel}: ${mark}`).toContain(`${mark}=${value}`);
+      }
+
+      /** Ссылка есть, только если запись в базу сборки прошла: обработчик пишет ее первой. */
+      if (call.channel === 'telegram') {
+        expect(call.body, 'telegram: ссылка на карточку заявки в админке').toContain('/admin/collections/leads/');
       }
     }
   });
@@ -122,7 +127,7 @@ test.describe('квиз и заявка', () => {
       await expect(page.getByTestId('brief-thanks')).toBeVisible();
       await expect
         .poll(async () => (await callsOf(request, marker)).map((call) => call.channel).sort())
-        .toEqual(['bitrix', 'mail', 'telegram', 'telegram']);
+        .toEqual(['mail', 'telegram', 'telegram']);
     });
   }
 

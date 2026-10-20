@@ -1,62 +1,62 @@
+import { saveLead } from '@/cms/leads';
+import { SITE_URL } from '@/lib/consts';
 import { envOf } from '@/lib/delivery/env';
 import { sendMail } from '@/lib/delivery/mail';
 import { sendTelegram } from '@/lib/delivery/telegram';
-import { UTM_PARAMS } from './consts';
+import { LEAD_ADMIN_PATH, LEAD_SAVE_TIMEOUT_MS } from './consts';
 import { formatLead } from './lead';
-import type { Lead } from './types';
+import type { Lead, LeadChannel } from './types';
 
-const sendBitrix = async (lead: Lead, text: string) => {
-  const webhook = envOf('BITRIX_WEBHOOK_URL');
-
-  if (!webhook) {
-    throw new Error('Bitrix24 не настроен: нет адреса вебхука');
-  }
-
-  const marks = Object.fromEntries(
-    UTM_PARAMS.filter((mark) => lead.marks[mark]).map((mark) => [mark.toUpperCase(), lead.marks[mark]]),
-  );
-
-  const response = await fetch(`${webhook.replace(/\/$/, '')}/crm.lead.add.json`, {
-    method: 'POST',
-    headers: { 'content-type': 'application/json' },
-    body: JSON.stringify({
-      fields: {
-        TITLE: `Сайт: ${lead.product} — ${lead.name}`,
-        NAME: lead.name,
-        SOURCE_ID: 'WEB',
-        SOURCE_DESCRIPTION: lead.source,
-        COMMENTS: text,
-        ...marks,
-      },
-      params: { REGISTER_SONET_EVENT: 'Y' },
-    }),
+/**
+ * Запись в базу не бросает: ее сбой — один из каналов, а не повод не звать бота и почту. Зависшая запись тоже сбой:
+ * через `LEAD_SAVE_TIMEOUT_MS` бот и почта уходят без ссылки, таймер снимается, как только запись ответила.
+ */
+const recordLead = async (lead: Lead) => {
+  let timer: ReturnType<typeof setTimeout> | undefined;
+  const timeout = new Promise<never>((_, reject) => {
+    timer = setTimeout(
+      () => reject(new Error(`запись заявки в базу не уложилась в ${LEAD_SAVE_TIMEOUT_MS / 1000} с`)),
+      LEAD_SAVE_TIMEOUT_MS,
+    );
   });
 
-  if (!response.ok) {
-    throw new Error(`Bitrix24 ответил ${response.status}`);
+  try {
+    return { id: await Promise.race([saveLead(lead), timeout]), error: null };
+  } catch (error) {
+    return { id: null, error };
+  } finally {
+    clearTimeout(timer);
   }
 };
 
 /**
- * Заявку теряет только молчание всех трех каналов: упавший канал не должен уносить с собой остальные,
- * поэтому каналы идут параллельно, а ошибки собираются и пишутся в лог.
+ * Заявку теряет только молчание всех трех каналов. Запись в базу идет первой: бот и письмо несут ссылку на карточку
+ * в админке; запись не удалась — уходит тот же текст без ссылки. Бот и почта идут параллельно, чтобы упавший канал
+ * не уносил с собой второй; ошибки собираются и пишутся в лог.
  */
 export const deliverLead = async (lead: Lead) => {
-  const text = formatLead(lead);
+  const record = await recordLead(lead);
+  const text =
+    record.id === null
+      ? formatLead(lead)
+      : [formatLead(lead), '', `Карточка: ${SITE_URL}${LEAD_ADMIN_PATH}/${record.id}`].join('\n');
+
   const channels = [
     ['telegram', () => sendTelegram(text)],
     ['mail', () => sendMail({ to: envOf('LEAD_MAIL_TO'), subject: `Заявка с сайта: ${lead.name}`, text })],
-    ['bitrix', () => sendBitrix(lead, text)],
   ] as const;
 
   const results = await Promise.allSettled(channels.map(([, send]) => send()));
-  const failed = results.flatMap((result, index) =>
-    result.status === 'rejected' ? [{ channel: channels[index][0], error: result.reason }] : [],
-  );
+  const failed: { channel: LeadChannel; error: unknown }[] = [
+    ...(record.id === null ? [{ channel: 'crm' as const, error: record.error }] : []),
+    ...results.flatMap((result, index) =>
+      result.status === 'rejected' ? [{ channel: channels[index][0], error: result.reason }] : [],
+    ),
+  ];
 
   for (const { channel, error } of failed) {
     console.error(`Заявка не ушла в канал ${channel}:`, error);
   }
 
-  return { delivered: results.length - failed.length, failed: failed.map(({ channel }) => channel) };
+  return { delivered: channels.length + 1 - failed.length, failed: failed.map(({ channel }) => channel) };
 };
