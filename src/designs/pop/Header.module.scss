@@ -145,9 +145,13 @@
     display: none;
   }
 
+  .locales {
+    padding-block: 2px;
+  }
+
   .locale {
     min-width: 44px;
-    min-height: 40px;
+    min-height: 44px;
   }
 
   .theme {

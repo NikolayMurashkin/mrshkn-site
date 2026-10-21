@@ -13,11 +13,14 @@ import type { ConsentProviderProps } from './types';
 /**
  * Согласие на счетчики: «Принять» дорисовывает их без перезагрузки. Код загруженного счетчика из страницы не выгрузить →
  * отказ или сброс после загрузки перезагружает страницу, и она приходит уже без счетчиков. На страницах
- * `UNTRACKED_PATH` счетчиков нет и при согласии.
+ * `UNTRACKED_PATH` счетчиков нет и при согласии. Баннер, открытый кнопкой «Изменить выбор», забирает фокус,
+ * а после выбора возвращает его на эту кнопку; при первом показе фокус не трогается.
  */
 export const ConsentProvider = ({ initialChoice, metrikaId, gaId, children }: ConsentProviderProps) => {
   const [choice, setChoice] = useState(initialChoice);
+  const [reopened, setReopened] = useState(false);
   const loaded = useRef(false);
+  const trigger = useRef<HTMLElement | null>(null);
   const pathname = usePathname();
   const granted = choice === 'granted' && !UNTRACKED_PATH.test(pathname);
   const counting = granted && Boolean(metrikaId || gaId);
@@ -37,7 +40,15 @@ export const ConsentProvider = ({ initialChoice, metrikaId, gaId, children }: Co
       return;
     }
 
+    const back = trigger.current;
+
+    trigger.current = null;
+    setReopened(false);
     setChoice(next);
+
+    if (back?.isConnected) {
+      back.focus();
+    }
   }, []);
 
   const reopen = useCallback(() => {
@@ -49,12 +60,17 @@ export const ConsentProvider = ({ initialChoice, metrikaId, gaId, children }: Co
       return;
     }
 
+    trigger.current = document.activeElement instanceof HTMLElement ? document.activeElement : null;
+    setReopened(true);
     setChoice(null);
   }, []);
 
   const goal = useCallback((name: Goal) => reachGoal(name, metrikaId), [metrikaId]);
 
-  const value = useMemo(() => ({ choice, choose, reopen, reachGoal: goal }), [choice, choose, reopen, goal]);
+  const value = useMemo(
+    () => ({ choice, reopened, choose, reopen, reachGoal: goal }),
+    [choice, reopened, choose, reopen, goal],
+  );
 
   return (
     <ConsentContext value={value}>

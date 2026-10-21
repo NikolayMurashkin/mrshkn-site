@@ -172,6 +172,7 @@ export const KineticBrief = ({ design, plan, niche }: BriefProps) => {
                 className={styles.input}
                 data-testid="brief-contact"
                 name="contact"
+                autoComplete="off"
                 spellCheck={false}
                 maxLength={CONTACT_MAX_LENGTH}
                 value={answers.contact}

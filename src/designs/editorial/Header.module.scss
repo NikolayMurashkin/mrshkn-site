@@ -161,6 +161,20 @@
   .nav {
     gap: 28px;
   }
+
+  .locales {
+    gap: 0;
+  }
+
+  .locale {
+    min-width: 44px;
+    min-height: 48px;
+  }
+
+  .theme {
+    width: 48px;
+    height: 48px;
+  }
 }
 
 @media (max-width: 720px) {
@@ -183,20 +197,6 @@
 
   .kicker {
     display: none;
-  }
-
-  .locales {
-    gap: 0;
-  }
-
-  .locale {
-    min-width: 44px;
-    min-height: 48px;
-  }
-
-  .theme {
-    width: 48px;
-    height: 48px;
   }
 
   .tagline {

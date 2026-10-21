@@ -127,9 +127,8 @@
 .toc {
   display: flex;
   flex-direction: column;
-  gap: 10px;
   margin: 0;
-  padding: 20px 24px;
+  padding: calc(20px - (44px - 1lh) / 2) 24px;
   border: var(--border-width) solid var(--line);
   border-radius: var(--radius-surface);
   background: var(--surface);
@@ -154,6 +153,7 @@
   }
 
   a {
+    padding-block: calc((44px - 1lh) / 2);
     overflow-wrap: anywhere;
     min-width: 0;
     transition: color var(--duration-fast) var(--ease-out);

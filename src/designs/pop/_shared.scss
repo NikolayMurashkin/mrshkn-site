@@ -307,6 +307,8 @@ $display-ch: 0.718em;
   align-self: flex-start;
   font-size: 15px;
   font-weight: 700;
+  padding-block: calc((44px - 1lh) / 2);
+  margin-block: calc((1lh - 44px) / 2);
   color: var(--muted);
   transition: color var(--duration-fast) var(--ease-out);
 

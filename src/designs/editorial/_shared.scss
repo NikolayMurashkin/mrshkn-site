@@ -216,6 +216,8 @@ $masthead-height: calc(
   font-size: 14px;
   font-weight: 500;
   letter-spacing: 0.04em;
+  padding-block: calc((44px - 1lh) / 2);
+  margin-block: calc((1lh - 44px) / 2);
   color: var(--muted);
   transition: color var(--duration-fast) var(--ease-out);
 

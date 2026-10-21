@@ -7,6 +7,7 @@ const BASE_URL = 'http://localhost:3102';
 const urls = [
   `${BASE_URL}/ru`,
   `${BASE_URL}/ru/work/lighthouse-demo`,
+  `${BASE_URL}/ru/brief`,
   ...SERVICE_SLUGS.map((slug) => `${BASE_URL}/ru/${slug}`),
 ];
 

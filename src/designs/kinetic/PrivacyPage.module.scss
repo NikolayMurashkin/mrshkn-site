@@ -114,9 +114,8 @@
 .toc {
   display: flex;
   flex-direction: column;
-  gap: 10px;
   margin: 0;
-  padding: var(--space-24);
+  padding: calc(var(--space-24) - (44px - 1lh) / 2) var(--space-24);
   border: var(--border-width) solid var(--line);
   border-radius: var(--radius-surface);
   list-style: none;
@@ -125,6 +124,7 @@
 
   li {
     display: flex;
+    align-items: baseline;
     counter-increment: toc;
     min-width: 0;
 
@@ -139,6 +139,7 @@
   }
 
   a {
+    padding-block: calc((44px - 1lh) / 2);
     overflow-wrap: anywhere;
     min-width: 0;
     transition: color var(--duration-fast) var(--ease-out);

@@ -12,6 +12,8 @@
   align-self: flex-start;
   font-family: var(--font-display);
   font-size: 13px;
+  padding-block: calc((44px - 1lh) / 2);
+  margin-block: calc((1lh - 44px) / 2);
   color: var(--muted);
   transition: color var(--duration-fast) var(--ease-out);
 
@@ -132,11 +134,11 @@
   gap: 16px;
   max-width: 68 * s.$text-ch;
   min-width: 0;
+  font-size: 17px;
 }
 
 .paragraph {
   margin: 0;
-  font-size: 17px;
   line-height: 1.6;
   word-wrap: break-word;
   overflow-wrap: anywhere;

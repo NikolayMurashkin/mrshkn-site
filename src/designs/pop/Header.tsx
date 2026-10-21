@@ -38,13 +38,14 @@ export const PopHeader = ({ hasCases }: HeaderProps) => {
   return (
     <header className={styles.header}>
       <div className={styles.brand}>
-        <span
+        <Link
           className={styles.wordmark}
+          href="/"
           translate="no"
           data-testid="brand"
         >
           {t('brand.name')}
-        </span>
+        </Link>
         <span
           className={styles.tagline}
           translate="no"

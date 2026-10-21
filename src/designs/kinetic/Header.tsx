@@ -27,13 +27,14 @@ export const KineticHeader = ({ hasCases }: HeaderProps) => {
       />
       <header className={scrolled ? `${styles.header} ${styles.scrolled}` : styles.header}>
         <div className={styles.brand}>
-          <span
+          <Link
             className={styles.wordmark}
+            href="/"
             data-testid="brand"
             translate="no"
           >
             {t('brand.name')}
-          </span>
+          </Link>
           <span className={styles.tagline}>{t('brand.tagline')}</span>
         </div>
         <nav className={styles.nav}>

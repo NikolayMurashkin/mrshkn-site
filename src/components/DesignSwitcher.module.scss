@@ -18,6 +18,7 @@
   display: inline-flex;
   align-items: center;
   gap: 10px;
+  min-height: 44px;
   padding: 10px 14px;
   border-radius: var(--radius-control);
   font: inherit;
@@ -45,8 +46,10 @@
 
 .item,
 .itemActive {
-  display: block;
+  display: flex;
+  align-items: center;
   width: 100%;
+  min-height: 44px;
   padding: 8px 12px;
   border: 0;
   border-radius: var(--radius-control);

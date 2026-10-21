@@ -6,6 +6,7 @@ export const BANNER_SPACE_VAR = '--cookie-banner-space';
 /** Вне провайдера (отдельный рендер секции) баннера нет, а цели никуда не уходят. */
 export const NO_CONSENT: ConsentState = {
   choice: null,
+  reopened: false,
   choose: () => {},
   reopen: () => {},
   reachGoal: () => {},

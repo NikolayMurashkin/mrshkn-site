@@ -54,7 +54,7 @@ const SHAPES: Record<(typeof DESIGNS)[number], DesignShape> = {
     heroTitle: /Сайт\sна\sкоде\sза\sдве\sнедели\./,
     heroTitleFont: /Prata/,
     heroCtas: ['Рассчитать стоимость', 'Как мы работаем'],
-    heroMark: 'Из договора',
+    heroMark: 'Фиксируем в договоре',
   },
 };
 

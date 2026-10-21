@@ -61,3 +61,11 @@
     box-shadow: none;
   }
 }
+
+@media (max-width: 480px) {
+  .action {
+    @include s.button-fluid;
+
+    padding-inline: var(--space-20);
+  }
+}

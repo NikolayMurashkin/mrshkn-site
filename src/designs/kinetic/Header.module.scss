@@ -134,6 +134,20 @@
   .nav {
     display: none;
   }
+
+  .locales {
+    gap: 0;
+  }
+
+  .locale {
+    min-width: 44px;
+    min-height: 48px;
+  }
+
+  .theme {
+    width: 48px;
+    height: 48px;
+  }
 }
 
 @media (max-width: bp.$mobile-wide) {
@@ -162,19 +176,5 @@
 
   .controls {
     gap: var(--space-4);
-  }
-
-  .locales {
-    gap: 0;
-  }
-
-  .locale {
-    min-width: 44px;
-    min-height: 48px;
-  }
-
-  .theme {
-    width: 48px;
-    height: 48px;
   }
 }

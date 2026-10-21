@@ -38,14 +38,15 @@ export const TerminalHeader = ({ hasCases }: HeaderProps) => {
   return (
     <header className={styles.header}>
       <div className={styles.brand}>
-        <span
+        <Link
           className={styles.wordmark}
+          href="/"
           translate="no"
           data-testid="brand"
         >
           <span className={styles.path}>~/</span>
           {t('brand.name')}
-        </span>
+        </Link>
         <span className={styles.tagline}>{t('brand.tagline')}</span>
       </div>
       <nav className={styles.nav}>

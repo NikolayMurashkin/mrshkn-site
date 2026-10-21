@@ -12,10 +12,11 @@ export const useGoal = () => useContext(ConsentContext).reachGoal;
 
 /**
  * Логика баннера, общая для пяти направлений. Пока баннер виден, у страницы снизу запас на его высоту
- * (переменная на `<html>`, ее читает `body`) → низ квиза и подвал прокручиваются выше баннера.
+ * (переменная на `<html>`, ее читает `body`) → низ квиза и подвал прокручиваются выше баннера. Открытый заново
+ * баннер ставит фокус на свою первую кнопку.
  */
 export const useCookieBanner = (): UseCookieBanner => {
-  const { choice, choose } = useContext(ConsentContext);
+  const { choice, reopened, choose } = useContext(ConsentContext);
   const ref = useRef<HTMLElement | null>(null);
   const visible = choice === null;
 
@@ -40,6 +41,12 @@ export const useCookieBanner = (): UseCookieBanner => {
       root.style.removeProperty(BANNER_SPACE_VAR);
     };
   }, [visible]);
+
+  useEffect(() => {
+    if (visible && reopened) {
+      ref.current?.querySelector('button')?.focus();
+    }
+  }, [visible, reopened]);
 
   return {
     visible,

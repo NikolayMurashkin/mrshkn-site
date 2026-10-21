@@ -18,6 +18,8 @@ export type ConsentProviderProps = {
 /** Состояние согласия на странице: выбор, его смена и отправка целей в счетчики. */
 export type ConsentState = {
   choice: ConsentChoice | null;
+  /** Баннер снова открыт кнопкой «Изменить выбор», а не показан при первом визите: ему можно забрать фокус. */
+  reopened: boolean;
   choose: (choice: ConsentChoice) => void;
   /** Стирает выбор и снова показывает баннер — кнопка «Изменить выбор» в политике. */
   reopen: () => void;

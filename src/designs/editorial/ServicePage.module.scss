@@ -11,7 +11,7 @@
 .back {
   @include s.back-link;
 
-  margin: 0 var(--e-gutter);
+  margin-inline: var(--e-gutter);
 }
 
 .head,

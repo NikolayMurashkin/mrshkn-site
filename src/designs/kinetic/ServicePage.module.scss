@@ -16,6 +16,8 @@
   align-self: flex-start;
   gap: var(--space-8);
   font-size: 14px;
+  padding-block: calc((44px - 1lh) / 2);
+  margin-block: calc((1lh - 44px) / 2);
   color: var(--muted);
   transition: color var(--duration-fast) var(--ease-out);
 

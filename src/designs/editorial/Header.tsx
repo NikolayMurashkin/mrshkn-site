@@ -4,7 +4,7 @@ import { MoonIcon } from '@/components/icons';
 import { LocaleSwitcher } from '@/components/LocaleSwitcher';
 import { ThemeToggle } from '@/components/ThemeToggle';
 import { SERVICES } from '@/content/services';
-import { usePathname } from '@/i18n/navigation';
+import { Link, usePathname } from '@/i18n/navigation';
 import { WORK_NAV_ITEM } from '../consts';
 import { visibleNavItems } from '../nav';
 import type { HeaderProps } from '../types';
@@ -53,13 +53,14 @@ export const EditorialHeader = ({ hasCases }: HeaderProps) => {
             </ThemeToggle>
           </div>
         </div>
-        <span
+        <Link
           className={styles.wordmark}
+          href="/"
           translate="no"
           data-testid="brand"
         >
           {t('brand.name')}
-        </span>
+        </Link>
         <span className={styles.tagline}>
           <span translate="no">{t('brand.tagline')}</span> · {t('header.founded')}
         </span>

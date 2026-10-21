@@ -3,7 +3,7 @@ import { useMemo } from 'react';
 import { LocaleSwitcher } from '@/components/LocaleSwitcher';
 import { ThemeToggle } from '@/components/ThemeToggle';
 import { SERVICES } from '@/content/services';
-import { usePathname } from '@/i18n/navigation';
+import { Link, usePathname } from '@/i18n/navigation';
 import { NAV_ITEMS, WORK_NAV_ITEM } from '../consts';
 import { visibleNavItems } from '../nav';
 import type { HeaderProps } from '../types';
@@ -35,13 +35,14 @@ export const SwissHeader = ({ hasCases }: HeaderProps) => {
 
   return (
     <header className={styles.header}>
-      <span
+      <Link
         className={styles.wordmark}
+        href="/"
         translate="no"
         data-testid="brand"
       >
         {t('brand.name')}
-      </span>
+      </Link>
       <span
         className={styles.tagline}
         translate="no"
