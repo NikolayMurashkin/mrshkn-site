@@ -5,13 +5,13 @@ import { sendMail } from '@/lib/delivery/mail';
 import { sendTelegram } from '@/lib/delivery/telegram';
 import { LEAD_ADMIN_PATH, LEAD_SAVE_TIMEOUT_MS } from './consts';
 import { formatLead } from './lead';
-import type { Lead, LeadChannel } from './types';
+import type { Lead, LeadChannel, LeadRecord } from './types';
 
 /**
  * Запись в базу не бросает: ее сбой — один из каналов, а не повод не звать бота и почту. Зависшая запись тоже сбой:
  * через `LEAD_SAVE_TIMEOUT_MS` бот и почта уходят без ссылки, таймер снимается, как только запись ответила.
  */
-const recordLead = async (lead: Lead) => {
+export const recordLead = async (lead: Lead): Promise<LeadRecord> => {
   let timer: ReturnType<typeof setTimeout> | undefined;
   const timeout = new Promise<never>((_, reject) => {
     timer = setTimeout(
@@ -30,12 +30,11 @@ const recordLead = async (lead: Lead) => {
 };
 
 /**
- * Заявку теряет только молчание всех трех каналов. Запись в базу идет первой: бот и письмо несут ссылку на карточку
- * в админке; запись не удалась — уходит тот же текст без ссылки. Бот и почта идут параллельно, чтобы упавший канал
- * не уносил с собой второй; ошибки собираются и пишутся в лог.
+ * Бот и письмо после записи в базу: несут ссылку на карточку в админке, запись не удалась — тот же текст без ссылки.
+ * Заявку теряет только молчание всех трех каналов. Бот и почта идут параллельно, чтобы упавший канал не уносил с собой
+ * второй; ошибки, вместе со сбоем записи, собираются и пишутся в лог. Не бросает.
  */
-export const deliverLead = async (lead: Lead) => {
-  const record = await recordLead(lead);
+export const notifyLead = async (lead: Lead, record: LeadRecord) => {
   const text =
     record.id === null
       ? formatLead(lead)

@@ -60,3 +60,6 @@ export type LeadStage = (typeof LEAD_STAGES)[number];
 
 /** Канал, в который уходит заявка: запись в базу сайта, бот и почта. */
 export type LeadChannel = 'crm' | 'telegram' | 'mail';
+
+/** Итог записи заявки в базу: id карточки или ошибка — отказ и таймаут записи. */
+export type LeadRecord = { id: number; error: null } | { id: null; error: unknown };

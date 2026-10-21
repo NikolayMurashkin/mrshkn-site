@@ -23,7 +23,28 @@ import type { User } from '@/payload-types';
  * вызывается напрямую с `NextRequest`, Payload настоящий; Telegram и почта — заглушки на случайных портах,
  * адреса каналов подменяются через env до вызова. Права — REST-обработчики Payload без входа и Local API
  * с `overrideAccess: false`.
+ *
+ * Бот и почта могут уходить после ответа через `after()` из `next/server`, а он вне запроса Next бросает: подмена
+ * запускает задачу на следующем тике, как Next после ответа, и хранит ее промис — тест дожидается задач,
+ * чтобы каналы одного сценария не писали в лог и заглушки следующего.
  */
+
+const afterTasks = vi.hoisted(() => [] as Promise<unknown>[]);
+
+vi.mock('next/server', async (importOriginal) => {
+  const actual = await importOriginal<typeof import('next/server')>();
+
+  return {
+    ...actual,
+    after: (task: unknown) => {
+      afterTasks.push(
+        new Promise((resolve) => setImmediate(resolve))
+          .then(() => (typeof task === 'function' ? (task as () => unknown)() : task))
+          .catch(() => undefined),
+      );
+    },
+  };
+});
 
 const PASSWORD = 'integration-password';
 
@@ -412,6 +433,10 @@ beforeEach(() => {
 });
 
 afterEach(async () => {
+  while (afterTasks.length) {
+    await Promise.allSettled(afterTasks.splice(0));
+  }
+
   vi.restoreAllMocks();
 
   if (leadsInConfig()) {

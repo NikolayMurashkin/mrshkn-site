@@ -1,6 +1,6 @@
-import { NextResponse, type NextRequest } from 'next/server';
+import { after, NextResponse, type NextRequest } from 'next/server';
 import { LEAD_RATE_LIMIT, UTM_COOKIE } from '@/lib/brief/consts';
-import { deliverLead } from '@/lib/brief/delivery';
+import { notifyLead, recordLead } from '@/lib/brief/delivery';
 import { parseLead, parseMarks } from '@/lib/brief/lead';
 import { createRateLimiter } from '@/lib/brief/rate-limit';
 
@@ -54,7 +54,20 @@ export const POST = async (request: NextRequest) => {
     return NextResponse.json({ ok: false, reason: result.reason }, { status: 422 });
   }
 
-  const { delivered, failed } = await deliverLead(result.lead);
+  const { lead } = result;
+  const record = await recordLead(lead);
+
+  /**
+   * Заявка в базе — посетитель получает ответ сразу, бот и почта уходят после ответа: медленный канал не держит форму,
+   * сбой остается строкой в логе. Запись не прошла — ответ ждет каналы: только они и сохраняют заявку.
+   */
+  if (record.id !== null) {
+    after(() => notifyLead(lead, record));
+
+    return NextResponse.json({ ok: true });
+  }
+
+  const { delivered, failed } = await notifyLead(lead, record);
 
   if (!delivered) {
     return NextResponse.json({ ok: false, reason: 'delivery', failed }, { status: 502 });
