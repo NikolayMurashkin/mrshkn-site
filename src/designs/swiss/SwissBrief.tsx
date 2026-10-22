@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { BRIEF_STEP_REQUIRED } from '@/components/Brief/consts';
 import type { BriefProps } from '@/components/Brief/types';
 import { useBrief } from '@/components/Brief/use-brief';
+import { useHydrated } from '@/components/Brief/use-hydrated';
 import { useStepFocus } from '@/components/Brief/use-step-focus';
 import { Link } from '@/i18n/navigation';
 import {
@@ -42,6 +43,7 @@ export const SwissBrief = ({ design, plan, niche }: BriefProps) => {
   } = useBrief({ design, plan, niche });
   const [touched, setTouched] = useState<readonly string[]>([]);
   const stepTitle = useStepFocus(step);
+  const hydrated = useHydrated();
 
   const touch = (field: string) => () => setTouched((fields) => (fields.includes(field) ? fields : [...fields, field]));
 
@@ -98,6 +100,7 @@ export const SwissBrief = ({ design, plan, niche }: BriefProps) => {
               selected={answers.product}
               labelOf={(value) => (value === 'other' ? t('products.other') : plans(`${value}.name`))}
               onPick={pick}
+              disabled={!hydrated}
             />
           ) : null}
 
@@ -108,6 +111,7 @@ export const SwissBrief = ({ design, plan, niche }: BriefProps) => {
               selected={answers.niche}
               labelOf={(value) => t(`niches.${value}`)}
               onPick={pick}
+              disabled={!hydrated}
             />
           ) : null}
 
@@ -129,6 +133,7 @@ export const SwissBrief = ({ design, plan, niche }: BriefProps) => {
                   selected={answers.timing}
                   labelOf={(value) => t(`timings.${value}`)}
                   onPick={pick}
+                  disabled={!hydrated}
                 />
               </div>
               <div className={styles.group}>
@@ -139,6 +144,7 @@ export const SwissBrief = ({ design, plan, niche }: BriefProps) => {
                   selected={answers.budget}
                   labelOf={(value) => t(`budgets.${value}`)}
                   onPick={pick}
+                  disabled={!hydrated}
                 />
               </div>
             </div>
@@ -272,7 +278,7 @@ export const SwissBrief = ({ design, plan, niche }: BriefProps) => {
               type="button"
               className={`${styles.button} ${styles.primary}`}
               data-testid="brief-next"
-              disabled={!filled}
+              disabled={!hydrated || !filled}
               onClick={next}
             >
               {t('next')}

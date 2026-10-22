@@ -55,14 +55,6 @@ const http = createServer(async (request, response) => {
     return;
   }
 
-  if (request.method === 'DELETE' && url.pathname === '/calls') {
-    calls.length = 0;
-    response.writeHead(204);
-    response.end();
-
-    return;
-  }
-
   if (request.method === 'POST' && url.pathname.startsWith('/telegram/')) {
     calls.push({ channel: 'telegram', body: await readBody(request) });
     response.writeHead(200, { 'content-type': 'application/json' });

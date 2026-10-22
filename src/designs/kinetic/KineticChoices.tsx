@@ -2,7 +2,7 @@ import { CheckIcon } from './icons';
 import type { KineticChoicesProps } from './types';
 import styles from './KineticBrief.module.scss';
 
-export const KineticChoices = ({ field, values, selected, labelOf, onPick }: KineticChoicesProps) => (
+export const KineticChoices = ({ field, values, selected, labelOf, onPick, disabled }: KineticChoicesProps) => (
   <div className={styles.choices}>
     {values.map((value) => (
       <button
@@ -12,6 +12,7 @@ export const KineticChoices = ({ field, values, selected, labelOf, onPick }: Kin
         data-testid="brief-option"
         data-value={value}
         aria-pressed={selected === value}
+        disabled={disabled}
         onClick={() => onPick(field, value)}
       >
         {selected === value ? <CheckIcon /> : null}

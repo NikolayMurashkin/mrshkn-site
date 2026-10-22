@@ -1,7 +1,7 @@
 import type { PopChoicesProps } from './types';
 import styles from './PopBrief.module.scss';
 
-export const PopChoices = ({ field, values, selected, labelOf, onPick }: PopChoicesProps) => (
+export const PopChoices = ({ field, values, selected, labelOf, onPick, disabled }: PopChoicesProps) => (
   <div className={styles.choices}>
     {values.map((value) => (
       <button
@@ -11,6 +11,7 @@ export const PopChoices = ({ field, values, selected, labelOf, onPick }: PopChoi
         data-testid="brief-option"
         data-value={value}
         aria-pressed={selected === value}
+        disabled={disabled}
         onClick={() => onPick(field, value)}
       >
         {labelOf(value)}

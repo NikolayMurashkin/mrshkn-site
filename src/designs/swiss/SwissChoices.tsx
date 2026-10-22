@@ -1,7 +1,7 @@
 import type { SwissChoicesProps } from './types';
 import styles from './SwissBrief.module.scss';
 
-export const SwissChoices = ({ field, values, selected, labelOf, onPick }: SwissChoicesProps) => (
+export const SwissChoices = ({ field, values, selected, labelOf, onPick, disabled }: SwissChoicesProps) => (
   <div className={styles.choices}>
     {values.map((value) => (
       <button
@@ -11,6 +11,7 @@ export const SwissChoices = ({ field, values, selected, labelOf, onPick }: Swiss
         data-testid="brief-option"
         data-value={value}
         aria-pressed={selected === value}
+        disabled={disabled}
         onClick={() => onPick(field, value)}
       >
         {labelOf(value)}

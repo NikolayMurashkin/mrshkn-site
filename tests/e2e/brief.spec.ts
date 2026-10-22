@@ -1,3 +1,4 @@
+import { randomUUID } from 'node:crypto';
 import { expect, test, type APIRequestContext, type Page } from '@playwright/test';
 import { HONEYPOT_FIELD } from '@/lib/brief/consts';
 import { DESIGNS, SINK_BASE_URL } from './consts';
@@ -29,7 +30,11 @@ const ANSWERS = {
   comment: 'Нужна запись к врачу внутри Telegram.',
 };
 
-const resetSink = (request: APIRequestContext) => request.delete(`${SINK_BASE_URL}/calls`);
+/**
+ * Маркер заявки уникален на каждую копию теста: приемник общий, копии идут параллельно, записи отбираются по маркеру.
+ * UUID фиксированной длины — маркер одной копии не бывает началом маркера другой, как `…-1` у `…-12`.
+ */
+const markerOf = (prefix: string) => `${prefix} ${randomUUID()}`;
 
 const callsOf = async (request: APIRequestContext, marker: string) => {
   const response = await request.get(`${SINK_BASE_URL}/calls`);
@@ -68,16 +73,12 @@ const leadPayload = (marker: string, overrides: Record<string, unknown> = {}) =>
 });
 
 test.describe('квиз и заявка', () => {
-  /** Приемник общий на файл, тесты очищают его → строки файла идут по очереди в одном воркере, а не параллельно. */
-  test.describe.configure({ mode: 'default' });
-
   test('заявка уходит в бот и на почту с источником, нишей, стилем и метками, бот — со ссылкой на карточку', async ({
     page,
     request,
   }) => {
-    const marker = `Проба бота ${Date.now()}`;
+    const marker = markerOf('Проба бота');
 
-    await resetSink(request);
     await page.goto(`/ru?${new URLSearchParams(MARKS)}`);
     await page.getByRole('main').locator('section').first().getByRole('link').first().click();
 
@@ -116,7 +117,7 @@ test.describe('квиз и заявка', () => {
    */
   for (const design of DESIGNS) {
     test(`квиз ${design} доходит до «спасибо», заявка уходит во все каналы`, async ({ page, request }) => {
-      const marker = `Проба ${design} ${Date.now()}`;
+      const marker = markerOf(`Проба ${design}`);
 
       await openDesign(page, design, { path: '/brief' });
       await walkBrief(page, marker);
@@ -132,9 +133,8 @@ test.describe('квиз и заявка', () => {
   }
 
   test('без чекбокса согласия кнопка не нажимается, а прямой запрос отвергается', async ({ page, request }) => {
-    const marker = `Проба согласия ${Date.now()}`;
+    const marker = markerOf('Проба согласия');
 
-    await resetSink(request);
     await page.goto('/ru/brief');
     await walkBrief(page, marker);
 
@@ -157,9 +157,7 @@ test.describe('квиз и заявка', () => {
   });
 
   test('заполненный honeypot: ответ 200 и ни одной отправки', async ({ request }) => {
-    const marker = `Проба ловушки ${Date.now()}`;
-
-    await resetSink(request);
+    const marker = markerOf('Проба ловушки');
 
     const response = await request.post('/api/brief', {
       data: leadPayload(marker, { [HONEYPOT_FIELD]: 'ООО «Бот»' }),

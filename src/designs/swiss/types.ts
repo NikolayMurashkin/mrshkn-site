@@ -14,6 +14,7 @@ export type SwissChoicesProps = {
   selected: string;
   labelOf: (value: string) => string;
   onPick: (field: BriefChoice, value: string) => void;
+  disabled: boolean;
 };
 
 export type SwissDesignChoiceProps = {
