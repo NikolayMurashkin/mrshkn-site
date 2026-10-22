@@ -1,17 +1,19 @@
 import { useTranslations } from 'next-intl';
 import { CaseImage } from '@/components/CaseImage';
 import { CASE_CARD_SIZES } from '@/components/consts';
-import { CARD_METRICS_LIMIT, caseHref } from '@/content/work';
+import { CARD_METRICS_LIMIT, caseHref, WORK_PAGE_PATH } from '@/content/work';
 import { Link } from '@/i18n/navigation';
 import { DESIGN_LABELS } from '../consts';
 import type { WorksProps } from '../types';
+import { worksView } from '../works';
 import { ArrowUpRightIcon } from './icons';
 import { SectionHead } from './SectionHead';
 import styles from './Works.module.scss';
 
-export const KineticWorks = ({ cases }: WorksProps) => {
+export const KineticWorks = ({ cases, variant = 'home' }: WorksProps) => {
   const t = useTranslations('work');
   const niches = useTranslations('brief.niches');
+  const { shown, hasMore } = worksView(cases, variant);
 
   if (cases.length === 0) {
     return null;
@@ -19,7 +21,7 @@ export const KineticWorks = ({ cases }: WorksProps) => {
 
   return (
     <section
-      className={styles.works}
+      className={variant === 'page' ? `${styles.works} ${styles.page}` : styles.works}
       data-testid="works"
       id="work"
       aria-labelledby="work-heading"
@@ -29,9 +31,10 @@ export const KineticWorks = ({ cases }: WorksProps) => {
         kicker={t('kineticKicker')}
         title={t('heading')}
         note={t('note')}
+        level={variant === 'page' ? 'h1' : 'h2'}
       />
       <ul className={styles.list}>
-        {cases.map((item) => (
+        {shown.map((item) => (
           <li
             className={styles.card}
             data-testid="case-card"
@@ -55,7 +58,8 @@ export const KineticWorks = ({ cases }: WorksProps) => {
                 </Link>
               </h3>
               <span className={styles.meta}>
-                {niches(item.niche)} · {t('design', { design: DESIGN_LABELS[item.design] })}
+                {niches(item.niche)}
+                {item.design ? ` · ${t('design', { design: DESIGN_LABELS[item.design] })}` : null}
               </span>
               {item.metrics.length > 0 ? (
                 <ul className={styles.metrics}>
@@ -86,6 +90,14 @@ export const KineticWorks = ({ cases }: WorksProps) => {
           </li>
         ))}
       </ul>
+      {hasMore ? (
+        <Link
+          className={styles.all}
+          href={WORK_PAGE_PATH}
+        >
+          {t('allLink')}
+        </Link>
+      ) : null}
     </section>
   );
 };

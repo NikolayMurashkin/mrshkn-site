@@ -278,14 +278,19 @@
       "client": "Клиент"
     },
     "demoLink": "Открыть демо",
+    "appLink": "Открыть Mini App",
+    "allLink": "Все работы",
     "design": "Стиль: {design}",
     "back": "Все кейсы",
     "task": "Задача",
     "solution": "Решение",
+    "stack": "Стек",
     "results": "Технические результаты",
     "lighthouse": "Скрин Lighthouse",
     "metaTitle": "{title} — MRSHKN",
-    "metaDescription": "Кейс студии MRSHKN: {title}."
+    "metaDescription": "Кейс студии MRSHKN: {title}.",
+    "pageTitle": "Кейсы — MRSHKN",
+    "pageDescription": "Демо-проекты студии MRSHKN: задача, решение, стек и измеримые технические результаты."
   },
   "process": {
     "heading": "Как проходят две недели",

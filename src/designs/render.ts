@@ -6,7 +6,7 @@ export const renderSection = (components: DesignComponents, props: SectionProps)
     case 'header':
       return createElement(components.header, { hasCases: props.hasCases });
     case 'works':
-      return createElement(components.works, { cases: props.cases });
+      return createElement(components.works, { cases: props.cases, variant: props.variant });
     case 'case':
       return createElement(components.case, { caseItem: props.caseItem });
     case 'brief':

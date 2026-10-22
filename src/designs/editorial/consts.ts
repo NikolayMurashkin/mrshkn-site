@@ -6,8 +6,6 @@ export const EDITORIAL_NAV_ITEMS = ['services', 'work', 'prices', 'process', 'co
  */
 export const EDITORIAL_NAV_OFFSET = 47;
 
-export const WORK_PATH_PREFIX = '/work/';
-
 export const EDITORIAL_STUDIO_EMAIL = 'hello@mrshkn.com';
 
 /** Раскладка «Кейсов» по числу материалов: один — на 12 колонок, два — 7 + 5, три и больше — разворот DS. */

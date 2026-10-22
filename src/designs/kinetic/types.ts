@@ -15,6 +15,7 @@ export type SectionHeadProps = {
   kicker: string;
   title: ReactNode;
   note?: string;
+  level?: 'h1' | 'h2';
 };
 
 export type ArrowIconProps = {

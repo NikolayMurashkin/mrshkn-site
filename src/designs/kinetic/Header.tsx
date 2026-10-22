@@ -5,7 +5,7 @@ import { ThemeToggle } from '@/components/ThemeToggle';
 import { Link } from '@/i18n/navigation';
 import { BRIEF_HREF } from '@/lib/brief/consts';
 import { NAV_ITEMS } from '../consts';
-import { visibleNavItems } from '../nav';
+import { navHref, visibleNavItems } from '../nav';
 import type { HeaderProps } from '../types';
 import { buttonClass } from './button';
 import { useActiveSection, useScrolled } from './use-header';
@@ -41,7 +41,7 @@ export const KineticHeader = ({ hasCases }: HeaderProps) => {
           {items.map((item) => (
             <a
               key={item}
-              href={`/${locale}#${item}`}
+              href={navHref(locale, item)}
               aria-current={active === item ? 'true' : undefined}
             >
               {t(`nav.${item}`)}

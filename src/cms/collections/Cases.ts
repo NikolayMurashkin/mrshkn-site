@@ -1,7 +1,15 @@
 import type { CollectionConfig } from 'payload';
 import { isSignedIn, publishedOrSignedIn } from '../access';
 import { DESIGN_LABELS, DESIGN_NAMES } from '../../designs/consts';
-import { CASE_KIND_LABELS, CASE_KINDS, CASE_NICHES, SLUG_ADMIN } from '../consts';
+import {
+  CASE_KIND_LABELS,
+  CASE_KINDS,
+  CASE_NICHES,
+  CASE_PUBLISH_DEMO_MESSAGE,
+  CASE_PUBLISH_LIGHTHOUSE_MESSAGE,
+  SLUG_ADMIN,
+} from '../consts';
+import { textRequiredOnPublish, uploadRequiredOnPublish } from '../publication';
 import { fillSlug, validateSlug } from '../slug';
 
 export const Cases: CollectionConfig = {
@@ -35,10 +43,17 @@ export const Cases: CollectionConfig = {
       name: 'design',
       type: 'select',
       label: 'Направление',
-      required: true,
+      admin: { description: 'Пусто — строки «Стиль» на сайте нет: у кейса свой дизайн, не направление сайта.' },
       options: DESIGN_NAMES.map((value) => ({ value, label: DESIGN_LABELS[value] })),
     },
-    { name: 'demoUrl', type: 'text', label: 'Ссылка на демо' },
+    {
+      name: 'demoUrl',
+      type: 'text',
+      label: 'Ссылка на демо',
+      admin: { description: 'Нужна для публикации.' },
+      validate: textRequiredOnPublish(CASE_PUBLISH_DEMO_MESSAGE),
+    },
+    { name: 'appUrl', type: 'text', label: 'Ссылка на Mini App' },
     { name: 'cover', type: 'upload', relationTo: 'media', label: 'Обложка', required: true },
     { name: 'coverCaption', type: 'text', label: 'Подпись к обложке', localized: true },
     {
@@ -56,6 +71,13 @@ export const Cases: CollectionConfig = {
       admin: { description: 'Абзацы разделяет пустая строка.' },
     },
     {
+      name: 'stack',
+      type: 'text',
+      hasMany: true,
+      label: 'Стек',
+      admin: { description: 'Технологии по одной, в порядке показа.' },
+    },
+    {
       name: 'metrics',
       type: 'array',
       label: 'Технические результаты',
@@ -65,6 +87,13 @@ export const Cases: CollectionConfig = {
         { name: 'label', type: 'text', label: 'Подпись', required: true, localized: true },
       ],
     },
-    { name: 'lighthouse', type: 'upload', relationTo: 'media', label: 'Скрин Lighthouse' },
+    {
+      name: 'lighthouse',
+      type: 'upload',
+      relationTo: 'media',
+      label: 'Скрин Lighthouse',
+      admin: { description: 'Нужен для публикации.' },
+      validate: uploadRequiredOnPublish(CASE_PUBLISH_LIGHTHOUSE_MESSAGE),
+    },
   ],
 };

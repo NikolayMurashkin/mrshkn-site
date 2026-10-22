@@ -1,15 +1,18 @@
 import { useTranslations } from 'next-intl';
 import { CaseImage } from '@/components/CaseImage';
 import { CASE_CARD_SIZES } from '@/components/consts';
-import { CARD_METRICS_LIMIT, caseHref } from '@/content/work';
+import { CARD_METRICS_LIMIT, caseHref, WORK_PAGE_PATH } from '@/content/work';
 import { Link } from '@/i18n/navigation';
 import { DESIGN_LABELS } from '../consts';
 import type { WorksProps } from '../types';
+import { worksView } from '../works';
 import styles from './Works.module.scss';
 
-export const TerminalWorks = ({ cases }: WorksProps) => {
+export const TerminalWorks = ({ cases, variant = 'home' }: WorksProps) => {
   const t = useTranslations('work');
   const niches = useTranslations('brief.niches');
+  const { shown, hasMore } = worksView(cases, variant);
+  const Heading = variant === 'page' ? 'h1' : 'h2';
 
   if (cases.length === 0) {
     return null;
@@ -17,18 +20,18 @@ export const TerminalWorks = ({ cases }: WorksProps) => {
 
   return (
     <section
-      className={styles.works}
+      className={variant === 'page' ? `${styles.works} ${styles.page}` : styles.works}
       data-testid="works"
       id="work"
       aria-labelledby="work-heading"
     >
       <div className={styles.head}>
-        <h2
+        <Heading
           className={styles.heading}
           id="work-heading"
         >
           {t('heading')}
-        </h2>
+        </Heading>
         <p className={styles.note}>
           <span
             className={styles.prompt}
@@ -40,7 +43,7 @@ export const TerminalWorks = ({ cases }: WorksProps) => {
         </p>
       </div>
       <ul className={styles.list}>
-        {cases.map((item) => (
+        {shown.map((item) => (
           <li
             className={styles.card}
             data-testid="case-card"
@@ -72,7 +75,8 @@ export const TerminalWorks = ({ cases }: WorksProps) => {
                 </Link>
               </h3>
               <span className={styles.meta}>
-                {niches(item.niche)} · {t('design', { design: DESIGN_LABELS[item.design] })}
+                {niches(item.niche)}
+                {item.design ? ` · ${t('design', { design: DESIGN_LABELS[item.design] })}` : null}
               </span>
               {item.metrics.length > 0 ? (
                 <ul className={styles.metrics}>
@@ -102,6 +106,14 @@ export const TerminalWorks = ({ cases }: WorksProps) => {
           </li>
         ))}
       </ul>
+      {hasMore ? (
+        <Link
+          className={styles.all}
+          href={WORK_PAGE_PATH}
+        >
+          {t('allLink')}
+        </Link>
+      ) : null}
     </section>
   );
 };

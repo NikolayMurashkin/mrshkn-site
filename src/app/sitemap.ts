@@ -1,6 +1,6 @@
 import type { MetadataRoute } from 'next';
 import { getCases } from '@/cms/cases';
-import { caseHref } from '@/content/work';
+import { caseHref, WORK_PAGE_PATH } from '@/content/work';
 import { LOCALES } from '@/i18n/consts';
 import type { SiteLocale } from '@/i18n/types';
 import { SITE_URL } from '@/lib/consts';
@@ -15,10 +15,15 @@ const entry = (locale: SiteLocale, path: string): MetadataRoute.Sitemap[number] 
   alternates: { languages: languageAlternates(path, SITE_URL) },
 });
 
-/** Без CMS карта сайта отдает статические страницы, а не 500; ошибка остается в логе. */
+/**
+ * Страница всех кейсов и страницы кейсов — только при опубликованных кейсах: без них `/work` отдает 404.
+ * Без CMS карта сайта отдает статические страницы, а не 500; ошибка остается в логе.
+ */
 const casePaths = async (locale: SiteLocale): Promise<string[]> => {
   try {
-    return (await getCases(locale)).map(({ slug }) => caseHref(slug));
+    const cases = await getCases(locale);
+
+    return cases.length > 0 ? [WORK_PAGE_PATH, ...cases.map(({ slug }) => caseHref(slug))] : [];
   } catch (error) {
     console.error(`sitemap: кейсы (${locale}) не прочитаны`, error);
 

@@ -17,8 +17,11 @@ type DataSectionName = 'header' | 'works' | 'case' | 'brief' | 'servicePage' | '
 /** Пропсы шапки: пункт «Кейсы» показывается, только если кейсы есть. */
 export type HeaderProps = { hasCases: boolean };
 
-/** Пропсы секции «Работы»: опубликованные кейсы в порядке показа. */
-export type WorksProps = { cases: CaseCard[] };
+/** Где стоит секция «Работы»: на главной — самые новые кейсы и ссылка на все, на странице `/work` — все. */
+export type WorksVariant = 'home' | 'page';
+
+/** Пропсы секции «Работы»: опубликованные кейсы в порядке показа; `variant` по умолчанию `'home'`. */
+export type WorksProps = { cases: CaseCard[]; variant?: WorksVariant };
 
 /** Пропсы страницы кейса. */
 export type CaseProps = { caseItem: CaseDetail };

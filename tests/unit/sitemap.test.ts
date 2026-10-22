@@ -36,6 +36,9 @@ const staticUrls = () => LOCALES.flatMap((locale) => EXPECTED_PAGES.map((path) =
 
 const caseUrls = () => LOCALES.flatMap((locale) => CASE_SLUGS.map((slug) => pageUrl(locale, `/work/${slug}`)));
 
+/** Страница всех кейсов есть в карте, только когда есть кейсы. */
+const workUrls = () => LOCALES.map((locale) => pageUrl(locale, '/work'));
+
 const urlsOf = (entries: Awaited<ReturnType<typeof sitemap>>) => entries.map((entry) => entry.url);
 
 /** Путь страницы без локали для адреса из карты сайта: по нему проверяются ее языковые версии. */
@@ -61,11 +64,11 @@ describe('список страниц сайта', () => {
 });
 
 describe('sitemap()', () => {
-  it('S1: все страницы в обоих языках и кейсы каждой локали, абсолютными адресами, без дублей', async () => {
+  it('S1: все страницы в обоих языках, /work и кейсы каждой локали, абсолютными адресами, без дублей', async () => {
     const urls = urlsOf(await sitemap());
 
-    expect(new Set(urls)).toEqual(new Set([...staticUrls(), ...caseUrls()]));
-    expect(urls).toHaveLength(staticUrls().length + caseUrls().length);
+    expect(new Set(urls)).toEqual(new Set([...staticUrls(), ...workUrls(), ...caseUrls()]));
+    expect(urls).toHaveLength(staticUrls().length + workUrls().length + caseUrls().length);
 
     for (const url of urls) {
       expect(url.startsWith(SITE_URL), `${url}: абсолютный адрес`).toBe(true);
@@ -101,16 +104,16 @@ describe('sitemap()', () => {
     }
   });
 
-  it('S4: кейсов нет — все статические страницы обеих локалей и ни одного /work/', async () => {
+  it('S4: кейсов нет — все статические страницы обеих локалей и ни одного /work', async () => {
     vi.mocked(getCases).mockResolvedValue([]);
 
     const urls = urlsOf(await sitemap());
 
     expect(new Set(urls)).toEqual(new Set(staticUrls()));
-    expect(urls.some((url) => url.includes('/work/'))).toBe(false);
+    expect(urls.some((url) => url.includes('/work'))).toBe(false);
   });
 
-  it('S5: CMS недоступна — статические страницы обеих локалей без /work/, ошибка в console.error', async () => {
+  it('S5: CMS недоступна — статические страницы обеих локалей без /work, ошибка в console.error', async () => {
     const error = vi.spyOn(console, 'error').mockImplementation(() => {});
 
     vi.mocked(getCases).mockRejectedValue(new Error('database is down'));
@@ -118,7 +121,7 @@ describe('sitemap()', () => {
     const urls = urlsOf(await sitemap());
 
     expect(new Set(urls)).toEqual(new Set(staticUrls()));
-    expect(urls.some((url) => url.includes('/work/'))).toBe(false);
+    expect(urls.some((url) => url.includes('/work'))).toBe(false);
     expect(error).toHaveBeenCalled();
   });
 });

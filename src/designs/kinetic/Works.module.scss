@@ -155,6 +155,21 @@
   }
 }
 
+.all {
+  align-self: flex-start;
+  padding-block: calc((44px - 1lh) / 2);
+  margin-block: calc((1lh - 44px) / 2);
+  font-weight: 600;
+  color: var(--accent-ink);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  transition: color var(--duration-fast) var(--ease-out);
+
+  &:hover {
+    color: var(--ink);
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .image,
   .demo svg {
@@ -181,4 +196,8 @@
   .list {
     grid-template-columns: minmax(0, 1fr);
   }
+}
+
+.page {
+  padding-top: var(--space-40);
 }

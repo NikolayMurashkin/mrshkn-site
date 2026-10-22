@@ -17,7 +17,7 @@ const toCard = ({ title, slug, kind, niche, design, demoUrl, metrics, cover, cov
     slug,
     kind,
     niche,
-    design,
+    design: design ?? null,
     demoUrl: demoUrl ?? null,
     metrics: (metrics ?? []).map(({ value, label }) => ({ value, label })),
     cover: image,
@@ -28,7 +28,16 @@ const toCard = ({ title, slug, kind, niche, design, demoUrl, metrics, cover, cov
 const toDetail = (doc: Case): CaseDetail | null => {
   const card = toCard(doc);
 
-  return card && { ...card, task: doc.task ?? '', solution: doc.solution ?? '', lighthouse: toImage(doc.lighthouse) };
+  return (
+    card && {
+      ...card,
+      task: doc.task ?? '',
+      solution: doc.solution ?? '',
+      stack: (doc.stack ?? []).map((item) => item.trim()).filter(Boolean),
+      appUrl: doc.appUrl?.trim() || null,
+      lighthouse: toImage(doc.lighthouse),
+    }
+  );
 };
 
 /**

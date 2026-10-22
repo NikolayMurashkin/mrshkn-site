@@ -5,10 +5,10 @@ import { ThemeToggle } from '@/components/ThemeToggle';
 import { SERVICES } from '@/content/services';
 import { Link, usePathname } from '@/i18n/navigation';
 import { NAV_ITEMS, WORK_NAV_ITEM } from '../consts';
-import { visibleNavItems } from '../nav';
+import { isWorkPath, navHref, visibleNavItems } from '../nav';
 import type { HeaderProps } from '../types';
 import { useActiveSection } from '../use-active-section';
-import { SWISS_HEADER_OFFSET, WORK_PATH_PREFIX } from './consts';
+import { SWISS_HEADER_OFFSET } from './consts';
 import { SunIcon } from './icons';
 import styles from './Header.module.scss';
 
@@ -18,7 +18,7 @@ export const SwissHeader = ({ hasCases }: HeaderProps) => {
   const pathname = usePathname();
   const items = useMemo(() => visibleNavItems(NAV_ITEMS, hasCases), [hasCases]);
   const active = useActiveSection(items, pathname === '/', SWISS_HEADER_OFFSET);
-  const onCase = pathname.startsWith(WORK_PATH_PREFIX);
+  const onCase = isWorkPath(pathname);
   const onService = SERVICES.some((service) => pathname === `/${service.slug}`);
 
   const current = (item: string) => {
@@ -53,7 +53,7 @@ export const SwissHeader = ({ hasCases }: HeaderProps) => {
         {items.map((item) => (
           <a
             key={item}
-            href={`/${locale}#${item}`}
+            href={navHref(locale, item)}
             aria-current={current(item)}
           >
             {t(`nav.${item}`)}

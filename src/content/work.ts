@@ -1,11 +1,17 @@
 /** Сколько метрик видно на карточке кейса; на странице кейса — все. */
 export const CARD_METRICS_LIMIT = 3;
 
+/** Сколько кейсов в секции «Работы» на главной — самые новые; остальные на странице всех кейсов. */
+export const HOME_CASES_LIMIT = 3;
+
+/** Страница всех кейсов без локали: `Link` из next-intl сам добавит префикс языка. */
+export const WORK_PAGE_PATH = '/work';
+
 /** Длина описания страницы кейса для поисковиков и шеринга. */
 const DESCRIPTION_MAX_LENGTH = 160;
 
 /** Адрес страницы кейса без локали: `Link` из next-intl сам добавит префикс языка. */
-export const caseHref = (slug: string) => `/work/${slug}`;
+export const caseHref = (slug: string) => `${WORK_PAGE_PATH}/${slug}`;
 
 /** Текст из админки: абзацы разделены пустой строкой. */
 export const splitParagraphs = (text: string) =>

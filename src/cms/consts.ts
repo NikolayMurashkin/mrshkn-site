@@ -85,6 +85,10 @@ export const CASE_KIND_LABELS: Record<(typeof CASE_KINDS)[number], string> = {
   client: 'Клиент',
 };
 
+export const CASE_PUBLISH_DEMO_MESSAGE = 'Без ссылки на демо кейс не публикуется';
+
+export const CASE_PUBLISH_LIGHTHOUSE_MESSAGE = 'Без скрина Lighthouse кейс не публикуется';
+
 /** Ниши те же, что на втором шаге квиза. */
 export const CASE_NICHES = BRIEF_STEP_VALUES.niche;
 

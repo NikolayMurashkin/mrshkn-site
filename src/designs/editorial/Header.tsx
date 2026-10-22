@@ -6,10 +6,10 @@ import { ThemeToggle } from '@/components/ThemeToggle';
 import { SERVICES } from '@/content/services';
 import { Link, usePathname } from '@/i18n/navigation';
 import { WORK_NAV_ITEM } from '../consts';
-import { visibleNavItems } from '../nav';
+import { isWorkPath, navHref, visibleNavItems } from '../nav';
 import type { HeaderProps } from '../types';
 import { useActiveSection } from '../use-active-section';
-import { EDITORIAL_NAV_ITEMS, EDITORIAL_NAV_OFFSET, WORK_PATH_PREFIX } from './consts';
+import { EDITORIAL_NAV_ITEMS, EDITORIAL_NAV_OFFSET } from './consts';
 import styles from './Header.module.scss';
 
 export const EditorialHeader = ({ hasCases }: HeaderProps) => {
@@ -18,7 +18,7 @@ export const EditorialHeader = ({ hasCases }: HeaderProps) => {
   const pathname = usePathname();
   const items = useMemo(() => visibleNavItems(EDITORIAL_NAV_ITEMS, hasCases), [hasCases]);
   const active = useActiveSection(items, pathname === '/', EDITORIAL_NAV_OFFSET);
-  const onCase = pathname.startsWith(WORK_PATH_PREFIX);
+  const onCase = isWorkPath(pathname);
   const onService = SERVICES.some((service) => pathname === `/${service.slug}`);
 
   const current = (item: string) => {
@@ -69,7 +69,7 @@ export const EditorialHeader = ({ hasCases }: HeaderProps) => {
         {items.map((item) => (
           <a
             key={item}
-            href={`/${locale}#${item}`}
+            href={navHref(locale, item)}
             aria-current={current(item)}
           >
             {t(`nav.${item}`)}

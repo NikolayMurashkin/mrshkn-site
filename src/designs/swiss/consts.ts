@@ -3,8 +3,6 @@ import { PROCESS_STEPS } from '@/content/process';
 /** Высота липкой шапки Swiss (22 + 40 + 22 + линия 1): линия, на которой `useActiveSection` считает раздел текущим. */
 export const SWISS_HEADER_OFFSET = 85;
 
-export const WORK_PATH_PREFIX = '/work/';
-
 export const SWISS_STUDIO_EMAIL = 'hello@mrshkn.com';
 
 /** Направляющие hero: по одной на колонку сетки; на 720 и уже CSS оставляет четыре. */

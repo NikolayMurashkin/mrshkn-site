@@ -168,6 +168,31 @@
   color: var(--accent-ink);
 }
 
+.all {
+  align-self: flex-start;
+  padding-block: calc((44px - 1lh) / 2);
+  margin-block: calc((1lh - 44px) / 2);
+  font-family: var(--font-display);
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--ink);
+  transition: color var(--duration-fast) var(--ease-out);
+
+  &::before {
+    content: s.decor('-> ');
+    color: var(--accent-ink);
+  }
+
+  &:hover {
+    color: var(--accent-ink);
+  }
+}
+
+.page {
+  padding-top: 48px;
+  border-top: 0;
+}
+
 @media (max-width: 1080px) {
   .list {
     grid-template-columns: repeat(2, minmax(0, 1fr));

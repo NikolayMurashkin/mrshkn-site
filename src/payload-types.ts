@@ -226,8 +226,15 @@ export interface Case {
   slug: string;
   kind: 'demo' | 'client';
   niche: 'clinic' | 'expert' | 'horeca' | 'startup' | 'other';
-  design: 'kinetic' | 'terminal' | 'pop' | 'swiss' | 'editorial';
+  /**
+   * Пусто — строки «Стиль» на сайте нет: у кейса свой дизайн, не направление сайта.
+   */
+  design?: ('kinetic' | 'terminal' | 'pop' | 'swiss' | 'editorial') | null;
+  /**
+   * Нужна для публикации.
+   */
   demoUrl?: string | null;
+  appUrl?: string | null;
   cover: number | Media;
   coverCaption?: string | null;
   /**
@@ -239,6 +246,10 @@ export interface Case {
    */
   solution?: string | null;
   /**
+   * Технологии по одной, в порядке показа.
+   */
+  stack?: string[] | null;
+  /**
    * На карточке видны первые три.
    */
   metrics?:
@@ -248,6 +259,9 @@ export interface Case {
         id?: string | null;
       }[]
     | null;
+  /**
+   * Нужен для публикации.
+   */
   lighthouse?: (number | null) | Media;
   updatedAt: string;
   createdAt: string;
@@ -665,10 +679,12 @@ export interface CasesSelect<T extends boolean = true> {
   niche?: T;
   design?: T;
   demoUrl?: T;
+  appUrl?: T;
   cover?: T;
   coverCaption?: T;
   task?: T;
   solution?: T;
+  stack?: T;
   metrics?:
     | T
     | {

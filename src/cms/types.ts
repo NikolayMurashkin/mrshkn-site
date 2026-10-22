@@ -13,18 +13,21 @@ export type CaseImage = {
 
 type CaseMetric = { value: string; label: string };
 
-/** Кейс, как его видит фронт: только поля карточки, без служебных полей Payload. */
-export type CaseCard = Pick<Case, 'title' | 'slug' | 'kind' | 'niche' | 'design'> & {
+/** Кейс, как его видит фронт: только поля карточки, без служебных полей Payload. Без направления — `null`. */
+export type CaseCard = Pick<Case, 'title' | 'slug' | 'kind' | 'niche'> & {
+  design: NonNullable<Case['design']> | null;
   demoUrl: string | null;
   metrics: CaseMetric[];
   cover: CaseImage;
   coverCaption: string | null;
 };
 
-/** Страница кейса: карточка плюс задача, решение и скрин Lighthouse. */
+/** Страница кейса: карточка плюс задача, решение, стек, ссылка на Mini App и скрин Lighthouse. */
 export type CaseDetail = CaseCard & {
   task: string;
   solution: string;
+  stack: string[];
+  appUrl: string | null;
   lighthouse: CaseImage | null;
 };
 

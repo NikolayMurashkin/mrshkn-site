@@ -13,8 +13,6 @@ export const TERMINAL_LOG_LINES: TerminalLogLine[] = [
 
 export const ANCHOR_OFFSET = 88;
 
-export const WORK_PATH_PREFIX = '/work/';
-
 export const PROCESS_SCALE_DAYS = Array.from({ length: 14 }, (_, index) => index + 1);
 
 export const PROCESS_KEY_DAYS: ReadonlySet<number> = new Set(PROCESS_STEPS.map((step) => step.day));

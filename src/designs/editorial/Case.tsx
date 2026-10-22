@@ -1,7 +1,8 @@
-import { useLocale, useTranslations } from 'next-intl';
+import { useTranslations } from 'next-intl';
 import { CaseImage } from '@/components/CaseImage';
 import { CASE_COVER_SIZES, CASE_SHOT_SIZES } from '@/components/consts';
-import { splitParagraphs } from '@/content/work';
+import { splitParagraphs, WORK_PAGE_PATH } from '@/content/work';
+import { Link } from '@/i18n/navigation';
 import { DESIGN_LABELS } from '../consts';
 import type { CaseProps } from '../types';
 import { ArrowLeftIcon, ArrowUpRightIcon } from './icons';
@@ -10,8 +11,21 @@ import styles from './Case.module.scss';
 export const EditorialCase = ({ caseItem }: CaseProps) => {
   const t = useTranslations('work');
   const niches = useTranslations('brief.niches');
-  const locale = useLocale();
-  const { title, kind, niche, design, demoUrl, cover, coverCaption, task, solution, metrics, lighthouse } = caseItem;
+  const {
+    title,
+    kind,
+    niche,
+    design,
+    demoUrl,
+    appUrl,
+    cover,
+    coverCaption,
+    task,
+    solution,
+    stack,
+    metrics,
+    lighthouse,
+  } = caseItem;
   const texts = [
     { id: 'task', paragraphs: splitParagraphs(task) },
     { id: 'solution', paragraphs: splitParagraphs(solution) },
@@ -22,33 +36,54 @@ export const EditorialCase = ({ caseItem }: CaseProps) => {
       className={styles.case}
       data-testid="case"
     >
-      <a
+      <Link
         className={styles.back}
-        href={`/${locale}#work`}
+        href={WORK_PAGE_PATH}
       >
         <ArrowLeftIcon />
         {t('back')}
-      </a>
+      </Link>
 
       <header className={styles.head}>
         <div className={styles.margin}>
           <span className={styles.kind}>{t(`kind.${kind}`)}</span>
           <span className={styles.meta}>
-            {niches(niche)} · <span translate="no">{t('design', { design: DESIGN_LABELS[design] })}</span>
+            {niches(niche)}
+            {design ? (
+              <>
+                {' · '}
+                <span translate="no">{t('design', { design: DESIGN_LABELS[design] })}</span>
+              </>
+            ) : null}
           </span>
         </div>
         <div className={styles.headMain}>
           <h1 className={styles.title}>{title}</h1>
-          {demoUrl ? (
-            <a
-              className={styles.demo}
-              href={demoUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              {t('demoLink')}
-              <ArrowUpRightIcon />
-            </a>
+          {demoUrl || appUrl ? (
+            <div className={styles.links}>
+              {demoUrl ? (
+                <a
+                  className={styles.demo}
+                  href={demoUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  {t('demoLink')}
+                  <ArrowUpRightIcon />
+                </a>
+              ) : null}
+              {appUrl ? (
+                <a
+                  className={styles.demo}
+                  href={appUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  {t('appLink')}
+                  <ArrowUpRightIcon />
+                </a>
+              ) : null}
+            </div>
           ) : null}
         </div>
       </header>
@@ -92,6 +127,36 @@ export const EditorialCase = ({ caseItem }: CaseProps) => {
           </div>
         </section>
       ))}
+
+      {stack.length > 0 ? (
+        <section
+          className={styles.block}
+          data-testid="case-stack"
+          aria-labelledby="case-stack-heading"
+        >
+          <div className={styles.margin}>
+            <h2
+              className={styles.heading}
+              id="case-stack-heading"
+            >
+              {t('stack')}
+            </h2>
+          </div>
+          <div className={styles.main}>
+            <ul className={styles.stack}>
+              {stack.map((item, index) => (
+                <li
+                  className={styles.stackItem}
+                  key={index}
+                  translate="no"
+                >
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </section>
+      ) : null}
 
       {metrics.length > 0 ? (
         <section

@@ -5,12 +5,12 @@ import { LocaleSwitcher } from '@/components/LocaleSwitcher';
 import { ThemeToggle } from '@/components/ThemeToggle';
 import { SERVICES } from '@/content/services';
 import { NAV_ITEMS, WORK_NAV_ITEM } from '../consts';
-import { visibleNavItems } from '../nav';
+import { isWorkPath, navHref, visibleNavItems } from '../nav';
 import type { HeaderProps } from '../types';
 import { Link, usePathname } from '@/i18n/navigation';
 import { BRIEF_HREF } from '@/lib/brief/consts';
 import { useActiveSection } from '../use-active-section';
-import { ANCHOR_OFFSET, WORK_PATH_PREFIX } from './consts';
+import { ANCHOR_OFFSET } from './consts';
 import styles from './Header.module.scss';
 
 export const TerminalHeader = ({ hasCases }: HeaderProps) => {
@@ -20,7 +20,7 @@ export const TerminalHeader = ({ hasCases }: HeaderProps) => {
   const items = useMemo(() => visibleNavItems(NAV_ITEMS, hasCases), [hasCases]);
   const onHome = pathname === '/';
   const active = useActiveSection(items, onHome, ANCHOR_OFFSET);
-  const onCase = pathname.startsWith(WORK_PATH_PREFIX);
+  const onCase = isWorkPath(pathname);
   const onService = SERVICES.some((service) => pathname === `/${service.slug}`);
 
   const current = (item: string) => {
@@ -53,7 +53,7 @@ export const TerminalHeader = ({ hasCases }: HeaderProps) => {
         {items.map((item) => (
           <a
             key={item}
-            href={`/${locale}#${item}`}
+            href={navHref(locale, item)}
             aria-current={current(item)}
           >
             {t(`nav.${item}`)}

@@ -278,14 +278,19 @@
       "client": "Client"
     },
     "demoLink": "Open demo",
+    "appLink": "Open Mini App",
+    "allLink": "All work",
     "design": "Style: {design}",
     "back": "All work",
     "task": "The task",
     "solution": "The solution",
+    "stack": "Stack",
     "results": "Technical results",
     "lighthouse": "Lighthouse report",
     "metaTitle": "{title} — MRSHKN",
-    "metaDescription": "MRSHKN case study: {title}."
+    "metaDescription": "MRSHKN case study: {title}.",
+    "pageTitle": "Work — MRSHKN",
+    "pageDescription": "MRSHKN studio demo projects: the task, the solution, the stack and measurable technical results."
   },
   "process": {
     "heading": "How the two weeks go",

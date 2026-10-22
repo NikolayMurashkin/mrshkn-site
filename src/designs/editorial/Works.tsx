@@ -1,17 +1,20 @@
 import { useTranslations } from 'next-intl';
 import { CaseImage } from '@/components/CaseImage';
-import { CARD_METRICS_LIMIT, caseHref } from '@/content/work';
+import { CARD_METRICS_LIMIT, caseHref, WORK_PAGE_PATH } from '@/content/work';
 import { Link } from '@/i18n/navigation';
 import { DESIGN_LABELS } from '../consts';
 import type { WorksProps } from '../types';
-import { ArrowUpRightIcon } from './icons';
+import { worksView } from '../works';
+import { ArrowRightIcon, ArrowUpRightIcon } from './icons';
 import { EditorialRubric } from './Rubric';
 import { coverSizes, worksLayout } from './utils';
 import styles from './Works.module.scss';
 
-export const EditorialWorks = ({ cases }: WorksProps) => {
+export const EditorialWorks = ({ cases, variant = 'home' }: WorksProps) => {
   const t = useTranslations('work');
   const niches = useTranslations('brief.niches');
+  const { shown, hasMore } = worksView(cases, variant);
+  const Heading = variant === 'page' ? 'h1' : 'h2';
 
   if (cases.length === 0) {
     return null;
@@ -19,7 +22,7 @@ export const EditorialWorks = ({ cases }: WorksProps) => {
 
   return (
     <section
-      className={styles.works}
+      className={variant === 'page' ? `${styles.works} ${styles.page}` : styles.works}
       data-testid="works"
       id="work"
       aria-labelledby="work-heading"
@@ -29,18 +32,18 @@ export const EditorialWorks = ({ cases }: WorksProps) => {
           label={t('mark')}
           note={t('note')}
         />
-        <h2
+        <Heading
           className={styles.title}
           id="work-heading"
         >
           {t('heading')}
-        </h2>
+        </Heading>
       </div>
       <ul
         className={styles.list}
-        data-layout={worksLayout(cases.length)}
+        data-layout={worksLayout(shown.length)}
       >
-        {cases.map((item, index) => (
+        {shown.map((item, index) => (
           <li
             className={styles.card}
             data-testid="case-card"
@@ -65,7 +68,13 @@ export const EditorialWorks = ({ cases }: WorksProps) => {
                 </Link>
               </h3>
               <span className={styles.meta}>
-                {niches(item.niche)} · <span translate="no">{t('design', { design: DESIGN_LABELS[item.design] })}</span>
+                {niches(item.niche)}
+                {item.design ? (
+                  <>
+                    {' · '}
+                    <span translate="no">{t('design', { design: DESIGN_LABELS[item.design] })}</span>
+                  </>
+                ) : null}
               </span>
               {item.metrics.length > 0 ? (
                 <ul className={styles.metrics}>
@@ -96,6 +105,15 @@ export const EditorialWorks = ({ cases }: WorksProps) => {
           </li>
         ))}
       </ul>
+      {hasMore ? (
+        <Link
+          className={styles.all}
+          href={WORK_PAGE_PATH}
+        >
+          {t('allLink')}
+          <ArrowRightIcon />
+        </Link>
+      ) : null}
     </section>
   );
 };
