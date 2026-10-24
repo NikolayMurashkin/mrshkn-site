@@ -2,7 +2,7 @@ import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import sitemap from '@/app/sitemap';
 import { getCases } from '@/cms/cases';
 import type { CaseCard } from '@/cms/types';
-import { PRICING_PLANS } from '@/content/pricing';
+import { SERVICES } from '@/content/services';
 import { LOCALES } from '@/i18n/consts';
 import { BRIEF_HREF, THANKS_HREF } from '@/lib/brief/consts';
 import { SITE_URL } from '@/lib/consts';
@@ -28,7 +28,7 @@ const makeCase = (slug: string): CaseCard => ({
   coverCaption: null,
 });
 
-const EXPECTED_PAGES = ['', ...PRICING_PLANS.map((plan) => `/${plan.slug}`), BRIEF_HREF, '/docs/privacy'];
+const EXPECTED_PAGES = ['', ...SERVICES.map((service) => `/${service.slug}`), BRIEF_HREF, '/docs/privacy'];
 
 const pageUrl = (locale: string, path: string) => `${SITE_URL}/${locale}${path}`;
 

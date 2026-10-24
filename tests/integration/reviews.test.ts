@@ -106,6 +106,30 @@ type TelegramCall = { chatId: string; text: string };
 
 type Mail = { to: string[]; text: string };
 
+/** Утвержденные абзацы письма-приглашения от лица студии: `{project}` подставляется названием проекта. */
+const INVITE_PARAGRAPHS = {
+  ru: [
+    'Пишем из\u00a0студии MRSHKN. Мы с\u00a0вами делали «{project}», и\u00a0нам важно знать, как эта работа выглядит с\u00a0вашей стороны. Ваш отзыв мы покажем на\u00a0сайте студии\u00a0— новым клиентам он скажет больше, чем наши слова.',
+    'В\u00a0форме три вопроса: с\u00a0чем вы пришли, как шла работа и\u00a0что изменилось после запуска. Третий вопрос необязательный: если после запуска прошло мало времени, его можно пропустить. Отвечайте как есть, коротко или подробно\u00a0— критику мы тоже опубликуем, поправим только опечатки. Это минут десять, без регистрации и\u00a0паролей:',
+    'Отправить отзыв можно только с\u00a0согласием на\u00a0публикацию\u00a0— в\u00a0конце формы две галочки. Передумаете\u00a0— ответьте на\u00a0это письмо, и\u00a0мы его снимем. Если проект шел по\u00a0цене кейса, что будет со\u00a0скидкой\u00a0— записано в\u00a0договоре.',
+    'Студия MRSHKN',
+  ],
+  en: [
+    "This is MRSHKN studio. We built {project} together, and we would like to know how the work looks from your side. We will show your review on the studio's website — it will tell new clients more than anything we could say.",
+    'The form has three questions: what brought you to us, how the work went and what changed after launch. The third question is optional: if little time has passed since launch, you can skip it. Answer as you like, short or long — we publish criticism too and only fix typos. It takes about ten minutes, no sign-up or passwords:',
+    'You can send the review only with consent to publish it — there are two checkboxes at the end of the form. If you change your mind, reply to this email and we will take it down. If the project was done at the case-study price, what happens to the discount follows the terms of your contract.',
+    'MRSHKN studio',
+  ],
+};
+
+/** Последняя непустая строка письма — подпись. */
+const lastLine = (text: string) =>
+  text
+    .split(/\r?\n/)
+    .map((line) => line.trim())
+    .filter(Boolean)
+    .at(-1);
+
 const telegram = { calls: [] as TelegramCall[], status: 200 };
 
 const mails: Mail[] = [];
@@ -830,7 +854,8 @@ describe('POST /api/review', () => {
   });
 
   const REQUIRED_FIELDS = ['fullName', 'signature', 'occupation'] as const;
-  const REQUIRED_ANSWERS = ['before', 'process', 'after'] as const;
+  /** Третий ответ «что изменилось после запуска» необязательный: обязательны только первые два. */
+  const REQUIRED_ANSWERS = ['before', 'process'] as const;
   const BLANKS = [
     ['пусто', ''],
     ['пробелы', '   '],
@@ -930,6 +955,90 @@ describe('POST /api/review', () => {
     expect(saved.licenseText).toBe(documents.license);
     expect(saved.consentText).toContain('Согласие');
     expectDocumentItems(saved, 'ru');
+  });
+});
+
+describe('POST /api/review: ответ «что изменилось после запуска» необязательный', () => {
+  const withoutAfter = (body: ReviewBody): ReviewBody => {
+    const answers: Record<string, string> = { ...body.answers };
+
+    delete answers.after;
+
+    return { ...body, answers };
+  };
+
+  it.each([
+    ['answers.after пустой', (body: ReviewBody): ReviewBody => ({ ...body, answers: { ...body.answers, after: '' } })],
+    ['ключа answers.after нет', withoutAfter],
+  ])('%s → 200, запись «получен», ответ after пустой, первые два ответа записаны', async (_label, mutate) => {
+    const record = await invited();
+
+    const response = await sendReview(mutate(reviewBody(record.code)));
+
+    expect(response.status).toBe(200);
+    expect(await response.json()).toEqual({ ok: true });
+
+    const saved = await readReview(record.id);
+
+    expect(saved.status).toBe('received');
+    expect(saved.answers?.before).toBe(AUTHOR.answers.before);
+    expect(saved.answers?.process).toBe(AUTHOR.answers.process);
+    expect(isEmpty(saved.answers?.after), `ответ after: ${JSON.stringify(saved.answers?.after)}`).toBe(true);
+  });
+
+  it('answers.after заполнен → 200, ответ сохранен дословно', async () => {
+    const record = await invited();
+
+    const response = await sendReview(reviewBody(record.code));
+
+    expect(response.status).toBe(200);
+
+    const saved = await readReview(record.id);
+
+    expect(saved.status).toBe('received');
+    expect(saved.answers?.after).toBe(AUTHOR.answers.after);
+  });
+
+  it('опубликованный отзыв без третьего ответа: публично ответа after нет, первые два есть', async () => {
+    const record = await invited({ project: 'Без третьего ответа' });
+
+    expect((await sendReview({ ...reviewBody(record.code), answers: { ...AUTHOR.answers, after: '' } })).status).toBe(
+      200,
+    );
+
+    await payload.update({ collection: REVIEWS, id: record.id, data: { status: 'published' } as never, depth: 0 });
+
+    const doc = (await payload.findByID({
+      collection: REVIEWS,
+      id: record.id,
+      overrideAccess: false,
+      depth: 0,
+    })) as unknown as ReviewDoc;
+
+    expect(doc.status).toBe('published');
+    expect(doc.answers?.before).toBe(AUTHOR.answers.before);
+    expect(doc.answers?.process).toBe(AUTHOR.answers.process);
+    expect(isEmpty(doc.answers?.after), `ответ after: ${JSON.stringify(doc.answers?.after)}`).toBe(true);
+  });
+
+  /** Необязательный ответ проверяется, когда он есть: та же длина, что у остальных ответов, и только строка. */
+  const INVALID_AFTER: [string, unknown][] = [
+    ['answers.after 4001 символ', 'п'.repeat(4001)],
+    ['answers.after = 42, не строка', 42],
+  ];
+
+  it.each(INVALID_AFTER)('%s → 400 reason fields, запись осталась приглашением', async (_label, after) => {
+    const record = await invited();
+
+    const response = await sendReview({ ...reviewBody(record.code), answers: { ...AUTHOR.answers, after } });
+
+    expect(response.status).toBe(400);
+    expect(await response.json()).toMatchObject({ ok: false, reason: 'fields' });
+
+    const saved = await readReview(record.id);
+
+    expect(saved.status).toBe('invited');
+    expect(isEmpty(saved.fullName), 'ФИО не записано').toBe(true);
   });
 });
 
@@ -1041,6 +1150,13 @@ describe('отправка приглашения', () => {
     expect(mails[0].text).toContain(`/en/review/${saved.code}`);
     expect(mails[0].text).toContain('Northwind Bakery');
     expect(CYRILLIC.test(mails[0].text), 'в английском письме нет кириллицы').toBe(false);
+    expect(
+      INVITE_PARAGRAPHS.en
+        .map((paragraph) => paragraph.replace('{project}', 'Northwind Bakery'))
+        .filter((paragraph) => !mails[0].text.includes(paragraph)),
+      'абзацы письма от лица студии',
+    ).toEqual([]);
+    expect(lastLine(mails[0].text), 'подпись письма — студия, без имени').toBe(INVITE_PARAGRAPHS.en.at(-1));
     expect(Date.parse(saved.sentAt ?? '')).toBeGreaterThanOrEqual(before);
     expect(Date.parse(saved.sentAt ?? '')).toBeLessThanOrEqual(after);
     expect(Date.parse(saved.expiresAt ?? '') - Date.parse(saved.sentAt ?? '')).toBe(INVITE_TTL_MS);
@@ -1063,6 +1179,13 @@ describe('отправка приглашения', () => {
     expect(mails[0].text).toContain(`/ru/review/${saved.code}`);
     expect(mails[0].text).toContain('Southwind Bakery');
     expect(CYRILLIC.test(mails[0].text), 'в русском письме есть кириллица').toBe(true);
+    expect(
+      INVITE_PARAGRAPHS.ru
+        .map((paragraph) => paragraph.replace('{project}', 'Southwind Bakery'))
+        .filter((paragraph) => !mails[0].text.includes(paragraph)),
+      'абзацы письма от лица студии',
+    ).toEqual([]);
+    expect(lastLine(mails[0].text), 'подпись письма — студия, без имени').toBe(INVITE_PARAGRAPHS.ru.at(-1));
     expect(Date.parse(saved.sentAt ?? '')).toBeGreaterThanOrEqual(before);
     expect(Date.parse(saved.sentAt ?? '')).toBeLessThanOrEqual(after);
     expect(Date.parse(saved.expiresAt ?? '') - Date.parse(saved.sentAt ?? '')).toBe(INVITE_TTL_MS);

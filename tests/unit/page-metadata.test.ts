@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import { describe, expect, it, vi } from 'vitest';
-import { PRICING_PLANS } from '@/content/pricing';
 import { LOCALES } from '@/i18n/consts';
+import { SERVICES } from '@/content/services';
 import { BRIEF_HREF } from '@/lib/brief/consts';
 import { SITE_URL } from '@/lib/consts';
 import { SITE_PAGES } from '@/lib/seo/consts';
@@ -81,10 +81,10 @@ const targetOf = (path: string): PageTarget | null => {
     return { load: () => import('@/app/[locale]/docs/privacy/page'), params: {} };
   }
 
-  const plan = PRICING_PLANS.find((item) => path === `/${item.slug}`);
+  const service = SERVICES.find((item) => path === `/${item.slug}`);
 
-  if (plan) {
-    return { load: () => import('@/app/[locale]/[service]/page'), params: { service: plan.slug } };
+  if (service) {
+    return { load: () => import('@/app/[locale]/[service]/page'), params: { service: service.slug } };
   }
 
   const caseSlug = path.match(/^\/work\/([^/]+)$/)?.[1];

@@ -2,7 +2,6 @@ import { createElement, type ComponentType, type ReactNode } from 'react';
 import { renderToStaticMarkup } from 'react-dom/server';
 import { NextIntlClientProvider } from 'next-intl';
 import { describe, expect, it, vi } from 'vitest';
-import { PRICING_PLANS } from '@/content/pricing';
 import { filledFaq, SERVICES, serviceBriefHref } from '@/content/services';
 import type { FaqItem } from '@/content/types';
 import { PopSection } from '@/designs/pop';
@@ -54,7 +53,7 @@ const headingsOf = (html: string) =>
 const serviceTexts = (locale: string, id: string) =>
   (MESSAGES[locale].services as unknown as Record<string, ServiceTexts>)[id];
 
-const ROWS = PRICING_PLANS.flatMap((plan) => (['ru', 'en'] as const).map((locale) => [locale, plan.id] as const));
+const ROWS = SERVICES.flatMap((service) => (['ru', 'en'] as const).map((locale) => [locale, service.id] as const));
 
 describe('страница услуги Pop', () => {
   it.each(ROWS)('%s, %s: страница с data-testid и data-service услуги, в h1 название тарифа', (locale, id) => {

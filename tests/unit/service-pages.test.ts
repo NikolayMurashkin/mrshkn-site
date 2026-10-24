@@ -1,21 +1,92 @@
+import { NextIntlClientProvider } from 'next-intl';
+import { createElement, type ComponentType, type ReactNode } from 'react';
+import { renderToStaticMarkup } from 'react-dom/server';
 import { describe, expect, it } from 'vitest';
+import { useServicePage } from '@/components/ServicePage/use-service-page';
+import type { ServicePageData } from '@/components/ServicePage/types';
 import { planHref } from '@/content/format';
 import { PRICING_OPTIONS, PRICING_PLANS } from '@/content/pricing';
 import { getServiceBySlug, SERVICES, serviceBriefHref } from '@/content/services';
 import { routing } from '@/i18n/routing';
 import { BRIEF_STEP_VALUES } from '@/lib/brief/consts';
+import en from '../../messages/en.json';
+import ru from '../../messages/ru.json';
 
 const PLAN_ROWS = routing.locales.flatMap((locale) => PRICING_PLANS.map((plan) => [locale, plan.id, plan] as const));
+
+/** Отраслевое Mini App своей страницы не имеет: его карточка ведет на готовые решения страницы Telegram-приложений. */
+const WITHOUT_PAGE = ['industryMiniApp'];
+
+/** «Что входит» у приложений в Telegram — свой список, утвержденный дословно (ru). */
+const MINI_APP_BASICS_RU = {
+  note: 'Входит в\u00a0цену приложения',
+  items: [
+    'Код пишем сами, без\u00a0конструкторов. Исходный код приложения, бота и\u00a0админки передаем вам: менять его и\u00a0передать другому разработчику можете без\u00a0нас',
+    'Бот в\u00a0Telegram, через который клиенты открывают приложение',
+    'Админка\u00a0— раздел, где вы сами меняете тексты, фото и\u00a0цены, смотрите записи, заказы и\u00a0бонусы',
+    'Новые записи и\u00a0заказы приходят вам в\u00a0Telegram',
+    'Политика обработки данных по\u00a0закону о\u00a0персональных данных (152-ФЗ). До\u00a0договора скажем, что еще нужно сделать вам',
+    'Сервер для приложения настраиваем и\u00a0передаем вам. Оплачиваете его провайдеру напрямую, сейчас от\u00a02\u00a0000\u00a0₽ в\u00a0месяц',
+    'Три раунда правок в\u00a0цене. Правки\u00a0— это тексты, фото, цвет отдельных кнопок и\u00a0блоков, порядок экранов; новые экраны, функции и\u00a0смена стиля целиком\u00a0— отдельная работа',
+    'Год гарантии со\u00a0дня приемки: бесплатно чиним все, что сломалось по\u00a0нашей вине или работает не\u00a0так, как записано в\u00a0договоре. Сбои самих Telegram и\u00a0MAX не\u00a0входят',
+    'Инструкция и\u00a0видео с\u00a0экрана: как работать в\u00a0админке',
+    'Срок записываем в\u00a0договор. Опоздали по\u00a0нашей вине\u00a0— за\u00a0каждый день просрочки снижаем цену на\u00a02\u00a0%, всего не\u00a0больше чем на\u00a020\u00a0%',
+  ],
+};
+
+type Messages = typeof ru;
+
+type ProviderProps = { locale: string; timeZone: string; messages: Messages; children?: ReactNode };
+
+type ProbeProps = { serviceId: string; onData: (data: ServicePageData | null) => void };
+
+const Provider = NextIntlClientProvider as ComponentType<ProviderProps>;
+
+const MESSAGES: Record<string, Messages> = { ru, en: en as Messages };
+
+/** Свои списки «что входит» прежних услуг: у поддержки — работы за месяц, у 3D — сцена и встраивание. */
+const OWN_BASICS_BEFORE = ['threeD', 'support'];
+
+/** Услуги сайтов и приложений под заказ: «что входит» — общая база тарифа. */
+const COMMON_BASICS = ['landing', 'industry', 'business', 'store', 'mvp'];
+
+const Probe = ({ serviceId, onData }: ProbeProps) => {
+  onData(useServicePage(serviceId));
+
+  return null;
+};
+
+/** Данные страницы услуги так, как их получает разметка направления. */
+const servicePageData = (locale: string, serviceId: string) => {
+  let data: ServicePageData | null = null;
+
+  renderToStaticMarkup(
+    createElement(
+      Provider,
+      { locale, timeZone: 'Europe/Moscow', messages: MESSAGES[locale] },
+      createElement(Probe, {
+        serviceId,
+        onData: (value) => {
+          data = value;
+        },
+      }),
+    ),
+  );
+
+  return data as ServicePageData | null;
+};
+
+const PAGE_PLANS = PRICING_PLANS.filter((plan) => !WITHOUT_PAGE.includes(plan.id));
 
 describe('страницы услуг покрывают все тарифы', () => {
   it.each(PLAN_ROWS)('%s, %s: адрес тарифа из прайса есть среди страниц услуг', (locale, _id, plan) => {
     const pages = new Set(routing.locales.flatMap((l) => SERVICES.map((service) => `/${l}/${service.slug}`)));
 
-    expect(pages.has(planHref(locale, plan).split('?')[0])).toBe(true);
+    expect(pages.has(planHref(locale, plan).split(/[?#]/)[0])).toBe(true);
   });
 
-  it('справочник услуг: id как у тарифов, slug как у своего тарифа, слаги уникальны', () => {
-    expect(SERVICES.map((service) => service.id).sort()).toEqual(PRICING_PLANS.map((plan) => plan.id).sort());
+  it('справочник услуг: id как у тарифов со своей страницей, slug как у своего тарифа, слаги уникальны', () => {
+    expect(SERVICES.map((service) => service.id).sort()).toEqual(PAGE_PLANS.map((plan) => plan.id).sort());
 
     for (const service of SERVICES) {
       expect(service.slug).toBe(PRICING_PLANS.find((plan) => plan.id === service.id)?.slug);
@@ -24,7 +95,7 @@ describe('страницы услуг покрывают все тарифы', (
     expect(new Set(SERVICES.map((service) => service.slug)).size).toBe(SERVICES.length);
   });
 
-  it.each(PRICING_PLANS.map((plan) => [plan.slug, plan.id]))('getServiceBySlug(%s) отдает услугу %s', (slug, id) => {
+  it.each(PAGE_PLANS.map((plan) => [plan.slug, plan.id]))('getServiceBySlug(%s) отдает услугу %s', (slug, id) => {
     const service = getServiceBySlug(slug);
 
     expect(service?.slug).toBe(slug);
@@ -38,7 +109,7 @@ describe('страницы услуг покрывают все тарифы', (
     },
   );
 
-  it.each(PRICING_PLANS.map((plan) => [plan.id]))('%s: опции услуги — непустой список без дублей из прайса', (id) => {
+  it.each(PAGE_PLANS.map((plan) => [plan.id]))('%s: опции услуги — непустой список без дублей из прайса', (id) => {
     const service = SERVICES.find((item) => item.id === id);
     const optionIds = PRICING_OPTIONS.map((option) => option.id);
 
@@ -51,7 +122,7 @@ describe('страницы услуг покрывают все тарифы', (
     }
   });
 
-  const BRIEF_ROWS = routing.locales.flatMap((locale) => PRICING_PLANS.map((plan) => [locale, plan.id] as const));
+  const BRIEF_ROWS = routing.locales.flatMap((locale) => PAGE_PLANS.map((plan) => [locale, plan.id] as const));
 
   it.each(BRIEF_ROWS)('%s, %s: CTA ведет в квиз с предвыбором этой услуги', (locale, id) => {
     const service = SERVICES.find((item) => item.id === id);
@@ -60,4 +131,37 @@ describe('страницы услуг покрывают все тарифы', (
     expect(serviceBriefHref(locale, service!)).toBe(`/${locale}/brief?plan=${id}`);
     expect(BRIEF_STEP_VALUES.product).toContain(id);
   });
+});
+
+describe('«что входит» на странице услуги', () => {
+  it('ru, miniApp: свой список — утвержденные пояснение и десять пунктов по порядку', () => {
+    expect(servicePageData('ru', 'miniApp')?.ownBasics).toEqual(MINI_APP_BASICS_RU);
+  });
+
+  it('en, miniApp: свой список из перевода — пояснение и десять пунктов по порядку', () => {
+    const basics = (en.services.miniApp as { basics?: { note: string; items: string[] } }).basics;
+
+    expect(basics?.items).toHaveLength(10);
+    expect(basics?.note).toMatch(/\S/);
+    expect(servicePageData('en', 'miniApp')?.ownBasics).toEqual(basics);
+  });
+
+  it.each(routing.locales.flatMap((locale) => COMMON_BASICS.map((id) => [locale, id] as const)))(
+    '%s, %s: своего списка нет — общая база тарифа',
+    (locale, id) => {
+      const data = servicePageData(locale, id);
+
+      expect(data?.service.id).toBe(id);
+      expect(data?.ownBasics).toBeNull();
+    },
+  );
+
+  it.each(routing.locales.flatMap((locale) => OWN_BASICS_BEFORE.map((id) => [locale, id] as const)))(
+    '%s, %s: свой список — как в переводе',
+    (locale, id) => {
+      const services = MESSAGES[locale].services as Record<string, { basics?: unknown }>;
+
+      expect(servicePageData(locale, id)?.ownBasics).toEqual(services[id].basics);
+    },
+  );
 });

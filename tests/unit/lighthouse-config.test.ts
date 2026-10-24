@@ -3,7 +3,7 @@ import { createRequire } from 'node:module';
 import { parse } from 'yaml';
 import { describe, expect, it } from 'vitest';
 import { SLUG_PATTERN } from '@/cms/consts';
-import { PRICING_PLANS } from '@/content/pricing';
+import { SERVICES } from '@/content/services';
 import { DESIGN_NAMES } from '@/designs/consts';
 
 const require = createRequire(import.meta.url);
@@ -69,12 +69,12 @@ describe('адреса Lighthouse по направлениям', () => {
     const briefUrl = 'http://localhost:3102/ru/brief';
 
     expect(urls.filter((url) => url === briefUrl)).toEqual([briefUrl]);
-    expect(urls).toHaveLength(3 + PRICING_PLANS.length);
+    expect(urls).toHaveLength(3 + SERVICES.length);
     expect(urls[0]).toBe('http://localhost:3102/ru');
     expect(caseUrls).toHaveLength(1);
     expect(caseUrls[0].slice('http://localhost:3102/ru/work/'.length)).toMatch(SLUG_PATTERN);
     expect(urls.filter((url) => !caseUrls.includes(url) && url !== urls[0] && url !== briefUrl).sort()).toEqual(
-      PRICING_PLANS.map((plan) => `http://localhost:3102/ru/${plan.slug}`).sort(),
+      SERVICES.map((service) => `http://localhost:3102/ru/${service.slug}`).sort(),
     );
   });
 });

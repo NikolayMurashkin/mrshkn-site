@@ -309,6 +309,53 @@ describe('форма отзыва Kinetic', () => {
   });
 });
 
+describe('ответ «что изменилось после запуска» необязательный', () => {
+  it('без третьего ответа форма уходит одним POST /api/review с пустым ответом, вид «отзыв получен»', async () => {
+    const fetchMock = respondWith(200, { ok: true });
+
+    vi.stubGlobal('fetch', fetchMock);
+    renderReview({ view: 'form', code: CODE, project: 'Northwind Bakery' });
+    fillForm(['review-answer-after']);
+    toggle('review-consent');
+    toggle('review-license');
+    fireEvent.click(byTestId('review-submit') as HTMLElement);
+
+    await waitFor(() => expect(fetchMock).toHaveBeenCalledTimes(1));
+
+    const [url, init] = fetchMock.mock.calls[0] as unknown as [string, RequestInit];
+    const body = JSON.parse(String(init.body)) as { answers: Record<string, string | undefined> };
+
+    expect(url).toBe('/api/review');
+    expect(init.method).toBe('POST');
+    expect(body.answers.before).toBe(FILLED['review-answer-before']);
+    expect(body.answers.process).toBe(FILLED['review-answer-process']);
+    expect(body.answers.after ?? '').toBe('');
+    await screen.findByTestId('review-received');
+
+    expect(presentViews()).toEqual(['review-received']);
+  });
+
+  it.each(['review-answer-before', 'review-answer-process'])(
+    'без ответа %s — ошибка у поля, запрос не уходит',
+    async (field) => {
+      const fetchMock = respondWith(200, { ok: true });
+
+      vi.stubGlobal('fetch', fetchMock);
+      renderReview({ view: 'form', code: CODE, project: 'Northwind Bakery' });
+      fillForm([field]);
+      toggle('review-consent');
+      toggle('review-license');
+      fireEvent.click(byTestId('review-submit') as HTMLElement);
+
+      const input = byTestId(field) as HTMLElement;
+
+      await waitFor(() => expect(input.getAttribute('aria-invalid')).toBe('true'));
+      expect(fetchMock).not.toHaveBeenCalled();
+      expect(presentViews()).toEqual(['review-form']);
+    },
+  );
+});
+
 describe('проверка ссылки в форме', () => {
   it('H7: ссылка не http(s) — ошибка у поля ссылки, запрос не уходит', async () => {
     const fetchMock = respondWith(200, { ok: true });

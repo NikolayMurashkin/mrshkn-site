@@ -73,18 +73,18 @@ const TERM_GROUPS: Record<Locale, Record<string, (string | RegExp)[]>> = {
   ru: {
     срок: [/(^|\D)4(\D|$)/, /(^|\D)6(\D|$)/, 'недел'],
     геометрия: ['геометри', 'ракурс', 'до сборки сцены'],
-    правки: ['два раунда правок', 'текст', 'цвет', 'подсветк'],
+    правки: ['три раунда', 'текст', 'цвет', 'подсветк'],
     очередь: ['один 3d-проект в месяц'],
-    lighthouse: ['lighthouse', '90'],
-    гарантия: ['30 дней'],
+    lighthouse: ['тест скорости google', '90'],
+    гарантия: ['год гарантии'],
   },
   en: {
     term: [/(^|\D)4(\D|$)/, /(^|\D)6(\D|$)/, 'week'],
     geometry: ['geometry', 'angle', 'before the scene'],
-    revisions: ['two rounds', 'text', 'colo', 'highlight'],
+    revisions: ['three rounds', 'text', 'colo', 'highlight'],
     queue: ['one 3d project a month'],
-    lighthouse: ['lighthouse', '90'],
-    warranty: ['30 days'],
+    lighthouse: [/google|lighthouse/i, '90'],
+    warranty: ['one-year warranty'],
   },
 };
 

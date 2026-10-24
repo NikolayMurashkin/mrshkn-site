@@ -1,13 +1,16 @@
 import { readFileSync } from 'node:fs';
-import { describe, expect, it } from 'vitest';
-import { formatMoney, formatRange, planHref } from '@/content/format';
+import { describe, expect, it, vi } from 'vitest';
+import { formatDays, formatMoney, formatRange, planHref, planTerm } from '@/content/format';
 import {
+  MAX_OPTION,
   PRICING_BASIC_GROUPS,
   PRICING_BASICS,
   PRICING_EXTRAS,
   PRICING_OPTIONS,
   PRICING_PLANS,
+  PRICING_TIERS,
 } from '@/content/pricing';
+import { getServiceBySlug, SERVICES } from '@/content/services';
 import { LOCALES } from '@/i18n/consts';
 
 const NBSP = String.fromCodePoint(0x00a0);
@@ -16,6 +19,48 @@ const messages = (locale: string) => JSON.parse(readFileSync(`messages/${locale}
 
 const pricingSection = (locale: string, section: string) => messages(locale).pricing?.[section] ?? {};
 
+/** Тарифы по порядку: цена в обеих валютах, «от» и срок в календарных днях (у тарифов «от» срока в днях нет). */
+const PLAN_TABLE = [
+  { id: 'industry', rub: 59_000, usd: 1_200, isFrom: false, days: 7 },
+  { id: 'landing', rub: 50_000, usd: 2_400, isFrom: false, days: 4 },
+  { id: 'industryMiniApp', rub: 90_000, usd: 1_800, isFrom: false, days: 7 },
+  { id: 'business', rub: 180_000, usd: 4_500, isFrom: false, days: 14 },
+  { id: 'miniApp', rub: 180_000, usd: 3_500, isFrom: true, days: undefined },
+  { id: 'store', rub: 250_000, usd: 8_000, isFrom: true, days: undefined },
+  { id: 'mvp', rub: 600_000, usd: 12_000, isFrom: true, days: undefined },
+  { id: 'threeD', rub: 250_000, usd: 4_900, isFrom: true, days: undefined },
+  { id: 'support', rub: 7_000, usd: 140, isFrom: true, days: undefined },
+] as const;
+
+/** Отраслевое Mini App своей страницы не имеет: карточка ведет на готовые решения страницы Telegram-приложений. */
+const SERVICE_IDS = ['industry', 'landing', 'business', 'miniApp', 'store', 'mvp', 'threeD', 'support'];
+
+/** Варианты поддержки по порядку: «Хостинг и бэкапы» без часов правок и три уровня с часами работы в месяц. */
+const SUPPORT_TIER_TABLE = [
+  { id: 'hostingBackups', planId: 'support', price: { rub: 7_000, usd: 140 }, isFrom: false },
+  { id: 'supportHours', planId: 'support', price: { rub: 15_000, usd: 250 }, isFrom: false, hours: 3 },
+  { id: 'supportHoursPlus', planId: 'support', price: { rub: 35_000, usd: 700 }, isFrom: false, hours: 10 },
+  { id: 'supportHoursPro', planId: 'support', price: { rub: 70_000, usd: 1_400 }, isFrom: false, hours: 25 },
+];
+
+const RU_DAYS: [number, string][] = [
+  [1, `1${NBSP}день`],
+  [2, `2${NBSP}дня`],
+  [4, `4${NBSP}дня`],
+  [5, `5${NBSP}дней`],
+  [7, `7${NBSP}дней`],
+  [11, `11${NBSP}дней`],
+  [14, `14${NBSP}дней`],
+  [21, `21${NBSP}день`],
+  [22, `22${NBSP}дня`],
+];
+
+const EN_DAYS: [number, string][] = [
+  [1, '1 day'],
+  [4, '4 days'],
+  [14, '14 days'],
+];
+
 describe('прайс — один источник цен', () => {
   it.each([...LOCALES])('%s: набор тарифов в переводах совпадает с pricing.ts', (locale) => {
     expect(Object.keys(pricingSection(locale, 'plans'))).toEqual(PRICING_PLANS.map((plan) => plan.id));
@@ -23,9 +68,19 @@ describe('прайс — один источник цен', () => {
 
   it.each([...LOCALES])('%s: у каждого тарифа есть название, состав и срок', (locale) => {
     const plans = pricingSection(locale, 'plans');
+    const tiers = pricingSection(locale, 'tiers');
+    const tierTexts = { name: expect.any(String), summary: expect.any(String), term: expect.any(String) };
 
-    expect(PRICING_PLANS.map((plan) => plans[plan.id])).toEqual(
-      PRICING_PLANS.map(() => ({ name: expect.any(String), summary: expect.any(String), term: expect.any(String) })),
+    expect(PRICING_PLANS.map((plan) => [plan.id, plans[plan.id]])).toEqual(
+      PRICING_PLANS.map((plan) => [
+        plan.id,
+        plan.days === undefined
+          ? { name: expect.any(String), summary: expect.any(String), term: expect.any(String) }
+          : { name: expect.any(String), summary: expect.any(String) },
+      ]),
+    );
+    expect(SUPPORT_TIER_TABLE.map((tier) => [tier.id, tiers[tier.id]])).toEqual(
+      SUPPORT_TIER_TABLE.map((tier) => [tier.id, tierTexts]),
     );
   });
 
@@ -54,9 +109,93 @@ describe('прайс — один источник цен', () => {
     expect(Object.keys(pricingSection(locale, 'basicsGroups'))).toEqual(PRICING_BASIC_GROUPS.map((group) => group.id));
   });
 
-  it('у тарифов уникальные ключи и адреса страниц услуг', () => {
+  it('у тарифов уникальные ключи, у страниц услуг — уникальные адреса; отраслевое Mini App без своей страницы', () => {
     expect(new Set(PRICING_PLANS.map((plan) => plan.id)).size).toBe(PRICING_PLANS.length);
-    expect(new Set(PRICING_PLANS.map((plan) => plan.slug)).size).toBe(PRICING_PLANS.length);
+    expect(SERVICES.map((service) => service.id)).toEqual(SERVICE_IDS);
+    expect(new Set(SERVICES.map((service) => service.slug)).size).toBe(SERVICES.length);
+    expect(getServiceBySlug('mini-app')?.id).toBe('miniApp');
+  });
+
+  it('тарифы по порядку: отраслевой сайт, лендинг, отраслевое Mini App, «Бизнес» и дальше', () => {
+    expect(PRICING_PLANS.map((plan) => plan.id)).toEqual(PLAN_TABLE.map((row) => row.id));
+  });
+
+  it.each(PLAN_TABLE.map((row) => [row.id, row] as const))('%s: цена, «от» и срок в днях', (id, row) => {
+    const plan = PRICING_PLANS.find((item) => item.id === id);
+
+    expect(plan, `тариф ${id}`).toBeDefined();
+    expect(plan?.price).toEqual({ rub: row.rub, usd: row.usd });
+    expect(plan?.isFrom).toBe(row.isFrom);
+    expect(plan?.days).toBe(row.days);
+  });
+
+  it('у поддержки по порядку «Хостинг и бэкапы» и три уровня с часами', () => {
+    expect(PRICING_TIERS.filter((tier) => tier.planId === 'support').map((tier) => tier.id)).toEqual(
+      SUPPORT_TIER_TABLE.map((tier) => tier.id),
+    );
+  });
+
+  it.each(SUPPORT_TIER_TABLE.map((row) => [row.id, row] as const))(
+    'вариант поддержки %s: цена без «от» и часы работы в месяц',
+    (id, row) => {
+      expect(PRICING_TIERS.find((tier) => tier.id === id)).toEqual(row);
+    },
+  );
+
+  it('варианты 3D прежние', () => {
+    expect(PRICING_TIERS.find((tier) => tier.id === 'block3d')).toEqual({
+      id: 'block3d',
+      planId: 'threeD',
+      price: { rub: 250_000, usd: 4_900 },
+      isFrom: true,
+    });
+    expect(PRICING_TIERS.find((tier) => tier.id === 'landing3d')).toEqual({
+      id: 'landing3d',
+      planId: 'threeD',
+      price: { rub: 350_000, usd: 7_300 },
+      isFrom: true,
+    });
+  });
+
+  it('MAX — опция отраслевого Mini App за 15 000 ₽, не среди опций к любому тарифу', () => {
+    expect(MAX_OPTION).toEqual({ id: 'max', price: { from: { rub: 15_000, usd: 300 } } });
+    expect(PRICING_OPTIONS.map((option) => option.id)).not.toContain('max');
+  });
+
+  it('час работы — 3 000 ₽ / $90', () => {
+    expect(PRICING_EXTRAS.find((extra) => extra.id === 'hour')).toEqual({
+      id: 'hour',
+      price: { rub: 3_000, usd: 90 },
+      period: 'hour',
+    });
+  });
+});
+
+describe('formatDays', () => {
+  it.each(RU_DAYS)('ru: %i → %j', (days, expected) => {
+    expect(formatDays(days, 'ru')).toBe(expected);
+  });
+
+  it.each(EN_DAYS)('en: %i → %j', (days, expected) => {
+    expect(formatDays(days, 'en')).toBe(expected);
+  });
+});
+
+describe('planTerm', () => {
+  it.each([...LOCALES])('%s: у тарифа с днями срок — из дней, перевод не читается', (locale) => {
+    const landing = PRICING_PLANS.find((plan) => plan.id === 'landing');
+    const translated = vi.fn(() => 'срок из перевода');
+
+    expect(landing ? planTerm(landing, locale, translated) : undefined).toBe(formatDays(4, locale));
+    expect(translated).not.toHaveBeenCalled();
+  });
+
+  it.each([...LOCALES])('%s: у тарифа без дней срок — строка перевода, прочитанная один раз', (locale) => {
+    const store = PRICING_PLANS.find((plan) => plan.id === 'store');
+    const translated = vi.fn(() => 'срок из перевода');
+
+    expect(store ? planTerm(store, locale, translated) : undefined).toBe('срок из перевода');
+    expect(translated).toHaveBeenCalledTimes(1);
   });
 });
 
@@ -91,10 +230,11 @@ describe('formatRange', () => {
 });
 
 describe('planHref', () => {
-  it('ведет на страницу услуги в текущем языке и передает выбранный тариф', () => {
+  it('ведет на страницу услуги в текущем языке и передает выбранный тариф; отраслевое Mini App — на готовые решения', () => {
     expect(PRICING_PLANS.map((plan) => planHref('ru', plan))).toEqual([
       '/ru/industry?plan=industry',
       '/ru/landing?plan=landing',
+      '/ru/mini-app#ready',
       '/ru/business?plan=business',
       '/ru/mini-app?plan=miniApp',
       '/ru/store?plan=store',
@@ -103,5 +243,9 @@ describe('planHref', () => {
       '/ru/support?plan=support',
     ]);
     expect(planHref('en', PRICING_PLANS[0])).toBe('/en/industry?plan=industry');
+
+    const industryMiniApp = PRICING_PLANS.find((plan) => plan.id === 'industryMiniApp');
+
+    expect(industryMiniApp ? planHref('en', industryMiniApp) : undefined).toBe('/en/mini-app#ready');
   });
 });

@@ -1,8 +1,8 @@
 import { describe, expect, it, vi } from 'vitest';
 import { GET as getLlmsFull } from '@/app/llms-full.txt/route';
 import { GET as getLlms } from '@/app/llms.txt/route';
-import { PRICING_PLANS } from '@/content/pricing';
-import type { FaqItem } from '@/content/types';
+import { SERVICES, serviceFaqJsonLd } from '@/content/services';
+import type { FaqItem, ServiceMessages } from '@/content/types';
 import { LOCALES } from '@/i18n/consts';
 import { SITE_URL } from '@/lib/consts';
 import en from '../../messages/en.json';
@@ -43,12 +43,40 @@ const textsOf = (messages: typeof ru): LocaleTexts => ({
 
 const TEXTS: Record<string, LocaleTexts> = { ru: textsOf(ru), en: textsOf(en as typeof ru) };
 
-const ROWS = PRICING_PLANS.flatMap((plan) => LOCALES.map((locale) => [locale, plan.id] as const));
+const ROWS = SERVICES.flatMap((service) => LOCALES.map((locale) => [locale, service.id] as const));
 
-const planOf = (id: string) => PRICING_PLANS.find((plan) => plan.id === id)!;
+const planOf = (id: string) => SERVICES.find((service) => service.id === id)!;
+
+const MESSAGES: Record<string, ServiceMessages> = { ru: ru as ServiceMessages, en: en as ServiceMessages };
+
+/** Ответы FAQ с подставленными сроком и ценами — как на странице услуги и в ее JSON-LD. */
+const faqAnswers = (locale: string, id: string) =>
+  serviceFaqJsonLd(MESSAGES[locale], id, locale)?.mainEntity.map((entry) => entry.acceptedAnswer.text) ?? [];
 
 const serviceLink = (locale: string, id: string) =>
   `[${TEXTS[locale].plans[id].name}](${SITE_URL}/${locale}/${planOf(id).slug})`;
+
+/** Блок услуги в llms-full.txt: от заголовка `## <название>` до следующего заголовка второго уровня. */
+const planBlock = (body: string, name: string) => {
+  const lines = body.split('\n');
+  const start = lines.indexOf(`## ${name}`);
+
+  if (start < 0) {
+    return [];
+  }
+
+  const next = lines.findIndex((line, index) => index > start && line.startsWith('## '));
+
+  return lines.slice(start, next < 0 ? undefined : next);
+};
+
+/** Срок в блоке услуги: у лендинга — из дней тарифа, у магазина — строка перевода. */
+const TERM_LINES = [
+  ['ru', 'landing', `4${String.fromCodePoint(0x00a0)}дня`],
+  ['en', 'landing', '4 days'],
+  ['ru', 'store', ru.pricing.plans.store.term],
+  ['en', 'store', en.pricing.plans.store.term],
+] as const;
 
 const llmsText = async () => (await getLlms(new Request(`${SITE_URL}/llms.txt`))).text();
 
@@ -79,7 +107,7 @@ describe('/llms.txt', () => {
     const body = await llmsText();
     const firstLink = (locale: string) =>
       Math.min(
-        ...PRICING_PLANS.map((plan) => body.indexOf(serviceLink(locale, plan.id))).filter((index) => index >= 0),
+        ...SERVICES.map((service) => body.indexOf(serviceLink(locale, service.id))).filter((index) => index >= 0),
       );
 
     expect(Number.isFinite(firstLink('ru')), 'есть ru-ссылка на услугу').toBe(true);
@@ -102,14 +130,24 @@ describe('/llms-full.txt', () => {
     const body = await llmsFullText();
     const { name, summary } = TEXTS[locale].plans[id];
     const faq = TEXTS[locale].faq[id];
+    const answers = faqAnswers(locale, id);
 
     expect(faq.length).toBeGreaterThan(0);
+    expect(answers.length).toBe(faq.length);
     expect(body).toContain(name);
     expect(body).toContain(summary);
 
-    for (const { question, answer } of faq) {
+    for (const [index, { question }] of faq.entries()) {
       expect(body, `вопрос «${question}»`).toContain(question);
-      expect(body, `ответ на «${question}»`).toContain(answer);
+      expect(body, `ответ на «${question}»`).toContain(answers[index]);
     }
+  });
+
+  it.each(TERM_LINES)('%s, %s: строка срока в блоке услуги — %j', async (locale, id, term) => {
+    const messages = locale === 'ru' ? ru : (en as typeof ru);
+    const block = planBlock(await llmsFullText(), TEXTS[locale].plans[id].name);
+
+    expect(block.length, 'блок услуги').toBeGreaterThan(0);
+    expect(block).toContain(`- ${messages.pricing.columns.term}: ${term}`);
   });
 });

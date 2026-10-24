@@ -103,7 +103,7 @@ test.describe('переключатель направления', () => {
 
     const html = await ssrHtml(page);
     expect(htmlDesignOf(html)).toBe('terminal');
-    expect(html).toContain('mrshkn build --site --days 14 --fixed-price');
+    expect(html).toContain('mrshkn build --site --days 4 --fixed-price');
     await expect(page.getByTestId('design-switcher')).toContainText('Terminal');
   });
 
@@ -136,7 +136,7 @@ test.describe('переключатель направления', () => {
     await expect(page.locator('html')).toHaveAttribute('data-theme', 'light');
     expect(await page.evaluate((key) => window.localStorage.getItem(key), THEME_STORAGE_KEY)).toBeNull();
     await expect(page.getByRole('banner')).toBeVisible();
-    await expect(page.getByRole('heading', { level: 1 })).toContainText('14 дней');
+    await expect(page.getByRole('heading', { level: 1 })).toContainText('4 дня');
     const scrollY = await page.evaluate(() => Math.round(window.scrollY));
     expect(scrollY).toBeGreaterThanOrEqual(300 - SCROLL_ANCHOR_TOLERANCE);
     expect(scrollY).toBeLessThanOrEqual(300 + SCROLL_ANCHOR_TOLERANCE);
@@ -168,7 +168,7 @@ test.describe('переключатель направления', () => {
     await menu.getByRole('button', { name: 'Terminal' }).click();
 
     expect(await missingAtSwitch).toEqual([]);
-    await expect(page.getByRole('heading', { level: 1 })).toContainText('14 дней');
+    await expect(page.getByRole('heading', { level: 1 })).toContainText('4 дня');
   });
 
   test('выбранная вручную тема переживает смену направления и перезагрузку', async ({ page }) => {

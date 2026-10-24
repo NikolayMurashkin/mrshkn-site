@@ -27,6 +27,29 @@ const MESSAGES: Record<string, Messages> = { ru, en: en as Messages };
 
 const CURRENCY: Record<string, string> = { ru: 'RUB', en: 'USD' };
 
+/** Отраслевое Mini App своей страницы не имеет: адрес услуги — готовые решения страницы Telegram-приложений. */
+const servicePath = (locale: string, id: string, slug: string) =>
+  id === 'industryMiniApp' ? `/${locale}/mini-app#ready` : `/${locale}/${slug}`;
+
+type OrganizationLd = {
+  '@context'?: string;
+  '@type'?: string;
+  name?: string;
+  url?: string;
+  areaServed?: unknown;
+};
+
+const AREA_SERVED: Record<string, { '@type': string; name: string }[]> = {
+  ru: [
+    { '@type': 'City', name: 'Калининград' },
+    { '@type': 'AdministrativeArea', name: 'Калининградская область' },
+  ],
+  en: [
+    { '@type': 'City', name: 'Kaliningrad' },
+    { '@type': 'AdministrativeArea', name: 'Kaliningrad Oblast' },
+  ],
+};
+
 const ROWS = PRICING_PLANS.flatMap((plan) => LOCALES.map((locale) => [locale, plan.id] as const));
 
 const planTexts = (locale: string, id: string) =>
@@ -34,12 +57,20 @@ const planTexts = (locale: string, id: string) =>
 
 describe('JSON-LD', () => {
   it('J1: Organization со schema.org, названием студии и адресом сайта', () => {
-    const result = organizationJsonLd() as { '@context'?: string; '@type'?: string; name?: string; url?: string };
+    const result = organizationJsonLd('ru') as OrganizationLd;
 
     expect(result['@context']).toBe('https://schema.org');
     expect(result['@type']).toBe('Organization');
     expect(result.name).toBe(ru.brand.name);
     expect(new URL(result.url ?? '').origin).toBe(new URL(SITE_URL).origin);
+  });
+
+  it.each([...LOCALES])('Organization %s: город и область в areaServed, без адреса и телефона', (locale) => {
+    const result = organizationJsonLd(locale) as OrganizationLd;
+
+    expect(result.areaServed).toEqual(AREA_SERVED[locale]);
+    expect(result).not.toHaveProperty('address');
+    expect(result).not.toHaveProperty('telephone');
   });
 
   it.each(ROWS)('J2 %s, %s: Service с названием, описанием, адресом, исполнителем и ценой', (locale, id) => {
@@ -52,7 +83,7 @@ describe('JSON-LD', () => {
     expect(result?.['@type']).toBe('Service');
     expect(result?.name).toBe(name);
     expect(result?.description).toBe(summary);
-    expect(new URL(result?.url ?? '', SITE_URL).href).toBe(new URL(`/${locale}/${plan.slug}`, SITE_URL).href);
+    expect(new URL(result?.url ?? '', SITE_URL).href).toBe(new URL(servicePath(locale, id, plan.slug), SITE_URL).href);
     expect(result?.provider?.['@type']).toBe('Organization');
     expect(result?.provider?.name).toBe('MRSHKN');
     expect(result?.offers?.['@type']).toBe('Offer');

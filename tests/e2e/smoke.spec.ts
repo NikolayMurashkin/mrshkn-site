@@ -50,6 +50,6 @@ test.describe('скелет сайта', () => {
     await page.goto('/ru');
 
     await expect(page.locator('html')).toHaveAttribute('data-design', 'kinetic');
-    await expect(page.getByRole('heading', { level: 1 })).toContainText('14 дней');
+    await expect(page.getByRole('heading', { level: 1 })).toContainText('4 дня');
   });
 });

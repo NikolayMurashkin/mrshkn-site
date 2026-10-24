@@ -2,7 +2,7 @@ import { existsSync, readdirSync, readFileSync } from 'node:fs';
 import { createRequire } from 'node:module';
 import { join } from 'node:path';
 import { describe, expect, it } from 'vitest';
-import { GLYPHS } from '../../scripts/subset-glyphs';
+import { GLYPHS, MONO_GLYPHS } from '../../scripts/subset-glyphs';
 import { LOCALES } from '@/i18n/consts';
 
 type Face = { collectUnicodes: () => Uint32Array | number[]; destroy: () => void };
@@ -169,6 +169,17 @@ describe('сабсет шрифтов направлений', () => {
       expect(records.length, 'таблица name прочитана').toBeGreaterThan(0);
       expect(violations).toEqual([]);
     });
+  });
+
+  it('terminal/fonts/jetbrains-mono.woff2 содержит каждый знак MONO_GLYPHS: штриховка пауз шкалы Terminal', async () => {
+    const path = 'terminal/fonts/jetbrains-mono.woff2';
+
+    expect(existsSync(fileOf(path)), `файл ${path} существует`).toBe(true);
+    expect([...MONO_GLYPHS].length, 'MONO_GLYPHS не пуст').toBeGreaterThan(0);
+
+    const present = await fontCharacters(path);
+
+    expect([...MONO_GLYPHS].filter((character) => !present.has(character)).map(describeCharacter)).toEqual([]);
   });
 
   it('имена семейств в @font-face направлений не содержат зарезервированных имен из OFL сабсетов', () => {

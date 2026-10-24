@@ -50,7 +50,7 @@ const SECTIONS: Record<DesignName, (props: SectionProps) => ReactNode> = {
 
 const NICHES = ['clinic', 'expert', 'horeca'] as const;
 
-const INDUSTRY_PLAN = { id: 'industry', slug: 'industry', price: { rub: 70_000, usd: 1_200 }, isFrom: false };
+const INDUSTRY_PLAN = { id: 'industry', slug: 'industry', price: { rub: 59_000, usd: 1_200 }, isFrom: false };
 
 const VOID_TAGS = new Set([
   'area',

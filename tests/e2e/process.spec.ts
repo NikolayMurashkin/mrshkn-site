@@ -2,23 +2,24 @@ import { expect, test, type Page } from '@playwright/test';
 import { DESIGNS, LOCALES, MOBILE_VIEWPORT } from './consts';
 import { openDesign } from './open-design';
 
-/** Четыре обещания D4 — текстом, а не картинкой: их проверяет и клиент, и договор. */
+/** Четыре обещания — текстом, а не картинкой: их проверяет и клиент, и договор. */
 const PROMISES = {
-  ru: ['14 дней', 'Lighthouse 90+', 'Фикс', '30 дней гарантии'],
-  en: ['14 days', 'Lighthouse 90+', 'Fixed', '30 days of warranty'],
+  ru: ['4 дня', 'Скорость 90+', 'Фикс', 'Год гарантии'],
+  en: ['4 days', 'Lighthouse 90+', 'Fixed', 'A one-year warranty'],
 } as const;
 
-const STEP_DAYS = ['1', '3', '10', '14'] as const;
+/** График лендинга: четыре дня, по шагу на день. */
+const STEP_DAYS = ['1', '2', '3', '4'] as const;
 
 /** Editorial печатает день словом, и слово должно соответствовать дню шага, а не жить своей жизнью. */
 const EDITORIAL_ORDINALS = {
-  ru: ['День первый', 'День третий', 'День десятый', 'День четырнадцатый'],
-  en: ['Day one', 'Day three', 'Day ten', 'Day fourteen'],
+  ru: ['День первый', 'День второй', 'День третий', 'День четвертый'],
+  en: ['Day one', 'Day two', 'Day three', 'Day four'],
 } as const;
 
 const processOf = (page: Page) => page.getByTestId('process');
 
-test.describe('секция «Как проходят две недели»', () => {
+test.describe('секция «Как мы делаем сайт за 4 дня»', () => {
   for (const design of DESIGNS) {
     for (const locale of LOCALES) {
       test(`${design} / ${locale}: четыре обещания и таймлайн из четырех шагов`, async ({ page }) => {

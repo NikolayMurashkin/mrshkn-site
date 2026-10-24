@@ -75,9 +75,22 @@ const EN_FORBIDDEN = [
   /\bone-hour\b/i,
 ];
 
-const PROCESS_SERVICES = ['industry', 'landing', 'business', 'miniApp', 'store', 'mvp'];
+/**
+ * Услуги, у которых первый шаг идет «до старта»: задача обсуждается до договора, в ответ — смета, срок и проект
+ * договора. У отраслевого сайта, лендинга, «Бизнеса» и шага главной первый шаг — старт по договору с предоплатой
+ * и материалами: его текст дословно держит `deal-texts.test.ts`.
+ */
+const PROCESS_SERVICES = ['miniApp', 'store', 'mvp'];
 
 const CONTRACT_PATHS = ['pricing.basics.deadline', 'process.contractNote', 'servicePage.cardPoints.deadline'];
+
+/** Где срок «записываем в договор» по утвержденным текстам; в остальных местах — «фиксируем в договоре». */
+const CONTRACT_RECORDED_RU = [
+  'pricing.basics.deadline',
+  'services.landing.faq.1.answer',
+  'services.business.faq.3.answer',
+  'services.industry.faq.2.answer',
+];
 
 /** Ответы FAQ, где называется срок: услуга и часть ru-вопроса. */
 const CONTRACT_FAQ: [string, string][] = [
@@ -87,7 +100,7 @@ const CONTRACT_FAQ: [string, string][] = [
   ['industry', 'За сколько дней будет готов отраслевой сайт'],
 ];
 
-const HOSTING_QUESTION = 'Где остается хостинг?';
+const HOSTING_QUESTION = 'Где хранится сайт и кто за это платит?';
 
 const LOCALES: Locale[] = ['ru', 'en'];
 
@@ -111,18 +124,21 @@ describe('тексты сайта: без созвонов и «прописан
     };
 
     expect(training.ru, 'ru pricing.basics.training').toContain('инструкц');
-    expect(training.ru, 'ru pricing.basics.training').toContain('скринкаст');
-    expect(training.en, 'en pricing.basics.training').toContain('screencast');
+    expect(training.ru, 'ru pricing.basics.training').toContain('видео с экрана');
+    expect(
+      training.en.includes('screencast') || training.en.includes('video'),
+      `en pricing.basics.training называет screencast или video: ${training.en}`,
+    ).toBe(true);
     expect(
       training.en.includes('guide') || training.en.includes('instructions'),
       `en pricing.basics.training называет guide или instructions: ${training.en}`,
     ).toBe(true);
 
-    const briefPaths = ['process.steps.brief.text', ...PROCESS_SERVICES.map((id) => `services.${id}.process.0.text`)];
+    const briefPaths = PROCESS_SERVICES.map((id) => `services.${id}.process.0.text`);
 
     for (const path of briefPaths) {
-      expect(folded(textAt('ru', path)), `ru ${path}`).toContain('бриф');
-      expect(folded(textAt('en', path)), `en ${path}`).toContain('brief');
+      expect(folded(textAt('ru', path)), `ru ${path}`).toContain('до старта');
+      expect(folded(textAt('en', path)), `en ${path}`).toContain('before the start');
     }
 
     for (const path of ['brief.steps.product.note', 'brief.steps.design.note']) {
@@ -183,17 +199,28 @@ describe('FAQ лендинга про ИИ-поиск', () => {
 
 describe('хостинг оплачивается провайдеру', () => {
   it('ru: хостинг оплачивается провайдеру, от 2 000 ₽ в месяц', () => {
-    const entries = [
-      { path: 'pricing.basics.hosting', text: textAt('ru', 'pricing.basics.hosting') },
-      faqAnswer('ru', 'support', HOSTING_QUESTION),
+    const entries: [Entry, string[]][] = [
+      [
+        { path: 'pricing.basics.hosting', text: textAt('ru', 'pricing.basics.hosting') },
+        ['от 2 000 ₽ в месяц', 'оплачиваете напрямую'],
+      ],
+      [
+        faqAnswer('ru', 'support', HOSTING_QUESTION),
+        [
+          'от 2 000 ₽ в месяц',
+          'аккаунт у провайдера оформлен на вас',
+          'платите ему вы напрямую',
+          'провайдеры могут менять цены',
+        ],
+      ],
     ];
 
-    for (const { path, text } of entries) {
+    for (const [{ path, text }, parts] of entries) {
       const value = folded(text);
 
-      expect(value, path).toContain('от 2 000 ₽ в месяц');
-      expect(value, path).toContain('провайдеру напрямую');
-      expect(value, path).toContain('цены провайдеров меняются');
+      for (const part of parts) {
+        expect(value, path).toContain(part);
+      }
     }
   });
 
@@ -218,10 +245,16 @@ describe('срок и условия фиксируются в договоре'
       ...CONTRACT_PATHS.map((path) => ({ path, text: textAt(locale, path) })),
       ...CONTRACT_FAQ.map(([service, question]) => faqAnswer(locale, service, question)),
     ];
-    const expected = locale === 'ru' ? 'фиксируем в договоре' : 'in the contract';
+    const expected = (path: string) => {
+      if (locale === 'en') {
+        return 'in the contract';
+      }
+
+      return CONTRACT_RECORDED_RU.includes(path) ? 'записываем в договор' : 'фиксируем в договоре';
+    };
 
     for (const { path, text } of entries) {
-      expect(folded(text), path).toContain(expected);
+      expect(folded(text), path).toContain(expected(path));
     }
   });
 });
