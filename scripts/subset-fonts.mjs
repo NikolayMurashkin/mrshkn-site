@@ -2,7 +2,7 @@ import { mkdir, writeFile } from 'node:fs/promises';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import subsetFont from 'subset-font';
-import { GLYPHS } from './subset-glyphs.ts';
+import { GLYPHS, MONO_GLYPHS } from './subset-glyphs.ts';
 
 const GOOGLE_FONTS_COMMIT = 'e44c4b011a820c2cbe2fd2cfa8052037d7edb571';
 const GOOGLE_FONTS_RAW = `https://raw.githubusercontent.com/google/fonts/${GOOGLE_FONTS_COMMIT}/ofl`;
@@ -35,6 +35,7 @@ const FONTS = [
     source: 'JetBrainsMono[wght].ttf',
     output: 'jetbrains-mono.woff2',
     variationAxes: { wght: { min: 400, max: 700 } },
+    extraGlyphs: MONO_GLYPHS,
   },
   {
     design: 'terminal',
@@ -149,7 +150,8 @@ for (const font of FONTS) {
 
   const original = await download(`${font.directory}/${encodeURIComponent(font.source)}`);
   const source = font.rename ? renameFont(original, font.rename) : original;
-  const subset = await subsetFont(source, GLYPHS, {
+  const glyphs = GLYPHS + (font.extraGlyphs ?? '');
+  const subset = await subsetFont(source, glyphs, {
     targetFormat: 'woff2',
     variationAxes: font.variationAxes,
     noLayoutClosure: true,
@@ -167,7 +169,7 @@ for (const font of FONTS) {
   // одного начертания, лицензия — та же `<имя>-OFL.txt` рядом. Кернинг вырезан: Satori ставит отрезки строки
   // по ширинам знаков без кернинга, а рисует слова с ним → разница копится в пробеле после отрезка.
   for (const instance of font.instances ?? []) {
-    const instanceFont = await subsetFont(source, GLYPHS, {
+    const instanceFont = await subsetFont(source, glyphs, {
       targetFormat: 'sfnt',
       variationAxes: instance.variationAxes,
       noLayoutClosure: true,

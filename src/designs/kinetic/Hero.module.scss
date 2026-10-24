@@ -13,6 +13,7 @@
   gap: var(--space-16) var(--space-40);
   align-items: center;
   padding: var(--space-56) var(--gutter) 48px;
+  container-type: inline-size;
 }
 
 .title {
@@ -20,7 +21,7 @@
   margin: 0;
   font-family: var(--font-display);
   font-weight: 900;
-  font-size: clamp(30px, 8.5vw, 128px);
+  font-size: min(clamp(30px, 8.5vw, 128px), 8cqi);
   line-height: 1.17;
   letter-spacing: -0.02em;
   text-transform: uppercase;

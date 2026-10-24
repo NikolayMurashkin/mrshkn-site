@@ -12,15 +12,11 @@ export const REVIEW_EMPTY_VALUES: Record<ReviewFieldName, string> = {
   other: '',
 };
 
-/** Поля, без которых форма не уходит: все, кроме ссылки и «другого». */
-export const REVIEW_REQUIRED: readonly ReviewFieldName[] = [
-  'fullName',
-  'signature',
-  'occupation',
-  'before',
-  'process',
-  'after',
-];
+/**
+ * Поля, без которых форма не уходит: все, кроме ссылки, «другого» и ответа «что изменилось после запуска» —
+ * его можно пропустить, если после запуска прошло мало времени.
+ */
+export const REVIEW_REQUIRED: readonly ReviewFieldName[] = ['fullName', 'signature', 'occupation', 'before', 'process'];
 
 export const REVIEW_FIELD_NAMES = Object.keys(REVIEW_EMPTY_VALUES) as ReviewFieldName[];
 

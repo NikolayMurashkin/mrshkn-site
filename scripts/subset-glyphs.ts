@@ -11,3 +11,7 @@ const CYRILLIC = codePoints(0x400, 0x45f);
 const PUNCTUATION_AND_SYMBOLS = '–—‘’“”„•…№€₽←→−≤≥✓✦';
 
 export const GLYPHS = BASIC_LATIN + INVISIBLE_MARKS + LATIN_1_MARKS + CYRILLIC + PUNCTUATION_AND_SYMBOLS;
+
+// Только в JetBrains Mono: штриховка пауз шкалы процесса Terminal. В других шрифтах сайта знака нет,
+// в общий набор он не идет — сабсеты остальных шрифтов не меняются.
+export const MONO_GLYPHS = '░';

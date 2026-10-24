@@ -1,8 +1,8 @@
 import type { FaqItem, Money, PricingPlan } from '@/content/types';
 import type { SiteLocale } from '@/i18n/types';
 
-/** Тексты тарифа из `pricing.plans.<id>`. */
-export type PlanTexts = { name: string; summary: string; term: string };
+/** Тексты тарифа из `pricing.plans.<id>`: у тарифа со сроком в днях `term` нет. */
+export type PlanTexts = { name: string; summary: string; term?: string };
 
 /** Часть файла переводов, из которой собираются метаданные, JSON-LD и `llms.txt`. */
 export type SeoMessages = {
@@ -30,10 +30,14 @@ export type OrganizationRef = {
   url: string;
 };
 
+/** Место, где студия берет заказы: город или регион schema.org. */
+export type ServedArea = { '@type': 'City' | 'AdministrativeArea'; name: string };
+
 export type OrganizationJsonLd = OrganizationRef & {
   '@context': 'https://schema.org';
   email: string;
   logo: string;
+  areaServed: ServedArea[];
 };
 
 type PriceSpecification = {

@@ -23,7 +23,34 @@ export const formatRange = ({ from, to }: PriceRange, locale: string) => {
   return isEnglish(locale) ? `$${bounds}` : `${bounds}${NBSP}₽`;
 };
 
-/** Адрес страницы услуги без префикса языка: его добавляет `Link` из next-intl. */
-export const planPath = (plan: PricingPlan) => `/${plan.slug}?plan=${plan.id}`;
+/**
+ * Адрес страницы услуги без префикса языка: его добавляет `Link` из next-intl. Тариф без своей страницы ведет
+ * на секцию страницы другой услуги, без `?plan=`.
+ */
+export const planPath = (plan: PricingPlan) =>
+  plan.anchor === undefined ? `/${plan.slug}?plan=${plan.id}` : `/${plan.slug}#${plan.anchor}`;
 
 export const planHref = (locale: string, plan: PricingPlan) => `/${locale}${planPath(plan)}`;
+
+const ruDaysWord = (days: number) => {
+  const lastTwo = days % 100;
+  const last = days % 10;
+
+  if (lastTwo >= 11 && lastTwo <= 14) {
+    return 'дней';
+  }
+
+  if (last === 1) {
+    return 'день';
+  }
+
+  return last >= 2 && last <= 4 ? 'дня' : 'дней';
+};
+
+/** Срок в календарных днях: в ru число и слово не разрываются переносом. */
+export const formatDays = (days: number, locale: string) =>
+  isEnglish(locale) ? `${days} ${days === 1 ? 'day' : 'days'}` : `${days}${NBSP}${ruDaysWord(days)}`;
+
+/** Срок тарифа: из дней тарифа, а у тарифа без дней — строка перевода; перевод читается, только когда нужен. */
+export const planTerm = (plan: PricingPlan, locale: string, translatedTerm: () => string) =>
+  plan.days === undefined ? translatedTerm() : formatDays(plan.days, locale);

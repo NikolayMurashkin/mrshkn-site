@@ -38,16 +38,27 @@ export type ServiceTierCard = {
   summary: string;
   term: string;
   price: string;
-  /** Вид цены — надзаголовок карточки там, где он есть в DS направления. */
-  kind: string;
-  /** Что входит в вариант: список карточки там, где он есть в DS направления. */
+  /**
+   * Вид цены — надзаголовок карточки там, где он есть в DS направления.
+   * У ежемесячного варианта его нет: «ежемесячно» уже сказано сроком карточки.
+   */
+  kind: string | null;
+  /** Что входит в вариант: список карточки там, где он есть в DS направления; у варианта без списка — пустой. */
   points: string[];
   href: string;
+  /** Подпись ссылки в квиз с этим вариантом. */
+  cta: string;
+};
+
+/** Варианты тарифа карточками: у 3D — два формата, у поддержки — хостинг и три уровня с часами. */
+export type ServiceTiers = {
+  heading: string;
+  note: string;
+  items: ServiceTierCard[];
 };
 
 /** Блоки, которые есть только у «3D-интерактива»: ролик или постер, варианты, условия, что нужно от клиента. */
 export type ServiceThreeD = {
-  tiers: ServiceTierCard[];
   terms: ServiceBasics;
   needs: ServiceBasics;
   /** Модель с нуля — отдельной строкой сметы. */
@@ -79,6 +90,7 @@ export type ServicePageData = {
   cardPoints: string[];
   ownBasics: ServiceBasics | null;
   industry: ServiceIndustry | null;
+  tiers: ServiceTiers | null;
   threeD: ServiceThreeD | null;
   steps: ServiceStep[];
   faq: FaqItem[];

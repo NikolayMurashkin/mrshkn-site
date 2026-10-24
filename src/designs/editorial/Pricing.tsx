@@ -61,18 +61,25 @@ export const EditorialPricing = () => {
                 </span>
                 <span className={styles.price}>{price.plan(plan)}</span>
                 <span className={styles.summary}>{t(`plans.${plan.id}.summary`)}</span>
-                <span className={styles.term}>{t(`plans.${plan.id}.term`)}</span>
+                <span className={styles.term}>{price.term(plan)}</span>
               </Link>
             </li>
           ))}
         </ul>
+
+        <p
+          className={styles.caseOffer}
+          data-testid="case-offer"
+        >
+          {t('caseOffer')}
+        </p>
 
         <div
           className={styles.miniApp}
           data-testid="mini-app-note"
         >
           <p className={styles.miniAppTitle}>{t('miniAppNote.title')}</p>
-          <p className={styles.miniAppText}>{t('miniAppNote.text')}</p>
+          <p className={styles.miniAppText}>{t('miniAppNote.text', { max: price.max })}</p>
         </div>
 
         <div className={styles.block}>

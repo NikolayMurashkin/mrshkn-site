@@ -1,6 +1,7 @@
 import { useTranslations } from 'next-intl';
+import { ProcessScale, processScaleClasses } from '@/components/ProcessScale';
 import { PROCESS_STEPS, PROMISES } from '@/content/process';
-import { POP_BOARD_DAYS, POP_KEY_DAY_TONES } from './consts';
+import { POP_SCALE_SWATCHES } from './consts';
 import { PopSteps } from './Steps';
 import styles from './Process.module.scss';
 
@@ -51,23 +52,29 @@ export const PopProcess = () => {
 
       <h3 className={styles.subhead}>{t('heading')}</h3>
 
-      <div
-        className={styles.board}
-        aria-hidden="true"
-      >
-        {POP_BOARD_DAYS.map((day) => {
-          const tone = POP_KEY_DAY_TONES.get(day);
+      <ProcessScale
+        classes={processScaleClasses(styles)}
+        renderBar={(item) => {
+          if (item.kind === 'day') {
+            return <span className={styles.scaleChip}>{item.day}</span>;
+          }
 
-          return (
-            <span
-              className={tone ? `${styles.cell} ${styles.cellKey} ${styles[`tone${tone}`]}` : styles.cell}
-              key={day}
-            >
-              {day}
-            </span>
-          );
-        })}
-      </div>
+          if (item.kind === 'style') {
+            return (
+              <span className={styles.scaleSwatches}>
+                {POP_SCALE_SWATCHES.map((swatch) => (
+                  <span
+                    className={styles[swatch]}
+                    key={swatch}
+                  />
+                ))}
+              </span>
+            );
+          }
+
+          return <span className={styles.scaleStop}>{t('scale.pop.stop')}</span>;
+        }}
+      />
 
       <PopSteps
         steps={steps}

@@ -54,7 +54,7 @@ export const PopPricing = () => {
               onClick={() => reachGoal(GOALS.planClick)}
               aria-label={t('planLink', { name: t(`plans.${plan.id}.name`) })}
             >
-              <span className={styles.tag}>{t(`plans.${plan.id}.term`)}</span>
+              <span className={styles.tag}>{price.term(plan)}</span>
               <span className={styles.name}>{t(`plans.${plan.id}.name`)}</span>
               <span className={styles.summary}>{t(`plans.${plan.id}.summary`)}</span>
               <span className={styles.foot}>
@@ -71,12 +71,19 @@ export const PopPricing = () => {
         ))}
       </ul>
 
+      <p
+        className={styles.caseOffer}
+        data-testid="case-offer"
+      >
+        {t('caseOffer')}
+      </p>
+
       <div
         className={styles.callout}
         data-testid="mini-app-note"
       >
         <p className={styles.calloutTitle}>{t('miniAppNote.title')}</p>
-        <p className={styles.calloutText}>{t('miniAppNote.text')}</p>
+        <p className={styles.calloutText}>{t('miniAppNote.text', { max: price.max })}</p>
         <StarIcon
           className={styles.calloutStar}
           size={96}

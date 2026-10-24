@@ -193,6 +193,16 @@
   grid-area: arrow;
 }
 
+.caseOffer {
+  margin: 0;
+  max-width: 720px;
+  font-size: 15px;
+  line-height: 1.5;
+  color: var(--muted);
+
+  @include s.wrap;
+}
+
 .miniApp {
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);

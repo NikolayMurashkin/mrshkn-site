@@ -13,15 +13,22 @@ export type PriceRange = {
 /** За что платят вне таблицы тарифов: разово, ежемесячно или почасово. */
 export type PricePeriod = 'once' | 'month' | 'hour';
 
-/** Тариф из прайса: строка таблицы услуг и будущая страница услуги. */
+/** Тариф из прайса: строка таблицы услуг и страница услуги. */
 export type PricingPlan = {
   /** Ключ тарифа: по нему лежат тексты в messages и уходит параметр `?plan=`. */
   id: string;
   /** Сегмент страницы услуги: ссылка ведет на `/<locale>/<slug>?plan=<id>`. */
   slug: string;
+  /**
+   * Своей страницы у тарифа нет: ссылка ведет на секцию с этим id на странице `slug` другой услуги,
+   * без `?plan=`; в справочник страниц услуг тариф не попадает.
+   */
+  anchor?: string;
   price: Money;
   /** Цена «от»: точная сумма считается по объему работ. */
   isFrom: boolean;
+  /** Срок в календарных днях: подпись срока собирается из числа, ключа `term` в переводах у тарифа нет. */
+  days?: number;
 };
 
 /** Цена тарифа или его варианта: подпись собирается одним кодом, «от» — по `isFrom`. */
@@ -35,6 +42,8 @@ export type PricingTier = {
   planId: string;
   price: Money;
   isFrom: boolean;
+  /** Часов нашей работы в месяц, которые входят в цену варианта; у варианта без часов поля нет. */
+  hours?: number;
 };
 
 /** Опция-апселл к любому тарифу: цена фиксированная, часть опций еще и с абонплатой. */
@@ -110,3 +119,15 @@ export type FaqJsonLd = {
 export type ServiceMessages = {
   services?: Record<string, { faq?: FaqItem[] } | undefined>;
 };
+
+/** Платеж на шкале процесса: предоплата, вторая оплата, последняя. */
+export type ProcessPayment = 'prepayment' | 'second' | 'final';
+
+/** Пауза на шкале процесса: заказчик смотрит работу, срок стоит. */
+type ProcessPause = 'round1' | 'round2' | 'round3' | 'acceptance';
+
+/** Отрезок шкалы «дни и паузы»: выбор стиля до дня 1, рабочий день или пауза; платеж — у части отрезков. */
+export type ProcessScaleSegment =
+  | { kind: 'style'; payment?: ProcessPayment }
+  | { kind: 'day'; day: number; payment?: ProcessPayment }
+  | { kind: 'pause'; pause: ProcessPause; payment?: ProcessPayment };

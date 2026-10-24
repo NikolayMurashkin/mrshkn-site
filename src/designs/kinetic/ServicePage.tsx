@@ -6,6 +6,7 @@ import { renderNowrap } from '@/designs/nowrap';
 import { ArrowRightIcon, ArrowUpRightIcon } from './icons';
 import { buttonClass } from './button';
 import { KineticServiceThreeD } from './ServiceThreeD';
+import { KineticServiceTiers } from './ServiceTiers';
 import styles from './ServicePage.module.scss';
 
 export const KineticServicePage = ({ service }: ServicePageProps) => {
@@ -28,6 +29,7 @@ export const KineticServicePage = ({ service }: ServicePageProps) => {
     cardPoints,
     ownBasics,
     industry,
+    tiers,
     threeD,
     options,
     steps,
@@ -89,7 +91,14 @@ export const KineticServicePage = ({ service }: ServicePageProps) => {
             </section>
           ) : null}
 
-          {threeD ? <KineticServiceThreeD data={threeD} /> : null}
+          {threeD ? (
+            <KineticServiceThreeD
+              data={threeD}
+              tiers={tiers}
+            />
+          ) : tiers ? (
+            <KineticServiceTiers data={tiers} />
+          ) : null}
 
           <section
             className={styles.block}

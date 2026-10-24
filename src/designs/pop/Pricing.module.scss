@@ -82,7 +82,7 @@
   --tilt: 2deg;
 }
 
-.plan:nth-last-child(-n + 2) {
+.plan:nth-last-child(-n + 3) {
   grid-column: 1 / -1;
 
   .card {
@@ -163,6 +163,15 @@
 
 .round {
   @include s.round;
+}
+
+.caseOffer {
+  margin: 0;
+  max-width: 720px;
+  font-weight: 600;
+  line-height: 1.5;
+
+  @include s.wrap;
 }
 
 .callout {
@@ -291,7 +300,7 @@
     grid-template-columns: minmax(0, 1fr);
   }
 
-  .plan:nth-last-child(-n + 2) .card {
+  .plan:nth-last-child(-n + 3) .card {
     --tilt: -1deg;
 
     display: flex;
@@ -299,7 +308,7 @@
     min-height: 270px;
   }
 
-  .plan:nth-last-child(-n + 2) .foot {
+  .plan:nth-last-child(-n + 3) .foot {
     align-items: flex-end;
     margin-top: auto;
   }

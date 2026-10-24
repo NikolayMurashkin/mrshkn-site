@@ -68,12 +68,13 @@
   flex-direction: column;
   gap: 48px;
   min-width: 0;
+  container-type: inline-size;
 }
 
 .title {
   margin: 0;
   font-family: var(--font-display);
-  font-size: clamp(44px, 9.4vw, 136px);
+  font-size: min(clamp(44px, 9.4vw, 136px), 12.5cqi);
   font-weight: 700;
   line-height: 0.92;
   letter-spacing: -0.045em;

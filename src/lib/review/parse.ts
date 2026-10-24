@@ -1,6 +1,12 @@
 import { LOCALES } from '@/i18n/consts';
 import type { SiteLocale } from '@/i18n/types';
-import { REVIEW_ANSWERS, REVIEW_LIMITS, REVIEW_LINK_PATTERN, REVIEW_REQUIRED_FIELDS } from './consts';
+import {
+  REVIEW_ANSWERS,
+  REVIEW_LIMITS,
+  REVIEW_LINK_PATTERN,
+  REVIEW_REQUIRED_ANSWERS,
+  REVIEW_REQUIRED_FIELDS,
+} from './consts';
 import type { ReviewParseResult, ReviewRestrictions } from './types';
 
 const FIELDS_REJECTED = { ok: false, reason: 'fields' } as const;
@@ -34,6 +40,14 @@ export const isReviewLink = (value: string) => {
   }
 };
 
+/** Ответ формы: обязательный — строка или `null`; необязательный без значения — пустая строка. */
+const parseAnswer = (answers: unknown, answer: (typeof REVIEW_ANSWERS)[number]) => {
+  const value = isRecord(answers) ? answers[answer] : undefined;
+  const isOptional = !REVIEW_REQUIRED_ANSWERS.includes(answer);
+
+  return isOptional && (value === undefined || value === null) ? '' : text(value, REVIEW_LIMITS.answer);
+};
+
 const parseRestrictions = (value: unknown): ReviewRestrictions | null => {
   if (value === undefined || value === null) {
     return { noTransfer: false, noLink: false, other: null };
@@ -60,14 +74,13 @@ export const parseReview = (input: unknown): ReviewParseResult => {
   }
 
   const required = REVIEW_REQUIRED_FIELDS.map((field) => [field, text(input[field], REVIEW_LIMITS.short)] as const);
-  const answers = REVIEW_ANSWERS.map(
-    (answer) => [answer, isRecord(input.answers) ? text(input.answers[answer], REVIEW_LIMITS.answer) : null] as const,
-  );
+  const answers = REVIEW_ANSWERS.map((answer) => [answer, parseAnswer(input.answers, answer)] as const);
   const link = input.link === undefined || input.link === null ? '' : text(input.link, REVIEW_LIMITS.link);
   const restrictions = parseRestrictions(input.restrictions);
 
   if (
-    [...required, ...answers].some(([, value]) => !value) ||
+    required.some(([, value]) => !value) ||
+    answers.some(([answer, value]) => value === null || (!value && REVIEW_REQUIRED_ANSWERS.includes(answer))) ||
     link === null ||
     (link && !isReviewLink(link)) ||
     !restrictions

@@ -1,3 +1,6 @@
+import type { ProcessPayment } from '@/content/types';
+import type { ProcessScaleLegendEntry } from './types';
+
 export const THEME_STORAGE_KEY = 'theme';
 
 export const THEME_COOKIE = 'theme';
@@ -16,3 +19,13 @@ export const CASE_SHOT_SIZES = '(max-width: 1000px) 100vw, 960px';
  * или запуск прервала пауза либо смена `src`.
  */
 export const EXPECTED_PLAY_ERRORS: readonly string[] = ['NotAllowedError', 'AbortError'];
+
+/** Платежи шкалы процесса, которые стоят в конце отрезка: последние 30 % — после приемки. */
+export const PROCESS_PAYMENTS_AT_END: readonly ProcessPayment[] = ['final'];
+
+/** Легенда шкалы: выбор стиля, рабочий день, пауза — ключ подписи `process.scale.legend.*`. */
+export const PROCESS_SCALE_LEGEND: readonly ProcessScaleLegendEntry[] = [
+  { kind: 'style', key: 'style' },
+  { kind: 'day', key: 'work' },
+  { kind: 'pause', key: 'pause' },
+];

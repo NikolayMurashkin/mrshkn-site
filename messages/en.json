@@ -1,7 +1,7 @@
 {
   "meta": {
-    "title": "MRSHKN — custom-coded websites in 14 days",
-    "description": "Custom-coded websites in 14 days. Fixed price, no templates, support included."
+    "title": "MRSHKN — custom-coded websites in 4 days",
+    "description": "MRSHKN studio builds websites and Telegram apps. Price and deadline in the contract. Google's speed test: 90+ out of 100. A one-year warranty."
   },
   "brand": {
     "name": "MRSHKN",
@@ -25,13 +25,13 @@
     "founded": "Founded in 2026"
   },
   "hero": {
-    "subtitle": "Fixed price, no templates, support included.",
+    "subtitle": "Price and deadline in the contract. Your site scores 90+ out of 100 in Google's free speed test, or we don't hand it over. A one-year warranty. A one-page site in 4 days, a site for a clinic or a cafe in 7.",
     "kinetic": {
-      "title": "<line>Custom-coded websites</line><line><accent>in 14 days</accent></line>",
-      "lead": "Websites and Telegram apps for business — from brief to launch in two weeks.",
+      "title": "<line>Custom-coded websites</line><line><accent>in 4 days</accent></line>",
+      "lead": "Websites and Telegram apps for business. We write the code ourselves, without website builders, and hand it over to you. We work under a contract, and at the end you sign an acceptance certificate, the document that confirms the work is accepted.",
       "primaryCta": "Get a quote",
       "secondaryCta": "How we work",
-      "badge": "LIGHTHOUSE 90+ · 14 DAYS · 30-DAY WARRANTY · ",
+      "badge": "SPEED 90+ · 4 DAYS · ONE-YEAR WARRANTY · ",
       "tapeCode": "Code",
       "dayUnit": "day",
       "ticker": {
@@ -41,24 +41,25 @@
         "shops": "Online stores",
         "mvp": "Startup MVPs",
         "support": "Support"
-      }
+      },
+      "tapeDeadline": "Deadline in the contract"
     },
     "terminal": {
-      "prompt": "mrshkn build --site --days 14 --fixed-price",
-      "title": "Custom-coded websites<br></br>in 14 days<accent>.</accent>",
-      "lead": "Websites and Telegram apps for business — the source code is yours, the metrics are in the handover report.",
+      "prompt": "mrshkn build --site --days 4 --fixed-price",
+      "title": "Custom-coded websites<br></br>in 4 days<accent>.</accent>",
+      "lead": "Websites and Telegram apps for business. The code and passwords are yours, the speed test is in the acceptance certificate.",
       "primaryCta": "./get-a-quote",
       "secondaryCta": "./how-we-work",
-      "logTitle": "build.log — a typical project, 14 days",
+      "logTitle": "build.log — a one-page site, 4 days",
       "day": "[day {day}]",
       "log": {
-        "brief": "brief + proposal",
-        "prepayment": "50% upfront",
-        "concept": "home screen concept",
-        "staging": "staging, forms, analytics",
-        "lighthouse": "lighthouse performance ≥ 90",
-        "handover": "domain, access, source code",
-        "warranty": "<k>warranty</k> 30 days"
+        "brief": "business questionnaire, contract, your texts and photos",
+        "prepayment": "30% upfront, you pick one of three styles",
+        "concept": "top of the home page, your revisions: 1 of 3",
+        "staging": "the whole site on a temporary link, your revisions: 2 of 3",
+        "lighthouse": "Google speed test: 90+ out of 100, 40% payment, your revisions: 3 of 3",
+        "handover": "the site on your domain, a repeat speed test, all passwords and files are yours, final 30%",
+        "warranty": "<k>warranty</k> 12 months"
       },
       "status": {
         "ok": "ok",
@@ -66,33 +67,32 @@
       }
     },
     "pop": {
-      "title": "Custom-coded websites<br></br><mark>in 14 days</mark>",
-      "lead": "Websites and Telegram apps for experts, online schools and small business — from brief to launch in two weeks.",
+      "title": "Custom-coded websites<br></br><mark>in 4 days</mark>",
+      "lead": "Websites and Telegram apps for experts, online schools and small businesses. We write the code ourselves, without website builders, and hand it over to you.",
       "primaryCta": "Get a quote",
       "secondaryCta": "How we work",
       "stickers": {
-        "lighthouse": "Lighthouse<br></br>90+ in the handover report",
-        "deadline": "14 days —<br></br>in the contract",
-        "warranty": "30-day warranty after launch"
+        "lighthouse": "Speed 90+<br></br>in Google's test",
+        "deadline": "4 days —<br></br>in the contract",
+        "warranty": "A one-year warranty.<br></br>Our fault, free fix"
       }
     },
     "swiss": {
       "sectionMark": "Studio",
-      "title": "Custom-coded websites in 14 days<dot>.</dot>",
-      "lead": "Websites and Telegram apps for business that score 90+ in Lighthouse and still hold up a year later.",
+      "title": "Custom-coded websites in 4 days<dot>.</dot>",
       "primaryCta": "Get a quote",
       "secondaryCta": "How we work"
     },
     "editorial": {
-      "title": "Custom-coded websites in 14 days.",
-      "lead": "We build websites and Telegram apps the way product teams do: custom code, analytics and deadlines fixed in the contract — but in two weeks, not a quarter.",
+      "title": "Custom-coded websites in 4 days.",
+      "lead": "We build websites and Telegram apps for business. We write the code ourselves, without builders. We set up analytics, so you see where visitors and leads come from. The deadline goes into the contract.",
       "primaryCta": "Get a quote",
       "secondaryCta": "How we work",
       "quoteKicker": "We put it in the contract",
-      "quote": "“The deadline is fourteen days. The acceptance criterion is a Lighthouse Performance score of at least 90 in each of three runs.”",
+      "quote": "“The deadline is four days. We hand the site over only when Google's free speed test (Lighthouse) on a phone gives 90 out of 100 or more in each of three runs. If it falls short, we keep working for free.”",
       "refDeadline": "— Deadline",
       "refQuality": "— Quality",
-      "refWarranty": "— Thirty days of warranty"
+      "refWarranty": "— A one-year warranty"
     }
   },
   "pricing": {
@@ -118,21 +118,22 @@
     "plans": {
       "industry": {
         "name": "Industry site",
-        "summary": "Our industry demo tailored to your business: copy, photos, colors, domain, booking",
-        "term": "7 days"
+        "summary": "Several pages, online booking and an admin panel. The sections and features come from our demo for your industry; the design is drawn for you"
       },
       "landing": {
         "name": "Landing page",
-        "summary": "One page, custom design, lead form, analytics and SEO basics",
-        "term": "14 days"
+        "summary": "One page designed for you, a lead form, analytics and an admin panel: you change texts, photos and prices yourself"
+      },
+      "industryMiniApp": {
+        "name": "Industry app in Telegram",
+        "summary": "A Telegram app built from our booking and bonus modules: customers book with you and collect bonuses. We set it up for your business and hand the code over to you. It comes with a bot and an admin panel, where you manage bookings and bonuses"
       },
       "business": {
         "name": "Business website",
-        "summary": "Up to 7 pages, admin panel, blog, EN + RU",
-        "term": "3 weeks"
+        "summary": "Up to 7 pages, a blog for news and an admin panel: you change texts, photos and prices yourself. A second language costs extra"
       },
       "miniApp": {
-        "name": "Telegram Mini App",
+        "name": "Custom Telegram app",
         "summary": "Booking, menu, loyalty and payments inside the messenger, bot and admin panel",
         "term": "3–4 weeks"
       },
@@ -153,7 +154,7 @@
       },
       "support": {
         "name": "Support",
-        "summary": "Hosting management, monitoring, backups, updates and revision hours by plan",
+        "summary": "We keep the site running, make backups and update the site's software. Changes to the site come with the plans with hours: 3, 10 or 25 hours a month",
         "term": "monthly"
       }
     },
@@ -167,14 +168,35 @@
         "name": "3D landing page",
         "summary": "A single page built around the scene: inquiry form and the whole site base",
         "term": "6 weeks"
+      },
+      "hostingBackups": {
+        "name": "Hosting and backups",
+        "summary": "You pay for the hosting itself directly to the provider. We look after the server the site runs on (the hosting) and check that the site opens. We make backups and update the site's software. Changes to the site are not included",
+        "term": "monthly"
+      },
+      "supportHours": {
+        "name": "Support + 3 hours",
+        "summary": "Everything in “Hosting and backups”, plus 3 hours of our work a month on changes to the site: texts, photos, colors, the order of blocks. Unused hours do not carry over to the next month",
+        "term": "monthly"
+      },
+      "supportHoursPlus": {
+        "name": "Support + 10 hours",
+        "summary": "Everything in “Hosting and backups”, plus 10 hours of our work a month on changes to the site: texts, photos, colors, the order of blocks. Unused hours do not carry over to the next month",
+        "term": "monthly"
+      },
+      "supportHoursPro": {
+        "name": "Support + 25 hours",
+        "summary": "Everything in “Hosting and backups”, plus 25 hours of our work a month on changes to the site: texts, photos, colors, the order of blocks. Unused hours do not carry over to the next month",
+        "term": "monthly"
       }
     },
     "miniAppNote": {
-      "title": "Telegram and MAX for one price",
-      "text": "One codebase — the app runs in Telegram and in MAX. The second mini-app store costs nothing extra."
+      "title": "Telegram and MAX",
+      "text": "A custom app works in two messengers at once: Telegram and MAX, a Russian messenger. One price: we write the app once for both. The industry app includes only Telegram; you can add a MAX version for {max}. For that, you register your company in MAX (we send step-by-step instructions) and we connect the rest. Then MAX reviews the app. MAX decides how long the review takes, so that time is not part of our deadline."
     },
-    "basicsHeading": "Included in every plan",
-    "basicsNote": "13 items in the price; hosting and domain go to the provider",
+    "caseOffer": "We are a new studio and we need examples of our work. So we do our first five projects at the “case-study price” (a case study is an example of our work): development is 30% off. The discount is taken from the development price in the contract. Options, MAX and support are at the regular price. We will tell you how many spots are left when we reply to your request. In return we ask for two things. First, you let us show your site as an example of our work, without your customers' data. Second, you write an honest, detailed review of working with us, good or bad. We send you the link to the review form. Send the review before the acceptance certificate is signed: tell us how the work went. What changed after launch you can add later. The prepayment and the second payment are calculated from the regular price, and the discount comes off the final payment. No review by the acceptance certificate means no discount. If you later ask us to take down the review or the case study, we will. The contract says what happens to the discount then.",
+    "basicsHeading": "Included in the price of every site",
+    "basicsNote": "13 items in the price; hosting and domain are paid to the provider directly. Telegram apps, 3D and support have their own lists on their pages",
     "basicsGroups": {
       "build": "Code and speed",
       "leads": "Leads and analytics",
@@ -183,18 +205,18 @@
     },
     "basics": {
       "code": "Custom code on Next.js, no website builders",
-      "lighthouse": "Lighthouse 90+ as an acceptance criterion, report attached to the handover",
+      "lighthouse": "Google's speed test on a phone: 90 out of 100 or more in each of three runs in a row, or we don't hand the work over. On launch day we test again, this time on your address: that result goes into the acceptance certificate. Third-party widgets, such as booking, maps or chat, slow a site down. If you chose them, we tell you before the contract what score we promise",
       "responsive": "Responsive from 320 to 1920 pixels",
       "seo": "SEO basics: schema.org, llms.txt and OG — the site is ready for AI search",
       "forms": "Every lead goes to Telegram and email",
-      "analytics": "Google Analytics 4 with conversion goals set up",
-      "privacy": "Cookie banner and a privacy policy page",
-      "hosting": "Domain, SSL and hosting set up and handed over to you. You pay the hosting provider directly",
-      "sources": "The source code stays yours",
-      "revisions": "Two rounds of revisions included",
-      "warranty": "30 days of warranty after launch",
-      "training": "A guide and a screencast: how to read leads and analytics",
-      "deadline": "We fix the deadline in the contract"
+      "analytics": "We connect GA4 and Yandex Metrica, the site analytics services. You see how many leads came in and from where: ads, social networks or search. Run an ad and you will see whether it brings leads from the site. Only visitors who allowed analytics in the cookie window at the bottom of the site are counted",
+      "privacy": "A cookie banner and a privacy policy. Before the contract we tell you what else you need to do yourself, for example under data protection law",
+      "hosting": "We set up the domain, a secure connection (SSL) and hosting and hand them over to you. You pay for the domain and hosting directly: the hosting provider monthly, the domain registrar once a year. Paid services, such as an online booking service, are also on you. Before the contract we work out what that comes to for you per year",
+      "sources": "We hand over the source code of your site, admin panel and app: you can change it and pass it to another developer without us",
+      "revisions": "Three rounds of revisions included. A round is all your comments in one list, and we make all of it. Revisions are texts, photos, the color of individual blocks and buttons, the order of blocks; new pages, features and a whole new style are separate work",
+      "warranty": "A one-year warranty from the day of acceptance. We fix for free anything that broke through our fault or does not work the way the contract says. If the site stops opening through our fault, we get on it within 2 hours on weekdays from 10:00 to 19:00 Moscow time, and at night or on weekends the first working morning. Other bugs we start fixing within a working day and fix within 5 working days. If it is unclear whose fault a breakdown is, we first look for the cause for free and show it to you. Not covered: outages at the hosting provider and in third-party services (such as Telegram or a booking service) and breakdowns after changes to the site's code made by you or other people; such fixes cost $90 an hour. Texts and photos you change through the admin panel do not void the warranty.",
+      "training": "An admin panel, where you change texts, photos and prices yourself, and add or remove items: dishes, services, doctors. A guide and a screencast: how to work in the admin panel and read leads and analytics",
+      "deadline": "The deadline goes into the contract. If we are late through our fault, we cut the price by 2% for each day of delay, 20% at most. That amount comes off the final payment. It is calculated from the price of all the work in the contract, options included. If together with the case-study discount this exceeds the final payment, we refund the difference within 5 working days after the acceptance certificate"
     },
     "optionsHeading": "Options for any plan",
     "optionsNote": "can be added after launch too",
@@ -293,7 +315,7 @@
     "pageDescription": "MRSHKN studio demo projects: the task, the solution, the stack and measurable technical results."
   },
   "process": {
-    "heading": "How the two weeks go",
+    "heading": "How we build a one-page site in 4 days",
     "sectionMark": "Process",
     "promisesHeading": "What the contract says",
     "contractNote": "We fix all four in the contract",
@@ -302,45 +324,72 @@
     "steps": {
       "brief": {
         "ordinal": "Day one",
-        "title": "Brief and offer",
-        "text": "A brief over messages, a proposal and a draft contract, 50% upfront."
+        "title": "Choosing a style and the top of the home page",
+        "text": "Before the contract is signed, we send a list of what the site needs, such as texts, photos and a logo. No texts of your own? We write them from a questionnaire and a conversation with you. That is included in the price, but the deadline grows by 2 days. We still show the styles 2 working days after the prepayment, with headings from the questionnaire, and write the texts once you pick a style. By the date in the contract we need the 30% prepayment and the materials from the list. Paid but did not gather the materials in time? We move the start to the nearest free date. The prepayment is not lost. After the prepayment we draw the top of your home page in three styles: colors, fonts, the look of buttons and blocks. You pick one. We show three styles 2 working days after the prepayment and the materials, and three more 2 working days after your reply. These dates also go into the contract, and for each working day we are late with the styles we also cut the price by 2%, within the same overall cap of 20%. You can also take a ready-made style: one of the five styles of this site or the style of our demo. None of the three fit? We draw three more. None of those fit either? We refund the whole prepayment. The deadline starts the day you pick a style: that is day 1. On that day we build the top of the home page in the chosen style, the part people see first. It is already a working page you can open on your phone. You send your comments in one list: that is the first of three rounds of revisions. Comments on the rest of the page come in the second and third rounds."
       },
       "concept": {
-        "ordinal": "Day three",
-        "title": "Concept of the main screen",
-        "text": "On day three you see a live page, not a picture. One round of edits here saves a week later."
+        "ordinal": "Day two",
+        "title": "The whole site on a temporary link",
+        "text": "We make your first-round revisions and build the whole site: every section, the form where customers leave requests, and visitor analytics. For now the site opens on a temporary link, so you can review it before launch. You send the second list of comments."
       },
       "staging": {
-        "ordinal": "Day ten",
-        "title": "The site on a test domain",
-        "text": "All pages, forms and analytics. Two rounds of revisions are included in the price."
+        "ordinal": "Day three",
+        "title": "Revisions and the speed test",
+        "text": "We make your second-round revisions. We set up analytics: GA4 counts the leads from the site, and tags in links show which ad or social network a visitor came from. We check the pages listed in the contract with Google's free speed test on a phone: each needs 90 out of 100 or more. If a page scores lower, we keep working at our own expense. We show you the result, you make the second payment of 40% and send the third and final list of comments."
       },
       "launch": {
-        "ordinal": "Day fourteen",
-        "title": "Launch and 30 days of warranty",
-        "text": "Move to your domain, handover of access and source code, a month of free support."
+        "ordinal": "Day four",
+        "title": "Launch and a one-year warranty",
+        "text": "We make your third-round revisions. We move the site to your web address (domain): now everyone can see it. We test the speed again, this time on your address. If it is below 90 there, we find the cause and show it to you. We set up the hosting, so its speed is our concern: we fix it for free. If a third-party widget you chose slows the site down, we already told you before the contract what score we promise. We hand over all the passwords and files of the site: it is fully yours. You sign the acceptance certificate, the document that confirms the work is accepted, with the result of this test attached. After acceptance you pay the final 30%. Then comes a one-year warranty: if something breaks through our fault, we fix it for free."
       }
     },
     "promises": {
       "deadline": {
-        "kicker": "Speed",
-        "value": "14 days",
-        "detail": "The deadline is in the contract"
+        "kicker": "Deadline",
+        "value": "4 days",
+        "detail": "Days we spend waiting for your reply don't count toward the deadline"
       },
       "quality": {
         "kicker": "Quality",
         "value": "Lighthouse 90+",
-        "detail": "An acceptance criterion"
+        "detail": "Google's test, or we don't hand it over; with third-party widgets, as the contract says"
       },
       "price": {
         "kicker": "Price",
         "value": "Fixed",
-        "detail": "Two rounds of revisions included"
+        "detail": "Pay in parts: 30%, 40% and 30%. Three rounds of revisions"
       },
       "warranty": {
         "kicker": "After launch",
-        "value": "30 days of warranty",
-        "detail": "Then a support plan"
+        "value": "A one-year warranty",
+        "detail": "Our fault, free fix"
+      }
+    },
+    "scale": {
+      "style": "You pick a style",
+      "day": "Day {day}",
+      "pauses": {
+        "round1": "Your revisions, round 1",
+        "round2": "Your revisions, round 2",
+        "round3": "Your revisions, round 3",
+        "acceptance": "You accept the work"
+      },
+      "payments": {
+        "prepayment": "30% upfront",
+        "second": "40% payment",
+        "final": "Final 30%"
+      },
+      "legend": {
+        "style": "Choosing a style: the site deadline has not started yet",
+        "work": "We work: the clock runs",
+        "pause": "You review: the clock stops"
+      },
+      "terminal": {
+        "day": "day {day}",
+        "styles": "3 styles"
+      },
+      "pop": {
+        "stop": "stop"
       }
     }
   },
@@ -350,7 +399,7 @@
     "invitation": "Tell us about your project — we reply within an hour.",
     "cta": "Send a request",
     "telegram": "Message us on Telegram",
-    "replyTime": "We reply within an hour during working hours",
+    "replyTime": "We reply within an hour on weekdays, 10:00–19:00 Moscow time",
     "command": "open t.me/mrshkn_studio",
     "sectionMark": "Contact",
     "privacy": "Privacy policy"
@@ -435,7 +484,7 @@
     },
     "command": "open mrshkn.com/brief",
     "title": "We have your request",
-    "text": "We reply within an hour during working hours, on the channel you left us.",
+    "text": "We reply within an hour on weekdays, 10:00–19:00 Moscow time, on the channel you left us.",
     "note": "If you do not hear back, write to hello@mrshkn.com.",
     "back": "Back to the homepage"
   },
@@ -456,15 +505,15 @@
       "month": "Monthly fee"
     },
     "perMonth": "{price} / mo",
-    "revisions": "2 rounds of revisions",
+    "revisions": "3 rounds of your revisions",
     "cardPoints": {
       "deadline": "Deadline fixed in the contract",
-      "warranty": "30-day warranty after launch"
+      "warranty": "A one-year warranty. Our fault, free fix"
     },
-    "includedHeading": "What we tailor to you",
+    "includedHeading": "What we build for you",
     "excludedHeading": "What is not included",
     "nichesHeading": "Pick your industry",
-    "nichesNote": "Demos for these industries are ready",
+    "nichesNote": "For these industries we have a demo, an example site",
     "nicheCta": "Get a quote",
     "threeD": {
       "mediaHeading": "What it looks like",
@@ -478,25 +527,31 @@
       "tierCta": "Quote the {name}",
       "termsHeading": "3D terms",
       "needsHeading": "What we need from you"
+    },
+    "support": {
+      "tiersHeading": "Four plans",
+      "tiersNote": "The quote opens with the chosen plan",
+      "tierCta": "Choose “{name}”"
     }
   },
   "services": {
     "industry": {
       "included": {
-        "note": "The demo is ready — we make it yours",
+        "note": "We take sections and features from the demo and draw the design for you",
         "items": [
-          "Your own text: services, prices, contact details",
-          "Your photos and logo",
-          "Your brand colors",
-          "Your domain connected",
-          "Online booking or a contact form, sent to your Telegram and email"
+          "A design for you: three styles to choose from, or a ready-made style if you like it",
+          "Sections and features for your industry, from our demo",
+          "Your texts, photos and logo. No texts of your own? We write them",
+          "Your web address (domain) connected",
+          "Online booking or a contact form, sent to your Telegram and email",
+          "An admin panel: you change texts, photos and prices yourself, and add or remove menu items, doctors and services"
         ]
       },
       "excluded": {
-        "note": "The materials are yours",
+        "note": "No photo shoot",
         "items": [
-          "You write the copy — we lay it out across the demo pages; copywriting is not included",
-          "No photo shoot — we use your photos"
+          "We don't hire a photographer. No photos of your own? We put in temporary stock photos (licensed for commercial use) or illustrations",
+          "We never pass off strangers as your staff in photos. We suggest adding your own photos through the admin panel as soon as you have them"
         ]
       },
       "niches": {
@@ -516,7 +571,7 @@
       "faq": [
         {
           "question": "How is the industry site different from the landing page?",
-          "answer": "The landing page is a custom design built in 14 days. The industry site is our ready-made demo tailored to your business, so it is faster and costs less."
+          "answer": "“Start” is a one-page site. The industry site has several pages and online booking. For each industry on the list we have a demo, an example of a finished site. We take its structure: the sections, booking and features your industry needs, such as a menu with filters for a cafe or doctors with prices for a clinic. The design is drawn for you: three styles to choose from, as in “Start”. If you like the style of the demo itself, you can take it. Either way the site is yours: with your texts, your photos and on your address. The industry site costs more than “Start” and takes longer: it has several pages, online booking and features for your industry, while “Start” is one page. It has as many pages as the demo for your industry; a new page is separate work. For a clinic we add a notice about contraindications and the license details, and you are responsible for the medical texts. The deadline is {term}."
         },
         {
           "question": "My industry is not on the list. What now?",
@@ -524,33 +579,37 @@
         },
         {
           "question": "How many days does the industry site take?",
-          "answer": "7 days, and we fix the deadline in the contract."
+          "answer": "In {term}. We count calendar days, weekends included. The deadline starts the day you pick the style of the site, and it is set in the contract. We show three styles 2 working days after the prepayment and the materials. If we write the texts, the deadline is 2 days longer. Days we spend waiting for your comments don't count: the delivery date moves by the same number of days. There is no need to rush your reply. If a pause drags on for a long time, the contract says what happens next. If we are late through our own fault, we cut the price by 2% for each day of delay, 20% at most. That amount comes off the final payment. If together with the case-study discount this exceeds the final payment, we refund the difference within 5 working days after the acceptance certificate."
         },
         {
           "question": "Can I add features later?",
           "answer": "Yes, as options from the price list: online payments, reviews, messengers, a second language, CRM. Option prices are on this page."
+        },
+        {
+          "question": "What if I don't like the design?",
+          "answer": "The style of a site is its colors, fonts and the look of its buttons and blocks. You choose it before the work starts. 2 working days after the prepayment and the materials, we show the top of your home page in three styles. You pick one. If you like, you can take a ready-made style instead: one of the five styles of this site (the “Style” button switches them) or the style of one of our demos. Then we don't draw it separately. The price stays the same. Another client may choose the same ready-made style, while a style drawn for you is yours alone. None of the three fit? Within 2 working days we draw three more. None of those fit either? We refund the whole prepayment and close the contract. The site deadline starts the day you pick a style."
         }
       ],
       "process": [
         {
-          "when": "Day 1",
-          "title": "Brief and industry pick",
-          "text": "A brief over messages, we pick the demo for your business, a draft contract, a 50% prepayment."
+          "when": "Before the start and day 1",
+          "title": "Start and choosing a style",
+          "text": "Before the start we need a signed contract, the 30% prepayment and the materials from our list: texts, photos, a logo and brand colors, if you have them. Did not gather the materials in time? We move the start to the nearest free date, and the prepayment is not lost. No texts of your own? We write them, and the deadline grows by 2 days: we still show the styles 2 working days after the prepayment, with headings from the questionnaire, and write the texts once you pick a style. After the prepayment we take the sections and features from our demo for your industry and draw the top of your home page in three styles. You pick one or take a ready-made style: one of the styles of this site or the style of the demo. We show three styles 2 working days after the prepayment and the materials, and three more 2 working days after your reply. These dates also go into the contract, and for each working day we are late with the styles we also cut the price by 2%, within the same overall cap of 20%. Day 1 starts the day you pick a style."
         },
         {
-          "when": "Day 2",
-          "title": "Your materials",
-          "text": "You send copy, photos, logo and colors — we lay them into the demo."
+          "when": "Day 3",
+          "title": "The site in your style",
+          "text": "We build the home page and the other pages in the chosen style, with your texts and photos, and show them to you. You send your comments in one list: that is the first of three rounds of revisions."
         },
         {
           "when": "Day 5",
-          "title": "Site on a staging domain",
-          "text": "Every page with your materials, plus booking. Two rounds of revisions are included in the price."
+          "title": "The whole site on a temporary link",
+          "text": "We make your revisions and finish all the pages and online booking. The site runs on a temporary link: you check it and send the second list of comments. We make them, and then you make the second payment of 40%."
         },
         {
           "when": "Day 7",
-          "title": "Launch and 30-day warranty",
-          "text": "Move to your domain, handover of access and source code."
+          "title": "Launch and a one-year warranty",
+          "text": "You send the third and final list of comments, and we make them. We move the site to your web address (domain). We test the speed with Google's test on your address and attach the result to the acceptance certificate. If it is below 90, we find the cause and show it to you. We set up the hosting, so its speed is our concern: we fix it for free. If a third-party widget you chose slows the site down, we already told you before the contract what score we promise. We hand over all the passwords and files of the site: it is fully yours. You accept the work and pay the final 30%."
         }
       ]
     },
@@ -558,53 +617,57 @@
       "faq": [
         {
           "question": "What is in the landing page and what is not?",
-          "answer": "One page with a custom design, a lead form, analytics and basic SEO. Everything else is an option: online booking, payments, a quiz, a calculator, a blog, CRM. Option prices are on this page."
+          "answer": "One page with a design we draw for you, a lead form, analytics, basic search setup (SEO) and an admin panel, where you change texts, photos and prices yourself. No texts of your own? We write them from a questionnaire and a conversation with you: that is included in the price, but the deadline grows by 2 days. No photos of your own? We put in temporary stock photos (licensed for commercial use) or illustrations. We never pass off strangers as your staff, and we suggest replacing the temporary photos with your own later through the admin panel. Everything else is a paid option: online booking, payments, a quiz (a questionnaire for visitors), a calculator, a blog, CRM (customer management software). Option prices are on this page."
         },
         {
           "question": "How many days does a landing page take?",
-          "answer": "14 days, and we fix the deadline in the contract."
+          "answer": "In {term}. We count calendar days, weekends included. The deadline starts the day you pick the style of the site, and it is set in the contract. We show three styles 2 working days after the prepayment and the materials. If we write the texts, the deadline is 2 days longer. Days we spend waiting for your comments don't count: the delivery date moves by the same number of days. There is no need to rush your reply. If a pause drags on for a long time, the contract says what happens next. If we are late through our own fault, we cut the price by 2% for each day of delay, 20% at most. That amount comes off the final payment. If together with the case-study discount this exceeds the final payment, we refund the difference within 5 working days after the acceptance certificate."
         },
         {
           "question": "How many revisions are included?",
-          "answer": "Two rounds of revisions. Extra revisions are billed at the hourly rate from the price list."
+          "answer": "Three rounds. A round is all your comments gathered in one list, and we make all of it. A revision is a change within the pages and features we agreed on: texts, photos, the color of individual blocks and buttons, the order of blocks. You choose the style of the site before the work starts. So changing it entirely later (the palette, fonts, the look of all buttons), like adding new pages or features, is separate work. We name the amount first, and you never pay more than that. We calculate it at $90 an hour and do the work after you agree. Revisions beyond three rounds are calculated the same way. Unused rounds do not carry over after launch."
         },
         {
           "question": "Will AI search find the site?",
           "answer": "Every plan includes schema.org, llms.txt, OG and hreflang, so the site is ready for AI search. For more, there is the Extended “Ready for AI search” pack — its contents and price are in the full price list. We do not promise a place in the results."
+        },
+        {
+          "question": "What if I don't like the design?",
+          "answer": "The style of a site is its colors, fonts and the look of its buttons and blocks. You choose it before the work starts. 2 working days after the prepayment and the materials, we show the top of your home page in three styles. You pick one. If you like, you can take a ready-made style instead: one of the five styles of this site (the “Style” button switches them) or the style of one of our demos. Then we don't draw it separately. The price stays the same. Another client may choose the same ready-made style, while a style drawn for you is yours alone. None of the three fit? Within 2 working days we draw three more. None of those fit either? We refund the whole prepayment and close the contract. The site deadline starts the day you pick a style."
         }
       ],
       "process": [
         {
-          "when": "Day 1",
-          "title": "Brief and offer",
-          "text": "A brief over messages, a proposal and a draft contract, a 50% prepayment."
+          "when": "Before the start and day 1",
+          "title": "Choosing a style and the top of the home page",
+          "text": "Before the contract is signed, we send a list of what the site needs, such as texts, photos and a logo. No texts of your own? We write them from a questionnaire and a conversation with you. That is included in the price, but the deadline grows by 2 days. We still show the styles 2 working days after the prepayment, with headings from the questionnaire, and write the texts once you pick a style. By the date in the contract we need the 30% prepayment and the materials from the list. Paid but did not gather the materials in time? We move the start to the nearest free date. The prepayment is not lost. After the prepayment we draw the top of your home page in three styles: colors, fonts, the look of buttons and blocks. You pick one. We show three styles 2 working days after the prepayment and the materials, and three more 2 working days after your reply. These dates also go into the contract, and for each working day we are late with the styles we also cut the price by 2%, within the same overall cap of 20%. You can also take a ready-made style: one of the five styles of this site or the style of our demo. None of the three fit? We draw three more. None of those fit either? We refund the whole prepayment. The deadline starts the day you pick a style: that is day 1. On that day we build the top of the home page in the chosen style, the part people see first. It is already a working page you can open on your phone. You send your comments in one list: that is the first of three rounds of revisions. Comments on the rest of the page come in the second and third rounds."
+        },
+        {
+          "when": "Day 2",
+          "title": "The whole site on a temporary link",
+          "text": "We make your first-round revisions and build the whole site: every section, the form where customers leave requests, and visitor analytics. For now the site opens on a temporary link, so you can review it before launch. You send the second list of comments."
         },
         {
           "when": "Day 3",
-          "title": "Hero screen concept",
-          "text": "On day three you see a live page, not a picture. One round of revisions here saves a week later."
+          "title": "Revisions and the speed test",
+          "text": "We make your second-round revisions. We set up analytics: GA4 counts the leads from the site, and tags in links show which ad or social network a visitor came from. We check the pages listed in the contract with Google's free speed test on a phone: each needs 90 out of 100 or more. If a page scores lower, we keep working at our own expense. We show you the result, you make the second payment of 40% and send the third and final list of comments."
         },
         {
-          "when": "Day 10",
-          "title": "Site on a staging domain",
-          "text": "All blocks, the lead form, analytics. Two rounds of revisions are included in the price."
-        },
-        {
-          "when": "Day 14",
-          "title": "Launch and 30-day warranty",
-          "text": "Move to your domain, handover of access and source code."
+          "when": "Day 4",
+          "title": "Launch and a one-year warranty",
+          "text": "We make your third-round revisions. We move the site to your web address (domain): now everyone can see it. We test the speed again, this time on your address. If it is below 90 there, we find the cause and show it to you. We set up the hosting, so its speed is our concern: we fix it for free. If a third-party widget you chose slows the site down, we already told you before the contract what score we promise. We hand over all the passwords and files of the site: it is fully yours. You sign the acceptance certificate, the document that confirms the work is accepted, with the result of this test attached. After acceptance you pay the final 30%. Then comes a one-year warranty: if something breaks through our fault, we fix it for free."
         }
       ]
     },
     "business": {
       "faq": [
         {
-          "question": "How is the Business site different from a landing page?",
-          "answer": "Up to seven pages instead of one, an admin panel for your own edits, a blog, and Russian and English versions."
+          "question": "How is “Business” different from “Start”?",
+          "answer": "“Business” has up to seven pages, while “Start” has one. There is a blog, a section for news and articles. A version of the site in a second language can be added for an extra fee. The admin panel, where you change texts, photos and prices yourself, comes with both “Business” and “Start”. “Business” differs from the industry site in that we design the pages and features for you from scratch rather than taking them from a demo. That is why it suits any business, not only a clinic, a cafe or an expert."
         },
         {
           "question": "Can I edit the texts myself?",
-          "answer": "Yes, in the admin panel. We send a guide and a screencast on how to edit texts and check leads."
+          "answer": "Yes, in the admin panel. We send a guide and a screencast: how to change texts, photos and prices and read leads. If we put in temporary stock photos, you replace them with your own through the admin panel. Your edits through the admin panel do not void the warranty. The site shrinks the photos you upload on its own, so the speed doesn't drop."
         },
         {
           "question": "What if I need more than seven pages?",
@@ -612,37 +675,41 @@
         },
         {
           "question": "How long does the Business site take?",
-          "answer": "Three weeks, and we fix the deadline in the contract. Two rounds of revisions are included."
+          "answer": "{term}. The deadline starts the day you pick the style of the site, and it is set in the contract. We show three styles 2 working days after the prepayment and the materials. If we write the texts, the deadline is 4 days longer. Days we spend waiting for your comments don't count. If we are late through our own fault, we cut the price by 2% for each day of delay, 20% at most, and take it off the final payment. If together with the case-study discount this exceeds the final payment, we refund the difference within 5 working days after the acceptance certificate. Three rounds of revisions are included: three times you send a list of comments, and we make all of it."
+        },
+        {
+          "question": "What if I don't like the design?",
+          "answer": "The style of a site is its colors, fonts and the look of its buttons and blocks. You choose it before the work starts. 2 working days after the prepayment and the materials, we show the top of your home page in three styles. You pick one. If you like, you can take a ready-made style instead: one of the five styles of this site (the “Style” button switches them) or the style of one of our demos. Then we don't draw it separately. The price stays the same. Another client may choose the same ready-made style, while a style drawn for you is yours alone. None of the three fit? Within 2 working days we draw three more. None of those fit either? We refund the whole prepayment and close the contract. The site deadline starts the day you pick a style."
         }
       ],
       "process": [
         {
-          "when": "Day 1",
-          "title": "Brief and structure",
-          "text": "A brief over messages, a page list (up to seven), a proposal and a contract with the deadline."
+          "when": "Days 1–2",
+          "title": "Style, pages and what goes on them",
+          "text": "Before the start we need a signed contract, the 30% prepayment and the materials from our list. Did not gather the materials in time? We move the start to the nearest free date, and the prepayment is not lost. No texts of your own? We write them from a questionnaire and a conversation with you, and the deadline grows by 4 days: we still show the styles 2 working days after the prepayment, with headings from the questionnaire, and write the texts once you pick a style. After the prepayment we draw the top of your home page in three styles. You pick one or take a ready-made style: one of the five styles of this site or the style of our demo. We show three styles 2 working days after the prepayment and the materials, and three more 2 working days after your reply. These dates also go into the contract, and for each working day we are late with the styles we also cut the price by 2%, within the same overall cap of 20%. The deadline runs from the day you pick a style. In the first two days we decide together which pages there will be (up to seven) and what goes on each."
         },
         {
-          "when": "Week 1",
-          "title": "Design and concept",
-          "text": "Mockups of the home page and typical pages, the first round of revisions."
+          "when": "Days 3–6",
+          "title": "Design of the home page and other pages",
+          "text": "We draw the home page and the other pages in the chosen style and show them to you. You send your comments in one list: that is the first of three rounds of revisions."
         },
         {
-          "when": "Week 2",
-          "title": "Development and admin panel",
-          "text": "Pages in two languages, the admin panel, forms and analytics."
+          "when": "Days 7–11",
+          "title": "All the pages and the admin panel",
+          "text": "We build all the pages, the admin panel, the lead forms and analytics. The site runs on a temporary link: you check it and send the second list of comments. We make them, and then you make the second payment of 40%."
         },
         {
-          "when": "Week 3",
+          "when": "Days 12–14",
           "title": "Testing and launch",
-          "text": "A staging domain, the second round of revisions, the move to your domain, a guide with a screencast and a 30-day warranty."
+          "text": "You send the third and final list of comments, and we make them. We move the site to your web address (domain). We test the speed with Google's test on your address and attach the result to the acceptance certificate. If it is below 90, we find the cause and show it to you. We set up the hosting, so its speed is our concern: we fix it for free. If a third-party widget you chose slows the site down, we already told you before the contract what score we promise. We give you a guide and a screencast: how to change texts, photos and prices in the admin panel and read leads. You accept the work and pay the final 30%. Then comes a one-year warranty."
         }
       ]
     },
     "miniApp": {
       "faq": [
         {
-          "question": "What does “Telegram and MAX for one price” mean?",
-          "answer": "One React codebase and two messenger adapters. The app runs in both Telegram and MAX, and the second platform adds nothing to the price."
+          "question": "What does “Telegram and MAX for one price” mean for a custom app?",
+          "answer": "We write the app once and connect it to two messengers, Telegram and MAX. That is why the second messenger costs nothing extra: a custom app works in both for one price. The industry app is different: the price includes only Telegram, and MAX is added for a separate fee. For MAX you register your company (we send instructions). MAX reviews the app, and that time is not part of our deadline."
         },
         {
           "question": "Which modules can I add?",
@@ -659,9 +726,9 @@
       ],
       "process": [
         {
-          "when": "Day 1",
-          "title": "Brief and modules",
-          "text": "A brief over messages, choosing modules, a proposal and a contract with the deadline."
+          "when": "Before the start",
+          "title": "The task, modules and choosing a style",
+          "text": "Before the start we go through the brief in writing: what the app should do (booking, bonuses, a catalog, ordering). In reply we send the estimate, the deadline and a draft contract. After the 30% prepayment we draw the main screen of the app in three styles: colors, fonts, the look of buttons. You pick one or take a ready-made style: the style of one of our demos. We show three styles 2 working days after the prepayment and the materials for the main screen from our list, and three more 2 working days after your reply. These dates also go into the contract, and for each working day we are late with the styles we also cut the price by 2%, within the same overall cap of 20%. None of the three fit? We draw three more. None of those fit either? We refund the whole prepayment. The contract deadline starts the day you pick a style."
         },
         {
           "when": "Week 1",
@@ -671,14 +738,29 @@
         {
           "when": "Weeks 2–3",
           "title": "App, bot and admin panel",
-          "text": "One codebase, two adapters: Telegram and MAX."
+          "text": "We write the app once and connect it to two messengers, Telegram and MAX. You review it and send the second list of comments. We make them, and then you make the second payment of 40%."
         },
         {
           "when": "Week 4",
           "title": "Testing and launch",
-          "text": "Checks in both messengers, the second round of revisions, handover of access and a 30-day warranty."
+          "text": "We check that the app works in both Telegram and MAX. If MAX is still reviewing the app, we sign the acceptance certificate for Telegram and finish the MAX launch after the review at no extra cost. We make your third and final list of comments. We hand over all the passwords and access. You sign the acceptance certificate and pay the final 30%. Then comes a one-year warranty."
         }
-      ]
+      ],
+      "basics": {
+        "note": "Included in the price of the app",
+        "items": [
+          "We write the code ourselves, without builders. We hand over the source code of the app, the bot and the admin panel: you can change it and pass it to another developer without us",
+          "A Telegram bot your customers open the app through",
+          "An admin panel, where you change texts, photos and prices yourself and see bookings, orders and bonuses",
+          "New bookings and orders arrive in your Telegram",
+          "A privacy policy. Before the contract we tell you what else you need to do yourself",
+          "We set up the server for the app and hand it over to you. You pay the provider for it directly",
+          "Three rounds of revisions included. Revisions are texts, photos, the color of individual buttons and blocks, the order of screens; new screens, features and a whole new style are separate work",
+          "A one-year warranty from the day of acceptance: we fix for free anything that broke through our fault or does not work the way the contract says. Outages of Telegram and MAX themselves are not covered",
+          "A guide and a screencast: how to work in the admin panel",
+          "The deadline goes into the contract. If we are late through our fault, we cut the price by 2% for each day of delay, 20% at most"
+        ]
+      }
     },
     "store": {
       "faq": [
@@ -696,29 +778,29 @@
         },
         {
           "question": "Who manages the orders?",
-          "answer": "You do, in the order admin panel. We send a guide and a screencast on how to use it."
+          "answer": "You do, in the order admin panel, the section where all the orders are visible. We send a guide and a screencast on how to use it."
         }
       ],
       "process": [
         {
-          "when": "Week 1",
-          "title": "Brief and catalog structure",
-          "text": "A brief over messages, a review of products and delivery methods, a proposal and a contract with the deadline."
+          "when": "Before the start",
+          "title": "The task, the contract and choosing a style",
+          "text": "Before the start you send a brief: what you sell and how you deliver it. In reply we send the estimate, the deadline and a draft contract. After the 30% prepayment we draw the home page of the store in three styles: colors, fonts, the look of buttons and blocks. You pick one or take a ready-made style: one of the five styles of this site. We show three styles 2 working days after the prepayment and the materials for the home page (the logo, photos and texts from our list), and three more 2 working days after your reply. These dates also go into the contract, and for each working day we are late with the styles we also cut the price by 2%, within the same overall cap of 20%. None of the three fit? We draw three more. None of those fit either? We refund the whole prepayment. The contract deadline starts the day you pick a style. You send the product catalog by the date we put in the contract."
         },
         {
-          "when": "Weeks 2–3",
+          "when": "Weeks 1–3",
           "title": "Design",
           "text": "The home page, a product card, the cart, the first round of revisions."
         },
         {
           "when": "Weeks 3–6",
           "title": "Development",
-          "text": "The catalog, cart, payment, delivery and the order admin panel."
+          "text": "We build the product catalog, cart, payment and delivery. We build the order admin panel, the section where you see and process orders. You send the second list of comments. We make them, and then you make the second payment of 40%."
         },
         {
           "when": "Weeks 6–7",
           "title": "Testing and launch",
-          "text": "Test orders, the second round of revisions, the move to your domain, a guide with a screencast and a 30-day warranty."
+          "text": "We place test orders and check that an order goes all the way from the cart to you. We make your third and final list of comments. We move the store to your web address (domain). We give you a guide and a screencast on handling orders. We test the speed with Google's test on your address: it needs 90 out of 100 or more, and the result goes with the acceptance certificate. If it is below 90, we find the cause and show it to you. We set up the hosting, so its speed is our concern: we fix it for free. If a third-party widget you chose slows the site down, we already told you before the contract what score we promise. You sign the acceptance certificate and pay the final 30%. Then comes a one-year warranty."
         }
       ]
     },
@@ -738,38 +820,38 @@
         },
         {
           "question": "What happens after launch?",
-          "answer": "A 30-day warranty. After that you can add support or a Dev subscription."
+          "answer": "For a year from the day of acceptance we fix for free anything that broke through our fault or does not work the way the contract says. Looking after the server, making backups and updating software is support, and you can add it right after launch. Or a Dev subscription: $3,500 a month, we work through your tasks one at a time, with no limit on the number of tasks."
         }
       ],
       "process": [
         {
-          "when": "Weeks 1–2",
-          "title": "Brief and MVP scope",
-          "text": "A brief over messages, a list of scenarios, what goes into the first version, a contract with the deadline."
+          "when": "Before the start",
+          "title": "The task, the first version and choosing a style",
+          "text": "Before the start we go through the brief in writing: what the service should do and decide what goes into the first version. In reply we send the estimate, the deadline and a draft contract. After the 30% prepayment we draw the main screen of the service in three styles: colors, fonts, the look of buttons and blocks. You pick one or take a ready-made style: one of the five styles of this site. We show three styles 2 working days after the prepayment and the materials for the main screen from our list, and three more 2 working days after your reply. These dates also go into the contract, and for each working day we are late with the styles we also cut the price by 2%, within the same overall cap of 20%. None of the three fit? We draw three more. None of those fit either? We refund the whole prepayment. The contract deadline starts the day you pick a style."
         },
         {
-          "when": "Weeks 2–4",
+          "when": "Weeks 1–4",
           "title": "Design and architecture",
-          "text": "Account screens, the data model, the list of integrations."
+          "text": "We draw the account screens, work out what data the service stores and list the connections to other services (integrations). You send your comments in one list: that is the first of three rounds of revisions."
         },
         {
           "when": "Weeks 4–9",
           "title": "Iterative development",
-          "text": "Authentication, accounts, payments, integrations and analytics, with interim builds on a staging domain."
+          "text": "We build the service in parts: sign-in, user accounts, payments, connections to other services and analytics. We show interim versions on a temporary link. You send the second list of comments. We make them, and then you make the second payment of 40%."
         },
         {
           "when": "Weeks 9–10",
           "title": "Testing and launch",
-          "text": "End-to-end checks, launch, handover of access and source code, a 30-day warranty."
+          "text": "We make your third and final list of comments. We check the whole user journey from start to finish: sign-in, account, payment. We launch. We hand over all the passwords and the source code, the files the service is built from. We test the speed with Google's test on the pages listed in the contract: it needs 90 out of 100 or more, and the result goes with the acceptance certificate. If it is below 90, we find the cause and show it to you. We set up the hosting, so its speed is our concern: we fix it for free. If a third-party widget you chose slows the site down, we already told you before the contract what score we promise. You sign the acceptance certificate and pay the final 30%. Then comes a one-year warranty."
         }
       ]
     },
     "threeD": {
       "process": [
         {
-          "when": "Day 1",
+          "when": "Before the start",
           "title": "Brief and materials",
-          "text": "Before day one: a short written brief with the CAD file if you have one, or photos and drawings if there is no model; if you need it, we sign an NDA before you send the file. In reply you get the estimate, the deadline, the start date and a draft contract, all before any payment. Then a 50% prepayment, a detailed brief with photos and videos of the parts, and your materials; our questions about the parts come as one list. Day one is the start date if the detailed brief and materials are in by then, otherwise the day they arrive."
+          "text": "Before day one you send a short written description of the task. If you have a 3D model of the product (a file from a drawing program, CAD), attach it. If there is no model, send photos and drawings. If you need it, we sign an NDA before you send the files. In reply we send the estimate, the deadline, the nearest free date and a draft contract. All of it before you pay anything. Then you make the 30% prepayment and send a detailed description with photos and videos of the parts, the components and mechanisms the scene will show. Our questions about the parts come as one list. For a 3D landing page we draw three styles after the prepayment: the background and lighting of the scene, the colors of the labels and the look of the page around it. You pick one or take a ready-made style: one of the five styles of this site. We show three styles 2 working days after the prepayment and the materials, and three more 2 working days after your reply. These dates also go into the contract, and for each working day we are late with the styles we also cut the price by 2%, within the same overall cap of 20%. None of the three fit? We draw three more. None of those fit either? We refund the whole prepayment. A 3D block goes into your site, so its style is matched to the site, with no separate choice. Day one of the work is the day we have the detailed description and the materials, and for a 3D landing page also the chosen style."
         },
         {
           "when": "Week 1",
@@ -784,12 +866,12 @@
         {
           "when": "Week 4",
           "title": "Poster, phones, audit",
-          "text": "A poster frame for the first screen, a poster and a video for phones without WebGL 2.0, a preliminary Lighthouse audit. A 3D landing page also gets its page around the scene; for a 3D block this step is week 3."
+          "text": "We make the image a visitor sees while the 3D loads. For phones that cannot show 3D (no WebGL 2.0), we make an image and a video instead of the scene. We run Google's free speed test in advance. We show the scene on a temporary link. For a 3D landing page this step also includes the page around the scene. For a 3D block this step is week 3."
         },
         {
           "when": "Weeks 5–6",
           "title": "Revisions and launch",
-          "text": "Two rounds of revisions, a final Lighthouse audit for the acceptance certificate, launch, source code handover and a 30-day warranty. For a 3D block this step is week 4."
+          "text": "You send comments and we make them, up to three rounds. After we make the second-round revisions, you make the second payment of 40%. We launch and hand over all the project files. On launch day we test the speed again: Google's test on a phone has to show 90 out of 100 or more. For a 3D landing page we test it on your address; for a 3D block, the page with the scene on our temporary link, as the terms say. The result goes with the acceptance certificate. You accept the work and pay the final 30%. Then comes a one-year warranty. For a 3D block this step is week 4."
         }
       ],
       "faq": [
@@ -802,8 +884,8 @@
           "answer": "A poster frame shows first and the scene loads after it. Phones without WebGL 2.0 show a poster and a video instead of the scene, and the inquiry form works either way. On a slow phone the scene may rotate less smoothly, but the poster, labels and inquiry form are there right away."
         },
         {
-          "question": "How much do extra revisions cost?",
-          "answer": "Two rounds of revisions are included: texts, colors, highlights. After that we bill at the hourly rate from the price list. A new part or camera angle after the geometry sign-off is estimated separately before any work starts."
+          "question": "How much do revisions beyond three rounds cost?",
+          "answer": "Three rounds of revisions are included: texts, colors and highlights. After that each change is paid by the hour: we name the amount first, and you never pay more than that. We charge $90 an hour. Once you approve the shape of the model itself, we do not change it as part of revisions. If you need to show a new part or a new viewing angle, we name the price first and then do it."
         },
         {
           "question": "Can you put 3D on Tilda, WordPress or 1C-Bitrix?",
@@ -832,13 +914,13 @@
       "terms": {
         "note": "Fixed in the contract",
         "items": [
-          "Deadline in the contract: 4 weeks for a 3D block, 6 weeks for a 3D landing page. The clock starts on the start date, or on the day we receive the detailed brief and materials if they arrive later; that is day one. Any delay in sign-off on your side moves the deadline by the same amount. A model from scratch adds its own line to the schedule",
+          "Deadline in the contract: 4 weeks for a 3D block, 6 weeks for a 3D landing page. Day one is the day we have the detailed description and the materials, and for a 3D landing page also the chosen style. Any delay in sign-off on your side moves the deadline by the same amount. A model from scratch adds its own line to the schedule",
           "We sign off the geometry and camera angles with you in week 1, before the scene is built; a new part or angle after that is estimated separately before any work starts",
-          "Two rounds of revisions: texts, colors, highlights; geometry is not part of revisions",
+          "Three rounds of revisions: texts, colors, highlights. The shape of the model is not part of revisions: we approve it at the start",
           "We start one 3D project a month and name the start date after the brief, before any prepayment",
-          "Lighthouse 90+ as an acceptance criterion: performance of at least 90 in each of three runs in a row, mobile profile. For a 3D landing page we measure the page itself. For a 3D block we measure a page with the scene on our test domain and answer for the block's own weight and speed: the poster first, the scene after; the score of the rest of the page depends on your site's code. The report goes with the acceptance certificate",
+          "Google's speed test on a phone: 90 out of 100 or more in each of three runs in a row, or we don't hand the work over. For a 3D landing page we test the page itself, on your address on launch day. For a 3D block, the page with the scene on our temporary link. We answer for the weight and speed of the block itself: an image shows first, the scene loads after. The speed of the rest of the page depends on your site's code. The result goes with the acceptance certificate",
           "We never share your drawings or the source model with third parties",
-          "30 days of warranty after launch"
+          "A one-year warranty: if something breaks through our fault, we fix it for free"
         ]
       },
       "afterWarranty": "After the warranty, the support plan if you want it: {price}",
@@ -862,7 +944,7 @@
         "landing3d": [
           "We write the copy from your brief; inquiries go to Telegram and email",
           "The whole site base: responsive layout, SEO, analytics, cookie banner, domain and SSL",
-          "Lighthouse 90+ in each of three runs",
+          "Google's speed test: 90+ out of 100 in each of three runs",
           "The source code stays with you"
         ]
       }
@@ -871,46 +953,46 @@
       "faq": [
         {
           "question": "What does support include?",
-          "answer": "Hosting administration, monitoring, backups, updates and hours of edits according to the plan."
+          "answer": "Support is optional. There are four plans. The first is “Hosting and backups”, {hostingBackups} a month. That pays for our work: we look after the server the site runs on, check that the site opens, make backups and update the software. Changes to the site are not included. You pay for the server itself (the hosting) to the provider separately. The other three plans are all of the same plus hours of our work on changes to the site: {supportHours} a month for 3 hours, {supportHoursPlus} for 10 hours, {supportHoursPro} for 25 hours. Unused hours do not carry over. On every plan, if the site stops working, we get on it within 2 hours on weekdays from 10:00 to 19:00 Moscow time, and at night or on weekends the first working morning. Restoring the site after a failure, including from a backup, is part of the monthly fee."
         },
         {
-          "question": "Where does the hosting stay?",
-          "answer": "On your account with the provider, and you pay the provider directly. We administer it, and the access stays with you."
+          "question": "Where is the site hosted and who pays for it?",
+          "answer": "The site runs on a server of a hosting provider; that is the hosting. The account with the provider is in your name, and you pay the provider directly. Prices depend on the provider and can change. We set up the server and look after it, and all the passwords stay with you."
         },
         {
           "question": "What if the hours of edits run out?",
-          "answer": "Extra work is billed at the hourly rate from the price list. If you need many edits, a Dev subscription is an option."
+          "answer": "Then extra work is paid by the hour, $90 an hour. If changes are many and constant, you can switch to a Dev subscription: $3,500 a month, we work through your tasks one at a time, with no limit on the number of tasks."
         },
         {
           "question": "How do I pay for support?",
-          "answer": "Monthly. The price on this page is the fee for one month."
+          "answer": "Every month: the price on this page is the fee for one month. You can cancel in any month: just don't pay for the next one."
         }
       ],
       "process": [
         {
           "when": "Ongoing",
-          "title": "Monitoring and backups",
-          "text": "We watch that the site is available and keep backup copies."
+          "title": "Watching the site and backups",
+          "text": "We make sure the site opens. We make regular backups so the site can be restored after a failure. Restoring the site after a failure, including from a backup, is part of the monthly fee. If the site stops working, we get on it within 2 hours on weekdays from 10:00 to 19:00 Moscow time, and at night or on weekends the first working morning."
         },
         {
           "when": "Every month",
           "title": "Updates",
-          "text": "We update the environment and dependencies so the site does not fall behind."
+          "text": "We update the software the site runs on so it keeps up with new versions."
         },
         {
           "when": "During the month",
-          "title": "Edits within the plan hours",
-          "text": "You send a task, and we do it within the hours of your plan."
+          "title": "If something needs changing",
+          "text": "You tell us what to change. On the plans with hours we do it out of the hours included in the fee: 3, 10 or 25 hours a month. The {hostingBackups} plan has no hours, so the work is billed separately at $90 an hour. Bugs that are our fault we fix for free during the warranty year, without spending your hours."
         }
       ],
       "basics": {
         "note": "Every month, under the contract",
         "items": [
-          "Hosting management: hosting stays on your account, you keep the access",
-          "Uptime monitoring",
+          "We look after the server the site runs on. The server is in your name, and so are the passwords",
+          "We check that the site opens",
           "Backups",
-          "Updates of the environment and dependencies",
-          "Hours of changes included in the plan"
+          "Updates of the software the site runs on",
+          "Changes to the site, such as a new text or photo, come only with the plans with hours. They are not part of “Hosting and backups”"
         ]
       }
     }
@@ -1007,7 +1089,7 @@
     },
     "kicker": "Project review",
     "title": "Tell us how the project went",
-    "lead": "Project: {project}. Answer three questions in your own words — we publish criticism too.",
+    "lead": "Project: {project}. Answer two questions in your own words, and the third if you like. We publish criticism too.",
     "groups": {
       "author": {
         "title": "About you",
@@ -1030,7 +1112,7 @@
       "link": "Link to a website or page (optional)",
       "before": "What brought you to us?",
       "process": "How did the work go?",
-      "after": "What changed after launch?"
+      "after": "What changed after launch? (optional)"
     },
     "fieldError": "Fill in this field to send the review",
     "linkError": "The link must start with https:// or http://",
@@ -1078,7 +1160,7 @@
     "fieldsError": "Check the fields marked above.",
     "received": {
       "title": "Review received",
-      "text": "Thank you for taking the time. We publish reviews after a check: yours will appear on the studio’s website."
+      "text": "Thank you for taking the time. We will fix any typos and publish it on the studio’s website."
     },
     "invalid": {
       "title": "This link is no longer valid",
@@ -1086,16 +1168,16 @@
     },
     "home": "Go to the home page",
     "mail": {
-      "subject": "{project}: three questions from Nikolay at MRSHKN",
+      "subject": "{project}: three questions from MRSHKN studio",
       "paragraphs": [
         "Hello,",
-        "This is Nikolay from MRSHKN. We built {project} together, and I would like to know how the work looks from your side. I will show your review on the studio's website — it will tell new clients more than anything I could say.",
-        "The form has three questions: what brought you to us, how the work went and what changed after launch. Answer as you like, short or long — I publish criticism too and only fix typos. It takes about ten minutes, no sign-up or passwords:",
+        "This is MRSHKN studio. We built {project} together, and we would like to know how the work looks from your side. We will show your review on the studio's website — it will tell new clients more than anything we could say.",
+        "The form has three questions: what brought you to us, how the work went and what changed after launch. The third question is optional: if little time has passed since launch, you can skip it. Answer as you like, short or long — we publish criticism too and only fix typos. It takes about ten minutes, no sign-up or passwords:",
         "{link}",
         "The form asks for your full name only for the consent — it will not appear on the site. The review is signed the way you choose, for example “Anna, coffee shop on Main Street”.",
-        "You can send the review only with consent to publish it — there are two checkboxes at the end of the form. If you change your mind, reply to this email and I will take it down.",
+        "You can send the review only with consent to publish it — there are two checkboxes at the end of the form. If you change your mind, reply to this email and we will take it down. If the project was done at the case-study price, what happens to the discount follows the terms of your contract.",
         "The link works for 60 days. Thank you for the project.",
-        "Nikolay, MRSHKN studio"
+        "MRSHKN studio"
       ]
     }
   }

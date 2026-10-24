@@ -1,6 +1,6 @@
 import { createTranslator } from 'next-intl';
-import { PRICING_PLANS } from '@/content/pricing';
-import { filledFaq } from '@/content/services';
+import { planTerm } from '@/content/format';
+import { SERVICE_PLANS, serviceFaq } from '@/content/services';
 import type { PricingPlan } from '@/content/types';
 import type { SiteLocale } from '@/i18n/types';
 import { BRIEF_HREF } from '@/lib/brief/consts';
@@ -14,9 +14,9 @@ const pageUrl = (locale: SiteLocale, path: string) => `${SITE_URL}${localePath(l
 
 const link = (title: string, url: string, note?: string) => `- [${title}](${url})${note ? `: ${note}` : ''}`;
 
-/** Тарифы прайса, у которых есть тексты на этом языке. */
+/** Тарифы со своей страницей услуги, у которых есть тексты на этом языке. */
 const plansOf = (messages: SeoMessages): PlanEntry[] =>
-  PRICING_PLANS.flatMap((plan) => {
+  SERVICE_PLANS.flatMap((plan) => {
     const texts = messages.pricing.plans[plan.id];
 
     return texts ? [{ plan, texts }] : [];
@@ -54,14 +54,14 @@ export const llmsText = (languages: LocaleMessages[]) =>
 
 const fullPlan = (language: LocaleMessages, { plan, texts }: PlanEntry) => {
   const { messages, locale } = language;
-  const faq = filledFaq(messages.services[plan.id]?.faq);
+  const faq = serviceFaq(messages.services[plan.id]?.faq, plan.id, locale);
 
   return [
     `## ${texts.name}`,
     '',
     texts.summary,
     '',
-    `- ${messages.pricing.columns.term}: ${texts.term}`,
+    `- ${messages.pricing.columns.term}: ${planTerm(plan, locale, () => texts.term ?? '')}`,
     `- ${messages.pricing.columns.price}: ${priceText(language, plan)}`,
     link(texts.name, pageUrl(locale, `/${plan.slug}`)),
     '',

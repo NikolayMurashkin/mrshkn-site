@@ -1,6 +1,6 @@
 import type { ReactNode } from 'react';
 import type { CaseImage as CaseImageData } from '@/cms/types';
-import type { ThreeDPoster, ThreeDPosters, ThreeDVideo } from '@/content/types';
+import type { ProcessScaleSegment, ThreeDPoster, ThreeDPosters, ThreeDVideo } from '@/content/types';
 import type { DesignName } from '@/designs/types';
 
 /** Смена направления, которую переключатель ждет от `router.refresh()`. */
@@ -51,4 +51,50 @@ export type ServiceMediaProps = {
   /** null — ролика на этом языке нет: только постер, без кнопки. */
   video: ThreeDVideo | null;
   classes: ServiceMediaClasses;
+};
+
+/** Отрезок шкалы «дни и паузы» с подписями на языке страницы. */
+export type ProcessScaleItem = ProcessScaleSegment & {
+  key: string;
+  label: string;
+  /** Подпись платежа на отрезке, если он есть. */
+  paymentLabel: string | null;
+  /** Платеж в конце отрезка (после приемки), а не в начале. */
+  isPaymentAtEnd: boolean;
+};
+
+export type ProcessScaleLegendKind = 'style' | 'day' | 'pause';
+
+/** Пункт легенды шкалы: вид образца и ключ подписи `process.scale.legend.*`. */
+export type ProcessScaleLegendEntry = {
+  kind: ProcessScaleLegendKind;
+  key: 'style' | 'work' | 'pause';
+};
+
+/** Классы шкалы «дни и паузы» — от направления: своего CSS у компонента нет. */
+export type ProcessScaleClasses = {
+  scale: string;
+  track: string;
+  segment: string;
+  style: string;
+  day: string;
+  pause: string;
+  bar: string;
+  /** Подпись отрезка и платеж: на компьютере раскладываются по строкам шкалы, на телефоне идут в одну строку. */
+  caption: string;
+  label: string;
+  payment: string;
+  paymentEnd: string;
+  legend: string;
+  legendItem: string;
+  swatch: string;
+  swatchStyle: string;
+  swatchDay: string;
+  swatchPause: string;
+};
+
+export type ProcessScaleProps = {
+  classes: ProcessScaleClasses;
+  /** Содержимое полосы отрезка (цифра дня, фишка, образцы цвета) — у каждого направления свое; полоса скрыта от скринридера. */
+  renderBar?: (item: ProcessScaleItem) => ReactNode;
 };

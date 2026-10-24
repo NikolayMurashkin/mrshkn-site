@@ -1,6 +1,6 @@
 import { useTranslations } from 'next-intl';
 import { PROCESS_STEPS, PROMISES } from '@/content/process';
-import { KINETIC_AXIS, KINETIC_KEY_DAYS } from './consts';
+import { ProcessScale, processScaleClasses } from '@/components/ProcessScale';
 import { SectionHead } from './SectionHead';
 import styles from './Process.module.scss';
 
@@ -39,24 +39,10 @@ export const KineticProcess = () => {
         ))}
       </ul>
 
-      <div
-        className={styles.axis}
-        aria-hidden="true"
-      >
-        <div className={styles.ticks}>
-          {KINETIC_AXIS.map((day) => (
-            <span
-              className={KINETIC_KEY_DAYS.includes(day) ? `${styles.tick} ${styles.tickKey}` : styles.tick}
-              key={day}
-            />
-          ))}
-        </div>
-        <div className={styles.labels}>
-          {KINETIC_AXIS.map((day) => (
-            <span key={day}>{day}</span>
-          ))}
-        </div>
-      </div>
+      <ProcessScale
+        classes={processScaleClasses(styles)}
+        renderBar={(item) => item.kind === 'day' && <span className={styles.scaleNum}>{item.day}</span>}
+      />
 
       <ol
         className={styles.steps}

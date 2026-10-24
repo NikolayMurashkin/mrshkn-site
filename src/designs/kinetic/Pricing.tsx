@@ -50,7 +50,7 @@ export const KineticPricing = () => {
                 <span className={styles.name}>{t(`plans.${plan.id}.name`)}</span>
                 <span className={styles.summary}>{t(`plans.${plan.id}.summary`)}</span>
               </span>
-              <span className={styles.term}>{t(`plans.${plan.id}.term`)}</span>
+              <span className={styles.term}>{price.term(plan)}</span>
               <span className={styles.price}>{price.plan(plan)}</span>
               <span className={styles.arrow}>
                 <ArrowUpRightIcon
@@ -63,12 +63,19 @@ export const KineticPricing = () => {
         ))}
       </ul>
 
+      <p
+        className={styles.caseOffer}
+        data-testid="case-offer"
+      >
+        {t('caseOffer')}
+      </p>
+
       <div
         className={styles.callout}
         data-testid="mini-app-note"
       >
         <p className={styles.calloutTitle}>{t('miniAppNote.title')}</p>
-        <p className={styles.calloutText}>{t('miniAppNote.text')}</p>
+        <p className={styles.calloutText}>{t('miniAppNote.text', { max: price.max })}</p>
       </div>
 
       <div className={styles.block}>

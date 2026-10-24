@@ -9,11 +9,15 @@ export const MONTHLY_SERVICES: readonly string[] = ['support'];
 /** Тариф поддержки: его цену называют условия 3D — чем продолжается работа после гарантии. */
 export const SUPPORT_PLAN_ID = 'support';
 
+/** Приложение в Telegram под заказ: у него свой список «Что входит». */
+export const MINI_APP_PLAN_ID = 'miniApp';
+
 /**
  * У «Что входит» свой список (`services.<id>.basics`) вместо базы сайта из 13 пунктов: у поддержки — работы
- * за месяц, у 3D — сцена и встраивание, без домена, хостинга, аналитики и адаптива сайта.
+ * за месяц, у 3D — сцена и встраивание, без домена, хостинга, аналитики и адаптива сайта, у приложения
+ * в Telegram — бот, админка и сервер приложения вместо домена, адаптива и поиска сайта.
  */
-export const OWN_BASICS_SERVICES: readonly string[] = [SUPPORT_PLAN_ID, THREE_D_PLAN_ID];
+export const OWN_BASICS_SERVICES: readonly string[] = [SUPPORT_PLAN_ID, THREE_D_PLAN_ID, MINI_APP_PLAN_ID];
 
 /**
  * Что повторяется в карточке тарифа из базы: у поддержки срока, Lighthouse и гарантии на запуск нет;

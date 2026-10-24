@@ -1,0 +1,102 @@
+@use './shared' as s;
+
+.tiers {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-24);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.tier {
+  min-width: 0;
+}
+
+.tierCard {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-12);
+  height: 100%;
+  padding-top: var(--space-16);
+  border-top: var(--border-width-strong) solid var(--ink);
+
+  &:hover,
+  &:focus-visible {
+    .tierName {
+      color: var(--accent-ink);
+    }
+
+    .arrow {
+      @include s.cell-arrow-active;
+    }
+  }
+}
+
+.tierTop {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-8) var(--space-12);
+}
+
+.tierIndex {
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  color: var(--muted);
+  font-variant-numeric: tabular-nums;
+}
+
+.tierTerm {
+  @include s.tag;
+}
+
+.tierName {
+  font-family: var(--font-display);
+  font-size: clamp(20px, 2vw, 28px);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  text-wrap: balance;
+  transition: color var(--duration-fast) var(--ease-in-out);
+
+  @include s.wrap;
+}
+
+.tierText {
+  font-size: 15px;
+  line-height: 1.45;
+  color: var(--muted);
+
+  @include s.wrap;
+}
+
+.tierFoot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-12);
+  margin-top: auto;
+  padding-top: var(--space-16);
+}
+
+.tierAmount {
+  font-size: 22px;
+  font-weight: 500;
+  line-height: 1.2;
+  font-variant-numeric: tabular-nums;
+
+  @include s.wrap;
+}
+
+.arrow {
+  @include s.cell-arrow;
+}
+
+@media (max-width: 480px) {
+  .tiers {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}

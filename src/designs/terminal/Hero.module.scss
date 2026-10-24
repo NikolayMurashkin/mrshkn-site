@@ -26,6 +26,7 @@
   flex-direction: column;
   gap: 32px;
   min-width: 0;
+  container-type: inline-size;
 }
 
 .prompt {
@@ -55,7 +56,7 @@
   margin: 0;
   font-family: var(--font-text);
   font-weight: 700;
-  font-size: clamp(36px, 7.8vw, 112px);
+  font-size: min(clamp(36px, 7.8vw, 112px), 13cqi);
   line-height: 1;
   text-wrap: balance;
   letter-spacing: -0.035em;
@@ -149,6 +150,7 @@
 
 .text {
   min-width: 0;
+  text-wrap: pretty;
   overflow-wrap: anywhere;
 }
 

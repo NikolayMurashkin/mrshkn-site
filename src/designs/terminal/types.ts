@@ -1,4 +1,4 @@
-import type { ServiceOptionView, ServiceThreeD } from '@/components/ServicePage/types';
+import type { ServiceOptionView, ServiceThreeD, ServiceTiers } from '@/components/ServicePage/types';
 import type { BriefChoice } from '@/lib/brief/types';
 
 /** Строка панели build.log в hero Terminal. */
@@ -46,7 +46,7 @@ export type TerminalOptionsProps = {
   narrow?: boolean;
 };
 
-/** Шаг работы: на главной — шаг 14 дней с номером дня, на странице услуги — шаг из `services.<id>.process`. */
+/** Шаг работы: на главной — шаг графика лендинга с номером дня, на странице услуги — шаг из `services.<id>.process`. */
 export type TerminalStep = {
   id: string;
   label: string;
@@ -68,4 +68,9 @@ export type TerminalStepsProps = {
 /** Блоки страницы «3D-интерактив»: постер и ролик, варианты, условия, что нужно от клиента. */
 export type TerminalServiceThreeDProps = {
   data: ServiceThreeD;
+  tiers: ServiceTiers | null;
+};
+
+export type TerminalServiceTiersProps = {
+  data: ServiceTiers;
 };

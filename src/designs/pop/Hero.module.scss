@@ -5,22 +5,23 @@
   grid-template-columns: minmax(0, 1fr) 420px;
   gap: var(--space-40);
   align-items: center;
-  padding: var(--space-56) var(--p-gutter) var(--space-72);
+  padding: var(--space-32) var(--p-gutter) var(--space-72);
   overflow: hidden;
 }
 
 .content {
   display: flex;
   flex-direction: column;
-  gap: 36px;
+  gap: var(--space-24);
   min-width: 0;
   animation: bounce var(--duration-bounce) var(--ease-out) both;
+  container-type: inline-size;
 }
 
 .title {
   margin: 0;
   font-family: var(--font-display);
-  font-size: clamp(40px, 8vw, 116px);
+  font-size: min(clamp(40px, 8vw, 116px), 11.8cqi);
   font-weight: 900;
   line-height: 1;
   letter-spacing: -0.03em;
@@ -162,6 +163,10 @@
   .hero {
     grid-template-columns: minmax(0, 1fr);
     padding-top: var(--space-40);
+  }
+
+  .content {
+    gap: 36px;
   }
 
   .stickers {

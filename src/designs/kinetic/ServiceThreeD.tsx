@@ -1,12 +1,13 @@
 import { useTranslations } from 'next-intl';
 import { ServiceMedia } from '@/components/ServiceMedia';
-import { ArrowRightIcon, ArrowUpRightIcon } from './icons';
+import { ArrowUpRightIcon } from './icons';
 import { buttonClass } from './button';
+import { KineticServiceTiers } from './ServiceTiers';
 import type { KineticServiceThreeDProps } from './types';
 import page from './ServicePage.module.scss';
 import styles from './ServiceThreeD.module.scss';
 
-export const KineticServiceThreeD = ({ data }: KineticServiceThreeDProps) => {
+export const KineticServiceThreeD = ({ data, tiers }: KineticServiceThreeDProps) => {
   const t = useTranslations('servicePage.threeD');
   const texts = useTranslations('services.threeD');
 
@@ -46,50 +47,7 @@ export const KineticServiceThreeD = ({ data }: KineticServiceThreeDProps) => {
         </a>
       </section>
 
-      <section
-        className={page.block}
-        aria-labelledby="service-tiers"
-      >
-        <div className={page.blockHead}>
-          <h2
-            className={page.blockTitle}
-            id="service-tiers"
-          >
-            {t('tiersHeading')}
-          </h2>
-          <p className={page.blockNote}>{t('tiersNote')}</p>
-        </div>
-        <ul className={styles.tiers}>
-          {data.tiers.map((tier) => (
-            <li
-              className={styles.tier}
-              key={tier.id}
-            >
-              <div className={styles.tierHead}>
-                <p className={page.kicker}>{tier.kind}</p>
-                <h3 className={styles.tierName}>{tier.name}</h3>
-                <p className={styles.tierText}>{tier.summary}</p>
-              </div>
-              <div className={styles.tierPrice}>
-                <span className={styles.tierAmount}>{tier.price}</span>
-                <span className={styles.tierTerm}>{tier.term}</span>
-              </div>
-              <ul className={page.checks}>
-                {tier.points.map((point) => (
-                  <li key={point}>{point}</li>
-                ))}
-              </ul>
-              <a
-                className={`${buttonClass()} ${styles.tierCta}`}
-                href={tier.href}
-              >
-                {t('tierCta', { name: tier.name })}
-                <ArrowRightIcon />
-              </a>
-            </li>
-          ))}
-        </ul>
-      </section>
+      {tiers ? <KineticServiceTiers data={tiers} /> : null}
 
       <section
         className={page.block}

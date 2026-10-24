@@ -51,7 +51,7 @@ const ServiceRoute = async ({ params }: ServicePageRouteProps) => {
   const design = await getDesign();
   const messages = (await getMessages({ locale })) as unknown as SeoMessages;
   const offer = serviceJsonLd(messages, service.id, locale);
-  const faq = serviceFaqJsonLd(messages, service.id);
+  const faq = serviceFaqJsonLd(messages, service.id, locale);
 
   return (
     <main>

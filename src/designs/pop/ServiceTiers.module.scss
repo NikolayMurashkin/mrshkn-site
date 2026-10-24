@@ -1,0 +1,99 @@
+@use './shared' as s;
+
+.tiers {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-32);
+  margin: 0;
+  padding: 10px 6px;
+  list-style: none;
+}
+
+.tier {
+  display: flex;
+  min-width: 0;
+}
+
+.tierCard {
+  --tilt: -2deg;
+
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  width: 100%;
+  min-height: 270px;
+  padding: var(--space-32) 30px;
+  border: var(--border-width-strong) solid var(--ink);
+  border-radius: var(--radius-surface);
+  background: var(--accent);
+  color: var(--accent-contrast);
+  box-shadow: var(--shadow-surface);
+  transform: rotate(var(--tilt));
+  transition: transform var(--duration-base) var(--ease-spring);
+
+  &:hover,
+  &:focus-visible {
+    transform: rotate(0deg) translateY(-6px);
+
+    .round {
+      transform: rotate(-45deg);
+    }
+  }
+}
+
+.tier:nth-child(even) .tierCard {
+  --tilt: 1.5deg;
+
+  background: var(--accent-alt);
+  color: var(--ink-on-alt);
+}
+
+.tierTerm {
+  @include s.tag;
+}
+
+.tierName {
+  font-size: clamp(24px, 2.4vw, 32px);
+  font-weight: 900;
+  line-height: 1.05;
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+
+  @include s.wrap;
+}
+
+.tierText {
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 1.45;
+
+  @include s.wrap;
+}
+
+.tierFoot {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--space-16);
+  margin-top: auto;
+}
+
+.tierAmount {
+  font-size: clamp(24px, 2.4vw, 30px);
+  font-weight: 900;
+  line-height: 1.1;
+  font-variant-numeric: tabular-nums;
+
+  @include s.wrap;
+}
+
+.round {
+  @include s.round;
+}
+
+@media (max-width: 720px) {
+  .tiers {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}

@@ -90,12 +90,25 @@ export const TerminalPricing = () => {
                 </Link>
                 <span className={styles.summary}>{t(`plans.${plan.id}.summary`)}</span>
               </td>
-              <td className={styles.term}>{t(`plans.${plan.id}.term`)}</td>
+              <td className={styles.term}>{price.term(plan)}</td>
               <td className={styles.price}>{price.plan(plan)}</td>
             </tr>
           ))}
         </tbody>
       </table>
+
+      <p
+        className={styles.caseOffer}
+        data-testid="case-offer"
+      >
+        <span
+          className={styles.prompt}
+          aria-hidden="true"
+        >
+          {'//'}
+        </span>{' '}
+        {t('caseOffer')}
+      </p>
 
       <div
         className={styles.miniApp}
@@ -104,7 +117,7 @@ export const TerminalPricing = () => {
         <p className={styles.miniAppTitle}>
           <span className={styles.prompt}>$</span> {t('miniAppNote.title')}
         </p>
-        <p className={styles.miniAppText}>{t('miniAppNote.text')}</p>
+        <p className={styles.miniAppText}>{t('miniAppNote.text', { max: price.max })}</p>
       </div>
 
       <div className={styles.included}>

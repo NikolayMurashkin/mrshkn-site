@@ -36,9 +36,7 @@ export const SwissHero = () => {
           })}
         </h1>
         <div className={styles.row}>
-          <p className={styles.lead}>
-            {t('subtitle')} {t('swiss.lead')}
-          </p>
+          <p className={styles.lead}>{t('subtitle')}</p>
           <div className={styles.actions}>
             <Link
               className={`${styles.button} ${styles.primary}`}

@@ -25,6 +25,9 @@ export const REVIEW_REQUIRED_FIELDS = ['fullName', 'signature', 'occupation'] as
 
 export const REVIEW_ANSWERS = ['before', 'process', 'after'] as const;
 
+/** Ответы, без которых отзыв не принимается; «что изменилось после запуска» можно пропустить — запишется пустым. */
+export const REVIEW_REQUIRED_ANSWERS: readonly (typeof REVIEW_ANSWERS)[number][] = ['before', 'process'];
+
 /** Ссылка автора — только http(s): `javascript:` и прочие схемы на сайт не попадут. */
 export const REVIEW_LINK_PATTERN = /^https?:\/\/[^\s]+$/i;
 

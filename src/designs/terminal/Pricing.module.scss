@@ -137,6 +137,15 @@
   font-variant-numeric: tabular-nums;
 }
 
+.caseOffer {
+  margin: 0;
+  max-width: 720px;
+  line-height: 1.5;
+  color: var(--muted);
+  overflow-wrap: anywhere;
+  min-width: 0;
+}
+
 .miniApp {
   @include s.window;
 

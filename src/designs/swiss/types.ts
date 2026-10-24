@@ -1,4 +1,4 @@
-import type { ServiceOptionView, ServiceThreeD } from '@/components/ServicePage/types';
+import type { ServiceOptionView, ServiceThreeD, ServiceTiers } from '@/components/ServicePage/types';
 import type { BriefChoice } from '@/lib/brief/types';
 import type { StepWhen } from '../types';
 
@@ -46,7 +46,7 @@ export type SwissOptionsProps = {
   narrow?: boolean;
 };
 
-/** Шаг работы: на главной — шаг 14 дней, на странице услуги — шаг из `services.<id>.process`. */
+/** Шаг работы: на главной — шаг графика лендинга, на странице услуги — шаг из `services.<id>.process`. */
 export type SwissStep = StepWhen & {
   id: string;
   title: string;
@@ -67,4 +67,9 @@ export type SwissStepsProps = {
 /** Блоки страницы «3D-интерактив»: постер и ролик, варианты, условия, что нужно от клиента. */
 export type SwissServiceThreeDProps = {
   data: ServiceThreeD;
+  tiers: ServiceTiers | null;
+};
+
+export type SwissServiceTiersProps = {
+  data: ServiceTiers;
 };

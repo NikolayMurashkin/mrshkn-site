@@ -1,6 +1,7 @@
 import { useTranslations } from 'next-intl';
+import { ProcessScale, processScaleClasses } from '@/components/ProcessScale';
 import { PROCESS_STEPS, PROMISES } from '@/content/process';
-import { PROCESS_KEY_DAYS, PROCESS_SCALE_DAYS } from './consts';
+import { TERMINAL_SCALE_PAUSE } from './consts';
 import { TerminalSteps } from './Steps';
 import styles from './Process.module.scss';
 
@@ -57,19 +58,16 @@ export const TerminalProcess = () => {
 
       <div className={styles.block}>
         <h3 className={styles.blockTitle}>{t('heading')}</h3>
-        <ol
-          className={styles.scale}
-          aria-hidden="true"
-        >
-          {PROCESS_SCALE_DAYS.map((day) => (
-            <li
-              className={PROCESS_KEY_DAYS.has(day) ? `${styles.cell} ${styles.cellKey}` : styles.cell}
-              key={day}
-            >
-              {String(day).padStart(2, '0')}
-            </li>
-          ))}
-        </ol>
+        <ProcessScale
+          classes={processScaleClasses(styles)}
+          renderBar={(item) =>
+            item.kind === 'day'
+              ? t('scale.terminal.day', { day: String(item.day).padStart(2, '0') })
+              : item.kind === 'pause'
+                ? TERMINAL_SCALE_PAUSE
+                : t('scale.terminal.styles')
+          }
+        />
 
         <TerminalSteps
           steps={steps}

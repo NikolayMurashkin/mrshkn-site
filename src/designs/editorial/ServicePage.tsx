@@ -6,6 +6,7 @@ import { EditorialDashes } from './Dashes';
 import { ArrowLeftIcon, ArrowRightIcon } from './icons';
 import { EditorialOptions } from './Options';
 import { EditorialServiceThreeD } from './ServiceThreeD';
+import { EditorialServiceTiers } from './ServiceTiers';
 import styles from './ServicePage.module.scss';
 
 export const EditorialServicePage = ({ service }: ServicePageProps) => {
@@ -27,6 +28,7 @@ export const EditorialServicePage = ({ service }: ServicePageProps) => {
     cardPoints,
     ownBasics,
     industry,
+    tiers,
     threeD,
     options,
     steps,
@@ -91,7 +93,14 @@ export const EditorialServicePage = ({ service }: ServicePageProps) => {
             </section>
           ) : null}
 
-          {threeD ? <EditorialServiceThreeD data={threeD} /> : null}
+          {threeD ? (
+            <EditorialServiceThreeD
+              data={threeD}
+              tiers={tiers}
+            />
+          ) : tiers ? (
+            <EditorialServiceTiers data={tiers} />
+          ) : null}
 
           <section
             className={styles.block}

@@ -1,6 +1,6 @@
 import { useTranslations } from 'next-intl';
+import { ProcessScale, processScaleClasses } from '@/components/ProcessScale';
 import { PROCESS_STEPS, PROMISES } from '@/content/process';
-import { SWISS_KEY_DAYS, SWISS_SCALE_DAYS } from './consts';
 import { SwissSteps } from './Steps';
 import styles from './Process.module.scss';
 
@@ -53,19 +53,10 @@ export const SwissProcess = () => {
 
         <div className={styles.timeline}>
           <h3 className={styles.subhead}>{t('heading')}</h3>
-          <div
-            className={styles.scale}
-            aria-hidden="true"
-          >
-            {SWISS_SCALE_DAYS.map((day) => (
-              <span
-                className={SWISS_KEY_DAYS.has(day) ? `${styles.day} ${styles.dayKey}` : styles.day}
-                key={day}
-              >
-                {day}
-              </span>
-            ))}
-          </div>
+          <ProcessScale
+            classes={processScaleClasses(styles)}
+            renderBar={(item) => item.kind === 'day' && item.day}
+          />
           <SwissSteps
             steps={PROCESS_STEPS.map((step) => ({
               id: step.id,

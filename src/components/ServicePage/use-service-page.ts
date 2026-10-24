@@ -3,7 +3,7 @@
 import { useLocale, useTranslations } from 'next-intl';
 import { SERVICE_BACK_ANCHOR, SERVICE_PRICES_ANCHOR } from '@/content/consts';
 import { INDUSTRY_NICHES, INDUSTRY_PLAN_ID, industryNicheHref } from '@/content/industry';
-import { filledFaq, SERVICES, serviceBriefHref, tierBriefHref } from '@/content/services';
+import { fillServiceText, SERVICES, serviceBriefHref, serviceFaq, tierBriefHref } from '@/content/services';
 import { PRICING_OPTIONS, PRICING_PLANS, PRICING_TIERS } from '@/content/pricing';
 import {
   THREE_D_PLAN_ID,
@@ -22,7 +22,14 @@ import {
   SERVICES_WITHOUT_REVISIONS,
   SUPPORT_PLAN_ID,
 } from './consts';
-import type { ServiceBasics, ServiceIndustry, ServicePageData, ServiceStep, ServiceThreeD } from './types';
+import type {
+  ServiceBasics,
+  ServiceIndustry,
+  ServicePageData,
+  ServiceStep,
+  ServiceThreeD,
+  ServiceTiers,
+} from './types';
 
 /** Строка про поддержку после гарантии — последним пунктом условий: цена берется из прайса, не из текста. */
 const withAfterWarranty = (terms: ServiceBasics, line: string | null): ServiceBasics =>
@@ -61,19 +68,33 @@ export const useServicePage = (serviceId: string): ServicePageData | null => {
           })),
         }
       : null;
+  const planTiers = PRICING_TIERS.filter((tier) => tier.planId === service.id);
+  const tiers: ServiceTiers | null =
+    planTiers.length > 0
+      ? {
+          heading: t(`${service.id}.tiersHeading`),
+          note: t(`${service.id}.tiersNote`),
+          items: planTiers.map((tier) => {
+            const name = tierTexts(`${tier.id}.name`);
+            const pointsKey = `${service.id}.tierPoints.${tier.id}`;
+
+            return {
+              id: tier.id,
+              name,
+              summary: tierTexts(`${tier.id}.summary`),
+              term: tierTexts(`${tier.id}.term`),
+              price: price.plan(tier),
+              kind: isMonthly ? null : t(`priceKind.${tier.isFrom ? 'from' : 'exact'}`),
+              points: texts.has(pointsKey) ? (texts.raw(pointsKey) as string[]) : [],
+              href: tierBriefHref(locale, tier),
+              cta: t(`${service.id}.tierCta`, { name }),
+            };
+          }),
+        }
+      : null;
   const threeD: ServiceThreeD | null =
     service.id === THREE_D_PLAN_ID
       ? {
-          tiers: PRICING_TIERS.filter((tier) => tier.planId === service.id).map((tier) => ({
-            id: tier.id,
-            name: tierTexts(`${tier.id}.name`),
-            summary: tierTexts(`${tier.id}.summary`),
-            term: tierTexts(`${tier.id}.term`),
-            price: price.plan(tier),
-            kind: t(`priceKind.${tier.isFrom ? 'from' : 'exact'}`),
-            points: texts.raw(`${service.id}.tierPoints.${tier.id}`) as string[],
-            href: tierBriefHref(locale, tier),
-          })),
           terms: withAfterWarranty(
             texts.raw(`${service.id}.terms`) as ServiceBasics,
             supportPlan
@@ -93,7 +114,7 @@ export const useServicePage = (serviceId: string): ServicePageData | null => {
     service,
     name: plans(`${service.id}.name`),
     summary: plans(`${service.id}.summary`),
-    term: plans(`${service.id}.term`),
+    term: price.term(plan),
     price: isMonthly ? t('perMonth', { price: planPrice }) : planPrice,
     cardAmount: planPrice,
     priceKind: t(`priceKind.${isMonthly ? 'month' : plan.isFrom ? 'from' : 'exact'}`),
@@ -103,9 +124,13 @@ export const useServicePage = (serviceId: string): ServicePageData | null => {
     ),
     ownBasics: OWN_BASICS_SERVICES.includes(service.id) ? (texts.raw(`${service.id}.basics`) as ServiceBasics) : null,
     industry,
+    tiers,
     threeD,
-    steps: texts.raw(`${service.id}.process`) as ServiceStep[],
-    faq: filledFaq(texts.raw(`${service.id}.faq`) as FaqItem[]),
+    steps: (texts.raw(`${service.id}.process`) as ServiceStep[]).map((step) => ({
+      ...step,
+      text: fillServiceText(step.text, service.id, locale),
+    })),
+    faq: serviceFaq(texts.raw(`${service.id}.faq`) as FaqItem[], service.id, locale),
     options: service.options.flatMap((id) => {
       const option = PRICING_OPTIONS.find((item) => item.id === id);
 

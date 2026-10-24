@@ -111,6 +111,14 @@
   color: var(--muted);
 }
 
+.caseOffer {
+  @include s.wrap;
+
+  margin: 0;
+  max-width: 66 * s.$text-ch;
+  line-height: 1.6;
+}
+
 .miniApp {
   @include s.grid;
 

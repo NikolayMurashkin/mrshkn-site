@@ -1,4 +1,4 @@
-import type { ServiceOptionView, ServiceThreeD } from '@/components/ServicePage/types';
+import type { ServiceOptionView, ServiceThreeD, ServiceTiers } from '@/components/ServicePage/types';
 import type { BriefChoice } from '@/lib/brief/types';
 import type { EDITORIAL_WORKS_LAYOUTS, EDITORIAL_WORKS_SPREAD } from './consts';
 
@@ -58,4 +58,9 @@ export type EditorialOptionsProps = {
 /** Блоки страницы «3D-интерактив»: постер и ролик, варианты, условия, что нужно от клиента. */
 export type EditorialServiceThreeDProps = {
   data: ServiceThreeD;
+  tiers: ServiceTiers | null;
+};
+
+export type EditorialServiceTiersProps = {
+  data: ServiceTiers;
 };

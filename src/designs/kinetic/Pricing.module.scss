@@ -107,6 +107,15 @@
   transition: transform var(--duration-base) var(--ease-out);
 }
 
+.caseOffer {
+  margin: 0;
+  max-width: 720px;
+  line-height: 1.5;
+  color: var(--muted);
+  overflow-wrap: anywhere;
+  min-width: 0;
+}
+
 .callout {
   display: grid;
   grid-template-columns: auto minmax(0, 1fr);

@@ -1,9 +1,9 @@
-import { PRICING_PLANS } from '@/content/pricing';
+import { SERVICES } from '@/content/services';
 import type { SiteLocale } from '@/i18n/types';
 import { BRIEF_HREF } from '@/lib/brief/consts';
 import { PRIVACY_HREF, SITE_URL } from '@/lib/consts';
 import defaultMessages from '../../../messages/ru.json';
-import type { PriceCurrency } from './types';
+import type { PriceCurrency, ServedArea } from './types';
 
 /**
  * Статические индексируемые страницы без префикса языка: главная, страница каждой услуги, квиз, политика ПД.
@@ -11,7 +11,7 @@ import type { PriceCurrency } from './types';
  */
 export const SITE_PAGES: readonly string[] = [
   '',
-  ...PRICING_PLANS.map((plan) => `/${plan.slug}`),
+  ...SERVICES.map((service) => `/${service.slug}`),
   BRIEF_HREF,
   PRIVACY_HREF,
 ];
@@ -40,6 +40,18 @@ export const X_DEFAULT = 'x-default';
 export const BRAND_NAME = defaultMessages.brand.name;
 
 export const STUDIO_EMAIL = 'hello@mrshkn.com';
+
+/** Где студия берет заказы: Калининград и область, на языке страницы. */
+export const AREA_SERVED: Record<SiteLocale, ServedArea[]> = {
+  ru: [
+    { '@type': 'City', name: 'Калининград' },
+    { '@type': 'AdministrativeArea', name: 'Калининградская область' },
+  ],
+  en: [
+    { '@type': 'City', name: 'Kaliningrad' },
+    { '@type': 'AdministrativeArea', name: 'Kaliningrad Oblast' },
+  ],
+};
 
 /** Код подтверждения прав в Яндекс Вебмастере для mrshkn.com: метатег `yandex-verification`. */
 export const YANDEX_VERIFICATION = '84f12e223dadf5bb';

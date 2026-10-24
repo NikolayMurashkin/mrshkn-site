@@ -1,6 +1,6 @@
 import { hasLocale } from 'next-intl';
 import { getTranslations } from 'next-intl/server';
-import { PRICING_PLANS } from '@/content/pricing';
+import { SERVICE_PLANS } from '@/content/services';
 import { routing } from '@/i18n/routing';
 import { OG_CONTENT_TYPE, OG_SIZE } from '@/lib/seo/consts';
 import { missingOgImage, renderOgImage } from '@/lib/seo/og';
@@ -13,7 +13,7 @@ export const contentType = OG_CONTENT_TYPE;
 
 const Image = async ({ params }: OgImageProps<{ locale: string; service: string }>) => {
   const { locale, service: slug } = await params;
-  const plan = PRICING_PLANS.find((item) => item.slug === slug);
+  const plan = SERVICE_PLANS.find((item) => item.slug === slug);
 
   if (!hasLocale(routing.locales, locale) || !plan) {
     return missingOgImage();

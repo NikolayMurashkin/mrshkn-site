@@ -8,6 +8,7 @@ import { ArrowLeftIcon, ArrowRightIcon, ArrowUpRightIcon } from './icons';
 import { PopOptions } from './Options';
 import { PopSteps } from './Steps';
 import { PopServiceThreeD } from './ServiceThreeD';
+import { PopServiceTiers } from './ServiceTiers';
 import styles from './ServicePage.module.scss';
 
 export const PopServicePage = ({ service }: ServicePageProps) => {
@@ -29,6 +30,7 @@ export const PopServicePage = ({ service }: ServicePageProps) => {
     cardPoints,
     ownBasics,
     industry,
+    tiers,
     threeD,
     options,
     steps,
@@ -94,7 +96,14 @@ export const PopServicePage = ({ service }: ServicePageProps) => {
             </section>
           ) : null}
 
-          {threeD ? <PopServiceThreeD data={threeD} /> : null}
+          {threeD ? (
+            <PopServiceThreeD
+              data={threeD}
+              tiers={tiers}
+            />
+          ) : tiers ? (
+            <PopServiceTiers data={tiers} />
+          ) : null}
 
           <section
             className={styles.block}

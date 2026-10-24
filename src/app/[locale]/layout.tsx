@@ -68,7 +68,7 @@ const LocaleLayout = async ({ children, params }: LocaleLayoutProps) => {
       suppressHydrationWarning
     >
       <body>
-        <JsonLd data={organizationJsonLd()} />
+        <JsonLd data={organizationJsonLd(locale)} />
         <NextIntlClientProvider>
           <ThemeProvider defaultTheme={theme}>
             <ConsentProvider

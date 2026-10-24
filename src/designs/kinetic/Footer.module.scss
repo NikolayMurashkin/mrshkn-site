@@ -46,8 +46,12 @@
 }
 
 .note {
+  inline-size: 0;
+  min-inline-size: 100%;
   font-size: 14px;
   opacity: 0.72;
+  word-wrap: break-word;
+  overflow-wrap: anywhere;
 }
 
 .bar {
@@ -90,7 +94,7 @@
   }
 }
 
-@container (max-width: 940px) {
+@container (max-width: 770px) {
   .main {
     grid-template-columns: minmax(0, 1fr);
   }

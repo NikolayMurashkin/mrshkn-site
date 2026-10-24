@@ -6,6 +6,7 @@ import { TerminalChecks } from './Checks';
 import { TerminalOptions } from './Options';
 import { TerminalSteps } from './Steps';
 import { TerminalServiceThreeD } from './ServiceThreeD';
+import { TerminalServiceTiers } from './ServiceTiers';
 import styles from './ServicePage.module.scss';
 
 export const TerminalServicePage = ({ service }: ServicePageProps) => {
@@ -27,6 +28,7 @@ export const TerminalServicePage = ({ service }: ServicePageProps) => {
     cardPoints,
     ownBasics,
     industry,
+    tiers,
     threeD,
     options,
     steps,
@@ -95,7 +97,14 @@ export const TerminalServicePage = ({ service }: ServicePageProps) => {
             </section>
           ) : null}
 
-          {threeD ? <TerminalServiceThreeD data={threeD} /> : null}
+          {threeD ? (
+            <TerminalServiceThreeD
+              data={threeD}
+              tiers={tiers}
+            />
+          ) : tiers ? (
+            <TerminalServiceTiers data={tiers} />
+          ) : null}
 
           <section
             className={styles.block}
