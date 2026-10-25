@@ -16,12 +16,42 @@ export type ServiceBasics = {
   items: string[];
 };
 
-/** Карточка отрасли: готовое демо, ссылка ведет в квиз с предвыбранной нишей. */
+/** Карточка отрасли: готовое демо, ссылка ведет в квиз с предвыбранной нишей, `demoHref` — само демо. */
 export type ServiceNicheCard = {
   id: string;
   title: string;
   text: string;
   href: string;
+  demoHref: string;
+};
+
+export type TryItMessenger = 'telegram' | 'max';
+
+export type TryItApp = {
+  id: string;
+  links: readonly { messenger: TryItMessenger; href: string }[];
+};
+
+export type ServiceTryItLink = {
+  messenger: TryItMessenger;
+  href: string;
+  label: string;
+};
+
+export type ServiceTryItCard = {
+  id: string;
+  title: string;
+  module: string;
+  text: string;
+  links: ServiceTryItLink[];
+};
+
+/** Раздел «Попробовать» страницы Mini App: демо-приложения студии в мессенджерах. */
+export type ServiceTryIt = {
+  heading: string;
+  note: string;
+  mark: string;
+  apps: ServiceTryItCard[];
 };
 
 /** Блоки, которые есть только у отраслевого тарифа: что меняем под клиента, что не входит, отрасли. */
@@ -92,6 +122,9 @@ export type ServicePageData = {
   industry: ServiceIndustry | null;
   tiers: ServiceTiers | null;
   threeD: ServiceThreeD | null;
+  tryIt: ServiceTryIt | null;
+  /** «Посмотреть пример» в шапке страницы; `null` — у услуги примера нет. */
+  exampleHref: string | null;
   steps: ServiceStep[];
   faq: FaqItem[];
   options: ServiceOptionView[];

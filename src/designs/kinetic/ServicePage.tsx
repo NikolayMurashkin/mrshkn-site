@@ -31,6 +31,8 @@ export const KineticServicePage = ({ service }: ServicePageProps) => {
     industry,
     tiers,
     threeD,
+    tryIt,
+    exampleHref,
     options,
     steps,
     faq,
@@ -58,6 +60,17 @@ export const KineticServicePage = ({ service }: ServicePageProps) => {
           <li className={styles.tag}>{price}</li>
           {hasRevisions ? <li className={styles.tag}>{t('revisions')}</li> : null}
         </ul>
+        {exampleHref ? (
+          <a
+            className={`${styles.demoLink} ${styles.example}`}
+            href={exampleHref}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            {t('landingExample')}
+            <ArrowUpRightIcon />
+          </a>
+        ) : null}
         <a
           className={`${buttonClass({ primary: true })} ${styles.headCta}`}
           href={data.briefHref}
@@ -69,6 +82,50 @@ export const KineticServicePage = ({ service }: ServicePageProps) => {
 
       <div className={styles.cols}>
         <div className={styles.main}>
+          {tryIt ? (
+            <section
+              className={styles.block}
+              aria-labelledby="service-try-it"
+            >
+              <div className={styles.blockHead}>
+                <h2
+                  className={styles.blockTitle}
+                  id="service-try-it"
+                >
+                  {tryIt.heading}
+                </h2>
+                <p className={styles.blockNote}>{tryIt.note}</p>
+              </div>
+              <ul className={`${styles.niches} ${styles.apps}`}>
+                {tryIt.apps.map((app) => (
+                  <li
+                    className={styles.app}
+                    key={app.id}
+                  >
+                    <p className={styles.kicker}>{app.module}</p>
+                    <h3 className={styles.nicheTitle}>{app.title}</h3>
+                    <p className={styles.nicheText}>{app.text}</p>
+                    <span className={`${styles.tag} ${styles.appMark}`}>{tryIt.mark}</span>
+                    <div className={styles.appLinks}>
+                      {app.links.map((link) => (
+                        <a
+                          className={`${buttonClass({ size: 'small' })} ${styles.appLink}`}
+                          href={link.href}
+                          key={link.messenger}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          {link.label}
+                          <ArrowUpRightIcon />
+                        </a>
+                      ))}
+                    </div>
+                  </li>
+                ))}
+              </ul>
+            </section>
+          ) : null}
+
           {industry ? (
             <section
               className={styles.block}
@@ -183,10 +240,21 @@ export const KineticServicePage = ({ service }: ServicePageProps) => {
                         <a href={niche.href}>{niche.title}</a>
                       </h3>
                       <p className={styles.nicheText}>{niche.text}</p>
-                      <span className={styles.nicheFoot}>
-                        {t('nicheCta')}
-                        <ArrowUpRightIcon />
-                      </span>
+                      <div className={styles.nicheEnd}>
+                        <a
+                          className={`${styles.demoLink} ${styles.nicheDemo}`}
+                          href={niche.demoHref}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          {t('nicheDemo')}
+                          <ArrowUpRightIcon />
+                        </a>
+                        <span className={styles.nicheFoot}>
+                          {t('nicheCta')}
+                          <ArrowUpRightIcon />
+                        </span>
+                      </div>
                     </li>
                   ))}
                 </ul>

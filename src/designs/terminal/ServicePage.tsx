@@ -30,6 +30,8 @@ export const TerminalServicePage = ({ service }: ServicePageProps) => {
     industry,
     tiers,
     threeD,
+    tryIt,
+    exampleHref,
     options,
     steps,
     faq,
@@ -57,6 +59,16 @@ export const TerminalServicePage = ({ service }: ServicePageProps) => {
           <li className={styles.tag}>{price}</li>
           {hasRevisions ? <li className={styles.tag}>{t('revisions')}</li> : null}
         </ul>
+        {exampleHref ? (
+          <a
+            className={styles.example}
+            href={exampleHref}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            {t('landingExample')}
+          </a>
+        ) : null}
       </header>
 
       <div className={styles.cols}>
@@ -79,6 +91,49 @@ export const TerminalServicePage = ({ service }: ServicePageProps) => {
         </aside>
 
         <div className={styles.main}>
+          {tryIt ? (
+            <section
+              className={styles.block}
+              aria-labelledby="service-try-it"
+            >
+              <div className={styles.blockHead}>
+                <h2
+                  className={styles.blockTitle}
+                  id="service-try-it"
+                >
+                  {tryIt.heading}
+                </h2>
+                <p className={styles.blockNote}>{tryIt.note}</p>
+              </div>
+              <ul className={styles.niches}>
+                {tryIt.apps.map((app) => (
+                  <li
+                    className={styles.app}
+                    key={app.id}
+                  >
+                    <p className={styles.label}>{app.module}</p>
+                    <h3 className={styles.nicheTitle}>{app.title}</h3>
+                    <p className={styles.nicheText}>{app.text}</p>
+                    <span className={`${styles.tag} ${styles.appMark}`}>{tryIt.mark}</span>
+                    <div className={styles.appLinks}>
+                      {app.links.map((link) => (
+                        <a
+                          className={styles.appLink}
+                          href={link.href}
+                          key={link.messenger}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          {link.label}
+                        </a>
+                      ))}
+                    </div>
+                  </li>
+                ))}
+              </ul>
+            </section>
+          ) : null}
+
           {industry ? (
             <section
               className={styles.block}
@@ -176,6 +231,14 @@ export const TerminalServicePage = ({ service }: ServicePageProps) => {
                         <span className={styles.nicheCta}>{t('nicheCta')}</span>
                       </div>
                       <p className={styles.nicheText}>{niche.text}</p>
+                      <a
+                        className={styles.nicheDemo}
+                        href={niche.demoHref}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        {t('nicheDemo')}
+                      </a>
                     </li>
                   ))}
                 </ul>

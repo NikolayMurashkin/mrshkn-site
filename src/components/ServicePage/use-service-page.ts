@@ -2,7 +2,7 @@
 
 import { useLocale, useTranslations } from 'next-intl';
 import { SERVICE_BACK_ANCHOR, SERVICE_PRICES_ANCHOR } from '@/content/consts';
-import { INDUSTRY_NICHES, INDUSTRY_PLAN_ID, industryNicheHref } from '@/content/industry';
+import { INDUSTRY_NICHE_DEMOS, INDUSTRY_NICHES, INDUSTRY_PLAN_ID, industryNicheHref } from '@/content/industry';
 import { fillServiceText, SERVICES, serviceBriefHref, serviceFaq, tierBriefHref } from '@/content/services';
 import { PRICING_OPTIONS, PRICING_PLANS, PRICING_TIERS } from '@/content/pricing';
 import {
@@ -16,11 +16,14 @@ import type { FaqItem } from '@/content/types';
 import { usePriceText } from '@/content/use-price';
 import {
   CARD_POINT_KEYS,
+  MINI_APP_PLAN_ID,
   MONTHLY_SERVICES,
   OWN_BASICS_SERVICES,
   SERVICE_CARD_POINTS,
+  SERVICE_EXAMPLES,
   SERVICES_WITHOUT_REVISIONS,
   SUPPORT_PLAN_ID,
+  TRY_IT_APPS,
 } from './consts';
 import type {
   ServiceBasics,
@@ -29,6 +32,7 @@ import type {
   ServiceStep,
   ServiceThreeD,
   ServiceTiers,
+  ServiceTryIt,
 } from './types';
 
 /** Строка про поддержку после гарантии — последним пунктом условий: цена берется из прайса, не из текста. */
@@ -65,6 +69,7 @@ export const useServicePage = (serviceId: string): ServicePageData | null => {
             title: texts(`${service.id}.niches.${niche}.title`),
             text: texts(`${service.id}.niches.${niche}.text`),
             href: industryNicheHref(locale, niche),
+            demoHref: INDUSTRY_NICHE_DEMOS[niche],
           })),
         }
       : null;
@@ -110,6 +115,22 @@ export const useServicePage = (serviceId: string): ServicePageData | null => {
         }
       : null;
 
+  const tryIt: ServiceTryIt | null =
+    service.id === MINI_APP_PLAN_ID
+      ? {
+          heading: t('tryIt.heading'),
+          note: t('tryIt.note'),
+          mark: t('tryIt.mark'),
+          apps: TRY_IT_APPS.map((app) => ({
+            id: app.id,
+            title: t(`tryIt.apps.${app.id}.title`),
+            module: t(`tryIt.apps.${app.id}.module`),
+            text: t(`tryIt.apps.${app.id}.text`),
+            links: app.links.map((link) => ({ ...link, label: t(`tryIt.${link.messenger}`) })),
+          })),
+        }
+      : null;
+
   return {
     service,
     name: plans(`${service.id}.name`),
@@ -126,6 +147,8 @@ export const useServicePage = (serviceId: string): ServicePageData | null => {
     industry,
     tiers,
     threeD,
+    tryIt,
+    exampleHref: SERVICE_EXAMPLES[service.id] ?? null,
     steps: (texts.raw(`${service.id}.process`) as ServiceStep[]).map((step) => ({
       ...step,
       text: fillServiceText(step.text, service.id, locale),

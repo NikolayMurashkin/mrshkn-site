@@ -4,7 +4,7 @@ import { useServicePage } from '@/components/ServicePage/use-service-page';
 import { splitStepWhen } from '../step-when';
 import { SwissBasics } from './Basics';
 import { SwissChecks } from './Checks';
-import { ArrowLeftIcon, ArrowRightIcon } from './icons';
+import { ArrowLeftIcon, ArrowRightIcon, ArrowUpRightIcon } from './icons';
 import { SwissOptions } from './Options';
 import { SwissSteps } from './Steps';
 import { SwissServiceThreeD } from './ServiceThreeD';
@@ -32,6 +32,8 @@ export const SwissServicePage = ({ service }: ServicePageProps) => {
     industry,
     tiers,
     threeD,
+    tryIt,
+    exampleHref,
     options,
     steps,
     faq,
@@ -65,6 +67,17 @@ export const SwissServicePage = ({ service }: ServicePageProps) => {
             <li className={styles.tag}>{price}</li>
             {hasRevisions ? <li className={styles.tag}>{revisions}</li> : null}
           </ul>
+          {exampleHref ? (
+            <a
+              className={`${styles.more} ${styles.example}`}
+              href={exampleHref}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {t('landingExample')}
+              <ArrowUpRightIcon />
+            </a>
+          ) : null}
           <div className={styles.meta}>
             <a
               className={styles.cta}
@@ -80,6 +93,50 @@ export const SwissServicePage = ({ service }: ServicePageProps) => {
 
       <div className={styles.cols}>
         <div className={styles.stack}>
+          {tryIt ? (
+            <section
+              className={styles.block}
+              aria-labelledby="service-try-it"
+            >
+              <div className={styles.blockHead}>
+                <h2
+                  className={styles.blockTitle}
+                  id="service-try-it"
+                >
+                  {tryIt.heading}
+                </h2>
+                <p className={styles.blockNote}>{tryIt.note}</p>
+              </div>
+              <ul className={`${styles.niches} ${styles.apps}`}>
+                {tryIt.apps.map((app) => (
+                  <li
+                    className={styles.app}
+                    key={app.id}
+                  >
+                    <p className={styles.kicker}>{app.module}</p>
+                    <h3 className={styles.nicheTitle}>{app.title}</h3>
+                    <p className={styles.nicheText}>{app.text}</p>
+                    <span className={styles.tag}>{tryIt.mark}</span>
+                    <div className={styles.appLinks}>
+                      {app.links.map((link) => (
+                        <a
+                          className={styles.appLink}
+                          href={link.href}
+                          key={link.messenger}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          {link.label}
+                          <ArrowUpRightIcon />
+                        </a>
+                      ))}
+                    </div>
+                  </li>
+                ))}
+              </ul>
+            </section>
+          ) : null}
+
           {industry ? (
             <section
               className={styles.block}
@@ -174,12 +231,23 @@ export const SwissServicePage = ({ service }: ServicePageProps) => {
                         <a href={niche.href}>{niche.title}</a>
                       </h3>
                       <p className={styles.nicheText}>{niche.text}</p>
-                      <span className={styles.nicheFoot}>
-                        {t('nicheCta')}
-                        <span className={styles.nicheArrow}>
-                          <ArrowRightIcon />
+                      <div className={styles.nicheEnd}>
+                        <a
+                          className={`${styles.more} ${styles.nicheDemo}`}
+                          href={niche.demoHref}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          {t('nicheDemo')}
+                          <ArrowUpRightIcon />
+                        </a>
+                        <span className={styles.nicheFoot}>
+                          {t('nicheCta')}
+                          <span className={styles.nicheArrow}>
+                            <ArrowRightIcon />
+                          </span>
                         </span>
-                      </span>
+                      </div>
                     </li>
                   ))}
                 </ul>

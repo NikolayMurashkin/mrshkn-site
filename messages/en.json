@@ -515,6 +515,27 @@
     "nichesHeading": "Pick your industry",
     "nichesNote": "For these industries we have a demo, an example site",
     "nicheCta": "Get a quote",
+    "nicheDemo": "Open demo",
+    "landingExample": "See an example",
+    "tryIt": {
+      "heading": "Try it",
+      "note": "Open it on your phone and go through it as a customer. The interface is in Russian",
+      "mark": "Studio demo project",
+      "telegram": "Open in Telegram",
+      "max": "Open in MAX",
+      "apps": {
+        "clinic": {
+          "title": "Clinic",
+          "module": "Booking",
+          "text": "The customer picks a service, a doctor and a time, and the booking goes to the owner in Telegram"
+        },
+        "coffee": {
+          "title": "Coffee shop",
+          "module": "Loyalty",
+          "text": "Collect stamps with a QR code at the till, browse the menu and order ahead"
+        }
+      }
+    },
     "threeD": {
       "mediaHeading": "What it looks like",
       "mediaNote": "Studio demo project: a fictional car repair shop",

@@ -87,6 +87,7 @@
   flex-direction: column;
   gap: var(--space-56);
   min-width: 0;
+  container-type: inline-size;
 }
 
 .block {
@@ -118,7 +119,8 @@
   list-style: none;
 }
 
-.niche {
+.niche,
+.app {
   position: relative;
   display: flex;
   flex-direction: column;
@@ -128,11 +130,14 @@
   border-radius: var(--radius-surface);
   background: var(--surface);
   box-shadow: var(--shadow-floating);
+
+  @include s.wrap;
+}
+
+.niche {
   transition:
     transform var(--duration-base) var(--ease-out),
     box-shadow var(--duration-base) var(--ease-out);
-
-  @include s.wrap;
 
   &:hover,
   &:focus-within {
@@ -170,16 +175,61 @@
   @include s.wrap;
 }
 
+.nicheEnd {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-12);
+  margin-top: auto;
+  padding-top: var(--space-8);
+  min-width: 0;
+}
+
 .nicheFoot {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: var(--space-12);
-  margin-top: auto;
-  padding-top: var(--space-8);
   font-size: 18px;
   font-weight: 900;
   color: var(--accent-ink);
+
+  @include s.wrap;
+}
+
+.nicheDemo {
+  position: relative;
+  z-index: 1;
+}
+
+.example,
+.nicheDemo {
+  padding-block: calc((44px - 1lh) / 2);
+  margin-block: calc((1lh - 44px) / 2);
+  max-width: 100%;
+
+  @include s.wrap;
+}
+
+.apps {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.appLinks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-12);
+  margin-top: auto;
+  padding-top: var(--space-8);
+}
+
+.appLink {
+  @include s.button;
+  @include s.button-fluid(46px);
+
+  max-width: 100%;
+  padding: var(--space-12) var(--space-20);
+  font-size: 15px;
+  line-height: 1.2;
 
   @include s.wrap;
 }
@@ -325,6 +375,12 @@
 
   &:active {
     box-shadow: none;
+  }
+}
+
+@container (max-width: 655px) {
+  .niches {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 

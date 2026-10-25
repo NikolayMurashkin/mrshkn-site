@@ -124,7 +124,8 @@
   list-style: none;
 }
 
-.niche {
+.niche,
+.app {
   position: relative;
   display: flex;
   flex-direction: column;
@@ -132,7 +133,9 @@
   padding-top: 16px;
   border-top: var(--border-width) solid var(--ink);
   min-width: 0;
+}
 
+.niche {
   &:hover,
   &:focus-within {
     .nicheTitle,
@@ -167,6 +170,14 @@
   color: var(--muted);
 }
 
+.nicheEnd {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: auto;
+  min-width: 0;
+}
+
 .nicheFoot {
   @include s.wrap;
 
@@ -174,10 +185,50 @@
   align-items: baseline;
   justify-content: space-between;
   gap: 12px;
-  margin-top: auto;
   font-family: var(--font-display);
   font-size: 22px;
   font-weight: 400;
+}
+
+.nicheDemo {
+  position: relative;
+  z-index: 1;
+}
+
+.example,
+.nicheDemo {
+  @include s.wrap;
+
+  padding-block: calc((44px - 1lh) / 2);
+  margin-block: calc((1lh - 44px) / 2);
+  max-width: 100%;
+}
+
+.apps {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.appMark {
+  align-self: flex-start;
+}
+
+.appLinks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: auto;
+  padding-top: 12px;
+}
+
+.appLink {
+  @include s.button;
+  @include s.button-fluid;
+  @include s.wrap;
+
+  min-height: 44px;
+  max-width: 100%;
+  padding: 12px 18px;
+  line-height: 1.2;
 }
 
 .nicheArrow {

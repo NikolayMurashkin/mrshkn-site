@@ -100,6 +100,36 @@
   display: none;
 }
 
+.demoLink {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-8);
+  font-weight: 600;
+
+  svg {
+    flex: none;
+    transition: transform var(--duration-base) var(--ease-out);
+  }
+
+  &:hover {
+    color: var(--accent-ink);
+
+    svg {
+      transform: rotate(45deg);
+    }
+  }
+}
+
+.example,
+.nicheDemo {
+  padding-block: calc((44px - 1lh) / 2);
+  margin-block: calc((1lh - 44px) / 2);
+  max-width: 100%;
+  word-wrap: break-word;
+  overflow-wrap: anywhere;
+  min-width: 0;
+}
+
 .ownBasics {
   max-width: 560px;
 }
@@ -225,7 +255,8 @@
   list-style: none;
 }
 
-.niche {
+.niche,
+.app {
   position: relative;
   display: flex;
   flex-direction: column;
@@ -235,12 +266,44 @@
   border: var(--border-width) solid var(--line);
   border-radius: var(--radius-surface);
   background: var(--surface);
+}
+
+.niche {
   transition: border-color var(--duration-fast) var(--ease-out);
 
   &:hover,
   &:focus-within {
     border-color: var(--ink);
   }
+}
+
+.apps {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.appMark {
+  align-self: flex-start;
+}
+
+.appLinks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-12);
+  margin-top: auto;
+  padding-top: var(--space-16);
+}
+
+.app .appLink {
+  height: auto;
+  min-height: 46px;
+  max-width: 100%;
+  padding-block: var(--space-12);
+  line-height: 1.2;
+  white-space: normal;
+  text-align: left;
+  word-wrap: break-word;
+  overflow-wrap: anywhere;
+  min-width: 0;
 }
 
 .nicheTitle {
@@ -275,13 +338,26 @@
   min-width: 0;
 }
 
+.nicheEnd {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-12);
+  margin-top: auto;
+  padding-top: var(--space-16);
+  min-width: 0;
+}
+
+.nicheDemo {
+  position: relative;
+  z-index: 1;
+  align-self: flex-start;
+}
+
 .nicheFoot {
   display: flex;
   align-items: baseline;
   justify-content: space-between;
   gap: var(--space-12);
-  margin-top: auto;
-  padding-top: var(--space-16);
   font-family: var(--font-display);
   font-weight: 700;
   font-size: 20px;
@@ -303,6 +379,10 @@
 @container (max-width: 680px) {
   .options {
     grid-template-columns: minmax(0, 1fr);
+  }
+
+  .niches {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 
@@ -524,8 +604,13 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .summary::after {
+  .summary::after,
+  .demoLink svg {
     transition: none;
+  }
+
+  .demoLink:hover svg {
+    transform: none;
   }
 }
 

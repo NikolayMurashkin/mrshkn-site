@@ -11,6 +11,18 @@
 
 ## Вычитано Николаем 25.10.2026
 
+Написано 25.10.2026:
+
+| Раздел                                                | Что внутри                                                                                                 |
+| ----------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- |
+| `servicePage.nicheDemo`                               | ссылка на демо в карточке ниши страницы «Отраслевой сайт»: Open demo                                       |
+| `servicePage.landingExample`                          | ссылка на пример в шапке страницы лендинга: See an example                                                 |
+| `servicePage.tryIt.heading`, `servicePage.tryIt.note` | раздел «Попробовать» страницы Mini App: Try it; пояснение — открыть с телефона, интерфейс демо на русском  |
+| `servicePage.tryIt.mark`                              | тег каждой карточки: Studio demo project                                                                   |
+| `servicePage.tryIt.telegram`, `servicePage.tryIt.max` | кнопки карточек: Open in Telegram, Open in MAX                                                             |
+| `servicePage.tryIt.apps.clinic.*`                     | карточка «Клиника»: Clinic, модуль Booking, путь записи — услуга, врач, время, запись владельцу в Telegram |
+| `servicePage.tryIt.apps.coffee.*`                     | карточка «Кофейня»: Coffee shop, модуль Loyalty, штампы по QR у кассы, меню и заказ заранее                |
+
 Написано 20.10.2026:
 
 | Раздел                                    | Что внутри                                                                          |

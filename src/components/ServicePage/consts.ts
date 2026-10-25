@@ -1,4 +1,6 @@
 import { THREE_D_PLAN_ID } from '@/content/three-d';
+import { COFFEE_TELEGRAM_BOT_URL, DENTAL_MAX_BOT_URL, DENTAL_TELEGRAM_BOT_URL, LAUNCH_DEMO_URL } from '@/lib/consts';
+import type { TryItApp } from './types';
 
 /** У поддержки нет раундов правок: вместо них часы по тарифу. */
 export const SERVICES_WITHOUT_REVISIONS: readonly string[] = ['support'];
@@ -9,8 +11,31 @@ export const MONTHLY_SERVICES: readonly string[] = ['support'];
 /** Тариф поддержки: его цену называют условия 3D — чем продолжается работа после гарантии. */
 export const SUPPORT_PLAN_ID = 'support';
 
-/** Приложение в Telegram под заказ: у него свой список «Что входит». */
+/** Приложение в Telegram под заказ: у него свой список «Что входит» и раздел «Попробовать». */
 export const MINI_APP_PLAN_ID = 'miniApp';
+
+/** Пример готовой работы в шапке страницы услуги: «Посмотреть пример» есть только у лендинга. */
+export const SERVICE_EXAMPLES: Record<string, string> = {
+  landing: LAUNCH_DEMO_URL,
+};
+
+/**
+ * Демо-приложения раздела «Попробовать» в порядке карточек: ключ — тексты `servicePage.tryIt.apps.<id>`,
+ * у каждой ссылки подпись `servicePage.tryIt.<messenger>`. «Кофейни» в MAX пока нет.
+ */
+export const TRY_IT_APPS: readonly TryItApp[] = [
+  {
+    id: 'clinic',
+    links: [
+      { messenger: 'telegram', href: DENTAL_TELEGRAM_BOT_URL },
+      { messenger: 'max', href: DENTAL_MAX_BOT_URL },
+    ],
+  },
+  {
+    id: 'coffee',
+    links: [{ messenger: 'telegram', href: COFFEE_TELEGRAM_BOT_URL }],
+  },
+];
 
 /**
  * У «Что входит» свой список (`services.<id>.basics`) вместо базы сайта из 13 пунктов: у поддержки — работы
