@@ -15,5 +15,8 @@ export const INDUSTRY_NICHE_DEMOS: Record<(typeof INDUSTRY_NICHES)[number], stri
   horeca: COFFEE_DEMO_URL,
 };
 
+/** Опции, чьи цены «от» подставляются в тексты карточек ниш по их id: `{quiz}`, `{payments}`. */
+export const INDUSTRY_NICHE_PRICE_OPTIONS: readonly string[] = ['quiz', 'payments'];
+
 export const industryNicheHref = (locale: string, niche: string): string =>
   `/${locale}/brief?plan=${INDUSTRY_PLAN_ID}&niche=${niche}`;

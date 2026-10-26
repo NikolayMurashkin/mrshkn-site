@@ -9,6 +9,21 @@
 
 Пусто.
 
+## Вычитано Николаем 26.10.2026
+
+Написано и вычитано 26.10.2026 — перевод утвержденных русских текстов: гарантия, опции эксперта, приказ № 118н для клиник:
+
+| Раздел                                                                                                     | Что внутри                                                                                                                                                                            |
+| ---------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `process.steps.launch.text`, `services.landing.process.3.text`                                             | шаг «Запуск»: скорость на вашем адресе, хостинг — наша забота в день запуска, гарантия «anything that broke through our fault or does not work the way the contract says», исключения |
+| `services.threeD.terms.items.6`                                                                            | гарантия 3D: та же формула, исключения — хостинг и чужие правки кода, $90 в час, сумма до начала                                                                                      |
+| `process.promises.warranty.detail`, `hero.pop.stickers.warranty`, `servicePage.cardPoints.warranty`        | короткая формула: Broke through our fault or not as the contract says: free fix                                                                                                       |
+| `services.industry.niches.expert.text`                                                                     | карточка «Эксперт»: заявка на консультацию, квиз и онлайн-оплата — за доплату, цены из прайса                                                                                         |
+| `services.industry.niches.clinic.text`                                                                     | карточка «Клиника»: заявка на прием, три требования Order No. 118n в цене, остальное — по документам клиента, сверка с юристом                                                        |
+| `services.business.faq.5.question`, `services.business.faq.5.answer`                                       | новый вопрос FAQ «Бизнеса»: подойдет ли клинике, 118n, семь страниц, онлайн-запись — опция, отраслевой сайт дешевле                                                                   |
+| `services.industry.faq.0.answer`, `services.industry.faq.3.answer`                                         | FAQ отраслевого сайта: отличие от «Старта»; доработки опциями, в списке — квиз                                                                                                        |
+| `services.industry.included.items.4`, `pricing.plans.industry.summary`, `services.industry.process.2.text` | «онлайн-запись» отраслевого сайта заменена на заявку с сайта и форму заявки                                                                                                           |
+
 ## Вычитано Николаем 25.10.2026
 
 Написано 25.10.2026:

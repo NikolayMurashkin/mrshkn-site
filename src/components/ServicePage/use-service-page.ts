@@ -2,7 +2,13 @@
 
 import { useLocale, useTranslations } from 'next-intl';
 import { SERVICE_BACK_ANCHOR, SERVICE_PRICES_ANCHOR } from '@/content/consts';
-import { INDUSTRY_NICHE_DEMOS, INDUSTRY_NICHES, INDUSTRY_PLAN_ID, industryNicheHref } from '@/content/industry';
+import {
+  INDUSTRY_NICHE_DEMOS,
+  INDUSTRY_NICHE_PRICE_OPTIONS,
+  INDUSTRY_NICHES,
+  INDUSTRY_PLAN_ID,
+  industryNicheHref,
+} from '@/content/industry';
 import { fillServiceText, SERVICES, serviceBriefHref, serviceFaq, tierBriefHref } from '@/content/services';
 import { PRICING_OPTIONS, PRICING_PLANS, PRICING_TIERS } from '@/content/pricing';
 import {
@@ -59,6 +65,12 @@ export const useServicePage = (serviceId: string): ServicePageData | null => {
   const isMonthly = MONTHLY_SERVICES.includes(service.id);
   const planPrice = price.plan(plan);
   const supportPlan = PRICING_PLANS.find((item) => item.id === SUPPORT_PLAN_ID);
+  const nichePrices = Object.fromEntries(
+    PRICING_OPTIONS.filter((option) => INDUSTRY_NICHE_PRICE_OPTIONS.includes(option.id)).map((option) => [
+      option.id,
+      price.optionFrom(option),
+    ]),
+  );
   const industry: ServiceIndustry | null =
     service.id === INDUSTRY_PLAN_ID
       ? {
@@ -67,7 +79,7 @@ export const useServicePage = (serviceId: string): ServicePageData | null => {
           niches: INDUSTRY_NICHES.map((niche) => ({
             id: niche,
             title: texts(`${service.id}.niches.${niche}.title`),
-            text: texts(`${service.id}.niches.${niche}.text`),
+            text: texts(`${service.id}.niches.${niche}.text`, nichePrices),
             href: industryNicheHref(locale, niche),
             demoHref: INDUSTRY_NICHE_DEMOS[niche],
           })),

@@ -74,7 +74,7 @@
       "stickers": {
         "lighthouse": "Speed 90+<br></br>in Google's test",
         "deadline": "4 days —<br></br>in the contract",
-        "warranty": "A one-year warranty.<br></br>Our fault, free fix"
+        "warranty": "A one-year warranty.<br></br>Broke through our fault or not as the contract says: free fix"
       }
     },
     "swiss": {
@@ -118,7 +118,7 @@
     "plans": {
       "industry": {
         "name": "Industry site",
-        "summary": "Several pages, online booking and an admin panel. The sections and features come from our demo for your industry; the design is drawn for you"
+        "summary": "Several pages, a request form and an admin panel. The sections and features come from our demo for your industry; the design is drawn for you"
       },
       "landing": {
         "name": "Landing page",
@@ -340,7 +340,7 @@
       "launch": {
         "ordinal": "Day four",
         "title": "Launch and a one-year warranty",
-        "text": "We make your third-round revisions. We move the site to your web address (domain): now everyone can see it. We test the speed again, this time on your address. If it is below 90 there, we find the cause and show it to you. We set up the hosting, so its speed is our concern: we fix it for free. If a third-party widget you chose slows the site down, we already told you before the contract what score we promise. We hand over all the passwords and files of the site: it is fully yours. You sign the acceptance certificate, the document that confirms the work is accepted, with the result of this test attached. After acceptance you pay the final 30%. Then comes a one-year warranty: if something breaks through our fault, we fix it for free."
+        "text": "We make your third-round revisions. We move the site to your web address (domain): now everyone can see it. We test the speed again, this time on your address. If it is below 90 there, we find the cause and show it to you. We set up the hosting, so if on launch day the site is slow because of the hosting, that is our concern: we fix it for free. If a third-party widget you chose slows the site down, we already told you before the contract what score we promise. We hand over all the passwords and files of the site: it is fully yours. You sign the acceptance certificate, the document that confirms the work is accepted, with the result of this test attached. After acceptance you pay the final 30%. Then comes a one-year warranty from the day of acceptance: we fix for free anything that broke through our fault or does not work the way the contract says. If it is unclear whose fault a breakdown is, we first look into it for free and tell you the cause. If the cause is not in our work, we first name the price of the repair, never charge more than that, and fix it only if you agree. Outages at the hosting provider itself are not covered by the warranty."
       }
     },
     "promises": {
@@ -362,7 +362,7 @@
       "warranty": {
         "kicker": "After launch",
         "value": "A one-year warranty",
-        "detail": "Our fault, free fix"
+        "detail": "Broke through our fault or not as the contract says: free fix"
       }
     },
     "scale": {
@@ -508,7 +508,7 @@
     "revisions": "3 rounds of your revisions",
     "cardPoints": {
       "deadline": "Deadline fixed in the contract",
-      "warranty": "A one-year warranty. Our fault, free fix"
+      "warranty": "A one-year warranty from the day you accept the work. Broke through our fault or not as the contract says: free fix"
     },
     "includedHeading": "What we build for you",
     "excludedHeading": "What is not included",
@@ -564,7 +564,7 @@
           "Sections and features for your industry, from our demo",
           "Your texts, photos and logo. No texts of your own? We write them",
           "Your web address (domain) connected",
-          "Online booking or a contact form, sent to your Telegram and email",
+          "Requests from the site, sent to your Telegram and email",
           "An admin panel: you change texts, photos and prices yourself, and add or remove menu items, doctors and services"
         ]
       },
@@ -578,11 +578,11 @@
       "niches": {
         "clinic": {
           "title": "Clinic",
-          "text": "Doctors, services with prices, licenses, online booking"
+          "text": "Doctors, services with prices, a section for licenses, appointment requests: a patient leaves one on the site and it comes to your Telegram and email. Also included — three requirements of Russian Health Ministry Order No. 118n for clinic websites: a version for the visually impaired, site search and a form where patients rate the quality of care. The rest of what the order requires on the site, such as your license and doctors' details, we add from your documents, and after that you change doctors and prices yourself through the admin panel. It is best to check with a lawyer what exactly the order requires of your clinic. If the lawyer says you need a section the site does not have, we name the price before we start. In our demo, the “Book” buttons open a Telegram app where a patient picks a doctor and a time; that is a separate plan and is not included in the site price"
         },
         "expert": {
           "title": "Expert",
-          "text": "About you, ways to work together, paid booking, articles"
+          "text": "About you, ways to work together, articles, consultation requests: a client leaves one on the site and it comes to your Telegram and email. At extra cost: an “is this right for you?” quiz for your clients ({quiz}) and online payment for consultations on the site ({payments}, plus the payment service fee on each payment). Our demo shows the quiz and payment as an example; they are not included in the site price: without payment a client simply leaves a request, and you agree on the time with them yourself"
         },
         "horeca": {
           "title": "Coffee shop",
@@ -592,7 +592,7 @@
       "faq": [
         {
           "question": "How is the industry site different from the landing page?",
-          "answer": "“Start” is a one-page site. The industry site has several pages and online booking. For each industry on the list we have a demo, an example of a finished site. We take its structure: the sections, booking and features your industry needs, such as a menu with filters for a cafe or doctors with prices for a clinic. The design is drawn for you: three styles to choose from, as in “Start”. If you like the style of the demo itself, you can take it. Either way the site is yours: with your texts, your photos and on your address. The industry site costs more than “Start” and takes longer: it has several pages, online booking and features for your industry, while “Start” is one page. It has as many pages as the demo for your industry; a new page is separate work. For a clinic we add a notice about contraindications and the license details, and you are responsible for the medical texts. The deadline is {term}."
+          "answer": "“Start” is a one-page site. The industry site has several pages with sections and features for your industry. For each industry on the list we have a demo, an example of a finished site. We take its structure: the sections and features your industry needs, such as a menu with filters for a cafe or doctors with prices for a clinic. The design is drawn for you: three styles to choose from, as in “Start”. If you like the style of the demo itself, you can take it. Either way the site is yours: with your texts, your photos and on your address. The industry site costs more than “Start” and takes longer: it has several pages and features for your industry, while “Start” is one page. It has as many pages as the demo for your industry; a new page is separate work. For a clinic we add a notice about contraindications and the license details, and you are responsible for the medical texts. The deadline is {term}."
         },
         {
           "question": "My industry is not on the list. What now?",
@@ -604,7 +604,7 @@
         },
         {
           "question": "Can I add features later?",
-          "answer": "Yes, as options from the price list: online payments, reviews, messengers, a second language, CRM. Option prices are on this page."
+          "answer": "Yes, even after launch, as options at extra cost: online payments, a quiz for your clients, reviews, messengers, a second language, CRM. What each option does and what it costs is in the “Options” list on this page."
         },
         {
           "question": "What if I don't like the design?",
@@ -625,7 +625,7 @@
         {
           "when": "Day 5",
           "title": "The whole site on a temporary link",
-          "text": "We make your revisions and finish all the pages and online booking. The site runs on a temporary link: you check it and send the second list of comments. We make them, and then you make the second payment of 40%."
+          "text": "We make your revisions and finish all the pages and the request form. The site runs on a temporary link: you check it and send the second list of comments. We make them, and then you make the second payment of 40%."
         },
         {
           "when": "Day 7",
@@ -676,7 +676,7 @@
         {
           "when": "Day 4",
           "title": "Launch and a one-year warranty",
-          "text": "We make your third-round revisions. We move the site to your web address (domain): now everyone can see it. We test the speed again, this time on your address. If it is below 90 there, we find the cause and show it to you. We set up the hosting, so its speed is our concern: we fix it for free. If a third-party widget you chose slows the site down, we already told you before the contract what score we promise. We hand over all the passwords and files of the site: it is fully yours. You sign the acceptance certificate, the document that confirms the work is accepted, with the result of this test attached. After acceptance you pay the final 30%. Then comes a one-year warranty: if something breaks through our fault, we fix it for free."
+          "text": "We make your third-round revisions. We move the site to your web address (domain): now everyone can see it. We test the speed again, this time on your address. If it is below 90 there, we find the cause and show it to you. We set up the hosting, so if on launch day the site is slow because of the hosting, that is our concern: we fix it for free. If a third-party widget you chose slows the site down, we already told you before the contract what score we promise. We hand over all the passwords and files of the site: it is fully yours. You sign the acceptance certificate, the document that confirms the work is accepted, with the result of this test attached. After acceptance you pay the final 30%. Then comes a one-year warranty from the day of acceptance: we fix for free anything that broke through our fault or does not work the way the contract says. If it is unclear whose fault a breakdown is, we first look into it for free and tell you the cause. If the cause is not in our work, we first name the price of the repair, never charge more than that, and fix it only if you agree. Outages at the hosting provider itself are not covered by the warranty."
         }
       ]
     },
@@ -701,6 +701,10 @@
         {
           "question": "What if I don't like the design?",
           "answer": "The style of a site is its colors, fonts and the look of its buttons and blocks. You choose it before the work starts. 2 working days after the prepayment and the materials, we show the top of your home page in three styles. You pick one. If you like, you can take a ready-made style instead: one of the five styles of this site (the “Style” button switches them) or the style of one of our demos. Then we don't draw it separately. The price stays the same. Another client may choose the same ready-made style, while a style drawn for you is yours alone. None of the three fit? Within 2 working days we draw three more. None of those fit either? We refund the whole prepayment and close the contract. The site deadline starts the day you pick a style."
+        },
+        {
+          "question": "Will a “Business” website work for a clinic?",
+          "answer": "Yes. We design the pages around your clinic: doctors, services and prices, for example. Russian Health Ministry Order No. 118n lists what a clinic website must have. Of that, we build three things at no extra cost: a version for the visually impaired, site search and a form where patients rate the quality of care. “Business” has up to seven pages. The form and search do not count toward them, and the page with the clinic information the order requires is one of the seven. The rest of what the order requires on the site, such as your license and doctors' details, we add from your documents, and after that you change doctors and prices yourself through the admin panel. It is best to check with a lawyer what exactly the order requires of your clinic. If the lawyer says you need a section the site does not have, we name the price before we start. Online booking, where a patient picks a doctor and a time, costs extra; the price is in the “Options” list on this page. Without it, a patient leaves a request on the site and it comes to your Telegram and email. For clinics we also have the “Industry website” plan: we take the sections from our demo and draw the design for you. It will be cheaper and faster than “Business” if those sections and appointment requests are enough for you: the industry website has no online booking with a choice of time."
         }
       ],
       "process": [
@@ -941,7 +945,7 @@
           "We start one 3D project a month and name the start date after the brief, before any prepayment",
           "Google's speed test on a phone: 90 out of 100 or more in each of three runs in a row, or we don't hand the work over. For a 3D landing page we test the page itself, on your address on launch day. For a 3D block, the page with the scene on our temporary link. We answer for the weight and speed of the block itself: an image shows first, the scene loads after. The speed of the rest of the page depends on your site's code. The result goes with the acceptance certificate",
           "We never share your drawings or the source model with third parties",
-          "A one-year warranty: if something breaks through our fault, we fix it for free"
+          "A one-year warranty from the day of acceptance: we fix for free anything that broke through our fault or does not work the way the contract says. If it is unclear whose fault a breakdown is, we first look into it for free and tell you the cause. Not covered: outages at the hosting provider and breakdowns caused by changes to the site's code made by you or another developer. We fix breakdowns caused by such changes for $90 an hour: we name the price before we start and never charge more than that"
         ]
       },
       "afterWarranty": "After the warranty, the support plan if you want it: {price}",

@@ -44,8 +44,8 @@ const filled = expect.stringMatching(/\S/);
 const industryTexts = (locale: Locale) => MESSAGES[locale].services.industry;
 
 const INCLUDED_PARTS: Record<Locale, string[]> = {
-  ru: ['дизайн', 'стил', 'текст', 'фото', 'домен', 'запис', 'админк'],
-  en: ['design', 'style', 'text', 'photo', 'domain', 'booking', 'admin'],
+  ru: ['дизайн', 'стил', 'текст', 'фото', 'домен', 'заявк', 'админк'],
+  en: ['design', 'style', 'text', 'photo', 'domain', 'request', 'admin'],
 };
 
 const TERM_DAYS: Record<Locale, string> = { ru: '7 дней', en: '7 days' };
@@ -136,7 +136,7 @@ describe('тексты страницы отраслевого тарифа', ()
     }
   });
 
-  it.each([...LOCALES])('%s: в «что входит» есть дизайн под вас, тексты, фото, домен, запись и админка', (locale) => {
+  it.each([...LOCALES])('%s: в «что входит» есть дизайн под вас, тексты, фото, домен, заявка и админка', (locale) => {
     const included = (industryTexts(locale)?.included.items ?? []).join(' ').toLowerCase();
 
     for (const part of INCLUDED_PARTS[locale]) {

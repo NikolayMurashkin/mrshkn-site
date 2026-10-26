@@ -20,6 +20,9 @@ export const usePriceText = () => {
     monthly: item.monthly ? t('monthlyAddon', { amount: formatRange(item.monthly, locale) }) : undefined,
   });
 
+  /** Нижняя цена опции с обвязкой «от» — для текстов, где опция названа одной суммой. */
+  const optionFrom = (item: PricingOption) => t('from', { amount: formatMoney(item.price.from, locale) });
+
   const extra = (item: PricingExtra) =>
     t(EXTRA_PRICE_PATTERN[item.period], { amount: formatMoney(item.price, locale) });
 
@@ -29,5 +32,5 @@ export const usePriceText = () => {
   /** Цена опции MAX отраслевого Mini App — подстановка `{max}` в плашке «Telegram и MAX». */
   const max = formatRange(MAX_OPTION.price, locale);
 
-  return { plan, option, extra, term, max };
+  return { plan, option, optionFrom, extra, term, max };
 };

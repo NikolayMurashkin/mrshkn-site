@@ -2,8 +2,9 @@ import { createElement, type ComponentType, type ReactNode } from 'react';
 import { renderToStaticMarkup } from 'react-dom/server';
 import { NextIntlClientProvider } from 'next-intl';
 import { describe, expect, it, vi } from 'vitest';
-import { formatMoney, planHref } from '@/content/format';
+import { formatMoney, formatRange, planHref } from '@/content/format';
 import { industryNicheHref } from '@/content/industry';
+import { PRICING_OPTIONS } from '@/content/pricing';
 import { DESIGN_NAMES } from '@/designs/consts';
 import { EditorialSection } from '@/designs/editorial';
 import { KineticSection } from '@/designs/kinetic';
@@ -157,6 +158,45 @@ const planName = (locale: Locale, id: string) => {
   return name === undefined ? undefined : spaced(name);
 };
 
+const optionOf = (id: string) => {
+  const option = PRICING_OPTIONS.find((item) => item.id === id);
+
+  if (!option) {
+    throw new Error(`опции ${id} нет в PRICING_OPTIONS`);
+  }
+
+  return option;
+};
+
+/** Цена «от» опции, как ее печатает сайт: сумма — `formatMoney` из прайса, обвязка — `pricing.price.from`. */
+const optionFromPrice = (locale: Locale, id: string) =>
+  MESSAGES[locale].pricing.price.from.replace('{amount}', formatMoney(optionOf(id).price.from, locale));
+
+const optionName = (locale: Locale, id: string) =>
+  (MESSAGES[locale].pricing.options as Record<string, { name: string } | undefined>)[id]?.name ?? '';
+
+/** Текст карточки ниши: самый широкий предок ее ссылки, где нет ссылок других ниш. */
+const nicheCardText = (html: string, niche: string, locale: Locale) => {
+  const link = nicheLinks(html).find((item) => item.href === industryNicheHref(locale, niche));
+
+  return link ? cardTexts(html, link).reduce((widest, text) => (text.length > widest.length ? text : widest), '') : '';
+};
+
+/** Строка опции на странице: самый узкий элемент с названием и ценой опции, без названий других опций. */
+const optionRowText = (html: string, locale: Locale, id: string) => {
+  const name = spaced(optionName(locale, id));
+  const price = spaced(formatRange(optionOf(id).price, locale));
+  const others = PRICING_OPTIONS.filter((option) => option.id !== id).map((option) =>
+    spaced(optionName(locale, option.id)),
+  );
+  const rows = elementsOf(html)
+    .map((element) => textOf(html.slice(element.start, element.end)))
+    .filter((text) => text.includes(name) && text.includes(price))
+    .sort((a, b) => a.length - b.length);
+
+  return rows.length > 0 && !others.some((other) => rows[0].includes(other)) ? rows[0] : null;
+};
+
 const ROWS = DESIGN_NAMES.flatMap((design) => LOCALES.map((locale) => [design, locale] as const));
 
 describe('страница отраслевого тарифа во всех направлениях', () => {
@@ -226,5 +266,54 @@ describe('страница отраслевого тарифа во всех н�
 
     expect(linksOf(html).map((link) => link.href)).toContain(planHref(locale, INDUSTRY_PLAN));
     expect(textOf(html)).toContain(planName(locale, 'industry'));
+  });
+});
+
+describe('карточка ниши «Эксперт»: цены опций — из прайса', () => {
+  it.each([
+    ['ru', 'quiz', 'от\u00a020\u00a0000\u00a0₽'],
+    ['ru', 'payments', 'от\u00a015\u00a0000\u00a0₽'],
+    ['en', 'quiz', 'from $400'],
+    ['en', 'payments', 'from $300'],
+  ] as const)('%s, %s: цена «от» опции — %s', (locale, id, expected) => {
+    expect(optionFromPrice(locale, id)).toBe(expected);
+  });
+
+  it.each(ROWS)('%s, %s: в карточке «Эксперт» цены квиза и онлайн-оплаты, без плейсхолдеров', (design, locale) => {
+    const text = nicheCardText(renderService(design, locale, 'industry'), 'expert', locale);
+
+    expect(text).toContain(spaced(industryTexts(locale)!.niches.expert.title));
+    expect(text).toContain(spaced(optionFromPrice(locale, 'quiz')));
+    expect(text).toContain(spaced(optionFromPrice(locale, 'payments')));
+    expect(text).not.toContain('{quiz}');
+    expect(text).not.toContain('{payments}');
+  });
+
+  /** Где в тексте карточки стоит цена каждой опции: цены не перепутаны местами. */
+  const OPTION_PRICE_SPOTS: Record<Locale, (quiz: string, payments: string) => string[]> = {
+    ru: (quiz, payments) => [`(квиз, ${quiz})`, `(${payments}, плюс комиссия`],
+    en: (quiz, payments) => [`quiz for your clients (${quiz})`, `(${payments}, plus the payment service fee`],
+  };
+
+  it.each(ROWS)('%s, %s: в карточке «Эксперт» цена квиза — у квиза, цена оплаты — у оплаты', (design, locale) => {
+    const text = nicheCardText(renderService(design, locale, 'industry'), 'expert', locale);
+    const spots = OPTION_PRICE_SPOTS[locale](optionFromPrice(locale, 'quiz'), optionFromPrice(locale, 'payments'));
+
+    for (const spot of spots) {
+      expect(text).toContain(spaced(spot));
+    }
+  });
+});
+
+describe('квиз — опция отраслевого сайта', () => {
+  it.each(ROWS)('%s, %s: в опциях страницы есть квиз с названием и ценой', (design, locale) => {
+    const html = renderService(design, locale, 'industry');
+
+    expect(optionName(locale, 'quiz')).toBe(locale === 'ru' ? 'Квиз-лидформа' : 'Quiz lead form');
+    expect(optionRowText(html, locale, 'quiz')).not.toBeNull();
+  });
+
+  it('en: ответ FAQ «Можно ли доработать сайт потом?» называет квиз', () => {
+    expect(en.services.industry.faq[3].answer).toContain('quiz');
   });
 });
