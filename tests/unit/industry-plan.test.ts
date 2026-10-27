@@ -85,7 +85,7 @@ describe('тариф «Отраслевой сайт за 7 дней» в пра
     const plans = MESSAGES.ru.pricing.plans;
     const landing = PRICING_PLANS.find((plan) => plan.id === 'landing');
 
-    expect(plans.industry?.name).toEqual(expect.stringContaining('Отраслевой'));
+    expect(plans.industry?.name).toBe('Сайт для вашей сферы');
     expect(plans.industry?.name).not.toContain('Старт');
     expect(plans.landing?.name).toContain('Старт');
     expect(landing?.price.rub).toBe(50_000);

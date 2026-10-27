@@ -146,7 +146,7 @@ export const useServicePage = (serviceId: string): ServicePageData | null => {
   return {
     service,
     name: plans(`${service.id}.name`),
-    summary: plans(`${service.id}.summary`),
+    summary: texts.has(`${service.id}.lead`) ? texts(`${service.id}.lead`) : plans(`${service.id}.summary`),
     term: price.term(plan),
     price: isMonthly ? t('perMonth', { price: planPrice }) : planPrice,
     cardAmount: planPrice,

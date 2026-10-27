@@ -309,7 +309,7 @@ describe('квиз — опция отраслевого сайта', () => {
   it.each(ROWS)('%s, %s: в опциях страницы есть квиз с названием и ценой', (design, locale) => {
     const html = renderService(design, locale, 'industry');
 
-    expect(optionName(locale, 'quiz')).toBe(locale === 'ru' ? 'Квиз-лидформа' : 'Quiz lead form');
+    expect(optionName(locale, 'quiz')).toBe(locale === 'ru' ? 'Тест для клиентов (квиз)' : 'Customer quiz');
     expect(optionRowText(html, locale, 'quiz')).not.toBeNull();
   });
 

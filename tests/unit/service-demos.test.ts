@@ -71,7 +71,7 @@ const NBSP = String.fromCodePoint(0x00a0);
 
 const T = {
   ru: {
-    nicheDemo: 'Открыть демо',
+    nicheDemo: 'Открыть пример сайта',
     landingExample: 'Посмотреть пример',
     'tryIt.heading': 'Попробовать',
     'tryIt.note': 'Откройте с\u00a0телефона и\u00a0пройдите путь клиента',
@@ -83,11 +83,11 @@ const T = {
     'tryIt.apps.clinic.text':
       'Клиент выбирает услугу, врача и\u00a0время, а\u00a0запись приходит владельцу в\u00a0Telegram',
     'tryIt.apps.coffee.title': 'Кофейня',
-    'tryIt.apps.coffee.module': 'Лояльность',
+    'tryIt.apps.coffee.module': 'Бонусы',
     'tryIt.apps.coffee.text': 'Штампы за\u00a0покупки по\u00a0QR-коду у\u00a0кассы, меню и\u00a0заказ заранее',
   },
   en: {
-    nicheDemo: 'Open demo',
+    nicheDemo: 'Open a sample site',
     landingExample: 'See an example',
     'tryIt.heading': 'Try it',
     'tryIt.note': 'Open it on your phone and go through it as a customer. The interface is in Russian',
@@ -99,7 +99,7 @@ const T = {
     'tryIt.apps.clinic.text':
       'The customer picks a service, a doctor and a time, and the booking goes to the owner in Telegram',
     'tryIt.apps.coffee.title': 'Coffee shop',
-    'tryIt.apps.coffee.module': 'Loyalty',
+    'tryIt.apps.coffee.module': 'Bonuses',
     'tryIt.apps.coffee.text': 'Collect stamps with a QR code at the till, browse the menu and order ahead',
   },
 } as const;

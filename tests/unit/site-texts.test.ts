@@ -90,14 +90,15 @@ const CONTRACT_RECORDED_RU = [
   'services.landing.faq.1.answer',
   'services.business.faq.3.answer',
   'services.industry.faq.2.answer',
+  'services.miniApp.faq.3.answer',
 ];
 
 /** Ответы FAQ, где называется срок: услуга и часть ru-вопроса. */
 const CONTRACT_FAQ: [string, string][] = [
   ['landing', 'За сколько дней будет готов лендинг'],
-  ['business', 'Какой срок у сайта'],
+  ['business', 'За сколько дней будет готов сайт «Бизнес»'],
   ['miniApp', 'кроме самого приложения'],
-  ['industry', 'За сколько дней будет готов отраслевой сайт'],
+  ['industry', 'За сколько дней будет готов сайт для вашей сферы'],
 ];
 
 const HOSTING_QUESTION = 'Где хранится сайт и кто за это платит?';
@@ -175,7 +176,7 @@ describe('CRM — только опцией', () => {
 
 describe('FAQ лендинга про ИИ-поиск', () => {
   it.each(LOCALES)('%s: ответ FAQ лендинга про ИИ-поиск — schema.org, llms.txt, OG, hreflang, без FAQ', (locale) => {
-    const { path, text } = faqAnswer(locale, 'landing', 'ИИ');
+    const { path, text } = faqAnswer(locale, 'landing', 'нейросет');
     const answer = normalize(text);
 
     expect(answer, path).toContain('schema.org');

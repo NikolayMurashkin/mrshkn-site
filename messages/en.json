@@ -103,7 +103,7 @@
     "planLink": "{name} — details",
     "columns": {
       "number": "No.",
-      "product": "Product",
+      "product": "Service",
       "inside": "What is inside",
       "term": "Time",
       "price": "Price"
@@ -117,7 +117,7 @@
     },
     "plans": {
       "industry": {
-        "name": "Industry site",
+        "name": "Site for your industry",
         "summary": "Several pages, a request form and an admin panel. The sections and features come from our demo for your industry; the design is drawn for you"
       },
       "landing": {
@@ -139,7 +139,7 @@
       },
       "store": {
         "name": "Online store",
-        "summary": "Catalog of up to 100 items, cart, payments, delivery, order management",
+        "summary": "A catalog of up to 100 products, a cart, payment and delivery. You see and process orders in the admin panel, your own section of the site",
         "term": "5–7 weeks"
       },
       "mvp": {
@@ -204,15 +204,15 @@
       "afterLaunch": "After launch"
     },
     "basics": {
-      "code": "Custom code on Next.js, no website builders",
+      "code": "We write the site ourselves, in code on Next.js, rather than putting it together in a website builder like Tilda",
       "lighthouse": "Google's speed test on a phone: 90 out of 100 or more in each of three runs in a row, or we don't hand the work over. On launch day we test again, this time on your address: that result goes into the acceptance certificate. Third-party widgets, such as booking, maps or chat, slow a site down. If you chose them, we tell you before the contract what score we promise",
-      "responsive": "Responsive from 320 to 1920 pixels",
-      "seo": "SEO basics: schema.org, llms.txt and OG — the site is ready for AI search",
+      "responsive": "The site is easy to view on any screen: from a small phone (320 pixels wide) to a large monitor (1920 pixels)",
+      "seo": "We get the site ready for search. We add behind-the-scenes descriptions for search engines (schema.org) and for AI assistants (llms.txt). And a preview, a picture with a title that shows up when someone sends a link to the site in a messenger (OG). We do not promise a place in search results",
       "forms": "Every lead goes to Telegram and email",
       "analytics": "We connect GA4 and Yandex Metrica, the site analytics services. You see how many leads came in and from where: ads, social networks or search. Run an ad and you will see whether it brings leads from the site. Only visitors who allowed analytics in the cookie window at the bottom of the site are counted",
       "privacy": "A cookie banner and a privacy policy. Before the contract we tell you what else you need to do yourself, for example under data protection law",
       "hosting": "We set up the domain, a secure connection (SSL) and hosting and hand them over to you. You pay for the domain and hosting directly: the hosting provider monthly, the domain registrar once a year. Paid services, such as an online booking service, are also on you. Before the contract we work out what that comes to for you per year",
-      "sources": "We hand over the source code of your site, admin panel and app: you can change it and pass it to another developer without us",
+      "sources": "We hand over the source code: all the files your site, admin panel and app are built from. With them you can change the site and move to another developer without us",
       "revisions": "Three rounds of revisions included. A round is all your comments in one list, and we make all of it. Revisions are texts, photos, the color of individual blocks and buttons, the order of blocks; new pages, features and a whole new style are separate work",
       "warranty": "A one-year warranty from the day of acceptance. We fix for free anything that broke through our fault or does not work the way the contract says. If the site stops opening through our fault, we get on it within 2 hours on weekdays from 10:00 to 19:00 Moscow time, and at night or on weekends the first working morning. Other bugs we start fixing within a working day and fix within 5 working days. If it is unclear whose fault a breakdown is, we first look for the cause for free and show it to you. Not covered: outages at the hosting provider and in third-party services (such as Telegram or a booking service) and breakdowns after changes to the site's code made by you or other people; such fixes cost $90 an hour. Texts and photos you change through the admin panel do not void the warranty.",
       "training": "An admin panel, where you change texts, photos and prices yourself, and add or remove items: dishes, services, doctors. A guide and a screencast: how to work in the admin panel and read leads and analytics",
@@ -230,20 +230,20 @@
         "note": "Stripe on your account"
       },
       "quiz": {
-        "name": "Quiz lead form",
-        "note": "five steps with segmentation"
+        "name": "Customer quiz",
+        "note": "5 questions: the request reaches you with the customer's answers already in it"
       },
       "calculator": {
         "name": "Price calculator",
-        "note": "quotes the price from your parameters"
+        "note": "the customer picks what they need and sees the price right away"
       },
       "reviews": {
         "name": "Reviews from maps",
-        "note": "Google, Yandex Maps and 2GIS pulled in automatically"
+        "note": "reviews of you from Yandex Maps, 2GIS and Google appear on the site by themselves"
       },
       "messengers": {
-        "name": "Messenger widget",
-        "note": "and a bot that answers first"
+        "name": "Messenger buttons on the site",
+        "note": "and a bot that answers the customer right away while you are busy"
       },
       "assistant": {
         "name": "AI assistant",
@@ -255,11 +255,11 @@
       },
       "blog": {
         "name": "Blog and news",
-        "note": "edited in the admin panel"
+        "note": "you publish news and articles yourself, without us"
       },
       "crm": {
-        "name": "CRM integration",
-        "note": "deals and lead sources"
+        "name": "Leads go straight to your CRM",
+        "note": "Bitrix24 or amoCRM, programs for keeping track of customers. A lead lands there by itself, marked with where the customer came from"
       },
       "branches": {
         "name": "Locations map",
@@ -267,10 +267,10 @@
       },
       "catalog": {
         "name": "QR menu or catalog",
-        "note": "with filters"
+        "note": "a guest opens the menu from a QR code on their phone and picks dishes or products with filters"
       },
       "geo": {
-        "name": "Extended “Ready for AI search” pack",
+        "name": "Extended pack for AI search",
         "note": "FAQ markup and mention monitoring"
       }
     },
@@ -283,7 +283,7 @@
       },
       "hour": {
         "name": "Hourly rate",
-        "summary": "Revisions and extra work beyond the included hours"
+        "summary": "Revisions and extra work not included in the plan: for example, after three rounds of revisions or when the hours on your support plan have run out"
       }
     },
     "editorial": {
@@ -501,7 +501,7 @@
     "cta": "Get a quote",
     "priceKind": {
       "exact": "Fixed price",
-      "from": "Price from — exact after the brief",
+      "from": "The lowest price. We name the exact one once we discuss your task",
       "month": "Monthly fee"
     },
     "perMonth": "{price} / mo",
@@ -515,7 +515,7 @@
     "nichesHeading": "Pick your industry",
     "nichesNote": "For these industries we have a demo, an example site",
     "nicheCta": "Get a quote",
-    "nicheDemo": "Open demo",
+    "nicheDemo": "Open a sample site",
     "landingExample": "See an example",
     "tryIt": {
       "heading": "Try it",
@@ -531,7 +531,7 @@
         },
         "coffee": {
           "title": "Coffee shop",
-          "module": "Loyalty",
+          "module": "Bonuses",
           "text": "Collect stamps with a QR code at the till, browse the menu and order ahead"
         }
       }
@@ -544,14 +544,14 @@
       "posterAlt": "Demo frame: a cutaway of the car suspension next to a body-roll chart",
       "videoLabel": "Demo video: a visitor picks a part of the car, sees the cause and the price, and books a visit",
       "tiersHeading": "Two formats",
-      "tiersNote": "The quote opens with the chosen format",
+      "tiersNote": "Click a format and the quote opens with that format already selected",
       "tierCta": "Quote the {name}",
       "termsHeading": "3D terms",
       "needsHeading": "What we need from you"
     },
     "support": {
       "tiersHeading": "Four plans",
-      "tiersNote": "The quote opens with the chosen plan",
+      "tiersNote": "Click a plan and the quote opens with that plan already selected",
       "tierCta": "Choose “{name}”"
     }
   },
@@ -586,20 +586,20 @@
         },
         "horeca": {
           "title": "Coffee shop",
-          "text": "Menu with filters, QR menu, map and opening hours"
+          "text": "A menu on the site where guests pick dishes with filters, a QR-code menu, a map with directions and opening hours"
         }
       },
       "faq": [
         {
-          "question": "How is the industry site different from the landing page?",
-          "answer": "“Start” is a one-page site. The industry site has several pages with sections and features for your industry. For each industry on the list we have a demo, an example of a finished site. We take its structure: the sections and features your industry needs, such as a menu with filters for a cafe or doctors with prices for a clinic. The design is drawn for you: three styles to choose from, as in “Start”. If you like the style of the demo itself, you can take it. Either way the site is yours: with your texts, your photos and on your address. The industry site costs more than “Start” and takes longer: it has several pages and features for your industry, while “Start” is one page. It has as many pages as the demo for your industry; a new page is separate work. For a clinic we add a notice about contraindications and the license details, and you are responsible for the medical texts. The deadline is {term}."
+          "question": "How is a site for your industry different from “Start”?",
+          "answer": "“Start” is a one-page site. The site for your industry has several pages with sections and features for your industry. For each industry on the list we have a demo, an example of a finished site. We take its structure: the sections and features your industry needs, such as a menu with filters for a cafe or doctors with prices for a clinic. The design is drawn for you: three styles to choose from, as in “Start”. If you like the style of the demo itself, you can take it. Either way the site is yours: with your texts, your photos and on your address. The site for your industry costs more than “Start” and takes longer: it has several pages and features for your industry, while “Start” is one page. It has as many pages as the demo for your industry; a new page is separate work. For a clinic we add a notice about contraindications and the license details, and you are responsible for the medical texts. The deadline is {term}."
         },
         {
           "question": "My industry is not on the list. What now?",
           "answer": "Then the landing page or the business website is a better fit. Take the quote quiz and we will suggest the right plan from your answers."
         },
         {
-          "question": "How many days does the industry site take?",
+          "question": "How many days does a site for your industry take?",
           "answer": "In {term}. We count calendar days, weekends included. The deadline starts the day you pick the style of the site, and it is set in the contract. We show three styles 2 working days after the prepayment and the materials. If we write the texts, the deadline is 2 days longer. Days we spend waiting for your comments don't count: the delivery date moves by the same number of days. There is no need to rush your reply. If a pause drags on for a long time, the contract says what happens next. If we are late through our own fault, we cut the price by 2% for each day of delay, 20% at most. That amount comes off the final payment. If together with the case-study discount this exceeds the final payment, we refund the difference within 5 working days after the acceptance certificate."
         },
         {
@@ -649,8 +649,8 @@
           "answer": "Three rounds. A round is all your comments gathered in one list, and we make all of it. A revision is a change within the pages and features we agreed on: texts, photos, the color of individual blocks and buttons, the order of blocks. You choose the style of the site before the work starts. So changing it entirely later (the palette, fonts, the look of all buttons), like adding new pages or features, is separate work. We name the amount first, and you never pay more than that. We calculate it at $90 an hour and do the work after you agree. Revisions beyond three rounds are calculated the same way. Unused rounds do not carry over after launch."
         },
         {
-          "question": "Will AI search find the site?",
-          "answer": "Every plan includes schema.org, llms.txt, OG and hreflang, so the site is ready for AI search. For more, there is the Extended “Ready for AI search” pack — its contents and price are in the full price list. We do not promise a place in the results."
+          "question": "Will people find the site through AI, such as ChatGPT?",
+          "answer": "Every plan includes schema.org, llms.txt, OG and hreflang, so the site is ready for AI search. For more, there is the “Extended pack for AI search” option — its contents and price are in the full price list. We do not promise a place in the results."
         },
         {
           "question": "What if I don't like the design?",
@@ -684,7 +684,7 @@
       "faq": [
         {
           "question": "How is “Business” different from “Start”?",
-          "answer": "“Business” has up to seven pages, while “Start” has one. There is a blog, a section for news and articles. A version of the site in a second language can be added for an extra fee. The admin panel, where you change texts, photos and prices yourself, comes with both “Business” and “Start”. “Business” differs from the industry site in that we design the pages and features for you from scratch rather than taking them from a demo. That is why it suits any business, not only a clinic, a cafe or an expert."
+          "answer": "“Business” has up to seven pages, while “Start” has one. There is a blog, a section for news and articles. A version of the site in a second language can be added for an extra fee. The admin panel, where you change texts, photos and prices yourself, comes with both “Business” and “Start”. “Business” differs from the site for your industry in that we design the pages and features for you from scratch rather than taking them from a demo. That is why it suits any business, not only a clinic, a cafe or an expert."
         },
         {
           "question": "Can I edit the texts myself?",
@@ -692,10 +692,10 @@
         },
         {
           "question": "What if I need more than seven pages?",
-          "answer": "Extra pages are estimated separately by scope. We name the amount before work starts."
+          "answer": "Each page beyond seven is priced separately: the price depends on how much work it takes. We name the amount before work starts."
         },
         {
-          "question": "How long does the Business site take?",
+          "question": "How many days does the “Business” site take?",
           "answer": "{term}. The deadline starts the day you pick the style of the site, and it is set in the contract. We show three styles 2 working days after the prepayment and the materials. If we write the texts, the deadline is 4 days longer. Days we spend waiting for your comments don't count. If we are late through our own fault, we cut the price by 2% for each day of delay, 20% at most, and take it off the final payment. If together with the case-study discount this exceeds the final payment, we refund the difference within 5 working days after the acceptance certificate. Three rounds of revisions are included: three times you send a list of comments, and we make all of it."
         },
         {
@@ -704,7 +704,7 @@
         },
         {
           "question": "Will a “Business” website work for a clinic?",
-          "answer": "Yes. We design the pages around your clinic: doctors, services and prices, for example. Russian Health Ministry Order No. 118n lists what a clinic website must have. Of that, we build three things at no extra cost: a version for the visually impaired, site search and a form where patients rate the quality of care. “Business” has up to seven pages. The form and search do not count toward them, and the page with the clinic information the order requires is one of the seven. The rest of what the order requires on the site, such as your license and doctors' details, we add from your documents, and after that you change doctors and prices yourself through the admin panel. It is best to check with a lawyer what exactly the order requires of your clinic. If the lawyer says you need a section the site does not have, we name the price before we start. Online booking, where a patient picks a doctor and a time, costs extra; the price is in the “Options” list on this page. Without it, a patient leaves a request on the site and it comes to your Telegram and email. For clinics we also have the “Industry website” plan: we take the sections from our demo and draw the design for you. It will be cheaper and faster than “Business” if those sections and appointment requests are enough for you: the industry website has no online booking with a choice of time."
+          "answer": "Yes. We design the pages around your clinic: doctors, services and prices, for example. Russian Health Ministry Order No. 118n lists what a clinic website must have. Of that, we build three things at no extra cost: a version for the visually impaired, site search and a form where patients rate the quality of care. “Business” has up to seven pages. The form and search do not count toward them, and the page with the clinic information the order requires is one of the seven. The rest of what the order requires on the site, such as your license and doctors' details, we add from your documents, and after that you change doctors and prices yourself through the admin panel. It is best to check with a lawyer what exactly the order requires of your clinic. If the lawyer says you need a section the site does not have, we name the price before we start. Online booking, where a patient picks a doctor and a time, costs extra; the price is in the “Options” list on this page. Without it, a patient leaves a request on the site and it comes to your Telegram and email. For clinics we also have the “Site for your industry” plan: we take the sections from our demo and draw the design for you. It will be cheaper and faster than “Business” if those sections and appointment requests are enough for you: the “Site for your industry” plan has no online booking with a choice of time."
         }
       ],
       "process": [
@@ -746,18 +746,18 @@
         },
         {
           "question": "What does the plan include besides the app itself?",
-          "answer": "A bot and an admin panel. We name the exact deadline within 3–4 weeks after the brief and fix it in the contract."
+          "answer": "A Telegram bot your customers open the app through, and an admin panel, the section where you change texts, photos and prices yourself and see bookings, orders and bonuses. Everything else included in the price is in the “What is included” list on this page. The exact deadline, 3 to 4 weeks from the day you pick the style, we name once we discuss your task and put it in the contract."
         }
       ],
       "process": [
         {
           "when": "Before the start",
-          "title": "The task, modules and choosing a style",
+          "title": "The task, features and choosing a style",
           "text": "Before the start we go through the brief in writing: what the app should do (booking, bonuses, a catalog, ordering). In reply we send the estimate, the deadline and a draft contract. After the 30% prepayment we draw the main screen of the app in three styles: colors, fonts, the look of buttons. You pick one or take a ready-made style: the style of one of our demos. We show three styles 2 working days after the prepayment and the materials for the main screen from our list, and three more 2 working days after your reply. These dates also go into the contract, and for each working day we are late with the styles we also cut the price by 2%, within the same overall cap of 20%. None of the three fit? We draw three more. None of those fit either? We refund the whole prepayment. The contract deadline starts the day you pick a style."
         },
         {
           "when": "Week 1",
-          "title": "Scenarios and mockups",
+          "title": "The customer's steps and screen drawings",
           "text": "The customer path inside the messenger, app screens, the first round of revisions."
         },
         {
@@ -774,32 +774,33 @@
       "basics": {
         "note": "Included in the price of the app",
         "items": [
-          "We write the code ourselves, without builders. We hand over the source code of the app, the bot and the admin panel: you can change it and pass it to another developer without us",
+          "We write the app ourselves, in code, rather than putting it together in a builder. We hand over the source code, all the files the app, the bot and the admin panel are built from: you can change it and pass it to another developer without us",
           "A Telegram bot your customers open the app through",
           "An admin panel, where you change texts, photos and prices yourself and see bookings, orders and bonuses",
           "New bookings and orders arrive in your Telegram",
           "A privacy policy. Before the contract we tell you what else you need to do yourself",
           "We set up the server for the app and hand it over to you. You pay the provider for it directly",
-          "Three rounds of revisions included. Revisions are texts, photos, the color of individual buttons and blocks, the order of screens; new screens, features and a whole new style are separate work",
+          "Three rounds of revisions included. A round is all your comments in one list, and we make all of it. Revisions are texts, photos, the color of individual buttons and blocks, the order of screens; new screens, features and a whole new style are separate work",
           "A one-year warranty from the day of acceptance: we fix for free anything that broke through our fault or does not work the way the contract says. Outages of Telegram and MAX themselves are not covered",
           "A guide and a screencast: how to work in the admin panel",
-          "The deadline goes into the contract. If we are late through our fault, we cut the price by 2% for each day of delay, 20% at most"
+          "The deadline goes into the contract. If we are late through our fault, we cut the price by 2% for each day of delay, 20% at most. That amount comes off the final payment. It is calculated from the price of all the work in the contract, options included. If together with the case-study discount this exceeds the final payment, we refund the difference within 5 working days after the acceptance certificate"
         ]
-      }
+      },
+      "lead": "The app opens right inside the messenger, Telegram or MAX, with nothing to download. In it, customers book appointments, browse the menu, collect bonuses and pay. It comes with a bot customers open the app through, and an admin panel, the section where you change texts and prices and see bookings and orders"
     },
     "store": {
       "faq": [
         {
           "question": "How many products can I upload?",
-          "answer": "The plan includes a catalog of up to 100 products. For more, we estimate the scope separately."
+          "answer": "The plan includes a catalog of up to 100 products. If you have more, we price the extra ones separately."
         },
         {
-          "question": "Are payment and delivery included?",
-          "answer": "Yes: a cart, payment, delivery and an order admin panel. We agree on the payment provider and the delivery service at the brief."
+          "question": "Can customers pay for an order and choose delivery on the site?",
+          "answer": "Yes. A customer puts products in the cart, pays on the site and chooses delivery. You see the orders in the order admin panel, the section where you process them. Which service takes the payments (Stripe, for example) and which company delivers, we decide together when we discuss your task."
         },
         {
           "question": "Why is the price “from”?",
-          "answer": "Every store has its own integrations and catalog complexity. We name the exact amount after the brief."
+          "answer": "Every store has its own catalog, simpler or more complex, and its own set of connections to other services, such as payment and delivery. We name the exact amount once we discuss your task."
         },
         {
           "question": "Who manages the orders?",
@@ -819,7 +820,7 @@
         },
         {
           "when": "Weeks 3–6",
-          "title": "Development",
+          "title": "We build the store",
           "text": "We build the product catalog, cart, payment and delivery. We build the order admin panel, the section where you see and process orders. You send the second list of comments. We make them, and then you make the second payment of 40%."
         },
         {
@@ -833,15 +834,15 @@
       "faq": [
         {
           "question": "What is an MVP in your plan?",
-          "answer": "A web app with authentication, user accounts, payments, integrations and analytics: the minimum you can use to test an idea with real users."
+          "answer": "An MVP is the first working version of your service, with only the essentials. Users sign in with a login and password, and each has their own account. People can pay in the service, it is connected to the other services you need, and it collects statistics. With this version you can test the idea with real users."
         },
         {
           "question": "Why does it take 6–10 weeks?",
-          "answer": "The range depends on the number of user accounts and integrations. We fix the exact deadline in the contract after the brief."
+          "answer": "The deadline depends on how many different kinds of user accounts the service has (for example, for customers and for staff) and how many connections to other services it needs. We put the exact deadline in the contract once we discuss your task."
         },
         {
           "question": "Who owns the code?",
-          "answer": "The source code stays with you."
+          "answer": "You. We hand over the source code, all the files the service is built from, together with the passwords. With it you can change the service and move to another developer without us."
         },
         {
           "question": "What happens after launch?",
@@ -856,12 +857,12 @@
         },
         {
           "when": "Weeks 1–4",
-          "title": "Design and architecture",
+          "title": "Design and how the service works",
           "text": "We draw the account screens, work out what data the service stores and list the connections to other services (integrations). You send your comments in one list: that is the first of three rounds of revisions."
         },
         {
           "when": "Weeks 4–9",
-          "title": "Iterative development",
+          "title": "We build the service in parts",
           "text": "We build the service in parts: sign-in, user accounts, payments, connections to other services and analytics. We show interim versions on a temporary link. You send the second list of comments. We make them, and then you make the second payment of 40%."
         },
         {
@@ -880,17 +881,17 @@
         },
         {
           "when": "Week 1",
-          "title": "Geometry and angles",
+          "title": "The shape of the model and viewing angles",
           "text": "We sign off the model, the camera angles and the parts the scene explains with you. The scene is built after the sign-off."
         },
         {
           "when": "Weeks 2–3",
-          "title": "Scene and parts",
+          "title": "The 3D scene and labels",
           "text": "We build the scene, a camera move to every part, labels and the inquiry form inside the scene. For a 3D block this step is week 2."
         },
         {
           "when": "Week 4",
-          "title": "Poster, phones, audit",
+          "title": "Loading image, phones, speed test",
           "text": "We make the image a visitor sees while the 3D loads. For phones that cannot show 3D (no WebGL 2.0), we make an image and a video instead of the scene. We run Google's free speed test in advance. We show the scene on a temporary link. For a 3D landing page this step also includes the page around the scene. For a 3D block this step is week 3."
         },
         {
@@ -906,19 +907,19 @@
         },
         {
           "question": "How does 3D work on older phones?",
-          "answer": "A poster frame shows first and the scene loads after it. Phones without WebGL 2.0 show a poster and a video instead of the scene, and the inquiry form works either way. On a slow phone the scene may rotate less smoothly, but the poster, labels and inquiry form are there right away."
+          "answer": "First the visitor sees a regular image of the model, and the 3D loads after it. If a phone cannot show 3D (it lacks the WebGL 2.0 technology), it shows an image and a video instead, and the inquiry form works either way. On a weak phone the model may rotate more slowly, but the image, the labels and the inquiry form are there right away."
         },
         {
-          "question": "How much do revisions beyond three rounds cost?",
+          "question": "How much do revisions cost after three lists of comments?",
           "answer": "Three rounds of revisions are included: texts, colors and highlights. After that each change is paid by the hour: we name the amount first, and you never pay more than that. We charge $90 an hour. Once you approve the shape of the model itself, we do not change it as part of revisions. If you need to show a new part or a new viewing angle, we name the price first and then do it."
         },
         {
           "question": "Can you put 3D on Tilda, WordPress or 1C-Bitrix?",
-          "answer": "No. Not Tilda, not WordPress, not 1C-Bitrix: we only work with code. A 3D block goes into a site built in code — yours if developers wrote it without a website builder, or one we built. We can build a whole 3D landing page on a subdomain, linked from your site."
+          "answer": "No. We only work with sites written in code, not put together on Tilda, WordPress or 1C-Bitrix. We embed a 3D block into such a site: yours, if developers wrote it without a website builder, or one we built. If your site is on a website builder, we can make a 3D landing page, a separate page with its own address, such as 3d.yoursite.com, and link to it from your site."
         },
         {
           "question": "What is the difference between a 3D block and a 3D landing page?",
-          "answer": "A 3D block is one interactive scene embedded into a site built in code, yours or one we built. A 3D landing page is a single page around the scene: we write the copy from your brief, and the page carries the inquiry form and the whole site base, analytics included."
+          "answer": "A 3D block is one 3D model that we embed into a site written in code: yours or one we built. A 3D landing page is a separate one-page site with the model at its center. We write the texts for it from your answers to our questions. The page has an inquiry form and everything from the “Included in the price of every site” list, site visit statistics included."
         },
         {
           "question": "Can someone download our model from the site?",
@@ -926,34 +927,34 @@
         }
       ],
       "basics": {
-        "note": "Included in both formats; a 3D landing page also gets the whole site base",
+        "note": "Included in both formats. A 3D landing page also gets everything from the “Included in the price of every site” list in the “Services and pricing” section: leads to Telegram and email, analytics, a layout that is easy to use on a phone, domain setup and more. You pay for the server directly to the provider (see the item below), and for the domain once a year to the registrar",
         "items": [
           "An interactive scene with your product and an inquiry form right inside it",
           "Converting your CAD model into a lightweight browser model is included; if the assembly is heavier than usual, simplifying it is a separate line in the estimate based on your file, before any prepayment",
-          "The base covers up to 8 parts with labels and a camera move to each. More parts or animated mechanisms cost more; how much more is in the estimate after the brief, before any prepayment, and the price does not change once it is in the contract",
-          "A poster frame on the first screen; phones without WebGL 2.0 get a poster and a video instead of the scene",
-          "A 3D block's scene files live on your site's hosting; for a 3D landing page you pay the hosting provider directly",
+          "The price covers up to 8 parts or mechanisms with labels; click any of them and the model zooms in on it. More parts or moving mechanisms cost more. How much more, we put in the estimate once we discuss your task, before the prepayment. After that the price in the contract does not change unless you yourself ask for a new part or a new viewing angle; then we name the extra cost before work starts",
+          "While the 3D loads, an image of the model is shown at the top of the page. Phones that cannot show 3D (no WebGL 2.0) show an image and a video instead of the model",
+          "The 3D block's files live on the same server your site runs on (your hosting). A 3D landing page needs its own server: you pay for it directly to the provider company, not to us, currently from 2,000 ₽ a month, but provider prices change",
           "The model and the scene code are yours, including a model we built"
         ]
       },
       "terms": {
         "note": "Fixed in the contract",
         "items": [
-          "Deadline in the contract: 4 weeks for a 3D block, 6 weeks for a 3D landing page. Day one is the day we have the detailed description and the materials, and for a 3D landing page also the chosen style. Any delay in sign-off on your side moves the deadline by the same amount. A model from scratch adds its own line to the schedule",
-          "We sign off the geometry and camera angles with you in week 1, before the scene is built; a new part or angle after that is estimated separately before any work starts",
+          "The deadline goes into the contract: 4 weeks for a 3D block, 6 weeks for a 3D landing page. Day one is the day we have the detailed description and the materials, and for a 3D landing page also the chosen style. While we wait for your reply or sign-off, the clock stops: the delivery date moves by the same number of days. If we build the model from scratch, that takes extra time; we name it before the prepayment, together with the price. If we are late through our fault, we cut the price by 2% for each day of delay, 20% at most. That amount comes off the final payment. It is calculated from the price of all the work in the contract, options included. If together with the case-study discount this exceeds the final payment, we refund the difference within 5 working days after the acceptance certificate",
+          "We approve the shape of the model and the viewing angles with you in the first week, before the 3D scene is built. A new part or a new viewing angle after that is separate work; we name the price before starting",
           "Three rounds of revisions: texts, colors, highlights. The shape of the model is not part of revisions: we approve it at the start",
-          "We start one 3D project a month and name the start date after the brief, before any prepayment",
+          "We start one 3D project a month. We name the start date once we discuss your task, before the prepayment: if the date does not suit you, you pay nothing",
           "Google's speed test on a phone: 90 out of 100 or more in each of three runs in a row, or we don't hand the work over. For a 3D landing page we test the page itself, on your address on launch day. For a 3D block, the page with the scene on our temporary link. We answer for the weight and speed of the block itself: an image shows first, the scene loads after. The speed of the rest of the page depends on your site's code. The result goes with the acceptance certificate",
           "We never share your drawings or the source model with third parties",
           "A one-year warranty from the day of acceptance: we fix for free anything that broke through our fault or does not work the way the contract says. If it is unclear whose fault a breakdown is, we first look into it for free and tell you the cause. Not covered: outages at the hosting provider and breakdowns caused by changes to the site's code made by you or another developer. We fix breakdowns caused by such changes for $90 an hour: we name the price before we start and never charge more than that"
         ]
       },
       "afterWarranty": "After the warranty, the support plan if you want it: {price}",
-      "webgl": "WebGL 2.0 runs in browsers used by 97% of people, <link>according to Can I use</link> (October 2026)",
+      "webgl": "Browsers of about 97% of internet users worldwide can show 3D (the WebGL 2.0 technology), <link>according to Can I use</link>, a site with browser statistics, as of October 2026. Everyone else sees an image and a video instead of the scene",
       "needs": {
         "note": "We build the scene from your materials",
         "items": [
-          "A CAD model in a common format (STEP, IGES and others) or a ready model in GLB",
+          "A 3D model of the product from a drawing program (CAD) in a common format: STEP, IGES and others. Or a ready model for websites in GLB format",
           "Photos of the product from every side",
           "A list of the parts or spots to explain"
         ]
@@ -961,14 +962,14 @@
       "model": "A model from scratch is a separate line in the estimate: we price it from photos and drawings before any prepayment",
       "tierPoints": {
         "block3d": [
-          "The scene embeds into a coded site: yours or one we built",
-          "A camera move to every part, with labels we write from your list of parts",
-          "A poster frame; without WebGL 2.0, a poster and a video instead of the scene",
+          "We embed it into a site written in code, not in a website builder: yours or one we built",
+          "Labels for the parts, from your list; click a part and the model zooms in on it",
+          "An image while the 3D loads; a phone without 3D gets an image and a video",
           "Inquiries from the scene go where your site's inquiries go: its form or email"
         ],
         "landing3d": [
-          "We write the copy from your brief; inquiries go to Telegram and email",
-          "The whole site base: responsive layout, SEO, analytics, cookie banner, domain and SSL",
+          "We write the texts from your answers to our questions; inquiries go to Telegram and email",
+          "Everything that comes with any of our sites: a layout that is easy to use on a phone, getting ready for search, analytics, a cookie banner, your web address (domain) and a secure connection (SSL)",
           "Google's speed test: 90+ out of 100 in each of three runs",
           "The source code stays with you"
         ]
@@ -1001,7 +1002,7 @@
         },
         {
           "when": "Every month",
-          "title": "Updates",
+          "title": "Updating the site's software",
           "text": "We update the software the site runs on so it keeps up with new versions."
         },
         {
@@ -1015,7 +1016,7 @@
         "items": [
           "We look after the server the site runs on. The server is in your name, and so are the passwords",
           "We check that the site opens",
-          "Backups",
+          "Backup copies of the site (backups)",
           "Updates of the software the site runs on",
           "Changes to the site, such as a new text or photo, come only with the plans with hours. They are not part of “Hosting and backups”"
         ]

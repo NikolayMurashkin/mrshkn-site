@@ -10,7 +10,7 @@ const PLAN_ROWS = [
   {
     id: 'industry',
     path: '/industry?plan=industry',
-    name: 'Отраслевой сайт',
+    name: 'Сайт для вашей сферы',
     priceRu: '59 000 ₽',
     priceEn: '$1,200',
     term: '7 дней',

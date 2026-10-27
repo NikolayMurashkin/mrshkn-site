@@ -72,7 +72,7 @@ const DEMO_LINK: Record<Locale, { href: string; text: string }> = {
 const TERM_GROUPS: Record<Locale, Record<string, (string | RegExp)[]>> = {
   ru: {
     срок: [/(^|\D)4(\D|$)/, /(^|\D)6(\D|$)/, 'недел'],
-    геометрия: ['геометри', 'ракурс', 'до сборки сцены'],
+    геометрия: ['форму модели', 'углы обзора', 'до сборки 3d-сцены'],
     правки: ['три раунда', 'текст', 'цвет', 'подсветк'],
     очередь: ['один 3d-проект в месяц'],
     lighthouse: ['тест скорости google', '90'],
@@ -80,7 +80,7 @@ const TERM_GROUPS: Record<Locale, Record<string, (string | RegExp)[]>> = {
   },
   en: {
     term: [/(^|\D)4(\D|$)/, /(^|\D)6(\D|$)/, 'week'],
-    geometry: ['geometry', 'angle', 'before the scene'],
+    geometry: ['shape of the model', 'viewing angles', 'before the 3d scene'],
     revisions: ['three rounds', 'text', 'colo', 'highlight'],
     queue: ['one 3d project a month'],
     lighthouse: [/google|lighthouse/i, '90'],
