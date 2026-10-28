@@ -184,3 +184,9 @@
     gap: var(--space-8);
   }
 }
+
+@media (max-width: 360px) {
+  .wordmark {
+    font-size: 22px;
+  }
+}

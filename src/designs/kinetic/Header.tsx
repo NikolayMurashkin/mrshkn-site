@@ -1,22 +1,26 @@
 import { useLocale, useTranslations } from 'next-intl';
+import { useMemo } from 'react';
 import { MoonIcon } from '@/components/icons';
 import { LocaleSwitcher } from '@/components/LocaleSwitcher';
 import { ThemeToggle } from '@/components/ThemeToggle';
-import { Link } from '@/i18n/navigation';
+import { Link, usePathname } from '@/i18n/navigation';
 import { BRIEF_HREF } from '@/lib/brief/consts';
 import { NAV_ITEMS } from '../consts';
 import { navHref, visibleNavItems } from '../nav';
 import type { HeaderProps } from '../types';
+import { useActiveSection } from '../use-active-section';
 import { buttonClass } from './button';
-import { useActiveSection, useScrolled } from './use-header';
+import { KINETIC_HEADER_OFFSET } from './consts';
+import { useScrolled } from './use-header';
 import styles from './Header.module.scss';
 
 export const KineticHeader = ({ hasCases }: HeaderProps) => {
   const t = useTranslations();
   const locale = useLocale();
-  const items = visibleNavItems(NAV_ITEMS, hasCases);
+  const pathname = usePathname();
+  const items = useMemo(() => visibleNavItems(NAV_ITEMS, hasCases), [hasCases]);
   const { sentinel, scrolled } = useScrolled();
-  const active = useActiveSection(items);
+  const active = useActiveSection(items, pathname === '/', KINETIC_HEADER_OFFSET);
 
   return (
     <>

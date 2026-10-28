@@ -19,7 +19,11 @@ export const KINETIC_FOUNDED_YEAR = 2026;
 
 export const KINETIC_STUDIO_EMAIL = 'hello@mrshkn.com';
 
-export const KINETIC_SCROLL_BAND = '-35% 0px -55% 0px';
+/**
+ * Высота липкой шапки Kinetic с запасом — как `scroll-padding-top` в `Header.module.scss`: линия, на которой
+ * `useActiveSection` считает раздел текущим.
+ */
+export const KINETIC_HEADER_OFFSET = 96;
 
 export const KINETIC_BADGE_CENTER = KINETIC_BADGE_SIZE / 2;
 

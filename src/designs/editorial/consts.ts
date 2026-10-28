@@ -1,5 +1,3 @@
-export const EDITORIAL_NAV_ITEMS = ['services', 'work', 'prices', 'process', 'contacts'] as const;
-
 /**
  * Высота липкой строки меню Editorial (14 + 18 + 14 + линейка 1): линия, на которой `useActiveSection` считает раздел
  * текущим. Мастхед над ней не липнет — та же сумма в `_shared.scss` (`$nav-height`).

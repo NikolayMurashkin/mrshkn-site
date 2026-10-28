@@ -5,18 +5,18 @@ import { LocaleSwitcher } from '@/components/LocaleSwitcher';
 import { ThemeToggle } from '@/components/ThemeToggle';
 import { SERVICES } from '@/content/services';
 import { Link, usePathname } from '@/i18n/navigation';
-import { WORK_NAV_ITEM } from '../consts';
+import { NAV_ITEMS, WORK_NAV_ITEM } from '../consts';
 import { isWorkPath, navHref, visibleNavItems } from '../nav';
 import type { HeaderProps } from '../types';
 import { useActiveSection } from '../use-active-section';
-import { EDITORIAL_NAV_ITEMS, EDITORIAL_NAV_OFFSET } from './consts';
+import { EDITORIAL_NAV_OFFSET } from './consts';
 import styles from './Header.module.scss';
 
 export const EditorialHeader = ({ hasCases }: HeaderProps) => {
   const t = useTranslations();
   const locale = useLocale();
   const pathname = usePathname();
-  const items = useMemo(() => visibleNavItems(EDITORIAL_NAV_ITEMS, hasCases), [hasCases]);
+  const items = useMemo(() => visibleNavItems(NAV_ITEMS, hasCases), [hasCases]);
   const active = useActiveSection(items, pathname === '/', EDITORIAL_NAV_OFFSET);
   const onCase = isWorkPath(pathname);
   const onService = SERVICES.some((service) => pathname === `/${service.slug}`);

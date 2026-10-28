@@ -175,6 +175,12 @@
   }
 }
 
+@media (max-width: 630px) {
+  .tagline {
+    display: none;
+  }
+}
+
 @media (max-width: 480px) {
   :global(html):has(.header) {
     scroll-padding-top: s.$header-offset-compact;
@@ -185,7 +191,6 @@
     padding: 12px var(--t-gutter);
   }
 
-  .tagline,
   .cta {
     display: none;
   }

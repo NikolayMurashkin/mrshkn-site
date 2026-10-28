@@ -289,7 +289,7 @@ describe('пункт меню «Кейсы»', () => {
     [...html.matchAll(/<a\b[^>]*href="([^"]*)"[^>]*>([^<]*)<\/a>/g)].map(([, href, text]) => ({ href, text }));
 
   it.each([...DESIGN_NAMES])(
-    '%s: без кейсов ссылки /ru/work нет, с кейсами она между «Услуги» и «Цены» и ведет на страницу /work',
+    '%s: без кейсов ссылки /ru/work нет, с кейсами она между «Услуги» и «Процесс» и ведет на страницу /work',
     async (design) => {
       const Header = await loadComponent<{ hasCases: boolean }>(design, 'Header');
 
@@ -302,7 +302,7 @@ describe('пункт меню «Кейсы»', () => {
       expect(hrefs).not.toContain('/ru#work');
       expect(hrefs.indexOf('/ru#services')).toBeGreaterThanOrEqual(0);
       expect(hrefs.indexOf('/ru/work')).toBeGreaterThan(hrefs.indexOf('/ru#services'));
-      expect(hrefs.indexOf('/ru#prices')).toBeGreaterThan(hrefs.indexOf('/ru/work'));
+      expect(hrefs.indexOf('/ru#process')).toBeGreaterThan(hrefs.indexOf('/ru/work'));
     },
   );
 });

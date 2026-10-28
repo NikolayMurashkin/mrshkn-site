@@ -49,7 +49,7 @@ const SHAPES: Record<(typeof DESIGNS)[number], DesignShape> = {
   editorial: {
     displayFont: /Prata/,
     textFont: /Onest/,
-    navLinks: 4,
+    navLinks: 3,
     headerCta: null,
     heroTitle: /Сайт\sдля\sбизнеса\sв\sКалининграде\sза\s4\sдня\./,
     heroTitleFont: /Prata/,

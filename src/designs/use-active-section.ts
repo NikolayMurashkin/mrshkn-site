@@ -3,8 +3,7 @@ import { ACTIVE_SECTION_TOLERANCE, PAGE_END_TOLERANCE } from './consts';
 
 /**
  * Активный пункт меню — секция с наибольшим `top` среди дошедших до линии под липкой шапкой (`offset` — высота шапки
- * направления); в конце страницы — последний id. Из вложенных секций (`#services` содержит `#prices`) побеждает
- * та, что начинается позже.
+ * направления); в конце страницы — последний id. Из вложенных секций побеждает та, что начинается позже.
  */
 export const useActiveSection = (ids: readonly string[], enabled: boolean, offset: number) => {
   const [active, setActive] = useState<string | null>(null);
