@@ -173,9 +173,7 @@ export const useServicePage = (serviceId: string): ServicePageData | null => {
         return [];
       }
 
-      const { amount, monthly } = price.option(option);
-
-      return [{ id, name: optionTexts(`${id}.name`), note: optionTexts(`${id}.note`), amount, monthly }];
+      return [{ id, name: optionTexts(`${id}.name`), note: optionTexts(`${id}.note`), amount: price.option(option) }];
     }),
     backHref: `/${locale}#${SERVICE_BACK_ANCHOR}`,
     briefHref: serviceBriefHref(locale, service),

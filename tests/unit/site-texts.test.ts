@@ -169,7 +169,7 @@ describe('CRM — только опцией', () => {
     expect(crm, 'опция crm в PRICING_OPTIONS').toBeDefined();
     expect(crm!.price.from).toEqual({ rub: 15_000, usd: 300 });
     expect(crm!.price.to).toEqual({ rub: 30_000, usd: 600 });
-    expect(crm!.monthly).toBeUndefined();
+    expect(Object.hasOwn(crm!, 'monthly'), 'опция crm без ежемесячной платы').toBe(false);
     expect(PRICING_BASICS).not.toContain('crm');
   });
 });
@@ -191,10 +191,12 @@ describe('FAQ лендинга про ИИ-поиск', () => {
     expect(answer.toLowerCase(), path).toContain(folded(packName));
   });
 
-  it.each(LOCALES)('%s: карточка geo называет FAQ-разметку', (locale) => {
+  it.each(LOCALES)('%s: карточка geo без «FAQ» и мониторинга — вопросы и ответы, понятные нейросетям', (locale) => {
     const note = normalize(textAt(locale, 'pricing.options.geo.note'));
 
-    expect(note).toContain(locale === 'ru' ? 'FAQ-разметк' : 'FAQ markup');
+    expect(note.toLowerCase()).not.toContain('faq');
+    expect(note.toLowerCase()).not.toContain(locale === 'ru' ? 'мониторинг' : 'monitoring');
+    expect(note).toContain(locale === 'ru' ? 'нейросет' : 'AI');
   });
 });
 
@@ -248,14 +250,14 @@ describe('срок и условия фиксируются в договоре'
     ];
     const expected = (path: string) => {
       if (locale === 'en') {
-        return 'in the contract';
+        return /\b(in|into|under) the contract\b/;
       }
 
       return CONTRACT_RECORDED_RU.includes(path) ? 'записываем в договор' : 'фиксируем в договоре';
     };
 
     for (const { path, text } of entries) {
-      expect(folded(text), path).toContain(expected(path));
+      expect(folded(text), path).toMatch(expected(path));
     }
   });
 });

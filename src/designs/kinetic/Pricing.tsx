@@ -113,26 +113,21 @@ export const KineticPricing = () => {
           className={styles.options}
           data-testid="options"
         >
-          {PRICING_OPTIONS.map((option) => {
-            const { amount, monthly } = price.option(option);
-
-            return (
-              <li
-                className={styles.option}
-                key={option.id}
+          {PRICING_OPTIONS.map((option) => (
+            <li
+              className={styles.option}
+              key={option.id}
+            >
+              <span className={styles.optionName}>{t(`options.${option.id}.name`)}</span>
+              <span
+                className={styles.optionPrice}
+                data-testid="option-price"
               >
-                <span className={styles.optionName}>{t(`options.${option.id}.name`)}</span>
-                <span
-                  className={styles.optionPrice}
-                  data-testid="option-price"
-                >
-                  {amount}
-                </span>
-                <span className={styles.optionNote}>{t(`options.${option.id}.note`)}</span>
-                {monthly ? <span className={styles.optionMonthly}>{monthly}</span> : null}
-              </li>
-            );
-          })}
+                {price.option(option)}
+              </span>
+              <span className={styles.optionNote}>{t(`options.${option.id}.note`)}</span>
+            </li>
+          ))}
         </ul>
       </div>
 

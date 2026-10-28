@@ -8,7 +8,7 @@ import type { PricingBasicGroup, PricingExtra, PricingOption, PricingPlan, Prici
  * с паузами на ответ заказчика; у тарифов «от» срок — строкой перевода.
  */
 export const PRICING_PLANS: PricingPlan[] = [
-  { id: 'industry', slug: 'industry', price: { rub: 59_000, usd: 1_200 }, isFrom: false, days: 7 },
+  { id: 'industry', slug: 'industry', price: { rub: 70_000, usd: 1_200 }, isFrom: false, days: 7 },
   { id: 'landing', slug: 'landing', price: { rub: 50_000, usd: 2_400 }, isFrom: false, days: 4 },
   {
     id: 'industryMiniApp',
@@ -21,7 +21,7 @@ export const PRICING_PLANS: PricingPlan[] = [
   { id: 'business', slug: 'business', price: { rub: 180_000, usd: 4_500 }, isFrom: false, days: 14 },
   { id: 'miniApp', slug: 'mini-app', price: { rub: 180_000, usd: 3_500 }, isFrom: true },
   { id: 'store', slug: 'store', price: { rub: 250_000, usd: 8_000 }, isFrom: true },
-  { id: 'mvp', slug: 'mvp', price: { rub: 600_000, usd: 12_000 }, isFrom: true },
+  { id: 'mvp', slug: 'mvp', price: { rub: 300_000, usd: 12_000 }, isFrom: true },
   { id: 'threeD', slug: '3d', price: { rub: 250_000, usd: 4_900 }, isFrom: true },
   { id: 'support', slug: 'support', price: { rub: 7_000, usd: 140 }, isFrom: true },
 ];
@@ -46,21 +46,13 @@ export const PRICING_OPTIONS: PricingOption[] = [
   { id: 'calculator', price: { from: { rub: 25_000, usd: 500 }, to: { rub: 40_000, usd: 800 } } },
   { id: 'reviews', price: { from: { rub: 10_000, usd: 200 }, to: { rub: 15_000, usd: 300 } } },
   { id: 'messengers', price: { from: { rub: 8_000, usd: 160 }, to: { rub: 15_000, usd: 300 } } },
-  {
-    id: 'assistant',
-    price: { from: { rub: 40_000, usd: 800 }, to: { rub: 60_000, usd: 1_200 } },
-    monthly: { from: { rub: 3_000, usd: 60 }, to: { rub: 5_000, usd: 100 } },
-  },
+  { id: 'assistant', price: { from: { rub: 40_000, usd: 800 }, to: { rub: 60_000, usd: 1_200 } } },
   { id: 'language', price: { from: { rub: 20_000, usd: 400 } } },
   { id: 'blog', price: { from: { rub: 25_000, usd: 500 } } },
   { id: 'crm', price: { from: { rub: 15_000, usd: 300 }, to: { rub: 30_000, usd: 600 } } },
   { id: 'branches', price: { from: { rub: 15_000, usd: 300 } } },
   { id: 'catalog', price: { from: { rub: 20_000, usd: 400 }, to: { rub: 35_000, usd: 700 } } },
-  {
-    id: 'geo',
-    price: { from: { rub: 30_000, usd: 600 } },
-    monthly: { from: { rub: 15_000, usd: 300 } },
-  },
+  { id: 'geo', price: { from: { rub: 30_000, usd: 600 } } },
 ];
 
 /** Второй мессенджер у отраслевого Mini App: опция только этого тарифа, в «опциях к любому тарифу» ее нет. */
@@ -92,6 +84,6 @@ export const PRICING_BASICS = [
 export const PRICING_BASIC_GROUPS: PricingBasicGroup<(typeof PRICING_BASICS)[number]>[] = [
   { id: 'build', items: ['code', 'lighthouse', 'responsive'] },
   { id: 'leads', items: ['forms', 'analytics', 'seo'] },
-  { id: 'ownership', items: ['sources', 'hosting', 'privacy'] },
-  { id: 'afterLaunch', items: ['revisions', 'warranty', 'training', 'deadline'] },
+  { id: 'ownership', items: ['sources', 'hosting', 'privacy', 'training'] },
+  { id: 'confidence', items: ['revisions', 'warranty', 'deadline'] },
 ];

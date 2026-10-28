@@ -4,9 +4,9 @@ import { useLocale, useTranslations } from 'next-intl';
 import { EXTRA_PRICE_PATTERN } from './consts';
 import { formatMoney, formatRange, planTerm } from './format';
 import { MAX_OPTION } from './pricing';
-import type { OptionPriceText, PricedItem, PricingExtra, PricingOption, PricingPlan } from './types';
+import type { PricedItem, PricingExtra, PricingOption, PricingPlan } from './types';
 
-/** Собирает подпись цены: сумма считается кодом, обвязка «от», «/ мес», «+ … / мес» — переводом.
+/** Собирает подпись цены: сумма считается кодом, обвязка «от», «/ мес», «/ час» — переводом.
  * У тарифа период не попадает в цену: срок стоит отдельной колонкой, как на артбордах. */
 export const usePriceText = () => {
   const locale = useLocale();
@@ -15,10 +15,8 @@ export const usePriceText = () => {
 
   const plan = (item: PricedItem) => t(item.isFrom ? 'from' : 'exact', { amount: formatMoney(item.price, locale) });
 
-  const option = (item: PricingOption): OptionPriceText => ({
-    amount: formatRange(item.price, locale),
-    monthly: item.monthly ? t('monthlyAddon', { amount: formatRange(item.monthly, locale) }) : undefined,
-  });
+  /** Цена опции — разовая сумма или диапазон, без обвязки: абонплаты у опций нет. */
+  const option = (item: PricingOption) => formatRange(item.price, locale);
 
   /** Нижняя цена опции с обвязкой «от» — для текстов, где опция названа одной суммой. */
   const optionFrom = (item: PricingOption) => t('from', { amount: formatMoney(item.price.from, locale) });

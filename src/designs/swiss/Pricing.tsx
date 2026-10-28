@@ -118,7 +118,7 @@ export const SwissPricing = () => {
               id: option.id,
               name: t(`options.${option.id}.name`),
               note: t(`options.${option.id}.note`),
-              ...price.option(option),
+              amount: price.option(option),
             }))}
             testId="options"
           />

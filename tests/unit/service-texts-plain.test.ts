@@ -167,7 +167,7 @@ const APPROVED_RU: [string, string][] = [
   ],
   [
     'services.threeD.terms.items.0',
-    'Срок записываем в\u00a0договор: 4\u00a0недели на\u00a03D-блок, 6\u00a0недель на\u00a03D-лендинг. Первый день срока\u00a0— день, когда у\u00a0нас есть подробное описание и\u00a0материалы, а\u00a0для 3D-лендинга еще и\u00a0выбранный стиль. Пока мы ждем вашего ответа или согласования, срок стоит: дата сдачи сдвигается на\u00a0столько же дней. Если модель делаем с\u00a0нуля, на\u00a0это нужно дополнительное время\u00a0— его называем до\u00a0предоплаты, вместе с\u00a0ценой. Опоздали по\u00a0нашей вине\u00a0— за\u00a0каждый день просрочки снижаем цену на\u00a02\u00a0%, всего не\u00a0больше чем на\u00a020\u00a0%. Эту сумму вычитаем из\u00a0последнего платежа. Считаем от\u00a0цены всех работ в\u00a0договоре, вместе с\u00a0опциями. Если вместе со\u00a0скидкой за\u00a0кейс это больше последнего платежа, разницу возвращаем в\u00a0течение 5\u00a0рабочих дней после акта',
+    'Срок записываем в\u00a0договор: 4\u00a0недели на\u00a03D-блок, 6\u00a0недель на\u00a03D-лендинг. Первый день срока\u00a0— день, когда у\u00a0нас есть подробное описание и\u00a0материалы, а\u00a0для 3D-лендинга еще и\u00a0выбранный стиль. Пока мы ждем вашего ответа или согласования, срок стоит: дата сдачи сдвигается на\u00a0столько же дней. Если модель делаем с\u00a0нуля, на\u00a0это нужно дополнительное время\u00a0— его называем до\u00a0предоплаты, вместе с\u00a0ценой. Опоздали по\u00a0нашей вине\u00a0— за\u00a0каждый день просрочки снижаем цену на\u00a02\u00a0%, всего не\u00a0больше чем на\u00a020\u00a0%. Эту сумму вычитаем из\u00a0последнего платежа. Считаем от\u00a0цены, которую вы платите по\u00a0договору, вместе с\u00a0опциями',
   ],
   [
     'services.threeD.terms.items.1',
@@ -214,7 +214,7 @@ const APPROVED_RU: [string, string][] = [
   ],
   [
     'services.miniApp.basics.items.9',
-    'Срок записываем в\u00a0договор. Опоздали по\u00a0нашей вине\u00a0— за\u00a0каждый день просрочки снижаем цену на\u00a02\u00a0%, всего не\u00a0больше чем на\u00a020\u00a0%. Эту сумму вычитаем из\u00a0последнего платежа. Считаем от\u00a0цены всех работ в\u00a0договоре, вместе с\u00a0опциями. Если вместе со\u00a0скидкой за\u00a0кейс это больше последнего платежа, разницу возвращаем в\u00a0течение 5\u00a0рабочих дней после акта',
+    'Срок записываем в\u00a0договор. Опоздали по\u00a0нашей вине\u00a0— за\u00a0каждый день просрочки снижаем цену на\u00a02\u00a0%, всего не\u00a0больше чем на\u00a020\u00a0%. Эту сумму вычитаем из\u00a0последнего платежа. Считаем от\u00a0цены, которую вы платите по\u00a0договору, вместе с\u00a0опциями',
   ],
   [
     'services.business.faq.0.answer',
@@ -374,7 +374,7 @@ const APPROVED_EN: [string, string][] = [
   ],
   [
     'services.threeD.terms.items.0',
-    'The deadline goes into the contract: 4 weeks for a 3D block, 6 weeks for a 3D landing page. Day one is the day we have the detailed description and the materials, and for a 3D landing page also the chosen style. While we wait for your reply or sign-off, the clock stops: the delivery date moves by the same number of days. If we build the model from scratch, that takes extra time; we name it before the prepayment, together with the price. If we are late through our fault, we cut the price by 2% for each day of delay, 20% at most. That amount comes off the final payment. It is calculated from the price of all the work in the contract, options included. If together with the case-study discount this exceeds the final payment, we refund the difference within 5 working days after the acceptance certificate',
+    'The deadline goes into the contract: 4 weeks for a 3D block, 6 weeks for a 3D landing page. Day one is the day we have the detailed description and the materials, and for a 3D landing page also the chosen style. While we wait for your reply or sign-off, the clock stops: the delivery date moves by the same number of days. If we build the model from scratch, that takes extra time; we name it before the prepayment, together with the price. If we are late through our fault, we cut the price by 2% for each day of delay, 20% at most. That amount comes off the final payment. It is calculated from the price you pay under the contract, options included',
   ],
   [
     'services.threeD.terms.items.1',
@@ -418,7 +418,7 @@ const APPROVED_EN: [string, string][] = [
   ],
   [
     'services.miniApp.basics.items.9',
-    'The deadline goes into the contract. If we are late through our fault, we cut the price by 2% for each day of delay, 20% at most. That amount comes off the final payment. It is calculated from the price of all the work in the contract, options included. If together with the case-study discount this exceeds the final payment, we refund the difference within 5 working days after the acceptance certificate',
+    'The deadline goes into the contract. If we are late through our fault, we cut the price by 2% for each day of delay, 20% at most. That amount comes off the final payment. It is calculated from the price you pay under the contract, options included',
   ],
   [
     'services.business.faq.0.answer',

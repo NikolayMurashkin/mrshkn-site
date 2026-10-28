@@ -21,13 +21,13 @@ const pricingSection = (locale: string, section: string) => messages(locale).pri
 
 /** Тарифы по порядку: цена в обеих валютах, «от» и срок в календарных днях (у тарифов «от» срока в днях нет). */
 const PLAN_TABLE = [
-  { id: 'industry', rub: 59_000, usd: 1_200, isFrom: false, days: 7 },
+  { id: 'industry', rub: 70_000, usd: 1_200, isFrom: false, days: 7 },
   { id: 'landing', rub: 50_000, usd: 2_400, isFrom: false, days: 4 },
   { id: 'industryMiniApp', rub: 90_000, usd: 1_800, isFrom: false, days: 7 },
   { id: 'business', rub: 180_000, usd: 4_500, isFrom: false, days: 14 },
   { id: 'miniApp', rub: 180_000, usd: 3_500, isFrom: true, days: undefined },
   { id: 'store', rub: 250_000, usd: 8_000, isFrom: true, days: undefined },
-  { id: 'mvp', rub: 600_000, usd: 12_000, isFrom: true, days: undefined },
+  { id: 'mvp', rub: 300_000, usd: 12_000, isFrom: true, days: undefined },
   { id: 'threeD', rub: 250_000, usd: 4_900, isFrom: true, days: undefined },
   { id: 'support', rub: 7_000, usd: 140, isFrom: true, days: undefined },
 ] as const;
@@ -42,6 +42,20 @@ const SUPPORT_TIER_TABLE = [
   { id: 'supportHoursPlus', planId: 'support', price: { rub: 35_000, usd: 700 }, isFrom: false, hours: 10 },
   { id: 'supportHoursPro', planId: 'support', price: { rub: 70_000, usd: 1_400 }, isFrom: false, hours: 25 },
 ];
+
+/** Группы базы по порядку: правки, гарантия и срок — «Уверенность в результате», инструкция — среди того, что остается у вас. */
+const BASIC_GROUPS_TABLE = [
+  { id: 'build', items: ['code', 'lighthouse', 'responsive'] },
+  { id: 'leads', items: ['forms', 'analytics', 'seo'] },
+  { id: 'ownership', items: ['sources', 'hosting', 'privacy', 'training'] },
+  { id: 'confidence', items: ['revisions', 'warranty', 'deadline'] },
+];
+
+/** Утвержденные заголовки группы правок, гарантии и срока. Неразрывный пробел — escape. */
+const CONFIDENCE_HEADINGS: Record<string, string> = {
+  ru: 'Уверенность в\u00a0результате',
+  en: 'Peace of mind',
+};
 
 const RU_DAYS: [number, string][] = [
   [1, `1${NBSP}день`],
@@ -108,6 +122,24 @@ describe('прайс — один источник цен', () => {
   it.each([...LOCALES])('%s: у каждой группы базы есть заголовок', (locale) => {
     expect(Object.keys(pricingSection(locale, 'basicsGroups'))).toEqual(PRICING_BASIC_GROUPS.map((group) => group.id));
   });
+
+  it('группы базы: сборка, заявки, «все остается у вас» с инструкцией и «уверенность в результате»', () => {
+    expect(PRICING_BASIC_GROUPS.map(({ id, items }) => ({ id, items }))).toEqual(BASIC_GROUPS_TABLE);
+  });
+
+  it.each([...LOCALES])('%s: заголовок группы правок, гарантии и срока — утвержденный, старого ключа нет', (locale) => {
+    const headings = pricingSection(locale, 'basicsGroups');
+
+    expect(Object.hasOwn(headings, 'afterLaunch'), 'pricing.basicsGroups.afterLaunch').toBe(false);
+    expect(headings.confidence).toBe(CONFIDENCE_HEADINGS[locale]);
+  });
+
+  it.each([...PRICING_OPTIONS, MAX_OPTION].map((option) => [option.id, option] as const))(
+    '%s: у опции нет ежемесячной платы',
+    (id, option) => {
+      expect(Object.hasOwn(option, 'monthly'), id).toBe(false);
+    },
+  );
 
   it('у тарифов уникальные ключи, у страниц услуг — уникальные адреса; отраслевое Mini App без своей страницы', () => {
     expect(new Set(PRICING_PLANS.map((plan) => plan.id)).size).toBe(PRICING_PLANS.length);

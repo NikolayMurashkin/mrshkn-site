@@ -33,7 +33,7 @@ const MESSAGES = { ru, en } as unknown as Record<Locale, Messages>;
 
 const NICHES = ['clinic', 'expert', 'horeca'] as const;
 
-const INDUSTRY_PLAN = { id: 'industry', slug: 'industry', price: { rub: 59_000, usd: 1_200 }, isFrom: false, days: 7 };
+const INDUSTRY_PLAN = { id: 'industry', slug: 'industry', price: { rub: 70_000, usd: 1_200 }, isFrom: false, days: 7 };
 
 const NBSP = String.fromCodePoint(0x00a0);
 
@@ -69,7 +69,7 @@ const loadLighthouseConfig = (): { ci: { collect: { url: string[] } } } => {
 };
 
 describe('тариф «Отраслевой сайт за 7 дней» в прайсе', () => {
-  it('в прайсе ровно один тариф industry: свой адрес, 59 000 ₽ / $1 200, цена точная, 7 дней', () => {
+  it('в прайсе ровно один тариф industry: свой адрес, 70 000 ₽ / $1 200, цена точная, 7 дней', () => {
     expect(PRICING_PLANS.filter((plan) => plan.id === 'industry')).toEqual([INDUSTRY_PLAN]);
   });
 

@@ -17,7 +17,7 @@
   grid-template-columns: minmax(0, 1fr) auto;
   grid-template-areas:
     'line price'
-    'note monthly';
+    'note .';
   gap: var(--space-4) var(--space-12);
   align-items: baseline;
   padding: var(--space-12) 0 13px;
@@ -65,15 +65,6 @@
   color: var(--muted);
 }
 
-.monthly {
-  grid-area: monthly;
-  font-size: 13px;
-  text-align: right;
-  white-space: nowrap;
-  color: var(--muted);
-  font-variant-numeric: tabular-nums;
-}
-
 @media (max-width: 720px) {
   .options {
     column-count: 1;
@@ -86,8 +77,7 @@
     grid-template-areas:
       'line'
       'price'
-      'note'
-      'monthly';
+      'note';
     gap: 2px;
   }
 
@@ -95,8 +85,7 @@
     display: none;
   }
 
-  .price,
-  .monthly {
+  .price {
     text-align: left;
   }
 }

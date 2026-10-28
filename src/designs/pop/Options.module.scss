@@ -60,16 +60,6 @@ $narrow-column-min: 340px;
   @include s.wrap;
 }
 
-.monthly {
-  grid-column: 3;
-  font-size: 13px;
-  font-weight: 700;
-  text-align: right;
-  white-space: nowrap;
-  color: var(--muted);
-  font-variant-numeric: tabular-nums;
-}
-
 @media (max-width: 1080px) {
   .pricelist {
     grid-template-columns: minmax(0, 1fr);
@@ -91,17 +81,8 @@ $narrow-column-min: 340px;
   }
 
   .price,
-  .monthly,
   .note {
     grid-column: 1;
     text-align: left;
-  }
-
-  .monthly {
-    grid-row: 3;
-  }
-
-  .note {
-    grid-row: 4;
   }
 }

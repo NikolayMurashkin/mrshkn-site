@@ -287,7 +287,6 @@ export const KineticServicePage = ({ service }: ServicePageProps) => {
                   <span className={styles.optionName}>{option.name}</span>
                   <span className={styles.optionPrice}>{option.amount}</span>
                   <span className={styles.optionNote}>{option.note}</span>
-                  {option.monthly ? <span className={styles.optionMonthly}>{option.monthly}</span> : null}
                 </li>
               ))}
             </ul>

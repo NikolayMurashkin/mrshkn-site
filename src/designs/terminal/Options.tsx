@@ -23,7 +23,6 @@ export const TerminalOptions = ({ items, testId, narrow = false }: TerminalOptio
           {item.amount}
         </span>
         <span className={styles.note}>{item.note}</span>
-        {item.monthly ? <span className={styles.monthly}>{item.monthly}</span> : null}
       </li>
     ))}
   </ul>

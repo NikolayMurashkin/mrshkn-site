@@ -112,8 +112,7 @@
       "exact": "{amount}",
       "from": "from {amount}",
       "month": "{amount} / mo",
-      "hour": "{amount} / hour",
-      "monthlyAddon": "+ {amount} / mo"
+      "hour": "{amount} / hour"
     },
     "plans": {
       "industry": {
@@ -194,14 +193,14 @@
       "title": "Telegram and MAX",
       "text": "A custom app works in two messengers at once: Telegram and MAX, a Russian messenger. One price: we write the app once for both. The industry app includes only Telegram; you can add a MAX version for {max}. For that, you register your company in MAX (we send step-by-step instructions) and we connect the rest. Then MAX reviews the app. MAX decides how long the review takes, so that time is not part of our deadline."
     },
-    "caseOffer": "We are a new studio and we need examples of our work. So we do our first five projects at the “case-study price” (a case study is an example of our work): development is 30% off. The discount is taken from the development price in the contract. Options, MAX and support are at the regular price. We will tell you how many spots are left when we reply to your request. In return we ask for two things. First, you let us show your site as an example of our work, without your customers' data. Second, you write an honest, detailed review of working with us, good or bad. We send you the link to the review form. Send the review before the acceptance certificate is signed: tell us how the work went. What changed after launch you can add later. The prepayment and the second payment are calculated from the regular price, and the discount comes off the final payment. No review by the acceptance certificate means no discount. If you later ask us to take down the review or the case study, we will. The contract says what happens to the discount then.",
+    "caseOffer": "We are a new studio and we need examples of our work. So we do our first five projects at the “case-study price” (a case study is an example of our work): development is 30% off. The discount is taken from the regular development price. Options, MAX and support are at the regular price. We give the discount right away: the contract states the discounted price, and all three payments are calculated from it. We will tell you how many spots are left when we reply to your request. In return we ask for two things. First, you let us show your site or app as an example of our work, without your customers' data. Second, you write a review of how the work went, any review, including a critical one. We publish critical reviews the same way as positive ones.",
     "basicsHeading": "Included in the price of every site",
     "basicsNote": "13 items in the price; hosting and domain are paid to the provider directly. Telegram apps, 3D and support have their own lists on their pages",
     "basicsGroups": {
       "build": "Code and speed",
       "leads": "Leads and analytics",
       "ownership": "Everything stays yours",
-      "afterLaunch": "After launch"
+      "confidence": "Peace of mind"
     },
     "basics": {
       "code": "We write the site ourselves, in code on Next.js, rather than putting it together in a website builder like Tilda",
@@ -216,7 +215,7 @@
       "revisions": "Three rounds of revisions included. A round is all your comments in one list, and we make all of it. Revisions are texts, photos, the color of individual blocks and buttons, the order of blocks; new pages, features and a whole new style are separate work",
       "warranty": "A one-year warranty from the day of acceptance. We fix for free anything that broke through our fault or does not work the way the contract says. If the site stops opening through our fault, we get on it within 2 hours on weekdays from 10:00 to 19:00 Moscow time, and at night or on weekends the first working morning. Other bugs we start fixing within a working day and fix within 5 working days. If it is unclear whose fault a breakdown is, we first look for the cause for free and show it to you. Not covered: outages at the hosting provider and in third-party services (such as Telegram or a booking service) and breakdowns after changes to the site's code made by you or other people; such fixes cost $90 an hour. Texts and photos you change through the admin panel do not void the warranty.",
       "training": "An admin panel, where you change texts, photos and prices yourself, and add or remove items: dishes, services, doctors. A guide and a screencast: how to work in the admin panel and read leads and analytics",
-      "deadline": "The deadline goes into the contract. If we are late through our fault, we cut the price by 2% for each day of delay, 20% at most. That amount comes off the final payment. It is calculated from the price of all the work in the contract, options included. If together with the case-study discount this exceeds the final payment, we refund the difference within 5 working days after the acceptance certificate"
+      "deadline": "The deadline goes into the contract. If we are late through our fault, we cut the price by 2% for each day of delay, 20% at most. That amount comes off the final payment. It is calculated from the price you pay under the contract, options included"
     },
     "optionsHeading": "Options for any plan",
     "optionsNote": "can be added after launch too",
@@ -271,7 +270,7 @@
       },
       "geo": {
         "name": "Extended pack for AI search",
-        "note": "FAQ markup and mention monitoring"
+        "note": "questions and answers on the site in a form search engines and AI can understand"
       }
     },
     "extrasHeading": "Beyond the plan",
@@ -600,7 +599,7 @@
         },
         {
           "question": "How many days does a site for your industry take?",
-          "answer": "In {term}. We count calendar days, weekends included. The deadline starts the day you pick the style of the site, and it is set in the contract. We show three styles 2 working days after the prepayment and the materials. If we write the texts, the deadline is 2 days longer. Days we spend waiting for your comments don't count: the delivery date moves by the same number of days. There is no need to rush your reply. If a pause drags on for a long time, the contract says what happens next. If we are late through our own fault, we cut the price by 2% for each day of delay, 20% at most. That amount comes off the final payment. If together with the case-study discount this exceeds the final payment, we refund the difference within 5 working days after the acceptance certificate."
+          "answer": "In {term}. We count calendar days, weekends included. The deadline starts the day you pick the style of the site, and it is set in the contract. We show three styles 2 working days after the prepayment and the materials. If we write the texts, the deadline is 2 days longer. Days we spend waiting for your comments don't count: the delivery date moves by the same number of days. There is no need to rush your reply. If a pause drags on for a long time, the contract says what happens next. If we are late through our own fault, we cut the price by 2% for each day of delay, 20% at most. That amount comes off the final payment."
         },
         {
           "question": "Can I add features later?",
@@ -642,7 +641,7 @@
         },
         {
           "question": "How many days does a landing page take?",
-          "answer": "In {term}. We count calendar days, weekends included. The deadline starts the day you pick the style of the site, and it is set in the contract. We show three styles 2 working days after the prepayment and the materials. If we write the texts, the deadline is 2 days longer. Days we spend waiting for your comments don't count: the delivery date moves by the same number of days. There is no need to rush your reply. If a pause drags on for a long time, the contract says what happens next. If we are late through our own fault, we cut the price by 2% for each day of delay, 20% at most. That amount comes off the final payment. If together with the case-study discount this exceeds the final payment, we refund the difference within 5 working days after the acceptance certificate."
+          "answer": "In {term}. We count calendar days, weekends included. The deadline starts the day you pick the style of the site, and it is set in the contract. We show three styles 2 working days after the prepayment and the materials. If we write the texts, the deadline is 2 days longer. Days we spend waiting for your comments don't count: the delivery date moves by the same number of days. There is no need to rush your reply. If a pause drags on for a long time, the contract says what happens next. If we are late through our own fault, we cut the price by 2% for each day of delay, 20% at most. That amount comes off the final payment."
         },
         {
           "question": "How many revisions are included?",
@@ -696,7 +695,7 @@
         },
         {
           "question": "How many days does the “Business” site take?",
-          "answer": "{term}. The deadline starts the day you pick the style of the site, and it is set in the contract. We show three styles 2 working days after the prepayment and the materials. If we write the texts, the deadline is 4 days longer. Days we spend waiting for your comments don't count. If we are late through our own fault, we cut the price by 2% for each day of delay, 20% at most, and take it off the final payment. If together with the case-study discount this exceeds the final payment, we refund the difference within 5 working days after the acceptance certificate. Three rounds of revisions are included: three times you send a list of comments, and we make all of it."
+          "answer": "{term}. The deadline starts the day you pick the style of the site, and it is set in the contract. We show three styles 2 working days after the prepayment and the materials. If we write the texts, the deadline is 4 days longer. Days we spend waiting for your comments don't count. If we are late through our own fault, we cut the price by 2% for each day of delay, 20% at most, and take it off the final payment. Three rounds of revisions are included: three times you send a list of comments, and we make all of it."
         },
         {
           "question": "What if I don't like the design?",
@@ -738,11 +737,11 @@
         },
         {
           "question": "Which modules can I add?",
-          "answer": "Booking, loyalty, a showcase with ordering, and a referral program. We settle the set at the brief."
+          "answer": "Booking customers for services, giving bonuses to regular customers, showing your products and services as a list, taking orders and payments, running a “bring a friend” program. All of this is included in the price of a custom app. What the industry app includes is on its card. A QR menu guests open on their phones and a catalog with filters cost extra: that is the “QR menu or catalog” option in the “Options” list on this page. What exactly you need we discuss when we go through your task, before the contract."
         },
         {
           "question": "Why is the price “from”?",
-          "answer": "Every project has its own modules and integrations. We name the exact amount after the brief."
+          "answer": "All the features from the answer above are included in the price of a custom app. The price is higher if you need connections to other services, such as your CRM or booking service, or features beyond this list. We name the exact amount once we discuss your task."
         },
         {
           "question": "What does the plan include besides the app itself?",
@@ -779,11 +778,11 @@
           "An admin panel, where you change texts, photos and prices yourself and see bookings, orders and bonuses",
           "New bookings and orders arrive in your Telegram",
           "A privacy policy. Before the contract we tell you what else you need to do yourself",
-          "We set up the server for the app and hand it over to you. You pay the provider for it directly",
+          "A server is a computer on the internet that the app runs on. We set it up and hand it over to you. You pay for it directly to the provider company, not to us: currently from 2,000 ₽ a month, but provider prices change. The app also needs its own web address. If you have a site, we put the app on an address within it for free, such as app.yoursite.com. If you do not, you buy a domain (an address) yourself from a registrar, the same as for a site, and pay for it once a year, usually a few hundred rubles. If the app takes payments, the payment service charges a fee on each payment, and the contract with it is in your name too. Before the contract we work out what the server and domain come to per year and tell you what percentage the payment service takes",
           "Three rounds of revisions included. A round is all your comments in one list, and we make all of it. Revisions are texts, photos, the color of individual buttons and blocks, the order of screens; new screens, features and a whole new style are separate work",
           "A one-year warranty from the day of acceptance: we fix for free anything that broke through our fault or does not work the way the contract says. Outages of Telegram and MAX themselves are not covered",
           "A guide and a screencast: how to work in the admin panel",
-          "The deadline goes into the contract. If we are late through our fault, we cut the price by 2% for each day of delay, 20% at most. That amount comes off the final payment. It is calculated from the price of all the work in the contract, options included. If together with the case-study discount this exceeds the final payment, we refund the difference within 5 working days after the acceptance certificate"
+          "The deadline goes into the contract. If we are late through our fault, we cut the price by 2% for each day of delay, 20% at most. That amount comes off the final payment. It is calculated from the price you pay under the contract, options included"
         ]
       },
       "lead": "The app opens right inside the messenger, Telegram or MAX, with nothing to download. In it, customers book appointments, browse the menu, collect bonuses and pay. It comes with a bot customers open the app through, and an admin panel, the section where you change texts and prices and see bookings and orders"
@@ -924,13 +923,17 @@
         {
           "question": "Can someone download our model from the site?",
           "answer": "Yes, like any image on a website. That is why the site gets a lightweight display copy: the outside look and the parts you approved for display, without the other internal details, tolerances or drawings. We never share the drawings or the source model with third parties."
+        },
+        {
+          "question": "Which model counts as more complex than usual?",
+          "answer": "Simplifying the model is included in the price: we remove inner parts that cannot be seen from outside and simplify the surfaces so that the scene opens quickly on a phone. A usual model is one product with up to 300 parts, such as a pump, a machine tool or a vehicle assembly, in a file from drawing software. More complex means a whole production line or a building, a model from a 3D scanner, or a file with broken surfaces that have to be fixed by hand. Send us the file: we will look at it for free and tell you before the prepayment whether simplifying it is included in the price. If it is not, it will be a separate line in the estimate with the exact amount."
         }
       ],
       "basics": {
         "note": "Included in both formats. A 3D landing page also gets everything from the “Included in the price of every site” list in the “Services and pricing” section: leads to Telegram and email, analytics, a layout that is easy to use on a phone, domain setup and more. You pay for the server directly to the provider (see the item below), and for the domain once a year to the registrar",
         "items": [
           "An interactive scene with your product and an inquiry form right inside it",
-          "Converting your CAD model into a lightweight browser model is included; if the assembly is heavier than usual, simplifying it is a separate line in the estimate based on your file, before any prepayment",
+          "We simplify your 3D model from the drawing software (CAD) so that it opens quickly on the site; this is included in the price. If the model is more complex than usual and takes longer to simplify, that is a separate line in the estimate: we work it out from your file before the prepayment",
           "The price covers up to 8 parts or mechanisms with labels; click any of them and the model zooms in on it. More parts or moving mechanisms cost more. How much more, we put in the estimate once we discuss your task, before the prepayment. After that the price in the contract does not change unless you yourself ask for a new part or a new viewing angle; then we name the extra cost before work starts",
           "While the 3D loads, an image of the model is shown at the top of the page. Phones that cannot show 3D (no WebGL 2.0) show an image and a video instead of the model",
           "The 3D block's files live on the same server your site runs on (your hosting). A 3D landing page needs its own server: you pay for it directly to the provider company, not to us, currently from 2,000 ₽ a month, but provider prices change",
@@ -940,7 +943,7 @@
       "terms": {
         "note": "Fixed in the contract",
         "items": [
-          "The deadline goes into the contract: 4 weeks for a 3D block, 6 weeks for a 3D landing page. Day one is the day we have the detailed description and the materials, and for a 3D landing page also the chosen style. While we wait for your reply or sign-off, the clock stops: the delivery date moves by the same number of days. If we build the model from scratch, that takes extra time; we name it before the prepayment, together with the price. If we are late through our fault, we cut the price by 2% for each day of delay, 20% at most. That amount comes off the final payment. It is calculated from the price of all the work in the contract, options included. If together with the case-study discount this exceeds the final payment, we refund the difference within 5 working days after the acceptance certificate",
+          "The deadline goes into the contract: 4 weeks for a 3D block, 6 weeks for a 3D landing page. Day one is the day we have the detailed description and the materials, and for a 3D landing page also the chosen style. While we wait for your reply or sign-off, the clock stops: the delivery date moves by the same number of days. If we build the model from scratch, that takes extra time; we name it before the prepayment, together with the price. If we are late through our fault, we cut the price by 2% for each day of delay, 20% at most. That amount comes off the final payment. It is calculated from the price you pay under the contract, options included",
           "We approve the shape of the model and the viewing angles with you in the first week, before the 3D scene is built. A new part or a new viewing angle after that is separate work; we name the price before starting",
           "Three rounds of revisions: texts, colors, highlights. The shape of the model is not part of revisions: we approve it at the start",
           "We start one 3D project a month. We name the start date once we discuss your task, before the prepayment: if the date does not suit you, you pay nothing",
@@ -971,7 +974,8 @@
           "We write the texts from your answers to our questions; inquiries go to Telegram and email",
           "Everything that comes with any of our sites: a layout that is easy to use on a phone, getting ready for search, analytics, a cookie banner, your web address (domain) and a secure connection (SSL)",
           "Google's speed test: 90+ out of 100 in each of three runs",
-          "The source code stays with you"
+          "The source code stays with you",
+          "An admin panel: you change texts, photos and prices yourself; the 3D scene is not changed through it"
         ]
       }
     },
@@ -1201,7 +1205,7 @@
         "The form has three questions: what brought you to us, how the work went and what changed after launch. The third question is optional: if little time has passed since launch, you can skip it. Answer as you like, short or long — we publish criticism too and only fix typos. It takes about ten minutes, no sign-up or passwords:",
         "{link}",
         "The form asks for your full name only for the consent — it will not appear on the site. The review is signed the way you choose, for example “Anna, coffee shop on Main Street”.",
-        "You can send the review only with consent to publish it — there are two checkboxes at the end of the form. If you change your mind, reply to this email and we will take it down. If the project was done at the case-study price, what happens to the discount follows the terms of your contract.",
+        "You can send the review only with consent to publish it — there are two checkboxes at the end of the form. If you change your mind, reply to this email and we will take it down.",
         "The link works for 60 days. Thank you for the project.",
         "MRSHKN studio"
       ]

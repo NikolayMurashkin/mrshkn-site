@@ -51,7 +51,7 @@ const SECTIONS: Record<DesignName, (props: SectionProps) => ReactNode> = {
 
 const NICHES = ['clinic', 'expert', 'horeca'] as const;
 
-const INDUSTRY_PLAN = { id: 'industry', slug: 'industry', price: { rub: 59_000, usd: 1_200 }, isFrom: false };
+const INDUSTRY_PLAN = { id: 'industry', slug: 'industry', price: { rub: 70_000, usd: 1_200 }, isFrom: false };
 
 const VOID_TAGS = new Set([
   'area',
@@ -315,5 +315,18 @@ describe('квиз — опция отраслевого сайта', () => {
 
   it('en: ответ FAQ «Можно ли доработать сайт потом?» называет квиз', () => {
     expect(en.services.industry.faq[3].answer).toContain('quiz');
+  });
+});
+
+describe('цена опции в секции «Услуги и цены» — сумма без обвязки', () => {
+  const optionPrices = (html: string) =>
+    [...html.matchAll(/<span\b[^>]*data-testid="option-price"[^>]*>([\s\S]*?)<\/span>/g)].map(([, inner]) =>
+      textOf(inner),
+    );
+
+  it.each(ROWS)('%s, %s: каждая цена опции — formatRange дословно, без «от» и «/ мес»', (design, locale) => {
+    const html = render(design, locale, { section: 'pricing' });
+
+    expect(optionPrices(html)).toEqual(PRICING_OPTIONS.map((option) => spaced(formatRange(option.price, locale))));
   });
 });

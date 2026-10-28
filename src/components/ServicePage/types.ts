@@ -105,7 +105,6 @@ export type ServiceOptionView = {
   name: string;
   note: string;
   amount: string;
-  monthly?: string;
 };
 
 export type ServicePageData = {

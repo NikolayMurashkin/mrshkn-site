@@ -111,13 +111,13 @@ const INVITE_PARAGRAPHS = {
   ru: [
     'Пишем из\u00a0студии MRSHKN. Мы с\u00a0вами делали «{project}», и\u00a0нам важно знать, как эта работа выглядит с\u00a0вашей стороны. Ваш отзыв мы покажем на\u00a0сайте студии\u00a0— новым клиентам он скажет больше, чем наши слова.',
     'В\u00a0форме три вопроса: с\u00a0чем вы пришли, как шла работа и\u00a0что изменилось после запуска. Третий вопрос необязательный: если после запуска прошло мало времени, его можно пропустить. Отвечайте как есть, коротко или подробно\u00a0— критику мы тоже опубликуем, поправим только опечатки. Это минут десять, без регистрации и\u00a0паролей:',
-    'Отправить отзыв можно только с\u00a0согласием на\u00a0публикацию\u00a0— в\u00a0конце формы две галочки. Передумаете\u00a0— ответьте на\u00a0это письмо, и\u00a0мы его снимем. Если проект шел по\u00a0цене кейса, что будет со\u00a0скидкой\u00a0— записано в\u00a0договоре.',
+    'Отправить отзыв можно только с\u00a0согласием на\u00a0публикацию\u00a0— в\u00a0конце формы две галочки. Передумаете\u00a0— ответьте на\u00a0это письмо, и\u00a0мы его снимем.',
     'Студия MRSHKN',
   ],
   en: [
     "This is MRSHKN studio. We built {project} together, and we would like to know how the work looks from your side. We will show your review on the studio's website — it will tell new clients more than anything we could say.",
     'The form has three questions: what brought you to us, how the work went and what changed after launch. The third question is optional: if little time has passed since launch, you can skip it. Answer as you like, short or long — we publish criticism too and only fix typos. It takes about ten minutes, no sign-up or passwords:',
-    'You can send the review only with consent to publish it — there are two checkboxes at the end of the form. If you change your mind, reply to this email and we will take it down. If the project was done at the case-study price, what happens to the discount follows the terms of your contract.',
+    'You can send the review only with consent to publish it — there are two checkboxes at the end of the form. If you change your mind, reply to this email and we will take it down.',
     'MRSHKN studio',
   ],
 };

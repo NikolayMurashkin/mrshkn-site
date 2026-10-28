@@ -25,7 +25,6 @@ export const EditorialOptions = ({ items, testId, narrow = false }: EditorialOpt
           {item.amount}
         </span>
         <span className={styles.note}>{item.note}</span>
-        {item.monthly ? <span className={styles.monthly}>{item.monthly}</span> : null}
       </li>
     ))}
   </ul>

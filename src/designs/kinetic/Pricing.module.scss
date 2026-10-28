@@ -281,15 +281,6 @@
   font-variant-numeric: tabular-nums;
 }
 
-.optionMonthly {
-  grid-column: 2;
-  font-size: 13px;
-  text-align: right;
-  white-space: nowrap;
-  color: var(--muted);
-  font-variant-numeric: tabular-nums;
-}
-
 .extras {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -434,8 +425,7 @@
     grid-template-columns: minmax(0, 1fr);
   }
 
-  .optionPrice,
-  .optionMonthly {
+  .optionPrice {
     grid-column: 1;
     grid-row: auto;
     text-align: left;

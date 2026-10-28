@@ -23,7 +23,6 @@ export const PopOptions = ({ items, testId, narrow = false }: PopOptionsProps) =
           {item.amount}
         </span>
         <span className={styles.note}>{item.note}</span>
-        {item.monthly ? <span className={styles.monthly}>{item.monthly}</span> : null}
       </li>
     ))}
   </ul>
