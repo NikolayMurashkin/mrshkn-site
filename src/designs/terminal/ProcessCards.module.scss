@@ -1,0 +1,68 @@
+@use './shared' as s;
+
+.block {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  min-width: 0;
+}
+
+.heading {
+  @include s.block-title;
+
+  word-wrap: break-word;
+  overflow-wrap: anywhere;
+  min-width: 0;
+}
+
+.narrow .heading::before {
+  content: s.decor('### ');
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  min-width: 0;
+  padding: 18px 20px;
+  border: var(--border-width) solid var(--line);
+  border-radius: var(--radius-surface);
+  background: var(--surface);
+}
+
+.title {
+  margin: 0;
+  font-family: var(--font-text);
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.3;
+  text-wrap: balance;
+  word-wrap: break-word;
+  overflow-wrap: anywhere;
+  min-width: 0;
+}
+
+.text {
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.5;
+  color: var(--muted);
+  word-wrap: break-word;
+  overflow-wrap: anywhere;
+  min-width: 0;
+}
+
+@media (max-width: 720px) {
+  .cards {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}

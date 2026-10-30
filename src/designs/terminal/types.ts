@@ -1,5 +1,6 @@
 import type { ServiceOptionView, ServiceThreeD, ServiceTiers } from '@/components/ServicePage/types';
 import type { BriefChoice } from '@/lib/brief/types';
+import type { ProcessCardsBlock } from '@/components/types';
 
 /** Строка панели build.log в hero Terminal. */
 export type TerminalLogLine = {
@@ -73,4 +74,11 @@ export type TerminalServiceThreeDProps = {
 
 export type TerminalServiceTiersProps = {
   data: ServiceTiers;
+};
+
+export type TerminalProcessCardsProps = {
+  /** «Перед стартом» или «Гарантия после запуска»: заголовок блока `h3`, заголовки карточек `h4`. */
+  block: ProcessCardsBlock;
+  /** Колонка страницы услуги рядом с карточкой тарифа: заголовок блока мельче, чем на главной. */
+  narrow?: boolean;
 };

@@ -1,12 +1,15 @@
 import { useTranslations } from 'next-intl';
 import { ProcessScale, processScaleClasses } from '@/components/ProcessScale';
 import { PROCESS_STEPS, PROMISES } from '@/content/process';
+import { useProcessCards } from '@/components/use-process-cards';
 import { TERMINAL_SCALE_PAUSE } from './consts';
+import { TerminalProcessCards } from './ProcessCards';
 import { TerminalSteps } from './Steps';
 import styles from './Process.module.scss';
 
 export const TerminalProcess = () => {
   const t = useTranslations('process');
+  const cards = useProcessCards();
   const steps = PROCESS_STEPS.map((step, index) => ({
     id: step.id,
     day: step.day,
@@ -56,6 +59,8 @@ export const TerminalProcess = () => {
         ))}
       </ul>
 
+      {cards.prestart ? <TerminalProcessCards block={cards.prestart} /> : null}
+
       <div className={styles.block}>
         <h3 className={styles.blockTitle}>{t('heading')}</h3>
         <ProcessScale
@@ -75,6 +80,8 @@ export const TerminalProcess = () => {
           titleTag="span"
         />
       </div>
+
+      {cards.after ? <TerminalProcessCards block={cards.after} /> : null}
     </section>
   );
 };

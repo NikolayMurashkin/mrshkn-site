@@ -375,6 +375,13 @@
   min-width: 0;
 }
 
+.processBody {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  min-width: 0;
+}
+
 @media (max-width: 1080px) {
   .cols {
     grid-template-columns: minmax(0, 1fr);

@@ -2,17 +2,20 @@ import { useTranslations } from 'next-intl';
 import { PRICING_BASIC_GROUPS } from '@/content/pricing';
 import type { ServicePageProps } from '@/components/ServicePage/types';
 import { useServicePage } from '@/components/ServicePage/use-service-page';
+import { useProcessCards } from '@/components/use-process-cards';
 import { renderNowrap } from '@/designs/nowrap';
 import { ArrowRightIcon, ArrowUpRightIcon } from './icons';
 import { buttonClass } from './button';
 import { KineticServiceThreeD } from './ServiceThreeD';
 import { KineticServiceTiers } from './ServiceTiers';
+import { KineticProcessCards } from './ProcessCards';
 import styles from './ServicePage.module.scss';
 
 export const KineticServicePage = ({ service }: ServicePageProps) => {
   const t = useTranslations('servicePage');
   const pricing = useTranslations('pricing');
   const data = useServicePage(service);
+  const cards = useProcessCards(service);
 
   if (!data) {
     return null;
@@ -310,22 +313,39 @@ export const KineticServicePage = ({ service }: ServicePageProps) => {
                 {t('processHeading')}
               </h2>
             </div>
-            <ol
-              className={styles.steps}
+            <div
+              className={styles.processBody}
               data-testid="service-process"
             >
-              {steps.map((step, index) => (
-                <li
-                  className={styles.step}
-                  key={index}
-                >
-                  <span className={styles.stepIndex}>{String(index + 1).padStart(2, '0')}</span>
-                  <span className={styles.when}>{step.when}</span>
-                  <h3 className={styles.stepTitle}>{step.title}</h3>
-                  <p className={styles.stepText}>{step.text}</p>
-                </li>
-              ))}
-            </ol>
+              {cards.prestart ? (
+                <KineticProcessCards
+                  block={cards.prestart}
+                  narrow
+                />
+              ) : null}
+              <ol
+                className={styles.steps}
+                data-testid="service-steps"
+              >
+                {steps.map((step, index) => (
+                  <li
+                    className={styles.step}
+                    key={index}
+                  >
+                    <span className={styles.stepIndex}>{String(index + 1).padStart(2, '0')}</span>
+                    <span className={styles.when}>{step.when}</span>
+                    <h3 className={styles.stepTitle}>{step.title}</h3>
+                    <p className={styles.stepText}>{step.text}</p>
+                  </li>
+                ))}
+              </ol>
+              {cards.after ? (
+                <KineticProcessCards
+                  block={cards.after}
+                  narrow
+                />
+              ) : null}
+            </div>
           </section>
 
           <section

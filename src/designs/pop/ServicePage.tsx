@@ -1,6 +1,7 @@
 import { useTranslations } from 'next-intl';
 import type { ServicePageProps } from '@/components/ServicePage/types';
 import { useServicePage } from '@/components/ServicePage/use-service-page';
+import { useProcessCards } from '@/components/use-process-cards';
 import { splitStepWhen } from '../step-when';
 import { PopBasics } from './Basics';
 import { PopChecks } from './Checks';
@@ -9,11 +10,13 @@ import { PopOptions } from './Options';
 import { PopSteps } from './Steps';
 import { PopServiceThreeD } from './ServiceThreeD';
 import { PopServiceTiers } from './ServiceTiers';
+import { PopProcessCards } from './ProcessCards';
 import styles from './ServicePage.module.scss';
 
 export const PopServicePage = ({ service }: ServicePageProps) => {
   const t = useTranslations('servicePage');
   const data = useServicePage(service);
+  const cards = useProcessCards(service);
 
   if (!data) {
     return null;
@@ -296,12 +299,29 @@ export const PopServicePage = ({ service }: ServicePageProps) => {
             >
               {t('processHeading')}
             </h2>
-            <PopSteps
-              steps={steps.map(({ when, title, text }) => ({ id: title, ...splitStepWhen(when), title, text }))}
-              testId="service-process"
-              titleTag="h3"
-              narrow
-            />
+            <div
+              className={styles.processBody}
+              data-testid="service-process"
+            >
+              {cards.prestart ? (
+                <PopProcessCards
+                  block={cards.prestart}
+                  narrow
+                />
+              ) : null}
+              <PopSteps
+                steps={steps.map(({ when, title, text }) => ({ id: title, ...splitStepWhen(when), title, text }))}
+                testId="service-steps"
+                titleTag="h3"
+                narrow
+              />
+              {cards.after ? (
+                <PopProcessCards
+                  block={cards.after}
+                  narrow
+                />
+              ) : null}
+            </div>
           </section>
 
           {faq.length > 0 ? (

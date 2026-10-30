@@ -3,6 +3,7 @@ import type { ReviewFieldName, UseReview } from '@/components/Review/types';
 import type { BriefChoice } from '@/lib/brief/types';
 import type { ReviewDocumentText } from '@/lib/review/types';
 import type { ServiceThreeD, ServiceTiers } from '@/components/ServicePage/types';
+import type { ProcessCardsBlock } from '@/components/types';
 
 export type ButtonClassOptions = {
   primary?: boolean;
@@ -70,4 +71,11 @@ export type KineticServiceThreeDProps = {
 
 export type KineticServiceTiersProps = {
   data: ServiceTiers;
+};
+
+export type KineticProcessCardsProps = {
+  /** «Перед стартом» или «Гарантия после запуска»: заголовок блока `h3`, заголовки карточек `h4`. */
+  block: ProcessCardsBlock;
+  /** Колонка страницы услуги рядом с карточкой тарифа: заголовок блока мельче, чем на главной. */
+  narrow?: boolean;
 };

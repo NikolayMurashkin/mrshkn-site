@@ -1,6 +1,7 @@
 import type { ServiceOptionView, ServiceThreeD, ServiceTiers } from '@/components/ServicePage/types';
 import type { BriefChoice } from '@/lib/brief/types';
 import type { StepWhen } from '../types';
+import type { ProcessCardsBlock } from '@/components/types';
 
 /** Инлайновая иконка Swiss: стрелки и солнце — SVG 24×24 с квадратными концами, а не глиф (↗ нет в сабсете Geologica). */
 export type SwissIconProps = {
@@ -72,4 +73,9 @@ export type SwissServiceThreeDProps = {
 
 export type SwissServiceTiersProps = {
   data: ServiceTiers;
+};
+
+export type SwissProcessCardsProps = {
+  /** «Перед стартом» или «Гарантия после запуска»: заголовок блока `h3`, заголовки карточек `h4`. */
+  block: ProcessCardsBlock;
 };

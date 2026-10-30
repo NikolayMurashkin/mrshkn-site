@@ -1,5 +1,5 @@
 import type { ProcessPayment } from '@/content/types';
-import type { ProcessScaleLegendEntry } from './types';
+import type { ProcessCardsBlockName, ProcessScaleLegendEntry } from './types';
 
 export const THEME_STORAGE_KEY = 'theme';
 
@@ -29,3 +29,9 @@ export const PROCESS_SCALE_LEGEND: readonly ProcessScaleLegendEntry[] = [
   { kind: 'day', key: 'work' },
   { kind: 'pause', key: 'pause' },
 ];
+
+/** Ключи заголовков блоков карточек процесса: одни и те же на главной и страницах услуг. */
+export const PROCESS_CARDS_HEADINGS: Readonly<Record<ProcessCardsBlockName, string>> = {
+  prestart: 'process.prestartHeading',
+  after: 'process.afterHeading',
+};

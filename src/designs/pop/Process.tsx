@@ -1,13 +1,16 @@
 import { useTranslations } from 'next-intl';
 import { ProcessScale, processScaleClasses } from '@/components/ProcessScale';
 import { PROCESS_STEPS, PROMISES } from '@/content/process';
+import { useProcessCards } from '@/components/use-process-cards';
 import { POP_SCALE_SWATCHES } from './consts';
+import { PopProcessCards } from './ProcessCards';
 import { PopSteps } from './Steps';
 import styles from './Process.module.scss';
 
 export const PopProcess = () => {
   const t = useTranslations('process');
   const hero = useTranslations('hero');
+  const cards = useProcessCards();
   const steps = PROCESS_STEPS.map((step) => ({
     id: step.id,
     day: step.day,
@@ -50,6 +53,8 @@ export const PopProcess = () => {
         ))}
       </ul>
 
+      {cards.prestart ? <PopProcessCards block={cards.prestart} /> : null}
+
       <h3 className={styles.subhead}>{t('heading')}</h3>
 
       <ProcessScale
@@ -81,6 +86,8 @@ export const PopProcess = () => {
         testId="steps"
         titleTag="span"
       />
+
+      {cards.after ? <PopProcessCards block={cards.after} /> : null}
     </section>
   );
 };

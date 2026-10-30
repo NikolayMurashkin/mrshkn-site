@@ -395,6 +395,13 @@
   min-height: 54px;
 }
 
+.processBody {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-48);
+  min-width: 0;
+}
+
 @media (max-width: 1080px) {
   .content,
   .side {

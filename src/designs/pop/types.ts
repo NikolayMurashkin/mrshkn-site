@@ -1,6 +1,7 @@
 import type { ServiceOptionView, ServiceThreeD, ServiceTiers } from '@/components/ServicePage/types';
 import type { BriefChoice } from '@/lib/brief/types';
 import type { StepWhen } from '../types';
+import type { ProcessCardsBlock } from '@/components/types';
 
 /** Размер инлайновой иконки Pop: стрелки и звезда рисуются SVG, а не глифом — у Rubik нет стрелок. */
 export type PopIconProps = {
@@ -74,4 +75,11 @@ export type PopServiceThreeDProps = {
 
 export type PopServiceTiersProps = {
   data: ServiceTiers;
+};
+
+export type PopProcessCardsProps = {
+  /** «Перед стартом» или «Гарантия после запуска»: заголовок блока `h3`, заголовки карточек `h4`. */
+  block: ProcessCardsBlock;
+  /** Колонка страницы услуги рядом с карточкой тарифа: заголовок блока мельче, чем на главной. */
+  narrow?: boolean;
 };

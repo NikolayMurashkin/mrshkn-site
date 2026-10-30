@@ -18,7 +18,17 @@ const TOP_LEVEL_KEYS = [
   'steps',
   'promises',
   'scale',
+  'prestartHeading',
+  'afterHeading',
+  'prestart',
+  'after',
 ];
+
+/** Где лежат карточки «Перед стартом» и «Гарантия после запуска»: главная и семь услуг блока. */
+const CARD_BLOCKS = [
+  'process',
+  ...['landing', 'industry', 'business', 'miniApp', 'store', 'mvp', 'threeD'].map((id) => `services.${id}`),
+].flatMap((path) => [`${path}.prestart`, `${path}.after`]);
 
 /** Шкала «дни и паузы»: выбор стиля до дня 1, после каждого дня — пауза на ответ заказчика; оплаты — 30 / 40 / 30. */
 const SCALE = [
@@ -69,6 +79,25 @@ describe('четыре дня и обещания', () => {
       PROCESS_STEPS.map(() => ({ title: expect.any(String), text: expect.any(String), ordinal: expect.any(String) })),
     );
   });
+
+  it.each([...LOCALES])(
+    '%s: каждая карточка «Перед стартом» и «Гарантия после запуска» — ровно заголовок и текст',
+    (locale) => {
+      const texts = messages(locale);
+      const cards = CARD_BLOCKS.flatMap((path) => {
+        const block = valueAt(texts, path);
+        const entries = block !== null && typeof block === 'object' ? Object.entries(block) : [];
+
+        expect(entries.length, `${path}: карточки`).toBeGreaterThan(0);
+
+        return entries.map(([id, card]) => [`${path}.${id}`, card]);
+      });
+
+      expect(cards).toEqual(
+        cards.map(([path]) => [path, { title: expect.stringMatching(/\S/), text: expect.stringMatching(/\S/) }]),
+      );
+    },
+  );
 
   it.each([...LOCALES])('%s: четыре обещания D4 названы и расшифрованы', (locale) => {
     const promises = processSection(locale, 'promises');

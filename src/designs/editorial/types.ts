@@ -1,6 +1,7 @@
 import type { ServiceOptionView, ServiceThreeD, ServiceTiers } from '@/components/ServicePage/types';
 import type { BriefChoice } from '@/lib/brief/types';
 import type { EDITORIAL_WORKS_LAYOUTS, EDITORIAL_WORKS_SPREAD } from './consts';
+import type { ProcessCardsBlock } from '@/components/types';
 
 /** Инлайновая иконка Editorial: стрелки — тонкий SVG 24×24 со скругленными концами, под антикву. */
 export type EditorialIconProps = {
@@ -63,4 +64,11 @@ export type EditorialServiceThreeDProps = {
 
 export type EditorialServiceTiersProps = {
   data: ServiceTiers;
+};
+
+export type EditorialProcessCardsProps = {
+  /** «Перед стартом» или «Гарантия после запуска»: заголовок блока `h3`, заголовки карточек `h4`. */
+  block: ProcessCardsBlock;
+  /** Колонка страницы услуги рядом с карточкой тарифа: заголовок блока мельче, чем на главной. */
+  narrow?: boolean;
 };

@@ -212,7 +212,7 @@
       "hosting": "We set up the domain, a secure connection (SSL) and hosting and hand them over to you. You pay for the domain and hosting directly: the hosting provider monthly, the domain registrar once a year. Paid services, such as an online booking service, are also on you. Before the contract we work out what that comes to for you per year",
       "sources": "We hand over the source code: all the files your site, admin panel and app are built from. With them you can change the site and move to another developer without us",
       "revisions": "Three rounds of revisions included. A round is all your comments in one list, and we make all of it. Revisions are texts, photos, the color of individual blocks and buttons, the order of blocks; new pages, features and a whole new style are separate work",
-      "warranty": "A one-year warranty from the day of acceptance. We fix for free anything that broke through our fault or does not work the way the contract says. If the site stops opening through our fault, we get on it within 2 hours on weekdays from 10:00 to 19:00 Moscow time, and at night or on weekends the first working morning. Other bugs we start fixing within a working day and fix within 5 working days. If it is unclear whose fault a breakdown is, we first look for the cause for free and show it to you. Not covered: outages at the hosting provider and in third-party services (such as Telegram or a booking service) and breakdowns after changes to the site's code made by you or other people; such fixes cost $90 an hour. Texts and photos you change through the admin panel do not void the warranty.",
+      "warranty": "A one-year warranty from the day you accepted the work and signed the acceptance certificate. All year we fix for free anything that broke through our fault or does not work the way the contract says. Urgent means that through our fault the site does not open, leads do not arrive or payment fails. Wrote on a weekday from 10:00 to 19:00 Moscow time? We start fixing it within 2 hours; at night, on a weekend or a public holiday, within the first 2 hours of the next working day. Urgent issues come before all other work. Other bugs we start fixing within a working day and fix within 5 working days. If it is unclear whose fault a breakdown is, we first look for the cause for free and show it to you. The warranty does not cover outages at the hosting provider, the company whose server the site runs on, failures of third-party services such as Telegram or a booking service, or breakdowns after you or other people changed the site's code. Such repairs cost $90 an hour. Texts and photos you change through the admin panel do not void the warranty.",
       "training": "An admin panel, where you change texts, photos and prices yourself, and add or remove items: dishes, services, doctors. A guide and a screencast: how to work in the admin panel and read leads and analytics",
       "deadline": "The deadline goes into the contract. If we are late through our fault, we cut the price by 2% for each day of delay, 20% at most. That amount comes off the final payment. It is calculated from the price you pay under the contract, options included"
     },
@@ -323,7 +323,7 @@
       "brief": {
         "ordinal": "Day one",
         "title": "Choosing a style and the top of the home page",
-        "text": "Before the contract is signed, we send a list of what the site needs, such as texts, photos and a logo. No texts of your own? We write them from a questionnaire and a conversation with you. That is included in the price, but the deadline grows by 2 days. We still show the styles 2 working days after the prepayment, with headings from the questionnaire, and write the texts once you pick a style. By the date in the contract we need the 30% prepayment and the materials from the list. Paid but did not gather the materials in time? We move the start to the nearest free date. The prepayment is not lost. After the prepayment we draw the top of your home page in three styles: colors, fonts, the look of buttons and blocks. You pick one. We show three styles 2 working days after the prepayment and the materials, and three more 2 working days after your reply. These dates also go into the contract, and for each working day we are late with the styles we also cut the price by 2%, within the same overall cap of 20%. You can also take a ready-made style: one of the five styles of this site or the style of our demo. None of the three fit? We draw three more. None of those fit either? We refund the whole prepayment. The deadline starts the day you pick a style: that is day 1. On that day we build the top of the home page in the chosen style, the part people see first. It is already a working page you can open on your phone. You send your comments in one list: that is the first of three rounds of revisions. Comments on the rest of the page come in the second and third rounds."
+        "text": "Before the start we show the top of the home page, the part people see first, in three styles. You pick one, and from that day the deadline runs: that is day 1. On the same day we turn that top part into a real page you can open on your phone. You send your comments on it in one list: that is the first of three rounds of revisions. Comments on the rest of the page come in the second and third rounds."
       },
       "concept": {
         "ordinal": "Day two",
@@ -333,12 +333,12 @@
       "staging": {
         "ordinal": "Day three",
         "title": "Revisions and the speed test",
-        "text": "We make your second-round revisions. We set up analytics: GA4 counts the leads from the site, and tags in links show which ad or social network a visitor came from. We check the pages listed in the contract with Google's free speed test on a phone: each needs 90 out of 100 or more. If a page scores lower, we keep working at our own expense. We show you the result, you make the second payment of 40% and send the third and final list of comments."
+        "text": "We make your second-round revisions. We check how fast the site opens on a phone: Google's speed test gives a page a score from 0 to 100. Every page listed in the contract needs 90 or more in each of three runs in a row; otherwise we keep working at our own expense. We show you the result, you make the second payment of 40% and send the third and final list of comments."
       },
       "launch": {
         "ordinal": "Day four",
         "title": "Launch and a one-year warranty",
-        "text": "We make your third-round revisions. We move the site to your web address (domain): now everyone can see it. We test the speed again, this time on your address. If it is below 90 there, we find the cause and show it to you. We set up the hosting, so if on launch day the site is slow because of the hosting, that is our concern: we fix it for free. If a third-party widget you chose slows the site down, we already told you before the contract what score we promise. We hand over all the passwords and files of the site: it is fully yours. You sign the acceptance certificate, the document that confirms the work is accepted, with the result of this test attached. After acceptance you pay the final 30%. Then comes a one-year warranty from the day of acceptance: we fix for free anything that broke through our fault or does not work the way the contract says. If it is unclear whose fault a breakdown is, we first look into it for free and tell you the cause. If the cause is not in our work, we first name the price of the repair, never charge more than that, and fix it only if you agree. Outages at the hosting provider itself are not covered by the warranty."
+        "text": "We make your third-round revisions and move the site to your web address (domain): now everyone can see it. We test the speed again, this time there. We hand over the passwords and all the code: you can change the site or pass it to another developer without us. You sign the acceptance certificate, the document that confirms the work is accepted, and pay the final 30%. Then comes a one-year warranty."
       }
     },
     "promises": {
@@ -388,6 +388,64 @@
       },
       "pop": {
         "stop": "stop"
+      }
+    },
+    "prestartHeading": "Before the start",
+    "afterHeading": "Warranty after launch",
+    "prestart": {
+      "materials": {
+        "title": "Materials",
+        "text": "Before the contract we send a list of what the site needs: texts, photos, a logo. No texts of your own? We write them: we send a questionnaire about your business, talk with you and write the texts from your answers. That is included in the price, but the site will be ready 2 days later. This does not delay the styles, the options for how the site looks: we show them 2 working days after the prepayment and your answers to the questionnaire. No photos of your own? We put in temporary ones from photo banks, sites where businesses buy photos. Texts we write, you see every time we show you the site: check the prices, addresses and services in them, only you know those."
+      },
+      "prepayment": {
+        "title": "Prepayment and start date",
+        "text": "The contract sets a start date: the day we have time free for your site. By that date we need two things: the prepayment (30% of the price of the site) and the materials from our list. Missed that date? As soon as the prepayment and materials arrive, within a working day we name a new date: the nearest one when we have time. The prepayment is not lost: it counts toward the payment. The new date does not suit you? Until you pick a style, you can cancel and we refund the whole prepayment."
+      },
+      "style": {
+        "title": "Choosing a style",
+        "text": "A style is how the site looks: colors, fonts, the shape of buttons and blocks. 2 working days after the prepayment and the materials we show the top of your home page in three different styles. None of them fit? 2 working days after your reply we show three more. None of those fit either? We refund the whole prepayment within 10 working days and close the contract. You can also take a ready-made style right away: one of the five styles of this site (the “Style” button switches them) or the style of our demo, a ready example site we made to show what we do. Another client may pick a ready-made style too, but a style you pick from the ones drawn for you is yours alone."
+      },
+      "refusal": {
+        "title": "If you change your mind",
+        "text": "Changed your mind before picking a style? Email us, and within 10 working days we refund the whole prepayment. Changed your mind later? You pay only for the work done, at $90 for each hour of our work. We send a report: what was done and how many hours it took. Hours spent on the styles we drew before you picked one are not in the report. Until we have made your second list of changes, the amount is no more than 70% of the price. Payments you have made count: paid more than the work done costs? We return the extra within 10 working days. Paid less? You pay the rest."
+      },
+      "deadlines": {
+        "title": "Deadlines in the contract",
+        "text": "The contract sets the deadline for the site and the days when we show the styles. The deadline runs from the day you pick a style: the days for showing the styles do not count toward it. If we are late through our fault, the price goes down. Late showing the styles: 2% for each working day. Late handing over the site: 2% for each day, weekends and public holidays included. We count the percentage from the whole contract price including options, paid extras such as online payment. All delays together take off no more than 20%. We take this amount off the final payment: you simply pay less. For example, with a price of $2,000, being 2 working days late with the styles means $80 off."
+      },
+      "pauses": {
+        "title": "When the clock stops",
+        "text": "We pause the clock while we wait for your reply, materials or payment: the delivery date moves by the same number of days, with no penalties for you. Asked for something that is not in the contract, such as a new page? First we name the price and the new deadline; neither changes without your consent. If a round of edits needs more than 8 hours of work, we tell you before we start how many days the deadline moves: those days are not a delay. Any other delay is our fault, even if we are ill or busy with other orders: the price goes down for it, as in the “Deadlines in the contract” card. If the site is slow and we work on it to reach 90 points, those days count toward the deadline too: late because of that work? The price goes down too."
+      },
+      "silence": {
+        "title": "If we hear nothing for a long time",
+        "text": "If you do not reply or do not pay for 30 days in a row, we may close the contract by sending you an email. Closed before you pick a style? We refund the whole prepayment. Closed later? We settle up as in the “If you change your mind” card: you pay for the work done by the hour. For six months after the email you can come back and continue the same project at the same price."
+      }
+    },
+    "after": {
+      "speed": {
+        "title": "Speed",
+        "text": "On launch day we test the speed again with Google's test, this time on your address: it needs 90 out of 100 or more in each of three runs in a row. We attach the result to the acceptance certificate, the document that confirms the work is accepted. Below 90 because of our code or our hosting setup? We fix it for free and do not hand over the work until it reaches 90. A third-party widget, a window from another service such as online booking or a map, slows pages down. If you asked for one, we tell you before the contract what score we promise with it; if you ask later, we tell you before we add it."
+      },
+      "acceptance": {
+        "title": "Acceptance",
+        "text": "We email you the acceptance certificate, a document saying the work is accepted. Within 10 working days, sign it or tell us what does not work the way the contract says. We fix that at no extra charge within 5 working days and send the certificate again; wishes that are not in the contract are not a reason not to sign. No reply within 10 working days? The work counts as accepted, as if you had signed: the warranty starts that day, and it is time to pay the final 30%."
+      },
+      "warranty": {
+        "title": "A one-year warranty",
+        "text": "For a year from the date of the certificate we fix for free anything that broke through our fault or does not work the way the contract says: for example, requests stop coming from the form because of a bug in our code, or the speed drops below 90 points because of our code. If it is unclear whose fault it is, we first look for the cause for free and show it to you with evidence that another developer can check if you like. Texts and photos you change in the admin panel, the section for your own edits, do not void the warranty."
+      },
+      "repairs": {
+        "title": "How fast we fix things",
+        "text": "Message us on Telegram or by email; the contacts are in the contract. Urgent means that through our fault the site does not open, requests do not arrive or payment fails. Wrote on a weekday from 10:00 to 19:00 Moscow time? We start fixing it within 2 hours. Wrote at night, on a weekend or a public holiday? Within the first 2 hours of the next working day. Urgent issues come before all other work. Other bugs we start fixing within one working day of your message. We fully fix any bug within 5 working days at most."
+      },
+      "notOurFault": {
+        "title": "If it is not our fault",
+        "text": "Not our fault means, for example, that another developer changed the site's code, a third-party service (Telegram, an online booking service, a payment service) broke or changed its rules, or the hosting provider, the company the site's server is rented from, had an outage. We fix such things for a separate fee: $90 an hour. We first name the total, never charge more than that, and start the repair only if you agree."
+      },
+      "upkeep": {
+        "title": "Updates and backups",
+        "text": "Updates to the software the site runs on and backups, snapshots of the site with all its data, are part of support: a separate monthly fee, optional. The warranty does not depend on support: we fix bugs in our code for free all year without it. But without support we do not make backups. After a failure we rebuild the site from the code: free if the failure is our fault, $90 an hour if it is the hosting's. Whatever appeared after launch, requests and bookings in the admin panel, texts and photos you changed, may be lost. Requests that already reached you by email stay there. With support we restore the site from a backup, and that is part of the monthly fee."
       }
     }
   },
@@ -613,24 +671,80 @@
         {
           "when": "Before the start and day 1",
           "title": "Start and choosing a style",
-          "text": "Before the start we need a signed contract, the 30% prepayment and the materials from our list: texts, photos, a logo and brand colors, if you have them. Did not gather the materials in time? We move the start to the nearest free date, and the prepayment is not lost. No texts of your own? We write them, and the deadline grows by 2 days: we still show the styles 2 working days after the prepayment, with headings from the questionnaire, and write the texts once you pick a style. After the prepayment we take the sections and features from our demo for your industry and draw the top of your home page in three styles. You pick one or take a ready-made style: one of the styles of this site or the style of the demo. We show three styles 2 working days after the prepayment and the materials, and three more 2 working days after your reply. These dates also go into the contract, and for each working day we are late with the styles we also cut the price by 2%, within the same overall cap of 20%. Day 1 starts the day you pick a style."
+          "text": "We already have a ready example site for your industry, a demo. We take its sections and features, and draw the top of your home page in three styles. You pick one or take a ready-made style: one of the five styles of this site (the “Style” button) or the style of the demo. The deadline starts the day you pick a style, that is day 1: on that day we start building the site."
         },
         {
           "when": "Day 3",
           "title": "The site in your style",
-          "text": "We build the home page and the other pages in the chosen style, with your texts and photos, and show them to you. You send your comments in one list: that is the first of three rounds of revisions."
+          "text": "We build the home page and the other pages in the chosen style, with your texts and photos. The sections and features come from the demo for your industry, and the look from the style you picked. We show it to you, and you send your comments in one list: that is the first of three rounds of revisions."
         },
         {
           "when": "Day 5",
           "title": "The whole site on a temporary link",
-          "text": "We make your revisions and finish all the pages and the request form. The site runs on a temporary link: you check it and send the second list of comments. We make them, and then you make the second payment of 40%."
+          "text": "We make your revisions and finish all the pages and the form customers use to leave requests; the requests come to you by email, with a notice in Telegram. For now the site opens on a temporary link: you check it before launch and send the second list of comments. We fix everything on the list, and then you make the second payment of 40%."
         },
         {
           "when": "Day 7",
           "title": "Launch and a one-year warranty",
-          "text": "You send the third and final list of comments, and we make them. We move the site to your web address (domain). We test the speed with Google's test on your address and attach the result to the acceptance certificate. If it is below 90, we find the cause and show it to you. We set up the hosting, so its speed is our concern: we fix it for free. If a third-party widget you chose slows the site down, we already told you before the contract what score we promise. We hand over all the passwords and files of the site: it is fully yours. You accept the work and pay the final 30%."
+          "text": "We make your third and final list of comments. We move the site to your web address (domain) and test the speed with Google's test: it needs 90 out of 100 or more. We attach the result to the acceptance certificate. We hand over all the passwords and all the code, so you can change the site without us. You accept the work and pay the final 30%. Then comes a one-year warranty."
         }
-      ]
+      ],
+      "prestart": {
+        "materials": {
+          "title": "Materials",
+          "text": "Before the contract we send a list of what the site needs: texts, photos, a logo and brand colors, the ones on your sign or menu, if you have them. No texts of your own? We write them: we send a questionnaire about your business, talk with you and write the texts from your answers. That is included in the price, but the site will be ready 2 days later. This does not delay the styles, the options for how the site looks: we show them 2 working days after the prepayment and your answers to the questionnaire. No photos of your own? We put in temporary ones from photo banks, sites where businesses buy photos. Texts we write, you see every time we show you the site: check the prices, addresses and services in them, only you know those. If you are a clinic, you are responsible for the medical information on the site: descriptions of services, details of doctors and licenses."
+        },
+        "prepayment": {
+          "title": "Prepayment and start date",
+          "text": "The contract sets a start date: the day we have time free for your site. By that date we need two things: the prepayment (30% of the price of the site) and the materials from our list. Missed that date? As soon as the prepayment and materials arrive, within a working day we name a new date: the nearest one when we have time. The prepayment is not lost: it counts toward the payment. The new date does not suit you? Until you pick a style, you can cancel and we refund the whole prepayment."
+        },
+        "style": {
+          "title": "Choosing a style",
+          "text": "A style is how the site looks: colors, fonts, the shape of buttons and blocks. 2 working days after the prepayment and the materials we show the top of your home page in three different styles. None of them fit? 2 working days after your reply we show three more. None of those fit either? We refund the whole prepayment within 10 working days and close the contract. You can also take a ready-made style right away: one of the five styles of this site (the “Style” button switches them) or the style of our demo, a ready example site we made to show what we do. Another client may pick a ready-made style too, but a style you pick from the ones drawn for you is yours alone."
+        },
+        "refusal": {
+          "title": "If you change your mind",
+          "text": "Changed your mind before picking a style? Email us, and within 10 working days we refund the whole prepayment. Changed your mind later? You pay only for the work done, at $90 for each hour of our work. We send a report: what was done and how many hours it took. Hours spent on the styles we drew before you picked one are not in the report. Until we have made your second list of changes, the amount is no more than 70% of the price. Payments you have made count: paid more than the work done costs? We return the extra within 10 working days. Paid less? You pay the rest."
+        },
+        "deadlines": {
+          "title": "Deadlines in the contract",
+          "text": "The contract sets the deadline for the site and the days when we show the styles. The deadline runs from the day you pick a style: the days for showing the styles do not count toward it. If we are late through our fault, the price goes down. Late showing the styles: 2% for each working day. Late handing over the site: 2% for each day, weekends and public holidays included. We count the percentage from the whole contract price including options, paid extras such as online payment. All delays together take off no more than 20%. We take this amount off the final payment: you simply pay less. For example, with a price of $2,000, being 2 working days late with the styles means $80 off."
+        },
+        "pauses": {
+          "title": "When the clock stops",
+          "text": "We pause the clock while we wait for your reply, materials or payment: the delivery date moves by the same number of days, with no penalties for you. Asked for something that is not in the contract, such as a new page? First we name the price and the new deadline; neither changes without your consent. If a round of edits needs more than 8 hours of work, we tell you before we start how many days the deadline moves: those days are not a delay. Any other delay is our fault, even if we are ill or busy with other orders: the price goes down for it, as in the “Deadlines in the contract” card. If the site is slow and we work on it to reach 90 points, those days count toward the deadline too: late because of that work? The price goes down too."
+        },
+        "silence": {
+          "title": "If we hear nothing for a long time",
+          "text": "If you do not reply or do not pay for 30 days in a row, we may close the contract by sending you an email. Closed before you pick a style? We refund the whole prepayment. Closed later? We settle up as in the “If you change your mind” card: you pay for the work done by the hour. For six months after the email you can come back and continue the same project at the same price."
+        }
+      },
+      "after": {
+        "speed": {
+          "title": "Speed",
+          "text": "On launch day we test the speed again with Google's test, this time on your address: it needs 90 out of 100 or more in each of three runs in a row. We attach the result to the acceptance certificate, the document that confirms the work is accepted. Below 90 because of our code or our hosting setup? We fix it for free and do not hand over the work until it reaches 90. A third-party widget, a window from another service such as online booking or a map, slows pages down. If you asked for one, we tell you before the contract what score we promise with it; if you ask later, we tell you before we add it."
+        },
+        "acceptance": {
+          "title": "Acceptance",
+          "text": "We email you the acceptance certificate, a document saying the work is accepted. Within 10 working days, sign it or tell us what does not work the way the contract says. We fix that at no extra charge within 5 working days and send the certificate again; wishes that are not in the contract are not a reason not to sign. No reply within 10 working days? The work counts as accepted, as if you had signed: the warranty starts that day, and it is time to pay the final 30%."
+        },
+        "warranty": {
+          "title": "A one-year warranty",
+          "text": "For a year from the date of the certificate we fix for free anything that broke through our fault or does not work the way the contract says: for example, requests stop coming from the form because of a bug in our code, or the speed drops below 90 points because of our code. If it is unclear whose fault it is, we first look for the cause for free and show it to you with evidence that another developer can check if you like. Texts and photos you change in the admin panel, the section for your own edits, do not void the warranty."
+        },
+        "repairs": {
+          "title": "How fast we fix things",
+          "text": "Message us on Telegram or by email; the contacts are in the contract. Urgent means that through our fault the site does not open, requests do not arrive or payment fails. Wrote on a weekday from 10:00 to 19:00 Moscow time? We start fixing it within 2 hours. Wrote at night, on a weekend or a public holiday? Within the first 2 hours of the next working day. Urgent issues come before all other work. Other bugs we start fixing within one working day of your message. We fully fix any bug within 5 working days at most."
+        },
+        "notOurFault": {
+          "title": "If it is not our fault",
+          "text": "Not our fault means, for example, that another developer changed the site's code, a third-party service (Telegram, an online booking service, a payment service) broke or changed its rules, or the hosting provider, the company the site's server is rented from, had an outage. We fix such things for a separate fee: $90 an hour. We first name the total, never charge more than that, and start the repair only if you agree."
+        },
+        "upkeep": {
+          "title": "Updates and backups",
+          "text": "Updates to the software the site runs on and backups, snapshots of the site with all its data, are part of support: a separate monthly fee, optional. The warranty does not depend on support: we fix bugs in our code for free all year without it. But without support we do not make backups. After a failure we rebuild the site from the code: free if the failure is our fault, $90 an hour if it is the hosting's. Whatever appeared after launch, requests and bookings in the admin panel, texts and photos you changed, may be lost. Requests that already reached you by email stay there. With support we restore the site from a backup, and that is part of the monthly fee."
+        }
+      }
     },
     "landing": {
       "faq": [
@@ -659,7 +773,7 @@
         {
           "when": "Before the start and day 1",
           "title": "Choosing a style and the top of the home page",
-          "text": "Before the contract is signed, we send a list of what the site needs, such as texts, photos and a logo. No texts of your own? We write them from a questionnaire and a conversation with you. That is included in the price, but the deadline grows by 2 days. We still show the styles 2 working days after the prepayment, with headings from the questionnaire, and write the texts once you pick a style. By the date in the contract we need the 30% prepayment and the materials from the list. Paid but did not gather the materials in time? We move the start to the nearest free date. The prepayment is not lost. After the prepayment we draw the top of your home page in three styles: colors, fonts, the look of buttons and blocks. You pick one. We show three styles 2 working days after the prepayment and the materials, and three more 2 working days after your reply. These dates also go into the contract, and for each working day we are late with the styles we also cut the price by 2%, within the same overall cap of 20%. You can also take a ready-made style: one of the five styles of this site or the style of our demo. None of the three fit? We draw three more. None of those fit either? We refund the whole prepayment. The deadline starts the day you pick a style: that is day 1. On that day we build the top of the home page in the chosen style, the part people see first. It is already a working page you can open on your phone. You send your comments in one list: that is the first of three rounds of revisions. Comments on the rest of the page come in the second and third rounds."
+          "text": "Before the start we show the top of the home page, the part people see first, in three styles. You pick one, and from that day the deadline runs: that is day 1. On the same day we turn that top part into a real page you can open on your phone. You send your comments on it in one list: that is the first of three rounds of revisions. Comments on the rest of the page come in the second and third rounds."
         },
         {
           "when": "Day 2",
@@ -669,14 +783,70 @@
         {
           "when": "Day 3",
           "title": "Revisions and the speed test",
-          "text": "We make your second-round revisions. We set up analytics: GA4 counts the leads from the site, and tags in links show which ad or social network a visitor came from. We check the pages listed in the contract with Google's free speed test on a phone: each needs 90 out of 100 or more. If a page scores lower, we keep working at our own expense. We show you the result, you make the second payment of 40% and send the third and final list of comments."
+          "text": "We make your second-round revisions. We check how fast the site opens on a phone: Google's speed test gives a page a score from 0 to 100. Every page listed in the contract needs 90 or more in each of three runs in a row; otherwise we keep working at our own expense. We show you the result, you make the second payment of 40% and send the third and final list of comments."
         },
         {
           "when": "Day 4",
           "title": "Launch and a one-year warranty",
-          "text": "We make your third-round revisions. We move the site to your web address (domain): now everyone can see it. We test the speed again, this time on your address. If it is below 90 there, we find the cause and show it to you. We set up the hosting, so if on launch day the site is slow because of the hosting, that is our concern: we fix it for free. If a third-party widget you chose slows the site down, we already told you before the contract what score we promise. We hand over all the passwords and files of the site: it is fully yours. You sign the acceptance certificate, the document that confirms the work is accepted, with the result of this test attached. After acceptance you pay the final 30%. Then comes a one-year warranty from the day of acceptance: we fix for free anything that broke through our fault or does not work the way the contract says. If it is unclear whose fault a breakdown is, we first look into it for free and tell you the cause. If the cause is not in our work, we first name the price of the repair, never charge more than that, and fix it only if you agree. Outages at the hosting provider itself are not covered by the warranty."
+          "text": "We make your third-round revisions and move the site to your web address (domain): now everyone can see it. We test the speed again, this time there. We hand over the passwords and all the code: you can change the site or pass it to another developer without us. You sign the acceptance certificate, the document that confirms the work is accepted, and pay the final 30%. Then comes a one-year warranty."
         }
-      ]
+      ],
+      "prestart": {
+        "materials": {
+          "title": "Materials",
+          "text": "Before the contract we send a list of what the site needs: texts, photos, a logo. No texts of your own? We write them: we send a questionnaire about your business, talk with you and write the texts from your answers. That is included in the price, but the site will be ready 2 days later. This does not delay the styles, the options for how the site looks: we show them 2 working days after the prepayment and your answers to the questionnaire. No photos of your own? We put in temporary ones from photo banks, sites where businesses buy photos. Texts we write, you see every time we show you the site: check the prices, addresses and services in them, only you know those."
+        },
+        "prepayment": {
+          "title": "Prepayment and start date",
+          "text": "The contract sets a start date: the day we have time free for your site. By that date we need two things: the prepayment (30% of the price of the site) and the materials from our list. Missed that date? As soon as the prepayment and materials arrive, within a working day we name a new date: the nearest one when we have time. The prepayment is not lost: it counts toward the payment. The new date does not suit you? Until you pick a style, you can cancel and we refund the whole prepayment."
+        },
+        "style": {
+          "title": "Choosing a style",
+          "text": "A style is how the site looks: colors, fonts, the shape of buttons and blocks. 2 working days after the prepayment and the materials we show the top of your home page in three different styles. None of them fit? 2 working days after your reply we show three more. None of those fit either? We refund the whole prepayment within 10 working days and close the contract. You can also take a ready-made style right away: one of the five styles of this site (the “Style” button switches them) or the style of our demo, a ready example site we made to show what we do. Another client may pick a ready-made style too, but a style you pick from the ones drawn for you is yours alone."
+        },
+        "refusal": {
+          "title": "If you change your mind",
+          "text": "Changed your mind before picking a style? Email us, and within 10 working days we refund the whole prepayment. Changed your mind later? You pay only for the work done, at $90 for each hour of our work. We send a report: what was done and how many hours it took. Hours spent on the styles we drew before you picked one are not in the report. Until we have made your second list of changes, the amount is no more than 70% of the price. Payments you have made count: paid more than the work done costs? We return the extra within 10 working days. Paid less? You pay the rest."
+        },
+        "deadlines": {
+          "title": "Deadlines in the contract",
+          "text": "The contract sets the deadline for the site and the days when we show the styles. The deadline runs from the day you pick a style: the days for showing the styles do not count toward it. If we are late through our fault, the price goes down. Late showing the styles: 2% for each working day. Late handing over the site: 2% for each day, weekends and public holidays included. We count the percentage from the whole contract price including options, paid extras such as online payment. All delays together take off no more than 20%. We take this amount off the final payment: you simply pay less. For example, with a price of $2,000, being 2 working days late with the styles means $80 off."
+        },
+        "pauses": {
+          "title": "When the clock stops",
+          "text": "We pause the clock while we wait for your reply, materials or payment: the delivery date moves by the same number of days, with no penalties for you. Asked for something that is not in the contract, such as a new page? First we name the price and the new deadline; neither changes without your consent. If a round of edits needs more than 8 hours of work, we tell you before we start how many days the deadline moves: those days are not a delay. Any other delay is our fault, even if we are ill or busy with other orders: the price goes down for it, as in the “Deadlines in the contract” card. If the site is slow and we work on it to reach 90 points, those days count toward the deadline too: late because of that work? The price goes down too."
+        },
+        "silence": {
+          "title": "If we hear nothing for a long time",
+          "text": "If you do not reply or do not pay for 30 days in a row, we may close the contract by sending you an email. Closed before you pick a style? We refund the whole prepayment. Closed later? We settle up as in the “If you change your mind” card: you pay for the work done by the hour. For six months after the email you can come back and continue the same project at the same price."
+        }
+      },
+      "after": {
+        "speed": {
+          "title": "Speed",
+          "text": "On launch day we test the speed again with Google's test, this time on your address: it needs 90 out of 100 or more in each of three runs in a row. We attach the result to the acceptance certificate, the document that confirms the work is accepted. Below 90 because of our code or our hosting setup? We fix it for free and do not hand over the work until it reaches 90. A third-party widget, a window from another service such as online booking or a map, slows pages down. If you asked for one, we tell you before the contract what score we promise with it; if you ask later, we tell you before we add it."
+        },
+        "acceptance": {
+          "title": "Acceptance",
+          "text": "We email you the acceptance certificate, a document saying the work is accepted. Within 10 working days, sign it or tell us what does not work the way the contract says. We fix that at no extra charge within 5 working days and send the certificate again; wishes that are not in the contract are not a reason not to sign. No reply within 10 working days? The work counts as accepted, as if you had signed: the warranty starts that day, and it is time to pay the final 30%."
+        },
+        "warranty": {
+          "title": "A one-year warranty",
+          "text": "For a year from the date of the certificate we fix for free anything that broke through our fault or does not work the way the contract says: for example, requests stop coming from the form because of a bug in our code, or the speed drops below 90 points because of our code. If it is unclear whose fault it is, we first look for the cause for free and show it to you with evidence that another developer can check if you like. Texts and photos you change in the admin panel, the section for your own edits, do not void the warranty."
+        },
+        "repairs": {
+          "title": "How fast we fix things",
+          "text": "Message us on Telegram or by email; the contacts are in the contract. Urgent means that through our fault the site does not open, requests do not arrive or payment fails. Wrote on a weekday from 10:00 to 19:00 Moscow time? We start fixing it within 2 hours. Wrote at night, on a weekend or a public holiday? Within the first 2 hours of the next working day. Urgent issues come before all other work. Other bugs we start fixing within one working day of your message. We fully fix any bug within 5 working days at most."
+        },
+        "notOurFault": {
+          "title": "If it is not our fault",
+          "text": "Not our fault means, for example, that another developer changed the site's code, a third-party service (Telegram, an online booking service, a payment service) broke or changed its rules, or the hosting provider, the company the site's server is rented from, had an outage. We fix such things for a separate fee: $90 an hour. We first name the total, never charge more than that, and start the repair only if you agree."
+        },
+        "upkeep": {
+          "title": "Updates and backups",
+          "text": "Updates to the software the site runs on and backups, snapshots of the site with all its data, are part of support: a separate monthly fee, optional. The warranty does not depend on support: we fix bugs in our code for free all year without it. But without support we do not make backups. After a failure we rebuild the site from the code: free if the failure is our fault, $90 an hour if it is the hosting's. Whatever appeared after launch, requests and bookings in the admin panel, texts and photos you changed, may be lost. Requests that already reached you by email stay there. With support we restore the site from a backup, and that is part of the monthly fee."
+        }
+      }
     },
     "business": {
       "faq": [
@@ -709,24 +879,80 @@
         {
           "when": "Days 1–2",
           "title": "Style, pages and what goes on them",
-          "text": "Before the start we need a signed contract, the 30% prepayment and the materials from our list. Did not gather the materials in time? We move the start to the nearest free date, and the prepayment is not lost. No texts of your own? We write them from a questionnaire and a conversation with you, and the deadline grows by 4 days: we still show the styles 2 working days after the prepayment, with headings from the questionnaire, and write the texts once you pick a style. After the prepayment we draw the top of your home page in three styles. You pick one or take a ready-made style: one of the five styles of this site or the style of our demo. We show three styles 2 working days after the prepayment and the materials, and three more 2 working days after your reply. These dates also go into the contract, and for each working day we are late with the styles we also cut the price by 2%, within the same overall cap of 20%. The deadline runs from the day you pick a style. In the first two days we decide together which pages there will be (up to seven) and what goes on each."
+          "text": "Before the start we show the top of the home page in three styles; you pick one or take a ready-made one, and the deadline runs from that choice. In the first two days we decide together which pages there will be, up to seven, and what goes on each: sections, texts, photos, the request form. If the list includes something that is not in the estimate, we name the price first; the price does not change without your consent."
         },
         {
           "when": "Days 3–6",
           "title": "Design of the home page and other pages",
-          "text": "We draw the home page and the other pages in the chosen style and show them to you. You send your comments in one list: that is the first of three rounds of revisions."
+          "text": "We draw the home page and the other pages in the chosen style, following the list of pages we agreed on together in the first two days. We show you drawings of all the pages, so you see the whole site before it is built. You send your comments in one list: that is the first of three rounds of revisions."
         },
         {
           "when": "Days 7–11",
           "title": "All the pages and the admin panel",
-          "text": "We build all the pages, the admin panel, the lead forms and analytics. The site runs on a temporary link: you check it and send the second list of comments. We make them, and then you make the second payment of 40%."
+          "text": "We build all the pages, the request forms, analytics (how many requests came in and from where) and the admin panel, the section where you change texts, photos and prices yourself. For now the site opens on a temporary link: you check it before launch and send the second list of comments. We make them, and then you make the second payment of 40%."
         },
         {
           "when": "Days 12–14",
           "title": "Testing and launch",
-          "text": "You send the third and final list of comments, and we make them. We move the site to your web address (domain). We test the speed with Google's test on your address and attach the result to the acceptance certificate. If it is below 90, we find the cause and show it to you. We set up the hosting, so its speed is our concern: we fix it for free. If a third-party widget you chose slows the site down, we already told you before the contract what score we promise. We give you a guide and a screencast: how to change texts, photos and prices in the admin panel and read leads. You accept the work and pay the final 30%. Then comes a one-year warranty."
+          "text": "We make your third and final list of comments. We move the site to your web address (domain), test the speed with Google's test and attach the result to the acceptance certificate. We give you a guide and a screencast: how to change texts, photos and prices in the admin panel and read requests. You accept the work and pay the final 30%. Then comes a one-year warranty."
         }
-      ]
+      ],
+      "prestart": {
+        "materials": {
+          "title": "Materials",
+          "text": "Before the contract we send a list of what the site needs: texts, photos, a logo. No texts of your own? We write them: we send a questionnaire about your business, talk with you and write the texts from your answers. That is included in the price, but the site will be ready 4 days later. This does not delay the styles, the options for how the site looks: we show them 2 working days after the prepayment and your answers to the questionnaire. No photos of your own? We put in temporary ones from photo banks, sites where businesses buy photos. Texts we write, you see every time we show you the site: check the prices, addresses and services in them, only you know those."
+        },
+        "prepayment": {
+          "title": "Prepayment and start date",
+          "text": "The contract sets a start date: the day we have time free for your site. By that date we need two things: the prepayment (30% of the price of the site) and the materials from our list. Missed that date? As soon as the prepayment and materials arrive, within a working day we name a new date: the nearest one when we have time. The prepayment is not lost: it counts toward the payment. The new date does not suit you? Until you pick a style, you can cancel and we refund the whole prepayment."
+        },
+        "style": {
+          "title": "Choosing a style",
+          "text": "A style is how the site looks: colors, fonts, the shape of buttons and blocks. 2 working days after the prepayment and the materials we show the top of your home page in three different styles. None of them fit? 2 working days after your reply we show three more. None of those fit either? We refund the whole prepayment within 10 working days and close the contract. You can also take a ready-made style right away: one of the five styles of this site (the “Style” button switches them) or the style of our demo, a ready example site we made to show what we do. Another client may pick a ready-made style too, but a style you pick from the ones drawn for you is yours alone."
+        },
+        "refusal": {
+          "title": "If you change your mind",
+          "text": "Changed your mind before picking a style? Email us, and within 10 working days we refund the whole prepayment. Changed your mind later? You pay only for the work done, at $90 for each hour of our work. We send a report: what was done and how many hours it took. Hours spent on the styles we drew before you picked one are not in the report. Until we have made your second list of changes, the amount is no more than 70% of the price. Payments you have made count: paid more than the work done costs? We return the extra within 10 working days. Paid less? You pay the rest."
+        },
+        "deadlines": {
+          "title": "Deadlines in the contract",
+          "text": "The contract sets the deadline for the site and the days when we show the styles. The deadline runs from the day you pick a style: the days for showing the styles do not count toward it. If we are late through our fault, the price goes down. Late showing the styles: 2% for each working day. Late handing over the site: 2% for each day, weekends and public holidays included. We count the percentage from the whole contract price including options, paid extras such as online payment. All delays together take off no more than 20%. We take this amount off the final payment: you simply pay less. For example, with a price of $2,000, being 2 working days late with the styles means $80 off."
+        },
+        "pauses": {
+          "title": "When the clock stops",
+          "text": "We pause the clock while we wait for your reply, materials or payment: the delivery date moves by the same number of days, with no penalties for you. Asked for something that is not in the contract, such as a new page? First we name the price and the new deadline; neither changes without your consent. If a round of edits needs more than 8 hours of work, we tell you before we start how many days the deadline moves: those days are not a delay. Any other delay is our fault, even if we are ill or busy with other orders: the price goes down for it, as in the “Deadlines in the contract” card. If the site is slow and we work on it to reach 90 points, those days count toward the deadline too: late because of that work? The price goes down too."
+        },
+        "silence": {
+          "title": "If we hear nothing for a long time",
+          "text": "If you do not reply or do not pay for 30 days in a row, we may close the contract by sending you an email. Closed before you pick a style? We refund the whole prepayment. Closed later? We settle up as in the “If you change your mind” card: you pay for the work done by the hour. For six months after the email you can come back and continue the same project at the same price."
+        }
+      },
+      "after": {
+        "speed": {
+          "title": "Speed",
+          "text": "On launch day we test the speed again with Google's test, this time on your address: it needs 90 out of 100 or more in each of three runs in a row. We attach the result to the acceptance certificate, the document that confirms the work is accepted. Below 90 because of our code or our hosting setup? We fix it for free and do not hand over the work until it reaches 90. A third-party widget, a window from another service such as online booking or a map, slows pages down. If you asked for one, we tell you before the contract what score we promise with it; if you ask later, we tell you before we add it."
+        },
+        "acceptance": {
+          "title": "Acceptance",
+          "text": "We email you the acceptance certificate, a document saying the work is accepted. Within 10 working days, sign it or tell us what does not work the way the contract says. We fix that at no extra charge within 5 working days and send the certificate again; wishes that are not in the contract are not a reason not to sign. No reply within 10 working days? The work counts as accepted, as if you had signed: the warranty starts that day, and it is time to pay the final 30%."
+        },
+        "warranty": {
+          "title": "A one-year warranty",
+          "text": "For a year from the date of the certificate we fix for free anything that broke through our fault or does not work the way the contract says: for example, requests stop coming from the form because of a bug in our code, or the speed drops below 90 points because of our code. If it is unclear whose fault it is, we first look for the cause for free and show it to you with evidence that another developer can check if you like. Texts and photos you change in the admin panel, the section for your own edits, do not void the warranty."
+        },
+        "repairs": {
+          "title": "How fast we fix things",
+          "text": "Message us on Telegram or by email; the contacts are in the contract. Urgent means that through our fault the site does not open, requests do not arrive or payment fails. Wrote on a weekday from 10:00 to 19:00 Moscow time? We start fixing it within 2 hours. Wrote at night, on a weekend or a public holiday? Within the first 2 hours of the next working day. Urgent issues come before all other work. Other bugs we start fixing within one working day of your message. We fully fix any bug within 5 working days at most."
+        },
+        "notOurFault": {
+          "title": "If it is not our fault",
+          "text": "Not our fault means, for example, that another developer changed the site's code, a third-party service (Telegram, an online booking service, a payment service) broke or changed its rules, or the hosting provider, the company the site's server is rented from, had an outage. We fix such things for a separate fee: $90 an hour. We first name the total, never charge more than that, and start the repair only if you agree."
+        },
+        "upkeep": {
+          "title": "Updates and backups",
+          "text": "Updates to the software the site runs on and backups, snapshots of the site with all its data, are part of support: a separate monthly fee, optional. The warranty does not depend on support: we fix bugs in our code for free all year without it. But without support we do not make backups. After a failure we rebuild the site from the code: free if the failure is our fault, $90 an hour if it is the hosting's. Whatever appeared after launch, requests and bookings in the admin panel, texts and photos you changed, may be lost. Requests that already reached you by email stay there. With support we restore the site from a backup, and that is part of the monthly fee."
+        }
+      }
     },
     "miniApp": {
       "faq": [
@@ -751,24 +977,80 @@
         {
           "when": "Before the start",
           "title": "The task, features and choosing a style",
-          "text": "Before the start we go through the brief in writing: what the app should do (booking, bonuses, a catalog, ordering). In reply we send the estimate, the deadline and a draft contract. After the 30% prepayment we draw the main screen of the app in three styles: colors, fonts, the look of buttons. You pick one or take a ready-made style: the style of one of our demos. We show three styles 2 working days after the prepayment and the materials for the main screen from our list, and three more 2 working days after your reply. These dates also go into the contract, and for each working day we are late with the styles we also cut the price by 2%, within the same overall cap of 20%. None of the three fit? We draw three more. None of those fit either? We refund the whole prepayment. The contract deadline starts the day you pick a style."
+          "text": "Before the start we talk: you tell us what the app should do, such as book customers, award bonuses, show products or take orders. In reply we send the estimate (the price item by item), the deadline and a draft contract. Then we show the main screen in three styles, you pick one, and from that day the deadline runs."
         },
         {
           "when": "Week 1",
           "title": "The customer's steps and screen drawings",
-          "text": "The customer path inside the messenger, app screens, the first round of revisions."
+          "text": "We work out what a customer does in the app step by step, from opening it for the first time to booking or ordering. We draw all the screens in the chosen style, so you see the whole app before it is built. We show them to you, and you send your comments in one list: that is the first of three rounds of revisions."
         },
         {
           "when": "Weeks 2–3",
           "title": "App, bot and admin panel",
-          "text": "We write the app once and connect it to two messengers, Telegram and MAX. You review it and send the second list of comments. We make them, and then you make the second payment of 40%."
+          "text": "We write the app once and connect it to Telegram and MAX. We make a bot, a chat with your business name, through which customers open the app; if the name is taken, we pick a similar one together with you. We also make an admin panel where you see bookings and orders. You try the app and send the second list of comments. We make them, and you make the second payment of 40%."
         },
         {
           "when": "Week 4",
           "title": "Testing and launch",
-          "text": "We check that the app works in both Telegram and MAX. If MAX is still reviewing the app, we sign the acceptance certificate for Telegram and finish the MAX launch after the review at no extra cost. We make your third and final list of comments. We hand over all the passwords and access. You sign the acceptance certificate and pay the final 30%. Then comes a one-year warranty."
+          "text": "We check that the app works in Telegram and MAX. If MAX is still reviewing it, we sign the acceptance certificate for Telegram and finish the MAX launch at no extra cost: if MAX sends it back because of our mistake, we fix it and submit it again. We make your third list of comments and hand over the passwords and access. You sign the certificate and pay the final 30%. Then comes a one-year warranty."
         }
       ],
+      "prestart": {
+        "kinds": {
+          "title": "Custom or industry app",
+          "text": "The steps below are for a custom app, built for your tasks. There is also an industry app: a ready-made app from our booking and loyalty-points modules that we set up for you. It takes 7 days and follows the same rules (three styles, prepayment, a one-year warranty), only its price includes Telegram alone, and MAX costs extra; the amount is in the price list."
+        },
+        "materials": {
+          "title": "Materials",
+          "text": "Before the contract we send a list of what the main screen needs, the screen a customer sees first: a logo, photos, texts. The rest, such as a list of services with prices, comes by the dates in the contract: the full list will be there. If you are late with them, the delivery date moves by the same number of days, with no penalties for you."
+        },
+        "prepayment": {
+          "title": "Prepayment and start date",
+          "text": "The contract sets a start date: the day we have time free for your order. By that date we need two things: the prepayment (30% of the price in the contract) and the materials for the main screen, the screen a customer sees first. Missed that date? As soon as the prepayment and materials arrive, within a working day we name a new date: the nearest one when we have time. The prepayment is not lost: it counts toward the payment. The new date does not suit you? Until you pick a style, you can cancel and we refund the whole prepayment."
+        },
+        "style": {
+          "title": "Choosing a style",
+          "text": "A style is how the app looks: colors, fonts, the shape of buttons and blocks. 2 working days after the prepayment and the materials we show the main screen in three different styles. None of them fit? 2 working days after your reply we show three more. None of those fit either? We refund the whole prepayment within 10 working days and close the contract. You can also take a ready-made style right away: the style of one of our demos, the example apps in the “Try it” section at the top of this page. Another client may pick a ready-made style too, but a style you pick from the ones drawn for you is yours alone."
+        },
+        "refusal": {
+          "title": "If you change your mind",
+          "text": "Changed your mind before picking a style? Email us, and within 10 working days we refund the whole prepayment. Changed your mind later? You pay only for the work done, at $90 for each hour of our work. We send a report: what was done and how many hours it took. Hours spent on the styles we drew before you picked one are not in the report. Until we have made your second list of changes, the amount is no more than 70% of the price. Payments you have made count: paid more than the work done costs? We return the extra within 10 working days. Paid less? You pay the rest."
+        },
+        "deadlines": {
+          "title": "Deadlines in the contract",
+          "text": "The contract sets the deadline for the app and the days when we show the styles. The deadline runs from the day you pick a style: the days for showing the styles do not count toward it. If we are late through our fault, the price goes down. Late showing the styles: 2% for each working day. Late handing over the app: 2% for each day, weekends and public holidays included. We count the percentage from the whole contract price including options, paid extras such as online payment. All delays together take off no more than 20%. We take this amount off the final payment: you simply pay less. For example, with a price of $2,000, being 2 working days late with the styles means $80 off."
+        },
+        "pauses": {
+          "title": "When the clock stops",
+          "text": "We pause the clock while we wait for your reply, materials or payment: the delivery date moves by the same number of days, with no penalties for you. MAX reviews every app before publishing, and it decides how long that takes; while the review is on, the clock is paused too. Asked for something that is not in the contract, such as a new screen? First we name the price and the new deadline; neither changes without your consent. If a round of edits needs more than 8 hours of work, we tell you before we start how many days the deadline moves: those days are not a delay. Any other delay is our fault, even if we are ill or busy with other orders: the price goes down for it, as in the “Deadlines in the contract” card."
+        },
+        "silence": {
+          "title": "If we hear nothing for a long time",
+          "text": "If you do not reply or do not pay for 30 days in a row, we may close the contract by sending you an email. Closed before you pick a style? We refund the whole prepayment. Closed later? We settle up as in the “If you change your mind” card: you pay for the work done by the hour. For six months after the email you can come back and continue the same project at the same price."
+        }
+      },
+      "after": {
+        "acceptance": {
+          "title": "Acceptance",
+          "text": "We email you the acceptance certificate, a document saying the work is accepted. Within 10 working days, sign it or tell us what does not work the way the contract says. We fix that at no extra charge within 5 working days and send the certificate again; wishes that are not in the contract are not a reason not to sign. No reply within 10 working days? The work counts as accepted, as if you had signed: the warranty starts that day, and it is time to pay the final 30%."
+        },
+        "warranty": {
+          "title": "A one-year warranty",
+          "text": "For a year from the date of the certificate we fix for free anything that broke through our fault or does not work the way the contract says: for example, bookings stop coming in because of a bug in our code. If it is unclear whose fault it is, we first look for the cause for free and show it to you with evidence that another developer can check if you like. Texts and photos you change in the admin panel, the section for your own edits, do not void the warranty."
+        },
+        "repairs": {
+          "title": "How fast we fix things",
+          "text": "Message us on Telegram or by email; the contacts are in the contract. Urgent means that through our fault the app does not open, bookings do not arrive or payment fails. Wrote on a weekday from 10:00 to 19:00 Moscow time? We start fixing it within 2 hours. Wrote at night, on a weekend or a public holiday? Within the first 2 hours of the next working day. Urgent issues come before all other work. Other bugs we start fixing within one working day of your message. We fully fix any bug within 5 working days at most."
+        },
+        "notOurFault": {
+          "title": "If it is not our fault",
+          "text": "Not our fault means, for example, that another developer changed the app's code, a third-party service (Telegram, MAX, a payment service) broke or changed its rules, or the hosting provider, the company the app's server is rented from, had an outage. We fix such things for a separate fee: $90 an hour. We first name the total, never charge more than that, and start the repair only if you agree."
+        },
+        "upkeep": {
+          "title": "Updates and backups",
+          "text": "Updates to the software the app runs on and backups, snapshots of the app with all its data, are part of support: a separate monthly fee, optional. The warranty does not depend on support: we fix bugs in our code for free all year without it. But without support we do not make backups. After a failure we rebuild the app from the code: free if the failure is our fault, $90 an hour if it is the hosting's. Whatever appeared after launch, bookings, orders and edits in the admin panel, may be lost. With support we restore the app from a backup, and that is part of the monthly fee."
+        }
+      },
       "basics": {
         "note": "Included in the price of the app",
         "items": [
@@ -809,24 +1091,80 @@
         {
           "when": "Before the start",
           "title": "The task, the contract and choosing a style",
-          "text": "Before the start you send a brief: what you sell and how you deliver it. In reply we send the estimate, the deadline and a draft contract. After the 30% prepayment we draw the home page of the store in three styles: colors, fonts, the look of buttons and blocks. You pick one or take a ready-made style: one of the five styles of this site. We show three styles 2 working days after the prepayment and the materials for the home page (the logo, photos and texts from our list), and three more 2 working days after your reply. These dates also go into the contract, and for each working day we are late with the styles we also cut the price by 2%, within the same overall cap of 20%. None of the three fit? We draw three more. None of those fit either? We refund the whole prepayment. The contract deadline starts the day you pick a style. You send the product catalog by the date we put in the contract."
+          "text": "Before the start you tell us what products you have and how you deliver them. In reply we send the estimate (the price item by item), the deadline and a draft contract. Then we show the home page of the store in three styles, you pick one, and from that day the deadline runs. You send the product catalog by the date in the contract."
         },
         {
           "when": "Weeks 1–3",
           "title": "Design",
-          "text": "The home page, a product card, the cart, the first round of revisions."
+          "text": "We draw the home page, a product page and the cart in the chosen style. These drawings show how a shopper finds a product, looks at its photos and price and puts it in the cart. We show them to you, and you send your comments in one list: that is the first of three rounds of revisions."
         },
         {
           "when": "Weeks 3–6",
           "title": "We build the store",
-          "text": "We build the product catalog, cart, payment and delivery. We build the order admin panel, the section where you see and process orders. You send the second list of comments. We make them, and then you make the second payment of 40%."
+          "text": "We build the product catalog, cart, payment and delivery. We build the order admin panel, the section where you see and process orders. For now the store opens on a temporary link: you check it before launch and send the second list of comments. We make them, and then you make the second payment of 40%."
         },
         {
           "when": "Weeks 6–7",
           "title": "Testing and launch",
-          "text": "We place test orders and check that an order goes all the way from the cart to you. We make your third and final list of comments. We move the store to your web address (domain). We give you a guide and a screencast on handling orders. We test the speed with Google's test on your address: it needs 90 out of 100 or more, and the result goes with the acceptance certificate. If it is below 90, we find the cause and show it to you. We set up the hosting, so its speed is our concern: we fix it for free. If a third-party widget you chose slows the site down, we already told you before the contract what score we promise. You sign the acceptance certificate and pay the final 30%. Then comes a one-year warranty."
+          "text": "We place test orders and check that an order goes all the way from the cart to you. We make your third and final list of comments and move the store to your web address (domain). We give you a guide and a screencast on handling orders. You sign the acceptance certificate and pay the final 30%. Then comes a one-year warranty."
         }
-      ]
+      ],
+      "prestart": {
+        "materials": {
+          "title": "Materials",
+          "text": "Before the contract we send a list of what the home page needs: a logo, photos and texts. You send the product catalog (names, prices, photos and descriptions) as a spreadsheet, for example in Excel, by the date in the contract, and we add it to the store. Up to 100 products are included in the price; for more, we work out the extra charge separately. If you are late with the catalog, the delivery date moves by the same number of days, with no penalties for you."
+        },
+        "prepayment": {
+          "title": "Prepayment and start date",
+          "text": "The contract sets a start date: the day we have time free for your store. By that date we need two things: the prepayment (30% of the price in the contract) and the materials for the home page of the store, the page a shopper sees first. Missed that date? As soon as the prepayment and materials arrive, within a working day we name a new date: the nearest one when we have time. The prepayment is not lost: it counts toward the payment. The new date does not suit you? Until you pick a style, you can cancel and we refund the whole prepayment."
+        },
+        "style": {
+          "title": "Choosing a style",
+          "text": "A style is how the store looks: colors, fonts, the shape of buttons and blocks. 2 working days after the prepayment and the materials we show the home page of the store in three different styles. None of them fit? 2 working days after your reply we show three more. None of those fit either? We refund the whole prepayment within 10 working days and close the contract. You can also take a ready-made style right away: one of the five styles of this site (the “Style” button switches them). Another client may pick a ready-made style too, but a style you pick from the ones drawn for you is yours alone."
+        },
+        "refusal": {
+          "title": "If you change your mind",
+          "text": "Changed your mind before picking a style? Email us, and within 10 working days we refund the whole prepayment. Changed your mind later? You pay only for the work done, at $90 for each hour of our work. We send a report: what was done and how many hours it took. Hours spent on the styles we drew before you picked one are not in the report. Until we have made your second list of changes, the amount is no more than 70% of the price. Payments you have made count: paid more than the work done costs? We return the extra within 10 working days. Paid less? You pay the rest."
+        },
+        "deadlines": {
+          "title": "Deadlines in the contract",
+          "text": "The contract sets the deadline for the store and the days when we show the styles. The deadline runs from the day you pick a style: the days for showing the styles do not count toward it. If we are late through our fault, the price goes down. Late showing the styles: 2% for each working day. Late handing over the store: 2% for each day, weekends and public holidays included. We count the percentage from the whole contract price including options, paid extras such as online payment. All delays together take off no more than 20%. We take this amount off the final payment: you simply pay less. For example, with a price of $2,000, being 2 working days late with the styles means $80 off."
+        },
+        "pauses": {
+          "title": "When the clock stops",
+          "text": "We pause the clock while we wait for your reply, materials or payment: the delivery date moves by the same number of days, with no penalties for you. Asked for something that is not in the contract, such as a new section? First we name the price and the new deadline; neither changes without your consent. If a round of edits needs more than 8 hours of work, we tell you before we start how many days the deadline moves: those days are not a delay. Any other delay is our fault, even if we are ill or busy with other orders: the price goes down for it, as in the “Deadlines in the contract” card. If the store is slow and we work on it to reach 90 points, those days count toward the deadline too: late because of that work? The price goes down too."
+        },
+        "silence": {
+          "title": "If we hear nothing for a long time",
+          "text": "If you do not reply or do not pay for 30 days in a row, we may close the contract by sending you an email. Closed before you pick a style? We refund the whole prepayment. Closed later? We settle up as in the “If you change your mind” card: you pay for the work done by the hour. For six months after the email you can come back and continue the same project at the same price."
+        }
+      },
+      "after": {
+        "speed": {
+          "title": "Speed",
+          "text": "Before handover we check how fast the store opens on a phone with Google's test on your address: it needs 90 out of 100 or more in each of three runs in a row. We attach the result to the acceptance certificate, the document that confirms the work is accepted. Below 90 because of our code or our hosting setup? We fix it for free and do not hand over the work until it reaches 90. A third-party widget, a window from another service such as a chat, slows pages down. If you asked for one, we tell you before the contract what score we promise with it; if you ask later, we tell you before we add it. Which pages we test, and how we count the payment and delivery map widgets, we state in the estimate before the contract."
+        },
+        "acceptance": {
+          "title": "Acceptance",
+          "text": "We email you the acceptance certificate, a document saying the work is accepted. Within 10 working days, sign it or tell us what does not work the way the contract says. We fix that at no extra charge within 5 working days and send the certificate again; wishes that are not in the contract are not a reason not to sign. No reply within 10 working days? The work counts as accepted, as if you had signed: the warranty starts that day, and it is time to pay the final 30%."
+        },
+        "warranty": {
+          "title": "A one-year warranty",
+          "text": "For a year from the date of the certificate we fix for free anything that broke through our fault or does not work the way the contract says: for example, orders stop coming in because of a bug in our code, or the speed drops below 90 points because of our code. If it is unclear whose fault it is, we first look for the cause for free and show it to you with evidence that another developer can check if you like. Texts and photos you change in the admin panel, the section for your own edits, do not void the warranty."
+        },
+        "repairs": {
+          "title": "How fast we fix things",
+          "text": "Message us on Telegram or by email; the contacts are in the contract. Urgent means that through our fault the store does not open, orders do not arrive or payment fails. Wrote on a weekday from 10:00 to 19:00 Moscow time? We start fixing it within 2 hours. Wrote at night, on a weekend or a public holiday? Within the first 2 hours of the next working day. Urgent issues come before all other work. Other bugs we start fixing within one working day of your message. We fully fix any bug within 5 working days at most."
+        },
+        "notOurFault": {
+          "title": "If it is not our fault",
+          "text": "Not our fault means, for example, that another developer changed the store's code, a third-party service (a payment service, a delivery service) broke or changed its rules, or the hosting provider, the company the store's server is rented from, had an outage. We fix such things for a separate fee: $90 an hour. We first name the total, never charge more than that, and start the repair only if you agree."
+        },
+        "upkeep": {
+          "title": "Updates and backups",
+          "text": "Updates to the software the store runs on and backups, snapshots of the store with all its data, are part of support: a separate monthly fee, optional. The warranty does not depend on support: we fix bugs in our code for free all year without it. But without support we do not make backups. After a failure we rebuild the store from the code: free if the failure is our fault, $90 an hour if it is the hosting's. Whatever appeared after launch, orders, customers and edits in the admin panel, may be lost. With support we restore the store from a backup, and that is part of the monthly fee."
+        }
+      }
     },
     "mvp": {
       "faq": [
@@ -851,12 +1189,12 @@
         {
           "when": "Before the start",
           "title": "The task, the first version and choosing a style",
-          "text": "Before the start we go through the brief in writing: what the service should do and decide what goes into the first version. In reply we send the estimate, the deadline and a draft contract. After the 30% prepayment we draw the main screen of the service in three styles: colors, fonts, the look of buttons and blocks. You pick one or take a ready-made style: one of the five styles of this site. We show three styles 2 working days after the prepayment and the materials for the main screen from our list, and three more 2 working days after your reply. These dates also go into the contract, and for each working day we are late with the styles we also cut the price by 2%, within the same overall cap of 20%. None of the three fit? We draw three more. None of those fit either? We refund the whole prepayment. The contract deadline starts the day you pick a style."
+          "text": "Before the start we talk: you tell us what the service should do, and together we decide what goes into the first version. In reply we send the estimate (the price item by item), the deadline and a draft contract. Then we show the main screen of the service in three styles, you pick one, and from that day the deadline runs."
         },
         {
           "when": "Weeks 1–4",
           "title": "Design and how the service works",
-          "text": "We draw the account screens, work out what data the service stores and list the connections to other services (integrations). You send your comments in one list: that is the first of three rounds of revisions."
+          "text": "We draw the account screens, work out what data the service stores and list its connections to other services: payments, a customer database (CRM), email. If the list includes something that is not in the estimate, we name the price first; it does not change without your consent. You send your comments in one list: that is the first of three rounds of revisions."
         },
         {
           "when": "Weeks 4–9",
@@ -866,38 +1204,146 @@
         {
           "when": "Weeks 9–10",
           "title": "Testing and launch",
-          "text": "We make your third and final list of comments. We check the whole user journey from start to finish: sign-in, account, payment. We launch. We hand over all the passwords and the source code, the files the service is built from. We test the speed with Google's test on the pages listed in the contract: it needs 90 out of 100 or more, and the result goes with the acceptance certificate. If it is below 90, we find the cause and show it to you. We set up the hosting, so its speed is our concern: we fix it for free. If a third-party widget you chose slows the site down, we already told you before the contract what score we promise. You sign the acceptance certificate and pay the final 30%. Then comes a one-year warranty."
+          "text": "We make your third and final list of comments. We check the whole user journey: sign-in, account, payment. We launch the service and test the speed with Google's test; the result goes with the acceptance certificate. We hand over the passwords and the source code, the files the service is built from. You sign the certificate and pay the final 30%. Then comes a one-year warranty."
         }
-      ]
+      ],
+      "prestart": {
+        "materials": {
+          "title": "Materials",
+          "text": "Before the contract we send a list of what the main screen of the service needs, the screen a user sees first: a logo, photos, texts. The rest, texts and images for the other screens, comes by the dates in the contract: the full list will be there. If you are late with them, the delivery date moves by the same number of days, with no penalties for you."
+        },
+        "prepayment": {
+          "title": "Prepayment and start date",
+          "text": "The contract sets a start date: the day we have time free for your order. By that date we need two things: the prepayment (30% of the price in the contract) and the materials for the main screen, the screen a user sees first. Missed that date? As soon as the prepayment and materials arrive, within a working day we name a new date: the nearest one when we have time. The prepayment is not lost: it counts toward the payment. The new date does not suit you? Until you pick a style, you can cancel and we refund the whole prepayment."
+        },
+        "style": {
+          "title": "Choosing a style",
+          "text": "A style is how the service looks: colors, fonts, the shape of buttons and blocks. 2 working days after the prepayment and the materials we show the main screen of the service in three different styles. None of them fit? 2 working days after your reply we show three more. None of those fit either? We refund the whole prepayment within 10 working days and close the contract. You can also take a ready-made style right away: one of the five styles of this site (the “Style” button switches them). Another client may pick a ready-made style too, but a style you pick from the ones drawn for you is yours alone."
+        },
+        "refusal": {
+          "title": "If you change your mind",
+          "text": "Changed your mind before picking a style? Email us, and within 10 working days we refund the whole prepayment. Changed your mind later? You pay only for the work done, at $90 for each hour of our work. We send a report: what was done and how many hours it took. Hours spent on the styles we drew before you picked one are not in the report. Until we have made your second list of changes, the amount is no more than 70% of the price. Payments you have made count: paid more than the work done costs? We return the extra within 10 working days. Paid less? You pay the rest."
+        },
+        "deadlines": {
+          "title": "Deadlines in the contract",
+          "text": "The contract sets the deadline for the service and the days when we show the styles. The deadline runs from the day you pick a style: the days for showing the styles do not count toward it. If we are late through our fault, the price goes down. Late showing the styles: 2% for each working day. Late handing over the service: 2% for each day, weekends and public holidays included. We count the percentage from the whole contract price including options, paid extras such as online payment. All delays together take off no more than 20%. We take this amount off the final payment: you simply pay less. For example, with a price of $2,000, being 2 working days late with the styles means $80 off."
+        },
+        "pauses": {
+          "title": "When the clock stops",
+          "text": "We pause the clock while we wait for your reply, materials or payment: the delivery date moves by the same number of days, with no penalties for you. Asked for something that is not in the contract, such as a new feature? First we name the price and the new deadline; neither changes without your consent. If a round of edits needs more than 8 hours of work, we tell you before we start how many days the deadline moves: those days are not a delay. Any other delay is our fault, even if we are ill or busy with other orders: the price goes down for it, as in the “Deadlines in the contract” card. If the service is slow and we work on it to reach 90 points, those days count toward the deadline too: late because of that work? The price goes down too."
+        },
+        "silence": {
+          "title": "If we hear nothing for a long time",
+          "text": "If you do not reply or do not pay for 30 days in a row, we may close the contract by sending you an email. Closed before you pick a style? We refund the whole prepayment. Closed later? We settle up as in the “If you change your mind” card: you pay for the work done by the hour. For six months after the email you can come back and continue the same project at the same price."
+        }
+      },
+      "after": {
+        "speed": {
+          "title": "Speed",
+          "text": "Before handover we check how fast the service opens on a phone with Google's test on the pages listed in the contract: it needs 90 out of 100 or more in each of three runs in a row. We attach the result to the acceptance certificate, the document that confirms the work is accepted. Below 90 because of our code or our hosting setup? We fix it for free and do not hand over the work until it reaches 90. A third-party widget, a window from another service such as a chat or a map, slows pages down. If you asked for one, we tell you before the contract what score we promise with it; if you ask later, we tell you before we add it. We test the pages that open without signing in: the home page, sign-in and sign-up. Google's test cannot open accounts behind a password."
+        },
+        "acceptance": {
+          "title": "Acceptance",
+          "text": "We email you the acceptance certificate, a document saying the work is accepted. Within 10 working days, sign it or tell us what does not work the way the contract says. We fix that at no extra charge within 5 working days and send the certificate again; wishes that are not in the contract are not a reason not to sign. No reply within 10 working days? The work counts as accepted, as if you had signed: the warranty starts that day, and it is time to pay the final 30%."
+        },
+        "warranty": {
+          "title": "A one-year warranty",
+          "text": "For a year from the date of the certificate we fix for free anything that broke through our fault or does not work the way the contract says: for example, payments fail because of a bug in our code, or the speed drops below 90 points because of our code. If it is unclear whose fault it is, we first look for the cause for free and show it to you with evidence that another developer can check if you like. Texts and photos you change in the admin panel, the section for your own edits, do not void the warranty."
+        },
+        "repairs": {
+          "title": "How fast we fix things",
+          "text": "Message us on Telegram or by email; the contacts are in the contract. Urgent means that through our fault the service does not open, or sign-in or payment fails. Wrote on a weekday from 10:00 to 19:00 Moscow time? We start fixing it within 2 hours. Wrote at night, on a weekend or a public holiday? Within the first 2 hours of the next working day. Urgent issues come before all other work. Other bugs we start fixing within one working day of your message. We fully fix any bug within 5 working days at most."
+        },
+        "notOurFault": {
+          "title": "If it is not our fault",
+          "text": "Not our fault means, for example, that another developer changed the code of the service, a third-party service (a payment service, a CRM, email) broke or changed its rules, or the hosting provider, the company the service's server is rented from, had an outage. We fix such things for a separate fee: $90 an hour. We first name the total, never charge more than that, and start the repair only if you agree."
+        },
+        "upkeep": {
+          "title": "Updates and backups",
+          "text": "Updates to the software the service runs on and backups, snapshots of the service with all its data, are part of support: a separate monthly fee, optional. The warranty does not depend on support: we fix bugs in our code for free all year without it. But without support we do not make backups. After a failure we rebuild the service from the code: free if the failure is our fault, $90 an hour if it is the hosting's. Whatever appeared after launch, user accounts, their data and the payment records in the service, may be lost. With support we restore the service from a backup, and that is part of the monthly fee."
+        }
+      }
     },
     "threeD": {
       "process": [
         {
           "when": "Before the start",
           "title": "Brief and materials",
-          "text": "Before day one you send a short written description of the task. If you have a 3D model of the product (a file from a drawing program, CAD), attach it. If there is no model, send photos and drawings. If you need it, we sign an NDA before you send the files. In reply we send the estimate, the deadline, the nearest free date and a draft contract. All of it before you pay anything. Then you make the 30% prepayment and send a detailed description with photos and videos of the parts, the components and mechanisms the scene will show. Our questions about the parts come as one list. For a 3D landing page we draw three styles after the prepayment: the background and lighting of the scene, the colors of the labels and the look of the page around it. You pick one or take a ready-made style: one of the five styles of this site. We show three styles 2 working days after the prepayment and the materials, and three more 2 working days after your reply. These dates also go into the contract, and for each working day we are late with the styles we also cut the price by 2%, within the same overall cap of 20%. None of the three fit? We draw three more. None of those fit either? We refund the whole prepayment. A 3D block goes into your site, so its style is matched to the site, with no separate choice. Day one of the work is the day we have the detailed description and the materials, and for a 3D landing page also the chosen style."
+          "text": "You send a short description of the task and a 3D model of the product, a file from a drawing program (CAD); if there is no model, photos and drawings. In reply we send the estimate (the price item by item), the deadline, the nearest free date and a draft contract, all before you pay anything. After the 30% prepayment you send a detailed description with photos and videos of the parts."
         },
         {
           "when": "Week 1",
           "title": "The shape of the model and viewing angles",
-          "text": "We sign off the model, the camera angles and the parts the scene explains with you. The scene is built after the sign-off."
+          "text": "We agree with you on the shape of the model, the sides we show it from, and which parts and mechanisms get labels. Only then do we build the 3D scene, what a visitor sees and rotates on the site. A new part or a new viewing angle after sign-off is separate work; we name the price before we start."
         },
         {
           "when": "Weeks 2–3",
           "title": "The 3D scene and labels",
-          "text": "We build the scene, a camera move to every part, labels and the inquiry form inside the scene. For a 3D block this step is week 2."
+          "text": "We build the 3D scene: when a visitor clicks a part, the model turns and zooms in on it, with a label next to it. The price includes up to 8 such parts or mechanisms; more go by the estimate you saw before the prepayment. Visitors can leave an inquiry right from the scene. For a 3D block this step is week 2."
         },
         {
           "when": "Week 4",
           "title": "Loading image, phones, speed test",
-          "text": "We make the image a visitor sees while the 3D loads. For phones that cannot show 3D (no WebGL 2.0), we make an image and a video instead of the scene. We run Google's free speed test in advance. We show the scene on a temporary link. For a 3D landing page this step also includes the page around the scene. For a 3D block this step is week 3."
+          "text": "We make the image a visitor sees while the 3D loads. For phones that cannot show 3D, we make an image and a video instead of the scene. We run Google's speed test in advance and show the scene on a temporary link. For a 3D landing page we also make the page around the scene. For a 3D block this step is week 3."
         },
         {
           "when": "Weeks 5–6",
           "title": "Revisions and launch",
-          "text": "You send comments and we make them, up to three rounds. After we make the second-round revisions, you make the second payment of 40%. We launch and hand over all the project files. On launch day we test the speed again: Google's test on a phone has to show 90 out of 100 or more. For a 3D landing page we test it on your address; for a 3D block, the page with the scene on our temporary link, as the terms say. The result goes with the acceptance certificate. You accept the work and pay the final 30%. Then comes a one-year warranty. For a 3D block this step is week 4."
+          "text": "We make your comments, up to three rounds; after the second you pay 40%. We install a 3D block on your site ourselves if you give us access to its code, and put a 3D landing page on a separate address under your domain, such as 3d.yoursite.com. We hand over all the files and test the speed; the result goes with the certificate. You accept the work and pay the final 30%. Then comes a one-year warranty."
         }
       ],
+      "prestart": {
+        "brief": {
+          "title": "Description and model",
+          "text": "You send a short description of the task (what the product is and why you want 3D on your site) and a 3D model of the product, a file from a drawing program (CAD). No model? Send photos and drawings. If you like, we sign a non-disclosure agreement (NDA) before you send the files: a document in which we commit not to pass your files to anyone else. If we bring another specialist into the work, such as a designer, they sign the same agreement. Before you pay anything, we send the estimate (the price item by item), the deadline, the nearest free date and a draft contract."
+        },
+        "details": {
+          "title": "Detailed description",
+          "text": "After the 30% prepayment you send a detailed description with photos and videos of the parts: the components and mechanisms a visitor will be able to look at in the 3D model on the site. If something is unclear to us, we send all our questions about the parts in one list, not one at a time."
+        },
+        "style": {
+          "title": "3D landing page style",
+          "text": "A 3D block is a model inside your site; a 3D landing page is a separate page with the model at its center. For a 3D landing page we draw three styles: the background and lighting of the scene, the colors of the labels and the look of the page. We show them 2 working days after the prepayment and the materials. None fit? Three more 2 working days after your reply. None of those fit either? We refund the whole prepayment within 10 working days. You can take a ready-made style: one of the five styles of this site (the “Style” button). For a 3D block, we agree on the background colors, lighting and labels with you in the first week, together with the shape of the model."
+        },
+        "refusal": {
+          "title": "If you change your mind",
+          "text": "Changed your mind before the deadline starts (see the “Day one and deadlines” card)? Email us, and within 10 working days we refund the whole prepayment. Changed your mind later? You pay only for the work done, at $90 for each hour of our work. We send a report: what was done and how many hours it took. Until we have made your second list of changes, the amount is no more than 70% of the price. Payments you have made count: paid more than the work done costs? We return the extra within 10 working days. Paid less? You pay the rest."
+        },
+        "deadlines": {
+          "title": "Day one and deadlines",
+          "text": "The days when we show the styles also go into the contract. The deadline runs from the first day we have everything we need: the detailed description and the materials, and for a 3D landing page also the chosen style. Something missing? Within 1 working day we tell you exactly what. If we are late through our fault, the price goes down: late showing the styles of a 3D landing page, 2% for each working day; late handing over the work, 2% for each day, weekends and public holidays included. We count the percentage from the whole contract price including options, paid extras in the contract, but not work you asked for on top of it. All delays together take off no more than 20%. We take this amount off the final payment: you simply pay less."
+        },
+        "pauses": {
+          "title": "When the clock stops",
+          "text": "We pause the clock while we wait for your reply, materials or payment, and also while you sign off the shape of the model and the parts we label on it: the delivery date moves by the same number of days. Asked for a new part or a new viewing angle, a side from which we show the model? First we name the price and the new deadline; they do not change without your consent. If a round of edits needs more than 8 hours of work, we tell you before we start how many days the deadline moves: those days are not a delay. Any other delay is our fault, even if we are ill or busy with other orders. Work to get the speed up to 90 points counts toward the deadline too: late because of it? The price goes down."
+        },
+        "silence": {
+          "title": "If we hear nothing for a long time",
+          "text": "If you do not reply or do not pay for 30 days in a row, we may close the contract by sending you an email. Closed before the deadline starts? We refund the whole prepayment. Closed later? We settle up as in the “If you change your mind” card: you pay for the work done by the hour. For six months after the email you can come back and continue the same project at the same price."
+        }
+      },
+      "after": {
+        "speed": {
+          "title": "Speed",
+          "text": "On launch day we test the speed with Google's test on a phone. The test gives a page from 0 to 100 points. We run it three times in a row, and each time it needs 90 or more. For a 3D landing page we test its page on your address. For a 3D block, the page with the scene on our temporary link: we are responsible for the speed of the block itself, while the speed of the rest of the page depends on how your site is built. With a 3D block your page gets slower: before the contract we measure it and tell you how many points it will lose. Below 90 because of our work? We fix it for free and do not hand over the work until it reaches 90. We attach the result to the acceptance certificate."
+        },
+        "acceptance": {
+          "title": "Acceptance",
+          "text": "We email you the acceptance certificate, a document saying the work is accepted. Within 10 working days, sign it or tell us what does not work the way the contract says. We fix that at no extra charge within 5 working days and send the certificate again; wishes that are not in the contract are not a reason not to sign. No reply within 10 working days? The work counts as accepted, as if you had signed: the warranty starts that day, and it is time to pay the final 30%."
+        },
+        "warranty": {
+          "title": "A one-year warranty",
+          "text": "For a year from the date of the certificate we fix for free anything that broke through our fault or does not work the way the contract says: for example, the scene stops opening because of a bug in our code. If it is unclear whose fault it is, we first look for the cause for free and show it to you with evidence that another developer can check if you like."
+        },
+        "repairs": {
+          "title": "How fast we fix things",
+          "text": "Message us on Telegram or by email; the contacts are in the contract. Urgent means that through our fault the 3D block or 3D landing page does not open, or inquiries from the scene do not arrive. Wrote on a weekday from 10:00 to 19:00 Moscow time? We start fixing it within 2 hours. Wrote at night, on a weekend or a public holiday? Within the first 2 hours of the next working day. Urgent issues come before all other work. Other bugs we start fixing within one working day of your message. We fully fix any bug within 5 working days at most."
+        },
+        "notOurFault": {
+          "title": "If it is not our fault",
+          "text": "Not our fault means, for example, that another developer changed the code of your site or of the scene, your site's hosting had a failure, or the hosting provider of the 3D landing page, the company the server is rented from, had an outage. We fix such things for a separate fee: $90 an hour. We first name the total, never charge more than that, and start the repair only if you agree."
+        }
+      },
       "faq": [
         {
           "question": "We don't have a 3D model — what now?",
@@ -982,7 +1428,7 @@
       "faq": [
         {
           "question": "What does support include?",
-          "answer": "Support is optional. There are four plans. The first is “Hosting and backups”, {hostingBackups} a month. That pays for our work: we look after the server the site runs on, check that the site opens, make backups and update the software. Changes to the site are not included. You pay for the server itself (the hosting) to the provider separately. The other three plans are all of the same plus hours of our work on changes to the site: {supportHours} a month for 3 hours, {supportHoursPlus} for 10 hours, {supportHoursPro} for 25 hours. Unused hours do not carry over. On every plan, if the site stops working, we get on it within 2 hours on weekdays from 10:00 to 19:00 Moscow time, and at night or on weekends the first working morning. Restoring the site after a failure, including from a backup, is part of the monthly fee."
+          "answer": "Support is optional. The warranty does not depend on it: for a year from acceptance we fix bugs in our code for free without support. There are four plans. The first is “Hosting and backups”, {hostingBackups} a month. That pays for our work: we look after the server the site runs on, check that the site opens, make backups and update the software. Changes to the site are not included. You pay for the server itself (the hosting) to the provider separately. The other three plans are all of the same plus hours of our work on changes to the site: {supportHours} a month for 3 hours, {supportHoursPlus} for 10 hours, {supportHoursPro} for 25 hours. Unused hours do not carry over to the next month. On every plan, if the site stops working, we start fixing it fast. Wrote on a weekday from 10:00 to 19:00 Moscow time? Within 2 hours. Wrote at night, on a weekend or a public holiday? Within the first 2 hours of the next working day, that is, by 12:00 Moscow time. Restoring the site after a failure, including from a backup, is part of the monthly fee."
         },
         {
           "question": "Where is the site hosted and who pays for it?",
@@ -1001,7 +1447,7 @@
         {
           "when": "Ongoing",
           "title": "Watching the site and backups",
-          "text": "We make sure the site opens. We make regular backups so the site can be restored after a failure. Restoring the site after a failure, including from a backup, is part of the monthly fee. If the site stops working, we get on it within 2 hours on weekdays from 10:00 to 19:00 Moscow time, and at night or on weekends the first working morning."
+          "text": "We make sure the site opens. We make regular backups so the site can be restored after a failure. Restoring the site after a failure, including from a backup, is part of the monthly fee. If the site stops working, we start fixing it fast. Wrote on a weekday from 10:00 to 19:00 Moscow time? Within 2 hours. Wrote at night, on a weekend or a public holiday? Within the first 2 hours of the next working day, that is, by 12:00 Moscow time."
         },
         {
           "when": "Every month",

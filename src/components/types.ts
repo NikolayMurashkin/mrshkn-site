@@ -98,3 +98,21 @@ export type ProcessScaleProps = {
   /** Содержимое полосы отрезка (цифра дня, фишка, образцы цвета) — у каждого направления свое; полоса скрыта от скринридера. */
   renderBar?: (item: ProcessScaleItem) => ReactNode;
 };
+
+/** Блок карточек секции процесса: «Перед стартом» над шагами, «Гарантия после запуска» под ними. */
+export type ProcessCardsBlockName = 'prestart' | 'after';
+
+/** Карточка блока: `id` — ключ в переводах, порядок карточек — порядок ключей. */
+export type ProcessCard = {
+  id: string;
+  title: string;
+  text: string;
+};
+
+export type ProcessCardsBlock = {
+  heading: string;
+  cards: ProcessCard[];
+};
+
+/** Оба блока главной или страницы услуги; `null` — у страницы блока нет, пустым он не выводится. */
+export type ProcessCards = Record<ProcessCardsBlockName, ProcessCardsBlock | null>;

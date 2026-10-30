@@ -1,12 +1,15 @@
 import { useTranslations } from 'next-intl';
 import { ProcessScale, processScaleClasses } from '@/components/ProcessScale';
 import { PROCESS_STEPS, PROMISES } from '@/content/process';
+import { useProcessCards } from '@/components/use-process-cards';
+import { SwissProcessCards } from './ProcessCards';
 import { SwissSteps } from './Steps';
 import styles from './Process.module.scss';
 
 export const SwissProcess = () => {
   const t = useTranslations('process');
   const hero = useTranslations('hero');
+  const cards = useProcessCards();
 
   return (
     <section
@@ -51,6 +54,8 @@ export const SwissProcess = () => {
           ))}
         </ul>
 
+        {cards.prestart ? <SwissProcessCards block={cards.prestart} /> : null}
+
         <div className={styles.timeline}>
           <h3 className={styles.subhead}>{t('heading')}</h3>
           <ProcessScale
@@ -70,6 +75,8 @@ export const SwissProcess = () => {
             titleTag="span"
           />
         </div>
+
+        {cards.after ? <SwissProcessCards block={cards.after} /> : null}
       </div>
     </section>
   );

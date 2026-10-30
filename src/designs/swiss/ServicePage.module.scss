@@ -367,6 +367,13 @@
   width: 100%;
 }
 
+.processBody {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-40);
+  min-width: 0;
+}
+
 @media (max-width: 1080px) {
   .stack,
   .aside {

@@ -1,6 +1,8 @@
 import { useTranslations } from 'next-intl';
 import { PROCESS_STEPS, PROMISES } from '@/content/process';
 import { ProcessScale, processScaleClasses } from '@/components/ProcessScale';
+import { useProcessCards } from '@/components/use-process-cards';
+import { KineticProcessCards } from './ProcessCards';
 import { SectionHead } from './SectionHead';
 import styles from './Process.module.scss';
 
@@ -8,6 +10,7 @@ export const KineticProcess = () => {
   const t = useTranslations('process');
   const nav = useTranslations('nav');
   const hero = useTranslations('hero');
+  const cards = useProcessCards();
 
   return (
     <section
@@ -39,6 +42,8 @@ export const KineticProcess = () => {
         ))}
       </ul>
 
+      {cards.prestart ? <KineticProcessCards block={cards.prestart} /> : null}
+
       <ProcessScale
         classes={processScaleClasses(styles)}
         renderBar={(item) => item.kind === 'day' && <span className={styles.scaleNum}>{item.day}</span>}
@@ -63,6 +68,8 @@ export const KineticProcess = () => {
           </li>
         ))}
       </ol>
+
+      {cards.after ? <KineticProcessCards block={cards.after} /> : null}
     </section>
   );
 };

@@ -1,17 +1,20 @@
 import { useTranslations } from 'next-intl';
 import type { ServicePageProps } from '@/components/ServicePage/types';
 import { useServicePage } from '@/components/ServicePage/use-service-page';
+import { useProcessCards } from '@/components/use-process-cards';
 import { EditorialBasics } from './Basics';
 import { EditorialDashes } from './Dashes';
 import { ArrowLeftIcon, ArrowRightIcon, ArrowUpRightIcon } from './icons';
 import { EditorialOptions } from './Options';
 import { EditorialServiceThreeD } from './ServiceThreeD';
 import { EditorialServiceTiers } from './ServiceTiers';
+import { EditorialProcessCards } from './ProcessCards';
 import styles from './ServicePage.module.scss';
 
 export const EditorialServicePage = ({ service }: ServicePageProps) => {
   const t = useTranslations('servicePage');
   const data = useServicePage(service);
+  const cards = useProcessCards(service);
 
   if (!data) {
     return null;
@@ -288,21 +291,38 @@ export const EditorialServicePage = ({ service }: ServicePageProps) => {
                 {t('processHeading')}
               </h2>
             </div>
-            <ol
-              className={styles.steps}
+            <div
+              className={styles.processBody}
               data-testid="service-process"
             >
-              {steps.map((step) => (
-                <li
-                  className={styles.step}
-                  key={step.title}
-                >
-                  <span className={styles.kicker}>{step.when}</span>
-                  <h3 className={styles.stepTitle}>{step.title}</h3>
-                  <p className={styles.stepText}>{step.text}</p>
-                </li>
-              ))}
-            </ol>
+              {cards.prestart ? (
+                <EditorialProcessCards
+                  block={cards.prestart}
+                  narrow
+                />
+              ) : null}
+              <ol
+                className={styles.steps}
+                data-testid="service-steps"
+              >
+                {steps.map((step) => (
+                  <li
+                    className={styles.step}
+                    key={step.title}
+                  >
+                    <span className={styles.kicker}>{step.when}</span>
+                    <h3 className={styles.stepTitle}>{step.title}</h3>
+                    <p className={styles.stepText}>{step.text}</p>
+                  </li>
+                ))}
+              </ol>
+              {cards.after ? (
+                <EditorialProcessCards
+                  block={cards.after}
+                  narrow
+                />
+              ) : null}
+            </div>
           </section>
 
           {faq.length > 0 ? (

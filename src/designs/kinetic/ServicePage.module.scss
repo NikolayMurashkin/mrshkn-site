@@ -594,6 +594,13 @@
   color: var(--muted);
 }
 
+.processBody {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-40);
+  min-width: 0;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .summary::after,
   .demoLink svg {

@@ -1,10 +1,13 @@
 import { useTranslations } from 'next-intl';
 import { PROCESS_STEPS, PROMISES } from '@/content/process';
+import { useProcessCards } from '@/components/use-process-cards';
+import { EditorialProcessCards } from './ProcessCards';
 import { EditorialRubric } from './Rubric';
 import styles from './Process.module.scss';
 
 export const EditorialProcess = () => {
   const t = useTranslations('process');
+  const cards = useProcessCards();
 
   return (
     <section
@@ -42,6 +45,8 @@ export const EditorialProcess = () => {
         ))}
       </ul>
 
+      {cards.prestart ? <EditorialProcessCards block={cards.prestart} /> : null}
+
       <h3 className={styles.subhead}>{t('heading')}</h3>
 
       <ol
@@ -67,6 +72,8 @@ export const EditorialProcess = () => {
           </li>
         ))}
       </ol>
+
+      {cards.after ? <EditorialProcessCards block={cards.after} /> : null}
     </section>
   );
 };

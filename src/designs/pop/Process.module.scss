@@ -89,15 +89,7 @@
 }
 
 .subhead {
-  margin: 0;
-  font-size: clamp(28px, 3.6vw, 48px);
-  font-weight: 900;
-  line-height: 1;
-  letter-spacing: -0.03em;
-  text-wrap: balance;
-  word-wrap: break-word;
-  overflow-wrap: anywhere;
-  min-width: 0;
+  @include s.subhead;
 }
 
 .scale {
