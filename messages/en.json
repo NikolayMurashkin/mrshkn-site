@@ -21,7 +21,9 @@
     "status": "online",
     "kicker": "Web development studio",
     "location": "Kaliningrad → worldwide",
-    "founded": "Founded in 2026"
+    "founded": "Founded in 2026",
+    "menuOpen": "Open menu",
+    "menuClose": "Close menu"
   },
   "hero": {
     "subtitle": "Price and deadline in the contract. Your site scores 90+ out of 100 in Google's free speed test, or we don't hand it over. A one-year warranty. A one-page site in 4 days, a site for a clinic or a cafe in 7.",

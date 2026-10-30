@@ -1,4 +1,4 @@
-import type { ComponentType } from 'react';
+import type { ComponentType, RefObject } from 'react';
 import type { CaseCard, CaseDetail } from '@/cms/types';
 import type { BriefProps } from '@/components/Brief/types';
 import type { ReviewProps } from '@/components/Review/types';
@@ -65,4 +65,30 @@ export type DesignComponents = {
 export type StepWhen = {
   label: string;
   value: string | null;
+};
+
+/** Пропсы бургера мобильного меню: одна кнопка открывает панель и, ставши крестиком, закрывает ее. */
+export type MobileMenuBurgerProps = {
+  ref: RefObject<HTMLButtonElement | null>;
+  type: 'button';
+  'aria-expanded': boolean;
+  'aria-controls': string;
+  'aria-label': string;
+  onClick: () => void;
+};
+
+/** Пропсы панели мобильного меню: закрытая остается в DOM пустой и под `hidden` — на нее ссылается `aria-controls`. */
+export type MobileMenuPanelProps = {
+  ref: RefObject<HTMLDivElement | null>;
+  id: string;
+  hidden: boolean;
+};
+
+/** Состояние мобильного меню шапки: общее для пяти направлений, разметка и вид — у каждого свои. */
+export type MobileMenu = {
+  open: boolean;
+  burgerProps: MobileMenuBurgerProps;
+  panelProps: MobileMenuPanelProps;
+  /** Клик по пункту панели: меню закрывается, переход по якорю — родной, не отменяется. */
+  onNavigate: () => void;
 };

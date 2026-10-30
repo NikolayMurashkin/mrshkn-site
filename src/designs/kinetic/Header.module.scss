@@ -1,5 +1,9 @@
 @use './breakpoints' as bp;
 
+$burger-size: 48px;
+$header-height: calc(var(--space-24) * 2 + #{$burger-size} + var(--border-width));
+$header-height-compact: calc(var(--space-16) * 2 + #{$burger-size} + var(--border-width));
+
 .sentinel {
   position: absolute;
   top: 0;
@@ -130,23 +134,279 @@
   }
 }
 
+.open {
+  z-index: 60;
+  border-bottom-color: var(--line);
+}
+
+.burger {
+  display: none;
+  flex: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  width: $burger-size;
+  height: $burger-size;
+  padding: 0;
+  border: var(--border-width) solid var(--ink);
+  border-radius: var(--radius-control);
+  background: transparent;
+  color: var(--ink);
+  cursor: pointer;
+  transition:
+    background-color var(--duration-fast) var(--ease-out),
+    color var(--duration-fast) var(--ease-out),
+    border-color var(--duration-fast) var(--ease-out);
+
+  &:hover {
+    background: var(--ink);
+    color: var(--ink-inverse);
+  }
+
+  &[aria-expanded='true'] {
+    border-color: var(--accent);
+    background: var(--accent);
+    color: var(--accent-contrast);
+
+    &:hover {
+      border-color: var(--ink);
+      background: var(--ink);
+      color: var(--ink-inverse);
+    }
+
+    .burgerBar:first-child {
+      transform: translateY(4px) rotate(45deg);
+    }
+
+    .burgerBar:last-child {
+      transform: translateY(-4px) rotate(-45deg);
+    }
+  }
+}
+
+.burgerBar {
+  display: block;
+  width: 20px;
+  height: var(--border-width-strong);
+  border-radius: var(--radius-control);
+  background: currentcolor;
+  transition: transform var(--duration-base) var(--ease-out);
+}
+
+.panel {
+  position: fixed;
+  inset: var(--mobile-menu-top, #{$header-height}) 0 0;
+  z-index: 1;
+  display: none;
+  flex-direction: column;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  background: var(--bg);
+  color: var(--ink);
+  container-type: inline-size;
+  animation: shutter var(--duration-base) var(--ease-out) both;
+}
+
+.panelNav {
+  padding: var(--space-8) var(--gutter) var(--space-40);
+}
+
+.panelList {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.panelItem {
+  border-bottom: var(--border-width) solid var(--line);
+
+  &:nth-child(2) .panelWord {
+    animation-delay: calc(var(--duration-stagger) / 2);
+  }
+
+  &:nth-child(3) .panelWord {
+    animation-delay: var(--duration-stagger);
+  }
+
+  &:nth-child(4) .panelWord {
+    animation-delay: calc(var(--duration-stagger) * 1.5);
+  }
+}
+
+.panelLink {
+  display: flex;
+  margin: 0 calc(var(--space-12) * -1);
+  padding: var(--space-16) var(--space-12);
+  border-radius: var(--radius-surface);
+  background-image: linear-gradient(var(--accent), var(--accent));
+  background-repeat: no-repeat;
+  background-position: left center;
+  background-size: 0% 100%;
+  color: var(--ink);
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: min(11.5cqi, 72px);
+  line-height: 1;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+  transition:
+    background-size var(--duration-base) var(--ease-out),
+    color var(--duration-fast) var(--ease-out);
+
+  &:hover,
+  &:focus-visible {
+    background-size: 100% 100%;
+    color: var(--accent-contrast);
+
+    .panelWord::after {
+      background: var(--accent-contrast);
+    }
+  }
+
+  &[aria-current='true'] .panelWord::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: var(--border-width-strong);
+    border-radius: var(--radius-control);
+    background: var(--accent-ink);
+  }
+}
+
+.panelMask {
+  display: block;
+  min-width: 0;
+  padding-top: 0.08em;
+  clip-path: inset(-1em -1em 0 -1em);
+}
+
+.panelWord {
+  position: relative;
+  display: inline-block;
+  padding-bottom: 0.14em;
+  word-wrap: break-word;
+  overflow-wrap: anywhere;
+  min-width: 0;
+  animation: rise var(--duration-slow) var(--ease-out) both;
+}
+
+.plate {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-16);
+  margin-top: auto;
+  padding: var(--space-24) var(--gutter) calc(var(--space-24) + env(safe-area-inset-bottom));
+  background: var(--ink);
+  color: var(--ink-inverse);
+
+  :focus-visible {
+    outline-color: var(--ink-inverse);
+  }
+}
+
+.plateControls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-16);
+  margin-inline: calc(var(--space-12) * -1);
+}
+
+.plateLocales {
+  display: flex;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.plateLocale {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 44px;
+  min-height: 48px;
+  color: var(--ink-inverse);
+  opacity: 0.72;
+  transition: opacity var(--duration-fast) var(--ease-out);
+
+  &:hover {
+    opacity: 1;
+  }
+}
+
+.plateLocaleActive {
+  opacity: 1;
+}
+
+.plateTheme {
+  width: 48px;
+  height: 48px;
+  transition:
+    background-color var(--duration-fast) var(--ease-out),
+    color var(--duration-fast) var(--ease-out);
+
+  &:hover {
+    background: var(--ink-inverse);
+    color: var(--ink);
+  }
+}
+
+.plateTelegram {
+  align-self: stretch;
+}
+
+@keyframes shutter {
+  from {
+    clip-path: inset(0 0 100% 0);
+  }
+
+  to {
+    clip-path: inset(0);
+  }
+}
+
+@keyframes rise {
+  from {
+    transform: translateY(105%);
+  }
+
+  to {
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .panel,
+  .panelWord {
+    animation: none;
+  }
+
+  .burger,
+  .burgerBar,
+  .panelLink {
+    transition: none;
+  }
+}
+
 @media (max-width: bp.$tablet) {
-  .nav {
+  .nav,
+  .controls > .locales,
+  .controls > .theme {
     display: none;
   }
 
-  .locales {
-    gap: 0;
+  .controls {
+    gap: var(--space-12);
   }
 
-  .locale {
-    min-width: 44px;
-    min-height: 48px;
+  .burger {
+    display: inline-flex;
   }
 
-  .theme {
-    width: 48px;
-    height: 48px;
+  .panel:not([hidden]) {
+    display: flex;
   }
 }
 
@@ -176,7 +436,19 @@
     font-size: 22px;
   }
 
-  .controls {
-    gap: var(--space-4);
+  .panel {
+    inset: var(--mobile-menu-top, #{$header-height-compact}) 0 0;
+  }
+
+  .plateTelegram {
+    height: auto;
+    min-height: 64px;
+    padding-top: 14px;
+    padding-bottom: 14px;
+    white-space: normal;
+    text-align: center;
+    word-wrap: break-word;
+    overflow-wrap: anywhere;
+    min-width: 0;
   }
 }

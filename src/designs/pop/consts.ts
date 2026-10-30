@@ -4,6 +4,9 @@ export const POP_STICKERS = ['lighthouse', 'deadline', 'warranty'] as const;
 
 export const POP_HEADER_OFFSET = 108;
 
+/** Окно, до которого включительно меню шапки Pop уходит в мобильную панель — порог 1080 в `Header.module.scss`. */
+export const POP_MENU_MAX_WIDTH = 1080;
+
 export const POP_STUDIO_EMAIL = 'hello@mrshkn.com';
 
 export const POP_STEP_TONES: readonly PopTone[] = [1, 2, 3, 4];

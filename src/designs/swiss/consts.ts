@@ -1,6 +1,9 @@
 /** Высота липкой шапки Swiss (22 + 40 + 22 + линия 1): линия, на которой `useActiveSection` считает раздел текущим. */
 export const SWISS_HEADER_OFFSET = 85;
 
+/** Окно, до которого включительно меню шапки Swiss уходит в мобильную панель — порог 720 в `Header.module.scss`. */
+export const SWISS_MENU_MAX_WIDTH = 720;
+
 export const SWISS_STUDIO_EMAIL = 'hello@mrshkn.com';
 
 /** Направляющие hero: по одной на колонку сетки; на 720 и уже CSS оставляет четыре. */

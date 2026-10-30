@@ -25,6 +25,9 @@ export const KINETIC_STUDIO_EMAIL = 'hello@mrshkn.com';
  */
 export const KINETIC_HEADER_OFFSET = 96;
 
+/** Окно, до которого включительно меню шапки Kinetic уходит в мобильную панель — `bp.$tablet` в `_breakpoints.scss`. */
+export const KINETIC_MENU_MAX_WIDTH = 1080;
+
 export const KINETIC_BADGE_CENTER = KINETIC_BADGE_SIZE / 2;
 
 /** Классы формы отзыва: стили — глобальный `KineticReview.scss` в своем чанке (`KineticReviewStyles`), не CSS-модуль. */

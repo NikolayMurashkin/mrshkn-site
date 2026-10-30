@@ -1,6 +1,7 @@
 import { useLocale, useTranslations } from 'next-intl';
 import { useMemo } from 'react';
 import { LocaleSwitcher } from '@/components/LocaleSwitcher';
+import { TelegramLink } from '@/components/TelegramLink';
 import { ThemeToggle } from '@/components/ThemeToggle';
 import { SERVICES } from '@/content/services';
 import { Link, usePathname } from '@/i18n/navigation';
@@ -8,7 +9,8 @@ import { NAV_ITEMS, WORK_NAV_ITEM } from '../consts';
 import { isWorkPath, navHref, visibleNavItems } from '../nav';
 import type { HeaderProps } from '../types';
 import { useActiveSection } from '../use-active-section';
-import { SWISS_HEADER_OFFSET } from './consts';
+import { useMobileMenu } from '../use-mobile-menu';
+import { SWISS_HEADER_OFFSET, SWISS_MENU_MAX_WIDTH } from './consts';
 import { SunIcon } from './icons';
 import styles from './Header.module.scss';
 
@@ -20,6 +22,7 @@ export const SwissHeader = ({ hasCases }: HeaderProps) => {
   const active = useActiveSection(items, pathname === '/', SWISS_HEADER_OFFSET);
   const onCase = isWorkPath(pathname);
   const onService = SERVICES.some((service) => pathname === `/${service.slug}`);
+  const menu = useMobileMenu(SWISS_MENU_MAX_WIDTH);
 
   const current = (item: string) => {
     if (onCase && item === WORK_NAV_ITEM) {
@@ -34,7 +37,7 @@ export const SwissHeader = ({ hasCases }: HeaderProps) => {
   };
 
   return (
-    <header className={styles.header}>
+    <header className={menu.open ? `${styles.header} ${styles.open}` : styles.header}>
       <Link
         className={styles.wordmark}
         href="/"
@@ -69,6 +72,55 @@ export const SwissHeader = ({ hasCases }: HeaderProps) => {
         <ThemeToggle className={styles.theme}>
           <SunIcon />
         </ThemeToggle>
+      </div>
+      <button
+        {...menu.burgerProps}
+        className={styles.burger}
+      >
+        <span
+          className={styles.burgerBars}
+          aria-hidden="true"
+        />
+      </button>
+      <div
+        {...menu.panelProps}
+        className={styles.panel}
+      >
+        {menu.open && (
+          <>
+            <nav>
+              <ol className={styles.panelList}>
+                {items.map((item) => (
+                  <li key={item}>
+                    <a
+                      className={styles.panelLink}
+                      href={navHref(locale, item)}
+                      aria-current={current(item)}
+                      onClick={menu.onNavigate}
+                    >
+                      <span
+                        className={styles.panelNum}
+                        aria-hidden="true"
+                      />
+                      <span className={styles.panelLabel}>{t(`nav.${item}`)}</span>
+                    </a>
+                  </li>
+                ))}
+              </ol>
+            </nav>
+            <div className={styles.panelControls}>
+              <LocaleSwitcher
+                className={styles.locales}
+                itemClassName={styles.locale}
+                activeItemClassName={styles.locale}
+              />
+              <ThemeToggle className={styles.theme}>
+                <SunIcon />
+              </ThemeToggle>
+            </div>
+            <TelegramLink className={styles.panelTelegram}>{t('footer.telegram')}</TelegramLink>
+          </>
+        )}
       </div>
     </header>
   );

@@ -12,6 +12,9 @@ export const TERMINAL_LOG_LINES: TerminalLogLine[] = [
 
 export const ANCHOR_OFFSET = 88;
 
+/** Окно, до которого включительно меню шапки Terminal уходит в мобильную панель — порог 1080 в `Header.module.scss`. */
+export const TERMINAL_MENU_MAX_WIDTH = 1080;
+
 /** Имя «файла» в строке окна cookie-баннера: декор окна, как в DS, скринридер его не читает. */
 export const TERMINAL_COOKIE_FILE = 'cookies.conf';
 

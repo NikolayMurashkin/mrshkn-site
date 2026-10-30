@@ -4,6 +4,14 @@
  */
 export const EDITORIAL_NAV_OFFSET = 47;
 
+/**
+ * Окно, до которого включительно меню шапки Editorial уходит в мобильную панель — порог 720 в `Header.module.scss`.
+ * На нем мастхед уезжает и липнет строка с бургером (48 + линейка 1) — линия подсветки ниже, чем у строки меню.
+ */
+export const EDITORIAL_MENU_MAX_WIDTH = 720;
+
+export const EDITORIAL_MENUBAR_OFFSET = 49;
+
 export const EDITORIAL_STUDIO_EMAIL = 'hello@mrshkn.com';
 
 /** Раскладка «Кейсов» по числу материалов: один — на 12 колонок, два — 7 + 5, три и больше — разворот DS. */

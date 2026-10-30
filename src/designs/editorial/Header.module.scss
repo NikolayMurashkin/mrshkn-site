@@ -1,5 +1,10 @@
 @use './shared' as s;
 
+$menubar-height: 48px;
+$masthead-height-compact: calc(
+  var(--space-16) * 2 + 44px + 14px + #{s.$tagline-height} * 2 + var(--border-width-strong)
+);
+
 :global(html):has(.nav) {
   scroll-padding-top: s.$nav-height;
 }
@@ -149,6 +154,203 @@
   }
 }
 
+.open {
+  z-index: 60;
+}
+
+.menubar,
+.panel {
+  display: none;
+}
+
+.runningHead {
+  @include s.caps;
+  @include s.wrap;
+
+  color: var(--muted);
+}
+
+.burger {
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  margin-right: calc(-1 * var(--space-12));
+  padding: 0;
+  border: 0;
+  border-radius: var(--radius-control);
+  background: transparent;
+  color: var(--ink);
+  cursor: pointer;
+  transition: color var(--duration-fast) var(--ease-out);
+
+  &:hover {
+    color: var(--accent-ink);
+  }
+
+  &[aria-expanded='true'] .burgerIcon {
+    &::before {
+      transform: translateY(3px) rotate(45deg);
+    }
+
+    &::after {
+      transform: translateY(-3px) rotate(-45deg);
+    }
+  }
+}
+
+.burgerIcon {
+  position: relative;
+  width: 22px;
+  height: 8px;
+
+  &::before,
+  &::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: var(--border-width-mark);
+    background: currentcolor;
+    transition: transform var(--duration-base) var(--ease-out);
+  }
+
+  &::before {
+    top: 0;
+  }
+
+  &::after {
+    bottom: 0;
+  }
+}
+
+.panel {
+  position: fixed;
+  inset: var(--mobile-menu-top, calc(#{$menubar-height} + var(--border-width))) 0 0;
+  z-index: 1;
+  flex-direction: column;
+  padding: var(--space-8) var(--e-gutter) calc(var(--space-24) + env(safe-area-inset-bottom));
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  background: var(--bg);
+  animation: panel-in var(--duration-base) var(--ease-out) both;
+}
+
+.panelList {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+
+  li {
+    animation: panel-rise var(--duration-base) var(--ease-out) both;
+
+    &:nth-child(2) {
+      animation-delay: var(--duration-stagger);
+    }
+
+    &:nth-child(3) {
+      animation-delay: calc(2 * var(--duration-stagger));
+    }
+
+    &:nth-child(4) {
+      animation-delay: calc(3 * var(--duration-stagger));
+    }
+  }
+}
+
+.panelLink {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-16);
+  min-height: 64px;
+  padding: 14px 0;
+  border-bottom: var(--border-width) solid var(--line);
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: 30px;
+  line-height: 1.15;
+  transition: color var(--duration-fast) var(--ease-out);
+
+  &:hover {
+    color: var(--accent-ink);
+
+    .panelArrow {
+      color: var(--accent-ink);
+      transform: translateX(3px);
+    }
+  }
+
+  &[aria-current]::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    bottom: calc(-1 * var(--border-width));
+    left: 0;
+    height: var(--border-width-mark);
+    background: var(--accent);
+  }
+}
+
+.panelLabel {
+  @include s.display-wrap;
+}
+
+.panelArrow {
+  flex: none;
+  color: var(--muted);
+  transition:
+    color var(--duration-fast) var(--ease-out),
+    transform var(--duration-base) var(--ease-out);
+}
+
+.panelTelegram {
+  @include s.button;
+  @include s.button-large;
+  @include s.button-fluid;
+  @include s.wrap;
+
+  width: 100%;
+  margin-top: var(--space-32);
+}
+
+.panelFoot {
+  margin-top: auto;
+  padding-top: var(--space-48);
+}
+
+.panelControls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: var(--space-8);
+  border-top: var(--border-width-strong) double var(--ink);
+
+  .locales {
+    margin-left: calc(-1 * var(--space-12));
+  }
+
+  .theme {
+    margin-right: calc(-1 * var(--space-12));
+  }
+}
+
+@keyframes panel-in {
+  from {
+    opacity: 0;
+  }
+}
+
+@keyframes panel-rise {
+  from {
+    opacity: 0;
+    transform: translateY(var(--space-8));
+  }
+}
+
 @media (max-width: 1080px) {
   .caps {
     grid-template-columns: minmax(0, 1fr) auto;
@@ -179,34 +381,48 @@
 
 @media (max-width: 720px) {
   :global(html):has(.nav) {
-    scroll-padding-top: 0;
+    scroll-padding-top: calc(#{$menubar-height} + var(--border-width));
   }
 
   .header {
-    position: static;
+    top: calc(-1 * #{$masthead-height-compact});
   }
 
   .masthead {
     padding: var(--space-16) 0;
   }
 
-  .caps {
-    grid-template-columns: minmax(0, 1fr);
-    height: auto;
+  .caps,
+  .nav,
+  .tagline > .taglineSep {
+    display: none;
   }
 
-  .kicker {
-    display: none;
+  .wordmark {
+    font-size: 44px;
   }
 
   .tagline {
-    @include s.wrap;
-
     letter-spacing: 0.2em;
-    white-space: normal;
   }
 
-  .nav {
-    display: none;
+  .tagline > span {
+    display: block;
+    line-height: s.$tagline-height;
+    white-space: nowrap;
+  }
+
+  .menubar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-16);
+    min-height: calc(#{$menubar-height} + var(--border-width));
+    border-bottom: var(--border-width) solid var(--ink);
+    background: var(--bg);
+  }
+
+  .panel:not([hidden]) {
+    display: flex;
   }
 }

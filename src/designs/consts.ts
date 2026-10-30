@@ -54,3 +54,13 @@ export const STEP_WHEN_PATTERN = /^(.*?)\s*(\d+(?:\s*[–-]\s*\d+)?)$/u;
 
 /** Токен «число-дефис-буквы» в пункте списка («152-ФЗ»): рисуется без переноса по дефису, как `.s-nowrap` в DS. */
 export const NOWRAP_PATTERN = /(\d+-\p{L}+)/u;
+
+/** `id` панели мобильного меню: на него ссылается `aria-controls` бургера; шапка на странице одна. */
+export const MOBILE_MENU_ID = 'mobile-menu';
+
+/** Свойство панели с низом шапки в px: панель встает под шапку, сколько бы та ни заняла (у Editorial — с мастхедом). */
+export const MOBILE_MENU_TOP_PROPERTY = '--mobile-menu-top';
+
+/** Что держит фокус внутри открытой панели: ссылки, кнопки и поля, кроме выключенных и вынутых из порядка Tab. */
+export const FOCUSABLE_SELECTOR =
+  'a[href], button:not(:disabled), input:not(:disabled), select:not(:disabled), textarea:not(:disabled), [tabindex]';
