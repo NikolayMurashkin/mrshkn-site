@@ -114,6 +114,7 @@ export type ServicePageData = {
   term: string;
   price: string;
   cardAmount: string;
+  /** Подпись вида цены: своя у услуги (`servicePage.<id>.priceKind`, у логотипа) или общая по виду цены тарифа. */
   priceKind: string;
   hasRevisions: boolean;
   cardPoints: string[];

@@ -7,7 +7,18 @@
 
 ## Ждет вычитки Николая
 
-Пусто.
+Написано 30.10.2026 — перевод утвержденных русских текстов услуги «Логотип и фирменный стиль» (тексты v5) и двух общих строк:
+
+| Раздел                                                                | Что внутри                                                                                                                                                                                              |
+| --------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `pricing.plans.logo.*`, `pricing.extras.logo.*`, `pricing.extrasNote` | тариф Logo and brand identity от $600 и строка «Сверх тарифа»; подпись блока — add-ons to a plan and standalone services                                                                                |
+| `pricing.tiers.{logoMark,logoIdentity,logoBrandbook}.*`               | уровни Logo ($600, 7 days), Logo and brand identity ($1,700, 14 days), Brand book ($3,000, 21 days)                                                                                                     |
+| `servicePage.logo.*`                                                  | Three tiers, подсказка карточек, Choose “{name}”, вид цены — цена уровня «Logo», все цены фиксированные                                                                                                 |
+| `services.logo.lead`, `services.logo.tierPoints.*`                    | лид и пункты уровней: 3 варианта, 2 раунда, файлы SVG/PNG/PDF/EPS, RGB и CMYK, памятка, две проверки ФИПС (FIPS — the Russian trademark office), шрифты с лицензией, Figma и PowerPoint / Google Slides |
+| `services.logo.basics.*`                                              | «Что входит»: анкета, права на файлы без ограничений после полной оплаты, ФИПС и patent attorney, 2 % в день не больше 20 %, гарантия 12 месяцев, $90 an hour, печать и вывеска не входят, цена кейса   |
+| `services.logo.process.*`                                             | четыре шага: Before we start, Beginning, Middle, At the end — анкета и договор, варианты, правки и 40 %, проверка, акт и остаток                                                                        |
+| `services.logo.faq.*`                                                 | восемь вопросов: примеры, сроки, правки, файлы, проверка похожих знаков (not an opinion from a patent attorney), если нашелся похожий, вместе с сайтом, если передумали                                 |
+| `pricing.caseOffer`, `pricing.extras.hour.summary`                    | цена кейса — first five clients, development and logos 30% off; час работы — after all rounds of revisions                                                                                              |
 
 ## Вычитано Николаем 30.10.2026
 

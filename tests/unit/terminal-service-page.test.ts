@@ -53,6 +53,9 @@ const headingsOf = (html: string) =>
 const serviceTexts = (locale: string, id: string) =>
   (MESSAGES[locale].services as unknown as Record<string, ServiceTexts>)[id];
 
+/** Логотип — не сайт: опций сайта к нему нет, блока опций на странице тоже. */
+const WITHOUT_OPTIONS = ['logo'];
+
 const ROWS = SERVICES.flatMap((service) => (['ru', 'en'] as const).map((locale) => [locale, service.id] as const));
 
 describe('страница услуги Terminal', () => {
@@ -73,7 +76,11 @@ describe('страница услуги Terminal', () => {
     );
     const { process, faq } = serviceTexts(locale, id);
 
-    expect(optionNames.length).toBeGreaterThan(0);
+    if (WITHOUT_OPTIONS.includes(id)) {
+      expect(optionNames).toEqual([]);
+    } else {
+      expect(optionNames.length).toBeGreaterThan(0);
+    }
 
     for (const name of optionNames) {
       expect(text, `опция «${name}»`).toContain(name);

@@ -22,7 +22,7 @@ const normalize = (text: string) => text.replace(/\s/g, ' ');
 const APPROVED_RU: [string, string][] = [
   [
     'pricing.caseOffer',
-    'Мы новая студия, и\u00a0нам нужны примеры работ. Поэтому первые пять проектов делаем по\u00a0«цене кейса» (кейс\u00a0— пример нашей работы): разработка на\u00a030\u00a0% дешевле. Скидка\u00a0— от\u00a0обычной цены разработки. Опции, MAX и\u00a0поддержка\u00a0— по\u00a0обычной цене. Скидку даем сразу: в\u00a0договоре стоит цена со\u00a0скидкой, все три части оплаты считаем от\u00a0нее. Сколько мест осталось, скажем в\u00a0ответ на\u00a0заявку. Взамен просим две вещи. Первое: вы разрешаете показывать ваш сайт или приложение как пример нашей работы, без данных ваших клиентов. Второе: вы пишете отзыв о\u00a0том, как шла работа,\u00a0— любой, в\u00a0том числе критический. Критические отзывы публикуем так же, как хорошие.',
+    'Мы новая студия, и\u00a0нам нужны примеры работ. Поэтому первым пяти заказчикам делаем по\u00a0«цене кейса» (кейс\u00a0— пример нашей работы): разработка и\u00a0логотип на\u00a030\u00a0% дешевле. Скидка\u00a0— от\u00a0обычной цены разработки и\u00a0логотипа. Опции, MAX и\u00a0поддержка\u00a0— по\u00a0обычной цене. Скидку даем сразу: в\u00a0договоре стоит цена со\u00a0скидкой, все части оплаты считаем от\u00a0нее. Сколько мест осталось, скажем в\u00a0ответ на\u00a0заявку. Взамен просим две вещи. Первое: вы разрешаете показывать ваш сайт, приложение или логотип как пример нашей работы, без данных ваших клиентов. Второе: вы пишете отзыв о\u00a0том, как шла работа,\u00a0— любой, в\u00a0том числе критический. Критические отзывы публикуем так же, как хорошие.',
   ],
   [
     'pricing.basics.deadline',
@@ -92,7 +92,7 @@ const APPROVED_RU: [string, string][] = [
 const APPROVED_EN: [string, string][] = [
   [
     'pricing.caseOffer',
-    "We are a new studio and we need examples of our work. So we do our first five projects at the “case-study price” (a case study is an example of our work): development is 30% off. The discount is taken from the regular development price. Options, MAX and support are at the regular price. We give the discount right away: the contract states the discounted price, and all three payments are calculated from it. We will tell you how many spots are left when we reply to your request. In return we ask for two things. First, you let us show your site or app as an example of our work, without your customers' data. Second, you write a review of how the work went, any review, including a critical one. We publish critical reviews the same way as positive ones.",
+    "We are a new studio and we need examples of our work. So our first five clients get the “case-study price” (a case study is an example of our work): development and logos are 30% off. The discount is taken from the regular price of development and logos. Options, MAX and support are at the regular price. We give the discount right away: the contract states the discounted price, and all payments are calculated from it. We will tell you how many spots are left when we reply to your request. In return we ask for two things. First, you let us show your site, app or logo as an example of our work, without your customers' data. Second, you write a review of how the work went, any review, including a critical one. We publish critical reviews the same way as positive ones.",
   ],
   [
     'pricing.basics.deadline',

@@ -194,7 +194,7 @@
 
 .extras {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 16px;
   margin: 0;
   padding: 0;
@@ -210,11 +210,6 @@
   border: var(--border-width) solid var(--line);
   border-radius: var(--radius-surface);
   background: var(--surface);
-  transition: border-color var(--duration-fast) var(--ease-out);
-
-  &:hover {
-    border-color: var(--ink);
-  }
 }
 
 .extraHead {
@@ -230,6 +225,8 @@
   font-family: var(--font-display);
   font-size: 17px;
   font-weight: 700;
+  overflow-wrap: anywhere;
+  min-width: 0;
 }
 
 .extraPrice {
@@ -249,11 +246,60 @@
   min-width: 0;
 }
 
-@media (max-width: 720px) {
+.extraLinked {
+  position: relative;
+  transition: border-color var(--duration-fast) var(--ease-out);
+
+  &:hover,
+  &:focus-within {
+    border-color: var(--ink);
+
+    .extraLink {
+      color: var(--accent-ink);
+    }
+
+    .extraArrow::after {
+      transform: translateX(4px);
+    }
+  }
+}
+
+.extraLink {
+  color: var(--ink);
+  transition: color var(--duration-fast) var(--ease-out);
+
+  &::after {
+    content: s.decor('');
+    position: absolute;
+    inset: 0;
+  }
+}
+
+.extraArrow {
+  margin-top: auto;
+  font-family: var(--font-display);
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--accent-ink);
+
+  &::after {
+    content: s.decor('→');
+    display: inline-block;
+    transition: transform var(--duration-fast) var(--ease-out);
+  }
+}
+
+.extrasBlock {
+  container-type: inline-size;
+}
+
+@container (max-width: 839px) {
   .extras {
     grid-template-columns: minmax(0, 1fr);
   }
+}
 
+@media (max-width: 720px) {
   .table thead {
     display: none;
   }

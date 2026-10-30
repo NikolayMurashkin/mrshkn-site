@@ -5,7 +5,8 @@ import type { PricingBasicGroup, PricingExtra, PricingOption, PricingPlan, Prici
  * доллары — таблица «Линейка» из бизнес-плана (`docs/studio-plan.html`), кроме лендинга ($2 400) и позиций,
  * которых в бизнес-плане нет: их доллары пересчитаны из рублей по курсу 50 ₽, как и цены опций.
  * Отраслевой сайт — первой строкой, как самый быстрый и доступный вход. Срок `days` — календарные дни
- * с паузами на ответ заказчика; у тарифов «от» срок — строкой перевода.
+ * с паузами на ответ заказчика; у тарифов «от» срок — строкой перевода. Логотип — тариф вне таблицы:
+ * своя страница и строка «Сверх тарифа»; стоит перед поддержкой, поэтому и в квизе он перед ней.
  */
 export const PRICING_PLANS: PricingPlan[] = [
   { id: 'industry', slug: 'industry', price: { rub: 70_000, usd: 1_200 }, isFrom: false, days: 7 },
@@ -23,12 +24,14 @@ export const PRICING_PLANS: PricingPlan[] = [
   { id: 'store', slug: 'store', price: { rub: 250_000, usd: 8_000 }, isFrom: true },
   { id: 'mvp', slug: 'mvp', price: { rub: 300_000, usd: 12_000 }, isFrom: true },
   { id: 'threeD', slug: '3d', price: { rub: 250_000, usd: 4_900 }, isFrom: true },
+  { id: 'logo', slug: 'logo', price: { rub: 30_000, usd: 600 }, isFrom: true, outsideTable: true },
   { id: 'support', slug: 'support', price: { rub: 7_000, usd: 140 }, isFrom: true },
 ];
 
 /**
  * Варианты тарифа со своей ценой: в таблице и квизе тариф один, на его странице — карточка на вариант,
- * а выбранный вариант уходит в заявку. Цены 3D и уровней поддержки в обеих валютах назначил Николай.
+ * а выбранный вариант уходит в заявку. Цены 3D и уровней поддержки в обеих валютах назначил Николай;
+ * рубли уровней логотипа — решение Николая, доллары — рубли по курсу 50 ₽, как у позиций вне бизнес-плана.
  */
 export const PRICING_TIERS: PricingTier[] = [
   { id: 'block3d', planId: 'threeD', price: { rub: 250_000, usd: 4_900 }, isFrom: true },
@@ -37,7 +40,13 @@ export const PRICING_TIERS: PricingTier[] = [
   { id: 'supportHours', planId: 'support', price: { rub: 15_000, usd: 250 }, isFrom: false, hours: 3 },
   { id: 'supportHoursPlus', planId: 'support', price: { rub: 35_000, usd: 700 }, isFrom: false, hours: 10 },
   { id: 'supportHoursPro', planId: 'support', price: { rub: 70_000, usd: 1_400 }, isFrom: false, hours: 25 },
+  { id: 'logoMark', planId: 'logo', price: { rub: 30_000, usd: 600 }, isFrom: false },
+  { id: 'logoIdentity', planId: 'logo', price: { rub: 85_000, usd: 1_700 }, isFrom: false },
+  { id: 'logoBrandbook', planId: 'logo', price: { rub: 150_000, usd: 3_000 }, isFrom: false },
 ];
+
+/** Строки таблицы тарифов «Услуги и цены»: тариф вне таблицы показывает только «Сверх тарифа». */
+export const PRICING_TABLE_PLANS: PricingPlan[] = PRICING_PLANS.filter((plan) => plan.outsideTable !== true);
 
 export const PRICING_OPTIONS: PricingOption[] = [
   { id: 'booking', price: { from: { rub: 15_000, usd: 300 }, to: { rub: 40_000, usd: 800 } } },
@@ -58,10 +67,16 @@ export const PRICING_OPTIONS: PricingOption[] = [
 /** Второй мессенджер у отраслевого Mini App: опция только этого тарифа, в «опциях к любому тарифу» ее нет. */
 export const MAX_OPTION: PricingOption = { id: 'max', price: { from: { rub: 15_000, usd: 300 } } };
 
+/** «Сверх тарифа»: доплаты к тарифу, потом отдельная услуга — у нее цена «от» и ссылка из ее тарифа. */
 export const PRICING_EXTRAS: PricingExtra[] = [
   { id: 'subscription', price: { rub: 180_000, usd: 3_500 }, period: 'month' },
   { id: 'hour', price: { rub: 3_000, usd: 90 }, period: 'hour' },
+  { id: 'logo', planId: 'logo' },
 ];
+
+/** Тариф позиции «Сверх тарифа»: у доплаты к тарифу его нет. */
+export const extraPlan = (extra: PricingExtra): PricingPlan | null =>
+  'planId' in extra ? (PRICING_PLANS.find((plan) => plan.id === extra.planId) ?? null) : null;
 
 /** Что входит в любую цену (research §6). Тексты — в messages, здесь только порядок. */
 export const PRICING_BASICS = [

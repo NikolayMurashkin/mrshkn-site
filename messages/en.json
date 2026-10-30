@@ -152,6 +152,11 @@
         "summary": "A 3D model of your product on your site: it rotates, explains each part and leads to an inquiry",
         "term": "4–6 weeks"
       },
+      "logo": {
+        "name": "Logo and brand identity",
+        "summary": "A logo with files for the web and for print. Higher tiers add brand colors, fonts and layouts: business card, sign, menu, social media",
+        "term": "from 7 days"
+      },
       "support": {
         "name": "Support",
         "summary": "We keep the site running, make backups and update the site's software. Changes to the site come with the plans with hours: 3, 10 or 25 hours a month",
@@ -188,13 +193,28 @@
         "name": "Support + 25 hours",
         "summary": "Everything in “Hosting and backups”, plus 25 hours of our work a month on changes to the site: texts, photos, colors, the order of blocks. Unused hours do not carry over to the next month",
         "term": "monthly"
+      },
+      "logoMark": {
+        "name": "Logo",
+        "summary": "3 logo options to choose from, 2 rounds of your revisions, files for the web and for print, two checks for an already registered similar trademark",
+        "term": "7 days"
+      },
+      "logoIdentity": {
+        "name": "Logo and brand identity",
+        "summary": "Everything in “Logo”, plus brand colors, fonts and a pattern. And 5 layouts: business card, sign, menu or price list, social media page design, post template",
+        "term": "14 days"
+      },
+      "logoBrandbook": {
+        "name": "Brand book",
+        "summary": "Everything in “Logo and brand identity”, plus a brand book: a rulebook on how to use the logo, colors and fonts. At the start, 3 ideas for the whole style instead of 3 logos. Also 12 icons, a presentation template and 5 layouts",
+        "term": "21 days"
       }
     },
     "miniAppNote": {
       "title": "Telegram and MAX",
       "text": "A custom app works in two messengers at once: Telegram and MAX, a Russian messenger. One price: we write the app once for both. The industry app includes only Telegram; you can add a MAX version for {max}. For that, you register your company in MAX (we send step-by-step instructions) and we connect the rest. Then MAX reviews the app. MAX decides how long the review takes, so that time is not part of our deadline."
     },
-    "caseOffer": "We are a new studio and we need examples of our work. So we do our first five projects at the “case-study price” (a case study is an example of our work): development is 30% off. The discount is taken from the regular development price. Options, MAX and support are at the regular price. We give the discount right away: the contract states the discounted price, and all three payments are calculated from it. We will tell you how many spots are left when we reply to your request. In return we ask for two things. First, you let us show your site or app as an example of our work, without your customers' data. Second, you write a review of how the work went, any review, including a critical one. We publish critical reviews the same way as positive ones.",
+    "caseOffer": "We are a new studio and we need examples of our work. So our first five clients get the “case-study price” (a case study is an example of our work): development and logos are 30% off. The discount is taken from the regular price of development and logos. Options, MAX and support are at the regular price. We give the discount right away: the contract states the discounted price, and all payments are calculated from it. We will tell you how many spots are left when we reply to your request. In return we ask for two things. First, you let us show your site, app or logo as an example of our work, without your customers' data. Second, you write a review of how the work went, any review, including a critical one. We publish critical reviews the same way as positive ones.",
     "basicsHeading": "Included in the price of every site",
     "basicsNote": "13 items in the price; hosting and domain are paid to the provider directly. Telegram apps, 3D and support have their own lists on their pages",
     "basicsGroups": {
@@ -275,7 +295,7 @@
       }
     },
     "extrasHeading": "Beyond the plan",
-    "extrasNote": "when the work goes beyond the plan",
+    "extrasNote": "add-ons to a plan and standalone services",
     "extras": {
       "subscription": {
         "name": "Dev subscription",
@@ -283,7 +303,11 @@
       },
       "hour": {
         "name": "Hourly rate",
-        "summary": "Revisions and extra work not included in the plan: for example, after three rounds of revisions or when the hours on your support plan have run out"
+        "summary": "Revisions and extra work not included in the plan: for example, after all rounds of revisions or when the hours on your support plan have run out"
+      },
+      "logo": {
+        "name": "Logo and brand identity",
+        "summary": "A logo with files for the web and for print; higher tiers add brand colors, fonts and layouts. Together with a site or on its own"
       }
     },
     "editorial": {
@@ -611,6 +635,12 @@
       "tiersHeading": "Four plans",
       "tiersNote": "Click a plan and the quote opens with that plan already selected",
       "tierCta": "Choose “{name}”"
+    },
+    "logo": {
+      "tiersHeading": "Three tiers",
+      "tiersNote": "Click a tier and the quote opens with that tier already selected",
+      "tierCta": "Choose “{name}”",
+      "priceKind": "Price of the “Logo” tier. All tier prices are fixed: see below"
     }
   },
   "services": {
@@ -1472,6 +1502,106 @@
           "Changes to the site, such as a new text or photo, come only with the plans with hours. They are not part of “Hosting and backups”"
         ]
       }
+    },
+    "logo": {
+      "lead": "We design a logo and brand identity: the colors, fonts and pattern people recognize you by on your sign, your menu and social media. For a small business: a coffee shop, clinic, salon or workshop. Three tiers, from a single logo to a brand book, a rulebook on how to use the logo, colors and fonts. We check whether a similar trademark is already registered.",
+      "tierPoints": {
+        "logoMark": [
+          "3 different logos to choose from. None of them fits? We show 3 more",
+          "2 rounds of your revisions to the chosen logo. A round is one combined list of your comments",
+          "Logo files for the web and social media (SVG and PNG) and for print shops (PDF and EPS). Colors for screens (RGB) and for print (CMYK): ink on paper renders color differently from a screen",
+          "Versions for light and dark backgrounds, plus single-color ones: black for printing in one ink, say on a receipt or a stamp, and white for dark backgrounds",
+          "A small site icon that shows in the browser tab and in bookmarks, and a profile picture (avatar) for social media and messengers",
+          "A 1–2 page guide: how much space to leave around the logo, how small it can go, which version to use where and what not to do with it. Handy when someone else makes your sign or ads",
+          "Two checks in the open databases of FIPS, the Russian trademark office: whether a trademark with a similar image or wording already exists"
+        ],
+        "logoIdentity": [
+          "Everything in “Logo”",
+          "Brand colors and fonts. We pick free fonts licensed for business use, on signs, websites and in print, and hand over their license texts. Want a paid font? You buy the license, and we tell you the price in advance",
+          "A brand pattern for packaging, backgrounds and social media",
+          "5 layouts: business card, sign, menu or price list, social media page design (cover and profile picture in your brand style), post template. The post template and the menu also come in Figma (a free online tool) and as a PowerPoint copy, which opens in free Google Slides too: you change the text and photos yourself",
+          "Guidelines of 10–12 pages: logo, colors, fonts, pattern and how to combine them",
+          "1 round of revisions for everything beyond the logo: colors, fonts, pattern, layouts and guidelines, in one list"
+        ],
+        "logoBrandbook": [
+          "Everything in “Logo and brand identity”",
+          "At the start, 3 different style ideas instead of 3 logos: each with its own logo, colors and fonts. You choose one",
+          "A brand book: a rulebook on how to use the logo, colors and fonts. A 25–40 page PDF: margins and grid (the invisible lines everything is aligned to), fonts and text sizes, what photos should look like, what tone to write in",
+          "12 icons in the same style, for the site, the menu and social media",
+          "A presentation template: a PowerPoint file that also opens in Google Slides. You drop in your own text and photos",
+          "5 more layouts. Which ones, we agree together before the contract and put them in it",
+          "Icons, the brand book, the presentation template and layouts get one shared round of revisions; the colors and fonts of the style idea are revised within the logo's two rounds"
+        ]
+      },
+      "basics": {
+        "note": "Included in every tier",
+        "items": [
+          "First, a short questionnaire about your business: what you sell, to whom and how you want to come across. If answers are missing, we tell you which ones within 1 working day",
+          "We hand over all the files of your tier. From the day the logo is paid in full, you use them without limits: on your sign, site, packaging and in ads. You can also change them, yourself or with another designer. We do not give your logo, or the options you did not choose, to anyone else, and we do not rework them for others",
+          "Two checks in the open databases of FIPS, the state institute that keeps the Russian trademark register. A trademark is a logo or name registered to an owner: others may not use the same or a similar one in that owner's field. This is a check, not an opinion from a patent attorney, the specialist who prepares trademark filings",
+          "We put the deadline and the price in the contract. If we are late through our own fault, the tier price drops by 2% for each day of delay, by no more than 20% in total",
+          "A 12-month warranty on the files from the day of acceptance: found a mistake of ours? We fix it for free. We start within a working day and fix it within 5 working days",
+          "Need more than your tier includes, such as extra drawings, icons or layouts? We charge by the hour: $90 an hour. We name the total before we start and never charge more",
+          "Printing, sign fabrication and photo shoots are not included. We prepare the files the print shop and the sign maker need; the drawing of the sign with mounts and lighting is made by the sign maker. No photos of your own? We put free temporary stock photos into the layouts",
+          "Our first five clients get 30% off, at the “case-study price” (a case study is an example of our work). In return, you let us show the logo as an example on our site, on social media and in correspondence, and you write a review of the work, any review, including a critical one. We will tell you how many spots are left when we reply to your request"
+        ]
+      },
+      "process": [
+        {
+          "when": "Before we start",
+          "title": "Questionnaire and contract",
+          "text": "You fill in a short questionnaire: what you do, who your customers are, which logos you like and which you don't. In reply we send the price, the deadline, the start date and a draft contract, all before any payment. Without a site the contract is the same: an appendix says you ordered only the logo. By the start date you pay 30% upfront, and the deadline runs from that day."
+        },
+        {
+          "when": "Beginning",
+          "title": "Options to choose from",
+          "text": "Within 2 working days for “Logo”, 3 for “Logo and brand identity” and 4 for “Brand book”, we show 3 different logos (style ideas in “Brand book”). You choose one, and we check for similar trademarks right away. None fits? Within the same time we show 3 more, and the overall deadline shifts by those days. If those don't fit either, we refund the logo prepayment."
+        },
+        {
+          "when": "Middle",
+          "title": "Revisions",
+          "text": "You send your comments in one list: that is a round. The logo gets two rounds, the rest of the tier's materials one shared round. A different idea is hourly work, and we name the price in advance. Without a site you pay 40% of the price: for “Logo” after the second round, for the higher tiers once we have sent all the materials for your round of revisions."
+        },
+        {
+          "when": "At the end",
+          "title": "Files and check",
+          "text": "We check the final version once more. If we find a similar trademark, we change the logo for free, and the deadline shifts by no more than 3 working days. We send the files and the check report. Within 10 working days you sign the acceptance certificate or tell us what is wrong, and we fix it within 5 working days. No reply means the work is accepted. You pay the rest and use the files without limits."
+        }
+      ],
+      "faq": [
+        {
+          "question": "Where can I see your logos?",
+          "answer": "We have not designed logos for clients yet: the studio is new, and examples will appear here after the first orders. That is why the risk is ours until you choose an option: we show 3 different options, and if none fits, 3 more. If those don't fit either, we refund the whole prepayment. And our first five clients get 30% off."
+        },
+        {
+          "question": "How long does a logo take?",
+          "answer": "“Logo” takes 7 days, “Logo and brand identity” 14 days, “Brand book” 21 days. These are calendar days: weekends and holidays count too. The deadline runs from the start date in the contract, and that date needs the prepayment and your questionnaire answers. While you choose an option or collect comments, the clock stops. If the first 3 options don't fit, the deadline shifts by the days of the second showing. If we find a similar trademark at the end, the deadline shifts by no more than 3 working days."
+        },
+        {
+          "question": "How many revisions can we make?",
+          "answer": "The logo gets two rounds of revisions; everything else (colors, fonts, pattern, layouts, guidelines, and in “Brand book” also icons, the brand book and the presentation template) gets one shared round. In “Brand book”, the colors and fonts of the style idea are revised together with the logo. A round is one list of your comments: it can have as many points as you like, and we apply it in full. A revision is a change to the chosen option: color, lettering font, shape, details, placement; simplifying or removing details is a revision too. A different idea for the mark, a different drawing technique or a new name at your request is not a revision: we tell you so before the work and quote it by the hour, $90 an hour. We never do such work without your consent. We fix our own mistakes for free."
+        },
+        {
+          "question": "Which files will we get?",
+          "answer": "The logo for the web and social media (SVG and PNG) and for print shops (PDF and EPS), with colors for screens and for print. Versions for light and dark backgrounds, black and white. A site icon and a profile picture. Higher tiers add the pattern and icons in SVG and PNG, layouts in PDF, PNG and EPS, guidelines in PDF, post and menu templates in Figma and PowerPoint, and the presentation in PowerPoint. Your print shop or sign maker needs a different file format? We re-save it for free within 2 working days. Colors on paper are best checked with a test print at the print shop."
+        },
+        {
+          "question": "Do you check for similar logos?",
+          "answer": "Yes, twice: a quick check once you choose an option, and a full one when the logo is ready. We search the open FIPS databases for trademarks and applications for them: with a similar name, a similar look and the same imagery, say also with a coffee cup. We do not check cafe and shop names that are not registered as trademarks, or website addresses. This is not an opinion from a patent attorney and not a guarantee of registration: the check sees the databases as of the day it is run. The surest protection for a logo is registering it as a trademark. You pay the fees and the attorney, and you can file in your own name once the logo is paid in full."
+        },
+        {
+          "question": "What if a similar trademark turns up?",
+          "answer": "After you choose an option, you decide: change the option for free, take another one we showed, or keep this one, and then we note it in the check report. This does not use up your revision rounds. If your business name is similar, keeping or changing it is also up to you: we check the new name and put it into the logo once for free. If we find a similar mark on the finished logo, we change it for free and check again, and you can send comments once or keep the original. If it turns out that a similar mark was in the database on the day of the check and we missed it, we change the logo and files for free, but we do not pay for the sign or printing."
+        },
+        {
+          "question": "Can we order a logo together with a site?",
+          "answer": "Yes, in one contract. First we design the logo and check for similar trademarks, then we show the site styles, already with the logo. The site deadline runs as usual, from the day you pick a style: together it takes longer than a site alone, by the time spent on the logo. We finish the rest of the brand identity while we build the site. If the site is ready earlier, at your request we launch it already with the logo. When all the files of the tier are ready, you sign the logo acceptance certificate and pay 70% of the tier price."
+        },
+        {
+          "question": "What if we change our minds halfway?",
+          "answer": "Until you choose an option, we refund the whole logo prepayment within 10 working days. Ordered together with a site? You can carry on with the site without the logo or close the contract with a full refund of the prepayment. After that you pay only for the work done: $90 an hour, and preparing the options is not billed. We never take more than 70% of the tier price, or more than 90% once we have sent all the files. What you have paid counts toward it, and we refund any excess within 10 working days. Within 3 working days of settling up we hand over everything done. If we refunded the whole prepayment, the options we showed may not be used."
+        }
+      ]
     }
   },
   "privacy": {

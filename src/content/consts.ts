@@ -7,7 +7,10 @@ export const EXTRA_PRICE_PATTERN: Record<PricePeriod, string> = {
   hour: 'hour',
 };
 
-/** Опции, которые показываются на странице услуги: то, что уже входит в тариф, опцией не предлагается. */
+/**
+ * Опции, которые показываются на странице услуги: то, что уже входит в тариф, опцией не предлагается.
+ * Логотип — не сайт: опций сайта к нему нет, блока опций на его странице тоже.
+ */
 export const SERVICE_OPTIONS: Record<string, readonly string[]> = {
   industry: ['payments', 'quiz', 'reviews', 'messengers', 'language', 'crm'],
   landing: ['booking', 'payments', 'quiz', 'calculator', 'blog', 'crm'],
@@ -17,6 +20,7 @@ export const SERVICE_OPTIONS: Record<string, readonly string[]> = {
   mvp: ['crm', 'assistant', 'language', 'messengers'],
   threeD: ['quiz', 'calculator', 'crm', 'language', 'messengers'],
   support: ['geo', 'reviews', 'assistant'],
+  logo: [],
 };
 
 /** Якорь полного списка опций на главной. */

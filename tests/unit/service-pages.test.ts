@@ -78,6 +78,9 @@ const servicePageData = (locale: string, serviceId: string) => {
 
 const PAGE_PLANS = PRICING_PLANS.filter((plan) => !WITHOUT_PAGE.includes(plan.id));
 
+/** Логотип — не сайт: опций сайта к нему нет, список пустой. */
+const WITHOUT_OPTIONS = ['logo'];
+
 describe('страницы услуг покрывают все тарифы', () => {
   it.each(PLAN_ROWS)('%s, %s: адрес тарифа из прайса есть среди страниц услуг', (locale, _id, plan) => {
     const pages = new Set(routing.locales.flatMap((l) => SERVICES.map((service) => `/${l}/${service.slug}`)));
@@ -114,7 +117,13 @@ describe('страницы услуг покрывают все тарифы', (
     const optionIds = PRICING_OPTIONS.map((option) => option.id);
 
     expect(service).toBeDefined();
-    expect(service!.options.length).toBeGreaterThan(0);
+
+    if (WITHOUT_OPTIONS.includes(id)) {
+      expect(service!.options).toEqual([]);
+    } else {
+      expect(service!.options.length).toBeGreaterThan(0);
+    }
+
     expect(new Set(service!.options).size).toBe(service!.options.length);
 
     for (const option of service!.options) {

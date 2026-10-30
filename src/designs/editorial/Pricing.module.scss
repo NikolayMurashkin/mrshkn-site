@@ -167,7 +167,7 @@
 
 .extras {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: var(--space-32) var(--space-56);
   margin: 0;
   padding: 0 0 28px;
@@ -213,6 +213,53 @@
   max-width: 56 * s.$text-ch;
 }
 
+.extraLinked {
+  position: relative;
+
+  &:hover,
+  &:focus-within {
+    .extraLink,
+    .extraArrow {
+      color: var(--accent-ink);
+    }
+
+    .extraArrow {
+      transform: translateX(3px);
+    }
+  }
+}
+
+.extraLink {
+  color: inherit;
+  transition: color var(--duration-fast) var(--ease-out);
+
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+  }
+}
+
+.extraArrow {
+  display: flex;
+  align-self: flex-end;
+  margin-top: auto;
+  color: var(--ink);
+  transition:
+    transform var(--duration-base) var(--ease-out),
+    color var(--duration-fast) var(--ease-out);
+}
+
+.extrasBlock {
+  container-type: inline-size;
+}
+
+@container (max-width: 684px) {
+  .extras {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
 @media (max-width: 720px) {
   .planLink {
     grid-template-areas:
@@ -236,9 +283,5 @@
   .miniAppTitle,
   .miniAppText {
     grid-column: 1 / -1;
-  }
-
-  .extras {
-    grid-template-columns: minmax(0, 1fr);
   }
 }

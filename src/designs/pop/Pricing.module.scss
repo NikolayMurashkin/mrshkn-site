@@ -232,7 +232,7 @@
 
 .extras {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: var(--space-24);
   margin: 0;
   padding: 0;
@@ -282,6 +282,50 @@
   color: var(--muted);
 
   @include s.wrap;
+}
+
+.extrasBlock {
+  container-type: inline-size;
+}
+
+@container (max-width: 829px) {
+  .extras {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+.extraLinked {
+  position: relative;
+  transition: transform var(--duration-base) var(--ease-spring);
+
+  &:hover,
+  &:focus-within {
+    transform: translateY(-6px);
+
+    .extraArrow {
+      transform: rotate(-45deg);
+    }
+  }
+}
+
+.extraLink {
+  color: inherit;
+
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 0 0 -6px;
+    border-radius: var(--radius-surface);
+  }
+}
+
+.extraArrow {
+  @include s.round;
+
+  align-self: flex-end;
+  width: 40px;
+  height: 40px;
+  margin-top: auto;
 }
 
 @media (max-width: 1080px) {

@@ -69,7 +69,7 @@ const APPROVED_RU: [string, string][] = [
   ['pricing.extrasHeading', 'Сверх тарифа'],
   [
     'pricing.extras.hour.summary',
-    'Правки и\u00a0доработки, которые не\u00a0входят в\u00a0тариф: например, после трех раундов правок или когда закончились часы на\u00a0тарифе поддержки',
+    'Правки и\u00a0доработки, которые не\u00a0входят в\u00a0тариф: например, после всех раундов правок или когда закончились часы на\u00a0тарифе поддержки',
   ],
   ['servicePage.priceKind.from', 'Нижняя граница цены. Точную назовем, когда обсудим вашу задачу'],
   ['services.landing.faq.3.question', 'Найдут ли сайт через нейросети, например ChatGPT?'],
@@ -279,7 +279,7 @@ const APPROVED_EN: [string, string][] = [
   ['pricing.extrasHeading', 'Beyond the plan'],
   [
     'pricing.extras.hour.summary',
-    'Revisions and extra work not included in the plan: for example, after three rounds of revisions or when the hours on your support plan have run out',
+    'Revisions and extra work not included in the plan: for example, after all rounds of revisions or when the hours on your support plan have run out',
   ],
   ['servicePage.priceKind.from', 'The lowest price. We name the exact one once we discuss your task'],
   ['services.landing.faq.3.question', 'Will people find the site through AI, such as ChatGPT?'],

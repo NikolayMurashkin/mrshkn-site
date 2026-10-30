@@ -249,31 +249,33 @@ export const TerminalServicePage = ({ service }: ServicePageProps) => {
             </>
           ) : null}
 
-          <section
-            className={styles.block}
-            aria-labelledby="service-options"
-          >
-            <div className={styles.blockHead}>
-              <h2
-                className={styles.blockTitle}
-                id="service-options"
-              >
-                {t('optionsHeading')}
-              </h2>
-              <p className={styles.blockNote}>{t('optionsNote')}</p>
-            </div>
-            <TerminalOptions
-              items={options}
-              testId="service-options"
-              narrow
-            />
-            <a
-              className={styles.more}
-              href={data.pricesHref}
+          {options.length > 0 ? (
+            <section
+              className={styles.block}
+              aria-labelledby="service-options"
             >
-              {t('allOptions')}
-            </a>
-          </section>
+              <div className={styles.blockHead}>
+                <h2
+                  className={styles.blockTitle}
+                  id="service-options"
+                >
+                  {t('optionsHeading')}
+                </h2>
+                <p className={styles.blockNote}>{t('optionsNote')}</p>
+              </div>
+              <TerminalOptions
+                items={options}
+                testId="service-options"
+                narrow
+              />
+              <a
+                className={styles.more}
+                href={data.pricesHref}
+              >
+                {t('allOptions')}
+              </a>
+            </section>
+          ) : null}
 
           <section
             className={styles.block}

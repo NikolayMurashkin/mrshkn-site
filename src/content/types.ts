@@ -29,6 +29,11 @@ export type PricingPlan = {
   isFrom: boolean;
   /** Срок в календарных днях: подпись срока собирается из числа, ключа `term` в переводах у тарифа нет. */
   days?: number;
+  /**
+   * Услуга не сайт и строки в таблице тарифов у нее нет: ее показывает строка «Сверх тарифа» со ссылкой
+   * на страницу услуги; в квизе, на странице и в поиске тариф обычный.
+   */
+  outsideTable?: true;
 };
 
 /** Цена тарифа или его варианта: подпись собирается одним кодом, «от» — по `isFrom`. */
@@ -58,12 +63,23 @@ export type PricingBasicGroup<TItem extends string> = {
   items: readonly TItem[];
 };
 
-/** Позиция прайса вне таблицы тарифов: подписка на разработку и почасовая ставка. */
-export type PricingExtra = {
+/** Позиция прайса вне таблицы тарифов со своей ценой: подписка на разработку и почасовая ставка. */
+export type PricingPricedExtra = {
   id: string;
   price: Money;
   period: PricePeriod;
 };
+
+/**
+ * Позиция «Сверх тарифа», за которой стоит тариф со своей страницей: сумма, «от» и ссылка — из тарифа,
+ * в строке они не повторяются.
+ */
+export type PricingPlanExtra = {
+  id: string;
+  planId: string;
+};
+
+export type PricingExtra = PricingPricedExtra | PricingPlanExtra;
 
 /** Страница услуги: тариф из прайса, его адрес и опции, которые показываются на странице. */
 export type Service = {
