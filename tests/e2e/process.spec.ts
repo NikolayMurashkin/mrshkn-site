@@ -4,8 +4,8 @@ import { openDesign } from './open-design';
 
 /** Четыре обещания — текстом, а не картинкой: их проверяет и клиент, и договор. */
 const PROMISES = {
-  ru: ['4 дня', 'Скорость 90+', 'Фикс', 'Год гарантии'],
-  en: ['4 days', 'Lighthouse 90+', 'Fixed', 'A one-year warranty'],
+  ru: ['4 дня', 'Скорость от 90 из 100', 'Фиксированная', 'Год гарантии'],
+  en: ['4 days', 'Speed from 90 out of 100', 'Fixed', 'A one-year warranty'],
 } as const;
 
 /** График лендинга: четыре дня, по шагу на день. */

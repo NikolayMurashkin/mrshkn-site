@@ -89,14 +89,14 @@ const NAMES: Record<Locale, { open: string; close: string }> = {
 const EXPECTED_LINKS: Record<Locale, { href: string; text: string }[]> = {
   ru: [
     { href: '/ru#services', text: 'Услуги' },
-    { href: '/ru/work', text: 'Кейсы' },
-    { href: '/ru#process', text: 'Процесс' },
+    { href: '/ru/work', text: 'Работы' },
+    { href: '/ru#process', text: 'Как работаем' },
     { href: '/ru#contacts', text: 'Контакты' },
   ],
   en: [
     { href: '/en#services', text: 'Services' },
     { href: '/en/work', text: 'Work' },
-    { href: '/en#process', text: 'Process' },
+    { href: '/en#process', text: 'How we work' },
     { href: '/en#contacts', text: 'Contact' },
   ],
 };
@@ -442,7 +442,7 @@ const pressTab = async (shift = false) => {
 
 /**
  * Ссылки пунктов меню внутри панели: адрес — один из `navHref` пунктов `NAV_ITEMS`. Ссылки языка не в счет:
- * на `/ru/work` ссылка «RU» ведет туда же, куда пункт «Кейсы».
+ * на `/ru/work` ссылка «RU» ведет туда же, куда пункт «Работы».
  */
 const panelNavLinks = (panel: HTMLElement, locale: Locale) => {
   const hrefs = new Set(NAV_ITEMS.map((item) => navHref(locale, item)));
@@ -755,7 +755,7 @@ describe('поведение мобильного меню', () => {
 
 describe('состав мобильной панели', () => {
   it.each(DESIGN_NAMES.flatMap((design) => (['ru', 'en'] as const).map((locale) => [design, locale] as const)))(
-    'C1 %s, %s: пункты панели — Услуги, Кейсы, Процесс, Контакты со ссылками navHref',
+    'C1 %s, %s: пункты панели — Услуги, Работы, Как работаем, Контакты со ссылками navHref',
     async (design, locale) => {
       route.pathname = `/${locale}`;
       route.locale = locale;
@@ -765,20 +765,23 @@ describe('состав мобильной панели', () => {
     },
   );
 
-  it.each(DESIGN_NAMES)('C2 %s: без кейсов — Услуги, Процесс, Контакты, ссылки на /ru/work нет', async (design) => {
-    await renderHeader(design, { hasCases: false });
+  it.each(DESIGN_NAMES)(
+    'C2 %s: без кейсов — Услуги, Как работаем, Контакты, ссылки на /ru/work нет',
+    async (design) => {
+      await renderHeader(design, { hasCases: false });
 
-    const panel = await openMenu();
+      const panel = await openMenu();
 
-    expect(panelNavLinks(panel, 'ru').map((link) => link.getAttribute('href'))).toEqual([
-      '/ru#services',
-      '/ru#process',
-      '/ru#contacts',
-    ]);
-    expect([...panel.querySelectorAll('a[href]')].filter((link) => link.getAttribute('href') === '/ru/work')).toEqual(
-      [],
-    );
-  });
+      expect(panelNavLinks(panel, 'ru').map((link) => link.getAttribute('href'))).toEqual([
+        '/ru#services',
+        '/ru#process',
+        '/ru#contacts',
+      ]);
+      expect([...panel.querySelectorAll('a[href]')].filter((link) => link.getAttribute('href') === '/ru/work')).toEqual(
+        [],
+      );
+    },
+  );
 
   it.each(
     DESIGN_NAMES.flatMap((design) => [
@@ -802,20 +805,23 @@ describe('состав мобильной панели', () => {
     }).toEqual(expected);
   });
 
-  it.each(DESIGN_NAMES)('C4 %s: тема в панели — «Сменить тему», клик меняет тему, панель открыта', async (design) => {
-    await renderHeader(design);
+  it.each(DESIGN_NAMES)(
+    'C4 %s: тема в панели — «Светлый или темный фон», клик меняет тему, панель открыта',
+    async (design) => {
+      await renderHeader(design);
 
-    const toggle = (await openMenu()).querySelector<HTMLElement>('[data-testid="theme-toggle"]');
+      const toggle = (await openMenu()).querySelector<HTMLElement>('[data-testid="theme-toggle"]');
 
-    expect(toggle, 'в панели есть переключатель темы').not.toBeNull();
-    expect(toggle?.getAttribute('aria-label')).toBe('Сменить тему');
+      expect(toggle, 'в панели есть переключатель темы').not.toBeNull();
+      expect(toggle?.getAttribute('aria-label')).toBe('Светлый или темный фон');
 
-    fireEvent.click(toggle as HTMLElement);
-    await settle();
+      fireEvent.click(toggle as HTMLElement);
+      await settle();
 
-    expect(spies.setTheme.mock.calls).toEqual([['light']]);
-    expectOpen();
-  });
+      expect(spies.setTheme.mock.calls).toEqual([['light']]);
+      expectOpen();
+    },
+  );
 
   it.each(DESIGN_NAMES.flatMap((design) => (['ru', 'en'] as const).map((locale) => [design, locale] as const)))(
     'C5 %s, %s: Telegram в панели — адрес студии в новой вкладке, клик — цель telegramClick',
@@ -962,7 +968,7 @@ describe('Editorial на телефоне: липкая строка', () => {
     setLayout(EDITORIAL_PROCESS_UNDER_HEADER);
     const view = await renderHeader('editorial');
 
-    expect(runningHeads(), 'под шапкой «Процесс»').toEqual([ruMessages.nav.process]);
+    expect(runningHeads(), 'под шапкой «Как работаем»').toEqual([ruMessages.nav.process]);
 
     view.unmount();
     setLayout(EDITORIAL_BEFORE_FIRST_SECTION);

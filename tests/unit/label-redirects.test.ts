@@ -13,10 +13,14 @@ const EXPECTED_REDIRECTS: Record<string, string> = {
   '/en/get-a-quote': '/en/brief',
   '/ru/как-мы-работаем': '/ru#process',
   '/en/how-we-work': '/en#process',
+  '/ru/отправить-заявку': '/ru/brief',
+  '/en/send-request': '/en/brief',
   '/рассчитать-стоимость': '/ru/brief',
   '/как-мы-работаем': '/ru#process',
   '/get-a-quote': '/en/brief',
   '/how-we-work': '/en#process',
+  '/отправить-заявку': '/ru/brief',
+  '/send-request': '/en/brief',
 };
 
 const request = (path: string, headers?: Record<string, string>) =>
@@ -85,7 +89,7 @@ describe('редиректы подписей героя Terminal', () => {
     expect(target(response.headers.get('location'))).toBe('/ru?utm_source=gsc#process');
   });
 
-  it('1.8: список редиректов — ровно восемь пар: с языком и без', () => {
+  it('1.8: список редиректов — ровно двенадцать пар: с языком и без', () => {
     expect(LABEL_REDIRECTS).toEqual(EXPECTED_REDIRECTS);
   });
 

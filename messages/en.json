@@ -8,47 +8,47 @@
     "tagline": "Murashkin Studio"
   },
   "controls": {
-    "theme": "Switch theme"
+    "theme": "Light or dark background"
   },
   "nav": {
     "services": "Services",
     "work": "Work",
-    "process": "Process",
+    "process": "How we work",
     "contacts": "Contact"
   },
   "header": {
-    "cta": "Start a project",
-    "status": "online",
-    "kicker": "Web development studio",
-    "location": "Kaliningrad → worldwide",
+    "cta": "Discuss your website",
+    "status": "available",
+    "kicker": "We build websites and apps",
+    "location": "Kaliningrad, working online",
     "founded": "Founded in 2026",
     "menuOpen": "Open menu",
     "menuClose": "Close menu"
   },
   "hero": {
-    "subtitle": "Price and deadline in the contract. Your site scores 90+ out of 100 in Google's free speed test, or we don't hand it over. A one-year warranty. A one-page site in 4 days, a site for a clinic or a cafe in 7.",
+    "subtitle": "Price and deadline in the contract. Your site scores 90+ out of 100 in Google's free speed test; if it falls short because of us, we keep working for free before handover. A one-year warranty. A one-page site in 4 days, a site for a clinic or a cafe in 7.",
     "kinetic": {
       "title": "<line>Custom-coded websites</line><line><accent>in 4 days</accent></line>",
       "lead": "Websites and Telegram apps for business. We write the code ourselves, without website builders, and hand it over to you. We work under a contract, and at the end you sign an acceptance certificate, the document that confirms the work is accepted.",
-      "primaryCta": "Get a quote",
+      "primaryCta": "Get a website price",
       "secondaryCta": "How we work",
       "badge": "SPEED 90+ · 4 DAYS · ONE-YEAR WARRANTY · ",
-      "tapeCode": "Code",
+      "tapeCode": "We hand the code over to you",
       "dayUnit": "day",
       "ticker": {
-        "landing": "Landing pages",
-        "miniApps": "Telegram Mini Apps",
+        "landing": "One-page websites",
+        "miniApps": "Apps inside Telegram",
         "company": "Company websites",
         "shops": "Online stores",
-        "mvp": "Startup MVPs",
-        "support": "Support"
+        "mvp": "First product versions for startups",
+        "support": "Website support after launch"
       },
       "tapeDeadline": "Deadline in the contract"
     },
     "terminal": {
       "prompt": "mrshkn build --site --days 4 --fixed-price",
       "title": "Custom-coded websites<br></br>in 4 days<accent>.</accent>",
-      "lead": "Websites and Telegram apps for business. The code and passwords are yours, the speed test is in the acceptance certificate.",
+      "lead": "Websites and Telegram apps for business. We hand the code and passwords over to you, the speed test is in the acceptance certificate.",
       "primaryCta": "./get-a-quote",
       "secondaryCta": "./how-we-work",
       "logTitle": "build.log — a one-page site, 4 days",
@@ -58,19 +58,19 @@
         "prepayment": "30% upfront, you pick one of three styles",
         "concept": "top of the home page, your revisions: 1 of 3",
         "staging": "the whole site on a temporary link, your revisions: 2 of 3",
-        "lighthouse": "Google speed test: 90+ out of 100, 40% payment, your revisions: 3 of 3",
-        "handover": "the site on your domain, a repeat speed test, all passwords and files are yours, final 30%",
+        "lighthouse": "trial Google speed test, payment 40%, your revisions: 3 of 3",
+        "handover": "the site on your domain, a 90+ speed test for the certificate, all passwords and files are yours, final 30%",
         "warranty": "<k>warranty</k> 12 months"
       },
       "status": {
-        "ok": "ok",
+        "ok": "done",
         "active": "active"
       }
     },
     "pop": {
       "title": "Custom-coded websites<br></br><mark>in 4 days</mark>",
       "lead": "Websites and Telegram apps for experts, online schools and small businesses. We write the code ourselves, without website builders, and hand it over to you.",
-      "primaryCta": "Get a quote",
+      "primaryCta": "Get a website price",
       "secondaryCta": "How we work",
       "stickers": {
         "lighthouse": "Speed 90+<br></br>in Google's test",
@@ -81,19 +81,19 @@
     "swiss": {
       "sectionMark": "Studio",
       "title": "Custom-coded websites in 4 days<dot>.</dot>",
-      "primaryCta": "Get a quote",
+      "primaryCta": "Get a website price",
       "secondaryCta": "How we work"
     },
     "editorial": {
       "title": "Custom-coded websites in 4 days.",
       "lead": "We build websites and Telegram apps for business. We write the code ourselves, without builders. We set up analytics, so you see where visitors and leads come from. The deadline goes into the contract.",
-      "primaryCta": "Get a quote",
+      "primaryCta": "Get a website price",
       "secondaryCta": "How we work",
       "quoteKicker": "We put it in the contract",
-      "quote": "“The deadline is four days. We hand the site over only when Google's free speed test (Lighthouse) on a phone gives 90 out of 100 or more in each of three runs. If it falls short, we keep working for free.”",
-      "refDeadline": "— Deadline",
-      "refQuality": "— Quality",
-      "refWarranty": "— A one-year warranty"
+      "quote": "“A one-page website takes four days from the day you choose the style. Speed: 90 out of 100 or more in Google's free speed test (PageSpeed Insights) on a phone, in each of three runs in a row. If it falls short because of us, we keep working for free and do not hand it over until it reaches 90. A one-year warranty.”",
+      "refDeadline": "— We put it in the contract: deadline",
+      "refQuality": "— We put it in the contract: speed",
+      "refWarranty": "— We put it in the contract: one-year warranty"
     }
   },
   "pricing": {
@@ -205,7 +205,7 @@
     },
     "basics": {
       "code": "We write the site ourselves, in code on Next.js, rather than putting it together in a website builder like Tilda",
-      "lighthouse": "Google's speed test on a phone: 90 out of 100 or more in each of three runs in a row, or we don't hand the work over. On launch day we test again, this time on your address: that result goes into the acceptance certificate. Third-party widgets, such as booking, maps or chat, slow a site down. If you chose them, we tell you before the contract what score we promise",
+      "lighthouse": "Google's speed test on a phone: 90 out of 100 or more in each of three runs in a row. If it falls short because of us, we keep working for free and do not hand it over until it reaches 90. On launch day we test again, this time on your address: that result goes into the acceptance certificate. Third-party widgets, such as booking, maps or chat, slow a site down. If you chose them, we tell you before the contract what score we promise",
       "responsive": "The site is easy to view on any screen: from a small phone (320 pixels wide) to a large monitor (1920 pixels)",
       "seo": "We get the site ready for search. We add behind-the-scenes descriptions for search engines (schema.org) and for AI assistants (llms.txt). And a preview, a picture with a title that shows up when someone sends a link to the site in a messenger (OG). We do not promise a place in search results",
       "forms": "Every lead goes to Telegram and email",
@@ -294,29 +294,29 @@
     "heading": "Work",
     "mark": "Selected work",
     "kineticKicker": "Work",
-    "note": "Measurable technical results only",
+    "note": "We show results in numbers you can check yourself, such as Google speed test scores. The studio's examples were made by us for demonstration; they are not client orders.",
     "kind": {
-      "demo": "Studio demo project",
+      "demo": "Studio example",
       "client": "Client"
     },
-    "demoLink": "Open demo",
-    "appLink": "Open Mini App",
+    "demoLink": "Open the example website",
+    "appLink": "Open the app in Telegram",
     "allLink": "All work",
-    "design": "Style: {design}",
+    "design": "Website style: {design}",
     "back": "All work",
     "task": "The task",
     "solution": "The solution",
-    "stack": "Stack",
-    "results": "Technical results",
-    "lighthouse": "Lighthouse report",
+    "stack": "What the website is built with",
+    "results": "Results in numbers",
+    "lighthouse": "Screenshot: Google speed test (Lighthouse)",
     "metaTitle": "{title} — MRSHKN",
-    "metaDescription": "MRSHKN case study: {title}.",
+    "metaDescription": "{title}: what MRSHKN studio built, what with, and the results in numbers.",
     "pageTitle": "Work — MRSHKN",
-    "pageDescription": "MRSHKN studio demo projects: the task, the solution, the stack and measurable technical results."
+    "pageDescription": "MRSHKN studio work: what we built, what with, and the results in numbers, such as Google speed test scores. The studio's examples were made for demonstration; they are not client orders."
   },
   "process": {
     "heading": "How we build a one-page site in 4 days",
-    "sectionMark": "Process",
+    "sectionMark": "How we work",
     "promisesHeading": "What the contract says",
     "contractNote": "We fix all four in the contract",
     "dayLabel": "Day {day}",
@@ -335,7 +335,7 @@
       "staging": {
         "ordinal": "Day three",
         "title": "Revisions and the speed test",
-        "text": "We make your second-round revisions. We check how fast the site opens on a phone: Google's speed test gives a page a score from 0 to 100. Every page listed in the contract needs 90 or more in each of three runs in a row; otherwise we keep working at our own expense. We show you the result, you make the second payment of 40% and send the third and final list of comments."
+        "text": "We make your second-round revisions and run a trial speed test on the temporary link: Google's test gives a page a score from 0 to 100. We send you the reports, you make the second payment of 40% and send the third and final list of comments. The required 90 is measured on launch day, on your own address."
       },
       "launch": {
         "ordinal": "Day four",
@@ -351,13 +351,13 @@
       },
       "quality": {
         "kicker": "Quality",
-        "value": "Lighthouse 90+",
-        "detail": "Google's test, or we don't hand it over; with third-party widgets, as the contract says"
+        "value": "Speed from 90 out of 100",
+        "detail": "In Google's speed test on a phone, in each of three runs in a row. If it falls short because of our code or hosting setup, we fix it for free and send the acceptance certificate only after 90. If the site has a window from another service, such as online booking or a map, we tell you in advance what score we promise."
       },
       "price": {
         "kicker": "Price",
         "value": "Fixed",
-        "detail": "Pay in parts: 30%, 40% and 30%. Three rounds of revisions"
+        "detail": "Pay in parts: 30%, 40% and 30%. Three rounds of revisions: three times you send your comments, each time as one list"
       },
       "warranty": {
         "kicker": "After launch",
@@ -426,11 +426,11 @@
     },
     "after": {
       "speed": {
-        "title": "Speed",
-        "text": "On launch day we test the speed again with Google's test, this time on your address: it needs 90 out of 100 or more in each of three runs in a row. We attach the result to the acceptance certificate, the document that confirms the work is accepted. Below 90 because of our code or our hosting setup? We fix it for free and do not hand over the work until it reaches 90. A third-party widget, a window from another service such as online booking or a map, slows pages down. If you asked for one, we tell you before the contract what score we promise with it; if you ask later, we tell you before we add it."
+        "title": "Website speed",
+        "text": "On launch day we test the speed again with Google's test, this time on your address: it needs 90 out of 100 or more in each of three runs in a row. We attach the result to the acceptance certificate, the document that confirms the work is accepted. Below 90 because of our code or the way we set up the hosting, the server the website runs on? We fix it for free and do not hand over the work until it reaches 90. If the cause is not on our side, such as a hosting outage or code you added yourself, we show it to you in an email with the test reports. If you do not object within 2 working days, we write the cause into the certificate and hand over the work. If you disagree, we repeat the test at an agreed time and record the screen; your own test at the same time, with a screen recording, counts too. If there is no access to the domain for more than 10 working days, we hand over the work on the temporary link, test the speed after the move and, if needed, fix it under the warranty. A third-party widget, a window from another service such as online booking or a map, slows pages down. If you asked for one, we tell you before the contract what score we promise with it; if you ask later, we tell you before we add it."
       },
       "acceptance": {
-        "title": "Acceptance",
+        "title": "How you accept the work",
         "text": "We email you the acceptance certificate, a document saying the work is accepted. Within 10 working days, sign it or tell us what does not work the way the contract says. We fix that at no extra charge within 5 working days and send the certificate again; wishes that are not in the contract are not a reason not to sign. No reply within 10 working days? The work counts as accepted, as if you had signed: the warranty starts that day, and it is time to pay the final 30%."
       },
       "warranty": {
@@ -446,21 +446,21 @@
         "text": "Not our fault means, for example, that another developer changed the site's code, a third-party service (Telegram, an online booking service, a payment service) broke or changed its rules, or the hosting provider, the company the site's server is rented from, had an outage. We fix such things for a separate fee: $90 an hour. We first name the total, never charge more than that, and start the repair only if you agree."
       },
       "upkeep": {
-        "title": "Updates and backups",
+        "title": "Updates and backup copies of the website",
         "text": "Updates to the software the site runs on and backups, snapshots of the site with all its data, are part of support: a separate monthly fee, optional. The warranty does not depend on support: we fix bugs in our code for free all year without it. But without support we do not make backups. After a failure we rebuild the site from the code: free if the failure is our fault, $90 an hour if it is the hosting's. Whatever appeared after launch, requests and bookings in the admin panel, texts and photos you changed, may be lost. Requests that already reached you by email stay there. With support we restore the site from a backup, and that is part of the monthly fee."
       }
     }
   },
   "footer": {
-    "heading": "Start a project",
-    "headingQuestion": "Start a project?",
-    "invitation": "Tell us about your project — we reply within an hour.",
+    "heading": "Discuss your website",
+    "headingQuestion": "Shall we discuss your website?",
+    "invitation": "Tell us about your project — during working hours we reply within an hour.",
     "cta": "Send a request",
     "telegram": "Message us on Telegram",
     "replyTime": "We reply within an hour on weekdays, 10:00–19:00 Moscow time",
     "command": "open t.me/mrshkn_studio",
     "sectionMark": "Contact",
-    "privacy": "Privacy policy"
+    "privacy": "Personal data processing policy"
   },
   "switcher": {
     "label": "Style"
@@ -468,10 +468,10 @@
   "brief": {
     "meta": {
       "title": "Get a quote — MRSHKN",
-      "description": "Five short steps: what you need, your field, the style, timing and budget. We reply within an hour during working hours."
+      "description": "Five short steps: what you need, your field, the style, timing and budget. We reply within an hour on working days, 9:00–18:00 Kaliningrad time."
     },
     "title": "Get a quote",
-    "lead": "Five short steps, about two minutes. We reply within an hour during working hours.",
+    "lead": "Five short steps, about two minutes. We reply within an hour if you write on a working day, 10:00–19:00 Moscow time (9:00–18:00 Kaliningrad time).",
     "step": "Step {current} of {total}",
     "back": "Back",
     "next": "Next",
@@ -479,30 +479,30 @@
     "sending": "Sending…",
     "fieldError": "Fill in this field to continue",
     "error": "The request did not go through. Try again, or write to hello@mrshkn.com.",
-    "consent": "I agree to the processing of my personal data under the <policy>privacy policy</policy>",
+    "consent": "I agree to the processing of my personal data under the <policy>personal data processing policy</policy>",
     "honeypot": "Leave this field empty",
     "steps": {
       "product": {
         "title": "What do you need built?",
-        "note": "Pick the closest one — we will pin down the details in our messages."
+        "note": "Pick the option closest to what you need. We will pin down the details in our messages."
       },
       "niche": {
         "title": "What field are you in?",
-        "note": "The field shapes the structure, the examples and the blocks we suggest."
+        "note": "Your field decides which sections the website needs and which of our ready-made example websites we start from."
       },
       "design": {
         "title": "Which style feels right?",
-        "note": "Not a final choice: we will suggest options for your project in our messages."
+        "note": "Style is how the website looks: colours, fonts, the shape of buttons. Not a final choice: we will suggest options for your project in our messages."
       },
       "scope": {
         "title": "Timing and budget",
-        "note": "Honest limits save time on both sides.",
+        "note": "Pick what is closest: from the deadline and the budget we will see which plan suits you.",
         "timing": "When do you need it live",
         "budget": "What budget do you have in mind"
       },
       "contacts": {
         "title": "Where should we send the quote?",
-        "note": "We reply within an hour during working hours.",
+        "note": "We reply within an hour on working days, 10:00–19:00 Moscow time (9:00–18:00 Kaliningrad time): we clarify the details and tell you when to expect the estimate.",
         "name": "What should we call you",
         "contact": "Phone, Telegram or email",
         "comment": "Anything we should know (optional)"
@@ -519,7 +519,7 @@
       "other": "Something else"
     },
     "designs": {
-      "any": "I trust the studio"
+      "any": "Choose for me"
     },
     "timings": {
       "asap": "As soon as possible",
@@ -538,12 +538,12 @@
   "briefThanks": {
     "meta": {
       "title": "Request sent — MRSHKN",
-      "description": "Your request is with MRSHKN. We reply within an hour during working hours."
+      "description": "Your request is with MRSHKN. We reply within an hour on working days, 9:00–18:00 Kaliningrad time."
     },
-    "command": "open mrshkn.com/brief",
+    "command": "./send-request",
     "title": "We have your request",
-    "text": "We reply within an hour on weekdays, 10:00–19:00 Moscow time, on the channel you left us.",
-    "note": "If you do not hear back, write to hello@mrshkn.com.",
+    "text": "We reply within an hour on working days, 10:00–19:00 Moscow time, on the channel you left us.",
+    "note": "If more than an hour of working time has passed and you have not heard back, write to hello@mrshkn.com and we will check whether your request arrived.",
     "back": "Back to the homepage"
   },
   "servicePage": {
@@ -724,7 +724,7 @@
       "after": {
         "speed": {
           "title": "Speed",
-          "text": "On launch day we test the speed again with Google's test, this time on your address: it needs 90 out of 100 or more in each of three runs in a row. We attach the result to the acceptance certificate, the document that confirms the work is accepted. Below 90 because of our code or our hosting setup? We fix it for free and do not hand over the work until it reaches 90. A third-party widget, a window from another service such as online booking or a map, slows pages down. If you asked for one, we tell you before the contract what score we promise with it; if you ask later, we tell you before we add it."
+          "text": "On launch day we test the speed again with Google's test, this time on your address: it needs 90 out of 100 or more in each of three runs in a row. We attach the result to the acceptance certificate, the document that confirms the work is accepted. Below 90 because of our code or the way we set up the hosting, the server the website runs on? We fix it for free and do not hand over the work until it reaches 90. If the cause is not on our side, such as a hosting outage or code you added yourself, we show it to you in an email with the test reports. If you do not object within 2 working days, we write the cause into the certificate and hand over the work. If you disagree, we repeat the test at an agreed time and record the screen; your own test at the same time, with a screen recording, counts too. If there is no access to the domain for more than 10 working days, we hand over the work on the temporary link, test the speed after the move and, if needed, fix it under the warranty. A third-party widget, a window from another service such as online booking or a map, slows pages down. If you asked for one, we tell you before the contract what score we promise with it; if you ask later, we tell you before we add it."
         },
         "acceptance": {
           "title": "Acceptance",
@@ -785,7 +785,7 @@
         {
           "when": "Day 3",
           "title": "Revisions and the speed test",
-          "text": "We make your second-round revisions. We check how fast the site opens on a phone: Google's speed test gives a page a score from 0 to 100. Every page listed in the contract needs 90 or more in each of three runs in a row; otherwise we keep working at our own expense. We show you the result, you make the second payment of 40% and send the third and final list of comments."
+          "text": "We make your second-round revisions and run a trial speed test on the temporary link: Google's test gives a page a score from 0 to 100. We send you the reports, you make the second payment of 40% and send the third and final list of comments. The required 90 is measured on launch day, on your own address."
         },
         {
           "when": "Day 4",
@@ -826,7 +826,7 @@
       "after": {
         "speed": {
           "title": "Speed",
-          "text": "On launch day we test the speed again with Google's test, this time on your address: it needs 90 out of 100 or more in each of three runs in a row. We attach the result to the acceptance certificate, the document that confirms the work is accepted. Below 90 because of our code or our hosting setup? We fix it for free and do not hand over the work until it reaches 90. A third-party widget, a window from another service such as online booking or a map, slows pages down. If you asked for one, we tell you before the contract what score we promise with it; if you ask later, we tell you before we add it."
+          "text": "On launch day we test the speed again with Google's test, this time on your address: it needs 90 out of 100 or more in each of three runs in a row. We attach the result to the acceptance certificate, the document that confirms the work is accepted. Below 90 because of our code or the way we set up the hosting, the server the website runs on? We fix it for free and do not hand over the work until it reaches 90. If the cause is not on our side, such as a hosting outage or code you added yourself, we show it to you in an email with the test reports. If you do not object within 2 working days, we write the cause into the certificate and hand over the work. If you disagree, we repeat the test at an agreed time and record the screen; your own test at the same time, with a screen recording, counts too. If there is no access to the domain for more than 10 working days, we hand over the work on the temporary link, test the speed after the move and, if needed, fix it under the warranty. A third-party widget, a window from another service such as online booking or a map, slows pages down. If you asked for one, we tell you before the contract what score we promise with it; if you ask later, we tell you before we add it."
         },
         "acceptance": {
           "title": "Acceptance",
@@ -932,7 +932,7 @@
       "after": {
         "speed": {
           "title": "Speed",
-          "text": "On launch day we test the speed again with Google's test, this time on your address: it needs 90 out of 100 or more in each of three runs in a row. We attach the result to the acceptance certificate, the document that confirms the work is accepted. Below 90 because of our code or our hosting setup? We fix it for free and do not hand over the work until it reaches 90. A third-party widget, a window from another service such as online booking or a map, slows pages down. If you asked for one, we tell you before the contract what score we promise with it; if you ask later, we tell you before we add it."
+          "text": "On launch day we test the speed again with Google's test, this time on your address: it needs 90 out of 100 or more in each of three runs in a row. We attach the result to the acceptance certificate, the document that confirms the work is accepted. Below 90 because of our code or the way we set up the hosting, the server the website runs on? We fix it for free and do not hand over the work until it reaches 90. If the cause is not on our side, such as a hosting outage or code you added yourself, we show it to you in an email with the test reports. If you do not object within 2 working days, we write the cause into the certificate and hand over the work. If you disagree, we repeat the test at an agreed time and record the screen; your own test at the same time, with a screen recording, counts too. If there is no access to the domain for more than 10 working days, we hand over the work on the temporary link, test the speed after the move and, if needed, fix it under the warranty. A third-party widget, a window from another service such as online booking or a map, slows pages down. If you asked for one, we tell you before the contract what score we promise with it; if you ask later, we tell you before we add it."
         },
         "acceptance": {
           "title": "Acceptance",
@@ -1144,7 +1144,7 @@
       "after": {
         "speed": {
           "title": "Speed",
-          "text": "Before handover we check how fast the store opens on a phone with Google's test on your address: it needs 90 out of 100 or more in each of three runs in a row. We attach the result to the acceptance certificate, the document that confirms the work is accepted. Below 90 because of our code or our hosting setup? We fix it for free and do not hand over the work until it reaches 90. A third-party widget, a window from another service such as a chat, slows pages down. If you asked for one, we tell you before the contract what score we promise with it; if you ask later, we tell you before we add it. Which pages we test, and how we count the payment and delivery map widgets, we state in the estimate before the contract."
+          "text": "Before handover we check how fast the store opens on a phone with Google's test on your address: it needs 90 out of 100 or more in each of three runs in a row. We attach the result to the acceptance certificate, the document that confirms the work is accepted. Below 90 because of our code or the way we set up the hosting, the server the website runs on? We fix it for free and do not hand over the work until it reaches 90. If the cause is not on our side, such as a hosting outage or code you added yourself, we show it to you in an email with the test reports. If you do not object within 2 working days, we write the cause into the certificate and hand over the work. If you disagree, we repeat the test at an agreed time and record the screen; your own test at the same time, with a screen recording, counts too. If there is no access to the domain for more than 10 working days, we hand over the work on the temporary link, test the speed after the move and, if needed, fix it under the warranty. A third-party widget, a window from another service such as a chat, slows pages down. If you asked for one, we tell you before the contract what score we promise with it; if you ask later, we tell you before we add it. Which pages we test, and how we count the payment and delivery map widgets, we state in the estimate before the contract."
         },
         "acceptance": {
           "title": "Acceptance",
@@ -1242,7 +1242,7 @@
       "after": {
         "speed": {
           "title": "Speed",
-          "text": "Before handover we check how fast the service opens on a phone with Google's test on the pages listed in the contract: it needs 90 out of 100 or more in each of three runs in a row. We attach the result to the acceptance certificate, the document that confirms the work is accepted. Below 90 because of our code or our hosting setup? We fix it for free and do not hand over the work until it reaches 90. A third-party widget, a window from another service such as a chat or a map, slows pages down. If you asked for one, we tell you before the contract what score we promise with it; if you ask later, we tell you before we add it. We test the pages that open without signing in: the home page, sign-in and sign-up. Google's test cannot open accounts behind a password."
+          "text": "Before handover we check how fast the service opens on a phone with Google's test on the pages listed in the contract: it needs 90 out of 100 or more in each of three runs in a row. We attach the result to the acceptance certificate, the document that confirms the work is accepted. Below 90 because of our code or the way we set up the hosting, the server the website runs on? We fix it for free and do not hand over the work until it reaches 90. If the cause is not on our side, such as a hosting outage or code you added yourself, we show it to you in an email with the test reports. If you do not object within 2 working days, we write the cause into the certificate and hand over the work. If you disagree, we repeat the test at an agreed time and record the screen; your own test at the same time, with a screen recording, counts too. If there is no access to the domain for more than 10 working days, we hand over the work on the temporary link, test the speed after the move and, if needed, fix it under the warranty. A third-party widget, a window from another service such as a chat or a map, slows pages down. If you asked for one, we tell you before the contract what score we promise with it; if you ask later, we tell you before we add it. We test the pages that open without signing in: the home page, sign-in and sign-up. Google's test cannot open accounts behind a password."
         },
         "acceptance": {
           "title": "Acceptance",
@@ -1327,7 +1327,7 @@
       "after": {
         "speed": {
           "title": "Speed",
-          "text": "On launch day we test the speed with Google's test on a phone. The test gives a page from 0 to 100 points. We run it three times in a row, and each time it needs 90 or more. For a 3D landing page we test its page on your address. For a 3D block, the page with the scene on our temporary link: we are responsible for the speed of the block itself, while the speed of the rest of the page depends on how your site is built. With a 3D block your page gets slower: before the contract we measure it and tell you how many points it will lose. Below 90 because of our work? We fix it for free and do not hand over the work until it reaches 90. We attach the result to the acceptance certificate."
+          "text": "On launch day we test the speed with Google's test on a phone. The test gives a page from 0 to 100 points. We run it three times in a row, and each time it needs 90 or more. For a 3D landing page we test its page on your address. For a 3D block, the page with the scene on our temporary link: we are responsible for the speed of the block itself, while the speed of the rest of the page depends on how your site is built. With a 3D block your page gets slower: before the contract we measure it and tell you how many points it will lose. Below 90 because of our work? We fix it for free and do not hand over the work until it reaches 90. If the cause is not on our side, such as a hosting outage or code you added yourself, we show it to you in an email with the test reports. If you do not object within 2 working days, we write the cause into the certificate and hand over the work. If you disagree, we repeat the test at an agreed time and record the screen; your own test at the same time, with a screen recording, counts too. We attach the result to the acceptance certificate."
         },
         "acceptance": {
           "title": "Acceptance",
@@ -1394,7 +1394,7 @@
           "We approve the shape of the model and the viewing angles with you in the first week, before the 3D scene is built. A new part or a new viewing angle after that is separate work; we name the price before starting",
           "Three rounds of revisions: texts, colors, highlights. The shape of the model is not part of revisions: we approve it at the start",
           "We start one 3D project a month. We name the start date once we discuss your task, before the prepayment: if the date does not suit you, you pay nothing",
-          "Google's speed test on a phone: 90 out of 100 or more in each of three runs in a row, or we don't hand the work over. For a 3D landing page we test the page itself, on your address on launch day. For a 3D block, the page with the scene on our temporary link. We answer for the weight and speed of the block itself: an image shows first, the scene loads after. The speed of the rest of the page depends on your site's code. The result goes with the acceptance certificate",
+          "Google's speed test on a phone: 90 out of 100 or more in each of three runs in a row. If it falls short because of us, we keep working for free and do not hand it over until it reaches 90. For a 3D landing page we test the page itself, on your address on launch day. For a 3D block, the page with the scene on our temporary link. We answer for the weight and speed of the block itself: an image shows first, the scene loads after. The speed of the rest of the page depends on your site's code. The result goes with the acceptance certificate",
           "We never share your drawings or the source model with third parties",
           "A one-year warranty from the day of acceptance: we fix for free anything that broke through our fault or does not work the way the contract says. If it is unclear whose fault a breakdown is, we first look into it for free and tell you the cause. Not covered: outages at the hosting provider and breakdowns caused by changes to the site's code made by you or another developer. We fix breakdowns caused by such changes for $90 an hour: we name the price before we start and never charge more than that"
         ]
@@ -1556,7 +1556,7 @@
   },
   "cookieBanner": {
     "label": "Cookie consent",
-    "text": "Yandex Metrica and Google Analytics 4 set cookies only with your consent. Read more in our <policy>privacy policy</policy>.",
+    "text": "Yandex Metrica and Google Analytics 4 count visits to the website and to do this store cookies, small files, in your browser. We turn them on only if you agree. Read more in our <policy>personal data processing policy</policy>.",
     "accept": "Accept",
     "decline": "Decline"
   },
@@ -1570,15 +1570,15 @@
     "groups": {
       "author": {
         "title": "About you",
-        "note": "Your full name is needed only for the consent and never appears on the site. Your signature, business and link are shown next to the review."
+        "note": "Your full name is needed only for the consent at the end of the form; it will not appear on the website. Next to the review everyone will see your signature, your business (for example, “coffee shop”) and a link, if you give one. The review also appears on the page of the work we did for you, so people may recognise you from it."
       },
       "answers": {
         "title": "Your review",
         "note": "Short or detailed, praise or criticism — we publish it as written and fix only typos."
       },
       "documents": {
-        "title": "Consent and permission",
-        "note": "The review is sent only with both boxes checked: the first lets us show your data, the second the text itself."
+        "title": "Consent and permission to publish",
+        "note": "The review is sent only when both boxes at the bottom are checked: the first is consent to show your signature, business, link and the text of the review on the website, the second is your permission as the author to publish the text itself. If you change your mind, write to hello@mrshkn.com from the email you gave in the form, and we will remove the review within 3 working days."
       }
     },
     "fields": {
@@ -1592,9 +1592,9 @@
       "after": "What changed after launch? (optional)"
     },
     "fieldError": "Fill in this field to send the review",
-    "linkError": "The link must start with https:// or http://",
+    "linkError": "Paste the whole link, as in the browser's address bar: it starts with https:// or http://",
     "documents": {
-      "edition": "Version {version}",
+      "edition": "Document version: {version}",
       "more": "Full text",
       "consent": {
         "title": "Consent to the processing of personal data authorized for dissemination",

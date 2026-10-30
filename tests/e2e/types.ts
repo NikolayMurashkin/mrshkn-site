@@ -17,7 +17,7 @@ export type DesignShape = {
   /** Главная и вторая кнопки hero. */
   heroCtas: [string, string];
   /** Текст, который есть только в hero этого направления (подпись, промпт, цитата). */
-  heroMark: string;
+  heroMark: string | RegExp;
 };
 
 /** Имя направления, как оно лежит в cookie `design` и атрибуте `data-design`. */

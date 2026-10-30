@@ -155,7 +155,7 @@ describe('секция «Работы»', () => {
         const { kind, slug } = cases[index];
         const text = card.replace(/<[^>]*>/g, ' ').toLowerCase();
 
-        expect(text.includes('демо-проект студии'), `${slug}: пометка demo`).toBe(kind === 'demo');
+        expect(text.includes('пример студии'), `${slug}: пометка demo`).toBe(kind === 'demo');
         expect(text.includes('клиент'), `${slug}: пометка client`).toBe(kind === 'client');
         expect(card).toContain(`href="/ru/work/${slug}"`);
       });
@@ -298,7 +298,7 @@ describe('пункт меню «Кейсы»', () => {
       const links = anchors(render(Header, { hasCases: true }));
       const hrefs = links.map(({ href }) => href);
 
-      expect(links).toContainEqual({ href: '/ru/work', text: 'Кейсы' });
+      expect(links).toContainEqual({ href: '/ru/work', text: 'Работы' });
       expect(hrefs).not.toContain('/ru#work');
       expect(hrefs.indexOf('/ru#services')).toBeGreaterThanOrEqual(0);
       expect(hrefs.indexOf('/ru/work')).toBeGreaterThan(hrefs.indexOf('/ru#services'));
@@ -340,7 +340,7 @@ describe('страница кейса', () => {
 
     const links = linksOf(render(Case, { caseItem: makeDetail() }));
 
-    expect(links).toContainEqual({ href: ALL_WORK_HREF, text: expect.stringContaining('Все кейсы') });
+    expect(links).toContainEqual({ href: ALL_WORK_HREF, text: expect.stringContaining('Все работы') });
     expect(links.map(({ href }) => href)).not.toContain('/ru#work');
   });
 });
@@ -365,7 +365,7 @@ describe('страница кейса: стек, Mini App и стиль', () => 
     const block = elementByTestId(render(Case, { caseItem: makeDetail({ stack: STACK }) }), 'case-stack');
 
     expect(block, 'блок case-stack').not.toBeNull();
-    expect(textOf(block ?? '')).toContain('Стек');
+    expect(textOf(block ?? '')).toContain('На чем сделан сайт');
     expect([...(block ?? '').matchAll(/<li\b[^>]*>([\s\S]*?)<\/li>/g)].map(([, inner]) => textOf(inner))).toEqual(
       STACK,
     );
@@ -378,8 +378,8 @@ describe('страница кейса: стек, Mini App и стиль', () => 
 
       const links = linksOf(render(Case, { caseItem: makeDetail({ demoUrl: DEMO_URL, appUrl: APP_URL }) }));
 
-      expect(links).toContainEqual({ href: DEMO_URL, text: expect.stringContaining('Открыть демо') });
-      expect(links).toContainEqual({ href: APP_URL, text: expect.stringContaining('Открыть Mini App') });
+      expect(links).toContainEqual({ href: DEMO_URL, text: expect.stringContaining('Открыть пример сайта') });
+      expect(links).toContainEqual({ href: APP_URL, text: expect.stringContaining('Открыть приложение в Telegram') });
     },
   );
 
@@ -388,8 +388,8 @@ describe('страница кейса: стек, Mini App и стиль', () => 
 
     const html = render(Case, { caseItem: makeDetail({ demoUrl: DEMO_URL, appUrl: null }) });
 
-    expect(textOf(html)).not.toContain('Открыть Mini App');
-    expect(linksOf(html)).toContainEqual({ href: DEMO_URL, text: expect.stringContaining('Открыть демо') });
+    expect(textOf(html)).not.toContain('Открыть приложение в Telegram');
+    expect(linksOf(html)).toContainEqual({ href: DEMO_URL, text: expect.stringContaining('Открыть пример сайта') });
   });
 
   it.each([...DESIGN_NAMES])('%s: при пустом стеке блока «Стек» нет', async (design) => {
@@ -398,7 +398,7 @@ describe('страница кейса: стек, Mini App и стиль', () => 
     const html = render(Case, { caseItem: makeDetail({ stack: [] }) });
 
     expect(html).not.toContain('data-testid="case-stack"');
-    expect(textOf(html)).not.toContain('Стек');
+    expect(textOf(html)).not.toContain('На чем сделан сайт');
   });
 
   it.each([...DESIGN_NAMES])('%s: без design строки «Стиль» нет на карточке и на странице', async (design) => {
@@ -409,7 +409,7 @@ describe('страница кейса: стек, Mini App и стиль', () => 
 
     expect(textOf(render(Works, { cases: [withoutDesign] }))).not.toContain('Стиль');
     expect(textOf(render(Case, { caseItem: withoutDesign }))).not.toContain('Стиль');
-    expect(textOf(render(Works, { cases: [withDesign] }))).toContain('Стиль: Swiss');
-    expect(textOf(render(Case, { caseItem: withDesign }))).toContain('Стиль: Swiss');
+    expect(textOf(render(Works, { cases: [withDesign] }))).toContain('Стиль сайта: Swiss');
+    expect(textOf(render(Case, { caseItem: withDesign }))).toContain('Стиль сайта: Swiss');
   });
 });

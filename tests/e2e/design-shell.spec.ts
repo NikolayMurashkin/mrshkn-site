@@ -10,17 +10,17 @@ const SHAPES: Record<(typeof DESIGNS)[number], DesignShape> = {
     displayFont: /Unbounded/,
     textFont: /Golos/,
     navLinks: 3,
-    headerCta: 'Обсудить проект',
+    headerCta: 'Обсудить сайт',
     heroTitle: /Сайт\sдля\sбизнеса\s*в\sКалининграде\s*за\s4\sдня/,
     heroTitleFont: /Unbounded/,
-    heroCtas: ['Рассчитать стоимость', 'Как мы работаем'],
+    heroCtas: ['Узнать цену сайта', 'Как мы работаем'],
     heroMark: 'СКОРОСТЬ 90+',
   },
   terminal: {
     displayFont: /JetBrains Mono/,
     textFont: /Terminal Sans/,
     navLinks: 3,
-    headerCta: 'Обсудить проект',
+    headerCta: 'Обсудить сайт',
     heroTitle: /Сайт\sдля\sбизнеса\s*в\sКалининграде\sза\s4\sдня\./,
     heroTitleFont: /Terminal Sans/,
     heroCtas: ['./рассчитать-стоимость', './как-мы-работаем'],
@@ -30,10 +30,10 @@ const SHAPES: Record<(typeof DESIGNS)[number], DesignShape> = {
     displayFont: /Rubik/,
     textFont: /Rubik/,
     navLinks: 3,
-    headerCta: 'Обсудить проект',
+    headerCta: 'Обсудить сайт',
     heroTitle: /Сайт\sдля\sбизнеса\s*в\sКалининграде\s*за\s4\sдня/,
     heroTitleFont: /Rubik/,
-    heroCtas: ['Рассчитать стоимость', 'Как мы работаем'],
+    heroCtas: ['Узнать цену сайта', 'Как мы работаем'],
     heroMark: 'в тесте Google',
   },
   swiss: {
@@ -43,7 +43,7 @@ const SHAPES: Record<(typeof DESIGNS)[number], DesignShape> = {
     headerCta: null,
     heroTitle: /Сайт\sдля\sбизнеса\sв\sКалининграде\sза\s4\sдня\./,
     heroTitleFont: /Geologica/,
-    heroCtas: ['Рассчитать стоимость', 'Как мы работаем'],
+    heroCtas: ['Узнать цену сайта', 'Как мы работаем'],
     heroMark: 'Основана в 2026',
   },
   editorial: {
@@ -53,8 +53,8 @@ const SHAPES: Record<(typeof DESIGNS)[number], DesignShape> = {
     headerCta: null,
     heroTitle: /Сайт\sдля\sбизнеса\sв\sКалининграде\sза\s4\sдня\./,
     heroTitleFont: /Prata/,
-    heroCtas: ['Рассчитать стоимость', 'Как мы работаем'],
-    heroMark: 'Фиксируем в договоре',
+    heroCtas: ['Узнать цену сайта', 'Как мы работаем'],
+    heroMark: /^Фиксируем\sв\sдоговоре$/,
   },
 };
 
@@ -96,7 +96,7 @@ test.describe('каркас направлений', () => {
       await expect(header.getByTestId('locale-ru')).toBeVisible();
       await expect(header.getByTestId('locale-en')).toBeVisible();
       await expect(header.getByTestId('theme-toggle')).toBeVisible();
-      await expect(header.getByRole('link', { name: 'Обсудить проект' })).toHaveCount(shape.headerCta ? 1 : 0);
+      await expect(header.getByRole('link', { name: 'Обсудить сайт' })).toHaveCount(shape.headerCta ? 1 : 0);
 
       await expect(footer.getByRole('link', { name: 'Оставить заявку' })).toBeVisible();
 

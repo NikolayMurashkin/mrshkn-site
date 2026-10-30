@@ -47,14 +47,14 @@ const MESSAGES = { ru: ruMessages, en: enMessages } as const;
 const EXPECTED_LINKS: Record<Locale, { href: string; text: string }[]> = {
   ru: [
     { href: '/ru#services', text: 'Услуги' },
-    { href: '/ru/work', text: 'Кейсы' },
-    { href: '/ru#process', text: 'Процесс' },
+    { href: '/ru/work', text: 'Работы' },
+    { href: '/ru#process', text: 'Как работаем' },
     { href: '/ru#contacts', text: 'Контакты' },
   ],
   en: [
     { href: '/en#services', text: 'Services' },
     { href: '/en/work', text: 'Work' },
-    { href: '/en#process', text: 'Process' },
+    { href: '/en#process', text: 'How we work' },
     { href: '/en#contacts', text: 'Contact' },
   ],
 };
@@ -255,7 +255,7 @@ describe('подсветка пункта меню на главной', () => {
   it.each(DESIGN_NAMES)('%s: на секции «Как мы работаем» подсвечен «Процесс»', async (design) => {
     setLayout(PROCESS_UNDER_HEADER);
 
-    expect(currentOf(await renderHeader(design))).toEqual(['Процесс']);
+    expect(currentOf(await renderHeader(design))).toEqual(['Как работаем']);
   });
 
   it.each(DESIGN_NAMES)('%s: подсветка идет за прокруткой — с «Услуги» на «Процесс»', async (design) => {
@@ -272,7 +272,7 @@ describe('подсветка пункта меню на главной', () => {
     });
     await settle();
 
-    expect(currentOf(container)).toEqual(['Процесс']);
+    expect(currentOf(container)).toEqual(['Как работаем']);
   });
 
   it.each(DESIGN_NAMES)('%s: в конце страницы подсвечены «Контакты»', async (design) => {
@@ -294,7 +294,7 @@ describe('подсветка пункта меню на главной', () => {
       contacts: [top + 1600, top + 2100],
     });
 
-    expect(currentOf(await renderHeader(design))).toEqual(['Процесс']);
+    expect(currentOf(await renderHeader(design))).toEqual(['Как работаем']);
   });
 
   it.each(DESIGN_NAMES)('%s: секция еще ниже шапки — ничего не подсвечено', async (design) => {

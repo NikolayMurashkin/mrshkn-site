@@ -16,6 +16,24 @@
 
 ## Вычитано Николаем 30.10.2026
 
+Написано и вычитано 30.10.2026 — перевод утвержденных русских текстов главной, квиза, шапки, подвала, баннера cookie, страницы «Работы», формы отзыва и обещания скорости:
+
+| Раздел                                                                                                                   | Что внутри                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `header.{kicker,status,location,cta}`, `nav.{work,process}`, `controls.theme`                                            | шапка и меню: We build websites and apps, available, Kaliningrad, working online, Discuss your website, Work, How we work, Light or dark background           |
+| `hero.{kinetic,pop,swiss,editorial}.primaryCta`, `hero.kinetic.{tapeCode,ticker.*}`, `hero.terminal.status.ok`           | первый экран: Get a website price, код передаем вам, бегущая строка без жаргона (One-page websites, Apps inside Telegram), done                               |
+| `hero.subtitle`, `hero.terminal.{lead,log.lighthouse,log.handover}`, `hero.editorial.quote`                              | обещания первого экрана как в договоре: 90+ в тесте Google, не набрали из-за нас — дорабатываем до сдачи, год гарантии, пробный замер и замер для акта        |
+| `hero.editorial.{refDeadline,refQuality,refWarranty}`                                                                    | подписи под цитатой Editorial: We put it in the contract: deadline / speed / one-year warranty                                                                |
+| `process.{sectionMark,stepLabel}`, `process.promises.{price,quality}.*`, `process.after.{speed,acceptance,upkeep}.title` | секция «Как работаем»: How we work, Fixed, оплата частями и три раунда правок, Speed from 90 out of 100, заголовки карточек                                   |
+| `process.steps.staging.text`, `services.landing.process.2.text`                                                          | шаг третьего дня: пробный замер на временной ссылке, обязательные 90 — в день запуска на вашем адресе                                                         |
+| `process.after.speed.text`, `services.{landing,industry,business,store,mvp,threeD}.after.speed.text`                     | абзац «Скорость сайта» как в договоре: акт приемки, 2 рабочих дня на возражение, замер с записью экрана, временная ссылка без доступа к домену, чужие виджеты |
+| `services.threeD.terms.items.4`, `pricing.basics.lighthouse`                                                             | обещание скорости в условиях 3D и в базе тарифа: не набрали из-за нас — не сдаем, пока не будет 90                                                            |
+| `work.*`                                                                                                                 | страница и секция «Работы»: Work, All work, Studio example, Open the example website, Open the app in Telegram, What the website is built with, Website style |
+| `brief.{lead,consent,meta.description}`, `brief.steps.{product,niche,design,scope,contacts}.note`, `brief.designs.any`   | квиз: ответ в течение часа в рабочие дни, подсказки шагов, Choose for me, согласие на обработку персональных данных                                           |
+| `briefThanks.{text,note,command,meta.description}`                                                                       | «спасибо»: ответ в рабочие дни на той связи, что оставили; что делать, если ответа нет; ./send-request                                                        |
+| `footer.{heading,headingQuestion,privacy,invitation}`, `cookieBanner.text`                                               | подвал и баннер cookie: Discuss your website, ответ в рабочее время, cookie — маленькие файлы                                                                 |
+| `review.groups.{author.note,documents.title,documents.note}`, `review.{linkError,documents.edition}`                     | форма отзыва: что увидят рядом с отзывом, две галочки, снимем за 3 рабочих дня, ссылка целиком                                                                |
+
 Написано 29–30.10.2026, вычитано 30.10.2026 — перевод утвержденных русских текстов секции «Процесс»: ровные шаги, «Перед стартом» и «Гарантия после запуска»:
 
 | Раздел                                                                                        | Что внутри                                                                                                                                                                                             |
