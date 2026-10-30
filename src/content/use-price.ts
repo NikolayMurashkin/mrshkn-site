@@ -3,7 +3,7 @@
 import { useLocale, useTranslations } from 'next-intl';
 import { EXTRA_PRICE_PATTERN } from './consts';
 import { formatMoney, formatRange, planTerm } from './format';
-import { MAX_OPTION } from './pricing';
+import { extraPlan, MAX_OPTION } from './pricing';
 import type { PricedItem, PricingExtra, PricingOption, PricingPlan } from './types';
 
 /** Собирает подпись цены: сумма считается кодом, обвязка «от», «/ мес», «/ час» — переводом.
@@ -21,8 +21,16 @@ export const usePriceText = () => {
   /** Нижняя цена опции с обвязкой «от» — для текстов, где опция названа одной суммой. */
   const optionFrom = (item: PricingOption) => t('from', { amount: formatMoney(item.price.from, locale) });
 
-  const extra = (item: PricingExtra) =>
-    t(EXTRA_PRICE_PATTERN[item.period], { amount: formatMoney(item.price, locale) });
+  /** Цена позиции «Сверх тарифа»: своя сумма с периодом или цена ее тарифа, как в таблице. */
+  const extra = (item: PricingExtra) => {
+    if ('planId' in item) {
+      const itemPlan = extraPlan(item);
+
+      return itemPlan ? plan(itemPlan) : '';
+    }
+
+    return t(EXTRA_PRICE_PATTERN[item.period], { amount: formatMoney(item.price, locale) });
+  };
 
   /** Срок тарифа: из дней тарифа, у тарифа «от» — строкой перевода. */
   const term = (item: PricingPlan) => planTerm(item, locale, () => plans(`${item.id}.term`));

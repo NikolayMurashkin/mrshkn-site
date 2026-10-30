@@ -29,11 +29,12 @@ const PLAN_TABLE = [
   { id: 'store', rub: 250_000, usd: 8_000, isFrom: true, days: undefined },
   { id: 'mvp', rub: 300_000, usd: 12_000, isFrom: true, days: undefined },
   { id: 'threeD', rub: 250_000, usd: 4_900, isFrom: true, days: undefined },
+  { id: 'logo', rub: 30_000, usd: 600, isFrom: true, days: undefined },
   { id: 'support', rub: 7_000, usd: 140, isFrom: true, days: undefined },
 ] as const;
 
 /** Отраслевое Mini App своей страницы не имеет: карточка ведет на готовые решения страницы Telegram-приложений. */
-const SERVICE_IDS = ['industry', 'landing', 'business', 'miniApp', 'store', 'mvp', 'threeD', 'support'];
+const SERVICE_IDS = ['industry', 'landing', 'business', 'miniApp', 'store', 'mvp', 'threeD', 'logo', 'support'];
 
 /** Варианты поддержки по порядку: «Хостинг и бэкапы» без часов правок и три уровня с часами работы в месяц. */
 const SUPPORT_TIER_TABLE = [
@@ -272,6 +273,7 @@ describe('planHref', () => {
       '/ru/store?plan=store',
       '/ru/mvp?plan=mvp',
       '/ru/3d?plan=threeD',
+      '/ru/logo?plan=logo',
       '/ru/support?plan=support',
     ]);
     expect(planHref('en', PRICING_PLANS[0])).toBe('/en/industry?plan=industry');

@@ -52,6 +52,41 @@
   @include s.tag;
 }
 
+.tier:last-child:nth-child(odd) {
+  grid-column: 1 / -1;
+
+  .tierCard {
+    --tilt: -0.5deg;
+
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: center;
+    column-gap: var(--space-32);
+    min-height: 0;
+  }
+
+  .tierTerm,
+  .tierName,
+  .tierText {
+    grid-column: 1;
+  }
+
+  .tierTerm {
+    justify-self: start;
+  }
+
+  .tierText {
+    max-width: 720px;
+  }
+
+  .tierFoot {
+    grid-column: 2;
+    grid-row: 1 / span 3;
+    align-items: center;
+    margin-top: 0;
+  }
+}
+
 .tierName {
   font-size: clamp(24px, 2.4vw, 32px);
   font-weight: 900;
@@ -95,5 +130,18 @@
 @media (max-width: 720px) {
   .tiers {
     grid-template-columns: minmax(0, 1fr);
+  }
+
+  .tier:last-child:nth-child(odd) .tierCard {
+    --tilt: -2deg;
+
+    display: flex;
+    align-items: normal;
+    min-height: 270px;
+  }
+
+  .tier:last-child:nth-child(odd) .tierFoot {
+    align-items: flex-end;
+    margin-top: auto;
   }
 }

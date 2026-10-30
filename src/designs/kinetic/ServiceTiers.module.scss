@@ -18,6 +18,11 @@
   border: var(--border-width) solid var(--ink);
   border-radius: var(--radius-surface);
   background: var(--surface);
+  container-type: inline-size;
+}
+
+.tier:last-child:nth-child(odd) {
+  grid-column: 1 / -1;
 }
 
 .tierHead {
@@ -31,7 +36,7 @@
   margin: 0;
   font-family: var(--font-display);
   font-weight: 700;
-  font-size: 32px;
+  font-size: min(32px, 10.5cqi);
   line-height: 1.05;
   text-wrap: balance;
   word-wrap: break-word;

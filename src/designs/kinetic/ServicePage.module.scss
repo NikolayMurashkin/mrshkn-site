@@ -33,6 +33,7 @@
   gap: var(--space-16);
   width: 100%;
   min-width: 0;
+  container-type: inline-size;
 }
 
 .kicker {
@@ -52,7 +53,7 @@
   width: 100%;
   font-family: var(--font-display);
   font-weight: 700;
-  font-size: clamp(32px, 4.8vw, 64px);
+  font-size: min(clamp(32px, 4.8vw, 64px), 10.5cqi);
   line-height: 1.05;
   text-wrap: balance;
   hyphens: none;

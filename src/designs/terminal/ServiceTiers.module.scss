@@ -19,6 +19,10 @@
   min-width: 0;
 }
 
+.tier:last-child:nth-child(odd) {
+  grid-column: 1 / -1;
+}
+
 .tierHead {
   display: flex;
   flex-direction: column;

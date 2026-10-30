@@ -265,41 +265,43 @@ export const KineticServicePage = ({ service }: ServicePageProps) => {
             </>
           ) : null}
 
-          <section
-            className={styles.block}
-            aria-labelledby="service-options"
-          >
-            <div className={styles.blockHead}>
-              <h2
-                className={styles.blockTitle}
-                id="service-options"
-              >
-                {t('optionsHeading')}
-              </h2>
-              <p className={styles.blockNote}>{t('optionsNote')}</p>
-            </div>
-            <ul
-              className={styles.options}
-              data-testid="service-options"
+          {options.length > 0 ? (
+            <section
+              className={styles.block}
+              aria-labelledby="service-options"
             >
-              {options.map((option) => (
-                <li
-                  className={styles.option}
-                  key={option.id}
+              <div className={styles.blockHead}>
+                <h2
+                  className={styles.blockTitle}
+                  id="service-options"
                 >
-                  <span className={styles.optionName}>{option.name}</span>
-                  <span className={styles.optionPrice}>{option.amount}</span>
-                  <span className={styles.optionNote}>{option.note}</span>
-                </li>
-              ))}
-            </ul>
-            <a
-              className={styles.more}
-              href={data.pricesHref}
-            >
-              {t('allOptions')}
-            </a>
-          </section>
+                  {t('optionsHeading')}
+                </h2>
+                <p className={styles.blockNote}>{t('optionsNote')}</p>
+              </div>
+              <ul
+                className={styles.options}
+                data-testid="service-options"
+              >
+                {options.map((option) => (
+                  <li
+                    className={styles.option}
+                    key={option.id}
+                  >
+                    <span className={styles.optionName}>{option.name}</span>
+                    <span className={styles.optionPrice}>{option.amount}</span>
+                    <span className={styles.optionNote}>{option.note}</span>
+                  </li>
+                ))}
+              </ul>
+              <a
+                className={styles.more}
+                href={data.pricesHref}
+              >
+                {t('allOptions')}
+              </a>
+            </section>
+          ) : null}
 
           <section
             className={styles.block}

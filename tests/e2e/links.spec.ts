@@ -15,6 +15,7 @@ const INNER_PAGES = [
   '/support',
   '/industry',
   '/3d',
+  '/logo',
   '/docs/privacy',
 ] as const;
 

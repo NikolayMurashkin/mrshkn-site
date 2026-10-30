@@ -331,14 +331,77 @@
   font-variant-numeric: tabular-nums;
 }
 
+.extrasBlock {
+  container-type: inline-size;
+}
+
+@container (max-width: 845px) {
+  .extras {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+.extraLinked {
+  position: relative;
+  transition: border-color var(--duration-fast) var(--ease-out);
+
+  &:hover,
+  &:focus-within {
+    border-color: var(--ink);
+
+    .extraArrow {
+      transform: rotate(45deg);
+    }
+  }
+}
+
+.extraLink {
+  border-radius: var(--radius-control);
+  color: inherit;
+
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: var(--radius-surface);
+  }
+}
+
+.extraFoot {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--space-12);
+  margin-top: auto;
+  padding-top: var(--space-16);
+
+  .extraPrice {
+    margin-top: 0;
+    padding-top: 0;
+    min-width: 0;
+  }
+}
+
+.extraArrow {
+  display: flex;
+  flex: none;
+  align-self: center;
+  color: var(--accent-ink);
+  transition: transform var(--duration-base) var(--ease-out);
+}
+
 @media (prefers-reduced-motion: reduce) {
   .planLink,
-  .arrow {
+  .arrow,
+  .extraLinked,
+  .extraArrow {
     transition: none;
   }
 
   .planLink:hover .arrow,
-  .planLink:focus-visible .arrow {
+  .planLink:focus-visible .arrow,
+  .extraLinked:hover .extraArrow,
+  .extraLinked:focus-within .extraArrow {
     transform: none;
   }
 }
@@ -372,15 +435,10 @@
   .groups {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
-
-  .extras {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
 }
 
 @media (max-width: bp.$mobile-wide) {
-  .options,
-  .extras {
+  .options {
     grid-template-columns: minmax(0, 1fr);
   }
 

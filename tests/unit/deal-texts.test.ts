@@ -219,7 +219,7 @@ const APPROVED_RU: [string, string][] = [
   ],
   [
     'pricing.caseOffer',
-    'Мы новая студия, и\u00a0нам нужны примеры работ. Поэтому первые пять проектов делаем по\u00a0«цене кейса» (кейс\u00a0— пример нашей работы): разработка на\u00a030\u00a0% дешевле. Скидка\u00a0— от\u00a0обычной цены разработки. Опции, MAX и\u00a0поддержка\u00a0— по\u00a0обычной цене. Скидку даем сразу: в\u00a0договоре стоит цена со\u00a0скидкой, все три части оплаты считаем от\u00a0нее. Сколько мест осталось, скажем в\u00a0ответ на\u00a0заявку. Взамен просим две вещи. Первое: вы разрешаете показывать ваш сайт или приложение как пример нашей работы, без данных ваших клиентов. Второе: вы пишете отзыв о\u00a0том, как шла работа,\u00a0— любой, в\u00a0том числе критический. Критические отзывы публикуем так же, как хорошие.',
+    'Мы новая студия, и\u00a0нам нужны примеры работ. Поэтому первым пяти заказчикам делаем по\u00a0«цене кейса» (кейс\u00a0— пример нашей работы): разработка и\u00a0логотип на\u00a030\u00a0% дешевле. Скидка\u00a0— от\u00a0обычной цены разработки и\u00a0логотипа. Опции, MAX и\u00a0поддержка\u00a0— по\u00a0обычной цене. Скидку даем сразу: в\u00a0договоре стоит цена со\u00a0скидкой, все части оплаты считаем от\u00a0нее. Сколько мест осталось, скажем в\u00a0ответ на\u00a0заявку. Взамен просим две вещи. Первое: вы разрешаете показывать ваш сайт, приложение или логотип как пример нашей работы, без данных ваших клиентов. Второе: вы пишете отзыв о\u00a0том, как шла работа,\u00a0— любой, в\u00a0том числе критический. Критические отзывы публикуем так же, как хорошие.',
   ],
   [
     'pricing.plans.industry.summary',
@@ -692,6 +692,20 @@ const APPROVED_EN: [string, string][] = [
 /** Ключи, которые убраны из обоих языков: лид hero Swiss повторял общий лид. */
 const REMOVED_KEYS = ['hero.swiss.lead'];
 
+/** Старое число раундов правок сайта: у логотипа два раунда — это его условие, а не старый текст сайта. */
+const TWO_ROUNDS = [/дв(а|ух)\s+раунд/i, /\b2\s?раунд/i, /two rounds/i, /\b2 rounds/i];
+
+/** Ключи услуги «Логотип и фирменный стиль» в обоих языках: шаблоны двух раундов к ним не применяются. */
+const LOGO_KEY_PREFIXES = [
+  'pricing.plans.logo.',
+  'pricing.extras.logo.',
+  'pricing.tiers.logoMark.',
+  'pricing.tiers.logoIdentity.',
+  'pricing.tiers.logoBrandbook.',
+  'services.logo.',
+  'servicePage.logo.',
+];
+
 /**
  * Старые гарантия, предоплата, число раундов и формулировки «готовый образец», «не рисуем с нуля», «этап принят»;
  * узкая формула гарантии «наша вина — чиним бесплатно» — гарантия покрывает и то, что работает не по договору.
@@ -706,10 +720,7 @@ const FORBIDDEN = [
   /thirty days of warranty/i,
   /(предоплат\S*|upfront|prepayment)\D{0,12}50\s?%/i,
   /50\s?%\s*(предоплат|upfront|prepayment)/i,
-  /дв(а|ух)\s+раунд/i,
-  /\b2\s?раунд/i,
-  /two rounds/i,
-  /\b2 rounds/i,
+  ...TWO_ROUNDS,
   /готов\S*\s+образ\S*/i,
   /не\s+рису\S*\s+с\s+нул/i,
   /этап\S*\s+счита\S*\s+принят/i,
@@ -787,10 +798,14 @@ const sourceFiles = (dir: string): string[] =>
     return /\.tsx?$/.test(name) ? [path] : [];
   });
 
-const SEARCHED: Entry[] = [
-  ...entriesOf(ru).map(({ path, text }) => ({ path: `messages/ru.json ${path}`, text })),
-  ...entriesOf(en).map(({ path, text }) => ({ path: `messages/en.json ${path}`, text })),
-  ...sourceFiles('src').map((path) => ({ path, text: readFileSync(path, 'utf8') })),
+type SearchedEntry = Entry & { isLogoKey: boolean };
+
+const isLogoKey = (path: string) => LOGO_KEY_PREFIXES.some((prefix) => path.startsWith(prefix));
+
+const SEARCHED: SearchedEntry[] = [
+  ...entriesOf(ru).map(({ path, text }) => ({ path: `messages/ru.json ${path}`, text, isLogoKey: isLogoKey(path) })),
+  ...entriesOf(en).map(({ path, text }) => ({ path: `messages/en.json ${path}`, text, isLogoKey: isLogoKey(path) })),
+  ...sourceFiles('src').map((path) => ({ path, text: readFileSync(path, 'utf8'), isLogoKey: false })),
 ];
 
 /** Видимый текст разметки: без тегов и с раскрытыми сущностями HTML. */
@@ -883,7 +898,8 @@ describe('плашка «Telegram и MAX» в секции цен называе
 
 describe('старых гарантии, предоплаты и раундов нет ни в переводах, ни в коде', () => {
   it.each(FORBIDDEN.map((pattern) => [String(pattern), pattern] as const))('%s', (_name, pattern) => {
-    const found = SEARCHED.filter(({ text }) => pattern.test(text)).map(({ path }) => `${path} — ${pattern}`);
+    const searched = TWO_ROUNDS.includes(pattern) ? SEARCHED.filter((entry) => !entry.isLogoKey) : SEARCHED;
+    const found = searched.filter(({ text }) => pattern.test(text)).map(({ path }) => `${path} — ${pattern}`);
 
     expect(found).toEqual([]);
   });

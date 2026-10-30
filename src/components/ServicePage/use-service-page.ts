@@ -150,7 +150,9 @@ export const useServicePage = (serviceId: string): ServicePageData | null => {
     term: price.term(plan),
     price: isMonthly ? t('perMonth', { price: planPrice }) : planPrice,
     cardAmount: planPrice,
-    priceKind: t(`priceKind.${isMonthly ? 'month' : plan.isFrom ? 'from' : 'exact'}`),
+    priceKind: t.has(`${service.id}.priceKind`)
+      ? t(`${service.id}.priceKind`)
+      : t(`priceKind.${isMonthly ? 'month' : plan.isFrom ? 'from' : 'exact'}`),
     hasRevisions,
     cardPoints: (SERVICE_CARD_POINTS[service.id] ?? SERVICE_CARD_POINTS.default).map((point) =>
       root(CARD_POINT_KEYS[point]),

@@ -1,11 +1,12 @@
 import { useTranslations } from 'next-intl';
 import { useGoal } from '@/components/Analytics/use-consent';
 import { planPath } from '@/content/format';
-import { PRICING_EXTRAS, PRICING_OPTIONS, PRICING_PLANS } from '@/content/pricing';
+import { extraPlan, PRICING_EXTRAS, PRICING_OPTIONS, PRICING_TABLE_PLANS } from '@/content/pricing';
 import { usePriceText } from '@/content/use-price';
 import { Link } from '@/i18n/navigation';
 import { GOALS } from '@/lib/analytics/consts';
 import { EditorialBasics } from './Basics';
+import { ArrowRightIcon } from './icons';
 import { EditorialOptions } from './Options';
 import { EditorialRubric } from './Rubric';
 import styles from './Pricing.module.scss';
@@ -40,7 +41,7 @@ export const EditorialPricing = () => {
           className={styles.toc}
           id="prices"
         >
-          {PRICING_PLANS.map((plan) => (
+          {PRICING_TABLE_PLANS.map((plan) => (
             <li
               className={styles.plan}
               data-testid={`plan-${plan.id}`}
@@ -106,7 +107,7 @@ export const EditorialPricing = () => {
           />
         </div>
 
-        <div className={styles.block}>
+        <div className={`${styles.block} ${styles.extrasBlock}`}>
           <div className={styles.blockHead}>
             <h3 className={styles.blockTitle}>{t('extrasHeading')}</h3>
             <p className={styles.blockNote}>{t('extrasNote')}</p>
@@ -115,18 +116,42 @@ export const EditorialPricing = () => {
             className={styles.extras}
             data-testid="extras"
           >
-            {PRICING_EXTRAS.map((extra) => (
-              <li
-                className={styles.extra}
-                key={extra.id}
-              >
-                <div className={styles.extraHead}>
-                  <h4 className={styles.extraName}>{t(`extras.${extra.id}.name`)}</h4>
-                  <span className={styles.extraPrice}>{price.extra(extra)}</span>
-                </div>
-                <p className={styles.extraSummary}>{t(`extras.${extra.id}.summary`)}</p>
-              </li>
-            ))}
+            {PRICING_EXTRAS.map((extra) => {
+              const plan = extraPlan(extra);
+
+              return (
+                <li
+                  className={plan ? `${styles.extra} ${styles.extraLinked}` : styles.extra}
+                  key={extra.id}
+                >
+                  <div className={styles.extraHead}>
+                    <h4 className={styles.extraName}>
+                      {plan ? (
+                        <Link
+                          className={styles.extraLink}
+                          href={planPath(plan)}
+                          onClick={() => reachGoal(GOALS.planClick)}
+                        >
+                          {t(`extras.${extra.id}.name`)}
+                        </Link>
+                      ) : (
+                        t(`extras.${extra.id}.name`)
+                      )}
+                    </h4>
+                    <span className={styles.extraPrice}>{price.extra(extra)}</span>
+                  </div>
+                  <p className={styles.extraSummary}>{t(`extras.${extra.id}.summary`)}</p>
+                  {plan ? (
+                    <span
+                      className={styles.extraArrow}
+                      aria-hidden="true"
+                    >
+                      <ArrowRightIcon />
+                    </span>
+                  ) : null}
+                </li>
+              );
+            })}
           </ul>
         </div>
       </div>

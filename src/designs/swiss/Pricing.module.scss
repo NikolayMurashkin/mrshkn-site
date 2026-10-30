@@ -267,7 +267,7 @@
 
 .extras {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: var(--space-24);
   margin: 0;
   padding: 0;
@@ -277,6 +277,7 @@
 .extra {
   display: grid;
   grid-template-columns: minmax(0, 1fr) auto;
+  align-content: start;
   gap: var(--space-8) var(--space-16);
   padding-top: var(--space-12);
   border-top: var(--border-width) solid var(--ink);
@@ -308,6 +309,52 @@
   color: var(--muted);
 
   @include s.wrap;
+}
+
+.extrasBlock {
+  container-type: inline-size;
+}
+
+@container (max-width: 900px) {
+  .extras {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+.extraLinked {
+  position: relative;
+  grid-template-rows: auto auto 1fr;
+  align-content: stretch;
+
+  &:hover,
+  &:focus-within {
+    .extraLink {
+      color: var(--accent-ink);
+    }
+
+    .extraArrow {
+      @include s.cell-arrow-active;
+    }
+  }
+}
+
+.extraLink {
+  color: inherit;
+  transition: color var(--duration-fast) var(--ease-in-out);
+
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+  }
+}
+
+.extraArrow {
+  @include s.cell-arrow;
+
+  grid-column: 1 / -1;
+  align-self: end;
+  justify-self: end;
 }
 
 @media (max-width: 1080px) {
