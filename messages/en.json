@@ -1497,6 +1497,7 @@
         "paragraphs": [],
         "items": [
           "<b>To reply to your request and prepare a proposal.</b> Name, phone, email or messenger account, quiz answers, comment and correspondence. Legal basis: your consent, which you give by sending the request.",
+          "<b>To check your website’s speed.</b> Name, contact for the reply and website address from the “Check your site” form. Legal basis: your consent, which you give by sending the form.",
           "<b>To conclude and perform a contract.</b> Full name and position of the representative, company details, Tax ID, contacts, project correspondence. Legal basis: the contract.",
           "<b>To issue a “Moy Nalog” tax receipt.</b> Tax ID and name of the client — a company or a sole proprietor. Legal basis: the law on the professional income tax.",
           "<b>To invite a client to leave a review.</b> The client’s email and the project name. Legal basis: the contract or our legitimate interest in hearing the client’s opinion of our work. We do not send advertising to this email.",
@@ -1525,9 +1526,10 @@
         ],
         "items": [
           "<b>Yandex Mail</b> — correspondence with hello@mrshkn.com;",
-          "<b>Telegram</b> — messages, if you write to us on Telegram, and notifications of new requests: name, contact and quiz answers;",
+          "<b>Telegram</b> — messages, if you write to us on Telegram, and notifications of new requests: name, contact, quiz answers or the website address;",
           "<b>Yandex Metrica</b> — visit counting, only if you have agreed in the banner on the website;",
           "<b>Google Analytics</b> — visit counting, also only after you agree in the banner;",
+          "<b>Google PageSpeed Insights</b> — the website address from the “Check your site” form, to check its speed; Google does not receive your name or contact;",
           "<b>Cloudflare</b> — the website sends request notifications to Telegram through this service."
         ],
         "after": ["We do not sell data or pass it on for other companies’ advertising."]
@@ -1552,7 +1554,7 @@
         "title": "Consent to the processing of personal data",
         "paragraphs": [
           "Published at https://mrshkn.com/en/docs/privacy#consent",
-          "By checking this box and sending the request, I consent to Veronika Viktorovna Murashkina, Tax ID 421815967902, email hello@mrshkn.com, MRSHKN studio, processing my data: name, phone, email or messenger account, form answers and correspondence. The purpose is to reply to the request and prepare a proposal. The data is stored on a server in Russia and passes through Yandex Mail and Telegram. The consent is valid for 1 year from my last message. I can withdraw it by email to hello@mrshkn.com. Personal data processing policy: https://mrshkn.com/en/docs/privacy."
+          "By checking this box and sending the request, I consent to Veronika Viktorovna Murashkina, Tax ID 421815967902, email hello@mrshkn.com, MRSHKN studio, processing my data: name, phone, email or messenger account, form answers, website address and correspondence. The purpose is to reply to the request, check the website’s speed if I ask for it, and prepare a proposal. The data is stored on a server in Russia and passes through Yandex Mail and Telegram, and the website address passes through Google PageSpeed Insights. The consent is valid for 1 year from my last message. I can withdraw it by email to hello@mrshkn.com. Personal data processing policy: https://mrshkn.com/en/docs/privacy."
         ]
       }
     }
