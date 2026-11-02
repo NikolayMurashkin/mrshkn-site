@@ -267,8 +267,6 @@ const FORBIDDEN: Record<Locale, RegExp[]> = {
 
 const TRANSLATION_TODO = resolve(import.meta.dirname, '../../messages/TRANSLATION-TODO.md');
 
-const WAITING_HEADING = '## Ждет вычитки Николая';
-
 const valueAt = (root: unknown, path: string): unknown =>
   path.split('.').reduce<unknown>((node, key) => {
     if (node !== null && typeof node === 'object') {
@@ -348,17 +346,22 @@ const expandBraces = (pattern: string): string[] => {
 const patternRegExp = (pattern: string) =>
   new RegExp(`^${pattern.replace(/[.+?^$()[\]\\|]/g, '\\$&').replace(/\*/g, '.+')}(\\..+)?$`);
 
-/** Пути, названные в строках таблицы «Ждет вычитки»: все, что в обратных кавычках. */
-const waitingPatterns = () => {
-  const text = readFileSync(TRANSLATION_TODO, 'utf8');
-  const start = text.indexOf(WAITING_HEADING);
-  const rest = start === -1 ? '' : text.slice(start + WAITING_HEADING.length);
-  const end = rest.search(/^## /m);
-  const section = end === -1 ? rest : rest.slice(0, end);
+const LOGO_CAPTION = 'услуги «Логотип и фирменный стиль»';
 
-  return section
-    .split('\n')
-    .filter((line) => line.trim().startsWith('|'))
+/**
+ * Пути из таблицы услуги в TRANSLATION-TODO.md (первая таблица после подписи с `LOGO_CAPTION`): все, что в обратных
+ * кавычках. Раздел любой — «Ждет вычитки» или «Вычитано»: вычитка переносит таблицу между разделами. Таблица услуги,
+ * а не весь файл: старые строки `pricing.*`, `services.*` покрыли бы любой ключ.
+ */
+const listedPatterns = () => {
+  const lines = readFileSync(TRANSLATION_TODO, 'utf8').split('\n');
+  const caption = lines.findIndex((line) => line.includes(LOGO_CAPTION));
+  const rest = caption === -1 ? [] : lines.slice(caption + 1);
+  const start = rest.findIndex((line) => line.trim().startsWith('|'));
+  const after = start === -1 ? [] : rest.slice(start);
+  const end = after.findIndex((line) => !line.trim().startsWith('|'));
+
+  return (end === -1 ? after : after.slice(0, end))
     .flatMap((line) => [...line.matchAll(/`([^`]+)`/g)].map(([, pattern]) => pattern))
     .flatMap(expandBraces)
     .map(patternRegExp);
@@ -411,9 +414,9 @@ describe('форма ключей услуги «Логотип и фирмен�
   });
 });
 
-describe('английские тексты услуги ждут вычитки', () => {
-  it('в таблице «Ждет вычитки» TRANSLATION-TODO.md упомянут каждый en-ключ услуги', () => {
-    const patterns = waitingPatterns();
+describe('английские тексты услуги учтены для вычитки', () => {
+  it('в таблице услуги в TRANSLATION-TODO.md упомянут каждый en-ключ услуги', () => {
+    const patterns = listedPatterns();
     const unlisted = logoEntries('en')
       .map(({ path }) => path)
       .filter((path) => !patterns.some((pattern) => pattern.test(path)));
