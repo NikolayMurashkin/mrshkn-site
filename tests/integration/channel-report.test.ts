@@ -274,7 +274,7 @@ describe('данные отчета по каналам', () => {
     await seedLead({ utm_source: 'now-probe' });
 
     const before = mskMonth(new Date());
-    const { status, text } = await getReport(adminToken, undefined);
+    const { status, text } = await getReport(adminToken, '');
     const after = mskMonth(new Date());
 
     expect(status).toBe(200);
