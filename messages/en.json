@@ -475,6 +475,32 @@
       }
     }
   },
+  "audit": {
+    "title": "Check your site",
+    "lead": "Send us your website address — we’ll check how fast it loads on a phone and send you up to five tips on what to change to make it faster. If your site is already fast, we’ll tell you so.",
+    "why": "If a site takes too long to load on a phone, some visitors leave before it opens.",
+    "text": "It’s free, and you don’t have to order a website from us afterwards. Within an hour during business hours we’ll confirm we got your request, and you’ll get the results within one business day. We work weekdays, 10 am to 7 pm Moscow time (UTC+3). We check one site per request, on any platform, including Wix and WordPress — though we don’t rework sites like these ourselves; we build new ones. The results go only to you, and we won’t show them anywhere without your consent.",
+    "name": "What should we call you",
+    "url": "Your website address",
+    "urlPlaceholder": "e.g. example.com",
+    "urlHint": "Open your site and copy what’s written in the address bar at the top, above the page.",
+    "contact": "Where to send the results: Telegram, phone or email — any one is enough",
+    "contactHint": "If you leave a phone number, we’ll message you on Telegram — we won’t call. If we can’t find you on Telegram by your number, or you don’t use it, better leave your Telegram handle or email.",
+    "consent": "I agree to the processing of my personal data under the <policy>personal data processing policy</policy>",
+    "submit": "Check your site for free",
+    "fieldError": "Fill in this field to continue",
+    "urlError": "This doesn’t look like a website address. Copy it from the address bar at the top while your site is open — e.g. example.com or coffee-shop.com",
+    "error": "Your request didn’t go through. Press the button again. If it still fails, email your website address and contact details to hello@mrshkn.com",
+    "success": {
+      "title": "We’ve got your request",
+      "text": "Within an hour during business hours we’ll confirm we got it. Within one business day we’ll check how fast your site loads on a phone and send up to five tips on what to change to make it faster — to the contact you gave. If Google’s test can’t open your site (this happens, for example, when a site blocks visitors from abroad), we’ll tell you within the same time and say what can be done. If you haven’t heard from us within an hour during business hours, or haven’t got the results within a business day, email hello@mrshkn.com."
+    },
+    "self": "Check the speed yourself in Google’s test",
+    "selfNote": "This opens Google PageSpeed Insights, a free speed test. If you’ve entered your address in the form above, it’s filled in for you and the mobile test starts right away. Wait for it to finish — usually under a minute — and look at the number next to “Performance”: 90 and above is considered good. The score changes from run to run, sometimes by dozens of points, so we test three times in a row and send you all three results. The test’s other notes are written for developers — we’ll send you plain-language tips with your request.",
+    "promise": "The site we build for you will score 90 out of 100 or higher in this test on a phone — in each of three back-to-back runs on handover day, and we attach all three results to the acceptance certificate. It’s in the contract: if the score is lower because of our code or the way we set up the hosting, we fix it for free and don’t hand over the work until it reaches 90. You get the draft contract before paying, together with the price. If your site needs a third-party booking widget, map or chat, we’ll tell you before signing what score we promise with them.",
+    "studios": "The home pages of 54 web studios in the Kaliningrad region — companies that build websites — scored 72.5 out of 100 in this test on a phone: that’s the median site, half of the studios scored lower and half higher. 12 of the 54 studios scored 90 or above. Checked on October 30, 2026.¹",
+    "studiosNote": "¹ On October 23, 2026 we compiled a list of 59 web studios in the region (not counting our own). On October 30 we ran their home pages through Google PageSpeed Insights on mobile: three runs in a row per site, taking the middle of the three results — not the best and not the worst. Google’s test couldn’t check five sites, so 54 were counted. Three of those five also failed to open in our earlier check; one scored 100 in it, and another scored 69 and 78 in two runs. With those two included, the median site would have scored between 72.5 and 75. We then ranked the 54 studios by score: the two sites in the middle scored 72 and 73, and we took the average of the two — 72.5."
+  },
   "footer": {
     "heading": "Discuss your website",
     "headingQuestion": "Shall we discuss your website?",
@@ -1611,7 +1637,7 @@
     },
     "kicker": "Documents",
     "title": "Privacy policy",
-    "updated": "Last updated October 23, 2026",
+    "updated": "Last updated October 30, 2026",
     "tocLabel": "Contents",
     "changeChoice": "Change cookie choice",
     "sections": {
@@ -1624,32 +1650,33 @@
       },
       "data": {
         "title": "What data we collect",
-        "paragraphs": ["From the request you send through the brief on this website:"],
+        "paragraphs": ["From the request you send through the brief or the “Check your site” form on this website:"],
         "items": [
           "your name;",
           "how to reach you: phone, email or messenger handle;",
-          "your brief answers: what you need built, industry, style, timing, budget and comments;",
+          "your brief answers: what you need built, industry, style, timing, budget and comments; from the “Check your site” form — your website address;",
           "campaign tags, if you came from an ad."
         ]
       },
       "purposes": {
         "title": "Why we process it",
         "paragraphs": [
-          "We use request data to reply to you, discuss your project and prepare a proposal.",
+          "We use data from brief requests to reply to you, discuss your project and prepare a proposal. We use data from the “Check your site” form to check your website’s speed and send you the results — and, if you then write to us about an order yourself, to discuss your project and prepare a proposal.",
           "We use analytics data to see website traffic and understand which pages and ads work."
         ]
       },
       "basis": {
         "title": "Legal basis",
         "paragraphs": [
-          "We process your data based on your consent. You consent to the processing of your request by ticking the box in the brief before sending it, and to analytics cookies by clicking “Accept” in the cookie banner."
+          "We process your data based on your consent. You consent to the processing of your request by ticking the box in the brief or in the “Check your site” form before sending it, and to analytics cookies by clicking “Accept” in the cookie banner."
         ]
       },
       "transfer": {
         "title": "Where your data goes",
         "paragraphs": [
-          "Your whole request — name, contact details, brief answers and campaign tags — is saved in the website's database. It can only be opened from the site's admin panel, after signing in with a login and password.",
-          "The name and contact details from your request, together with your brief answers, are sent to Telegram: the studio's bot posts a notification about each new request to the studio's group chat. The site's server reaches Telegram through Cloudflare, so these details pass through Cloudflare on their way to Telegram. Telegram and Cloudflare are services based outside Russia.",
+          "Your whole request — name, contact details, brief answers or website address, and campaign tags — is saved in the website's database. It can only be opened from the site's admin panel, after signing in with a login and password.",
+          "The name and contact details from your request, together with your brief answers or website address, are sent to Telegram: the studio's bot posts a notification about each new request to the studio's group chat. The site's server reaches Telegram through Cloudflare, so these details pass through Cloudflare on their way to Telegram. Telegram and Cloudflare are services based outside Russia.",
+          "We enter the website address from the “Check your site” form into Google PageSpeed Insights, a free test, to check its speed. Google receives only the address, without your name or contact details.",
           "A copy of your request is emailed to hello@mrshkn.com, the studio mailbox hosted by Yandex.",
           "Analytics data goes to Yandex (Yandex Metrica) and Google (Google Analytics 4), and only after you consent. Google is a service based outside Russia."
         ]

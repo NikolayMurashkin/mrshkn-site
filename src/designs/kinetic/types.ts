@@ -13,7 +13,8 @@ export type ButtonClassOptions = {
 
 export type SectionHeadProps = {
   id: string;
-  kicker: string;
+  /** Подпись над заголовком; у секции без своей подписи в текстах ее нет. */
+  kicker?: string;
   title: ReactNode;
   note?: string;
   level?: 'h1' | 'h2';

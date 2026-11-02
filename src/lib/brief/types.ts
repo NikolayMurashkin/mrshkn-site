@@ -63,3 +63,9 @@ export type LeadChannel = 'crm' | 'telegram' | 'mail';
 
 /** Итог записи заявки в базу: id карточки или ошибка — отказ и таймаут записи. */
 export type LeadRecord = { id: number; error: null } | { id: null; error: unknown };
+
+/** Текст заявки для бота и письма и тема письма: у квиза и замера свои. */
+export type LeadMessage = { text: string; subject: string };
+
+/** Итог пути заявки: дошла хотя бы до одного канала или нет — тогда какие каналы молчали. */
+export type LeadDelivery = { ok: true } | { ok: false; failed: LeadChannel[] };

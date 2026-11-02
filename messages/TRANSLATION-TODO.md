@@ -7,7 +7,18 @@
 
 ## Ждет вычитки Николая
 
-Пусто.
+Написано 30.10.2026 — секция «Проверьте свой сайт» (бесплатный замер скорости) и правки политики ПД под эту форму:
+
+| Ключ                                                                                                   | ru                                                                                                       | en                                                                                                                                                |
+| ------------------------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `audit.{title,lead,why,text}`                                                                          | Проверьте свой сайт; пришлем до пяти советов; бесплатно, час на подтверждение, рабочий день на результат | Check your site; up to five tips; free, an hour to confirm, a business day for results (Тильда → Wix, часы — Moscow time UTC+3, без Калининграда) |
+| `audit.{name,url,urlPlaceholder,urlHint,contact,contactHint,consent,submit,fieldError,urlError,error}` | поля формы, подсказки и ошибки                                                                           | form fields, hints and errors (пример адреса — example.com, coffee-shop.com; MAX убран: «we'll message you on Telegram»)                          |
+| `audit.success.{title,text}`                                                                           | Заявка у нас                                                                                             | We've got your request                                                                                                                            |
+| `audit.{self,selfNote,promise}`                                                                        | ссылка на тест Google и обещание 90 из договора                                                          | Google's test link and the 90-score contract promise                                                                                              |
+| `audit.{studios,studiosNote}`                                                                          | 54 студии области, 72,5, сноска-методика                                                                 | 54 studios in the Kaliningrad region, 72.5 (median), methodology footnote                                                                         |
+| `privacy.updated`, `privacy.sections.{data,purposes,basis,transfer}`                                   | форма «Проверьте свой сайт» в политике, новый абзац про PageSpeed Insights                               | the “Check your site” form in the policy, new paragraph on PageSpeed Insights                                                                     |
+| `audit.{urlPlaceholder,submit}`                                                                        | правка 30.10.2026 по аудиту верстки                                                                      | `e.g. example.com` (один пример — помещается в поле на 390); `Check your site for free` (второе лицо, как заголовок)                              |
+| `audit.{text,promise,studios,studiosNote}`                                                             | правка 30.10.2026 по аудиту верстки                                                                      | неразрывные пробелы: «10 am», «7 pm», «90 out of 100», «72.5 out of 100», «October 30», «October 23», «54 web», «59 web»                          |
 
 ## Вычитано Николаем 30.10.2026
 

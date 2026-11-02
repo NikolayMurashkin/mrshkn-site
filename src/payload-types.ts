@@ -348,7 +348,9 @@ export interface Lead {
   id: number;
   name: string;
   contact: string;
+  siteUrl?: string | null;
   comment?: string | null;
+  kind: 'brief' | 'audit';
   stage: 'new' | 'qualified' | 'proposal' | 'contract' | 'work' | 'delivered' | 'rejected';
   qualifiedAt?: string | null;
   amount?: number | null;
@@ -764,7 +766,9 @@ export interface ReviewsSelect<T extends boolean = true> {
 export interface LeadsSelect<T extends boolean = true> {
   name?: T;
   contact?: T;
+  siteUrl?: T;
   comment?: T;
+  kind?: T;
   stage?: T;
   qualifiedAt?: T;
   amount?: T;

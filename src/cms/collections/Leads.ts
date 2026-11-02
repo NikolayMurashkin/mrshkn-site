@@ -1,5 +1,6 @@
 import type { CollectionBeforeChangeHook, CollectionConfig } from 'payload';
 import { LOCALES } from '../../i18n/consts';
+import { LEAD_KIND_LABELS, LEAD_KINDS } from '../../lib/audit/consts';
 import { LEAD_QUALIFIED_STAGES, LEAD_STAGES } from '../../lib/brief/consts';
 import { isSignedIn } from '../access';
 import { LEAD_REMIND_TEXT_MAX, LEAD_REMINDER_SENT, LEAD_STAGE_LABELS, REVIEW_LOCALE_LABELS } from '../consts';
@@ -40,23 +41,34 @@ const keepReminderMark: CollectionBeforeChangeHook = ({ context, data, originalD
 };
 
 /**
- * Заявки — CRM студии. Их пишет обработчик квиза мимо прав, а читают, правят, удаляют и заводят по звонку только
- * вошедшие в админку: без входа REST не отдает и не принимает ничего. Ответы квиза — ключи справочника как есть,
- * обычным текстом: справочник можно менять, старые заявки от этого не ломаются.
+ * Заявки — CRM студии: квиз и бесплатный замер (`kind`, у замера — `siteUrl`). Их пишут обработчики форм мимо прав,
+ * а читают, правят, удаляют и заводят по звонку только вошедшие в админку: без входа REST не отдает и не принимает
+ * ничего. Ответы квиза — ключи справочника как есть, обычным текстом: справочник можно менять, старые заявки от этого
+ * не ломаются.
  */
 export const Leads: CollectionConfig = {
   slug: 'leads',
   labels: { singular: 'Заявка', plural: 'Заявки' },
   admin: {
     useAsTitle: 'name',
-    defaultColumns: ['name', 'stage', 'remindAt', 'utm_source', 'createdAt'],
+    defaultColumns: ['name', 'kind', 'stage', 'remindAt', 'utm_source', 'createdAt'],
   },
   access: { read: isSignedIn, create: isSignedIn, update: isSignedIn, delete: isSignedIn },
   hooks: { beforeChange: [stampQualification, keepReminderMark] },
   fields: [
     { name: 'name', type: 'text', label: 'Имя', required: true },
     { name: 'contact', type: 'text', label: 'Связь', required: true },
+    { name: 'siteUrl', type: 'text', label: 'Адрес сайта' },
     { name: 'comment', type: 'textarea', label: 'Комментарий' },
+    {
+      name: 'kind',
+      type: 'select',
+      label: 'Вид заявки',
+      required: true,
+      defaultValue: 'brief',
+      options: LEAD_KINDS.map((value) => ({ value, label: LEAD_KIND_LABELS[value] })),
+      admin: { position: 'sidebar' },
+    },
     {
       name: 'stage',
       type: 'select',

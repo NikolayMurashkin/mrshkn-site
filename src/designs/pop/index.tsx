@@ -4,6 +4,7 @@ import { renderSection } from '../render';
 import type { DesignComponents, SectionProps } from '../types';
 import { KineticReview } from '../kinetic/KineticReview';
 import './fonts';
+import { PopAudit } from './Audit';
 import { PopCase } from './Case';
 import { PopCookieBanner } from './CookieBanner';
 import { PopFooter } from './Footer';
@@ -23,6 +24,7 @@ const COMPONENTS: DesignComponents = {
   pricing: PopPricing,
   works: PopWorks,
   process: PopProcess,
+  audit: PopAudit,
   case: PopCase,
   footer: PopFooter,
   brief: PopBrief,

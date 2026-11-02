@@ -11,6 +11,7 @@ import { PopSteps } from './Steps';
 import { PopServiceThreeD } from './ServiceThreeD';
 import { PopServiceTiers } from './ServiceTiers';
 import { PopProcessCards } from './ProcessCards';
+import { PopAudit } from './Audit';
 import styles from './ServicePage.module.scss';
 
 export const PopServicePage = ({ service }: ServicePageProps) => {
@@ -45,336 +46,339 @@ export const PopServicePage = ({ service }: ServicePageProps) => {
   const points = hasRevisions ? [...cardPoints, revisions] : cardPoints;
 
   return (
-    <article
-      className={styles.page}
-      data-testid="service-page"
-      data-service={data.service.id}
-    >
-      <a
-        className={styles.back}
-        href={data.backHref}
+    <>
+      <article
+        className={styles.page}
+        data-testid="service-page"
+        data-service={data.service.id}
       >
-        <ArrowLeftIcon />
-        {t('back')}
-      </a>
+        <a
+          className={styles.back}
+          href={data.backHref}
+        >
+          <ArrowLeftIcon />
+          {t('back')}
+        </a>
 
-      <header className={styles.head}>
-        <p className={styles.label}>{t('kicker')}</p>
-        <h1 className={styles.title}>{name}</h1>
-        <p className={styles.lead}>{summary}</p>
-        <ul className={styles.tags}>
-          <li className={styles.tag}>{term}</li>
-          <li className={styles.tag}>{price}</li>
-          {hasRevisions ? <li className={styles.tag}>{revisions}</li> : null}
-        </ul>
-        {exampleHref ? (
-          <a
-            className={`${styles.more} ${styles.example}`}
-            href={exampleHref}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            {t('landingExample')}
-            <ArrowUpRightIcon />
-          </a>
-        ) : null}
-        <div className={styles.meta}>
-          <a
-            className={styles.cta}
-            href={data.briefHref}
-          >
-            {t('cta')}
-            <ArrowRightIcon />
-          </a>
-          <span className={styles.kind}>{priceKind}</span>
-        </div>
-      </header>
-
-      <div className={styles.cols}>
-        <div className={styles.stack}>
-          {tryIt ? (
-            <section
-              className={styles.block}
-              aria-labelledby="service-try-it"
+        <header className={styles.head}>
+          <p className={styles.label}>{t('kicker')}</p>
+          <h1 className={styles.title}>{name}</h1>
+          <p className={styles.lead}>{summary}</p>
+          <ul className={styles.tags}>
+            <li className={styles.tag}>{term}</li>
+            <li className={styles.tag}>{price}</li>
+            {hasRevisions ? <li className={styles.tag}>{revisions}</li> : null}
+          </ul>
+          {exampleHref ? (
+            <a
+              className={`${styles.more} ${styles.example}`}
+              href={exampleHref}
+              target="_blank"
+              rel="noopener noreferrer"
             >
-              <div className={styles.blockHead}>
-                <h2
-                  className={styles.blockTitle}
-                  id="service-try-it"
-                >
-                  {tryIt.heading}
-                </h2>
-                <p className={styles.blockNote}>{tryIt.note}</p>
-              </div>
-              <ul className={`${styles.niches} ${styles.apps}`}>
-                {tryIt.apps.map((app) => (
-                  <li
-                    className={styles.app}
-                    key={app.id}
-                  >
-                    <p className={styles.label}>{app.module}</p>
-                    <h3 className={styles.nicheTitle}>{app.title}</h3>
-                    <p className={styles.nicheText}>{app.text}</p>
-                    <span className={styles.tag}>{tryIt.mark}</span>
-                    <div className={styles.appLinks}>
-                      {app.links.map((link) => (
-                        <a
-                          className={styles.appLink}
-                          href={link.href}
-                          key={link.messenger}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                        >
-                          {link.label}
-                          <ArrowUpRightIcon />
-                        </a>
-                      ))}
-                    </div>
-                  </li>
-                ))}
-              </ul>
-            </section>
+              {t('landingExample')}
+              <ArrowUpRightIcon />
+            </a>
           ) : null}
-
-          {industry ? (
-            <section
-              className={styles.block}
-              aria-labelledby="service-included"
+          <div className={styles.meta}>
+            <a
+              className={styles.cta}
+              href={data.briefHref}
             >
-              <div className={styles.blockHead}>
-                <h2
-                  className={styles.blockTitle}
-                  id="service-included"
-                >
-                  {t('includedHeading')}
-                </h2>
-                <p className={styles.blockNote}>{industry.included.note}</p>
-              </div>
-              <div className={styles.ownBasics}>
-                <PopChecks items={industry.included.items} />
-              </div>
-            </section>
-          ) : null}
+              {t('cta')}
+              <ArrowRightIcon />
+            </a>
+            <span className={styles.kind}>{priceKind}</span>
+          </div>
+        </header>
 
-          {threeD ? (
-            <PopServiceThreeD
-              data={threeD}
-              tiers={tiers}
-            />
-          ) : tiers ? (
-            <PopServiceTiers data={tiers} />
-          ) : null}
-
-          <section
-            className={styles.block}
-            aria-labelledby="service-basics"
-          >
-            <div className={styles.blockHead}>
-              <h2
-                className={styles.blockTitle}
-                id="service-basics"
-              >
-                {t('basicsHeading')}
-              </h2>
-              <p className={styles.blockNote}>{ownBasics ? ownBasics.note : t('basicsNote')}</p>
-            </div>
-            {ownBasics ? (
-              <div className={styles.ownBasics}>
-                <PopChecks items={ownBasics.items} />
-              </div>
-            ) : (
-              <PopBasics
-                titleTag="h3"
-                narrow
-              />
-            )}
-          </section>
-
-          {industry ? (
-            <>
+        <div className={styles.cols}>
+          <div className={styles.stack}>
+            {tryIt ? (
               <section
                 className={styles.block}
-                aria-labelledby="service-excluded"
+                aria-labelledby="service-try-it"
               >
                 <div className={styles.blockHead}>
                   <h2
                     className={styles.blockTitle}
-                    id="service-excluded"
+                    id="service-try-it"
                   >
-                    {t('excludedHeading')}
+                    {tryIt.heading}
                   </h2>
-                  <p className={styles.blockNote}>{industry.excluded.note}</p>
+                  <p className={styles.blockNote}>{tryIt.note}</p>
                 </div>
-                <div className={styles.ownBasics}>
-                  <PopChecks
-                    items={industry.excluded.items}
-                    skipped
-                  />
-                </div>
-              </section>
-
-              <section
-                className={styles.block}
-                aria-labelledby="service-niches"
-              >
-                <div className={styles.blockHead}>
-                  <h2
-                    className={styles.blockTitle}
-                    id="service-niches"
-                  >
-                    {t('nichesHeading')}
-                  </h2>
-                  <p className={styles.blockNote}>{t('nichesNote')}</p>
-                </div>
-                <ul className={styles.niches}>
-                  {industry.niches.map((niche) => (
+                <ul className={`${styles.niches} ${styles.apps}`}>
+                  {tryIt.apps.map((app) => (
                     <li
-                      className={styles.niche}
-                      key={niche.id}
+                      className={styles.app}
+                      key={app.id}
                     >
-                      <h3 className={styles.nicheTitle}>
-                        <a href={niche.href}>{niche.title}</a>
-                      </h3>
-                      <p className={styles.nicheText}>{niche.text}</p>
-                      <div className={styles.nicheEnd}>
-                        <a
-                          className={`${styles.more} ${styles.nicheDemo}`}
-                          href={niche.demoHref}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                        >
-                          {t('nicheDemo')}
-                          <ArrowUpRightIcon />
-                        </a>
-                        <span className={styles.nicheFoot}>
-                          {t('nicheCta')}
-                          <span className={styles.round}>
+                      <p className={styles.label}>{app.module}</p>
+                      <h3 className={styles.nicheTitle}>{app.title}</h3>
+                      <p className={styles.nicheText}>{app.text}</p>
+                      <span className={styles.tag}>{tryIt.mark}</span>
+                      <div className={styles.appLinks}>
+                        {app.links.map((link) => (
+                          <a
+                            className={styles.appLink}
+                            href={link.href}
+                            key={link.messenger}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                          >
+                            {link.label}
                             <ArrowUpRightIcon />
-                          </span>
-                        </span>
+                          </a>
+                        ))}
                       </div>
                     </li>
                   ))}
                 </ul>
               </section>
-            </>
-          ) : null}
+            ) : null}
 
-          {options.length > 0 ? (
+            {industry ? (
+              <section
+                className={styles.block}
+                aria-labelledby="service-included"
+              >
+                <div className={styles.blockHead}>
+                  <h2
+                    className={styles.blockTitle}
+                    id="service-included"
+                  >
+                    {t('includedHeading')}
+                  </h2>
+                  <p className={styles.blockNote}>{industry.included.note}</p>
+                </div>
+                <div className={styles.ownBasics}>
+                  <PopChecks items={industry.included.items} />
+                </div>
+              </section>
+            ) : null}
+
+            {threeD ? (
+              <PopServiceThreeD
+                data={threeD}
+                tiers={tiers}
+              />
+            ) : tiers ? (
+              <PopServiceTiers data={tiers} />
+            ) : null}
+
             <section
               className={styles.block}
-              aria-labelledby="service-options"
+              aria-labelledby="service-basics"
             >
               <div className={styles.blockHead}>
                 <h2
                   className={styles.blockTitle}
-                  id="service-options"
+                  id="service-basics"
                 >
-                  {t('optionsHeading')}
+                  {t('basicsHeading')}
                 </h2>
-                <p className={styles.blockNote}>{t('optionsNote')}</p>
+                <p className={styles.blockNote}>{ownBasics ? ownBasics.note : t('basicsNote')}</p>
               </div>
-              <PopOptions
-                items={options}
-                testId="service-options"
-                narrow
-              />
-              <a
-                className={styles.more}
-                href={data.pricesHref}
-              >
-                {t('allOptions')}
-                <ArrowRightIcon />
-              </a>
+              {ownBasics ? (
+                <div className={styles.ownBasics}>
+                  <PopChecks items={ownBasics.items} />
+                </div>
+              ) : (
+                <PopBasics
+                  titleTag="h3"
+                  narrow
+                />
+              )}
             </section>
-          ) : null}
 
-          <section
-            className={styles.block}
-            aria-labelledby="service-process"
-          >
-            <h2
-              className={styles.blockTitle}
-              id="service-process"
-            >
-              {t('processHeading')}
-            </h2>
-            <div
-              className={styles.processBody}
-              data-testid="service-process"
-            >
-              {cards.prestart ? (
-                <PopProcessCards
-                  block={cards.prestart}
+            {industry ? (
+              <>
+                <section
+                  className={styles.block}
+                  aria-labelledby="service-excluded"
+                >
+                  <div className={styles.blockHead}>
+                    <h2
+                      className={styles.blockTitle}
+                      id="service-excluded"
+                    >
+                      {t('excludedHeading')}
+                    </h2>
+                    <p className={styles.blockNote}>{industry.excluded.note}</p>
+                  </div>
+                  <div className={styles.ownBasics}>
+                    <PopChecks
+                      items={industry.excluded.items}
+                      skipped
+                    />
+                  </div>
+                </section>
+
+                <section
+                  className={styles.block}
+                  aria-labelledby="service-niches"
+                >
+                  <div className={styles.blockHead}>
+                    <h2
+                      className={styles.blockTitle}
+                      id="service-niches"
+                    >
+                      {t('nichesHeading')}
+                    </h2>
+                    <p className={styles.blockNote}>{t('nichesNote')}</p>
+                  </div>
+                  <ul className={styles.niches}>
+                    {industry.niches.map((niche) => (
+                      <li
+                        className={styles.niche}
+                        key={niche.id}
+                      >
+                        <h3 className={styles.nicheTitle}>
+                          <a href={niche.href}>{niche.title}</a>
+                        </h3>
+                        <p className={styles.nicheText}>{niche.text}</p>
+                        <div className={styles.nicheEnd}>
+                          <a
+                            className={`${styles.more} ${styles.nicheDemo}`}
+                            href={niche.demoHref}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                          >
+                            {t('nicheDemo')}
+                            <ArrowUpRightIcon />
+                          </a>
+                          <span className={styles.nicheFoot}>
+                            {t('nicheCta')}
+                            <span className={styles.round}>
+                              <ArrowUpRightIcon />
+                            </span>
+                          </span>
+                        </div>
+                      </li>
+                    ))}
+                  </ul>
+                </section>
+              </>
+            ) : null}
+
+            {options.length > 0 ? (
+              <section
+                className={styles.block}
+                aria-labelledby="service-options"
+              >
+                <div className={styles.blockHead}>
+                  <h2
+                    className={styles.blockTitle}
+                    id="service-options"
+                  >
+                    {t('optionsHeading')}
+                  </h2>
+                  <p className={styles.blockNote}>{t('optionsNote')}</p>
+                </div>
+                <PopOptions
+                  items={options}
+                  testId="service-options"
                   narrow
                 />
-              ) : null}
-              <PopSteps
-                steps={steps.map(({ when, title, text }) => ({ id: title, ...splitStepWhen(when), title, text }))}
-                testId="service-steps"
-                titleTag="h3"
-                narrow
-              />
-              {cards.after ? (
-                <PopProcessCards
-                  block={cards.after}
-                  narrow
-                />
-              ) : null}
-            </div>
-          </section>
+                <a
+                  className={styles.more}
+                  href={data.pricesHref}
+                >
+                  {t('allOptions')}
+                  <ArrowRightIcon />
+                </a>
+              </section>
+            ) : null}
 
-          {faq.length > 0 ? (
             <section
               className={styles.block}
-              aria-labelledby="service-faq"
+              aria-labelledby="service-process"
             >
               <h2
                 className={styles.blockTitle}
-                id="service-faq"
+                id="service-process"
               >
-                {t('faqHeading')}
+                {t('processHeading')}
               </h2>
               <div
-                className={styles.faq}
-                data-testid="service-faq"
+                className={styles.processBody}
+                data-testid="service-process"
               >
-                {faq.map((item) => (
-                  <details
-                    className={styles.question}
-                    key={item.question}
-                  >
-                    <summary className={styles.summary}>{item.question}</summary>
-                    <p className={styles.answer}>{item.answer}</p>
-                  </details>
-                ))}
+                {cards.prestart ? (
+                  <PopProcessCards
+                    block={cards.prestart}
+                    narrow
+                  />
+                ) : null}
+                <PopSteps
+                  steps={steps.map(({ when, title, text }) => ({ id: title, ...splitStepWhen(when), title, text }))}
+                  testId="service-steps"
+                  titleTag="h3"
+                  narrow
+                />
+                {cards.after ? (
+                  <PopProcessCards
+                    block={cards.after}
+                    narrow
+                  />
+                ) : null}
               </div>
             </section>
-          ) : null}
-        </div>
 
-        <aside className={styles.aside}>
-          <div className={styles.card}>
-            <span className={styles.cardKind}>{priceKind}</span>
-            <span className={styles.amount}>{cardAmount}</span>
-            <span className={styles.cardTerm}>{term}</span>
-            {points.length > 0 ? (
-              <PopChecks
-                items={points}
-                inheritColor
-              />
+            {faq.length > 0 ? (
+              <section
+                className={styles.block}
+                aria-labelledby="service-faq"
+              >
+                <h2
+                  className={styles.blockTitle}
+                  id="service-faq"
+                >
+                  {t('faqHeading')}
+                </h2>
+                <div
+                  className={styles.faq}
+                  data-testid="service-faq"
+                >
+                  {faq.map((item) => (
+                    <details
+                      className={styles.question}
+                      key={item.question}
+                    >
+                      <summary className={styles.summary}>{item.question}</summary>
+                      <p className={styles.answer}>{item.answer}</p>
+                    </details>
+                  ))}
+                </div>
+              </section>
             ) : null}
-            <a
-              className={styles.cardCta}
-              href={data.briefHref}
-              data-testid="service-cta"
-            >
-              {t('cta')}
-              <ArrowRightIcon />
-            </a>
           </div>
-        </aside>
-      </div>
-    </article>
+
+          <aside className={styles.aside}>
+            <div className={styles.card}>
+              <span className={styles.cardKind}>{priceKind}</span>
+              <span className={styles.amount}>{cardAmount}</span>
+              <span className={styles.cardTerm}>{term}</span>
+              {points.length > 0 ? (
+                <PopChecks
+                  items={points}
+                  inheritColor
+                />
+              ) : null}
+              <a
+                className={styles.cardCta}
+                href={data.briefHref}
+                data-testid="service-cta"
+              >
+                {t('cta')}
+                <ArrowRightIcon />
+              </a>
+            </div>
+          </aside>
+        </div>
+      </article>
+      {industry ? <PopAudit /> : null}
+    </>
   );
 };

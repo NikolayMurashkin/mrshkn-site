@@ -4,6 +4,7 @@ import { renderSection } from '../render';
 import type { DesignComponents, SectionProps } from '../types';
 import { KineticReview } from '../kinetic/KineticReview';
 import './fonts';
+import { EditorialAudit } from './Audit';
 import { EditorialCase } from './Case';
 import { EditorialCookieBanner } from './CookieBanner';
 import { EditorialBrief } from './EditorialBrief';
@@ -23,6 +24,7 @@ const COMPONENTS: DesignComponents = {
   pricing: EditorialPricing,
   works: EditorialWorks,
   process: EditorialProcess,
+  audit: EditorialAudit,
   case: EditorialCase,
   footer: EditorialFooter,
   brief: EditorialBrief,

@@ -79,3 +79,8 @@ export type SwissProcessCardsProps = {
   /** «Перед стартом» или «Гарантия после запуска»: заголовок блока `h3`, заголовки карточек `h4`. */
   block: ProcessCardsBlock;
 };
+
+/** Секция «Проверьте свой сайт»: номер — только в последовательности секций главной, на странице услуги его нет. */
+export type SwissAuditProps = {
+  numbered?: boolean;
+};

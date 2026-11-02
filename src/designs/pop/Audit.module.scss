@@ -1,0 +1,177 @@
+@use './shared' as s;
+
+.audit {
+  @include s.section;
+}
+
+.head {
+  @include s.section-head;
+}
+
+.heading {
+  @include s.section-title;
+}
+
+.texts .lead {
+  @include s.lead;
+}
+
+.psi {
+  @include s.arrow-link;
+
+  padding-block: calc((44px - 1lh) / 2);
+  margin-block: calc((1lh - 44px) / 2);
+  max-width: 100%;
+  overflow-wrap: anywhere;
+  min-width: 0;
+}
+
+.body {
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+  gap: var(--space-56) var(--space-72);
+  align-items: start;
+}
+
+.texts {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-16);
+  min-width: 0;
+
+  p {
+    margin: 0;
+    font-size: 16px;
+    line-height: 1.55;
+    color: var(--muted);
+    hyphens: none;
+    overflow-wrap: anywhere;
+    min-width: 0;
+  }
+}
+
+.side {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-40);
+  min-width: 0;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  max-width: 560px;
+  min-width: 0;
+
+  input:disabled {
+    opacity: 1;
+    -webkit-text-fill-color: currentColor;
+  }
+
+  input::placeholder {
+    color: var(--muted);
+    opacity: 1;
+    -webkit-text-fill-color: currentColor;
+  }
+}
+
+.hint {
+  font-size: 14px;
+  line-height: 1.45;
+  color: var(--muted);
+  overflow-wrap: anywhere;
+  min-width: 0;
+}
+
+.form .submit {
+  align-self: flex-start;
+  @include s.button-fluid;
+
+  max-width: 100%;
+  margin-left: 0;
+  line-height: 1.2;
+}
+
+.success {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-12);
+  max-width: 560px;
+  padding: var(--space-24) 22px;
+  border: var(--border-width-strong) solid var(--ink);
+  border-radius: var(--radius-surface);
+  background: var(--surface);
+  box-shadow: var(--shadow-floating);
+
+  &:focus-visible {
+    outline: var(--border-width-strong) solid var(--accent-ink);
+    outline-offset: 2px;
+  }
+
+  p {
+    margin: 0;
+    line-height: 1.5;
+    overflow-wrap: anywhere;
+    min-width: 0;
+  }
+}
+
+.successTitle {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 1.2;
+  overflow-wrap: anywhere;
+  min-width: 0;
+}
+
+.self {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-12);
+  max-width: 560px;
+}
+
+.note,
+.studios p {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--muted);
+  overflow-wrap: anywhere;
+  min-width: 0;
+}
+
+.promise {
+  max-width: 560px;
+  margin: 0;
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+  min-width: 0;
+}
+
+.studios {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8);
+  max-width: 560px;
+}
+
+.studios .footnote {
+  font-size: 13px;
+}
+
+@media (max-width: 1080px) {
+  .body {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .form .submit {
+    align-self: stretch;
+  }
+}

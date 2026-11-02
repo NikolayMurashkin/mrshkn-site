@@ -51,6 +51,7 @@ export type DesignComponents = {
   pricing: ComponentType;
   works: ComponentType<WorksProps>;
   process: ComponentType;
+  audit: ComponentType;
   case: ComponentType<CaseProps>;
   footer: ComponentType;
   brief: ComponentType<BriefProps>;

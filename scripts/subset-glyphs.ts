@@ -6,7 +6,7 @@ const codePoints = (from: number, to: number) =>
 const INVISIBLE_MARKS = String.fromCodePoint(0x00a0, 0x00ad);
 
 const BASIC_LATIN = codePoints(0x20, 0x7e);
-const LATIN_1_MARKS = '©«®°·»×';
+const LATIN_1_MARKS = '©«®°·¹»×';
 const CYRILLIC = codePoints(0x400, 0x45f);
 const PUNCTUATION_AND_SYMBOLS = '–—‘’“”„•…№€₽←→−≤≥✓✦';
 

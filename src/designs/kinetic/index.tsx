@@ -3,6 +3,7 @@
 import { renderSection } from '../render';
 import type { DesignComponents, SectionProps } from '../types';
 import './fonts';
+import { KineticAudit } from './Audit';
 import { KineticCase } from './Case';
 import { KineticCookieBanner } from './CookieBanner';
 import { KineticFooter } from './Footer';
@@ -23,6 +24,7 @@ const COMPONENTS: DesignComponents = {
   pricing: KineticPricing,
   works: KineticWorks,
   process: KineticProcess,
+  audit: KineticAudit,
   case: KineticCase,
   footer: KineticFooter,
   brief: KineticBrief,

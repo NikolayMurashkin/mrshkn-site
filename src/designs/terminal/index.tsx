@@ -4,6 +4,7 @@ import { renderSection } from '../render';
 import type { DesignComponents, SectionProps } from '../types';
 import { KineticReview } from '../kinetic/KineticReview';
 import './fonts';
+import { TerminalAudit } from './Audit';
 import { TerminalCase } from './Case';
 import { TerminalCookieBanner } from './CookieBanner';
 import { TerminalFooter } from './Footer';
@@ -23,6 +24,7 @@ const COMPONENTS: DesignComponents = {
   pricing: TerminalPricing,
   works: TerminalWorks,
   process: TerminalProcess,
+  audit: TerminalAudit,
   case: TerminalCase,
   footer: TerminalFooter,
   brief: TerminalBrief,

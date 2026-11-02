@@ -1,0 +1,206 @@
+import { useTranslations } from 'next-intl';
+import { AUDIT_FIELD_NAMES, AUDIT_HINT_FIELDS } from '@/components/Audit/consts';
+import type { AuditFieldName } from '@/components/Audit/types';
+import { useAudit } from '@/components/Audit/use-audit';
+import { Link } from '@/i18n/navigation';
+import { HONEYPOT_FIELD } from '@/lib/brief/consts';
+import { PRIVACY_HREF } from '@/lib/consts';
+import { ArrowRightIcon, ArrowUpRightIcon } from './icons';
+import brief from './SwissBrief.module.scss';
+import styles from './Audit.module.scss';
+import type { SwissAuditProps } from './types';
+
+export const SwissAudit = ({ numbered = true }: SwissAuditProps) => {
+  const t = useTranslations('audit');
+  const quiz = useTranslations('brief');
+  const {
+    hydrated,
+    status,
+    consent,
+    trap,
+    canSend,
+    psiHref,
+    input,
+    errorOf,
+    errorId,
+    hintId,
+    setConsent,
+    setTrap,
+    submit,
+    successRef,
+  } = useAudit();
+
+  const fieldError = (field: AuditFieldName) => {
+    const error = errorOf(field);
+
+    return error ? (
+      <span
+        className={brief.fieldError}
+        id={errorId(field)}
+      >
+        {t(error === 'url' ? 'urlError' : 'fieldError')}
+      </span>
+    ) : null;
+  };
+
+  return (
+    <section
+      className={numbered ? styles.audit : `${styles.audit} ${styles.unnumbered}`}
+      id="audit"
+      aria-labelledby="audit-heading"
+    >
+      <div className={styles.head}>
+        {numbered ? (
+          <div className={styles.aside}>
+            <span
+              className={styles.index}
+              aria-hidden="true"
+            />
+          </div>
+        ) : null}
+        <div className={styles.titleColumn}>
+          <h2
+            className={styles.heading}
+            id="audit-heading"
+          >
+            {t('title')}
+          </h2>
+        </div>
+      </div>
+
+      <div className={styles.body}>
+        <div className={styles.texts}>
+          <p className={styles.lead}>{t('lead')}</p>
+          <p>{t('why')}</p>
+          <p>{t('text')}</p>
+        </div>
+
+        <div className={styles.side}>
+          {status === 'sent' ? (
+            <div
+              ref={successRef}
+              className={styles.success}
+              data-testid="audit-success"
+              tabIndex={-1}
+            >
+              <h3 className={styles.successTitle}>{t('success.title')}</h3>
+              <p>{t('success.text')}</p>
+            </div>
+          ) : (
+            <form
+              className={styles.form}
+              noValidate
+              onSubmit={submit}
+            >
+              {AUDIT_FIELD_NAMES.map((field) => {
+                const props = input(field);
+
+                return (
+                  <div
+                    key={field}
+                    className={brief.field}
+                  >
+                    <label
+                      className={brief.label}
+                      htmlFor={props.id}
+                    >
+                      {t(field)}
+                    </label>
+                    <input
+                      className={brief.input}
+                      placeholder={field === 'url' ? t('urlPlaceholder') : undefined}
+                      {...props}
+                    />
+                    {AUDIT_HINT_FIELDS.includes(field) ? (
+                      <span
+                        className={styles.hint}
+                        id={hintId(field)}
+                      >
+                        {t(`${field}Hint`)}
+                      </span>
+                    ) : null}
+                    {fieldError(field)}
+                  </div>
+                );
+              })}
+              <label
+                className={brief.trap}
+                aria-hidden="true"
+              >
+                {quiz('honeypot')}
+                <input
+                  name={HONEYPOT_FIELD}
+                  tabIndex={-1}
+                  autoComplete="off"
+                  value={trap}
+                  onChange={setTrap}
+                />
+              </label>
+              <label className={brief.consent}>
+                <input
+                  type="checkbox"
+                  data-testid="audit-consent"
+                  checked={consent}
+                  disabled={!hydrated}
+                  onChange={setConsent}
+                />
+                <span>
+                  {t.rich('consent', {
+                    policy: (chunks) => (
+                      <Link
+                        href={PRIVACY_HREF}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        {chunks}
+                      </Link>
+                    ),
+                  })}
+                </span>
+              </label>
+              {status === 'error' ? (
+                <p
+                  className={brief.error}
+                  data-testid="audit-error"
+                  role="alert"
+                >
+                  {t('error')}
+                </p>
+              ) : null}
+              <button
+                type="submit"
+                className={`${brief.button} ${brief.primary} ${styles.submit}`}
+                data-testid="audit-submit"
+                disabled={!canSend}
+              >
+                {status === 'sending' ? quiz('sending') : t('submit')}
+                <ArrowRightIcon />
+              </button>
+            </form>
+          )}
+
+          <div className={styles.self}>
+            <a
+              className={styles.psi}
+              href={psiHref}
+              target="_blank"
+              rel="noopener noreferrer"
+              data-testid="audit-psi"
+            >
+              {t('self')}
+              <ArrowUpRightIcon />
+            </a>
+            <p className={styles.note}>{t('selfNote')}</p>
+          </div>
+
+          <p className={styles.promise}>{t('promise')}</p>
+
+          <div className={styles.studios}>
+            <p>{t('studios')}</p>
+            <p className={styles.footnote}>{t('studiosNote')}</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};

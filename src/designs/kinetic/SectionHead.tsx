@@ -7,7 +7,7 @@ export const SectionHead = ({ id, kicker, title, note, level = 'h2' }: SectionHe
   return (
     <div className={styles.head}>
       <div className={styles.title}>
-        <p className={styles.kicker}>{kicker}</p>
+        {kicker ? <p className={styles.kicker}>{kicker}</p> : null}
         <Heading
           className={styles.heading}
           id={id}

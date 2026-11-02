@@ -4,6 +4,7 @@ import { renderSection } from '../render';
 import type { DesignComponents, SectionProps } from '../types';
 import { KineticReview } from '../kinetic/KineticReview';
 import './fonts';
+import { SwissAudit } from './Audit';
 import { SwissCase } from './Case';
 import { SwissCookieBanner } from './CookieBanner';
 import { SwissFooter } from './Footer';
@@ -23,6 +24,7 @@ const COMPONENTS: DesignComponents = {
   pricing: SwissPricing,
   works: SwissWorks,
   process: SwissProcess,
+  audit: SwissAudit,
   case: SwissCase,
   footer: SwissFooter,
   brief: SwissBrief,
