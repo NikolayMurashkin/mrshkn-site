@@ -166,6 +166,14 @@ $aside-top: calc(#{s.$nav-height} + var(--space-32));
   padding: 0 18px;
 }
 
+.document .heading::before {
+  content: none;
+}
+
+.numbered li::marker {
+  color: var(--accent-ink);
+}
+
 @media (max-width: 1080px) {
   .aside {
     position: static;

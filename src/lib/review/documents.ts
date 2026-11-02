@@ -9,8 +9,11 @@ const DOCUMENTS = { ru: ru.review.documents, en: en.review.documents };
 /** Номер редакции подставляется сам: `{version}` в переводах — для формы, здесь тот же текст строкой. */
 const reviewEdition = (template: string) => template.replace('{version}', REVIEW_CONSENT_VERSION);
 
-const documentText = ({ title, items, check }: ReviewDocumentText, edition: string) =>
-  [title, edition, ...items.map((item, index) => `${index + 1}. ${item}`), check].join('\n\n');
+/** Пункты нумеруются сквозь оба документа, как в согласии на отзыв: разрешение продолжает номера согласия. */
+const documentText = ({ title, intro, items, check }: ReviewDocumentText, edition: string, start: number) =>
+  [title, edition, ...(intro ? [intro] : []), ...items.map((item, index) => `${start + index}. ${item}`), check].join(
+    '\n\n',
+  );
 
 /**
  * Тексты согласия и разрешения на языке страницы, ровно как их видел автор в форме. ФИО и почта в текст
@@ -22,7 +25,7 @@ export const reviewDocuments = (locale: SiteLocale): ReviewDocuments => {
 
   return {
     version: REVIEW_CONSENT_VERSION,
-    consent: documentText(consent, version),
-    license: documentText(license, version),
+    consent: documentText(consent, version, 1),
+    license: documentText(license, version, consent.items.length + 1),
   };
 };

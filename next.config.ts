@@ -7,6 +7,9 @@ const withNextIntl = createNextIntlPlugin('./src/i18n/request.ts');
 const nextConfig: NextConfig = {
   distDir: process.env.NEXT_DIST_DIR ?? '.next',
   output: 'standalone',
+  outputFileTracingIncludes: {
+    '/\\[locale\\]/docs/{offer,how-we-work}': ['./content/legal/*.md'],
+  },
   sassOptions: {
     silenceDeprecations: ['legacy-js-api'],
   },

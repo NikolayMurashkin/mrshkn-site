@@ -1,7 +1,7 @@
 import { SERVICES } from '@/content/services';
 import type { SiteLocale } from '@/i18n/types';
 import { BRIEF_HREF } from '@/lib/brief/consts';
-import { PRIVACY_HREF, SITE_URL } from '@/lib/consts';
+import { HOW_WE_WORK_HREF, OFFER_HREF, PRIVACY_HREF, SITE_URL } from '@/lib/consts';
 import defaultMessages from '../../../messages/ru.json';
 import type { PriceCurrency, ServedArea } from './types';
 
@@ -17,6 +17,12 @@ export const SITE_PAGES: readonly string[] = [
 ];
 
 /**
+ * Индексируемые страницы только на русском: оферта и памятка «Как мы работаем» — английского пакета документов
+ * еще нет. В карте сайта и hreflang у них только ru и `x-default`, на `/en/…` их нет.
+ */
+export const RU_ONLY_PAGES: readonly string[] = [OFFER_HREF, HOW_WE_WORK_HREF];
+
+/**
  * Подписи Terminal — кнопки героя и команда на «спасибо» — написаны как пути (`./как-мы-работаем`), ссылок на такие
  * адреса нет, но поисковики берут подписи за адреса и ходят по ним — без редиректа это 404. Ключ — декодированный путь
  * запроса; адреса без языка ведут на язык подписи, а не браузера. Адрес глубже (`/ru/docs/как-мы-работаем`) ищется
@@ -26,12 +32,12 @@ export const SITE_PAGES: readonly string[] = [
 export const LABEL_REDIRECTS: Readonly<Record<string, string>> = {
   '/ru/рассчитать-стоимость': '/ru/brief',
   '/en/get-a-quote': '/en/brief',
-  '/ru/как-мы-работаем': '/ru#process',
+  '/ru/как-мы-работаем': '/ru/docs/how-we-work',
   '/en/how-we-work': '/en#process',
   '/ru/отправить-заявку': '/ru/brief',
   '/en/send-request': '/en/brief',
   '/рассчитать-стоимость': '/ru/brief',
-  '/как-мы-работаем': '/ru#process',
+  '/как-мы-работаем': '/ru/docs/how-we-work',
   '/get-a-quote': '/en/brief',
   '/how-we-work': '/en#process',
   '/отправить-заявку': '/ru/brief',

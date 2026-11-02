@@ -152,6 +152,14 @@
   }
 }
 
+.document .heading::before {
+  content: none;
+}
+
+.numbered li::marker {
+  font-weight: 900;
+}
+
 @media (max-width: 1080px) {
   .cols {
     grid-template-columns: minmax(0, 1fr);

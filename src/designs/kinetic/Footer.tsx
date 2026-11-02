@@ -1,5 +1,6 @@
 import { useTranslations } from 'next-intl';
 import { TelegramLink } from '@/components/TelegramLink';
+import { useLegalLinks } from '@/components/use-legal-links';
 import { Link } from '@/i18n/navigation';
 import { BRIEF_HREF } from '@/lib/brief/consts';
 import { PRIVACY_HREF } from '@/lib/consts';
@@ -9,6 +10,7 @@ import styles from './Footer.module.scss';
 
 export const KineticFooter = () => {
   const t = useTranslations('footer');
+  const legalLinks = useLegalLinks();
   const brand = useTranslations('brand');
 
   return (
@@ -46,6 +48,15 @@ export const KineticFooter = () => {
           >
             {t('privacy')}
           </Link>
+          {legalLinks.map(({ href, label }) => (
+            <Link
+              key={href}
+              className={styles.link}
+              href={href}
+            >
+              {label}
+            </Link>
+          ))}
           <span>© {KINETIC_FOUNDED_YEAR}</span>
         </div>
       </div>

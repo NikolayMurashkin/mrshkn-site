@@ -21,12 +21,12 @@ const target = (location: string | null) => {
  */
 describe('редиректы подписей героя Terminal на любой глубине пути', () => {
   it.each([
-    ['/ru/docs/как-мы-работаем', '/ru#process'],
+    ['/ru/docs/как-мы-работаем', '/ru/docs/how-we-work'],
     ['/en/docs/how-we-work', '/en#process'],
     ['/ru/docs/рассчитать-стоимость', '/ru/brief'],
     ['/en/docs/get-a-quote', '/en/brief'],
-    ['/ru/work/some-case/как-мы-работаем', '/ru#process'],
-    ['/ru/brief/как-мы-работаем', '/ru#process'],
+    ['/ru/work/some-case/как-мы-работаем', '/ru/docs/how-we-work'],
+    ['/ru/brief/как-мы-работаем', '/ru/docs/how-we-work'],
     ['/en/review/x/get-a-quote', '/en/brief'],
   ])('3.1: %s → 308 на %s', (path, destination) => {
     const response = request(path);
@@ -36,10 +36,10 @@ describe('редиректы подписей героя Terminal на любо�
   });
 
   it.each([
-    ['/ru/docs/как-мы-работаем', '/ru#process'],
+    ['/ru/docs/как-мы-работаем', '/ru/docs/how-we-work'],
     ['/ru/docs/рассчитать-стоимость', '/ru/brief'],
-    ['/ru/work/some-case/как-мы-работаем', '/ru#process'],
-    ['/ru/brief/как-мы-работаем', '/ru#process'],
+    ['/ru/work/some-case/как-мы-работаем', '/ru/docs/how-we-work'],
+    ['/ru/brief/как-мы-работаем', '/ru/docs/how-we-work'],
   ])('3.2: %s в процентной кодировке, как запрашивает Googlebot → 308 на %s', (path, destination) => {
     const response = request(encodeURI(path));
 
@@ -51,7 +51,7 @@ describe('редиректы подписей героя Terminal на любо�
     const response = request('/ru/docs/как-мы-работаем?utm_source=gsc');
 
     expect(response.status).toBe(308);
-    expect(target(response.headers.get('location'))).toBe('/ru?utm_source=gsc#process');
+    expect(target(response.headers.get('location'))).toBe('/ru/docs/how-we-work?utm_source=gsc');
   });
 
   it('3.3: метки переносятся и с адреса подписи в процентной кодировке', () => {

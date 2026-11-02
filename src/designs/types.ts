@@ -3,6 +3,7 @@ import type { CaseCard, CaseDetail } from '@/cms/types';
 import type { BriefProps } from '@/components/Brief/types';
 import type { ReviewProps } from '@/components/Review/types';
 import type { ServicePageProps } from '@/components/ServicePage/types';
+import type { LegalPageProps } from '@/lib/legal/types';
 import type { DESIGN_NAMES, SECTION_NAMES } from './consts';
 
 /** Направление дизайна сайта — одно из пяти, выбор хранится в cookie `design`. */
@@ -12,7 +13,7 @@ export type DesignName = (typeof DESIGN_NAMES)[number];
 export type SectionName = (typeof SECTION_NAMES)[number];
 
 /** Секции, которым нужны данные: их читают серверные страницы, а клиентский чанк направления рисует. */
-type DataSectionName = 'header' | 'works' | 'case' | 'brief' | 'servicePage' | 'review';
+type DataSectionName = 'header' | 'works' | 'case' | 'brief' | 'servicePage' | 'legalPage' | 'review';
 
 /** Пропсы шапки: пункт «Кейсы» показывается, только если кейсы есть. */
 export type HeaderProps = { hasCases: boolean };
@@ -36,6 +37,7 @@ export type SectionProps =
   | ({ section: 'case' } & CaseProps)
   | ({ section: 'brief' } & BriefProps)
   | ({ section: 'servicePage' } & ServicePageProps)
+  | ({ section: 'legalPage' } & LegalPageProps)
   | ({ section: 'review' } & ReviewProps)
   | { section: Exclude<SectionName, DataSectionName> };
 
@@ -57,6 +59,7 @@ export type DesignComponents = {
   briefThanks: ComponentType;
   servicePage: ComponentType<ServicePageProps>;
   privacyPage: ComponentType;
+  legalPage: ComponentType<LegalPageProps>;
   cookieBanner: ComponentType;
   review: ComponentType<ReviewProps>;
 };

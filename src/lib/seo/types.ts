@@ -84,6 +84,8 @@ export type PageSeo = {
   path: string;
   title: string;
   description: string;
+  /** Языки, на которых страница есть; по умолчанию все языки сайта. */
+  locales?: readonly SiteLocale[];
 };
 
 /** Пропсы `opengraph-image` сегмента: параметры адреса от корня до сегмента. */

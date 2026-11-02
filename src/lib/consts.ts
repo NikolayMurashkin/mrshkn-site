@@ -8,6 +8,11 @@ export const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'http://localhost:30
 /** Политика обработки персональных данных, путь без языка; на этот же адрес встанет текст после проверки юристом. */
 export const PRIVACY_HREF = '/docs/privacy';
 
+/** Публичная оферта на разработку сайта и памятка «Как мы работаем», пути без языка; есть только на русском. */
+export const OFFER_HREF = '/docs/offer';
+
+export const HOW_WE_WORK_HREF = '/docs/how-we-work';
+
 /** Публичный адрес студии в Telegram: канал с открытыми личными сообщениями, кнопка подвала всех направлений. */
 export const TELEGRAM_URL = 'https://t.me/mrshkn_studio';
 

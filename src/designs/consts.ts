@@ -14,6 +14,7 @@ export const SECTION_NAMES = [
   'briefThanks',
   'servicePage',
   'privacyPage',
+  'legalPage',
   'cookieBanner',
   'review',
 ] as const;

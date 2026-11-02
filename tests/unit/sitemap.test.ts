@@ -32,7 +32,13 @@ const EXPECTED_PAGES = ['', ...SERVICES.map((service) => `/${service.slug}`), BR
 
 const pageUrl = (locale: string, path: string) => `${SITE_URL}/${locale}${path}`;
 
-const staticUrls = () => LOCALES.flatMap((locale) => EXPECTED_PAGES.map((path) => pageUrl(locale, path)));
+/** Документы только на русском (оферта, памятка): английских версий нет → в карте только ru. */
+const RU_ONLY_PAGES = ['/docs/offer', '/docs/how-we-work'];
+
+const staticUrls = () => [
+  ...LOCALES.flatMap((locale) => EXPECTED_PAGES.map((path) => pageUrl(locale, path))),
+  ...RU_ONLY_PAGES.map((path) => pageUrl('ru', path)),
+];
 
 const caseUrls = () => LOCALES.flatMap((locale) => CASE_SLUGS.map((slug) => pageUrl(locale, `/work/${slug}`)));
 
@@ -87,7 +93,7 @@ describe('sitemap()', () => {
     }
   });
 
-  it('S3: у каждой записи hreflang ru, en и x-default → русская версия той же страницы', async () => {
+  it('S3: у каждой записи hreflang ru, en и x-default → русская версия той же страницы; у документов только на ru — ru и x-default', async () => {
     const entries = await sitemap();
 
     expect(entries.length).toBeGreaterThan(0);
@@ -97,9 +103,15 @@ describe('sitemap()', () => {
       const languages = (entry.alternates?.languages ?? {}) as Record<string, string>;
 
       expect(path, `${entry.url}: адрес с локалью`).not.toBeNull();
-      expect(Object.keys(languages).sort(), entry.url).toEqual(['en', 'ru', 'x-default']);
+
+      if (RU_ONLY_PAGES.includes(path!)) {
+        expect(Object.keys(languages).sort(), entry.url).toEqual(['ru', 'x-default']);
+      } else {
+        expect(Object.keys(languages).sort(), entry.url).toEqual(['en', 'ru', 'x-default']);
+        expect(new URL(languages.en).href, `${entry.url}: en`).toBe(new URL(pageUrl('en', path!)).href);
+      }
+
       expect(new URL(languages.ru).href, `${entry.url}: ru`).toBe(new URL(pageUrl('ru', path!)).href);
-      expect(new URL(languages.en).href, `${entry.url}: en`).toBe(new URL(pageUrl('en', path!)).href);
       expect(new URL(languages['x-default']).href, `${entry.url}: x-default`).toBe(new URL(pageUrl('ru', path!)).href);
     }
   });

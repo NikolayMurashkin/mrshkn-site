@@ -5,14 +5,19 @@ import { LOCALES } from '@/i18n/consts';
 import type { SiteLocale } from '@/i18n/types';
 import { SITE_URL } from '@/lib/consts';
 import { languageAlternates, localePath } from '@/lib/seo/alternates';
-import { SITE_PAGES } from '@/lib/seo/consts';
+import { LEGAL_LOCALE } from '@/lib/legal/consts';
+import { RU_ONLY_PAGES, SITE_PAGES } from '@/lib/seo/consts';
 
 /** Кейсы читаются на каждый запрос: новый кейс попадает в карту сразу, а сборке база не нужна. */
 export const dynamic = 'force-dynamic';
 
-const entry = (locale: SiteLocale, path: string): MetadataRoute.Sitemap[number] => ({
+const entry = (
+  locale: SiteLocale,
+  path: string,
+  locales: readonly SiteLocale[] = LOCALES,
+): MetadataRoute.Sitemap[number] => ({
   url: `${SITE_URL}${localePath(locale, path)}`,
-  alternates: { languages: languageAlternates(path, SITE_URL) },
+  alternates: { languages: languageAlternates(path, SITE_URL, locales) },
 });
 
 /**
@@ -36,7 +41,7 @@ const sitemap = async (): Promise<MetadataRoute.Sitemap> => {
     LOCALES.map(async (locale) => [...SITE_PAGES, ...(await casePaths(locale))].map((path) => entry(locale, path))),
   );
 
-  return pages.flat();
+  return [...pages.flat(), ...RU_ONLY_PAGES.map((path) => entry(LEGAL_LOCALE, path, [LEGAL_LOCALE]))];
 };
 
 export default sitemap;

@@ -1,5 +1,6 @@
 import { useTranslations } from 'next-intl';
 import { TelegramLink } from '@/components/TelegramLink';
+import { useLegalLinks } from '@/components/use-legal-links';
 import { Link, usePathname } from '@/i18n/navigation';
 import { BRIEF_HREF } from '@/lib/brief/consts';
 import { PRIVACY_HREF } from '@/lib/consts';
@@ -9,6 +10,7 @@ import styles from './Footer.module.scss';
 
 export const SwissFooter = () => {
   const t = useTranslations('footer');
+  const legalLinks = useLegalLinks();
   const brand = useTranslations('brand');
   const onHome = usePathname() === '/';
 
@@ -58,12 +60,23 @@ export const SwissFooter = () => {
         >
           {brand('tagline')}
         </span>
-        <Link
-          className={styles.privacy}
-          href={PRIVACY_HREF}
-        >
-          {t('privacy')}
-        </Link>
+        <div className={styles.documents}>
+          <Link
+            className={styles.privacy}
+            href={PRIVACY_HREF}
+          >
+            {t('privacy')}
+          </Link>
+          {legalLinks.map(({ href, label }) => (
+            <Link
+              key={href}
+              className={styles.privacy}
+              href={href}
+            >
+              {label}
+            </Link>
+          ))}
+        </div>
         <span
           className={styles.email}
           translate="no"

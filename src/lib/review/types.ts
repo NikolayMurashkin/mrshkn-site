@@ -54,6 +54,8 @@ export type ReviewParseResult = { ok: true; review: ReviewSubmission } | { ok: f
 export type ReviewDocumentText = {
   title: string;
   summary: string;
+  /** Вводная перед пунктами: кто и кому дает согласие. */
+  intro?: string;
   items: string[];
   check: string;
 };

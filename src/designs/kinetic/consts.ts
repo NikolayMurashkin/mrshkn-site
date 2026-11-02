@@ -53,6 +53,7 @@ export const KINETIC_REVIEW_CLASS = {
   edition: 'k-review__edition',
   summary: 'k-review__summary',
   details: 'k-review__details',
+  intro: 'k-review__intro',
   legal: 'k-review__legal',
   nowrap: 'k-review__nowrap',
   check: 'k-review__check',

@@ -12,6 +12,7 @@ import { EditorialFooter } from './Footer';
 import { EditorialHeader } from './Header';
 import { EditorialHero } from './Hero';
 import { EditorialPricing } from './Pricing';
+import { EditorialLegalPage } from './LegalPage';
 import { EditorialPrivacyPage } from './PrivacyPage';
 import { EditorialProcess } from './Process';
 import { EditorialServicePage } from './ServicePage';
@@ -29,6 +30,7 @@ const COMPONENTS: DesignComponents = {
   briefThanks: EditorialBriefThanks,
   servicePage: EditorialServicePage,
   privacyPage: EditorialPrivacyPage,
+  legalPage: EditorialLegalPage,
   cookieBanner: EditorialCookieBanner,
   review: KineticReview,
 };

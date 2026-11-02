@@ -1,4 +1,9 @@
+import { NextIntlClientProvider, type AbstractIntlMessages } from 'next-intl';
+import { createElement, type ComponentProps } from 'react';
+import { renderToStaticMarkup } from 'react-dom/server';
 import { describe, expect, it } from 'vitest';
+import { PRIVACY_SECTIONS } from '@/components/PrivacyPolicy/consts';
+import { usePrivacyPolicy } from '@/components/PrivacyPolicy/use-privacy-policy';
 import en from '../../messages/en.json';
 import ru from '../../messages/ru.json';
 
@@ -101,5 +106,111 @@ describe('политика ПД говорит, что заявка сохран
     );
 
     expect(matches.length, 'строка о том, что request сохраняется в базе сайта').toBeGreaterThan(0);
+  });
+});
+
+/** Пробелы любого вида (обычный, U+00A0, U+202F) — в обычный: русские тексты сайта держат неразрывные пробелы. */
+const normalize = (text: string) => text.replace(/\s+/g, ' ').trim();
+
+/** Разделы политики в порядке документа: последний — согласие на обработку данных из формы заявки. */
+const SECTION_ORDER = ['operator', 'data', 'storage', 'transfer', 'cookies', 'rights', 'changes', 'consent'];
+
+const sectionsOf = (messages: Messages) =>
+  ((privacyOf(messages) as { sections?: Record<string, unknown> } | undefined)?.sections ?? {}) as Record<
+    string,
+    unknown
+  >;
+
+const sectionText = (messages: Messages, id: string) => stringsOf(sectionsOf(messages)[id]).map(normalize);
+
+const updatedOf = (messages: Messages) =>
+  normalize(String((privacyOf(messages) as { updated?: unknown } | undefined)?.updated ?? ''));
+
+/** Якоря разделов, которые политика отдает верстке пяти направлений. */
+const anchorsOf = (locale: 'ru' | 'en', messages: Messages) => {
+  let anchors: string[] = [];
+
+  const Probe = () => {
+    anchors = usePrivacyPolicy().sections.map(({ anchor }) => anchor);
+
+    return null;
+  };
+
+  renderToStaticMarkup(
+    createElement(
+      NextIntlClientProvider,
+      {
+        locale,
+        messages: messages as AbstractIntlMessages,
+        timeZone: 'Europe/Moscow',
+      } as ComponentProps<typeof NextIntlClientProvider>,
+      createElement(Probe),
+    ),
+  );
+
+  return anchors;
+};
+
+describe('политика ПД — текст короткого юрпакета', () => {
+  it.each([
+    ['ru', ru],
+    ['en', en],
+  ] as const)('P6 %s: разделы по порядку документа, согласие последним', (_locale, messages) => {
+    expect(Object.keys(sectionsOf(messages as Messages))).toEqual(SECTION_ORDER);
+  });
+
+  it('P7 ru: оператор — Мурашкина Вероника Викторовна, ИНН 421815967902', () => {
+    const text = sectionText(ru as Messages, 'operator').join('\n');
+
+    expect(text).toContain('Мурашкина Вероника Викторовна');
+    expect(text).toContain('421815967902');
+  });
+
+  it('P7 en: оператор — Veronika Viktorovna Murashkina, ИНН 421815967902', () => {
+    const text = sectionText(en as Messages, 'operator').join('\n');
+
+    expect(text).toContain('Veronika Viktorovna Murashkina');
+    expect(text).toContain('421815967902');
+  });
+
+  it('P8: строка редакции ru и en — версия 1.0 от 02.11.2026 и адрес публикации', () => {
+    expect(updatedOf(ru as Messages)).toBe(
+      'Редакция 1.0 от 02.11.2026. Адрес публикации: https://mrshkn.com/ru/docs/privacy',
+    );
+    expect(updatedOf(en as Messages)).toBe(
+      'Version 1.0 of 2 November 2026. Published at https://mrshkn.com/en/docs/privacy',
+    );
+  });
+
+  it('P9 ru: раздел согласия — адрес #consent и текст согласия на Веронику', () => {
+    const strings = sectionText(ru as Messages, 'consent');
+
+    expect(strings.join('\n')).toContain('https://mrshkn.com/ru/docs/privacy#consent');
+    expect(
+      strings.filter((text) =>
+        text.startsWith('Отмечая это поле и отправляя заявку, я даю согласие Мурашкиной Веронике Викторовне'),
+      ),
+      `строки раздела: ${JSON.stringify(strings)}`,
+    ).toHaveLength(1);
+  });
+
+  it('P9 en: раздел согласия — адрес #consent и текст согласия', () => {
+    const strings = sectionText(en as Messages, 'consent');
+
+    expect(strings.join('\n')).toContain('https://mrshkn.com/en/docs/privacy#consent');
+    expect(
+      strings.filter((text) => text.startsWith('By checking this box and sending the request')),
+      `строки раздела: ${JSON.stringify(strings)}`,
+    ).toHaveLength(1);
+  });
+
+  it.each([
+    ['ru', ru],
+    ['en', en],
+  ] as const)('P10 %s: порядок разделов в коде тот же, якорь согласия — ровно consent', (locale, messages) => {
+    expect([...PRIVACY_SECTIONS]).toEqual(SECTION_ORDER);
+    expect(anchorsOf(locale, messages as Messages)).toEqual(
+      SECTION_ORDER.map((id) => (id === 'consent' ? 'consent' : `privacy-${id}`)),
+    );
   });
 });

@@ -52,6 +52,8 @@ export type KineticReviewFieldProps = {
 export type KineticReviewDocumentProps = {
   id: 'consent' | 'license';
   text: ReviewDocumentText;
+  /** Номер первого пункта: разрешение продолжает нумерацию согласия. */
+  start: number;
   edition: string;
   more: string;
   checked: boolean;
