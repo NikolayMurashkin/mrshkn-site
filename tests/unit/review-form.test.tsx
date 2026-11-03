@@ -115,6 +115,12 @@ const normalize = (text: string) => text.replace(/\s+/g, ' ').trim();
 
 const RU_STRINGS = new Set(leaves(messages).map(normalize));
 
+/** Вводная согласия: кто и кому дает согласие — исполнитель по имени, ИНН и почта студии. */
+const CONSENT_INTRO =
+  'Я, автор отзыва (фамилия, имя, отчество и почта указаны в этой форме), даю согласие Мурашкиной Веронике ' +
+  'Викторовне, плательщику налога на профессиональный доход, ИНН 421815967902, почта hello@mrshkn.com, студия ' +
+  '«MRSHKN» (далее — Студия).';
+
 /** Все поля формы заполнены, отметки не тронуты. */
 const fillForm = (skip: readonly string[] = []) => {
   expect(
@@ -207,6 +213,12 @@ describe('форма отзыва Kinetic', () => {
     ).toEqual({ consent: true, license: true });
     expect(document.querySelectorAll('input[type="file"]')).toHaveLength(0);
     expect(document.querySelectorAll('[data-testid*="photo"]')).toHaveLength(0);
+  });
+
+  it('C7: вводная фраза согласия видна в форме до галочки', () => {
+    renderReview({ view: 'form', code: CODE, project: 'Northwind Bakery' });
+
+    expect(normalize(document.body.textContent ?? '')).toContain(CONSENT_INTRO);
   });
 
   it('H3: неизвестный, просроченный и отозванный код рисуют побайтно одну и ту же страницу «ссылка недействительна»', () => {

@@ -42,8 +42,8 @@ const DOCUMENT_ITEMS = { ru: ru.review.documents, en: en.review.documents } as c
 const expectDocumentItems = (saved: ReviewDoc, locale: 'ru' | 'en') => {
   const { consent, license } = DOCUMENT_ITEMS[locale];
 
-  expect(consent.items.length, `${locale}: пунктов согласия`).toBe(8);
-  expect(license.items.length, `${locale}: пунктов разрешения`).toBe(4);
+  expect(consent.items.length, `${locale}: пунктов согласия`).toBe(4);
+  expect(license.items.length, `${locale}: пунктов разрешения`).toBe(2);
 
   for (const item of consent.items) {
     expect(saved.consentText ?? '', `${locale}: пункт согласия в записи`).toContain(item);

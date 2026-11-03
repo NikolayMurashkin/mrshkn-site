@@ -38,10 +38,18 @@ export const KineticPrivacyPage = () => {
               {section.items.length > 0 ? (
                 <ul className={styles.list}>
                   {section.items.map((item) => (
-                    <li key={item}>{item}</li>
+                    <li key={item.key}>{item.content}</li>
                   ))}
                 </ul>
               ) : null}
+              {section.after.map((paragraph) => (
+                <p
+                  key={paragraph}
+                  className={styles.paragraph}
+                >
+                  {paragraph}
+                </p>
+              ))}
               {section.choice ? (
                 <button
                   type="button"

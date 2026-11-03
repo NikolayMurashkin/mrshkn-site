@@ -28,6 +28,7 @@ export const KineticReview = ({ view: initialView, code, project }: ReviewProps)
 
   const edition = t('documents.edition', { version: REVIEW_CONSENT_VERSION });
   const more = t('documents.more');
+  const consentText = t.raw('documents.consent') as ReviewDocumentText;
   const checksMissing = !checks.consent || !checks.license;
 
   return (
@@ -122,7 +123,8 @@ export const KineticReview = ({ view: initialView, code, project }: ReviewProps)
           <p className={cls.note}>{t('groups.documents.note')}</p>
           <KineticReviewDocument
             id="consent"
-            text={t.raw('documents.consent') as ReviewDocumentText}
+            text={consentText}
+            start={1}
             edition={edition}
             more={more}
             checked={checks.consent}
@@ -161,6 +163,7 @@ export const KineticReview = ({ view: initialView, code, project }: ReviewProps)
           <KineticReviewDocument
             id="license"
             text={t.raw('documents.license') as ReviewDocumentText}
+            start={consentText.items.length + 1}
             edition={edition}
             more={more}
             checked={checks.license}

@@ -125,8 +125,15 @@
   grid-column: span 3;
 }
 
-.privacy {
+.documents {
   grid-column: span 3;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-8) var(--space-16);
+  min-width: 0;
+}
+
+.privacy {
   font-size: 15px;
   text-decoration: underline;
   text-decoration-thickness: var(--border-width);

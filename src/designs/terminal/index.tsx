@@ -11,6 +11,7 @@ import { TerminalFooter } from './Footer';
 import { TerminalHeader } from './Header';
 import { TerminalHero } from './Hero';
 import { TerminalPricing } from './Pricing';
+import { TerminalLegalPage } from './LegalPage';
 import { TerminalPrivacyPage } from './PrivacyPage';
 import { TerminalProcess } from './Process';
 import { TerminalServicePage } from './ServicePage';
@@ -31,6 +32,7 @@ const COMPONENTS: DesignComponents = {
   briefThanks: TerminalBriefThanks,
   servicePage: TerminalServicePage,
   privacyPage: TerminalPrivacyPage,
+  legalPage: TerminalLegalPage,
   cookieBanner: TerminalCookieBanner,
   review: KineticReview,
 };

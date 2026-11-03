@@ -85,11 +85,19 @@
   color: var(--ink);
 }
 
+.documents {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: var(--space-8) 28px;
+  margin-left: auto;
+  min-width: 0;
+}
+
 .privacy {
   @include s.text-link;
   @include s.wrap;
 
-  margin-left: auto;
   font-size: 14px;
   letter-spacing: 0.02em;
   text-transform: none;
@@ -132,7 +140,7 @@
     gap: var(--space-8);
   }
 
-  .privacy {
+  .documents {
     margin-left: 0;
   }
 }

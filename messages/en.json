@@ -1637,77 +1637,81 @@
     },
     "kicker": "Documents",
     "title": "Privacy policy",
-    "updated": "Last updated October 30, 2026",
+    "updated": "Version 1.0 of 2 November 2026. Published at https://mrshkn.com/en/docs/privacy",
     "tocLabel": "Contents",
     "changeChoice": "Change cookie choice",
     "sections": {
       "operator": {
-        "title": "Who processes your data",
+        "title": "Who processes the data",
         "paragraphs": [
-          "The data controller is Veronika Viktorovna Murashkina, a self-employed professional in Russia trading as MRSHKN studio (taxpayer ID 421815967902).",
-          "For any question about your data, email hello@mrshkn.com."
+          "The operator is Veronika Viktorovna Murashkina, self-employed (professional income tax payer), Tax ID (INN) 421815967902, MRSHKN studio. Email for requests: hello@mrshkn.com.",
+          "This policy covers the website https://mrshkn.com, the demo websites at *.mrshkn.com and correspondence with the studio by email and on Telegram. We process data under Russian Federal Law No. 152-FZ “On Personal Data”."
         ]
       },
       "data": {
-        "title": "What data we collect",
-        "paragraphs": ["From the request you send through the brief or the “Check your site” form on this website:"],
+        "title": "What data we collect and why",
+        "paragraphs": [],
         "items": [
-          "your name;",
-          "how to reach you: phone, email or messenger handle;",
-          "your brief answers: what you need built, industry, style, timing, budget and comments; from the “Check your site” form — your website address;",
-          "campaign tags, if you came from an ad."
-        ]
-      },
-      "purposes": {
-        "title": "Why we process it",
-        "paragraphs": [
-          "We use data from brief requests to reply to you, discuss your project and prepare a proposal. We use data from the “Check your site” form to check your website’s speed and send you the results — and, if you then write to us about an order yourself, to discuss your project and prepare a proposal.",
-          "We use analytics data to see website traffic and understand which pages and ads work."
-        ]
-      },
-      "basis": {
-        "title": "Legal basis",
-        "paragraphs": [
-          "We process your data based on your consent. You consent to the processing of your request by ticking the box in the brief or in the “Check your site” form before sending it, and to analytics cookies by clicking “Accept” in the cookie banner."
-        ]
-      },
-      "transfer": {
-        "title": "Where your data goes",
-        "paragraphs": [
-          "Your whole request — name, contact details, brief answers or website address, and campaign tags — is saved in the website's database. It can only be opened from the site's admin panel, after signing in with a login and password.",
-          "The name and contact details from your request, together with your brief answers or website address, are sent to Telegram: the studio's bot posts a notification about each new request to the studio's group chat. The site's server reaches Telegram through Cloudflare, so these details pass through Cloudflare on their way to Telegram. Telegram and Cloudflare are services based outside Russia.",
-          "We enter the website address from the “Check your site” form into Google PageSpeed Insights, a free test, to check its speed. Google receives only the address, without your name or contact details.",
-          "A copy of your request is emailed to hello@mrshkn.com, the studio mailbox hosted by Yandex.",
-          "Analytics data goes to Yandex (Yandex Metrica) and Google (Google Analytics 4), and only after you consent. Google is a service based outside Russia."
+          "<b>To reply to your request and prepare a proposal.</b> Name, phone, email or messenger account, quiz answers, comment and correspondence. Legal basis: your consent, which you give by sending the request.",
+          "<b>To check your website’s speed.</b> Name, contact for the reply and website address from the “Check your site” form. Legal basis: your consent, which you give by sending the form.",
+          "<b>To conclude and perform a contract.</b> Full name and position of the representative, company details, Tax ID, contacts, project correspondence. Legal basis: the contract.",
+          "<b>To issue a “Moy Nalog” tax receipt.</b> Tax ID and name of the client — a company or a sole proprietor. Legal basis: the law on the professional income tax.",
+          "<b>To invite a client to leave a review.</b> The client’s email and the project name. Legal basis: the contract or our legitimate interest in hearing the client’s opinion of our work. We do not send advertising to this email.",
+          "<b>To publish a review.</b> Name, business or job title, link and review text. Legal basis: the author’s separate consent in the review form.",
+          "<b>To count website visits.</b> Cookies, IP address, browser and device information, pages viewed. Legal basis: your consent in the banner on the website."
+        ],
+        "after": [
+          "We do not collect information about health, beliefs or biometrics. If you include such information in a request yourself, we will delete it."
         ]
       },
       "storage": {
-        "title": "Where and how long data is stored",
+        "title": "How long we keep data",
+        "paragraphs": [],
+        "items": [
+          "A request and correspondence, if no contract is signed — 1 year from the last message.",
+          "Client data under a contract — 5 years after the contract ends.",
+          "A client’s email for a review — 3 years after the acceptance certificate is signed or until you ask us to delete it, whichever comes first.",
+          "A published review — until the author withdraws consent."
+        ],
+        "after": ["When the period ends or the purpose is achieved, we delete the data within 30 days."]
+      },
+      "transfer": {
+        "title": "Who we share data with",
         "paragraphs": [
-          "The website and its database run on a Timeweb Cloud server in Novosibirsk, Russia.",
-          "We keep request data for as long as we need it to reply and work on your project. Email hello@mrshkn.com and we will delete it sooner."
-        ]
+          "Requests and other data are stored in the website database on a server in Russia. The Operator has access to them. The server and backups are protected with access keys, passwords and encryption. In addition, data passes through these services:"
+        ],
+        "items": [
+          "<b>Yandex Mail</b> — correspondence with hello@mrshkn.com;",
+          "<b>Telegram</b> — messages, if you write to us on Telegram, and notifications of new requests: name, contact, quiz answers or the website address;",
+          "<b>Yandex Metrica</b> — visit counting, only if you have agreed in the banner on the website;",
+          "<b>Google Analytics</b> — visit counting, also only after you agree in the banner;",
+          "<b>Google PageSpeed Insights</b> — the website address from the “Check your site” form, to check its speed; Google does not receive your name or contact;",
+          "<b>Cloudflare</b> — the website sends request notifications to Telegram through this service."
+        ],
+        "after": ["We do not sell data or pass it on for other companies’ advertising."]
       },
       "cookies": {
-        "title": "Cookies and analytics",
+        "title": "Cookies",
         "paragraphs": [
-          "Yandex Metrica and Google Analytics 4 only start after you click “Accept” in the cookie banner. Until then your browser does not contact them, and after “Decline” they never load.",
-          "Without analytics, the website sets only its own cookies: your banner choice, the style and theme you picked and, if you came from an ad, campaign tags so they reach your request.",
-          "You can change your mind at any time: use the button below and the banner will appear again."
+          "The website stores essential cookies in your browser: language, colour theme and your choice in the banner. Yandex Metrica and Google Analytics cookies are switched on only after you agree in the banner. You can refuse in the banner or in your browser settings."
         ]
       },
       "rights": {
-        "title": "Your rights",
-        "paragraphs": ["Email hello@mrshkn.com if you want to:"],
-        "items": [
-          "find out what data we hold about you;",
-          "correct or delete it;",
-          "withdraw your consent to the processing of your request."
+        "title": "Your rights and deleting data",
+        "paragraphs": [
+          "You can find out what data of yours we keep, ask us to correct or delete it, and withdraw your consent. Email hello@mrshkn.com from the email address or account you used to contact us, or give them in the email so that we can find you. We reply within 10 business days. After you withdraw consent, we delete the data within 30 days, except data needed for the contract or by law, for example for taxes. You can file a complaint about us with Roskomnadzor or a court."
         ]
       },
       "changes": {
-        "title": "Changes to this policy",
-        "paragraphs": ["This policy may change. The current version is always on this page, with the date at the top."]
+        "title": "Changes",
+        "paragraphs": ["A new version of the policy is published at this same page with its date."]
+      },
+      "consent": {
+        "title": "Consent to the processing of personal data",
+        "paragraphs": [
+          "Published at https://mrshkn.com/en/docs/privacy#consent",
+          "By checking this box and sending the request, I consent to Veronika Viktorovna Murashkina, Tax ID 421815967902, email hello@mrshkn.com, MRSHKN studio, processing my data: name, phone, email or messenger account, form answers, website address and correspondence. The purpose is to reply to the request, check the website’s speed if I ask for it, and prepare a proposal. The data is stored on a server in Russia and passes through Yandex Mail and Telegram, and the website address passes through Google PageSpeed Insights. The consent is valid for 1 year from my last message. I can withdraw it by email to hello@mrshkn.com. Personal data processing policy: https://mrshkn.com/en/docs/privacy."
+        ]
       }
     }
   },
@@ -1751,33 +1755,28 @@
     "fieldError": "Fill in this field to send the review",
     "linkError": "Paste the whole link, as in the browser's address bar: it starts with https:// or http://",
     "documents": {
-      "edition": "Document version: {version}",
+      "edition": "Version of {version}",
       "more": "Full text",
       "consent": {
-        "title": "Consent to the processing of personal data authorized for dissemination",
+        "title": "Consent to publish my data",
         "summary": "Your signature, business, link and review text will appear on the studio’s website. Your full name and email are not published, and you can withdraw consent by email.",
+        "intro": "I, the author of the review (my full name and email are entered in this form), give my consent to Veronika Viktorovna Murashkina, self-employed (professional income tax payer), Tax ID 421815967902, email hello@mrshkn.com, MRSHKN studio (the “Studio”).",
         "items": [
-          "Who gives consent: the author of the review — the full name entered in this form; contact email — the address the invitation was sent to.",
-          "To whom: [Full name], self-employed (professional income tax payer), Tax ID [Tax ID], address: [Address], email hello@mrshkn.com (the “Operator”).",
-          "Purpose: publishing my review of the work of MRSHKN studio so that visitors to the website can read it.",
-          "Where it is published: the website https://mrshkn.com — the home page (https://mrshkn.com/ru, https://mrshkn.com/en) and the case page of my project (https://mrshkn.com/ru/work/[case address], https://mrshkn.com/en/work/[case address]). The review is published in the language it was written in. A translation is published only after I have approved its text in writing, labelled “translation approved by the author”.",
-          "What is published: my name as I entered it in the “How to sign the review” field; my business or job title; a link to a website or page, if I provided one; the text of the review — answers to three questions. The full name from item 1 and the contact email are not published. Photos are neither collected nor published.",
-          "Conditions and prohibitions (optional, Part 9 of Article 10.1 of Federal Law No. 152-FZ “On Personal Data”) are set with the checkboxes in the form: a ban on transferring the data to third parties other than for publication on the website from item 4; a ban on publishing the link from item 5; other conditions. If nothing is checked, no conditions or prohibitions are set. An unchecked consent box does not count as consent (Part 8 of Article 10.1 of the Law).",
-          "Term: this consent is valid until withdrawn.",
-          "How to withdraw: email hello@mrshkn.com from the address in item 1, stating your full name, email and which data to remove (all or some). The Operator removes the review from the website within 3 (three) business days of receiving the request (Part 14 of Article 10.1 of the Law)."
+          "The Studio publishes my review of its work on the website https://mrshkn.com: on the home page and on the case page of my project.",
+          "The following is published: my name as entered in the form, my business or job title, a link to my website or page and the review text. My email is not published.",
+          "My conditions and prohibitions, if any, are checked in this form.",
+          "This consent is valid until I withdraw it. I can withdraw it by email to hello@mrshkn.com — the Studio will remove the review from the website within 3 business days."
         ],
-        "check": "I consent to the publication of my data listed in item 5 on the terms of this consent"
+        "check": "I consent to the publication of my data on these terms."
       },
       "license": {
-        "title": "Permission to publish the review text",
+        "title": "Permission to publish the text",
         "summary": "The text is published free of charge, without cuts or edits other than typo fixes. A translation appears only once you approve it.",
         "items": [
-          "I, the author of the review, allow [Full name], Tax ID [Tax ID], to use the text of my review free of charge under a simple (non-exclusive) license: to reproduce it and make it available to the public on the website https://mrshkn.com on the pages listed in item 4 of the consent.",
-          "The Operator does not shorten or change the text, except to correct typos. A translation into another language is published only after I have approved its text in writing.",
-          "This permission is valid as long as the consent to publish personal data is valid; if that consent is withdrawn, the text is removed from the website within the same period.",
-          "I confirm that I wrote the text myself and that it contains no personal data of other people without their consent."
+          "I am the author of the review and allow the Studio, free of charge, to publish its text on the pages listed in item 1. The Studio only fixes typos and changes nothing else. A translation into another language is published only after I approve its text.",
+          "If I withdraw the consent under item 4, the text is removed from the website within the same period."
         ],
-        "check": "I allow the review text to be published on these terms"
+        "check": "I allow the review text to be published."
       }
     },
     "restrictions": {

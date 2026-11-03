@@ -5,6 +5,7 @@ import { KINETIC_REVIEW_CLASS as cls } from './consts';
 export const KineticReviewDocument = ({
   id,
   text,
+  start,
   edition,
   more,
   checked,
@@ -22,10 +23,15 @@ export const KineticReviewDocument = ({
       {text.title}
     </h3>
     <p className={cls.edition}>{edition}</p>
+    {text.intro ? <p className={cls.intro}>{renderNowrap(text.intro, cls.nowrap)}</p> : null}
     <p className={cls.summary}>{text.summary}</p>
     <details className={cls.details}>
       <summary>{more}</summary>
-      <ol className={cls.legal}>
+      <ol
+        className={cls.legal}
+        start={start}
+        style={{ counterReset: `legal ${start - 1}` }}
+      >
         {text.items.map((item) => (
           <li key={item}>
             <span>{renderNowrap(item, cls.nowrap)}</span>

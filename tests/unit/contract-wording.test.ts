@@ -1,10 +1,13 @@
+import { existsSync } from 'node:fs';
+import { fileURLToPath } from 'node:url';
 import { describe, expect, it } from 'vitest';
 import en from '../../messages/en.json';
 import ru from '../../messages/ru.json';
 
 /**
- * Договор еще не опубликован → сайт не утверждает, что условия уже «прописаны в договоре», и не ссылается
- * на документ: обещание звучит как «фиксируем в договоре».
+ * Договор опубликован как оферта (`/docs/offer`), но ссылки на его пункты из обещаний ставятся позже, после юриста →
+ * секции обещаний и героя не ссылаются на документ, а сайт не утверждает, что условия уже «прописаны в договоре»:
+ * обещание звучит как «фиксируем в договоре». В текстах самих документов адрес оферты законно встречается.
  */
 
 type Entry = { path: string; text: string };
@@ -43,7 +46,17 @@ const LINK_MARKS = ['/docs/offer', 'href'];
 
 const LINK_TAG = /<\s*\/?\s*(a|link)\b/i;
 
-describe('формулировки о договоре до его публикации', () => {
+const OFFER_PAGE = fileURLToPath(new URL('../../src/app/[locale]/docs/offer/page.tsx', import.meta.url));
+
+/** Ветки переводов, из которых до юриста нет ссылок на договор: обещания процесса и герой. */
+const PROMISE_BRANCHES = [
+  ['ru', 'process', entriesOf(ru.process, 'process')],
+  ['ru', 'hero', entriesOf(ru.hero, 'hero')],
+  ['en', 'process', entriesOf(en.process, 'process')],
+  ['en', 'hero', entriesOf(en.hero, 'hero')],
+] as const;
+
+describe('формулировки о договоре до ссылок на его пункты', () => {
   it('ru: ни одна строка не утверждает, что условия прописаны в договоре', () => {
     expect(pathsMatching(RU, RU_ALREADY_IN_CONTRACT)).toEqual([]);
   });
@@ -57,14 +70,14 @@ describe('формулировки о договоре до его публик�
     expect(normalize(en.process.contractNote)).toBe('We fix all four in the contract');
   });
 
-  it('секция обещаний не ссылается на документ', () => {
-    for (const entries of [entriesOf(ru.process, 'process'), entriesOf(en.process, 'process')]) {
-      expect(pathsContaining(entries, LINK_MARKS)).toEqual([]);
-      expect(pathsMatching(entries, [LINK_TAG])).toEqual([]);
-    }
+  it('страница оферты есть', () => {
+    expect(existsSync(OFFER_PAGE), OFFER_PAGE).toBe(true);
+  });
 
-    expect(pathsContaining(RU, ['/docs/offer'])).toEqual([]);
-    expect(pathsContaining(EN, ['/docs/offer'])).toEqual([]);
+  it.each(PROMISE_BRANCHES)('%s %s.*: нет href, /docs/offer и тегов <a>/<link>', (_locale, _branch, entries) => {
+    expect(entries.length, 'строки ветки').toBeGreaterThan(0);
+    expect(pathsContaining(entries, LINK_MARKS)).toEqual([]);
+    expect(pathsMatching(entries, [LINK_TAG])).toEqual([]);
   });
 
   it('подпись цитаты Editorial не ссылается на договор', () => {

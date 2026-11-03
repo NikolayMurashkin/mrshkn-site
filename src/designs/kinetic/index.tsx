@@ -13,6 +13,7 @@ import { KineticBrief } from './KineticBrief';
 import { KineticBriefThanks } from './KineticBriefThanks';
 import { KineticReview } from './KineticReview';
 import { KineticPricing } from './Pricing';
+import { KineticLegalPage } from './LegalPage';
 import { KineticPrivacyPage } from './PrivacyPage';
 import { KineticProcess } from './Process';
 import { KineticServicePage } from './ServicePage';
@@ -31,6 +32,7 @@ const COMPONENTS: DesignComponents = {
   briefThanks: KineticBriefThanks,
   servicePage: KineticServicePage,
   privacyPage: KineticPrivacyPage,
+  legalPage: KineticLegalPage,
   cookieBanner: KineticCookieBanner,
   review: KineticReview,
 };

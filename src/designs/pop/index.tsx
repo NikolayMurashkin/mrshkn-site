@@ -13,6 +13,7 @@ import { PopHero } from './Hero';
 import { PopBrief } from './PopBrief';
 import { PopBriefThanks } from './PopBriefThanks';
 import { PopPricing } from './Pricing';
+import { PopLegalPage } from './LegalPage';
 import { PopPrivacyPage } from './PrivacyPage';
 import { PopProcess } from './Process';
 import { PopServicePage } from './ServicePage';
@@ -31,6 +32,7 @@ const COMPONENTS: DesignComponents = {
   briefThanks: PopBriefThanks,
   servicePage: PopServicePage,
   privacyPage: PopPrivacyPage,
+  legalPage: PopLegalPage,
   cookieBanner: PopCookieBanner,
   review: KineticReview,
 };

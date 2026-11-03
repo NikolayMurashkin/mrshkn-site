@@ -150,6 +150,16 @@
   }
 }
 
+.document .heading::before {
+  content: none;
+}
+
+.numbered li::marker {
+  font-family: var(--font-display);
+  font-weight: 700;
+  color: var(--accent-ink);
+}
+
 @media (max-width: bp.$tablet) {
   .cols {
     grid-template-columns: minmax(0, 1fr);

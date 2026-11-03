@@ -2,6 +2,7 @@ import type { ReactNode } from 'react';
 import type { CaseImage as CaseImageData } from '@/cms/types';
 import type { ProcessScaleSegment, ThreeDPoster, ThreeDPosters, ThreeDVideo } from '@/content/types';
 import type { DesignName } from '@/designs/types';
+import type { LegalInline, LegalPageProps } from '@/lib/legal/types';
 
 /** Смена направления, которую переключатель ждет от `router.refresh()`. */
 export type PendingSwitch = {
@@ -116,3 +117,27 @@ export type ProcessCardsBlock = {
 
 /** Оба блока главной или страницы услуги; `null` — у страницы блока нет, пустым он не выводится. */
 export type ProcessCards = Record<ProcessCardsBlockName, ProcessCardsBlock | null>;
+
+/** Классы страницы документа из `PrivacyPage.module.scss` направления: своей верстки у документа нет. */
+export type LegalDocumentClasses = {
+  legal: string;
+  section: string;
+  heading: string;
+  paragraph: string;
+  list: string;
+  numbered: string;
+};
+
+export type LegalDocumentProps = Pick<LegalPageProps, 'blocks' | 'history'> & {
+  classes: LegalDocumentClasses;
+};
+
+export type LegalInlineTextProps = {
+  content: LegalInline[];
+};
+
+/** Ссылка подвала на документ: адрес без языка и подпись. */
+export type LegalLink = {
+  href: string;
+  label: string;
+};

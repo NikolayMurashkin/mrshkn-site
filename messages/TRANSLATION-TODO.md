@@ -16,9 +16,18 @@
 | `audit.success.{title,text}`                                                                           | Заявка у нас                                                                                             | We've got your request                                                                                                                            |
 | `audit.{self,selfNote,promise}`                                                                        | ссылка на тест Google и обещание 90 из договора                                                          | Google's test link and the 90-score contract promise                                                                                              |
 | `audit.{studios,studiosNote}`                                                                          | 54 студии области, 72,5, сноска-методика                                                                 | 54 studios in the Kaliningrad region, 72.5 (median), methodology footnote                                                                         |
-| `privacy.updated`, `privacy.sections.{data,purposes,basis,transfer}`                                   | форма «Проверьте свой сайт» в политике, новый абзац про PageSpeed Insights                               | the “Check your site” form in the policy, new paragraph on PageSpeed Insights                                                                     |
 | `audit.{urlPlaceholder,submit}`                                                                        | правка 30.10.2026 по аудиту верстки                                                                      | `e.g. example.com` (один пример — помещается в поле на 390); `Check your site for free` (второе лицо, как заголовок)                              |
 | `audit.{text,promise,studios,studiosNote}`                                                             | правка 30.10.2026 по аудиту верстки                                                                      | неразрывные пробелы: «10 am», «7 pm», «90 out of 100», «72.5 out of 100», «October 30», «October 23», «54 web», «59 web»                          |
+
+## Вычитано Николаем 02.11.2026
+
+Написано и вычитано 02.11.2026 — политика ПД и согласие на отзыв по короткому юрпакету; оферта и памятка английской версии
+не имеют (английский пакет — отдельно):
+
+| Ключ                                                                                                                           | Что внутри                                                                                                                                                                                            |
+| ------------------------------------------------------------------------------------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `privacy.updated`, `privacy.sections.*`                                                                                        | политика целиком: оператор — Veronika Viktorovna Murashkina, данные и цели, сроки хранения, кому передаем, cookie, права, изменения, раздел «Consent to the processing of personal data» (`#consent`) |
+| `review.documents.{edition,consent.title,consent.intro,consent.items,consent.check,license.title,license.items,license.check}` | форма отзыва: Version of {version}, кто и кому дает согласие, пункты 1–4 и 5–6, подписи галочек                                                                                                       |
 
 ## Вычитано Николаем 30.10.2026
 

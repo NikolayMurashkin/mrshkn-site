@@ -7,16 +7,19 @@ import ru from '../../messages/ru.json';
 
 const ORIGIN = 'https://mrshkn.com';
 
-/** Подписи кнопок героя Terminal похожи на адреса — поисковики их берут, и без редиректа они отдают 404. */
+/**
+ * Подписи кнопок героя Terminal похожи на адреса — поисковики их берут, и без редиректа они отдают 404.
+ * Русская «как мы работаем» ведет на памятку, английской памятки нет → английская подпись ведет на секцию процесса.
+ */
 const EXPECTED_REDIRECTS: Record<string, string> = {
   '/ru/рассчитать-стоимость': '/ru/brief',
   '/en/get-a-quote': '/en/brief',
-  '/ru/как-мы-работаем': '/ru#process',
+  '/ru/как-мы-работаем': '/ru/docs/how-we-work',
   '/en/how-we-work': '/en#process',
   '/ru/отправить-заявку': '/ru/brief',
   '/en/send-request': '/en/brief',
   '/рассчитать-стоимость': '/ru/brief',
-  '/как-мы-работаем': '/ru#process',
+  '/как-мы-работаем': '/ru/docs/how-we-work',
   '/get-a-quote': '/en/brief',
   '/how-we-work': '/en#process',
   '/отправить-заявку': '/ru/brief',
@@ -56,7 +59,7 @@ describe('редиректы подписей героя Terminal', () => {
   it.each([
     ['1.1', '/ru/рассчитать-стоимость', '/ru/brief'],
     ['1.2', '/en/get-a-quote', '/en/brief'],
-    ['1.3', '/ru/как-мы-работаем', '/ru#process'],
+    ['1.3', '/ru/как-мы-работаем', '/ru/docs/how-we-work'],
     ['1.4', '/en/how-we-work', '/en#process'],
   ])('%s: %s → 308 на %s', (_, path, destination) => {
     const response = request(path);
@@ -67,7 +70,7 @@ describe('редиректы подписей героя Terminal', () => {
 
   it.each([
     ['/ru/рассчитать-стоимость', '/ru/brief'],
-    ['/ru/как-мы-работаем', '/ru#process'],
+    ['/ru/как-мы-работаем', '/ru/docs/how-we-work'],
   ])('1.5: %s в процентной кодировке, как запрашивает Googlebot → 308 на %s', (path, destination) => {
     const response = request(encodeURI(path));
 
@@ -86,7 +89,7 @@ describe('редиректы подписей героя Terminal', () => {
     const response = request('/ru/как-мы-работаем?utm_source=gsc');
 
     expect(response.status).toBe(308);
-    expect(target(response.headers.get('location'))).toBe('/ru?utm_source=gsc#process');
+    expect(target(response.headers.get('location'))).toBe('/ru/docs/how-we-work?utm_source=gsc');
   });
 
   it('1.8: список редиректов — ровно двенадцать пар: с языком и без', () => {
@@ -95,7 +98,7 @@ describe('редиректы подписей героя Terminal', () => {
 
   it.each([
     ['/рассчитать-стоимость', 'en-US', '/ru/brief'],
-    ['/как-мы-работаем', 'en-US', '/ru#process'],
+    ['/как-мы-работаем', 'en-US', '/ru/docs/how-we-work'],
     ['/get-a-quote', 'ru-RU', '/en/brief'],
     ['/how-we-work', 'ru-RU', '/en#process'],
   ])(

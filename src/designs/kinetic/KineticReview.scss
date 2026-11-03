@@ -259,6 +259,16 @@
   }
 }
 
+.k-review__intro {
+  width: 100%;
+  max-width: 68 * s.$text-ch;
+  margin: 0;
+  font-size: 17px;
+  line-height: 1.6;
+  hyphens: none;
+  @include wrap;
+}
+
 .k-review__legal {
   display: flex;
   flex-direction: column;

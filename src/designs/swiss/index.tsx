@@ -11,6 +11,7 @@ import { SwissFooter } from './Footer';
 import { SwissHeader } from './Header';
 import { SwissHero } from './Hero';
 import { SwissPricing } from './Pricing';
+import { SwissLegalPage } from './LegalPage';
 import { SwissPrivacyPage } from './PrivacyPage';
 import { SwissProcess } from './Process';
 import { SwissServicePage } from './ServicePage';
@@ -31,6 +32,7 @@ const COMPONENTS: DesignComponents = {
   briefThanks: SwissBriefThanks,
   servicePage: SwissServicePage,
   privacyPage: SwissPrivacyPage,
+  legalPage: SwissLegalPage,
   cookieBanner: SwissCookieBanner,
   review: KineticReview,
 };

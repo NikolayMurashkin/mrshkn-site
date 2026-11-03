@@ -81,6 +81,15 @@
   overflow-wrap: anywhere;
 }
 
+.documents {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 4px 16px;
+  inline-size: 0;
+  min-inline-size: 100%;
+}
+
 .privacy {
   font-family: var(--font-display);
   font-size: 12px;
@@ -110,6 +119,10 @@
     align-self: stretch;
     align-items: flex-start;
     text-align: left;
+  }
+
+  .documents {
+    justify-content: flex-start;
   }
 }
 

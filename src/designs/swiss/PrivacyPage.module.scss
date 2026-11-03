@@ -205,6 +205,28 @@ $aside-top: calc(#{s.$header-height} + var(--space-32));
   font-size: 14px;
 }
 
+.document .heading::before {
+  content: none;
+}
+
+.numbered {
+  padding-left: 1.4em;
+  list-style: decimal;
+
+  li {
+    padding-left: 0;
+
+    &::before {
+      content: none;
+    }
+
+    &::marker {
+      font-weight: 300;
+      color: var(--accent-ink);
+    }
+  }
+}
+
 @media (max-width: 1080px) {
   .aside,
   .legal {

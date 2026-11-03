@@ -130,7 +130,7 @@ const APPROVED_RU: [string, string][] = [
     'review.linkError',
     'Вставьте ссылку целиком, как в\u00a0адресной строке браузера: она начинается с\u00a0https:// или http://',
   ],
-  ['review.documents.edition', 'Версия документа: {version}'],
+  ['review.documents.edition', 'Редакция от\u00a0{version}'],
   [
     'process.steps.staging.text',
     'Вносим правки второго раунда и\u00a0пробно проверяем скорость на\u00a0временной ссылке: тест Google ставит странице от\u00a00 до\u00a0100 баллов. Присылаем отчеты, вы вносите вторую оплату\u00a0— 40\u00a0%\u00a0— и\u00a0присылаете третий, последний список замечаний. Обязательные 90 баллов меряем в\u00a0день запуска, уже на\u00a0вашем адресе.',
@@ -314,7 +314,7 @@ const APPROVED_EN: [string, string][] = [
     'The review is sent only when both boxes at the bottom are checked: the first is consent to show your signature, business, link and the text of the review on the website, the second is your permission as the author to publish the text itself. If you change your mind, write to hello@mrshkn.com from the email you gave in the form, and we will remove the review within 3 working days.',
   ],
   ['review.linkError', "Paste the whole link, as in the browser's address bar: it starts with https:// or http://"],
-  ['review.documents.edition', 'Document version: {version}'],
+  ['review.documents.edition', 'Version of {version}'],
   [
     'process.steps.staging.text',
     "We make your second-round revisions and run a trial speed test on the temporary link: Google's test gives a page a score from 0 to 100. We send you the reports, you make the second payment of 40% and send the third and final list of comments. The required 90 is measured on launch day, on your own address.",

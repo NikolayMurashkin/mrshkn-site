@@ -5,7 +5,7 @@ export const REVIEW_INVITE_TTL_MS = 60 * 24 * 60 * 60 * 1000;
 export const REVIEW_CODE_BYTES = 24;
 
 /** Редакция текстов согласия и разрешения: пишется в отзыв вместе с текстами, которые видел автор. */
-export const REVIEW_CONSENT_VERSION = '0.1';
+export const REVIEW_CONSENT_VERSION = '02.11.2026';
 
 export const REVIEW_STATUSES = ['invited', 'received', 'published', 'rejected', 'withdrawn'] as const;
 
