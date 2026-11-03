@@ -43,7 +43,7 @@ const APPROVED_RU: [string, string][] = [
   ],
   [
     'pricing.basics.sources',
-    'Передаем вам исходный код\u00a0— все файлы, из\u00a0которых собраны сайт, админка и\u00a0приложение. С\u00a0ними вы можете менять сайт и\u00a0перейти к\u00a0другому разработчику без нас',
+    'Передаем вам исходный код\u00a0— все файлы, из\u00a0которых собраны сайт, админка и\u00a0приложение. С\u00a0ними вы можете менять сайт и\u00a0перейти к\u00a0другому разработчику без нас. Все, что мы сделали именно для вас,\u00a0— код, нарисованный для вас стиль, наши тексты\u00a0— становится вашим в\u00a0день, когда вы оплатили всю цену. До\u00a0этого сайтом можно пользоваться бесплатно. Если последний платеж задержан больше чем на\u00a030\u00a0дней, пришлем напоминание; нет оплаты еще 10\u00a0рабочих дней\u00a0— это право прекращается. Часть сайта мы берем из\u00a0своих готовых наработок, общих для всех наших проектов: админку\u00a0— раздел, где вы сами меняете тексты, фото и\u00a0цены,\u00a0— модули, то есть готовые программные блоки, шаблоны наших демо и\u00a0готовые стили. Они остаются нашими, но\u00a0вы получаете право пользоваться ими в\u00a0своем сайте бесплатно и\u00a0без срока: менять их, передать код другому разработчику и\u00a0передать это право новому владельцу сайта. Список таких наработок пишем в\u00a0акте',
   ],
   ['pricing.options.quiz.name', 'Тест для клиентов (квиз)'],
   ['pricing.options.quiz.note', '5\u00a0вопросов: заявка приходит к\u00a0вам уже с\u00a0ответами клиента'],
@@ -125,7 +125,7 @@ const APPROVED_RU: [string, string][] = [
   ],
   [
     'services.mvp.faq.2.answer',
-    'Вам. Исходный код\u00a0— все файлы, из\u00a0которых собран сервис,\u00a0— передаем вам вместе с\u00a0паролями. С\u00a0ним вы можете менять сервис и\u00a0перейти к\u00a0другому разработчику без нас.',
+    'Вам. Код, который мы написали для вас, становится вашим в\u00a0день, когда вы оплатили всю цену. Часть сервиса мы собираем из\u00a0своих готовых модулей\u00a0— программных блоков, общих для всех наших проектов. Они остаются нашими, но\u00a0вы получаете право пользоваться ими в\u00a0своем сервисе бесплатно и\u00a0без срока: менять их и\u00a0передать другому разработчику вместе с\u00a0кодом сервиса. Исходный код\u00a0— все файлы, из\u00a0которых собран сервис,\u00a0— передаем вам вместе с\u00a0паролями. С\u00a0ним вы можете менять сервис и\u00a0перейти к\u00a0другому разработчику без нас.',
   ],
   ['services.mvp.process.1.title', 'Дизайн и\u00a0устройство сервиса'],
   ['services.mvp.process.2.title', 'Делаем сервис по\u00a0частям'],
@@ -256,7 +256,7 @@ const APPROVED_EN: [string, string][] = [
   ],
   [
     'pricing.basics.sources',
-    'We hand over the source code: all the files your site, admin panel and app are built from. With them you can change the site and move to another developer without us',
+    'We hand over the source code: all the files your site, admin panel and app are built from. With them you can change the site and move to another developer without us. Everything we made specifically for you, the code, the style drawn for you and our texts, becomes yours on the day you pay the full price. Until then you can use the site for free. If the final payment is more than 30 days late, we send a reminder; if there is still no payment 10 working days later, this right ends. Part of the site comes from our own ready-made work shared across all our projects: the admin panel, the section where you change texts, photos and prices yourself, modules, that is, ready program blocks, templates of our demos and ready-made styles. They stay ours, but you get the right to use them in your site for free and with no time limit: to change them, hand the code to another developer and pass this right on to a new owner of the site. We list this ready-made work in the acceptance certificate',
   ],
   ['pricing.options.quiz.name', 'Customer quiz'],
   ['pricing.options.quiz.note', "5 questions: the request reaches you with the customer's answers already in it"],
@@ -335,7 +335,7 @@ const APPROVED_EN: [string, string][] = [
   ],
   [
     'services.mvp.faq.2.answer',
-    'You. We hand over the source code, all the files the service is built from, together with the passwords. With it you can change the service and move to another developer without us.',
+    'You. The code we wrote for you becomes yours on the day you pay the full price. Part of the service we build from our own ready-made modules, program blocks shared across all our projects. They stay ours, but you get the right to use them in your service for free and with no time limit: to change them and hand them to another developer together with the code of the service. We hand over the source code, all the files the service is built from, together with the passwords. With it you can change the service and move to another developer without us.',
   ],
   ['services.mvp.process.1.title', 'Design and how the service works'],
   ['services.mvp.process.2.title', 'We build the service in parts'],
