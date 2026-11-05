@@ -215,7 +215,7 @@ const APPROVED_RU: [string, string][] = [
   ],
   [
     'pricing.basics.warranty',
-    'Год гарантии со\u00a0дня, когда вы приняли работу и\u00a0подписали акт приемки. Весь год бесплатно чиним все, что сломалось по\u00a0нашей вине или работает не\u00a0так, как записано в\u00a0договоре. Самая срочная поломка\u00a0— когда по\u00a0нашей вине сайт не\u00a0открывается или не\u00a0приходят заявки. За\u00a0нее беремся первой, раньше всей другой нашей работы. К\u00a0какому дню исправим, напишем в\u00a0первом ответе на\u00a0ваше сообщение, а\u00a0вы подтвердите этот срок или предложите свой; так же\u00a0— для остальных ошибок. В\u00a0гарантию не\u00a0входят аварии у\u00a0провайдера хостинга\u00a0— компании, у\u00a0которой арендован сервер для сайта, сбои чужих сервисов, например Telegram или YClients\u00a0— сервиса онлайн-записи, и\u00a0поломки после того, как код сайта меняли вы или другие люди. Такой ремонт стоит 3\u00a0000\u00a0₽ за\u00a0час: сначала покажем причину поломки, потом назовем итоговую сумму, больше нее не\u00a0берем и\u00a0беремся, только если вы согласны. Если на\u00a0поиск причины нужно больше часа, его цену тоже назовем заранее и\u00a0начнем после вашего согласия. Тексты и\u00a0фото, которые вы меняете через админку\u00a0— раздел сайта, где вы сами правите тексты, фото и\u00a0цены,\u00a0— гарантию не\u00a0отменяют.',
+    'Год гарантии со\u00a0дня, когда вы приняли работу и\u00a0подписали акт приемки. Весь год бесплатно чиним все, что сломалось по\u00a0нашей вине или работает не\u00a0так, как записано в\u00a0договоре. Самая срочная поломка\u00a0— когда по\u00a0нашей вине сайт не\u00a0открывается или не\u00a0приходят заявки. За\u00a0нее беремся первой, раньше всей другой нашей работы. К\u00a0какому дню исправим, напишем в\u00a0первом ответе на\u00a0ваше сообщение, а\u00a0вы подтвердите этот срок или предложите свой; так же\u00a0— для остальных ошибок. В\u00a0гарантию не\u00a0входят аварии у\u00a0провайдера хостинга\u00a0— компании, у\u00a0которой арендован сервер для сайта, сбои домена\u00a0— адреса сайта\u00a0— и\u00a0чужих сервисов, например Telegram или YClients\u00a0— сервиса онлайн-записи, и\u00a0поломки из-за того, что код сайта меняли вы или другие люди. Не\u00a0входят и\u00a0сторонние скрипты\u00a0— кусочки чужого кода, например окошко чата,\u00a0— которые добавили на\u00a0сайт после того, как вы подписали акт приемки, и\u00a0плановые обновления программ, на\u00a0которых работает сайт: их авторы время от\u00a0времени выпускают новые версии. Если такая работа не\u00a0входит в\u00a0вашу поддержку\u00a0— отдельную месячную плату,\u00a0— она стоит 3\u00a0000\u00a0₽ за\u00a0час: сначала покажем причину поломки, потом назовем итоговую сумму, больше нее не\u00a0берем и\u00a0беремся, только если вы согласны. Если на\u00a0поиск причины нужно больше часа, его цену тоже назовем заранее и\u00a0начнем после вашего согласия. Ошибки в\u00a0настройке домена и\u00a0хостинга, которую делали мы,\u00a0— наша вина: их чиним бесплатно. Опасную уязвимость в\u00a0чужих программах, на\u00a0которых работает сайт,\u00a0— слабое место, через которое можно взломать сайт,\u00a0— весь год гарантии закрываем бесплатно, даже если для этого программу нужно обновить: такое обновление не\u00a0считаем плановым. Опасная\u00a0— та, которую сами авторы программы отметили как опасную. Без поддержки за\u00a0такими новостями мы не\u00a0следим: узнали о\u00a0такой\u00a0— напишите нам. Уязвимость в\u00a0нашем коде\u00a0— наша ошибка, ее чиним бесплатно, как любую другую. Тексты и\u00a0фото, которые вы меняете через админку\u00a0— раздел сайта, где вы сами правите тексты, фото и\u00a0цены,\u00a0— гарантию не\u00a0отменяют.',
   ],
   [
     'pricing.caseOffer',
@@ -244,7 +244,7 @@ const APPROVED_RU: [string, string][] = [
   ],
   [
     'pricing.basics.deadline',
-    'Срок записываем в\u00a0договор. Опоздали по\u00a0нашей вине\u00a0— за\u00a0каждый день просрочки снижаем цену на\u00a02\u00a0%, всего не\u00a0больше чем на\u00a020\u00a0%. Эту сумму вычитаем из\u00a0последнего платежа. Считаем от\u00a0цены, которую вы платите по\u00a0договору, вместе с\u00a0опциями',
+    'Срок записываем в\u00a0договор. Опоздали по\u00a0нашей вине\u00a0— за\u00a0каждый день просрочки, считая выходные и\u00a0праздники, снижаем цену на\u00a02\u00a0%, всего не\u00a0больше чем на\u00a020\u00a0%. Эту сумму вычитаем из\u00a0последнего платежа. Считаем от\u00a0цены, которую вы платите по\u00a0договору, вместе с\u00a0опциями. Если в\u00a0том же договоре вы заказали еще и\u00a0логотип, его цену в\u00a0этот расчет не\u00a0включаем: у\u00a0логотипа свой срок, и\u00a0за\u00a0опоздание с\u00a0ним цена снижается отдельно',
   ],
   [
     'pricing.tiers.hostingBackups.summary',
@@ -571,7 +571,7 @@ const APPROVED_RU: [string, string][] = [
   ['services.industry.process.0.when', 'День 1\u00a0— выбор стиля'],
   [
     'services.threeD.terms.items.0',
-    'Срок записываем в\u00a0договор: 4\u00a0недели на\u00a03D-блок, 6\u00a0недель на\u00a03D-лендинг. Первый день срока\u00a0— день, когда у\u00a0нас есть подробное описание и\u00a0материалы, а\u00a0для 3D-лендинга еще и\u00a0выбранный стиль. Пока мы ждем вашего ответа или согласования, срок стоит: дата сдачи сдвигается на\u00a0столько же дней. Если модель делаем с\u00a0нуля, на\u00a0это нужно дополнительное время\u00a0— его называем до\u00a0предоплаты, вместе с\u00a0ценой. Опоздали по\u00a0нашей вине\u00a0— за\u00a0каждый день просрочки снижаем цену на\u00a02\u00a0%, всего не\u00a0больше чем на\u00a020\u00a0%. Эту сумму вычитаем из\u00a0последнего платежа. Считаем от\u00a0цены, которую вы платите по\u00a0договору, вместе с\u00a0опциями',
+    'Срок записываем в\u00a0договор: 4\u00a0недели на\u00a03D-блок, 6\u00a0недель на\u00a03D-лендинг. Первый день срока\u00a0— день, когда у\u00a0нас есть подробное описание и\u00a0материалы, а\u00a0для 3D-лендинга еще и\u00a0выбранный стиль. Пока мы ждем вашего ответа или согласования, срок стоит: дата сдачи сдвигается на\u00a0столько же дней. Если модель делаем с\u00a0нуля, на\u00a0это нужно дополнительное время\u00a0— его называем до\u00a0предоплаты, вместе с\u00a0ценой, и\u00a0записываем в\u00a0договор. Опоздали по\u00a0нашей вине\u00a0— за\u00a0каждый день просрочки, считая выходные и\u00a0праздники, снижаем цену на\u00a02\u00a0%, всего не\u00a0больше чем на\u00a020\u00a0%. Эту сумму вычитаем из\u00a0последнего платежа. Считаем от\u00a0цены, которую вы платите по\u00a0договору, вместе с\u00a0опциями. Если в\u00a0том же договоре вы заказали еще и\u00a0логотип, его цену в\u00a0этот расчет не\u00a0включаем: у\u00a0логотипа свой срок, и\u00a0за\u00a0опоздание с\u00a0ним цена снижается отдельно',
   ],
   ['services.miniApp.basics.note', 'Входит в\u00a0цену приложения'],
   [
@@ -639,7 +639,7 @@ const APPROVED_RU: [string, string][] = [
   ],
   [
     'services.industry.niches.clinic.text',
-    'Врачи, услуги с\u00a0ценами, раздел для лицензий, заявка на\u00a0прием: пациент оставляет ее на\u00a0сайте, она приходит вам в\u00a0Telegram и\u00a0на\u00a0почту. Тоже в\u00a0цене\u00a0— три требования приказа Минздрава №\u00a0118н к\u00a0сайтам клиник: версия для слабовидящих, поиск по\u00a0сайту и\u00a0анкета, где пациенты оценивают качество услуг. Остальное, что приказ требует показать на\u00a0сайте, например лицензию и\u00a0данные врачей, ставим по\u00a0вашим документам, а\u00a0дальше врачей и\u00a0цены вы меняете сами через админку. Что именно приказ требует от\u00a0вашей клиники, лучше уточнить у\u00a0юриста. Если юрист скажет, что нужен раздел, которого на\u00a0сайте нет, назовем цену до\u00a0начала работы. В\u00a0нашем демо кнопки «Записаться» открывают приложение в\u00a0Telegram, где пациент сам выбирает врача и\u00a0время,\u00a0— это отдельный тариф, в\u00a0цену сайта он не\u00a0входит',
+    'Врачи, услуги с\u00a0ценами, раздел для лицензий, заявка на\u00a0прием: пациент оставляет ее на\u00a0сайте, она приходит вам в\u00a0Telegram и\u00a0на\u00a0почту. Тоже в\u00a0цене\u00a0— три требования приказа Минздрава №\u00a0118н к\u00a0сайтам клиник: версия для слабовидящих, поиск по\u00a0сайту и\u00a0анкета, где пациенты оценивают качество услуг. По\u00a0вашим документам ставим сведения, которые приказ требует показать на\u00a0сайте, например лицензию и\u00a0данные врачей, и\u00a0предупреждение, что у\u00a0услуг есть противопоказания. Потом врачей и\u00a0цены вы меняете сами через админку. Что именно приказ требует от\u00a0вашей клиники, лучше уточнить у\u00a0юриста. Если юрист скажет, что нужен раздел, которого на\u00a0сайте нет, назовем цену до\u00a0начала работы. В\u00a0нашем демо кнопки «Записаться» открывают приложение в\u00a0Telegram, где пациент сам выбирает врача и\u00a0время,\u00a0— это отдельный тариф, в\u00a0цену сайта он не\u00a0входит',
   ],
   ['services.business.faq.5.question', 'Подойдет ли сайт «Бизнес» клинике?'],
   [
@@ -654,6 +654,10 @@ const APPROVED_RU: [string, string][] = [
   [
     'services.threeD.basics.items.5',
     '3D-модель и\u00a0сцена с\u00a0ней, которые мы сделали для вас,\u00a0— ваши, как только оплатите всю цену',
+  ],
+  [
+    'services.threeD.prestart.deadlines.text',
+    'Дни показа стилей 3D-лендинга записываем в\u00a0договор. За\u00a0опоздание с\u00a0показом стилей 3D-лендинга цена не\u00a0снижается, но\u00a0до\u00a0выбора стиля вы можете отказаться и\u00a0за\u00a010\u00a0рабочих дней получить всю предоплату. Срок работы считаем с\u00a0первого дня, когда у\u00a0нас есть все нужное: подробное описание и\u00a0материалы, а\u00a0у\u00a03D-лендинга еще и\u00a0выбранный стиль. Чего-то не\u00a0хватает\u00a0— за\u00a01\u00a0рабочий день пишем, чего именно. Если мы опоздали со\u00a0сдачей по\u00a0своей вине, цена становится меньше на\u00a02\u00a0% за\u00a0каждый день, считая выходные и\u00a0праздники. Проценты считаем от\u00a0цены по\u00a0договору вместе с\u00a0опциями\u00a0— доплатными работами, которые записаны в\u00a0договоре. Логотип, если он есть в\u00a0том же договоре, сюда не\u00a0входит. Всего цена снижается не\u00a0больше чем на\u00a020\u00a0%. Эту сумму вычитаем из\u00a0последнего платежа: вы просто платите меньше.',
   ],
 ];
 
@@ -677,7 +681,10 @@ const APPROVED_EN_MAIL: [string, string][] = [
 
 /**
  * Английские тексты, заданные дословно: подводка формы отзыва, подписи шкалы процесса Terminal и Pop, последний шаг лендинга,
- * группа базы о файлах и паролях, пункт о модели 3D и пункт о политике данных.
+ * группа базы о файлах и паролях, пункт о модели 3D и пункт о политике данных. Условия сделки, сверенные с договором
+ * и Заказом: срок и опоздание без цены логотипа, исключения гарантии, сроки 3D, предупреждение о противопоказаниях
+ * у клиники. И вычитанные английские тексты выбора стиля, раундов правок и гарантии 3D и логотипа — дословно,
+ * как их вычитали.
  */
 const APPROVED_EN: [string, string][] = [
   [
@@ -703,6 +710,52 @@ const APPROVED_EN: [string, string][] = [
   [
     'pricing.basics.privacy',
     "A cookie notice, a message telling visitors that the site remembers their actions, and the texts required by data protection law: a privacy policy and the consent a customer gives when sending a request. We prepare the texts with you, and you publish them as the site owner: you collect your customers' data, and the law holds you responsible",
+  ],
+  [
+    'pricing.basics.deadline',
+    'The deadline goes into the contract. If we are late through our fault, we cut the price by 2% for each day of delay, weekends and public holidays included, 20% at most. That amount comes off the final payment. It is calculated from the price you pay under the contract, options included. If the same contract also includes a logo, its price is not part of this calculation: the logo has its own deadline, and a delay with it lowers its price separately',
+  ],
+  [
+    'services.threeD.terms.items.0',
+    'The deadline goes into the contract: 4 weeks for a 3D block, 6 weeks for a 3D landing page. Day one is the day we have the detailed description and the materials, and for a 3D landing page also the chosen style. While we wait for your reply or sign-off, the clock stops: the delivery date moves by the same number of days. If we build the model from scratch, that takes extra time; we name it before the prepayment, together with the price, and put it in the contract. If we are late through our fault, we cut the price by 2% for each day of delay, weekends and public holidays included, 20% at most. That amount comes off the final payment. It is calculated from the price you pay under the contract, options included. If the same contract also includes a logo, its price is not part of this calculation: the logo has its own deadline, and a delay with it lowers its price separately',
+  ],
+  [
+    'services.threeD.prestart.deadlines.text',
+    'The days when we show the styles of a 3D landing page go into the contract. A delay in showing the styles of a 3D landing page does not lower the price, but until you pick a style you can cancel and get the whole prepayment back within 10 working days. The deadline runs from the first day we have everything we need: the detailed description and the materials, and for a 3D landing page also the chosen style. Something missing? Within 1 working day we tell you exactly what. If we are late handing over the work through our fault, the price goes down by 2% for each day, weekends and public holidays included. We count the percentage from the contract price including options, paid extras listed in the contract. A logo in the same contract is not included. In total the price goes down by no more than 20%. We take this amount off the final payment: you simply pay less.',
+  ],
+  [
+    'pricing.basics.warranty',
+    "A one-year warranty from the day you accepted the work and signed the acceptance certificate. All year we fix for free anything that broke through our fault or does not work the way the contract says. The most urgent breakdown is when through our fault the site does not open or leads do not arrive. We take it on first, before all our other work. In our first reply to your message we name the day it will be fixed, and you confirm it or suggest your own; the same goes for other bugs. The warranty does not cover outages at the hosting provider, the company whose server the site runs on, failures of the domain, the site's address, or of third-party services such as Telegram or a booking service, or breakdowns caused by you or other people changing the site's code. Nor does it cover third-party scripts, pieces of someone else's code such as a chat window, added to the site after you signed the acceptance certificate, or planned updates of the software the site runs on: its authors release new versions from time to time. If such work is not part of your support, a separate monthly fee, it costs $90 an hour: we first show you the cause of the breakdown, then name the total, never charge more than that and start only if you agree. If finding the cause takes more than an hour, we name its price in advance too and start after you agree. Errors in the domain and hosting setup that we did are our fault, and we fix them for free. A dangerous vulnerability in third-party software the site runs on, a weak spot someone could use to break into the site, we close for free all through the warranty year, even if that means updating the software: we do not count such an update as planned. A dangerous one is one the software's authors themselves have marked as dangerous. Without support we do not track such news: heard about one? Write to us. A vulnerability in our own code is our bug, and we fix it for free like any other. Texts and photos you change through the admin panel, the section of the site where you edit texts, photos and prices yourself, do not void the warranty.",
+  ],
+  [
+    'services.industry.niches.clinic.text',
+    "Doctors, services with prices, a section for licenses, appointment requests: a patient leaves one on the site and it comes to your Telegram and email. Also included — three requirements of Russian Health Ministry Order No.\u00a0118n for clinic websites: a version for the visually impaired, site search and a form where patients rate the quality of care. From your documents we add the information the order requires on the site, such as your license and doctors' details, and a warning that the services have contraindications. After that you change doctors and prices yourself through the admin panel. It is best to check with a lawyer what exactly the order requires of your clinic. If the lawyer says you need a section the site does not have, we name the price before we start. In our demo, the “Book” buttons open a Telegram app where a patient picks a doctor and a time; that is a separate plan and is not included in the site price",
+  ],
+  [
+    'services.industry.faq.4.answer',
+    "The style of a site is its colors, fonts and the look of its buttons and blocks. You choose it at the very start of the work. Within 2 working days after the start date, the day in the contract when we start your order, we show the top of your home page in three styles. By that date we need the prepayment, your answers to the questionnaire about your business and the materials for the styles: your logo and brand colors if you have them. You pick one. If you like, you can take a ready-made style instead: one of the five styles of this site (the “Style” button switches them) or the style of one of our demos. Then we don't draw it separately. The price stays the same. Another client may choose the same ready-made style, while a style drawn for you is yours alone. None of the three fit? Within 2 working days we draw three more. None of those fit either? You can take a ready-made style or close the contract and get the whole prepayment back. The site deadline starts the day you pick a style.",
+  ],
+  [
+    'services.landing.faq.4.answer',
+    "The style of a site is its colors, fonts and the look of its buttons and blocks. You choose it at the very start of the work. Within 2 working days after the start date, the day in the contract when we start your order, we show the top of your home page in three styles. By that date we need the prepayment, your answers to the questionnaire about your business and the materials for the styles: your logo and brand colors if you have them. You pick one. If you like, you can take a ready-made style instead: one of the five styles of this site (the “Style” button switches them) or the style of one of our demos. Then we don't draw it separately. The price stays the same. Another client may choose the same ready-made style, while a style drawn for you is yours alone. None of the three fit? Within 2 working days we draw three more. None of those fit either? You can take a ready-made style or close the contract and get the whole prepayment back. The site deadline starts the day you pick a style.",
+  ],
+  [
+    'services.business.faq.4.answer',
+    "The style of a site is its colors, fonts and the look of its buttons and blocks. You choose it at the very start of the work. Within 2 working days after the start date, the day in the contract when we start your order, we show the top of your home page in three styles. By that date we need the prepayment, your answers to the questionnaire about your business and the materials for the styles: your logo and brand colors if you have them. You pick one. If you like, you can take a ready-made style instead: one of the five styles of this site (the “Style” button switches them) or the style of one of our demos. Then we don't draw it separately. The price stays the same. Another client may choose the same ready-made style, while a style drawn for you is yours alone. None of the three fit? Within 2 working days we draw three more. None of those fit either? You can take a ready-made style or close the contract and get the whole prepayment back. The site deadline starts the day you pick a style.",
+  ],
+  ['services.industry.process.0.when', 'Day 1: style choice'],
+  ['services.landing.process.0.when', 'Day 1: style choice'],
+  [
+    'services.landing.faq.2.answer',
+    'Three rounds. A round is all your comments gathered in one list, and we make all of it. A revision is a change within the pages and features we agreed on: texts, photos, the color of individual blocks and buttons, the order of blocks. You choose the style of the site at the very start of the work. So changing it entirely later (the palette, fonts, the look of all buttons), like adding new pages or features, is separate work. We name the amount first, and you never pay more than that. We calculate it at $90 an hour and do the work after you agree. Revisions beyond three rounds are calculated the same way. If you have not used all three rounds by the time you sign the acceptance certificate, the rest expire. After the certificate, revisions are separate work at $90 an hour, while we still fix our own bugs for free under the warranty.',
+  ],
+  [
+    'services.threeD.terms.items.6',
+    "A one-year warranty from the day of acceptance: we fix for free anything that broke through our fault or does not work the way the contract says. Not covered: outages at the hosting provider and breakdowns caused by changes to the site's code made by you or another developer. We fix breakdowns caused by such changes for $90 an hour: we first show the cause of the breakdown, name the price before we start, never charge more than that and start only if you agree. If finding the cause takes more than an hour, we name its price in advance too and start after you agree",
+  ],
+  [
+    'services.logo.basics.items.4',
+    'A 12-month warranty on the logo files from the day you accepted the work: found a mistake of ours in them? We fix it for free and agree on the timing in writing',
   ],
 ];
 
@@ -788,6 +841,18 @@ const FORBIDDEN = [
   /do not object within 2 working days/i,
   /в\s+течение\s+рабочего\s+дня\s+назовем/i,
   /within a working day we name/i,
+  // Тексты шире договора и Заказа: права на невыбранные варианты логотипа, оплата вывески и печати, бесплатная смена
+  // названия, предоплата «к дате старта», работа сверх договора в цене 3D.
+  /варианты,\s+которые\s+вы\s+не\s+выбрали/i,
+  /вывеску\s+и\s+печать/i,
+  /один\s+раз\s+бесплатно\s+поставим/i,
+  /К\s+дате\s+старта\s+вносите\s+предоплату/i,
+  /сверх\s+договора,\s+в\s+эту\s+цену/i,
+  /options you did not choose/i,
+  /the sign or printing/i,
+  /into the logo once for free/i,
+  /By the start date you pay/i,
+  /on top of the contract, is not included/i,
 ];
 
 /**

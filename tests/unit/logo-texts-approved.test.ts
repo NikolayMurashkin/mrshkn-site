@@ -128,7 +128,7 @@ const APPROVED: [string, string][] = [
   ],
   [
     'services.logo.basics.items.1',
-    'Все файлы из\u00a0вашего уровня отдаем вам. Со\u00a0дня, когда логотип оплачен полностью, пользуетесь ими без ограничений: на\u00a0вывеске, сайте, упаковке, в\u00a0рекламе. Менять их тоже можно\u00a0— самим или с\u00a0другим дизайнером. Ни ваш логотип, ни варианты, которые вы не выбрали, другим не отдаем и\u00a0для других не переделываем',
+    'Все файлы из\u00a0вашего уровня отдаем вам. Со\u00a0дня, когда логотип оплачен полностью, пользуетесь ими без ограничений: на\u00a0вывеске, сайте, упаковке, в\u00a0рекламе. Менять их тоже можно\u00a0— самим или с\u00a0другим дизайнером. Ваш логотип другим не\u00a0отдаем и\u00a0для других не\u00a0переделываем. Невыбранные варианты остаются у\u00a0нас: права на\u00a0них к\u00a0вам не\u00a0переходят, и\u00a0мы можем использовать их в\u00a0других работах',
   ],
   [
     'services.logo.basics.items.2',
@@ -158,7 +158,7 @@ const APPROVED: [string, string][] = [
   ['services.logo.process.0.title', 'Анкета и\u00a0договор'],
   [
     'services.logo.process.0.text',
-    'Вы отвечаете на\u00a0короткую анкету: чем занимаетесь, кто ваши клиенты, какие логотипы нравятся и\u00a0какие нет. В\u00a0ответ присылаем цену, срок, дату старта и\u00a0черновик договора\u00a0— все до\u00a0оплаты. Без сайта договор тот же: в\u00a0приложении записано, что вы заказали только логотип. К\u00a0дате старта вносите предоплату 30\u00a0%, с\u00a0этого дня идет срок.',
+    'Вы отвечаете на\u00a0короткую анкету о\u00a0вашем деле. В\u00a0ответ\u00a0— цена, срок, дата старта и\u00a0черновик договора, все до\u00a0оплаты. Без сайта договор тот же, в\u00a0приложении\u00a0— только логотип. Предоплату 30\u00a0% цены логотипа вносите за\u00a03\u00a0рабочих дня после подписания. Срок идет с\u00a0даты старта, к\u00a0ней нужны предоплата и\u00a0ответы на\u00a0анкету. Не\u00a0успели\u00a0— новую дату согласуем.',
   ],
   ['services.logo.process.1.when', 'Начало'],
   ['services.logo.process.1.title', 'Варианты на\u00a0выбор'],
@@ -206,7 +206,7 @@ const APPROVED: [string, string][] = [
   ['services.logo.faq.5.question', 'Что будет, если найдется похожий знак?'],
   [
     'services.logo.faq.5.answer',
-    'После выбора варианта решаете вы: бесплатно изменить вариант, взять другой из\u00a0показанных или оставить этот\u00a0— тогда запишем это в\u00a0итог проверки. Раунды правок на\u00a0это не тратятся. Похоже название вашего дела\u00a0— оставить его или сменить, тоже решаете вы: новое название проверим и\u00a0один раз бесплатно поставим в\u00a0логотип. Нашли похожий на\u00a0готовом логотипе\u00a0— меняем бесплатно и\u00a0проверяем снова, а\u00a0вы можете один раз прислать замечания или оставить прежний. Если окажется, что похожий знак был в\u00a0базе в\u00a0день проверки, а\u00a0мы его не нашли, бесплатно поменяем логотип и\u00a0файлы, но\u00a0вывеску и\u00a0печать не оплачиваем.',
+    'Похожие зарегистрированные знаки ищем в\u00a0открытых базах ФИПС дважды: коротко\u00a0— после того, как вы выбрали вариант, и\u00a0подробно\u00a0— когда логотип готов, перед тем как отдать файлы. Если при второй, подробной проверке нашелся похожий знак, меняем логотип бесплатно. Дата сдачи из-за этого сдвинется не\u00a0больше чем на\u00a03\u00a0рабочих дня.',
   ],
   ['services.logo.faq.6.question', 'Можно заказать логотип вместе с\u00a0сайтом?'],
   [
@@ -226,6 +226,25 @@ const APPROVED: [string, string][] = [
   [
     'pricing.extras.hour.summary',
     'Правки и\u00a0доработки, которые не\u00a0входят в\u00a0тариф: например, после всех раундов правок или когда закончились часы на\u00a0тарифе поддержки',
+  ],
+];
+
+/**
+ * Английские тексты услуги, переписанные под договор и Заказ: права на невыбранные варианты, проверки ФИПС,
+ * предоплата логотипа и начало срока.
+ */
+const APPROVED_EN: [string, string][] = [
+  [
+    'services.logo.basics.items.1',
+    'We hand over all the files of your tier. From the day the logo is paid in full, you use them without limits: on your sign, site, packaging and in ads. You can also change them, yourself or with another designer. We do not give your logo to anyone else, and we do not rework it for others. The unchosen options stay with us: the rights to them do not pass to you, and we may use them in other work',
+  ],
+  [
+    'services.logo.faq.5.answer',
+    'We search the open FIPS databases for similar registered trademarks twice: a quick check after you choose an option, and a detailed one when the logo is ready, before we hand over the files. If the second, detailed check finds a similar mark, we change the logo for free. This moves the delivery date by no more than 3 working days.',
+  ],
+  [
+    'services.logo.process.0.text',
+    'You fill in a short questionnaire about your business. In reply: the price, the deadline, the start date and a draft contract, all before any payment. Without a site the contract is the same, the appendix lists only the logo. You pay 30% of the logo price upfront within 3 working days after signing. The deadline runs from the start date, which needs the prepayment and your questionnaire answers. If they are not in by then, we agree a new date.',
   ],
 ];
 
@@ -370,6 +389,12 @@ const listedPatterns = () => {
 describe('тексты услуги «Логотип и фирменный стиль» в ru.json — дословно утвержденные', () => {
   it.each(APPROVED)('%s', (path, expected) => {
     expect(valueAt(ru, path)).toBe(expected);
+  });
+});
+
+describe('английские тексты услуги «Логотип и фирменный стиль» в en.json — дословно утвержденные', () => {
+  it.each(APPROVED_EN)('%s', (path, expected) => {
+    expect(valueAt(en, path)).toBe(expected);
   });
 });
 
