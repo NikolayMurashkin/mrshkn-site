@@ -1,7 +1,7 @@
 import { join } from 'node:path';
 import { expect, test, type Locator, type Page } from '@playwright/test';
 import { TELEGRAM_URL } from '@/lib/consts';
-import { DESIGN_COOKIE, DESIGNS, PREVIEW_BASE_URL, THEMES } from './consts';
+import { DESIGN_COOKIE, DESIGNS, HERO_VIEWPORT, PREVIEW_BASE_URL, THEMES, VIEWPORT } from './consts';
 import { openDesign } from './open-design';
 import type { DesignShape } from './types';
 
@@ -187,10 +187,12 @@ test.describe('эталоны шапки и подвала', () => {
 
         await expect(page.locator('html')).toHaveAttribute('data-theme', theme);
         await expect(page.getByRole('banner')).toHaveScreenshot(`header-${design}-${theme}.png`, SCREENSHOT);
+        await page.setViewportSize(HERO_VIEWPORT);
         await expect(page.getByRole('main').locator('section').first()).toHaveScreenshot(
           `hero-${design}-${theme}.png`,
           SCREENSHOT,
         );
+        await page.setViewportSize(VIEWPORT);
         await expect(page.getByRole('contentinfo')).toHaveScreenshot(`footer-${design}-${theme}.png`, SCREENSHOT);
       });
     }
