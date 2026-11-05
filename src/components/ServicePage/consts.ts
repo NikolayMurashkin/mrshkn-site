@@ -1,5 +1,5 @@
 import { THREE_D_PLAN_ID } from '@/content/three-d';
-import { COFFEE_TELEGRAM_BOT_URL, DENTAL_MAX_BOT_URL, DENTAL_TELEGRAM_BOT_URL, LAUNCH_DEMO_URL } from '@/lib/consts';
+import { COFFEE_TELEGRAM_BOT_URL, DENTAL_MAX_BOT_URL, DENTAL_TELEGRAM_BOT_URL, EVENT_DEMO_URL } from '@/lib/consts';
 import type { TryItApp } from './types';
 
 /** Логотип и фирменный стиль: не сайт — свой «Что входит», свое число раундов, без гарантии на запуск. */
@@ -19,7 +19,7 @@ export const MINI_APP_PLAN_ID = 'miniApp';
 
 /** Пример готовой работы в шапке страницы услуги: «Посмотреть пример» есть только у лендинга. */
 export const SERVICE_EXAMPLES: Record<string, string> = {
-  landing: LAUNCH_DEMO_URL,
+  landing: EVENT_DEMO_URL,
 };
 
 /**

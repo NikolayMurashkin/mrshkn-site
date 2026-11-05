@@ -41,7 +41,9 @@ type Link = Element & { href: string | null; target: string | null; rel: string 
 const DENTAL_DEMO = 'https://dental.mrshkn.com';
 const EXPERT_DEMO = 'https://expert.mrshkn.com';
 const COFFEE_DEMO = 'https://coffee.mrshkn.com';
-const LAUNCH_DEMO = 'https://launch.mrshkn.com';
+const EVENT_DEMO = 'https://event.mrshkn.com';
+/** Прежний пример лендинга: с него теперь редирект на концерт, в коде сайта адреса быть не должно. */
+const OLD_LAUNCH_DEMO = 'https://launch.mrshkn.com';
 const DENTAL_TG = 'https://t.me/mrshkn_dental_bot';
 const DENTAL_MAX = 'https://max.ru/se14753310_bot?startapp';
 const COFFEE_TG = 'https://t.me/mrshkn_coffee_bot?startapp';
@@ -59,7 +61,7 @@ const CLINIC_BOTS = [DENTAL_TG, DENTAL_MAX];
 const COFFEE_BOTS = [COFFEE_TG];
 
 /** Адреса сайтов-демо: подстрока ищется с границей имени хоста. */
-const HOST_URLS = [DENTAL_DEMO, EXPERT_DEMO, COFFEE_DEMO, LAUNCH_DEMO];
+const HOST_URLS = [DENTAL_DEMO, EXPERT_DEMO, COFFEE_DEMO, EVENT_DEMO];
 
 const URLS = [...HOST_URLS, ...BOT_LINKS];
 
@@ -259,7 +261,7 @@ const isBotHref = (href: string | null) =>
 const escapeRegExp = (text: string) => text.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 
 const countIn = (source: string, url: string) => {
-  const pattern = HOST_URLS.includes(url)
+  const pattern = [...HOST_URLS, OLD_LAUNCH_DEMO].includes(url)
     ? new RegExp(`${escapeRegExp(url)}(?![A-Za-z0-9.-])`, 'g')
     : new RegExp(escapeRegExp(url), 'g');
 
@@ -351,19 +353,19 @@ describe('«Открыть демо» на странице отраслевог
     expect(nested.map((link) => link.href)).toEqual([]);
   });
 
-  it.each(ROWS)('%s, %s: на странице лендинга — «Посмотреть пример» на launch в новой вкладке', (design, locale) => {
-    const links = linksOf(renderService(design, locale, 'landing')).filter((link) => link.href === LAUNCH_DEMO);
+  it.each(ROWS)('%s, %s: на странице лендинга — «Посмотреть пример» на event в новой вкладке', (design, locale) => {
+    const links = linksOf(renderService(design, locale, 'landing')).filter((link) => link.href === EVENT_DEMO);
 
-    expect(links.length, `ссылок на ${LAUNCH_DEMO}`).toBe(1);
+    expect(links.length, `ссылок на ${EVENT_DEMO}`).toBe(1);
     expect(links[0].text).toContain(shown(locale, 'landingExample'));
-    expectNewTab(links[0], LAUNCH_DEMO);
+    expectNewTab(links[0], EVENT_DEMO);
   });
 
-  it.each(NOT_LANDING_ROWS)('%s, %s, %s: на странице другой услуги ссылки на launch нет', (design, locale, service) => {
+  it.each(NOT_LANDING_ROWS)('%s, %s, %s: на странице другой услуги ссылки на event нет', (design, locale, service) => {
     const html = renderService(design, locale, service);
 
     expect(html).toContain(`data-service="${service}"`);
-    expect(linksOf(html).filter((link) => link.href === LAUNCH_DEMO)).toEqual([]);
+    expect(linksOf(html).filter((link) => link.href === EVENT_DEMO)).toEqual([]);
   });
 });
 
@@ -454,6 +456,16 @@ describe('адреса демо и ботов — в src/lib/consts.ts', () => {
     );
 
     expect(found).toEqual({ [CONSTS_FILE]: 1 });
+  });
+
+  it(`${OLD_LAUNCH_DEMO}: старого адреса примера лендинга в коде сайта нет`, () => {
+    const found = Object.fromEntries(
+      SCANNED_FILES.map(({ file, source }) => [file, countIn(source, OLD_LAUNCH_DEMO)] as const).filter(
+        ([, count]) => count > 0,
+      ),
+    );
+
+    expect(found).toEqual({});
   });
 });
 
