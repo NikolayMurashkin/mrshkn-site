@@ -1,3 +1,4 @@
+import type { ReactNode } from 'react';
 import type { ServiceOptionView, ServiceThreeD, ServiceTiers } from '@/components/ServicePage/types';
 import type { BriefChoice } from '@/lib/brief/types';
 import type { StepWhen } from '../types';
@@ -84,3 +85,5 @@ export type SwissProcessCardsProps = {
 export type SwissAuditProps = {
   numbered?: boolean;
 };
+
+export type SwissTermScopeProps = { children: ReactNode };

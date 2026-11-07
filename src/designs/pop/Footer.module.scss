@@ -8,6 +8,8 @@
 }
 
 .band {
+  @include s.term-on-fill;
+
   display: flex;
   align-items: center;
   justify-content: space-between;

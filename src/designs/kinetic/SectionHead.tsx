@@ -1,3 +1,4 @@
+import { Terms } from '@/components/Term';
 import type { SectionHeadProps } from './types';
 import styles from './SectionHead.module.scss';
 
@@ -7,7 +8,11 @@ export const SectionHead = ({ id, kicker, title, note, level = 'h2' }: SectionHe
   return (
     <div className={styles.head}>
       <div className={styles.title}>
-        {kicker ? <p className={styles.kicker}>{kicker}</p> : null}
+        {kicker ? (
+          <p className={styles.kicker}>
+            <Terms text={kicker} />
+          </p>
+        ) : null}
         <Heading
           className={styles.heading}
           id={id}
@@ -15,7 +20,11 @@ export const SectionHead = ({ id, kicker, title, note, level = 'h2' }: SectionHe
           {title}
         </Heading>
       </div>
-      {note ? <p className={styles.note}>{note}</p> : null}
+      {note ? (
+        <p className={styles.note}>
+          <Terms text={note} />
+        </p>
+      ) : null}
     </div>
   );
 };

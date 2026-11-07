@@ -1,3 +1,4 @@
+import type { ReactNode } from 'react';
 import type { ServiceOptionView, ServiceThreeD, ServiceTiers } from '@/components/ServicePage/types';
 import type { BriefChoice } from '@/lib/brief/types';
 import type { ProcessCardsBlock } from '@/components/types';
@@ -82,3 +83,5 @@ export type TerminalProcessCardsProps = {
   /** Колонка страницы услуги рядом с карточкой тарифа: заголовок блока мельче, чем на главной. */
   narrow?: boolean;
 };
+
+export type TerminalTermScopeProps = { children: ReactNode };

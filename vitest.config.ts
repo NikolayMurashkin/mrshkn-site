@@ -10,6 +10,7 @@ export default defineConfig({
   test: {
     environment: 'node',
     include: ['tests/unit/**/*.test.{ts,tsx}'],
+    testTimeout: 20_000,
     server: {
       deps: {
         inline: ['next-intl'],

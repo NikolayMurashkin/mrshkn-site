@@ -368,7 +368,15 @@ $display-ch: 0.718em;
   }
 }
 
+@mixin term-on-fill {
+  --term-line: currentcolor;
+  --term-line-strong: currentcolor;
+  --term-ring: currentcolor;
+}
+
 @mixin tone($index) {
+  @include term-on-fill;
+
   @if $index == 1 {
     background: var(--accent-alt);
     color: var(--ink-on-alt);

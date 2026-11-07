@@ -1,5 +1,6 @@
 import { useTranslations } from 'next-intl';
 import { useGoal } from '@/components/Analytics/use-consent';
+import { Terms } from '@/components/Term';
 import { planPath } from '@/content/format';
 import {
   extraPlan,
@@ -9,12 +10,12 @@ import {
   PRICING_TABLE_PLANS,
 } from '@/content/pricing';
 import { usePriceText } from '@/content/use-price';
-import { renderNowrap } from '@/designs/nowrap';
 import { Link } from '@/i18n/navigation';
 import { GOALS } from '@/lib/analytics/consts';
 import { ArrowUpRightIcon } from './icons';
 import { SectionHead } from './SectionHead';
 import styles from './Pricing.module.scss';
+import { KineticTermScope } from './TermScope';
 
 export const KineticPricing = () => {
   const t = useTranslations('pricing');
@@ -28,164 +29,187 @@ export const KineticPricing = () => {
       data-testid="pricing"
       aria-labelledby="pricing-heading"
     >
-      <SectionHead
-        id="pricing-heading"
-        kicker={t('kineticKicker')}
-        title={t('heading')}
-        note={t('note')}
-      />
+      <KineticTermScope>
+        <SectionHead
+          id="pricing-heading"
+          kicker={t('kineticKicker')}
+          title={t('heading')}
+          note={t('note')}
+        />
 
-      <ul
-        className={styles.plans}
-        id="prices"
-      >
-        {PRICING_TABLE_PLANS.map((plan, index) => (
-          <li
-            className={styles.plan}
-            data-testid={`plan-${plan.id}`}
-            key={plan.id}
-          >
-            <Link
-              className={styles.planLink}
-              href={planPath(plan)}
-              onClick={() => reachGoal(GOALS.planClick)}
-              aria-label={t('planLink', { name: t(`plans.${plan.id}.name`) })}
-            >
-              <span className={styles.index}>{String(index + 1).padStart(2, '0')}</span>
-              <span className={styles.body}>
-                <span className={styles.name}>{t(`plans.${plan.id}.name`)}</span>
-                <span className={styles.summary}>{t(`plans.${plan.id}.summary`)}</span>
-              </span>
-              <span className={styles.term}>{price.term(plan)}</span>
-              <span className={styles.price}>{price.plan(plan)}</span>
-              <span className={styles.arrow}>
-                <ArrowUpRightIcon
-                  size={28}
-                  strokeWidth={2}
-                />
-              </span>
-            </Link>
-          </li>
-        ))}
-      </ul>
-
-      <p
-        className={styles.caseOffer}
-        data-testid="case-offer"
-      >
-        {t('caseOffer')}
-      </p>
-
-      <div
-        className={styles.callout}
-        data-testid="mini-app-note"
-      >
-        <p className={styles.calloutTitle}>{t('miniAppNote.title')}</p>
-        <p className={styles.calloutText}>{t('miniAppNote.text', { max: price.max })}</p>
-      </div>
-
-      <div className={styles.block}>
-        <div className={styles.blockHead}>
-          <h3 className={styles.blockTitle}>{t('basicsHeading')}</h3>
-          <p className={styles.blockNote}>{t('basicsNote')}</p>
-        </div>
-        <div
-          className={styles.groups}
-          data-testid="basics"
-        >
-          {PRICING_BASIC_GROUPS.map((group) => (
-            <div
-              className={styles.group}
-              data-testid="basics-group"
-              key={group.id}
-            >
-              <h4 className={styles.groupTitle}>{t(`basicsGroups.${group.id}`)}</h4>
-              <ul className={styles.checks}>
-                {group.items.map((item) => (
-                  <li key={item}>{renderNowrap(t(`basics.${item}`), styles.nowrap)}</li>
-                ))}
-              </ul>
-            </div>
-          ))}
-        </div>
-      </div>
-
-      <div className={styles.block}>
-        <div className={styles.blockHead}>
-          <h3 className={styles.blockTitle}>{t('optionsHeading')}</h3>
-          <p className={styles.blockNote}>{t('optionsNote')}</p>
-        </div>
         <ul
-          className={styles.options}
-          data-testid="options"
+          className={styles.plans}
+          id="prices"
         >
-          {PRICING_OPTIONS.map((option) => (
+          {PRICING_TABLE_PLANS.map((plan, index) => (
             <li
-              className={styles.option}
-              key={option.id}
+              className={styles.plan}
+              data-testid={`plan-${plan.id}`}
+              key={plan.id}
             >
-              <span className={styles.optionName}>{t(`options.${option.id}.name`)}</span>
-              <span
-                className={styles.optionPrice}
-                data-testid="option-price"
+              <Link
+                className={styles.planLink}
+                href={planPath(plan)}
+                onClick={() => reachGoal(GOALS.planClick)}
+                aria-label={t('planLink', { name: t(`plans.${plan.id}.name`) })}
               >
-                {price.option(option)}
-              </span>
-              <span className={styles.optionNote}>{t(`options.${option.id}.note`)}</span>
+                <span className={styles.index}>{String(index + 1).padStart(2, '0')}</span>
+                <span className={styles.body}>
+                  <span className={styles.name}>{t(`plans.${plan.id}.name`)}</span>
+                  <span className={styles.summary}>{t(`plans.${plan.id}.summary`)}</span>
+                </span>
+                <span className={styles.term}>{price.term(plan)}</span>
+                <span className={styles.price}>{price.plan(plan)}</span>
+                <span className={styles.arrow}>
+                  <ArrowUpRightIcon
+                    size={28}
+                    strokeWidth={2}
+                  />
+                </span>
+              </Link>
             </li>
           ))}
         </ul>
-      </div>
 
-      <div className={`${styles.block} ${styles.extrasBlock}`}>
-        <div className={styles.blockHead}>
-          <h3 className={styles.blockTitle}>{t('extrasHeading')}</h3>
-          <p className={styles.blockNote}>{t('extrasNote')}</p>
-        </div>
-        <ul
-          className={styles.extras}
-          data-testid="extras"
+        <p
+          className={styles.caseOffer}
+          data-testid="case-offer"
         >
-          {PRICING_EXTRAS.map((extra) => {
-            const plan = extraPlan(extra);
+          <Terms text={t('caseOffer')} />
+        </p>
 
-            return (
-              <li
-                className={plan ? `${styles.extra} ${styles.extraLinked}` : styles.extra}
-                key={extra.id}
+        <div
+          className={styles.callout}
+          data-testid="mini-app-note"
+        >
+          <p className={styles.calloutTitle}>
+            <Terms text={t('miniAppNote.title')} />
+          </p>
+          <p className={styles.calloutText}>
+            <Terms text={t('miniAppNote.text', { max: price.max })} />
+          </p>
+        </div>
+
+        <div className={styles.block}>
+          <div className={styles.blockHead}>
+            <h3 className={styles.blockTitle}>{t('basicsHeading')}</h3>
+            <p className={styles.blockNote}>
+              <Terms text={t('basicsNote')} />
+            </p>
+          </div>
+          <div
+            className={styles.groups}
+            data-testid="basics"
+          >
+            {PRICING_BASIC_GROUPS.map((group) => (
+              <div
+                className={styles.group}
+                data-testid="basics-group"
+                key={group.id}
               >
-                <h4 className={styles.extraName}>
-                  {plan ? (
-                    <Link
-                      className={styles.extraLink}
-                      href={planPath(plan)}
-                      onClick={() => reachGoal(GOALS.planClick)}
-                    >
-                      {t(`extras.${extra.id}.name`)}
-                    </Link>
-                  ) : (
-                    t(`extras.${extra.id}.name`)
-                  )}
-                </h4>
-                <p className={styles.extraSummary}>{t(`extras.${extra.id}.summary`)}</p>
-                {plan ? (
-                  <span className={styles.extraFoot}>
-                    <span className={styles.extraPrice}>{price.extra(extra)}</span>
-                    <span
-                      className={styles.extraArrow}
-                      aria-hidden="true"
-                    >
-                      <ArrowUpRightIcon />
-                    </span>
-                  </span>
-                ) : (
-                  <span className={styles.extraPrice}>{price.extra(extra)}</span>
-                )}
+                <h4 className={styles.groupTitle}>{t(`basicsGroups.${group.id}`)}</h4>
+                <ul className={styles.checks}>
+                  {group.items.map((item) => (
+                    <li key={item}>
+                      <Terms
+                        text={t(`basics.${item}`)}
+                        nowrapClassName={styles.nowrap}
+                      />
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div className={styles.block}>
+          <div className={styles.blockHead}>
+            <h3 className={styles.blockTitle}>{t('optionsHeading')}</h3>
+            <p className={styles.blockNote}>
+              <Terms text={t('optionsNote')} />
+            </p>
+          </div>
+          <ul
+            className={styles.options}
+            data-testid="options"
+          >
+            {PRICING_OPTIONS.map((option) => (
+              <li
+                className={styles.option}
+                key={option.id}
+              >
+                <span className={styles.optionName}>
+                  <Terms text={t(`options.${option.id}.name`)} />
+                </span>
+                <span
+                  className={styles.optionPrice}
+                  data-testid="option-price"
+                >
+                  {price.option(option)}
+                </span>
+                <span className={styles.optionNote}>
+                  <Terms text={t(`options.${option.id}.note`)} />
+                </span>
               </li>
-            );
-          })}
-        </ul>
-      </div>
+            ))}
+          </ul>
+        </div>
+
+        <div className={`${styles.block} ${styles.extrasBlock}`}>
+          <div className={styles.blockHead}>
+            <h3 className={styles.blockTitle}>{t('extrasHeading')}</h3>
+            <p className={styles.blockNote}>
+              <Terms text={t('extrasNote')} />
+            </p>
+          </div>
+          <ul
+            className={styles.extras}
+            data-testid="extras"
+          >
+            {PRICING_EXTRAS.map((extra) => {
+              const plan = extraPlan(extra);
+
+              return (
+                <li
+                  className={plan ? `${styles.extra} ${styles.extraLinked}` : styles.extra}
+                  key={extra.id}
+                >
+                  <h4 className={styles.extraName}>
+                    {plan ? (
+                      <Link
+                        className={styles.extraLink}
+                        href={planPath(plan)}
+                        onClick={() => reachGoal(GOALS.planClick)}
+                      >
+                        {t(`extras.${extra.id}.name`)}
+                      </Link>
+                    ) : (
+                      t(`extras.${extra.id}.name`)
+                    )}
+                  </h4>
+                  <p className={styles.extraSummary}>
+                    <Terms text={t(`extras.${extra.id}.summary`)} />
+                  </p>
+                  {plan ? (
+                    <span className={styles.extraFoot}>
+                      <span className={styles.extraPrice}>{price.extra(extra)}</span>
+                      <span
+                        className={styles.extraArrow}
+                        aria-hidden="true"
+                      >
+                        <ArrowUpRightIcon />
+                      </span>
+                    </span>
+                  ) : (
+                    <span className={styles.extraPrice}>{price.extra(extra)}</span>
+                  )}
+                </li>
+              );
+            })}
+          </ul>
+        </div>
+      </KineticTermScope>
     </section>
   );
 };

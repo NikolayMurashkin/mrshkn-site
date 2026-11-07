@@ -1,3 +1,4 @@
+import { Terms } from '@/components/Term';
 import type { EditorialProcessCardsProps } from './types';
 import styles from './ProcessCards.module.scss';
 
@@ -11,7 +12,9 @@ export const EditorialProcessCards = ({ block, narrow = false }: EditorialProces
           key={card.id}
         >
           <h4 className={styles.title}>{card.title}</h4>
-          <p className={styles.text}>{card.text}</p>
+          <p className={styles.text}>
+            <Terms text={card.text} />
+          </p>
         </li>
       ))}
     </ul>

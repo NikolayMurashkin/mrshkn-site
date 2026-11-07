@@ -1,0 +1,108 @@
+.term {
+  position: relative;
+  z-index: 1;
+}
+
+.termNowrap {
+  white-space: nowrap;
+}
+
+.termButton {
+  display: inline;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: none;
+  color: inherit;
+  font: inherit;
+  letter-spacing: inherit;
+  text-align: inherit;
+  text-transform: inherit;
+  text-decoration-line: underline;
+  text-decoration-style: dotted;
+  text-decoration-color: var(--muted);
+  text-decoration-thickness: var(--border-width-mark);
+  text-underline-offset: 0.3em;
+  cursor: help;
+  transition: text-decoration-color var(--duration-fast) var(--ease-out);
+
+  @media (hover: hover) {
+    &:hover {
+      text-decoration-style: solid;
+      text-decoration-color: var(--accent);
+    }
+  }
+}
+
+.term:has(> .termTooltip:not([hidden])) .termButton {
+  text-decoration-style: solid;
+  text-decoration-color: var(--accent);
+}
+
+.term .termButton:focus-visible {
+  outline: var(--border-width-mark) solid var(--accent-ink);
+  outline-offset: 2px;
+}
+
+.termTooltip {
+  position: fixed;
+  inset: auto;
+  z-index: auto;
+  width: max-content;
+  max-width: min(20em, 100vw - 16px);
+  margin: 0;
+  padding: var(--space-12) var(--space-16);
+  overflow: visible;
+  border: var(--border-width) solid var(--line-strong);
+  border-top: var(--border-width-strong) double var(--ink);
+  border-radius: var(--radius-surface);
+  background: var(--surface);
+  box-shadow: var(--shadow-floating);
+  color: var(--ink);
+  font-family: var(--font-text);
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.5;
+  letter-spacing: normal;
+  text-align: left;
+  text-transform: none;
+  white-space: normal;
+  hyphens: none;
+  word-wrap: break-word;
+  overflow-wrap: anywhere;
+  min-width: 0;
+  cursor: auto;
+  transition:
+    opacity var(--duration-fast) var(--ease-out),
+    translate var(--duration-fast) var(--ease-out);
+
+  &[hidden] {
+    display: none;
+  }
+
+  &[data-side]::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+  }
+
+  &[data-side='top']::before {
+    top: 100%;
+    height: calc(var(--term-gap) + var(--border-width));
+  }
+
+  &[data-side='bottom']::before {
+    bottom: 100%;
+    height: calc(var(--term-gap) + var(--border-width-strong));
+  }
+}
+
+@starting-style {
+  .termTooltip:popover-open {
+    opacity: 0;
+    translate: 0 4px;
+  }
+}

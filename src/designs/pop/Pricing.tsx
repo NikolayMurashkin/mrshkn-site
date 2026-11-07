@@ -1,5 +1,6 @@
 import { useTranslations } from 'next-intl';
 import { useGoal } from '@/components/Analytics/use-consent';
+import { Terms } from '@/components/Term';
 import { planPath } from '@/content/format';
 import { extraPlan, PRICING_EXTRAS, PRICING_OPTIONS, PRICING_TABLE_PLANS } from '@/content/pricing';
 import { usePriceText } from '@/content/use-price';
@@ -9,6 +10,7 @@ import { PopBasics } from './Basics';
 import { ArrowUpRightIcon, StarIcon } from './icons';
 import { PopOptions } from './Options';
 import styles from './Pricing.module.scss';
+import { PopTermScope } from './TermScope';
 
 export const PopPricing = () => {
   const t = useTranslations('pricing');
@@ -28,134 +30,150 @@ export const PopPricing = () => {
       data-testid="pricing"
       aria-labelledby="pricing-heading"
     >
-      <div className={styles.head}>
-        <h2
-          className={styles.heading}
-          id="pricing-heading"
-        >
-          {t('heading')}
-        </h2>
-        <p className={styles.note}>{t('note')}</p>
-      </div>
-
-      <ul
-        className={styles.plans}
-        id="prices"
-      >
-        {PRICING_TABLE_PLANS.map((plan) => (
-          <li
-            className={styles.plan}
-            data-testid={`plan-${plan.id}`}
-            key={plan.id}
+      <PopTermScope>
+        <div className={styles.head}>
+          <h2
+            className={styles.heading}
+            id="pricing-heading"
           >
-            <Link
-              className={styles.card}
-              href={planPath(plan)}
-              onClick={() => reachGoal(GOALS.planClick)}
-              aria-label={t('planLink', { name: t(`plans.${plan.id}.name`) })}
-            >
-              <span className={styles.tag}>{price.term(plan)}</span>
-              <span className={styles.name}>{t(`plans.${plan.id}.name`)}</span>
-              <span className={styles.summary}>{t(`plans.${plan.id}.summary`)}</span>
-              <span className={styles.foot}>
-                <span className={styles.price}>{price.plan(plan)}</span>
-                <span
-                  className={styles.round}
-                  aria-hidden="true"
-                >
-                  <ArrowUpRightIcon />
-                </span>
-              </span>
-            </Link>
-          </li>
-        ))}
-      </ul>
-
-      <p
-        className={styles.caseOffer}
-        data-testid="case-offer"
-      >
-        {t('caseOffer')}
-      </p>
-
-      <div
-        className={styles.callout}
-        data-testid="mini-app-note"
-      >
-        <p className={styles.calloutTitle}>{t('miniAppNote.title')}</p>
-        <p className={styles.calloutText}>{t('miniAppNote.text', { max: price.max })}</p>
-        <StarIcon
-          className={styles.calloutStar}
-          size={96}
-        />
-      </div>
-
-      <div className={styles.block}>
-        <div className={styles.blockHead}>
-          <h3 className={styles.blockTitle}>{t('basicsHeading')}</h3>
-          <p className={styles.blockNote}>{t('basicsNote')}</p>
+            {t('heading')}
+          </h2>
+          <p className={styles.note}>
+            <Terms text={t('note')} />
+          </p>
         </div>
-        <PopBasics titleTag="h4" />
-      </div>
 
-      <div className={styles.block}>
-        <div className={styles.blockHead}>
-          <h3 className={styles.blockTitle}>{t('optionsHeading')}</h3>
-          <p className={styles.blockNote}>{t('optionsNote')}</p>
-        </div>
-        <PopOptions
-          items={options}
-          testId="options"
-        />
-      </div>
-
-      <div className={`${styles.block} ${styles.extrasBlock}`}>
-        <div className={styles.blockHead}>
-          <h3 className={styles.blockTitle}>{t('extrasHeading')}</h3>
-          <p className={styles.blockNote}>{t('extrasNote')}</p>
-        </div>
         <ul
-          className={styles.extras}
-          data-testid="extras"
+          className={styles.plans}
+          id="prices"
         >
-          {PRICING_EXTRAS.map((extra) => {
-            const plan = extraPlan(extra);
-
-            return (
-              <li
-                className={plan ? `${styles.extra} ${styles.extraLinked}` : styles.extra}
-                key={extra.id}
+          {PRICING_TABLE_PLANS.map((plan) => (
+            <li
+              className={styles.plan}
+              data-testid={`plan-${plan.id}`}
+              key={plan.id}
+            >
+              <Link
+                className={styles.card}
+                href={planPath(plan)}
+                onClick={() => reachGoal(GOALS.planClick)}
+                aria-label={t('planLink', { name: t(`plans.${plan.id}.name`) })}
               >
-                <div className={styles.extraHead}>
-                  <h4 className={styles.extraName}>
-                    {plan ? (
-                      <Link
-                        className={styles.extraLink}
-                        href={planPath(plan)}
-                        onClick={() => reachGoal(GOALS.planClick)}
-                      >
-                        {t(`extras.${extra.id}.name`)}
-                      </Link>
-                    ) : (
-                      t(`extras.${extra.id}.name`)
-                    )}
-                  </h4>
-                  <span className={styles.extraPrice}>{price.extra(extra)}</span>
-                </div>
-                <p className={styles.extraSummary}>{t(`extras.${extra.id}.summary`)}</p>
-                {plan ? (
+                <span className={styles.tag}>{price.term(plan)}</span>
+                <span className={styles.name}>{t(`plans.${plan.id}.name`)}</span>
+                <span className={styles.summary}>{t(`plans.${plan.id}.summary`)}</span>
+                <span className={styles.foot}>
+                  <span className={styles.price}>{price.plan(plan)}</span>
                   <span
-                    className={styles.extraArrow}
+                    className={styles.round}
                     aria-hidden="true"
                   >
                     <ArrowUpRightIcon />
                   </span>
-                ) : null}
-              </li>
-            );
-          })}
+                </span>
+              </Link>
+            </li>
+          ))}
         </ul>
-      </div>
+
+        <p
+          className={styles.caseOffer}
+          data-testid="case-offer"
+        >
+          <Terms text={t('caseOffer')} />
+        </p>
+
+        <div
+          className={styles.callout}
+          data-testid="mini-app-note"
+        >
+          <p className={styles.calloutTitle}>
+            <Terms text={t('miniAppNote.title')} />
+          </p>
+          <p className={styles.calloutText}>
+            <Terms text={t('miniAppNote.text', { max: price.max })} />
+          </p>
+          <StarIcon
+            className={styles.calloutStar}
+            size={96}
+          />
+        </div>
+
+        <div className={styles.block}>
+          <div className={styles.blockHead}>
+            <h3 className={styles.blockTitle}>{t('basicsHeading')}</h3>
+            <p className={styles.blockNote}>
+              <Terms text={t('basicsNote')} />
+            </p>
+          </div>
+          <PopBasics titleTag="h4" />
+        </div>
+
+        <div className={styles.block}>
+          <div className={styles.blockHead}>
+            <h3 className={styles.blockTitle}>{t('optionsHeading')}</h3>
+            <p className={styles.blockNote}>
+              <Terms text={t('optionsNote')} />
+            </p>
+          </div>
+          <PopOptions
+            items={options}
+            testId="options"
+          />
+        </div>
+
+        <div className={`${styles.block} ${styles.extrasBlock}`}>
+          <div className={styles.blockHead}>
+            <h3 className={styles.blockTitle}>{t('extrasHeading')}</h3>
+            <p className={styles.blockNote}>
+              <Terms text={t('extrasNote')} />
+            </p>
+          </div>
+          <ul
+            className={styles.extras}
+            data-testid="extras"
+          >
+            {PRICING_EXTRAS.map((extra) => {
+              const plan = extraPlan(extra);
+
+              return (
+                <li
+                  className={plan ? `${styles.extra} ${styles.extraLinked}` : styles.extra}
+                  key={extra.id}
+                >
+                  <div className={styles.extraHead}>
+                    <h4 className={styles.extraName}>
+                      {plan ? (
+                        <Link
+                          className={styles.extraLink}
+                          href={planPath(plan)}
+                          onClick={() => reachGoal(GOALS.planClick)}
+                        >
+                          {t(`extras.${extra.id}.name`)}
+                        </Link>
+                      ) : (
+                        t(`extras.${extra.id}.name`)
+                      )}
+                    </h4>
+                    <span className={styles.extraPrice}>{price.extra(extra)}</span>
+                  </div>
+                  <p className={styles.extraSummary}>
+                    <Terms text={t(`extras.${extra.id}.summary`)} />
+                  </p>
+                  {plan ? (
+                    <span
+                      className={styles.extraArrow}
+                      aria-hidden="true"
+                    >
+                      <ArrowUpRightIcon />
+                    </span>
+                  ) : null}
+                </li>
+              );
+            })}
+          </ul>
+        </div>
+      </PopTermScope>
     </section>
   );
 };

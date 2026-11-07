@@ -15,6 +15,7 @@ import type { DesignName, SectionProps } from '@/designs/types';
 import { LOCALES } from '@/i18n/consts';
 import en from '../../messages/en.json';
 import ru from '../../messages/ru.json';
+import { withoutTooltips } from './term-markup';
 
 vi.mock('next/font/local', () => ({ default: () => ({ className: '', style: {}, variable: '' }) }));
 
@@ -122,7 +123,7 @@ const decode = (text: string) =>
     .replaceAll(NBSP, ' ');
 
 /** Видимый текст: без тегов, неразрывный пробел — обычный (сравнение с переводом через `spaced`). */
-const textOf = (html: string) => decode(html.replace(/<[^>]*>/g, ''));
+const textOf = (html: string) => decode(withoutTooltips(html).replace(/<[^>]*>/g, ''));
 
 const spaced = (text: string) => text.replaceAll(NBSP, ' ');
 

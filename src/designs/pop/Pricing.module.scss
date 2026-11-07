@@ -175,6 +175,8 @@
 }
 
 .callout {
+  @include s.term-on-fill;
+
   position: relative;
   display: flex;
   flex-direction: column;

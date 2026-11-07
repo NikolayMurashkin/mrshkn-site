@@ -1,3 +1,4 @@
+import { Terms } from '@/components/Term';
 import type { SwissOptionsProps } from './types';
 import styles from './Options.module.scss';
 
@@ -11,14 +12,18 @@ export const SwissOptions = ({ items, testId, narrow = false }: SwissOptionsProp
         className={styles.option}
         key={item.id}
       >
-        <span className={styles.name}>{item.name}</span>
+        <span className={styles.name}>
+          <Terms text={item.name} />
+        </span>
         <span
           className={styles.price}
           data-testid="option-price"
         >
           {item.amount}
         </span>
-        <span className={styles.note}>{item.note}</span>
+        <span className={styles.note}>
+          <Terms text={item.note} />
+        </span>
       </li>
     ))}
   </ul>

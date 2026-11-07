@@ -138,7 +138,7 @@ test.describe('секция «Услуги и цены»', () => {
         }
       }
 
-      await expect(pricing).toContainText(CASE_OFFER_RU);
+      await expect(pricing).toContainText(CASE_OFFER_RU, { useInnerText: true });
       await expect(pricing.getByText('первым пяти заказчикам', { exact: false })).toBeVisible();
     });
 

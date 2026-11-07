@@ -11,6 +11,7 @@ import { TerminalSection } from '@/designs/terminal';
 import type { DesignName, SectionProps } from '@/designs/types';
 import en from '../../messages/en.json';
 import ru from '../../messages/ru.json';
+import { withoutTooltips } from './term-markup';
 
 vi.mock('next/font/local', () => ({ default: () => ({ className: '', style: {}, variable: '' }) }));
 
@@ -172,7 +173,7 @@ const decode = (text: string) =>
     .replace(/&amp;/g, '&');
 
 /** Видимый текст: без тегов, неразрывные пробелы остаются как есть. */
-const textOf = (html: string) => decode(html.replace(/<[^>]*>/g, ''));
+const textOf = (html: string) => decode(withoutTooltips(html).replace(/<[^>]*>/g, ''));
 
 const elementsOf = (html: string): Element[] => {
   const elements: Element[] = [];

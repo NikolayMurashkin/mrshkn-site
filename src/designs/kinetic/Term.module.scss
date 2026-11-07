@@ -1,0 +1,128 @@
+.term {
+  position: relative;
+  z-index: 1;
+}
+
+.termNowrap {
+  white-space: nowrap;
+}
+
+.termButton {
+  display: inline;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background-color: transparent;
+  background-image: linear-gradient(var(--term-mark), var(--term-mark));
+  background-repeat: no-repeat;
+  background-position: left center;
+  background-size: 0% 100%;
+  color: inherit;
+  font: inherit;
+  letter-spacing: inherit;
+  text-transform: inherit;
+  text-align: inherit;
+  text-decoration-line: underline;
+  text-decoration-style: dotted;
+  text-decoration-color: var(--line-strong);
+  text-decoration-thickness: var(--border-width-strong);
+  text-underline-offset: 0.24em;
+  text-decoration-skip-ink: none;
+  cursor: help;
+  transition:
+    text-decoration-color var(--duration-fast) var(--ease-out),
+    background-size var(--duration-base) var(--ease-out);
+
+  &:focus-visible {
+    text-decoration-style: solid;
+    text-decoration-color: var(--accent-ink);
+  }
+
+  @media (hover: hover) {
+    &:hover {
+      text-decoration-style: solid;
+      text-decoration-color: var(--accent-ink);
+    }
+  }
+}
+
+.term .termButton:focus-visible {
+  outline-offset: 2px;
+}
+
+.term:has(> .termTooltip:not([hidden])) .termButton {
+  text-decoration-style: solid;
+  text-decoration-color: var(--accent-ink);
+  background-size: 100% 100%;
+}
+
+.termTooltip {
+  position: fixed;
+  inset: auto;
+  width: max-content;
+  max-width: min(19em, 100vw - 16px);
+  margin: 0;
+  padding: var(--space-12) var(--space-16);
+  overflow: visible;
+  border: 0;
+  border-radius: var(--radius-inner);
+  background: var(--ink);
+  box-shadow: var(--shadow-floating);
+  color: var(--ink-inverse);
+  font-family: var(--font-text);
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.45;
+  letter-spacing: normal;
+  text-align: left;
+  text-transform: none;
+  white-space: normal;
+  hyphens: none;
+  word-wrap: break-word;
+  overflow-wrap: anywhere;
+  min-width: 0;
+  cursor: auto;
+
+  &[hidden] {
+    display: none;
+  }
+
+  &[data-side]::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+  }
+
+  &[data-side='top']::before {
+    top: 100%;
+    height: var(--term-gap);
+  }
+
+  &[data-side='bottom']::before {
+    bottom: 100%;
+    height: var(--term-gap);
+  }
+
+  &:not([hidden]) {
+    animation: term-in var(--duration-fast) var(--ease-out);
+  }
+}
+
+@keyframes term-in {
+  from {
+    opacity: 0;
+    translate: 0 4px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .termButton {
+    transition: none;
+  }
+
+  .termTooltip:not([hidden]) {
+    animation: none;
+  }
+}

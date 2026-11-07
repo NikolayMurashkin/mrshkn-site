@@ -1,3 +1,4 @@
+import type { ReactNode } from 'react';
 import type { ServiceOptionView, ServiceThreeD, ServiceTiers } from '@/components/ServicePage/types';
 import type { BriefChoice } from '@/lib/brief/types';
 import type { EDITORIAL_WORKS_LAYOUTS, EDITORIAL_WORKS_SPREAD } from './consts';
@@ -72,3 +73,5 @@ export type EditorialProcessCardsProps = {
   /** Колонка страницы услуги рядом с карточкой тарифа: заголовок блока мельче, чем на главной. */
   narrow?: boolean;
 };
+
+export type EditorialTermScopeProps = { children: ReactNode };

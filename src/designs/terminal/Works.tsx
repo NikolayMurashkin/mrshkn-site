@@ -1,5 +1,6 @@
 import { useTranslations } from 'next-intl';
 import { CaseImage } from '@/components/CaseImage';
+import { Terms } from '@/components/Term';
 import { CASE_CARD_SIZES } from '@/components/consts';
 import { CARD_METRICS_LIMIT, caseHref, WORK_PAGE_PATH } from '@/content/work';
 import { Link } from '@/i18n/navigation';
@@ -7,6 +8,7 @@ import { DESIGN_LABELS } from '../consts';
 import type { WorksProps } from '../types';
 import { worksView } from '../works';
 import styles from './Works.module.scss';
+import { TerminalTermScope } from './TermScope';
 
 export const TerminalWorks = ({ cases, variant = 'home' }: WorksProps) => {
   const t = useTranslations('work');
@@ -25,95 +27,99 @@ export const TerminalWorks = ({ cases, variant = 'home' }: WorksProps) => {
       id="work"
       aria-labelledby="work-heading"
     >
-      <div className={styles.head}>
-        <Heading
-          className={styles.heading}
-          id="work-heading"
-        >
-          {t('heading')}
-        </Heading>
-        <p className={styles.note}>
-          <span
-            className={styles.prompt}
-            aria-hidden="true"
+      <TerminalTermScope>
+        <div className={styles.head}>
+          <Heading
+            className={styles.heading}
+            id="work-heading"
           >
-            {'//'}
-          </span>{' '}
-          {t('note')}
-        </p>
-      </div>
-      <ul className={styles.list}>
-        {shown.map((item) => (
-          <li
-            className={styles.card}
-            data-testid="case-card"
-            key={item.slug}
-          >
-            <div className={styles.window}>
-              <div
-                className={styles.bar}
-                aria-hidden="true"
-              >
-                <span className={styles.dot} />
-                <span className={styles.dot} />
-                <span className={styles.dot} />
+            {t('heading')}
+          </Heading>
+          <p className={styles.note}>
+            <span
+              className={styles.prompt}
+              aria-hidden="true"
+            >
+              {'//'}
+            </span>{' '}
+            <Terms text={t('note')} />
+          </p>
+        </div>
+        <ul className={styles.list}>
+          {shown.map((item) => (
+            <li
+              className={styles.card}
+              data-testid="case-card"
+              key={item.slug}
+            >
+              <div className={styles.window}>
+                <div
+                  className={styles.bar}
+                  aria-hidden="true"
+                >
+                  <span className={styles.dot} />
+                  <span className={styles.dot} />
+                  <span className={styles.dot} />
+                </div>
+                <CaseImage
+                  className={styles.cover}
+                  image={item.cover}
+                  sizes={CASE_CARD_SIZES}
+                />
               </div>
-              <CaseImage
-                className={styles.cover}
-                image={item.cover}
-                sizes={CASE_CARD_SIZES}
-              />
-            </div>
-            <div className={styles.body}>
-              <span className={styles.kind}>{t(`kind.${item.kind}`)}</span>
-              <h3 className={styles.title}>
-                <Link
-                  className={styles.link}
-                  href={caseHref(item.slug)}
-                >
-                  {item.title}
-                </Link>
-              </h3>
-              <span className={styles.meta}>
-                {niches(item.niche)}
-                {item.design ? ` · ${t('design', { design: DESIGN_LABELS[item.design] })}` : null}
-              </span>
-              {item.metrics.length > 0 ? (
-                <ul className={styles.metrics}>
-                  {item.metrics.slice(0, CARD_METRICS_LIMIT).map((metric, index) => (
-                    <li
-                      className={styles.metric}
-                      data-testid="case-metric"
-                      key={index}
-                    >
-                      <span className={styles.metricValue}>{metric.value}</span>
-                      <span className={styles.metricLabel}>{metric.label}</span>
-                    </li>
-                  ))}
-                </ul>
-              ) : null}
-              {item.demoUrl ? (
-                <a
-                  className={styles.demo}
-                  href={item.demoUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  {t('demoLink')}
-                </a>
-              ) : null}
-            </div>
-          </li>
-        ))}
-      </ul>
-      {hasMore ? (
-        <Link
-          className={styles.all}
-          href={WORK_PAGE_PATH}
-        >
-          {t('allLink')}
-        </Link>
-      ) : null}
+              <div className={styles.body}>
+                <span className={styles.kind}>
+                  <Terms text={t(`kind.${item.kind}`)} />
+                </span>
+                <h3 className={styles.title}>
+                  <Link
+                    className={styles.link}
+                    href={caseHref(item.slug)}
+                  >
+                    {item.title}
+                  </Link>
+                </h3>
+                <span className={styles.meta}>
+                  <Terms text={niches(item.niche)} />
+                  {item.design ? ` · ${t('design', { design: DESIGN_LABELS[item.design] })}` : null}
+                </span>
+                {item.metrics.length > 0 ? (
+                  <ul className={styles.metrics}>
+                    {item.metrics.slice(0, CARD_METRICS_LIMIT).map((metric, index) => (
+                      <li
+                        className={styles.metric}
+                        data-testid="case-metric"
+                        key={index}
+                      >
+                        <span className={styles.metricValue}>{metric.value}</span>
+                        <span className={styles.metricLabel}>{metric.label}</span>
+                      </li>
+                    ))}
+                  </ul>
+                ) : null}
+                {item.demoUrl ? (
+                  <a
+                    className={styles.demo}
+                    href={item.demoUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    {t('demoLink')}
+                  </a>
+                ) : null}
+              </div>
+            </li>
+          ))}
+        </ul>
+        {hasMore ? (
+          <Link
+            className={styles.all}
+            href={WORK_PAGE_PATH}
+          >
+            {t('allLink')}
+          </Link>
+        ) : null}
+      </TerminalTermScope>
     </section>
   );
 };

@@ -8,6 +8,7 @@ import { SwissSection } from '@/designs/swiss';
 import type { SectionProps } from '@/designs/types';
 import en from '../../messages/en.json';
 import ru from '../../messages/ru.json';
+import { withoutTooltips } from './term-markup';
 
 vi.mock('next/font/local', () => ({ default: () => ({ className: '', style: {}, variable: '' }) }));
 
@@ -45,7 +46,7 @@ const decode = (text: string) =>
     .replace(/&#x27;/g, "'")
     .replace(/&amp;/g, '&');
 
-const textOf = (html: string) => decode(html.replace(/<[^>]*>/g, ''));
+const textOf = (html: string) => decode(withoutTooltips(html).replace(/<[^>]*>/g, ''));
 
 const headingsOf = (html: string) =>
   [...html.matchAll(/<h1\b[^>]*>([\s\S]*?)<\/h1>/g)].map(([, inner]) => textOf(inner));

@@ -1,4 +1,5 @@
 import { createElement } from 'react';
+import { Terms } from '@/components/Term';
 import { SWISS_STEP_TEXT_TAGS } from './consts';
 import type { SwissStepsProps } from './types';
 import styles from './Steps.module.scss';
@@ -16,16 +17,28 @@ export const SwissSteps = ({ steps, testId, titleTag, narrow = false }: SwissSte
       >
         <span className={styles.when}>
           {step.value === null ? (
-            <span className={styles.words}>{step.label}</span>
+            <span className={styles.words}>
+              <Terms text={step.label} />
+            </span>
           ) : (
             <>
-              {step.label ? <span className={styles.kicker}>{step.label}</span> : null}
-              <span className={styles.numeral}>{step.value}</span>
+              {step.label ? (
+                <span className={styles.kicker}>
+                  <Terms text={step.label} />
+                </span>
+              ) : null}
+              <span className={styles.numeral}>
+                <Terms text={step.value} />
+              </span>
             </>
           )}
         </span>
-        {createElement(titleTag, { className: styles.title }, step.title)}
-        {createElement(SWISS_STEP_TEXT_TAGS[titleTag], { className: styles.text }, step.text)}
+        {createElement(
+          titleTag,
+          { className: styles.title },
+          titleTag === 'span' ? <Terms text={step.title} /> : step.title,
+        )}
+        {createElement(SWISS_STEP_TEXT_TAGS[titleTag], { className: styles.text }, <Terms text={step.text} />)}
       </li>
     ))}
   </ol>

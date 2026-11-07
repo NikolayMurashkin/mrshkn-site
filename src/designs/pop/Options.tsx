@@ -1,3 +1,4 @@
+import { Terms } from '@/components/Term';
 import type { PopOptionsProps } from './types';
 import styles from './Options.module.scss';
 
@@ -11,7 +12,9 @@ export const PopOptions = ({ items, testId, narrow = false }: PopOptionsProps) =
         className={styles.option}
         key={item.id}
       >
-        <span className={styles.name}>{item.name}</span>
+        <span className={styles.name}>
+          <Terms text={item.name} />
+        </span>
         <span
           className={styles.dots}
           aria-hidden="true"
@@ -22,7 +25,9 @@ export const PopOptions = ({ items, testId, narrow = false }: PopOptionsProps) =
         >
           {item.amount}
         </span>
-        <span className={styles.note}>{item.note}</span>
+        <span className={styles.note}>
+          <Terms text={item.note} />
+        </span>
       </li>
     ))}
   </ul>

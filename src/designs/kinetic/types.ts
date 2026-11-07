@@ -82,3 +82,5 @@ export type KineticProcessCardsProps = {
   /** Колонка страницы услуги рядом с карточкой тарифа: заголовок блока мельче, чем на главной. */
   narrow?: boolean;
 };
+
+export type KineticTermScopeProps = { children: ReactNode };

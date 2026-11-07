@@ -1,11 +1,13 @@
 import { useTranslations } from 'next-intl';
 import { ProcessScale, processScaleClasses } from '@/components/ProcessScale';
+import { Terms } from '@/components/Term';
 import { PROCESS_STEPS, PROMISES } from '@/content/process';
 import { useProcessCards } from '@/components/use-process-cards';
 import { POP_SCALE_SWATCHES } from './consts';
 import { PopProcessCards } from './ProcessCards';
 import { PopSteps } from './Steps';
 import styles from './Process.module.scss';
+import { PopTermScope } from './TermScope';
 
 export const PopProcess = () => {
   const t = useTranslations('process');
@@ -27,67 +29,81 @@ export const PopProcess = () => {
       id="process"
       aria-labelledby="process-heading"
     >
-      <div className={styles.head}>
-        <h2
-          className={styles.heading}
-          id="process-heading"
-        >
-          {t('promisesHeading')}
-        </h2>
-        <p className={styles.note}>{t('contractNote')}</p>
-      </div>
-
-      <ul
-        className={styles.promises}
-        data-testid="promises"
-      >
-        {PROMISES.map((promise) => (
-          <li
-            className={styles.promise}
-            key={promise}
+      <PopTermScope>
+        <div className={styles.head}>
+          <h2
+            className={styles.heading}
+            id="process-heading"
           >
-            <span className={styles.kicker}>{t(`promises.${promise}.kicker`)}</span>
-            <span className={styles.value}>{t(`promises.${promise}.value`)}</span>
-            <span className={styles.detail}>{t(`promises.${promise}.detail`)}</span>
-          </li>
-        ))}
-      </ul>
+            {t('promisesHeading')}
+          </h2>
+          <p className={styles.note}>
+            <Terms text={t('contractNote')} />
+          </p>
+        </div>
 
-      {cards.prestart ? <PopProcessCards block={cards.prestart} /> : null}
+        <ul
+          className={styles.promises}
+          data-testid="promises"
+        >
+          {PROMISES.map((promise) => (
+            <li
+              className={styles.promise}
+              key={promise}
+            >
+              <span className={styles.kicker}>
+                <Terms text={t(`promises.${promise}.kicker`)} />
+              </span>
+              <span className={styles.value}>
+                <Terms text={t(`promises.${promise}.value`)} />
+              </span>
+              <span className={styles.detail}>
+                <Terms text={t(`promises.${promise}.detail`)} />
+              </span>
+            </li>
+          ))}
+        </ul>
 
-      <h3 className={styles.subhead}>{t('heading')}</h3>
+        {cards.prestart ? <PopProcessCards block={cards.prestart} /> : null}
 
-      <ProcessScale
-        classes={processScaleClasses(styles)}
-        renderBar={(item) => {
-          if (item.kind === 'day') {
-            return <span className={styles.scaleChip}>{item.day}</span>;
-          }
+        <h3 className={styles.subhead}>{t('heading')}</h3>
 
-          if (item.kind === 'style') {
+        <ProcessScale
+          classes={processScaleClasses(styles)}
+          renderBar={(item) => {
+            if (item.kind === 'day') {
+              return <span className={styles.scaleChip}>{item.day}</span>;
+            }
+
+            if (item.kind === 'style') {
+              return (
+                <span className={styles.scaleSwatches}>
+                  {POP_SCALE_SWATCHES.map((swatch) => (
+                    <span
+                      className={styles[swatch]}
+                      key={swatch}
+                    />
+                  ))}
+                </span>
+              );
+            }
+
             return (
-              <span className={styles.scaleSwatches}>
-                {POP_SCALE_SWATCHES.map((swatch) => (
-                  <span
-                    className={styles[swatch]}
-                    key={swatch}
-                  />
-                ))}
+              <span className={styles.scaleStop}>
+                <Terms text={t('scale.pop.stop')} />
               </span>
             );
-          }
+          }}
+        />
 
-          return <span className={styles.scaleStop}>{t('scale.pop.stop')}</span>;
-        }}
-      />
+        <PopSteps
+          steps={steps}
+          testId="steps"
+          titleTag="span"
+        />
 
-      <PopSteps
-        steps={steps}
-        testId="steps"
-        titleTag="span"
-      />
-
-      {cards.after ? <PopProcessCards block={cards.after} /> : null}
+        {cards.after ? <PopProcessCards block={cards.after} /> : null}
+      </PopTermScope>
     </section>
   );
 };

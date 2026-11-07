@@ -1,3 +1,4 @@
+import { Terms } from '@/components/Term';
 import type { EditorialOptionsProps } from './types';
 import styles from './Options.module.scss';
 
@@ -12,7 +13,9 @@ export const EditorialOptions = ({ items, testId, narrow = false }: EditorialOpt
         key={item.id}
       >
         <span className={styles.line}>
-          <span className={styles.name}>{item.name}</span>
+          <span className={styles.name}>
+            <Terms text={item.name} />
+          </span>
           <span
             className={styles.leader}
             aria-hidden="true"
@@ -24,7 +27,9 @@ export const EditorialOptions = ({ items, testId, narrow = false }: EditorialOpt
         >
           {item.amount}
         </span>
-        <span className={styles.note}>{item.note}</span>
+        <span className={styles.note}>
+          <Terms text={item.note} />
+        </span>
       </li>
     ))}
   </ul>

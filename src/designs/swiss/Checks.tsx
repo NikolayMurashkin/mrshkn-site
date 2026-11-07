@@ -1,4 +1,4 @@
-import { renderNowrap } from '@/designs/nowrap';
+import { Terms } from '@/components/Term';
 import type { SwissChecksProps } from './types';
 import styles from './Checks.module.scss';
 
@@ -9,7 +9,10 @@ export const SwissChecks = ({ items, skipped = false }: SwissChecksProps) => (
         className={styles.check}
         key={item}
       >
-        {renderNowrap(item, styles.nowrap)}
+        <Terms
+          text={item}
+          nowrapClassName={styles.nowrap}
+        />
       </li>
     ))}
   </ul>

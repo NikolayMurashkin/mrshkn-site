@@ -1,5 +1,6 @@
 import { useTranslations } from 'next-intl';
 import { CaseImage } from '@/components/CaseImage';
+import { Terms } from '@/components/Term';
 import { CASE_COVER_SIZES, CASE_SHOT_SIZES } from '@/components/consts';
 import { splitParagraphs, WORK_PAGE_PATH } from '@/content/work';
 import { Link } from '@/i18n/navigation';
@@ -7,6 +8,7 @@ import { DESIGN_LABELS } from '../consts';
 import type { CaseProps } from '../types';
 import { ArrowLeftIcon, ArrowUpRightIcon } from './icons';
 import styles from './Case.module.scss';
+import { EditorialTermScope } from './TermScope';
 
 export const EditorialCase = ({ caseItem }: CaseProps) => {
   const t = useTranslations('work');
@@ -105,26 +107,28 @@ export const EditorialCase = ({ caseItem }: CaseProps) => {
           aria-labelledby={`case-${id}-heading`}
           key={id}
         >
-          <div className={styles.margin}>
-            <h2
-              className={styles.heading}
-              id={`case-${id}-heading`}
-            >
-              {t(id)}
-            </h2>
-          </div>
-          <div className={styles.main}>
-            <div className={styles.prose}>
-              {paragraphs.map((paragraph, index) => (
-                <p
-                  className={textIndex === 0 && index === 0 ? styles.first : undefined}
-                  key={index}
-                >
-                  {paragraph}
-                </p>
-              ))}
+          <EditorialTermScope>
+            <div className={styles.margin}>
+              <h2
+                className={styles.heading}
+                id={`case-${id}-heading`}
+              >
+                {t(id)}
+              </h2>
             </div>
-          </div>
+            <div className={styles.main}>
+              <div className={styles.prose}>
+                {paragraphs.map((paragraph, index) => (
+                  <p
+                    className={textIndex === 0 && index === 0 ? styles.first : undefined}
+                    key={index}
+                  >
+                    <Terms text={paragraph} />
+                  </p>
+                ))}
+              </div>
+            </div>
+          </EditorialTermScope>
         </section>
       ))}
 
@@ -134,27 +138,29 @@ export const EditorialCase = ({ caseItem }: CaseProps) => {
           data-testid="case-stack"
           aria-labelledby="case-stack-heading"
         >
-          <div className={styles.margin}>
-            <h2
-              className={styles.heading}
-              id="case-stack-heading"
-            >
-              {t('stack')}
-            </h2>
-          </div>
-          <div className={styles.main}>
-            <ul className={styles.stack}>
-              {stack.map((item, index) => (
-                <li
-                  className={styles.stackItem}
-                  key={index}
-                  translate="no"
-                >
-                  {item}
-                </li>
-              ))}
-            </ul>
-          </div>
+          <EditorialTermScope>
+            <div className={styles.margin}>
+              <h2
+                className={styles.heading}
+                id="case-stack-heading"
+              >
+                {t('stack')}
+              </h2>
+            </div>
+            <div className={styles.main}>
+              <ul className={styles.stack}>
+                {stack.map((item, index) => (
+                  <li
+                    className={styles.stackItem}
+                    key={index}
+                    translate="no"
+                  >
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </EditorialTermScope>
         </section>
       ) : null}
 
@@ -164,28 +170,30 @@ export const EditorialCase = ({ caseItem }: CaseProps) => {
           data-testid="case-results"
           aria-labelledby="case-results-heading"
         >
-          <div className={styles.margin}>
-            <h2
-              className={styles.heading}
-              id="case-results-heading"
-            >
-              {t('results')}
-            </h2>
-          </div>
-          <div className={styles.main}>
-            <ul className={styles.metrics}>
-              {metrics.map((metric, index) => (
-                <li
-                  className={styles.metric}
-                  data-testid="case-metric"
-                  key={index}
-                >
-                  <span className={styles.metricValue}>{metric.value}</span>
-                  <span className={styles.metricLabel}>{metric.label}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
+          <EditorialTermScope>
+            <div className={styles.margin}>
+              <h2
+                className={styles.heading}
+                id="case-results-heading"
+              >
+                {t('results')}
+              </h2>
+            </div>
+            <div className={styles.main}>
+              <ul className={styles.metrics}>
+                {metrics.map((metric, index) => (
+                  <li
+                    className={styles.metric}
+                    data-testid="case-metric"
+                    key={index}
+                  >
+                    <span className={styles.metricValue}>{metric.value}</span>
+                    <span className={styles.metricLabel}>{metric.label}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </EditorialTermScope>
         </section>
       ) : null}
 
@@ -195,21 +203,23 @@ export const EditorialCase = ({ caseItem }: CaseProps) => {
           data-testid="case-lighthouse"
           aria-labelledby="case-lighthouse-heading"
         >
-          <div className={styles.margin}>
-            <h2
-              className={styles.heading}
-              id="case-lighthouse-heading"
-            >
-              {t('lighthouse')}
-            </h2>
-          </div>
-          <div className={styles.main}>
-            <CaseImage
-              className={styles.shot}
-              image={lighthouse}
-              sizes={CASE_SHOT_SIZES}
-            />
-          </div>
+          <EditorialTermScope>
+            <div className={styles.margin}>
+              <h2
+                className={styles.heading}
+                id="case-lighthouse-heading"
+              >
+                {t('lighthouse')}
+              </h2>
+            </div>
+            <div className={styles.main}>
+              <CaseImage
+                className={styles.shot}
+                image={lighthouse}
+                sizes={CASE_SHOT_SIZES}
+              />
+            </div>
+          </EditorialTermScope>
         </section>
       ) : null}
     </article>

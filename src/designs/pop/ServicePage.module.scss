@@ -322,6 +322,8 @@
 }
 
 .card {
+  @include s.term-on-fill;
+
   display: flex;
   flex-direction: column;
   gap: var(--space-20);

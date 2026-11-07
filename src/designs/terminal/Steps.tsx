@@ -1,4 +1,5 @@
 import { createElement } from 'react';
+import { Terms } from '@/components/Term';
 import type { TerminalStepsProps } from './types';
 import styles from './Steps.module.scss';
 
@@ -13,9 +14,17 @@ export const TerminalSteps = ({ steps, testId, titleTag, narrow = false }: Termi
         data-day={step.day}
         key={step.id}
       >
-        <span className={styles.label}>{step.label}</span>
-        {createElement(titleTag, { className: styles.title }, step.title)}
-        <span className={styles.text}>{step.text}</span>
+        <span className={styles.label}>
+          <Terms text={step.label} />
+        </span>
+        {createElement(
+          titleTag,
+          { className: styles.title },
+          titleTag === 'span' ? <Terms text={step.title} /> : step.title,
+        )}
+        <span className={styles.text}>
+          <Terms text={step.text} />
+        </span>
       </li>
     ))}
   </ol>
