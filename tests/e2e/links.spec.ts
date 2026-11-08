@@ -1,5 +1,5 @@
 import { expect, test, type Locator, type Page } from '@playwright/test';
-import { STUDIO_EMAIL, TELEGRAM_URL } from '@/lib/consts';
+import { STUDIO_EMAIL, STUDIO_PHONE_HREF, TELEGRAM_URL } from '@/lib/consts';
 import { DESIGNS, LOCALES } from './consts';
 import { openDesign } from './open-design';
 
@@ -39,7 +39,7 @@ const hrefsOf = async (page: Page, path: string) => {
 };
 
 /**
- * Внешних адреса два — студия в Telegram и почта студии из подвала: чужой сети в тестах нет, поэтому они пропускаются
+ * Внешних адреса три — студия в Telegram, почта и телефон студии: чужой сети в тестах нет, поэтому они пропускаются
  * точным совпадением, остальные ссылки обязаны быть внутренними.
  *
  * Ссылка проверяется до конца: адрес отдает 200, а якорь ищется в DOM той страницы, куда ссылка
@@ -56,7 +56,7 @@ const checkLinks = async (page: Page, locale: string, path: string) => {
   expect(hrefs.filter((href) => href === '#' || href === '')).toEqual([]);
 
   for (const href of hrefs) {
-    if (href === TELEGRAM_URL || href === `mailto:${STUDIO_EMAIL}`) {
+    if ([TELEGRAM_URL, `mailto:${STUDIO_EMAIL}`, STUDIO_PHONE_HREF].includes(href)) {
       continue;
     }
 

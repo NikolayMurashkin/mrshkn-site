@@ -8,7 +8,7 @@ import { DESIGN_NAMES, NAV_ITEMS } from '@/designs/consts';
 import { navHref } from '@/designs/nav';
 import { GOALS } from '@/lib/analytics/consts';
 import { BRIEF_HREF } from '@/lib/brief/consts';
-import { TELEGRAM_URL } from '@/lib/consts';
+import { STUDIO_PHONE, STUDIO_PHONE_HREF, TELEGRAM_URL } from '@/lib/consts';
 import enMessages from '../../messages/en.json';
 import ruMessages from '../../messages/ru.json';
 
@@ -822,6 +822,21 @@ describe('состав мобильной панели', () => {
       expectOpen();
     },
   );
+
+  it.each(DESIGN_NAMES)('C6 %s: телефон — в шапке и в панели, ссылкой tel: с номером', async (design) => {
+    route.pathname = '/ru';
+    route.locale = 'ru';
+    await renderHeader(design);
+
+    const selector = `a[href="${STUDIO_PHONE_HREF}"]`;
+
+    expect(document.querySelectorAll(selector), 'в закрытой шапке один телефон').toHaveLength(1);
+
+    const links = (await openMenu()).querySelectorAll(selector);
+
+    expect(links, 'в панели один телефон').toHaveLength(1);
+    expect(readableText(links[0] as HTMLAnchorElement)).toContain(STUDIO_PHONE);
+  });
 
   it.each(DESIGN_NAMES.flatMap((design) => (['ru', 'en'] as const).map((locale) => [design, locale] as const)))(
     'C5 %s, %s: Telegram в панели — адрес студии в новой вкладке, клик — цель telegramClick',

@@ -2,6 +2,7 @@ import { useLocale, useTranslations } from 'next-intl';
 import { useMemo } from 'react';
 import { MoonIcon } from '@/components/icons';
 import { LocaleSwitcher } from '@/components/LocaleSwitcher';
+import { PhoneLink } from '@/components/PhoneLink';
 import { TelegramLink } from '@/components/TelegramLink';
 import { ThemeToggle } from '@/components/ThemeToggle';
 import { SERVICES } from '@/content/services';
@@ -48,6 +49,7 @@ export const EditorialHeader = ({ hasCases }: HeaderProps) => {
           <span className={styles.kicker}>{t('header.kicker')}</span>
           <span className={styles.location}>{t('header.location')}</span>
           <div className={styles.controls}>
+            <PhoneLink className={styles.phone} />
             <LocaleSwitcher
               className={styles.locales}
               itemClassName={styles.locale}
@@ -131,6 +133,7 @@ export const EditorialHeader = ({ hasCases }: HeaderProps) => {
                 ))}
               </ul>
             </nav>
+            <PhoneLink className={styles.panelPhone} />
             <TelegramLink className={styles.panelTelegram}>{t('footer.telegram')}</TelegramLink>
             <div className={styles.panelFoot}>
               <div className={styles.panelControls}>

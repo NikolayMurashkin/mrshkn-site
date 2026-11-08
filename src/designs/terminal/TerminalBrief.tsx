@@ -15,6 +15,7 @@ import {
   NAME_MAX_LENGTH,
 } from '@/lib/brief/consts';
 import { PRIVACY_HREF } from '@/lib/consts';
+import { withEmailLinks } from '../email-links';
 import { TerminalChoices } from './TerminalChoices';
 import { TerminalDesignChoice } from './TerminalDesignChoice';
 import styles from './TerminalBrief.module.scss';
@@ -285,7 +286,7 @@ export const TerminalBrief = ({ design, plan, niche }: BriefProps) => {
           data-testid="brief-error"
           role="alert"
         >
-          {t('error')}
+          {withEmailLinks(t('error'))}
         </p>
       ) : null}
     </main>

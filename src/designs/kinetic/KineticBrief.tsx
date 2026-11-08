@@ -15,6 +15,7 @@ import {
   NAME_MAX_LENGTH,
 } from '@/lib/brief/consts';
 import { PRIVACY_HREF } from '@/lib/consts';
+import { withEmailLinks } from '../email-links';
 import { buttonClass } from './button';
 import { ArrowRightIcon } from './icons';
 import { KineticChoices } from './KineticChoices';
@@ -290,7 +291,7 @@ export const KineticBrief = ({ design, plan, niche }: BriefProps) => {
           data-testid="brief-error"
           role="alert"
         >
-          {t('error')}
+          {withEmailLinks(t('error'))}
         </p>
       ) : null}
     </main>

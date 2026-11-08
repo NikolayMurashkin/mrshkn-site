@@ -4,6 +4,7 @@ import type { ReviewProps } from '@/components/Review/types';
 import { useReview } from '@/components/Review/use-review';
 import { REVIEW_ANSWERS, REVIEW_CONSENT_VERSION } from '@/lib/review/consts';
 import type { ReviewDocumentText } from '@/lib/review/types';
+import { withEmailLinks } from '../email-links';
 import { ArrowRightIcon } from './icons';
 import { KineticReviewDocument } from './KineticReviewDocument';
 import { KineticReviewField } from './KineticReviewField';
@@ -120,7 +121,7 @@ export const KineticReview = ({ view: initialView, code, project }: ReviewProps)
           >
             {t('groups.documents.title')}
           </h2>
-          <p className={cls.note}>{t('groups.documents.note')}</p>
+          <p className={cls.note}>{withEmailLinks(t('groups.documents.note'))}</p>
           <KineticReviewDocument
             id="consent"
             text={consentText}
@@ -197,7 +198,7 @@ export const KineticReview = ({ view: initialView, code, project }: ReviewProps)
             className={cls.error}
             role="alert"
           >
-            {status === 'fields' ? t('fieldsError') : t('error')}
+            {status === 'fields' ? t('fieldsError') : withEmailLinks(t('error'))}
           </p>
         ) : null}
       </form>

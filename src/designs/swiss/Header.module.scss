@@ -399,3 +399,17 @@
     height: 48px;
   }
 }
+
+a.phone {
+  min-height: 0;
+}
+
+.panelPhone {
+  align-self: flex-start;
+}
+
+@media (max-width: 1230px) {
+  a.phone {
+    display: none;
+  }
+}

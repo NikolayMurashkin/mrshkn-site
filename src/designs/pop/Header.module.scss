@@ -390,3 +390,17 @@
     font-size: 24px;
   }
 }
+
+a.phone {
+  min-height: 0;
+}
+
+.panelPhone {
+  align-self: flex-start;
+}
+
+@media (max-width: 1320px) {
+  a.phone {
+    display: none;
+  }
+}

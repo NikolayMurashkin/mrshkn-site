@@ -5,6 +5,7 @@ import { useAudit } from '@/components/Audit/use-audit';
 import { Link } from '@/i18n/navigation';
 import { HONEYPOT_FIELD } from '@/lib/brief/consts';
 import { PRIVACY_HREF } from '@/lib/consts';
+import { withEmailLinks } from '../email-links';
 import brief from './TerminalBrief.module.scss';
 import styles from './Audit.module.scss';
 
@@ -88,7 +89,7 @@ export const TerminalAudit = () => {
                   [ok]
                 </p>
                 <h3 className={styles.successTitle}>{t('success.title')}</h3>
-                <p className={styles.successText}>{t('success.text')}</p>
+                <p className={styles.successText}>{withEmailLinks(t('success.text'))}</p>
               </div>
             </div>
           ) : (
@@ -169,7 +170,7 @@ export const TerminalAudit = () => {
                   data-testid="audit-error"
                   role="alert"
                 >
-                  {t('error')}
+                  {withEmailLinks(t('error'))}
                 </p>
               ) : null}
               <button

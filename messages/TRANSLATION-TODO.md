@@ -26,6 +26,12 @@
 | `services.industry.niches.beauty.{title,text}`     | Салон красоты; мастера, цены, отзывы, заявка на запись, админка, приложение записи в Telegram отдельным тарифом | Beauty salon; specialists, prices, reviews, booking requests, admin panel, the Telegram booking app as a separate plan (“Book”, “Industry app in Telegram”) |
 | `servicePage.tryIt.apps.salon.{title,module,text}` | Салон красоты; Запись; клиент выбирает услугу, мастера и время в Telegram                                       | Beauty salon; Booking; the customer picks a service, a specialist and a time inside Telegram                                                                |
 
+Написано 08.11.2026 — подпись телефона студии в шапке, панели меню и подвале:
+
+| Ключ                | ru                   | en                |
+| ------------------- | -------------------- | ----------------- |
+| `footer.phoneLabel` | «Звоните или пишите» | «Call or text us» |
+
 ## Вычитано Николаем 05.11.2026
 
 Написано и вычитано 05.11.2026 — тексты логотипа и мелкие расхождения с договором и Заказом:

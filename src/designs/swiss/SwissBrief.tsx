@@ -15,6 +15,7 @@ import {
   NAME_MAX_LENGTH,
 } from '@/lib/brief/consts';
 import { PRIVACY_HREF } from '@/lib/consts';
+import { withEmailLinks } from '../email-links';
 import { ArrowRightIcon } from './icons';
 import { SwissChoices } from './SwissChoices';
 import { SwissDesignChoice } from './SwissDesignChoice';
@@ -293,7 +294,7 @@ export const SwissBrief = ({ design, plan, niche }: BriefProps) => {
             data-testid="brief-error"
             role="alert"
           >
-            {t('error')}
+            {withEmailLinks(t('error'))}
           </p>
         ) : null}
       </div>

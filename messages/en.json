@@ -507,6 +507,7 @@
     "invitation": "Tell us about your project — during working hours we reply within an hour.",
     "cta": "Send a request",
     "telegram": "Message us on Telegram",
+    "phoneLabel": "Call or text us",
     "replyTime": "We reply within an hour on weekdays, 10:00–19:00 Moscow time",
     "command": "open t.me/mrshkn_studio",
     "sectionMark": "Contact",

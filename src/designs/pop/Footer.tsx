@@ -1,4 +1,5 @@
 import { useTranslations } from 'next-intl';
+import { PhoneLink } from '@/components/PhoneLink';
 import { TelegramLink } from '@/components/TelegramLink';
 import { useLegalLinks } from '@/components/use-legal-links';
 import { Link } from '@/i18n/navigation';
@@ -31,6 +32,7 @@ export const PopFooter = () => {
             </Link>
             <TelegramLink className={styles.telegram}>{t('telegram')}</TelegramLink>
           </div>
+          <PhoneLink />
           <span className={styles.note}>{t('replyTime')}</span>
         </div>
       </div>

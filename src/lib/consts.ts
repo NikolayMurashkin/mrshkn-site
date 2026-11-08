@@ -16,8 +16,13 @@ export const HOW_WE_WORK_HREF = '/docs/how-we-work';
 /** Публичный адрес студии в Telegram: канал с открытыми личными сообщениями, кнопка подвала всех направлений. */
 export const TELEGRAM_URL = 'https://t.me/mrshkn_studio';
 
-/** Публичная почта студии: подвал направлений и разметка организации. */
+/** Публичная почта студии: подвал направлений, тексты и разметка организации. */
 export const STUDIO_EMAIL = 'hello@mrshkn.com';
+
+/** Телефон студии (D79): показываемый номер и адрес ссылки. */
+export const STUDIO_PHONE = '+7 900 051-44-23';
+
+export const STUDIO_PHONE_HREF = 'tel:+79000514423';
 
 /** Демо-сайты студии: открываются со страниц услуг, у каждой ниши отраслевого сайта — свое. */
 export const DENTAL_DEMO_URL = 'https://dental.mrshkn.com';
