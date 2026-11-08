@@ -1,7 +1,10 @@
-import type { BRIEF_STEPS, LEAD_SOURCE, LEAD_STAGES, UTM_PARAMS } from './consts';
+import type { BRIEF_NICHES, BRIEF_STEPS, LEAD_SOURCE, LEAD_STAGES, UTM_PARAMS } from './consts';
 
 /** Шаг квиза. */
 export type BriefStep = (typeof BRIEF_STEPS)[number];
+
+/** Ниша из справочника шага «сфера». */
+export type BriefNiche = (typeof BRIEF_NICHES)[number];
 
 /** Поле с выбором из справочника: у шага «сроки и бюджет» таких два. */
 export type BriefChoice = 'product' | 'niche' | 'design' | 'timing' | 'budget';

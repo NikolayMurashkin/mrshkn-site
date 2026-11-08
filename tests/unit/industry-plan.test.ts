@@ -31,7 +31,17 @@ type Messages = {
 
 const MESSAGES = { ru, en } as unknown as Record<Locale, Messages>;
 
-const NICHES = ['clinic', 'expert', 'horeca'] as const;
+const NICHES = ['clinic', 'expert', 'horeca', 'beauty'] as const;
+
+/** Ниша квиза у карточки: у салона своей ниши в квизе нет — «Кафе, бар, салон красоты». */
+const QUIZ_NICHES: Record<(typeof NICHES)[number], string> = {
+  clinic: 'clinic',
+  expert: 'expert',
+  horeca: 'horeca',
+  beauty: 'horeca',
+};
+
+const quizNicheOf = (href: string) => new URL(href, 'http://x').searchParams.get('niche');
 
 const INDUSTRY_PLAN = { id: 'industry', slug: 'industry', price: { rub: 70_000, usd: 1_200 }, isFrom: false, days: 7 };
 
@@ -103,7 +113,7 @@ describe('тариф «Отраслевой сайт за 7 дней» в пра
 });
 
 describe('тексты страницы отраслевого тарифа', () => {
-  it('в ru и en одинаковый состав разделов и пунктов, три ниши, все тексты заполнены', () => {
+  it('в ru и en одинаковый состав разделов и пунктов, четыре ниши, все тексты заполнены', () => {
     const textsRu = industryTexts('ru');
     const textsEn = industryTexts('en');
 
@@ -146,11 +156,14 @@ describe('тексты страницы отраслевого тарифа', ()
 });
 
 describe('карточки отраслей ведут в квиз с предвыбором ниши', () => {
-  it('ниши — клиника, эксперт, кофейня, все из справочника квиза; тариф industry есть в квизе', () => {
+  it('ниши — клиника, эксперт, кофейня, салон красоты; ниша квиза каждой — из справочника квиза; тариф industry есть в квизе', () => {
     expect([...INDUSTRY_NICHES]).toEqual([...NICHES]);
 
-    for (const niche of INDUSTRY_NICHES) {
-      expect(BRIEF_STEP_VALUES.niche).toContain(niche);
+    for (const niche of NICHES) {
+      const quizNiche = quizNicheOf(industryNicheHref('ru', niche));
+
+      expect(quizNiche, `ниша квиза карточки ${niche}`).toBe(QUIZ_NICHES[niche]);
+      expect(BRIEF_STEP_VALUES.niche).toContain(quizNiche);
     }
 
     expect(BRIEF_STEP_VALUES.product).toContain('industry');
@@ -163,17 +176,22 @@ describe('карточки отраслей ведут в квиз с предв
     (locale, niche) => {
       const href = industryNicheHref(locale, niche);
       const { searchParams } = new URL(href, 'http://x');
+      const quizNiche = QUIZ_NICHES[niche];
 
-      expect(href).toBe(`/${locale}/brief?plan=industry&niche=${niche}`);
-      expect(searchParams.get('niche')).toBe(niche);
+      expect(href).toBe(`/${locale}/brief?plan=industry&niche=${quizNiche}`);
+      expect(searchParams.get('niche')).toBe(quizNiche);
       expect(
         parseBriefPreset({
           plan: searchParams.get('plan') ?? undefined,
           niche: searchParams.get('niche') ?? undefined,
         }),
-      ).toEqual({ plan: 'industry', niche });
+      ).toEqual({ plan: 'industry', niche: quizNiche });
     },
   );
+
+  it.each(LOCALES)('%s: id не из карточек отраслей уходит в квиз как есть', (locale) => {
+    expect(industryNicheHref(locale, 'startup')).toBe(`/${locale}/brief?plan=industry&niche=startup`);
+  });
 });
 
 describe('Lighthouse CI', () => {

@@ -23,12 +23,17 @@ export const EXPERT_DEMO_URL = 'https://expert.mrshkn.com';
 
 export const COFFEE_DEMO_URL = 'https://coffee.mrshkn.com';
 
+export const SALON_DEMO_URL = 'https://salon.mrshkn.com';
+
 /** Пример лендинга: ссылка «Посмотреть пример» на странице лендинга. */
 export const EVENT_DEMO_URL = 'https://event.mrshkn.com';
 
-/** Боты демо-приложений «Клиника» и «Кофейня»: раздел «Попробовать» на странице Mini App. */
+/** Боты демо-приложений «Клиника», «Кофейня» и «Салон красоты»: раздел «Попробовать» на странице Mini App. */
 export const DENTAL_TELEGRAM_BOT_URL = 'https://t.me/mrshkn_dental_bot';
 
 export const DENTAL_MAX_BOT_URL = 'https://max.ru/se14753310_bot?startapp';
 
 export const COFFEE_TELEGRAM_BOT_URL = 'https://t.me/mrshkn_coffee_bot?startapp';
+
+/** Бот салона без `?startapp`: приложение открывает кнопка меню бота. */
+export const SALON_TELEGRAM_BOT_URL = 'https://t.me/mrshkn_salon_bot';

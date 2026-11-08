@@ -49,7 +49,7 @@ const SECTIONS: Record<DesignName, (props: SectionProps) => ReactNode> = {
   editorial: EditorialSection,
 };
 
-const NICHES = ['clinic', 'expert', 'horeca'] as const;
+const NICHES = ['clinic', 'expert', 'horeca', 'beauty'] as const;
 
 const INDUSTRY_PLAN = { id: 'industry', slug: 'industry', price: { rub: 70_000, usd: 1_200 }, isFrom: false };
 
@@ -222,20 +222,21 @@ describe('страница отраслевого тарифа во всех н�
     }
   });
 
-  it.each(ROWS)('%s, %s: три карточки отраслей ведут в квиз с предвыбором ниши', (design, locale) => {
+  it.each(ROWS)('%s, %s: четыре карточки отраслей ведут в квиз с предвыбором ниши', (design, locale) => {
     const html = renderService(design, locale, 'industry');
     const links = nicheLinks(html);
 
-    expect(links.length).toBe(3);
+    expect(links.length).toBe(4);
 
     for (const niche of NICHES) {
-      const link = links.find((item) => item.href === industryNicheHref(locale, niche));
+      // У кофейни и салона одна ниша квиза — ссылка с тем же адресом есть в двух карточках.
+      const own = links.filter((item) => item.href === industryNicheHref(locale, niche));
       const title = spaced(industryTexts(locale)?.niches[niche]?.title ?? '');
 
-      expect(link, `ссылка ниши ${niche}`).toBeDefined();
+      expect(own.length, `ссылка ниши ${niche}`).toBeGreaterThan(0);
       expect(title, `название ниши ${niche}`).not.toBe('');
       expect(
-        cardTexts(html, link!).some((text) => text.includes(title)),
+        own.some((link) => cardTexts(html, link).some((text) => text.includes(title))),
         `карточка ${niche} с названием «${title}»`,
       ).toBe(true);
     }

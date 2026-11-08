@@ -249,7 +249,7 @@
 
 .niches {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 20px;
   margin: 0;
   padding: 0;
@@ -279,7 +279,13 @@
 }
 
 .apps {
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+@container (max-width: 873px) {
+  .apps {
+    grid-template-columns: minmax(0, 1fr);
+  }
 }
 
 .appMark {
@@ -380,10 +386,6 @@
 @container (max-width: 680px) {
   .options {
     grid-template-columns: minmax(0, 1fr);
-  }
-
-  .niches {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 
@@ -628,10 +630,6 @@
 
   .aside {
     position: static;
-  }
-
-  .niches {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 

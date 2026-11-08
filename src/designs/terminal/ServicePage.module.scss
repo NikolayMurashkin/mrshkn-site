@@ -105,6 +105,7 @@
   grid-row: 1;
   gap: 56px;
   min-width: 0;
+  container-type: inline-size;
 }
 
 .aside {
@@ -184,6 +185,16 @@
   margin: 0;
   padding: 0;
   list-style: none;
+}
+
+.apps {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+@container (max-width: 761px) {
+  .apps {
+    grid-template-columns: minmax(0, 1fr);
+  }
 }
 
 .niche,
