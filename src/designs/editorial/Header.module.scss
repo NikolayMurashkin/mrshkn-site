@@ -426,3 +426,18 @@ $masthead-height-compact: calc(
     display: flex;
   }
 }
+
+a.phone {
+  min-height: 0;
+}
+
+.panelPhone {
+  align-self: flex-start;
+  margin-top: 16px;
+}
+
+@media (max-width: 720px) {
+  a.phone {
+    display: none;
+  }
+}

@@ -2,6 +2,7 @@ import { useLocale, useTranslations } from 'next-intl';
 import { useMemo } from 'react';
 import { MoonIcon } from '@/components/icons';
 import { LocaleSwitcher } from '@/components/LocaleSwitcher';
+import { PhoneLink } from '@/components/PhoneLink';
 import { TelegramLink } from '@/components/TelegramLink';
 import { ThemeToggle } from '@/components/ThemeToggle';
 import { SERVICES } from '@/content/services';
@@ -69,6 +70,7 @@ export const PopHeader = ({ hasCases }: HeaderProps) => {
         ))}
       </nav>
       <div className={styles.controls}>
+        <PhoneLink className={styles.phone} />
         <LocaleSwitcher
           className={styles.locales}
           itemClassName={styles.locale}
@@ -151,6 +153,7 @@ export const PopHeader = ({ hasCases }: HeaderProps) => {
                 size={56}
               />
             </div>
+            <PhoneLink className={styles.panelPhone} />
             <TelegramLink className={styles.panelTelegram}>{t('footer.telegram')}</TelegramLink>
           </>
         )}

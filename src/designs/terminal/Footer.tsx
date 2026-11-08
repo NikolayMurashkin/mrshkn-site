@@ -1,4 +1,5 @@
 import { useTranslations } from 'next-intl';
+import { PhoneLink } from '@/components/PhoneLink';
 import { TelegramLink } from '@/components/TelegramLink';
 import { Terms } from '@/components/Term';
 import { useLegalLinks } from '@/components/use-legal-links';
@@ -41,6 +42,7 @@ export const TerminalFooter = () => {
               {t('telegram')} <span aria-hidden="true">→</span>
             </TelegramLink>
           </div>
+          <PhoneLink />
           <span className={styles.note}>
             <span aria-hidden="true">{'// '}</span>
             <Terms text={t('replyTime')} />

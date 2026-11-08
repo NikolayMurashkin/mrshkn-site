@@ -36,6 +36,7 @@ export type ServedArea = { '@type': 'City' | 'AdministrativeArea'; name: string 
 export type OrganizationJsonLd = OrganizationRef & {
   '@context': 'https://schema.org';
   email: string;
+  telephone: string;
   logo: string;
   areaServed: ServedArea[];
 };

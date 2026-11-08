@@ -1,4 +1,5 @@
 import { useTranslations } from 'next-intl';
+import { PhoneLink } from '@/components/PhoneLink';
 import { TelegramLink } from '@/components/TelegramLink';
 import { Terms } from '@/components/Term';
 import { useLegalLinks } from '@/components/use-legal-links';
@@ -35,6 +36,7 @@ export const KineticFooter = () => {
               </Link>
               <TelegramLink className={buttonClass({ size: 'large', onInk: true })}>{t('telegram')}</TelegramLink>
             </div>
+            <PhoneLink />
             <span className={styles.note}>
               <Terms text={t('replyTime')} />
             </span>
@@ -48,7 +50,12 @@ export const KineticFooter = () => {
             {brand('name')}
           </span>
           <div className={styles.links}>
-            <span>{KINETIC_STUDIO_EMAIL}</span>
+            <a
+              className={styles.link}
+              href={`mailto:${KINETIC_STUDIO_EMAIL}`}
+            >
+              {KINETIC_STUDIO_EMAIL}
+            </a>
             <Link
               className={styles.link}
               href={PRIVACY_HREF}

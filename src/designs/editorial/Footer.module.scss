@@ -105,6 +105,9 @@
 }
 
 .email {
+  @include s.text-link;
+  @include s.wrap;
+
   font-size: 14px;
   letter-spacing: 0.02em;
   text-transform: none;

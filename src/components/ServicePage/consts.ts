@@ -1,5 +1,11 @@
 import { THREE_D_PLAN_ID } from '@/content/three-d';
-import { COFFEE_TELEGRAM_BOT_URL, DENTAL_MAX_BOT_URL, DENTAL_TELEGRAM_BOT_URL, EVENT_DEMO_URL } from '@/lib/consts';
+import {
+  COFFEE_TELEGRAM_BOT_URL,
+  DENTAL_MAX_BOT_URL,
+  DENTAL_TELEGRAM_BOT_URL,
+  EVENT_DEMO_URL,
+  SALON_TELEGRAM_BOT_URL,
+} from '@/lib/consts';
 import type { TryItApp } from './types';
 
 /** Логотип и фирменный стиль: не сайт — свой «Что входит», свое число раундов, без гарантии на запуск. */
@@ -24,7 +30,7 @@ export const SERVICE_EXAMPLES: Record<string, string> = {
 
 /**
  * Демо-приложения раздела «Попробовать» в порядке карточек: ключ — тексты `servicePage.tryIt.apps.<id>`,
- * у каждой ссылки подпись `servicePage.tryIt.<messenger>`. «Кофейни» в MAX пока нет.
+ * у каждой ссылки подпись `servicePage.tryIt.<messenger>`. «Кофейни» и «Салона красоты» в MAX пока нет.
  */
 export const TRY_IT_APPS: readonly TryItApp[] = [
   {
@@ -37,6 +43,10 @@ export const TRY_IT_APPS: readonly TryItApp[] = [
   {
     id: 'coffee',
     links: [{ messenger: 'telegram', href: COFFEE_TELEGRAM_BOT_URL }],
+  },
+  {
+    id: 'salon',
+    links: [{ messenger: 'telegram', href: SALON_TELEGRAM_BOT_URL }],
   },
 ];
 

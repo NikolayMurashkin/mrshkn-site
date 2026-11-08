@@ -1,5 +1,6 @@
 import { useTranslations } from 'next-intl';
 import { Link } from '@/i18n/navigation';
+import { withEmailLinks } from '../email-links';
 import { ArrowRightIcon } from './icons';
 import type { KineticReviewNoticeProps } from './types';
 import { KINETIC_REVIEW_CLASS as cls } from './consts';
@@ -14,7 +15,7 @@ export const KineticReviewNotice = ({ view }: KineticReviewNoticeProps) => {
     >
       <p className={cls.kicker}>{t('kicker')}</p>
       <h1 className={cls.noticeTitle}>{t(`${view}.title`)}</h1>
-      <p className={cls.noticeText}>{t(`${view}.text`)}</p>
+      <p className={cls.noticeText}>{withEmailLinks(t(`${view}.text`))}</p>
       <Link
         className={cls.button}
         href="/"

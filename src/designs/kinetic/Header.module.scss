@@ -452,3 +452,17 @@ $header-height-compact: calc(var(--space-16) * 2 + #{$burger-size} + var(--borde
     min-width: 0;
   }
 }
+
+a.phone {
+  min-height: 0;
+}
+
+.panelPhone {
+  align-self: flex-start;
+}
+
+@media (max-width: 1250px) {
+  a.phone {
+    display: none;
+  }
+}

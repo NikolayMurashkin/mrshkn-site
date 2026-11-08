@@ -368,3 +368,17 @@
     inset: var(--mobile-menu-top, calc(72px + var(--border-width))) 0 0;
   }
 }
+
+a.phone {
+  min-height: 0;
+}
+
+.panelPhone {
+  align-self: flex-start;
+}
+
+@media (max-width: 1270px) {
+  a.phone {
+    display: none;
+  }
+}

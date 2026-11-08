@@ -1,4 +1,5 @@
 import { usePrivacyPolicy } from '@/components/PrivacyPolicy/use-privacy-policy';
+import { withEmailLinks } from '../email-links';
 import styles from './PrivacyPage.module.scss';
 
 export const TerminalPrivacyPage = () => {
@@ -31,13 +32,13 @@ export const TerminalPrivacyPage = () => {
                   key={paragraph}
                   className={styles.paragraph}
                 >
-                  {paragraph}
+                  {withEmailLinks(paragraph)}
                 </p>
               ))}
               {section.items.length > 0 ? (
                 <ul className={styles.list}>
                   {section.items.map((item) => (
-                    <li key={item.key}>{item.content}</li>
+                    <li key={item.key}>{withEmailLinks(item.content)}</li>
                   ))}
                 </ul>
               ) : null}
@@ -46,7 +47,7 @@ export const TerminalPrivacyPage = () => {
                   key={paragraph}
                   className={styles.paragraph}
                 >
-                  {paragraph}
+                  {withEmailLinks(paragraph)}
                 </p>
               ))}
               {section.choice ? (

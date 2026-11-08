@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import { PRICING_PLANS } from '@/content/pricing';
 import { LOCALES } from '@/i18n/consts';
-import { SITE_URL } from '@/lib/consts';
+import { SITE_URL, STUDIO_PHONE } from '@/lib/consts';
 import { organizationJsonLd, serviceJsonLd } from '@/lib/seo/json-ld';
 import en from '../../messages/en.json';
 import ru from '../../messages/ru.json';
@@ -65,12 +65,12 @@ describe('JSON-LD', () => {
     expect(new URL(result.url ?? '').origin).toBe(new URL(SITE_URL).origin);
   });
 
-  it.each([...LOCALES])('Organization %s: город и область в areaServed, без адреса и телефона', (locale) => {
+  it.each([...LOCALES])('Organization %s: город и область в areaServed, без адреса, телефон студии (D79)', (locale) => {
     const result = organizationJsonLd(locale) as OrganizationLd;
 
     expect(result.areaServed).toEqual(AREA_SERVED[locale]);
     expect(result).not.toHaveProperty('address');
-    expect(result).not.toHaveProperty('telephone');
+    expect(organizationJsonLd(locale).telephone).toBe(STUDIO_PHONE);
   });
 
   it.each(ROWS)('J2 %s, %s: Service с названием, описанием, адресом, исполнителем и ценой', (locale, id) => {

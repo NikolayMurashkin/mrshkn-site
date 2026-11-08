@@ -507,6 +507,7 @@
     "invitation": "Tell us about your project — during working hours we reply within an hour.",
     "cta": "Send a request",
     "telegram": "Message us on Telegram",
+    "phoneLabel": "Call or text us",
     "replyTime": "We reply within an hour on weekdays, 10:00–19:00 Moscow time",
     "command": "open t.me/mrshkn_studio",
     "sectionMark": "Contact",
@@ -641,6 +642,11 @@
           "title": "Coffee shop",
           "module": "Bonuses",
           "text": "Collect stamps with a QR code at the till, browse the menu and order ahead"
+        },
+        "salon": {
+          "title": "Beauty salon",
+          "module": "Booking",
+          "text": "The customer picks a service, a specialist and a time right inside Telegram, and the booking goes to the salon owner in Telegram"
         }
       }
     },
@@ -701,6 +707,10 @@
         "horeca": {
           "title": "Coffee shop",
           "text": "A menu on the site where guests pick dishes with filters, a QR-code menu, a map with directions and opening hours"
+        },
+        "beauty": {
+          "title": "Beauty salon",
+          "text": "A page for each specialist with a photo and their services, prices for every service, guest reviews, an address and a map. Booking requests: a guest leaves one on the site and it comes to your Telegram and email, and you agree on the time with the guest yourself. Once the site is ready, you add and remove specialists, edit their descriptions and prices and add guest reviews yourself — in the admin panel, your section of the site for such edits. In our sample site, the “Book” button opens an app right inside Telegram: guests pick a specialist and a time themselves, get reminders before the visit and have nothing to download. The app is ordered separately and is not included in the site price; its price is in the “Industry app in Telegram” plan. The app has its own admin panel: you manage specialists, services and prices there separately from the site. Without the app, the “Book” button on your site opens a request form; with it, the form stays on the booking page for guests without Telegram"
         }
       },
       "faq": [

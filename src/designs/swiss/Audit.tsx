@@ -6,6 +6,7 @@ import { Terms } from '@/components/Term';
 import { Link } from '@/i18n/navigation';
 import { HONEYPOT_FIELD } from '@/lib/brief/consts';
 import { PRIVACY_HREF } from '@/lib/consts';
+import { withEmailLinks } from '../email-links';
 import { ArrowRightIcon, ArrowUpRightIcon } from './icons';
 import brief from './SwissBrief.module.scss';
 import styles from './Audit.module.scss';
@@ -93,9 +94,7 @@ export const SwissAudit = ({ numbered = true }: SwissAuditProps) => {
                 tabIndex={-1}
               >
                 <h3 className={styles.successTitle}>{t('success.title')}</h3>
-                <p>
-                  <Terms text={t('success.text')} />
-                </p>
+                <p>{withEmailLinks(t('success.text'))}</p>
               </div>
             ) : (
               <form
@@ -175,7 +174,7 @@ export const SwissAudit = ({ numbered = true }: SwissAuditProps) => {
                     data-testid="audit-error"
                     role="alert"
                   >
-                    <Terms text={t('error')} />
+                    {withEmailLinks(t('error'))}
                   </p>
                 ) : null}
                 <button

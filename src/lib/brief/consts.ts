@@ -7,10 +7,13 @@ export const BRIEF_STEPS = ['product', 'niche', 'design', 'scope', 'contacts'] a
 /** Что выбирают на шаге «стиль» помимо пяти направлений: человек имеет право не выбирать. */
 export const BRIEF_ANY_DESIGN = 'any';
 
+/** Ниши шага «сфера»: по ним карточки отраслевого тарифа открывают квиз с выбранной нишей. */
+export const BRIEF_NICHES = ['clinic', 'expert', 'horeca', 'startup', 'other'] as const;
+
 /** Справочники ответов: значение вне списка на сервер не проходит. Продукты — те же, что в прайсе. */
 export const BRIEF_STEP_VALUES: Record<BriefChoice, readonly string[]> = {
   product: [...PRICING_PLANS.map((plan) => plan.id), 'other'],
-  niche: ['clinic', 'expert', 'horeca', 'startup', 'other'],
+  niche: BRIEF_NICHES,
   design: ['kinetic', 'terminal', 'pop', 'swiss', 'editorial', BRIEF_ANY_DESIGN],
   timing: ['asap', 'twoWeeks', 'month', 'noRush'],
   budget: ['upTo100', 'to250', 'to500', 'over500', 'unknown'],

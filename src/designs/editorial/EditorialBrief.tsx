@@ -15,6 +15,7 @@ import {
   NAME_MAX_LENGTH,
 } from '@/lib/brief/consts';
 import { PRIVACY_HREF } from '@/lib/consts';
+import { withEmailLinks } from '../email-links';
 import { EditorialChoices } from './EditorialChoices';
 import { EditorialDesignChoice } from './EditorialDesignChoice';
 import { progressState } from './utils';
@@ -290,7 +291,7 @@ export const EditorialBrief = ({ design, plan, niche }: BriefProps) => {
             data-testid="brief-error"
             role="alert"
           >
-            {t('error')}
+            {withEmailLinks(t('error'))}
           </p>
         ) : null}
       </div>

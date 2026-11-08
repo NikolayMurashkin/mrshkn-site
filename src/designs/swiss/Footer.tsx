@@ -1,4 +1,5 @@
 import { useTranslations } from 'next-intl';
+import { PhoneLink } from '@/components/PhoneLink';
 import { TelegramLink } from '@/components/TelegramLink';
 import { Terms } from '@/components/Term';
 import { useLegalLinks } from '@/components/use-legal-links';
@@ -52,6 +53,7 @@ export const SwissFooter = () => {
                 </Link>
                 <TelegramLink className={styles.telegram}>{t('telegram')}</TelegramLink>
               </div>
+              <PhoneLink />
               <span className={styles.note}>
                 <Terms text={t('replyTime')} />
               </span>
@@ -88,12 +90,13 @@ export const SwissFooter = () => {
               </Link>
             ))}
           </div>
-          <span
+          <a
             className={styles.email}
+            href={`mailto:${SWISS_STUDIO_EMAIL}`}
             translate="no"
           >
             {SWISS_STUDIO_EMAIL}
-          </span>
+          </a>
         </div>
       </SwissTermScope>
     </footer>

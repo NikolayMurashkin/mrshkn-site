@@ -25,6 +25,11 @@ export type JsonLdProps = {
   data: object;
 };
 
+export type PhoneLinkProps = {
+  /** Класс размещения от направления (скрыть на узкой шапке, отступ); вид ссылки — `phone-link*` в `globals.scss`. */
+  className?: string;
+};
+
 export type TelegramLinkProps = {
   /** Класс кнопки из DS направления: ссылка своей верстки не несет. */
   className: string;

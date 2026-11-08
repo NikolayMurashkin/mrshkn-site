@@ -41,6 +41,35 @@ a {
   text-decoration: none;
 }
 
+a[href^='mailto:']:not([class]) {
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+
+.phone-link {
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 2px;
+  min-height: 44px;
+  line-height: 1.25;
+  white-space: nowrap;
+}
+
+.phone-link-label {
+  font-size: 12px;
+}
+
+.phone-link-number {
+  font-size: 15px;
+  font-weight: 600;
+  text-underline-offset: 0.2em;
+}
+
+.phone-link:hover .phone-link-number {
+  text-decoration: underline;
+}
+
 a,
 button,
 input,

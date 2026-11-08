@@ -15,6 +15,7 @@ import {
   NAME_MAX_LENGTH,
 } from '@/lib/brief/consts';
 import { PRIVACY_HREF } from '@/lib/consts';
+import { withEmailLinks } from '../email-links';
 import { ArrowRightIcon } from './icons';
 import { PopChoices } from './PopChoices';
 import { PopDesignChoice } from './PopDesignChoice';
@@ -298,7 +299,7 @@ export const PopBrief = ({ design, plan, niche }: BriefProps) => {
           data-testid="brief-error"
           role="alert"
         >
-          {t('error')}
+          {withEmailLinks(t('error'))}
         </p>
       ) : null}
     </main>

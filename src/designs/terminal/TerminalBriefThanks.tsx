@@ -1,5 +1,6 @@
 import { useTranslations } from 'next-intl';
 import { Link } from '@/i18n/navigation';
+import { withEmailLinks } from '../email-links';
 import styles from './TerminalBriefThanks.module.scss';
 
 export const TerminalBriefThanks = () => {
@@ -41,7 +42,7 @@ export const TerminalBriefThanks = () => {
             >
               {'//'}
             </span>{' '}
-            {t('note')}
+            {withEmailLinks(t('note'))}
           </p>
           <Link
             className={styles.button}

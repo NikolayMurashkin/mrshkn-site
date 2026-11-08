@@ -1,4 +1,5 @@
 import { useTranslations } from 'next-intl';
+import { PhoneLink } from '@/components/PhoneLink';
 import { TelegramLink } from '@/components/TelegramLink';
 import { Terms } from '@/components/Term';
 import { useLegalLinks } from '@/components/use-legal-links';
@@ -36,6 +37,7 @@ export const PopFooter = () => {
               </Link>
               <TelegramLink className={styles.telegram}>{t('telegram')}</TelegramLink>
             </div>
+            <PhoneLink />
             <span className={styles.note}>
               <Terms text={t('replyTime')} />
             </span>
@@ -52,7 +54,13 @@ export const PopFooter = () => {
             <span translate="no">
               <Terms text={brand('tagline')} />
             </span>
-            <span translate="no">{POP_STUDIO_EMAIL}</span>
+            <a
+              className={styles.link}
+              href={`mailto:${POP_STUDIO_EMAIL}`}
+              translate="no"
+            >
+              {POP_STUDIO_EMAIL}
+            </a>
             <Link
               className={styles.link}
               href={PRIVACY_HREF}

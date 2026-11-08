@@ -1,5 +1,5 @@
 import { expect, test, type Locator, type Page } from '@playwright/test';
-import { TELEGRAM_URL } from '@/lib/consts';
+import { STUDIO_EMAIL, STUDIO_PHONE_HREF, TELEGRAM_URL } from '@/lib/consts';
 import { DESIGNS, LOCALES } from './consts';
 import { openDesign } from './open-design';
 
@@ -39,8 +39,8 @@ const hrefsOf = async (page: Page, path: string) => {
 };
 
 /**
- * Единственный внешний адрес — студия в Telegram из подвала: чужой сети в тестах нет, поэтому он пропускается
- * точным совпадением с `TELEGRAM_URL`, остальные ссылки обязаны быть внутренними.
+ * Внешних адреса три — студия в Telegram, почта и телефон студии: чужой сети в тестах нет, поэтому они пропускаются
+ * точным совпадением, остальные ссылки обязаны быть внутренними.
  *
  * Ссылка проверяется до конца: адрес отдает 200, а якорь ищется в DOM той страницы, куда ссылка
  * ведет, а не той, где ее нажали. Шапка рендерится везде, и без этого якоря секций главной
@@ -56,7 +56,7 @@ const checkLinks = async (page: Page, locale: string, path: string) => {
   expect(hrefs.filter((href) => href === '#' || href === '')).toEqual([]);
 
   for (const href of hrefs) {
-    if (href === TELEGRAM_URL) {
+    if ([TELEGRAM_URL, `mailto:${STUDIO_EMAIL}`, STUDIO_PHONE_HREF].includes(href)) {
       continue;
     }
 

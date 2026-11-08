@@ -1,3 +1,4 @@
+import { withEmailLinks } from '../email-links';
 import { renderNowrap } from '../nowrap';
 import type { KineticReviewDocumentProps } from './types';
 import { KINETIC_REVIEW_CLASS as cls } from './consts';
@@ -23,7 +24,7 @@ export const KineticReviewDocument = ({
       {text.title}
     </h3>
     <p className={cls.edition}>{edition}</p>
-    {text.intro ? <p className={cls.intro}>{renderNowrap(text.intro, cls.nowrap)}</p> : null}
+    {text.intro ? <p className={cls.intro}>{withEmailLinks(renderNowrap(text.intro, cls.nowrap))}</p> : null}
     <p className={cls.summary}>{text.summary}</p>
     <details className={cls.details}>
       <summary>{more}</summary>
@@ -34,7 +35,7 @@ export const KineticReviewDocument = ({
       >
         {text.items.map((item) => (
           <li key={item}>
-            <span>{renderNowrap(item, cls.nowrap)}</span>
+            <span>{withEmailLinks(renderNowrap(item, cls.nowrap))}</span>
           </li>
         ))}
       </ol>

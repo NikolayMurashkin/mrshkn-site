@@ -120,7 +120,7 @@ export const TerminalServicePage = ({ service }: ServicePageProps) => {
                         <Terms text={tryIt.note} />
                       </p>
                     </div>
-                    <ul className={styles.niches}>
+                    <ul className={`${styles.niches} ${styles.apps}`}>
                       {tryIt.apps.map((app) => (
                         <li
                           className={styles.app}
