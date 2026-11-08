@@ -59,12 +59,13 @@ export const EditorialFooter = () => {
             </Link>
           ))}
         </div>
-        <span
+        <a
           className={styles.email}
+          href={`mailto:${EDITORIAL_STUDIO_EMAIL}`}
           translate="no"
         >
           {EDITORIAL_STUDIO_EMAIL}
-        </span>
+        </a>
       </div>
     </footer>
   );

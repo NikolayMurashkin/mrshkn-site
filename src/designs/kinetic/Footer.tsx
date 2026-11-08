@@ -41,7 +41,12 @@ export const KineticFooter = () => {
           {brand('name')}
         </span>
         <div className={styles.links}>
-          <span>{KINETIC_STUDIO_EMAIL}</span>
+          <a
+            className={styles.link}
+            href={`mailto:${KINETIC_STUDIO_EMAIL}`}
+          >
+            {KINETIC_STUDIO_EMAIL}
+          </a>
           <Link
             className={styles.link}
             href={PRIVACY_HREF}

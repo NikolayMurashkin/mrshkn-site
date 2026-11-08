@@ -77,12 +77,13 @@ export const SwissFooter = () => {
             </Link>
           ))}
         </div>
-        <span
+        <a
           className={styles.email}
+          href={`mailto:${SWISS_STUDIO_EMAIL}`}
           translate="no"
         >
           {SWISS_STUDIO_EMAIL}
-        </span>
+        </a>
       </div>
     </footer>
   );

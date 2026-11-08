@@ -43,7 +43,13 @@ export const PopFooter = () => {
         </span>
         <div className={styles.links}>
           <span translate="no">{brand('tagline')}</span>
-          <span translate="no">{POP_STUDIO_EMAIL}</span>
+          <a
+            className={styles.link}
+            href={`mailto:${POP_STUDIO_EMAIL}`}
+            translate="no"
+          >
+            {POP_STUDIO_EMAIL}
+          </a>
           <Link
             className={styles.link}
             href={PRIVACY_HREF}

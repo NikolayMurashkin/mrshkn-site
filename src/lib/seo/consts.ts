@@ -49,8 +49,6 @@ export const X_DEFAULT = 'x-default';
 
 export const BRAND_NAME = defaultMessages.brand.name;
 
-export const STUDIO_EMAIL = 'hello@mrshkn.com';
-
 /** Где студия берет заказы: Калининград и область, на языке страницы. */
 export const AREA_SERVED: Record<SiteLocale, ServedArea[]> = {
   ru: [

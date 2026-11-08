@@ -1,9 +1,9 @@
 import { planPath } from '@/content/format';
 import { PRICING_PLANS } from '@/content/pricing';
 import type { SiteLocale } from '@/i18n/types';
-import { SITE_URL } from '@/lib/consts';
+import { SITE_URL, STUDIO_EMAIL } from '@/lib/consts';
 import { localePath } from './alternates';
-import { AREA_SERVED, BRAND_NAME, LOGO_PATH, ORGANIZATION_ID, PRICE_CURRENCY, STUDIO_EMAIL } from './consts';
+import { AREA_SERVED, BRAND_NAME, LOGO_PATH, ORGANIZATION_ID, PRICE_CURRENCY } from './consts';
 import type { OrganizationRef, OrganizationJsonLd, SeoMessages, ServiceJsonLd, ServiceOffer } from './types';
 
 const organizationRef = (name: string): OrganizationRef => ({

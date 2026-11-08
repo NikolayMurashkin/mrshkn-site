@@ -16,6 +16,9 @@ export const HOW_WE_WORK_HREF = '/docs/how-we-work';
 /** Публичный адрес студии в Telegram: канал с открытыми личными сообщениями, кнопка подвала всех направлений. */
 export const TELEGRAM_URL = 'https://t.me/mrshkn_studio';
 
+/** Публичная почта студии: подвал направлений и разметка организации. */
+export const STUDIO_EMAIL = 'hello@mrshkn.com';
+
 /** Демо-сайты студии: открываются со страниц услуг, у каждой ниши отраслевого сайта — свое. */
 export const DENTAL_DEMO_URL = 'https://dental.mrshkn.com';
 

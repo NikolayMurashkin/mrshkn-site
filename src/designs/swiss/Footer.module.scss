@@ -133,7 +133,8 @@
   min-width: 0;
 }
 
-.privacy {
+.privacy,
+.email {
   font-size: 15px;
   text-decoration: underline;
   text-decoration-thickness: var(--border-width);
@@ -151,9 +152,6 @@
 .email {
   grid-column: span 3;
   justify-self: end;
-  font-size: 15px;
-
-  @include s.wrap;
 }
 
 @media (max-width: 720px) {
